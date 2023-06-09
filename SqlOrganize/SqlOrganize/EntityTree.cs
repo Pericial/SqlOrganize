@@ -6,9 +6,9 @@ namespace SqlOrganize
     */
     public class EntityTree
     {
-        public string field_name { get; set; }
-        public string entity_name { get; set; }
-        public string field_ref_name { get; set; } = "id";
-        public Dictionary<string, EntityTree> children { get; set; }
+        public string FieldName { get; set; }
+        public string EntityName { get; set; }
+        public string FieldRefName { get; set; } = "id";
+        public Dictionary<string, EntityTree> Children { get; set; }
     }
 }
