@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-
-namespace SqlOrganize
+﻿namespace SqlOrganize
 {
     /*
     Mapear campos para que sean entendidos por el motor de base de datos.
