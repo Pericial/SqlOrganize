@@ -8,9 +8,9 @@ namespace SqlOrganize
 {
     public class EntityRel
     {
-        public string FieldName { get; set; }
-        public string EntityName { get; set; }
-        public string FieldRefName { get; set; } = "id";
-        public string ParentId { get; set; }
+        public string field_name { get; set; }
+        public string entity_name { get; set; }
+        public string field_ref_name { get; set; } = "id";
+        public string parent_id { get; set; }
     }
 }
