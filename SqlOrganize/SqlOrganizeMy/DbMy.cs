@@ -21,7 +21,7 @@ namespace SqlOrganize
 
         public MySqlConnection conn() => _conn;
 
-        public override EntityQuery query(string entity_name)
+        public override EntityQuery Query(string entity_name)
         {
             return new EntityQueryMy(this, entity_name);
         }
@@ -30,11 +30,6 @@ namespace SqlOrganize
         public override Mapping mapping(string entity_name, string field_id)
         {
             return new MappingMy(this, entity_name, field_id);
-        }
-
-        public override Condition condition(string entity_name, string field_id)
-        {
-            return new ConditionMy(this, entity_name, field_id);
         }
 
         public override Values values(string entity_name, string field_id)

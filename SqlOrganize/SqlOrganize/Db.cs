@@ -206,7 +206,7 @@ namespace SqlOrganize
             return new (this, entity_name);
         }
 
-        public abstract EntityQuery query(string entity_name);
+        public abstract EntityQuery Query(string entity_name);
 
         public abstract Mapping mapping(string entity_name, string field_id);
 
