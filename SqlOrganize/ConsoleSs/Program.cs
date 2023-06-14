@@ -7,6 +7,7 @@ using System.Data;
 using Newtonsoft.Json;
 using System.Text.RegularExpressions;
 using System.Xml;
+using Microsoft.Extensions.Caching.Memory;
 
 Dictionary<string, object> config = new Dictionary<string, object>()
  {
@@ -16,10 +17,37 @@ Dictionary<string, object> config = new Dictionary<string, object>()
 
 //var db = new DbMy(config);
 DbSs db = new(config);
-var data = db.query("SUJETOS").
-    Where("CAST($FECHA_CARGA AS DATE) = @0").
-    Parameters("2007-12-04").
-    All();
+
+
+var query = db.Query("SUJETOS").
+FieldsAs("$APELLIDO, $NOMBRES").
+Where("CAST($FECHA_CARGA AS DATE) = @0 AND $APELLIDO IN (@1)").
+Parameters("2007-12-04", new List<object> { "AMADO", "ACOSTA" }).
+Page(1).
+Size(10).
+Fetch("All");
+
+QueryCache qc = new(query);
+var data = qc.Exec();
+data = qc.Exec();
+
+query = db.Query("SUJETOS").
+FieldsAs("$APELLIDO, $NOMBRES").
+Where("CAST($FECHA_CARGA AS DATE) = @0 AND $APELLIDO IN (@1)").
+Parameters("2007-12-04", new List<object> { "AMADO", "ACOSTA" }).
+Page(1).
+Size(1).
+Fetch("All");
+
+QueryCache qc2 = new(query);
+data = qc2.Exec();
+
+
+
+
+
+
+
 
 
 string json = JsonConvert.SerializeObject(data, Newtonsoft.Json.Formatting.Indented);

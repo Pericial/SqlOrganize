@@ -1,6 +1,10 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Data.Common;
+using System.Security.Principal;
+using System.Text.RegularExpressions;
+using System.Xml.Linq;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace SqlOrganize
@@ -64,6 +68,8 @@ namespace SqlOrganize
 
         public List<object> parameters = new List<object> { };
 
+        public string fetch = "All";
+
         public EntityQuery(Db _db, string _entity_name)
         {
             db = _db;
@@ -106,6 +112,12 @@ namespace SqlOrganize
         public EntityQuery Parameters(params object[] parameters)
         {
             this.parameters.AddRange(parameters.ToList());
+            return this;
+        }
+
+        public EntityQuery Fetch(string fetch)
+        {
+            this.fetch = fetch;
             return this;
         }
 
@@ -290,6 +302,25 @@ namespace SqlOrganize
             return connect + " " + value;
         }
 
+        public object Exec() { 
+            switch (fetch) {
+                case "All":
+                    return All();
+
+                case "Tree":
+                    return Tree();
+
+                default:
+                    throw new Exception("No se encuentra definido el Fetch");
+            }
+
+        }
+
+        public override string ToString()
+        {
+            return Regex.Replace(entity_name + where + having + fields + fields_as + order + size + page + JsonConvert.SerializeObject(parameters), @"\s+", "");
+        }
+
 
         /*
         Obtener todas las filas
@@ -303,7 +334,8 @@ namespace SqlOrganize
 
         Convert the result to json with "JsonConvert.SerializeObject(data, Formatting.Indented)"
         */
-        public abstract List<Dictionary<string, object>> tree();
+        public abstract List<Dictionary<string, object>> Tree();
+
 
         /*
         Obtener todas las filas

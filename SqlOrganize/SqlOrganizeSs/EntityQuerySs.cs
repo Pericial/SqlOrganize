@@ -38,7 +38,7 @@ namespace SqlOrganize
             return (List<Dictionary<string, object>>)Utils.Serialize(reader);
         }
 
-        public override List<Dictionary<string, object>> tree()
+        public override List<Dictionary<string, object>> Tree()
         {
             throw new NotImplementedException();
         }
