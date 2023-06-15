@@ -35,7 +35,7 @@ namespace SqlOrganize
                 command.ExecuteNonQuery();
                 using SqlDataReader reader = command.ExecuteReader();
 
-            return (List<Dictionary<string, object>>)Utils.Serialize(reader);
+            return Utils.Serialize(reader);
         }
 
         public override List<Dictionary<string, object>> Tree()

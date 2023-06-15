@@ -23,7 +23,10 @@ namespace SqlOrganize
             EntityName = entityName;
         }
 
-        public object Exec()
+        /*
+        Ejecuta la consulta y la almacena en Cache
+        */
+        public object Execute()
         {
             List<string> queries = null;
             if (!Cache.TryGetValue("queries", out queries))
@@ -44,7 +47,11 @@ namespace SqlOrganize
             return result;
         }
 
-        public List<Dictionary<string, object>> All()
+        /*
+        Ejecuta la consulta almacena resultado en cache
+        Solo funciona con campos de configuracion.
+        */
+        public List<Dictionary<string, object>> ExecuteR()
         {
             return Query!.All();
             //Cache.Clear();
