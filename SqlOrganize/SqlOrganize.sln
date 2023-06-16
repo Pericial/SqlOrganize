@@ -11,9 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlOrganizeMy", "SqlOrganiz
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleSs", "ConsoleSs\ConsoleSs.csproj", "{AF8CA7B2-1D34-4FA2-8CCE-54F954B58E23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchemaGen", "SchemaGen\SchemaGen.csproj", "{6A2A7AD6-907B-43FD-8905-1847B69A7416}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchemaGen", "SchemaGen\SchemaGen.csproj", "{6A2A7AD6-907B-43FD-8905-1847B69A7416}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils", "Utils\Utils.csproj", "{F4FCBA51-1E96-4341-BE2D-6144E373E28A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utils", "Utils\Utils.csproj", "{F4FCBA51-1E96-4341-BE2D-6144E373E28A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchemaJsonMy", "SchemaJsonMy\SchemaJsonMy.csproj", "{7AF1D068-38E4-4390-A1B7-A19531E9C43D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{F4FCBA51-1E96-4341-BE2D-6144E373E28A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4FCBA51-1E96-4341-BE2D-6144E373E28A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4FCBA51-1E96-4341-BE2D-6144E373E28A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AF1D068-38E4-4390-A1B7-A19531E9C43D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AF1D068-38E4-4390-A1B7-A19531E9C43D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AF1D068-38E4-4390-A1B7-A19531E9C43D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AF1D068-38E4-4390-A1B7-A19531E9C43D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
