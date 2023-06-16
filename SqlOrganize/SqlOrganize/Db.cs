@@ -3,6 +3,11 @@ using System.Text;
 
 namespace SqlOrganize
 {
+    /*
+    Restricciones de la base de datos:
+
+    - La fk solo puede referenciar a una y solo una tabla
+    */
     public abstract class Db
     {
         public Dictionary<string, object>? config { get; }

@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SchemaGen
+﻿namespace SchemaJson
 {
-    public class Config
+    public class ConfigSs: Config
     {
-        public string connection_string { get; set; }
-        public string db_name { get; set; }
-
         /*
-        Se definen por el momento las palabras reservadas de SQL SERVER
+        Se definen las palabras reservadas de SQL SERVER
         */
         public List<string> reserved_alias { get; set; } = new List<string>() {
         "ADD",
