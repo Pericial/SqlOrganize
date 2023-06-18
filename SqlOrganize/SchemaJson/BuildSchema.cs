@@ -7,7 +7,7 @@ namespace SchemaJson
     {
         public Config Config { get; }
         public List<string> ReservedTableNames { get; } = new();
-        public List<Table> TableInfo { get; } = new();
+        public List<Dictionary<string, string>> TableInfo { get; } = new();
 
         public BuildSchema(Config config)
         {
@@ -22,14 +22,14 @@ namespace SchemaJson
                 t.Alias = GetAlias(tableName, tableAlias, 4);
                 tableAlias.Add(t.Alias);
 
-                List<Dictionary<string, string>> fieldsInfo = GetFieldsInfo(t.Name);
+                List<Field> fieldsInfo = GetFieldsInfo(t.Name);
             }
         }
 
      
         protected string GetAlias(string name, List<string> reserved, int length = 3, string separator = "_")
         {
-            string[] words = name.Split(separator);
+            string[] words = name.Trim('_').Split(separator);
 
             string nameAux = "";
             if (words.Length > 1)
@@ -65,7 +65,7 @@ namespace SchemaJson
 
         protected abstract List<String> GetTableNames();
 
-        protected abstract List<Dictionary<string, string>> GetFieldsInfo(string tableName);
+        protected abstract List<Field> GetFieldsInfo(string tableName);
 
 
 

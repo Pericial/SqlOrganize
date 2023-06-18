@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 using System.Text.RegularExpressions;
 using System.Xml;
 using Microsoft.Extensions.Caching.Memory;
-using SchemaGen;
+using SchemaJsonSs;
 
 Dictionary<string, object> config = new Dictionary<string, object>()
  {
@@ -19,16 +19,15 @@ Dictionary<string, object> config = new Dictionary<string, object>()
 //var db = new DbMy(config);
 DbSs db = new(config);
 
-var c = new Config()
+var c = new ConfigSs()
 {
     connection_string = "Data Source=DQFC2G3;Initial Catalog=Gestadm_CTAPilar;Integrated Security=True;TrustServerCertificate=true;",
     db_name = "Gestadm_CTAPilar"
 };
 
-var t = new SchemaGen.SchemaGen(c);
+var t = new BuildSchemaSs(c);
 
-Console.WriteLine(t.TableNames);
-
+Console.WriteLine("end");
 
 
 

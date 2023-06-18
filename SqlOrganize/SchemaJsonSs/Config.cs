@@ -1,4 +1,6 @@
-﻿namespace SchemaJson
+﻿using SchemaJson;
+
+namespace SchemaJsonSs
 {
     public class ConfigSs: Config
     {

@@ -28,25 +28,25 @@ namespace SchemaJsonSs
             return DbDataReaderUtils.ColumnValues<string>(reader, "TABLE_NAME");
         }
 
-        protected override List<Dictionary<string, string>> GetFieldsInfo(string tableName)
+        protected override List<Field> GetFieldsInfo(string tableName)
         {
             using SqlConnection connection = new SqlConnection(Config.connection_string);
             connection.Open();
             using SqlCommand command = new SqlCommand();
             command.CommandText = @"
     select 
-    col.TABLE_NAME, 
+	col.TABLE_NAME, 
 	col.COLUMN_NAME, 
 	col.COLUMN_DEFAULT, 
-	col.IS_NULLABLE, 
+	IIF(col.IS_NULLABLE = 'YES', 1, 0) AS IS_NULLABLE, 
 	col.DATA_TYPE, 
 	col.CHARACTER_MAXIMUM_LENGTH, 
 	col.NUMERIC_PRECISION,  
 	col.NUMERIC_SCALE,
 	INFO_FK.REFERENCED_TABLE_NAME, INFO_FK.REFERENCED_COLUMN_NAME, 
-	IIF(INFO_PK.COLUMN_NAME IS NOT NULL, 'YES', 'NO') AS IS_PRIMARY_KEY, 
-	IIF(INFO_U.COLUMN_NAME IS NOT NULL, 'YES', 'NO') AS IS_UNIQUE,
-	IIF(INFO_FK2.COLUMN_NAME IS NOT NULL, 'YES', 'NO') AS IS_FOREIGN_KEY
+	IIF(INFO_PK.COLUMN_NAME IS NOT NULL, 1, 0) AS IS_PRIMARY_KEY, 
+	IIF(INFO_U.COLUMN_NAME IS NOT NULL, 1, 0) AS IS_UNIQUE_KEY,
+	IIF(INFO_FK2.COLUMN_NAME IS NOT NULL, 1, 0) AS IS_FOREIGN_KEY
 FROM information_schema.tables tbl
 
 INNER JOIN information_schema.columns col 
@@ -112,11 +112,11 @@ WHERE tbl.table_type = 'base table' AND tbl.TABLE_CATALOG=@db_name AND tbl.TABLE
 ";
             command.Connection = connection;
             command.Parameters.AddWithValue("db_name", Config.db_name);
-            command.Parameters.AddWithValue("table_name", Config.tableName);
+            command.Parameters.AddWithValue("table_name", tableName);
 
             command.ExecuteNonQuery();
             using SqlDataReader reader = command.ExecuteReader();
-            return DbDataReaderUtils.ColumnValues<string>(reader, "TABLE_NAME");
+            return reader.ConvertToListOfObject<Field>();
 
         }
 

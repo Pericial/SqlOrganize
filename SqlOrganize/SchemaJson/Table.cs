@@ -6,5 +6,9 @@ namespace SchemaJson
         public string? Name { get; set; }
 
         public string? Alias { get; set; }
+
+        public List<Field> Fields { get; set; } = new();
+
+
     }
 }
