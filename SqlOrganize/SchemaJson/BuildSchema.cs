@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using System.Text.RegularExpressions;
 using Utils;
 
 namespace SchemaJson
@@ -7,6 +8,7 @@ namespace SchemaJson
     {
         public Config Config { get; }
         public List<Table> Tables { get; } = new();
+
 
         public BuildSchema(Config config)
         {
@@ -48,7 +50,14 @@ namespace SchemaJson
                 
             }
 
+            foreach (Table t in Tables)
+            {
+                var bt = new BuildTree(Tables, t.Name!);
+                Tables.Tree = bt.Build();
+            }
+
         }
+
 
 
         protected string GetAlias(string name, List<string> reserved, int length = 3, string separator = "_")
@@ -97,11 +106,7 @@ namespace SchemaJson
         protected abstract List<Field> GetFields(string tableName);
 
         /*
-        Write text files:
-        - https://www.csharptutorial.net/csharp-file/csharp-write-text-files/
-        - https://www.c-sharpcorner.com/UploadFile/mahesh/create-a-text-file-in-C-Sharp/
-        - https://stackoverflow.com/questions/32452300/could-not-find-a-part-of-the-path-c-sharp
-        - https://www.educative.io/answers/how-to-check-if-a-directory-exists-in-c-sharp
+        Generar _entities.json
         */
         public void Entities()
         {
@@ -110,20 +115,32 @@ namespace SchemaJson
             foreach(Table t in Tables)
 
             {
-                file += "    \"" + t.Name + @""": {
-        ""name"": """ + t.Name + @"""
-        ""alias"": """ + t.Alias + @"""
-        ""pk"": """ + t.Pk + @"""
-        ""nf"": """ + String.Join("\", \"", t.Nf) + @"""
-        ""fk"": """ + String.Join("\", \"", t.Fk) + @"""
-        ""unique"": """ + String.Join("\", \"", t.Unique) + @"""
-        ""uniqueMultiple"": """ + String.Join("\", \"", t.UniqueMultiple) + @"""
-    }
+                file += @"    """ + t.Name + @""": {
+        ""name"": """ + t.Name + @""",
+        ""alias"": """ + t.Alias + @""",
+        ""nf"": [""" + String.Join("\", \"", t.Nf) + @"""],
+";
+                if(t.Pk is not null) 
+                    file += @"        ""pk"": """ + t.Pk + @""",
+";
+                if (t.Fk.Count >  0)
+                    file += @"        ""fk"": [""" + String.Join("\", \"", t.Fk) + @"""],
+";
+                if (t.Unique.Count > 0)
+                    file += @"        ""unique"": [""" + String.Join("\", \"", t.Unique) + @"""],
+";
+                if (t.UniqueMultiple.Count > 0)
+                    file += @"        ""uniqueMultiple"": [""" + String.Join("\", \"", t.UniqueMultiple) + @"""],
+";
+
+                file = file.RemoveLastIndex(',');
+                file += @"    },
 
 ";
 
             }
 
+            file = file.RemoveLastIndex(',');
             file += "}";
 
             if(!Directory.Exists(Config.path))
@@ -136,8 +153,22 @@ namespace SchemaJson
             File.WriteAllText(Config.path + "_entities.json", file);
 
         }
+        
+        public void FileTree()
+        {
+            string content = "";
+            foreach (Table t in Tables)
+            {
+                var tree = new TreeTable(Tables, t.Name!);
+                content += tree.CreateFile();
+            }
+            if (!Directory.Exists(Config.path))
+                Directory.CreateDirectory(Config.path);
 
+            if (File.Exists(Config.path + "tree.json"))
+                File.Delete(Config.path + "tree.json");
 
-
+            File.WriteAllText(Config.path + "tree.json", content);
+        }
     }
 }

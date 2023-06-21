@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchemaJson", "SchemaJson\Sc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchemaJsonSs", "SchemaJsonSs\SchemaJsonSs.csproj", "{DD32FFA9-AAF7-4F6C-BEFF-752F40A4308D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleBuildSchemaMy", "ConsoleBuildSchemaMy\ConsoleBuildSchemaMy.csproj", "{4496119D-FC51-4D28-A95B-BFFD316F067A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleBuildSchemaMy", "ConsoleBuildSchemaMy\ConsoleBuildSchemaMy.csproj", "{4496119D-FC51-4D28-A95B-BFFD316F067A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleBuildSchemaSs", "ConsoleBuildSchemaSs\ConsoleBuildSchemaSs.csproj", "{0AB2A807-6220-4617-9E9E-12D2ED082260}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{4496119D-FC51-4D28-A95B-BFFD316F067A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4496119D-FC51-4D28-A95B-BFFD316F067A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4496119D-FC51-4D28-A95B-BFFD316F067A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AB2A807-6220-4617-9E9E-12D2ED082260}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AB2A807-6220-4617-9E9E-12D2ED082260}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AB2A807-6220-4617-9E9E-12D2ED082260}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AB2A807-6220-4617-9E9E-12D2ED082260}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
