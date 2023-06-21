@@ -59,7 +59,7 @@ namespace SchemaJson
             return GetName(name);
         }
 
-        protected List<Tree> Fk(Table table, List<string> tablesVisited, string alias = null)
+        protected List<Tree> Fk(Table table, List<string> tablesVisited, string? alias = null)
         {
             tablesVisited.Add(table.Name!);
             List<Field> fk = table.FieldsFkNotReferenced(tablesVisited);

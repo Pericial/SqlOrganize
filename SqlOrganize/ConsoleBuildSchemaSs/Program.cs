@@ -10,7 +10,6 @@ var c = new ConfigSs()
 
 BuildSchemaSs t = new(c);
 //t.Entities();
-t.Tree();
 
 
 

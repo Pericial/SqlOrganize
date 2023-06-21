@@ -3,7 +3,7 @@ using Utils;
 
 namespace SchemaJson
 {
-    internal class Tree
+    public class Tree
 
     {
         public string FieldId { get; set; }

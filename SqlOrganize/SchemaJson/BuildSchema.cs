@@ -14,12 +14,12 @@ namespace SchemaJson
         {
             Config = config;
 
+            List<string> tableAlias = new List<string>(Config.reserved_alias);
+
             foreach ( string tableName in GetTableNames())
             {
                 Table table = new();
                 table.Name = tableName;
-
-                List<string> tableAlias = new List<string>(Config.reserved_alias);
                 table.Alias = GetAlias(tableName, tableAlias, 4);
                 tableAlias.Add(table.Alias);
 
@@ -53,7 +53,7 @@ namespace SchemaJson
             foreach (Table t in Tables)
             {
                 var bt = new BuildTree(Tables, t.Name!);
-                Tables.Tree = bt.Build();
+                t.Tree = bt.Build();
             }
 
         }
