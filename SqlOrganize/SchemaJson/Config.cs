@@ -4,7 +4,10 @@
     {
         public string connection_string { get; set; }
         public string db_name { get; set; }
-
+        /*
+        Path to model
+        */
+        public string path { get; set; } = "./model/";
         /*
         Alias reservados
         Habitualmente se definen las palabras reservadas del motor de base de datos

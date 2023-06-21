@@ -1,6 +1,8 @@
-﻿namespace SchemaJsonMy
+﻿using SchemaJson;
+
+namespace SchemaJsonMy
 {
-    public class ConfigMy
+    public class ConfigMy : Config
     {
 
     }

@@ -28,7 +28,7 @@ namespace SchemaJsonSs
             return DbDataReaderUtils.ColumnValues<string>(reader, "TABLE_NAME");
         }
 
-        protected override List<Field> GetFieldsInfo(string tableName)
+        protected override List<Field> GetFields(string tableName)
         {
             using SqlConnection connection = new SqlConnection(Config.connection_string);
             connection.Open();
