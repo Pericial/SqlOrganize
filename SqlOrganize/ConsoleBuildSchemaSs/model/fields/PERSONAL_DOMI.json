@@ -1,0 +1,52 @@
+{
+    "NROIDPEMP": {
+        "alias": "NRO",
+        "dataType": "int"
+    },
+
+    "NRO_DOMI": {
+        "alias": "NRa",
+        "dataType": "int"
+    },
+
+    "TIPO_DOM": {
+        "alias": "TIP",
+        "dataType": "string"
+    },
+
+    "CALLE": {
+        "alias": "CAL",
+        "dataType": "string"
+    },
+
+    "NRO": {
+        "alias": "NRb",
+        "dataType": "string"
+    },
+
+    "ENTRE": {
+        "alias": "ENT",
+        "dataType": "string"
+    },
+
+    "Y_ENTRE": {
+        "alias": "Y_E",
+        "dataType": "string"
+    },
+
+    "CODLOCAL": {
+        "alias": "COD",
+        "dataType": "string"
+    },
+
+    "CODPOS": {
+        "alias": "COa",
+        "dataType": "string"
+    },
+
+    "OBS": {
+        "alias": "OBS",
+        "dataType": "string"
+    }
+
+}

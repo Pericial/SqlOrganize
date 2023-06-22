@@ -1,0 +1,27 @@
+{
+    "DTOJUD": {
+        "alias": "DTO",
+        "dataType": "string"
+    },
+
+    "CODPROD": {
+        "alias": "COD",
+        "dataType": "int"
+    },
+
+    "NROIDPPROV": {
+        "alias": "NRO",
+        "dataType": "int"
+    },
+
+    "FECHA_ULT_COMPRA": {
+        "alias": "FEC",
+        "dataType": "DateTime"
+    },
+
+    "COSTO_ULT_COMPRA": {
+        "alias": "COS",
+        "dataType": "float"
+    }
+
+}

@@ -1,0 +1,32 @@
+{
+    "CODIGO_MENU": {
+        "alias": "COD",
+        "dataType": "string"
+    },
+
+    "DESCRIPCION": {
+        "alias": "DES",
+        "dataType": "string"
+    },
+
+    "CODIGO_PAPA": {
+        "alias": "COa",
+        "dataType": "string"
+    },
+
+    "IDENTIFICADOR": {
+        "alias": "IDE",
+        "dataType": "int"
+    },
+
+    "Texto": {
+        "alias": "Tex",
+        "dataType": "string"
+    },
+
+    "Habilitado": {
+        "alias": "Hab",
+        "dataType": "bool"
+    }
+
+}

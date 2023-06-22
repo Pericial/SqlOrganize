@@ -1,0 +1,69 @@
+{
+    "DTOJUDI": {
+        "alias": "DTO",
+        "dataType": "string"
+    },
+
+    "SECCION": {
+        "alias": "SEC",
+        "dataType": "string"
+    },
+
+    "ID_PERITO": {
+        "alias": "ID_",
+        "dataType": "int"
+    },
+
+    "FUERO": {
+        "alias": "FUE",
+        "dataType": "string"
+    },
+
+    "ORDEN": {
+        "alias": "ORD",
+        "dataType": "int"
+    },
+
+    "SEC": {
+        "alias": "SEa",
+        "dataType": "int",
+        "default": "((0))"
+    },
+
+    "ID_ZONA": {
+        "alias": "IDa",
+        "dataType": "int",
+        "default": "((0))"
+    },
+
+    "ID_GRUPO": {
+        "alias": "IDb",
+        "dataType": "int",
+        "default": "((0))"
+    },
+
+    "ID_RAMAL": {
+        "alias": "IDc",
+        "dataType": "int",
+        "default": "((0))"
+    },
+
+    "ID_TIPOPERI": {
+        "alias": "IDd",
+        "dataType": "int",
+        "default": "((0))"
+    },
+
+    "HORA": {
+        "alias": "HOR",
+        "dataType": "DateTime",
+        "default": "(getdate())"
+    },
+
+    "NRO_BOLILLERO": {
+        "alias": "NRO",
+        "dataType": "int",
+        "default": "((0))"
+    }
+
+}

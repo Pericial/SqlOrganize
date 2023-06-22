@@ -1,0 +1,38 @@
+{
+    "id": {
+        "alias": "id",
+        "dataType": "int"
+    },
+
+    "objectid": {
+        "alias": "obj",
+        "dataType": "int"
+    },
+
+    "property": {
+        "alias": "pro",
+        "dataType": "string"
+    },
+
+    "value": {
+        "alias": "val",
+        "dataType": "string"
+    },
+
+    "uvalue": {
+        "alias": "uva",
+        "dataType": "string"
+    },
+
+    "lvalue": {
+        "alias": "lva",
+        "dataType": "image"
+    },
+
+    "version": {
+        "alias": "ver",
+        "dataType": "int",
+        "default": "(0)"
+    }
+
+}

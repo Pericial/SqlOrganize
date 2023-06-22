@@ -1,0 +1,12 @@
+{
+    "CODFUE": {
+        "alias": "COD",
+        "dataType": "string"
+    },
+
+    "DESCRIPCION": {
+        "alias": "DES",
+        "dataType": "string"
+    }
+
+}

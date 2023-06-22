@@ -4,7 +4,6 @@ using Utils;
 namespace SchemaJson
 {
     public class Tree
-
     {
         public string FieldId { get; set; }
         public string FieldName { get; set; }

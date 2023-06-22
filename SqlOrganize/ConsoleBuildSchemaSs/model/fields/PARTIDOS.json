@@ -1,0 +1,22 @@
+{
+    "ID_PARTIDO": {
+        "alias": "ID_",
+        "dataType": "int"
+    },
+
+    "PARTIDO": {
+        "alias": "PAR",
+        "dataType": "string"
+    },
+
+    "REGISTRO_OFICIAL": {
+        "alias": "REG",
+        "dataType": "bool"
+    },
+
+    "DTOJUDI": {
+        "alias": "DTO",
+        "dataType": "string"
+    }
+
+}

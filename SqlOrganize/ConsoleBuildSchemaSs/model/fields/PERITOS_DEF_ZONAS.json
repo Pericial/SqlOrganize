@@ -1,0 +1,12 @@
+{
+    "NroIdPEmp": {
+        "alias": "Nro",
+        "dataType": "int"
+    },
+
+    "Zona": {
+        "alias": "Zon",
+        "dataType": "int"
+    }
+
+}

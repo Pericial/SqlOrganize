@@ -1,0 +1,12 @@
+{
+    "DTOJUD": {
+        "alias": "DTO",
+        "dataType": "string"
+    },
+
+    "DESCRIPCION": {
+        "alias": "DES",
+        "dataType": "string"
+    }
+
+}

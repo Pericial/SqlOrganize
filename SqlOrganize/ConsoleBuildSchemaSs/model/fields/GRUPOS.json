@@ -1,0 +1,22 @@
+{
+    "Codigo_Grupo": {
+        "alias": "Cod",
+        "dataType": "string"
+    },
+
+    "Descripcion": {
+        "alias": "Des",
+        "dataType": "string"
+    },
+
+    "Incluir": {
+        "alias": "Inc",
+        "dataType": "string"
+    },
+
+    "codigo_seccion": {
+        "alias": "cod",
+        "dataType": "string"
+    }
+
+}

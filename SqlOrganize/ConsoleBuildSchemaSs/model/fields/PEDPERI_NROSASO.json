@@ -1,0 +1,27 @@
+{
+    "DTOJUDI": {
+        "alias": "DTO",
+        "dataType": "string"
+    },
+
+    "SERIE": {
+        "alias": "SER",
+        "dataType": "string"
+    },
+
+    "NUI": {
+        "alias": "NUI",
+        "dataType": "int"
+    },
+
+    "NRO_ASO": {
+        "alias": "NRO",
+        "dataType": "string"
+    },
+
+    "REFERENCIA": {
+        "alias": "REF",
+        "dataType": "string"
+    }
+
+}

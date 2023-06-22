@@ -9,6 +9,8 @@ namespace SchemaJson
     public class Field
     {
         public string Alias { get; set; }
+        public string DataType { get; set; }
+
         public string TABLE_NAME { get; set; }
         public string COLUMN_NAME { get; set; }
         public object? COLUMN_DEFAULT { get; set; }

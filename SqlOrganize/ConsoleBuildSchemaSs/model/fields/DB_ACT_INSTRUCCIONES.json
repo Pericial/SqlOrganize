@@ -1,0 +1,27 @@
+{
+    "CODIGO_INSTR": {
+        "alias": "COD",
+        "dataType": "int"
+    },
+
+    "INSTRUCCION_SQL": {
+        "alias": "INS",
+        "dataType": "string"
+    },
+
+    "TIPO": {
+        "alias": "TIP",
+        "dataType": "string"
+    },
+
+    "FECHA": {
+        "alias": "FEC",
+        "dataType": "DateTime"
+    },
+
+    "TEMA": {
+        "alias": "TEM",
+        "dataType": "string"
+    }
+
+}

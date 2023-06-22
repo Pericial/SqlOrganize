@@ -1,0 +1,17 @@
+{
+    "RID": {
+        "alias": "RID",
+        "dataType": "string"
+    },
+
+    "ID_ESPE": {
+        "alias": "ID_",
+        "dataType": "int"
+    },
+
+    "ESPECIALIDAD": {
+        "alias": "ESP",
+        "dataType": "string"
+    }
+
+}

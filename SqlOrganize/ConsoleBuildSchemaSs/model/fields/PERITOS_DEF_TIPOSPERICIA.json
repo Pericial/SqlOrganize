@@ -1,0 +1,12 @@
+{
+    "NroIdPEmp": {
+        "alias": "Nro",
+        "dataType": "int"
+    },
+
+    "Id_Pericia": {
+        "alias": "Id_",
+        "dataType": "int"
+    }
+
+}

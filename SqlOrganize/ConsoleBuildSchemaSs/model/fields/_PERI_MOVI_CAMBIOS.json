@@ -1,0 +1,62 @@
+{
+    "DTOJUDI": {
+        "alias": "DTO",
+        "dataType": "string"
+    },
+
+    "SERIE": {
+        "alias": "SER",
+        "dataType": "string"
+    },
+
+    "NUI": {
+        "alias": "NUI",
+        "dataType": "int"
+    },
+
+    "SERIE_PERI": {
+        "alias": "SEa",
+        "dataType": "string"
+    },
+
+    "NROPERI": {
+        "alias": "NRO",
+        "dataType": "int"
+    },
+
+    "NROMOV": {
+        "alias": "NRa",
+        "dataType": "int"
+    },
+
+    "HORA": {
+        "alias": "HOR",
+        "dataType": "DateTime"
+    },
+
+    "IDPEMP": {
+        "alias": "IDP",
+        "dataType": "int"
+    },
+
+    "ID_PC": {
+        "alias": "ID_",
+        "dataType": "string"
+    },
+
+    "TEXTO_VIEJO": {
+        "alias": "TEX",
+        "dataType": "string"
+    },
+
+    "TEXTO_NUEVO": {
+        "alias": "TEa",
+        "dataType": "string"
+    },
+
+    "SUBPERI": {
+        "alias": "SUB",
+        "dataType": "int"
+    }
+
+}

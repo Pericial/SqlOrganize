@@ -1,0 +1,47 @@
+{
+    "DTOJUD": {
+        "alias": "DTO",
+        "dataType": "string"
+    },
+
+    "FECHA_PEDIDO": {
+        "alias": "FEC",
+        "dataType": "DateTime"
+    },
+
+    "SERIEPED": {
+        "alias": "SER",
+        "dataType": "string"
+    },
+
+    "NROPED": {
+        "alias": "NRO",
+        "dataType": "int"
+    },
+
+    "ORDEN_PROVISION": {
+        "alias": "ORD",
+        "dataType": "string"
+    },
+
+    "ITEM": {
+        "alias": "ITE",
+        "dataType": "int"
+    },
+
+    "PRECIO_UNI": {
+        "alias": "PRE",
+        "dataType": "float"
+    },
+
+    "CANT_ENTRE": {
+        "alias": "CAN",
+        "dataType": "float"
+    },
+
+    "OBSITEM": {
+        "alias": "OBS",
+        "dataType": "string"
+    }
+
+}

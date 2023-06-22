@@ -1,0 +1,17 @@
+{
+    "nroidpprov": {
+        "alias": "nro",
+        "dataType": "int"
+    },
+
+    "Email": {
+        "alias": "Ema",
+        "dataType": "string"
+    },
+
+    "referencia": {
+        "alias": "ref",
+        "dataType": "string"
+    }
+
+}

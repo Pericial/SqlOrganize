@@ -1,0 +1,284 @@
+{
+    "PEDIDOS_DET": {
+        "DTOJUD": { "fieldName": "DTOJUD", "entityName": "PEDIDOS", "children": {
+            "REFERENTE": { "fieldName": "REFERENTE", "entityName": "PERSONAL", "children": {
+                "DTOJUD_DTO": { "fieldName": "DTOJUD", "entityName": "DTOSJUDI", "children": {
+                }},
+                "NIVEL_SEGU": { "fieldName": "NIVEL_SEGU", "entityName": "NIVELES", "children": {
+                }}
+            }},
+            "PROV_ESTI": { "fieldName": "PROV_ESTI", "entityName": "PROVEEDORES", "children": {
+            }},
+            "NROIDPEMP": { "fieldName": "NROIDPEMP", "entityName": "PERSONAL", "children": {
+            }},
+            "ESTADO": { "fieldName": "ESTADO", "entityName": "TABLAS", "children": {
+                "CODTAB": { "fieldName": "CODTAB", "entityName": "DESTABLAS", "children": {
+                }}
+            }}
+        }},
+        "FECHA_PEDIDO": { "fieldName": "FECHA_PEDIDO", "entityName": "PEDIDOS", "children": {
+        }},
+        "SERIEPED": { "fieldName": "SERIEPED", "entityName": "PEDIDOS", "children": {
+        }},
+        "NROPED": { "fieldName": "NROPED", "entityName": "PEDIDOS", "children": {
+        }},
+        "DJPROD": { "fieldName": "DJPROD", "entityName": "PRODUCTOS", "children": {
+            "RUBRO": { "fieldName": "RUBRO", "entityName": "RUBROS", "children": {
+            }},
+            "TIPO": { "fieldName": "TIPO", "entityName": "TIPOSPROD", "children": {
+            }},
+            "MARCA": { "fieldName": "MARCA", "entityName": "MARCAS", "children": {
+            }},
+            "MEDIDA": { "fieldName": "MEDIDA", "entityName": "MEDIDAS", "children": {
+            }}
+        }},
+        "CODPROD": { "fieldName": "CODPROD", "entityName": "PRODUCTOS", "children": {
+        }},
+        "ESTADO_EST": { "fieldName": "ESTADO", "entityName": "TABLAS", "children": {
+        }}
+    },
+    "ORGANISMOS": {
+        "DTOJUDI": { "fieldName": "DTOJUDI", "entityName": "DTOSJUDI", "children": {
+        }},
+        "FUERO": { "fieldName": "FUERO", "entityName": "TABLAS", "children": {
+            "CODTAB": { "fieldName": "CODTAB", "entityName": "DESTABLAS", "children": {
+            }}
+        }},
+        "TIPO_ORGANISMO": { "fieldName": "TIPO_ORGANISMO", "entityName": "TABLAS", "children": {
+        }}
+    },
+    "DTOSJUDI_DET": {
+        "DTOJUD": { "fieldName": "DTOJUD", "entityName": "DTOSJUDI", "children": {
+        }}
+    },
+    "PROVEEDORES_EMAILS": {
+        "nroidpprov": { "fieldName": "nroidpprov", "entityName": "PROVEEDORES", "children": {
+        }}
+    },
+    "PERSONAL": {
+        "DTOJUD": { "fieldName": "DTOJUD", "entityName": "DTOSJUDI", "children": {
+        }},
+        "NIVEL_SEGU": { "fieldName": "NIVEL_SEGU", "entityName": "NIVELES", "children": {
+        }}
+    },
+    "DTOSJUDI_CTAS": {
+        "DTOJUD": { "fieldName": "DTOJUD", "entityName": "DTOSJUDI", "children": {
+        }}
+    },
+    "PEDIDOS_PASOS": {
+        "DTOJUD": { "fieldName": "DTOJUD", "entityName": "PEDIDOS", "children": {
+            "REFERENTE": { "fieldName": "REFERENTE", "entityName": "PERSONAL", "children": {
+                "DTOJUD_DTO": { "fieldName": "DTOJUD", "entityName": "DTOSJUDI", "children": {
+                }},
+                "NIVEL_SEGU": { "fieldName": "NIVEL_SEGU", "entityName": "NIVELES", "children": {
+                }}
+            }},
+            "PROV_ESTI": { "fieldName": "PROV_ESTI", "entityName": "PROVEEDORES", "children": {
+            }},
+            "NROIDPEMP": { "fieldName": "NROIDPEMP", "entityName": "PERSONAL", "children": {
+            }},
+            "ESTADO": { "fieldName": "ESTADO", "entityName": "TABLAS", "children": {
+                "CODTAB": { "fieldName": "CODTAB", "entityName": "DESTABLAS", "children": {
+                }}
+            }}
+        }},
+        "FECHA_PEDIDO": { "fieldName": "FECHA_PEDIDO", "entityName": "PEDIDOS", "children": {
+        }},
+        "SERIEPED": { "fieldName": "SERIEPED", "entityName": "PEDIDOS", "children": {
+        }},
+        "NROPED": { "fieldName": "NROPED", "entityName": "PEDIDOS", "children": {
+        }}
+    },
+    "ENTREGAS_PED": {
+        "DTOJUD": { "fieldName": "DTOJUD", "entityName": "PEDIDOS", "children": {
+            "REFERENTE": { "fieldName": "REFERENTE", "entityName": "PERSONAL", "children": {
+                "DTOJUD_DTO": { "fieldName": "DTOJUD", "entityName": "DTOSJUDI", "children": {
+                }},
+                "NIVEL_SEGU": { "fieldName": "NIVEL_SEGU", "entityName": "NIVELES", "children": {
+                }}
+            }},
+            "PROV_ESTI": { "fieldName": "PROV_ESTI", "entityName": "PROVEEDORES", "children": {
+            }},
+            "NROIDPEMP": { "fieldName": "NROIDPEMP", "entityName": "PERSONAL", "children": {
+            }},
+            "ESTADO": { "fieldName": "ESTADO", "entityName": "TABLAS", "children": {
+                "CODTAB": { "fieldName": "CODTAB", "entityName": "DESTABLAS", "children": {
+                }}
+            }}
+        }},
+        "FECHA_PEDIDO": { "fieldName": "FECHA_PEDIDO", "entityName": "PEDIDOS", "children": {
+        }},
+        "SERIEPED": { "fieldName": "SERIEPED", "entityName": "PEDIDOS", "children": {
+        }},
+        "NROPED": { "fieldName": "NROPED", "entityName": "PEDIDOS", "children": {
+        }},
+        "IDPPROV": { "fieldName": "IDPPROV", "entityName": "PROVEEDORES", "children": {
+        }}
+    },
+    "PEDPERI_PERITOS": {
+        "DTOJUDI": { "fieldName": "DTOJUDI", "entityName": "PEDPERI", "children": {
+            "DTOJUDI_DTO": { "fieldName": "DTOJUDI", "entityName": "DTOSJUDI", "children": {
+            }},
+            "CODCARAT": { "fieldName": "CODCARAT", "entityName": "TABLAS", "children": {
+                "CODTAB": { "fieldName": "CODTAB", "entityName": "DESTABLAS", "children": {
+                }}
+            }}
+        }},
+        "SERIE": { "fieldName": "SERIE", "entityName": "PEDPERI", "children": {
+        }},
+        "NUI": { "fieldName": "NUI", "entityName": "PEDPERI", "children": {
+        }}
+    },
+    "ENTREGAS_PED_DET": {
+        "DTOJUD": { "fieldName": "DTOJUD", "entityName": "ENTREGAS_PED", "children": {
+            "DTOJUD_DTO": { "fieldName": "DTOJUD", "entityName": "PEDIDOS", "children": {
+                "REFERENTE": { "fieldName": "REFERENTE", "entityName": "PERSONAL", "children": {
+                    "DTOJUD_DTO1": { "fieldName": "DTOJUD", "entityName": "DTOSJUDI", "children": {
+                    }},
+                    "NIVEL_SEGU": { "fieldName": "NIVEL_SEGU", "entityName": "NIVELES", "children": {
+                    }}
+                }},
+                "PROV_ESTI": { "fieldName": "PROV_ESTI", "entityName": "PROVEEDORES", "children": {
+                }},
+                "NROIDPEMP": { "fieldName": "NROIDPEMP", "entityName": "PERSONAL", "children": {
+                }},
+                "ESTADO": { "fieldName": "ESTADO", "entityName": "TABLAS", "children": {
+                    "CODTAB": { "fieldName": "CODTAB", "entityName": "DESTABLAS", "children": {
+                    }}
+                }}
+            }},
+            "FECHA_PEDIDO": { "fieldName": "FECHA_PEDIDO", "entityName": "PEDIDOS", "children": {
+            }},
+            "SERIEPED": { "fieldName": "SERIEPED", "entityName": "PEDIDOS", "children": {
+            }},
+            "NROPED": { "fieldName": "NROPED", "entityName": "PEDIDOS", "children": {
+            }},
+            "IDPPROV": { "fieldName": "IDPPROV", "entityName": "PROVEEDORES", "children": {
+            }}
+        }},
+        "FECHA_PEDIDO_FEC": { "fieldName": "FECHA_PEDIDO", "entityName": "ENTREGAS_PED", "children": {
+        }},
+        "SERIEPED_SER": { "fieldName": "SERIEPED", "entityName": "ENTREGAS_PED", "children": {
+        }},
+        "NROPED_NRO": { "fieldName": "NROPED", "entityName": "ENTREGAS_PED", "children": {
+        }},
+        "ORDEN_PROVISION": { "fieldName": "ORDEN_PROVISION", "entityName": "ENTREGAS_PED", "children": {
+        }}
+    },
+    "ORDEN_PERITOS": {
+        "ID_PERITO": { "fieldName": "ID_PERITO", "entityName": "PERSONAL", "children": {
+            "DTOJUD": { "fieldName": "DTOJUD", "entityName": "DTOSJUDI", "children": {
+            }},
+            "NIVEL_SEGU": { "fieldName": "NIVEL_SEGU", "entityName": "NIVELES", "children": {
+            }}
+        }}
+    },
+    "PRODUCTOS": {
+        "RUBRO": { "fieldName": "RUBRO", "entityName": "RUBROS", "children": {
+        }},
+        "TIPO": { "fieldName": "TIPO", "entityName": "TIPOSPROD", "children": {
+        }},
+        "MARCA": { "fieldName": "MARCA", "entityName": "MARCAS", "children": {
+        }},
+        "MEDIDA": { "fieldName": "MEDIDA", "entityName": "MEDIDAS", "children": {
+        }}
+    },
+    "PEDPERI": {
+        "DTOJUDI": { "fieldName": "DTOJUDI", "entityName": "DTOSJUDI", "children": {
+        }},
+        "CODCARAT": { "fieldName": "CODCARAT", "entityName": "TABLAS", "children": {
+            "CODTAB": { "fieldName": "CODTAB", "entityName": "DESTABLAS", "children": {
+            }}
+        }}
+    },
+    "PEDPERI_DOCINGRE": {
+        "DTOJUDI": { "fieldName": "DTOJUDI", "entityName": "PEDPERI", "children": {
+            "DTOJUDI_DTO": { "fieldName": "DTOJUDI", "entityName": "DTOSJUDI", "children": {
+            }},
+            "CODCARAT": { "fieldName": "CODCARAT", "entityName": "TABLAS", "children": {
+                "CODTAB": { "fieldName": "CODTAB", "entityName": "DESTABLAS", "children": {
+                }}
+            }}
+        }},
+        "SERIE": { "fieldName": "SERIE", "entityName": "PEDPERI", "children": {
+        }},
+        "NUI": { "fieldName": "NUI", "entityName": "PEDPERI", "children": {
+        }}
+    },
+    "ORGANISMOS_INTEGRANTES": {
+        "DTOJUDI": { "fieldName": "DTOJUDI", "entityName": "ORGANISMOS", "children": {
+            "DTOJUDI_DTO": { "fieldName": "DTOJUDI", "entityName": "DTOSJUDI", "children": {
+            }},
+            "FUERO": { "fieldName": "FUERO", "entityName": "TABLAS", "children": {
+                "CODTAB": { "fieldName": "CODTAB", "entityName": "DESTABLAS", "children": {
+                }}
+            }},
+            "TIPO_ORGANISMO": { "fieldName": "TIPO_ORGANISMO", "entityName": "TABLAS", "children": {
+            }}
+        }},
+        "CODORIGEN": { "fieldName": "CODORIGEN", "entityName": "ORGANISMOS", "children": {
+        }}
+    },
+    "ORGANISMOS_EMAILS": {
+        "DTOJUDI": { "fieldName": "DTOJUDI", "entityName": "ORGANISMOS", "children": {
+            "DTOJUDI_DTO": { "fieldName": "DTOJUDI", "entityName": "DTOSJUDI", "children": {
+            }},
+            "FUERO": { "fieldName": "FUERO", "entityName": "TABLAS", "children": {
+                "CODTAB": { "fieldName": "CODTAB", "entityName": "DESTABLAS", "children": {
+                }}
+            }},
+            "TIPO_ORGANISMO": { "fieldName": "TIPO_ORGANISMO", "entityName": "TABLAS", "children": {
+            }}
+        }},
+        "CODORIGEN": { "fieldName": "CODORIGEN", "entityName": "ORGANISMOS", "children": {
+        }}
+    },
+    "PEDPERI_ASECCIONES": {
+        "DTOJUDI": { "fieldName": "DTOJUDI", "entityName": "PEDPERI", "children": {
+            "DTOJUDI_DTO": { "fieldName": "DTOJUDI", "entityName": "DTOSJUDI", "children": {
+            }},
+            "CODCARAT": { "fieldName": "CODCARAT", "entityName": "TABLAS", "children": {
+                "CODTAB": { "fieldName": "CODTAB", "entityName": "DESTABLAS", "children": {
+                }}
+            }}
+        }},
+        "SERIE": { "fieldName": "SERIE", "entityName": "PEDPERI", "children": {
+        }},
+        "NUI": { "fieldName": "NUI", "entityName": "PEDPERI", "children": {
+        }}
+    },
+    "PROD_XPROV": {
+        "DTOJUD": { "fieldName": "DTOJUD", "entityName": "PRODUCTOS", "children": {
+            "RUBRO": { "fieldName": "RUBRO", "entityName": "RUBROS", "children": {
+            }},
+            "TIPO": { "fieldName": "TIPO", "entityName": "TIPOSPROD", "children": {
+            }},
+            "MARCA": { "fieldName": "MARCA", "entityName": "MARCAS", "children": {
+            }},
+            "MEDIDA": { "fieldName": "MEDIDA", "entityName": "MEDIDAS", "children": {
+            }}
+        }},
+        "CODPROD": { "fieldName": "CODPROD", "entityName": "PRODUCTOS", "children": {
+        }}
+    },
+    "TABLAS": {
+        "CODTAB": { "fieldName": "CODTAB", "entityName": "DESTABLAS", "children": {
+        }}
+    },
+    "PEDIDOS": {
+        "REFERENTE": { "fieldName": "REFERENTE", "entityName": "PERSONAL", "children": {
+            "DTOJUD": { "fieldName": "DTOJUD", "entityName": "DTOSJUDI", "children": {
+            }},
+            "NIVEL_SEGU": { "fieldName": "NIVEL_SEGU", "entityName": "NIVELES", "children": {
+            }}
+        }},
+        "PROV_ESTI": { "fieldName": "PROV_ESTI", "entityName": "PROVEEDORES", "children": {
+        }},
+        "NROIDPEMP": { "fieldName": "NROIDPEMP", "entityName": "PERSONAL", "children": {
+        }},
+        "ESTADO": { "fieldName": "ESTADO", "entityName": "TABLAS", "children": {
+            "CODTAB": { "fieldName": "CODTAB", "entityName": "DESTABLAS", "children": {
+            }}
+        }}
+    }
+}

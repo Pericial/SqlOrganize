@@ -1,0 +1,27 @@
+{
+    "name": {
+        "alias": "nam",
+        "dataType": "string"
+    },
+
+    "principal_id": {
+        "alias": "pri",
+        "dataType": "int"
+    },
+
+    "diagram_id": {
+        "alias": "dia",
+        "dataType": "int"
+    },
+
+    "version": {
+        "alias": "ver",
+        "dataType": "int"
+    },
+
+    "definition": {
+        "alias": "def",
+        "dataType": "varbinary"
+    }
+
+}

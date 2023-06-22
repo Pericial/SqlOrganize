@@ -1,0 +1,12 @@
+{
+    "MARCA": {
+        "alias": "MAR",
+        "dataType": "string"
+    },
+
+    "CODMARCA": {
+        "alias": "COD",
+        "dataType": "int"
+    }
+
+}

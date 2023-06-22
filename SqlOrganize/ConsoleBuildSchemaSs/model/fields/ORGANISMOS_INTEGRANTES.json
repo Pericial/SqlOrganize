@@ -1,0 +1,27 @@
+{
+    "DTOJUDI": {
+        "alias": "DTO",
+        "dataType": "string"
+    },
+
+    "CODORIGEN": {
+        "alias": "COD",
+        "dataType": "int"
+    },
+
+    "NRO_INTEGRANTE": {
+        "alias": "NRO",
+        "dataType": "int"
+    },
+
+    "CARACTER": {
+        "alias": "CAR",
+        "dataType": "string"
+    },
+
+    "NROIDPEMP": {
+        "alias": "NRa",
+        "dataType": "int"
+    }
+
+}

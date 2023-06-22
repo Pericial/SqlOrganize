@@ -1,0 +1,67 @@
+{
+    "RID": {
+        "alias": "RID",
+        "dataType": "string"
+    },
+
+    "ID_RAMAL": {
+        "alias": "ID_",
+        "dataType": "int"
+    },
+
+    "RAMAL": {
+        "alias": "RAM",
+        "dataType": "string"
+    },
+
+    "ID_LOCA1": {
+        "alias": "IDa",
+        "dataType": "int"
+    },
+
+    "ID_LOCA2": {
+        "alias": "IDb",
+        "dataType": "int"
+    },
+
+    "ID_LOCA3": {
+        "alias": "IDc",
+        "dataType": "int"
+    },
+
+    "ID_LOCA4": {
+        "alias": "IDd",
+        "dataType": "int"
+    },
+
+    "ID_LOCA5": {
+        "alias": "IDe",
+        "dataType": "int"
+    },
+
+    "ID_LOCA6": {
+        "alias": "IDf",
+        "dataType": "int"
+    },
+
+    "ID_LOCA7": {
+        "alias": "IDg",
+        "dataType": "int"
+    },
+
+    "ID_LOCA8": {
+        "alias": "IDh",
+        "dataType": "int"
+    },
+
+    "ID_LOCA9": {
+        "alias": "IDi",
+        "dataType": "int"
+    },
+
+    "ID_LOCA10": {
+        "alias": "IDj",
+        "dataType": "int"
+    }
+
+}

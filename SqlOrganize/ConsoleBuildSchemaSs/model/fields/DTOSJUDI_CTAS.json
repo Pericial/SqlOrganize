@@ -1,0 +1,22 @@
+{
+    "DTOJUD": {
+        "alias": "DTO",
+        "dataType": "string"
+    },
+
+    "NRO_CTA": {
+        "alias": "NRO",
+        "dataType": "string"
+    },
+
+    "SALDO": {
+        "alias": "SAL",
+        "dataType": "float"
+    },
+
+    "FECHA_SALDO": {
+        "alias": "FEC",
+        "dataType": "DateTime"
+    }
+
+}

@@ -1,0 +1,102 @@
+{
+    "DTOJUDI": {
+        "alias": "DTO",
+        "dataType": "string"
+    },
+
+    "CODORIGEN": {
+        "alias": "COD",
+        "dataType": "int"
+    },
+
+    "CARACTER": {
+        "alias": "CAR",
+        "dataType": "string"
+    },
+
+    "FUERO": {
+        "alias": "FUE",
+        "dataType": "string"
+    },
+
+    "TIPO_ORGANISMO": {
+        "alias": "TIP",
+        "dataType": "string"
+    },
+
+    "NRO_ORGANISMO": {
+        "alias": "NRO",
+        "dataType": "string"
+    },
+
+    "NOMBRE": {
+        "alias": "NOM",
+        "dataType": "string"
+    },
+
+    "CALLE": {
+        "alias": "CAL",
+        "dataType": "string"
+    },
+
+    "NUMERO": {
+        "alias": "NUM",
+        "dataType": "string"
+    },
+
+    "ENTRE": {
+        "alias": "ENT",
+        "dataType": "string"
+    },
+
+    "TELE1": {
+        "alias": "TEL",
+        "dataType": "string"
+    },
+
+    "TELE2": {
+        "alias": "TEa",
+        "dataType": "string"
+    },
+
+    "TELE3": {
+        "alias": "TEb",
+        "dataType": "string"
+    },
+
+    "FAX": {
+        "alias": "FAX",
+        "dataType": "string"
+    },
+
+    "LOCALIDAD": {
+        "alias": "LOC",
+        "dataType": "int"
+    },
+
+    "CP": {
+        "alias": "CP",
+        "dataType": "string"
+    },
+
+    "ORIGEN": {
+        "alias": "ORI",
+        "dataType": "string"
+    },
+
+    "TITULAR": {
+        "alias": "TIT",
+        "dataType": "string"
+    },
+
+    "DESC_CORTA": {
+        "alias": "DES",
+        "dataType": "string"
+    },
+
+    "REGISTRO_OFICIAL": {
+        "alias": "REG",
+        "dataType": "bool"
+    }
+
+}

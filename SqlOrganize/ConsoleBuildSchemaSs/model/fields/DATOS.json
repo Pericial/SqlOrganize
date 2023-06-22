@@ -1,0 +1,314 @@
+{
+    "DJ": {
+        "alias": "DJ",
+        "dataType": "string"
+    },
+
+    "NOM_ORGANISMO": {
+        "alias": "NOM",
+        "dataType": "string"
+    },
+
+    "DIR_ORGANISMO": {
+        "alias": "DIR",
+        "dataType": "string"
+    },
+
+    "DTOJUDCOMPRAS": {
+        "alias": "DTO",
+        "dataType": "string"
+    },
+
+    "MUESTRA_MSG": {
+        "alias": "MUE",
+        "dataType": "bool"
+    },
+
+    "DJ_CTASUG": {
+        "alias": "DJ_",
+        "dataType": "string"
+    },
+
+    "NRO_CTASUG": {
+        "alias": "NRO",
+        "dataType": "string"
+    },
+
+    "NROPERICIAGRAL": {
+        "alias": "NRa",
+        "dataType": "bool"
+    },
+
+    "PED_DIAS_PRIM_RECLAMO": {
+        "alias": "PED",
+        "dataType": "int"
+    },
+
+    "PED_DIAS_SEG_RECLAMO": {
+        "alias": "PEa",
+        "dataType": "int"
+    },
+
+    "ALERTA_PRODUCTOS": {
+        "alias": "ALE",
+        "dataType": "bool"
+    },
+
+    "ALERTA_PEDIDOS": {
+        "alias": "ALa",
+        "dataType": "bool"
+    },
+
+    "TIPO_RECIBO_PP": {
+        "alias": "TIP",
+        "dataType": "string"
+    },
+
+    "PCP_MLAB": {
+        "alias": "PCP",
+        "dataType": "bool"
+    },
+
+    "PCP_MADN": {
+        "alias": "PCa",
+        "dataType": "bool"
+    },
+
+    "DIRECTOR": {
+        "alias": "DIa",
+        "dataType": "string"
+    },
+
+    "CALLE": {
+        "alias": "CAL",
+        "dataType": "string"
+    },
+
+    "ENTRE": {
+        "alias": "ENT",
+        "dataType": "string"
+    },
+
+    "Y_ENTRE": {
+        "alias": "Y_E",
+        "dataType": "string"
+    },
+
+    "EMAIL": {
+        "alias": "EMA",
+        "dataType": "string"
+    },
+
+    "NRO": {
+        "alias": "NRb",
+        "dataType": "string"
+    },
+
+    "LOCALIDAD": {
+        "alias": "LOC",
+        "dataType": "string"
+    },
+
+    "CP": {
+        "alias": "CP",
+        "dataType": "string"
+    },
+
+    "TELE1": {
+        "alias": "TEL",
+        "dataType": "string"
+    },
+
+    "TELE2": {
+        "alias": "TEa",
+        "dataType": "string"
+    },
+
+    "FAX": {
+        "alias": "FAX",
+        "dataType": "string"
+    },
+
+    "PCP_MGRAL": {
+        "alias": "PCb",
+        "dataType": "bool"
+    },
+
+    "INI_PARAM_LOCAL": {
+        "alias": "INI",
+        "dataType": "bool"
+    },
+
+    "VERSION": {
+        "alias": "VER",
+        "dataType": "string"
+    },
+
+    "COPIAS_247": {
+        "alias": "COP",
+        "dataType": "int"
+    },
+
+    "COPIAS_CITAS": {
+        "alias": "COa",
+        "dataType": "int"
+    },
+
+    "DIR_MENORES": {
+        "alias": "DIb",
+        "dataType": "string"
+    },
+
+    "DIR_MINISTRO": {
+        "alias": "DIc",
+        "dataType": "string"
+    },
+
+    "MINISTRO_SEGURIDAD": {
+        "alias": "MIN",
+        "dataType": "string"
+    },
+
+    "NUI_READONLY": {
+        "alias": "NUI",
+        "dataType": "bool"
+    },
+
+    "IMP_COMP_SALIDA_PERI": {
+        "alias": "IMP",
+        "dataType": "bool"
+    },
+
+    "VISTA_PREVIA": {
+        "alias": "VIS",
+        "dataType": "bool"
+    },
+
+    "fecha": {
+        "alias": "fec",
+        "dataType": "DateTime"
+    },
+
+    "ULT_COD_INST_EJEC": {
+        "alias": "ULT",
+        "dataType": "int"
+    },
+
+    "IMPRIME_RECI": {
+        "alias": "IMa",
+        "dataType": "bool"
+    },
+
+    "LEYENDA_MENU": {
+        "alias": "LEY",
+        "dataType": "string"
+    },
+
+    "CUERPO_TECNICO": {
+        "alias": "CUE",
+        "dataType": "bool"
+    },
+
+    "PATH_DOC_ASO_EXT": {
+        "alias": "PAT",
+        "dataType": "string"
+    },
+
+    "PEGA_CBARRA_a_EFECTOS": {
+        "alias": "PEG",
+        "dataType": "bool"
+    },
+
+    "PATH_INI_LOCAL": {
+        "alias": "PAa",
+        "dataType": "string"
+    },
+
+    "MES_ACTUAL": {
+        "alias": "MES",
+        "dataType": "int"
+    },
+
+    "SECCIONES_INDEPENDIENTES": {
+        "alias": "SEC",
+        "dataType": "bool"
+    },
+
+    "CONTROL_HORA_MOV": {
+        "alias": "CON",
+        "dataType": "bool"
+    },
+
+    "PROX_CIERRE_ESTAD": {
+        "alias": "PRO",
+        "dataType": "DateTime"
+    },
+
+    "ULT_COD_INST_DGAP": {
+        "alias": "ULa",
+        "dataType": "int"
+    },
+
+    "EPA": {
+        "alias": "EPA",
+        "dataType": "int",
+        "default": "((0))"
+    },
+
+    "FHIPA": {
+        "alias": "FHI",
+        "dataType": "string"
+    },
+
+    "FHFPA": {
+        "alias": "FHF",
+        "dataType": "string"
+    },
+
+    "GAP_NOMBRE": {
+        "alias": "GAP",
+        "dataType": "string"
+    },
+
+    "PR_DBACT_IMAGEN": {
+        "alias": "PR_",
+        "dataType": "varbinary"
+    },
+
+    "GAP_VERSION": {
+        "alias": "GAa",
+        "dataType": "string"
+    },
+
+    "ULTIMO_CIERRE_ESTAD": {
+        "alias": "ULb",
+        "dataType": "DateTime"
+    },
+
+    "PR_DBACT_SIZE": {
+        "alias": "PRa",
+        "dataType": "int",
+        "default": "((0))"
+    },
+
+    "EMPACTGAP": {
+        "alias": "EMP",
+        "dataType": "int"
+    },
+
+    "FHACTGAP": {
+        "alias": "FHA",
+        "dataType": "DateTime"
+    },
+
+    "NRO_HOJA_CONF_INGRE": {
+        "alias": "NRc",
+        "dataType": "int"
+    },
+
+    "CUAL_SECCION": {
+        "alias": "CUA",
+        "dataType": "string"
+    }
+
+}

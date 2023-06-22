@@ -1,0 +1,89 @@
+{
+    "DTOJUD": {
+        "alias": "DTO",
+        "dataType": "string"
+    },
+
+    "FECHA_PEDIDO": {
+        "alias": "FEC",
+        "dataType": "DateTime"
+    },
+
+    "SERIEPED": {
+        "alias": "SER",
+        "dataType": "string"
+    },
+
+    "NROPED": {
+        "alias": "NRO",
+        "dataType": "int"
+    },
+
+    "ITEM": {
+        "alias": "ITE",
+        "dataType": "int"
+    },
+
+    "CANT": {
+        "alias": "CAN",
+        "dataType": "float"
+    },
+
+    "DJPROD": {
+        "alias": "DJP",
+        "dataType": "string"
+    },
+
+    "CODPROD": {
+        "alias": "COD",
+        "dataType": "int"
+    },
+
+    "OBSITEM": {
+        "alias": "OBS",
+        "dataType": "string"
+    },
+
+    "CANT_ENTRE": {
+        "alias": "CAa",
+        "dataType": "float",
+        "default": "(0)"
+    },
+
+    "ESTADO": {
+        "alias": "EST",
+        "dataType": "string"
+    },
+
+    "PRODFLISTA": {
+        "alias": "PRO",
+        "dataType": "string"
+    },
+
+    "FLISTA": {
+        "alias": "FLI",
+        "dataType": "bool"
+    },
+
+    "MARCA1": {
+        "alias": "MAR",
+        "dataType": "int"
+    },
+
+    "MARCA2": {
+        "alias": "MAa",
+        "dataType": "int"
+    },
+
+    "MARCA3": {
+        "alias": "MAb",
+        "dataType": "int"
+    },
+
+    "O_SIMILAR": {
+        "alias": "O_S",
+        "dataType": "bool",
+        "default": "(1)"
+    }
+
+}

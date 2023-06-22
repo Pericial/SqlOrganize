@@ -1,0 +1,17 @@
+{
+    "CODMARCA": {
+        "alias": "COD",
+        "dataType": "string"
+    },
+
+    "IMP_CAR": {
+        "alias": "IMP",
+        "dataType": "string"
+    },
+
+    "DESCRIPCION": {
+        "alias": "DES",
+        "dataType": "string"
+    }
+
+}

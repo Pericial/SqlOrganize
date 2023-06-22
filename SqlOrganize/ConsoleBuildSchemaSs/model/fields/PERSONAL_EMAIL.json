@@ -1,0 +1,22 @@
+{
+    "NROIDPEMP": {
+        "alias": "NRO",
+        "dataType": "int"
+    },
+
+    "INDICE_EMAIL": {
+        "alias": "IND",
+        "dataType": "int"
+    },
+
+    "EMAIL": {
+        "alias": "EMA",
+        "dataType": "string"
+    },
+
+    "OBS": {
+        "alias": "OBS",
+        "dataType": "string"
+    }
+
+}

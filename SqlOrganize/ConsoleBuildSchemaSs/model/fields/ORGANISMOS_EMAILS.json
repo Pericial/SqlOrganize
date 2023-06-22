@@ -1,0 +1,32 @@
+{
+    "DTOJUDI": {
+        "alias": "DTO",
+        "dataType": "string"
+    },
+
+    "CODORIGEN": {
+        "alias": "COD",
+        "dataType": "int"
+    },
+
+    "ITEM": {
+        "alias": "ITE",
+        "dataType": "int"
+    },
+
+    "SECCION": {
+        "alias": "SEC",
+        "dataType": "string"
+    },
+
+    "EMAIL": {
+        "alias": "EMA",
+        "dataType": "string"
+    },
+
+    "DESCRIPCION": {
+        "alias": "DES",
+        "dataType": "string"
+    }
+
+}

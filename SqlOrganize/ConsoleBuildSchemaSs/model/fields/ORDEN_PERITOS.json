@@ -1,0 +1,52 @@
+{
+    "DTOJUDI": {
+        "alias": "DTO",
+        "dataType": "string"
+    },
+
+    "DEPENDENCIA": {
+        "alias": "DEP",
+        "dataType": "string"
+    },
+
+    "ESPECIALIDAD": {
+        "alias": "ESP",
+        "dataType": "string"
+    },
+
+    "NROORDEN": {
+        "alias": "NRO",
+        "dataType": "int"
+    },
+
+    "ID_PERITO": {
+        "alias": "ID_",
+        "dataType": "int"
+    },
+
+    "LE_RESTAN": {
+        "alias": "LE_",
+        "dataType": "int"
+    },
+
+    "SIGUIENTE": {
+        "alias": "SIG",
+        "dataType": "bool"
+    },
+
+    "ASIGNADO_EVENTUAL": {
+        "alias": "ASI",
+        "dataType": "bool"
+    },
+
+    "SIGUENTE_EVENTUAL": {
+        "alias": "SIa",
+        "dataType": "bool"
+    },
+
+    "GRUPO": {
+        "alias": "GRU",
+        "dataType": "string"
+    }
+
+}

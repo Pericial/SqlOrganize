@@ -1,0 +1,69 @@
+{
+    "DTOJUDI": {
+        "alias": "DTO",
+        "dataType": "string"
+    },
+
+    "SERIE": {
+        "alias": "SER",
+        "dataType": "string"
+    },
+
+    "NUI": {
+        "alias": "NUI",
+        "dataType": "int"
+    },
+
+    "SERIE_PERI": {
+        "alias": "SEa",
+        "dataType": "string"
+    },
+
+    "NROPERI": {
+        "alias": "NRO",
+        "dataType": "int"
+    },
+
+    "NROSUBPERI": {
+        "alias": "NRa",
+        "dataType": "int"
+    },
+
+    "ITEM_PP": {
+        "alias": "ITE",
+        "dataType": "int"
+    },
+
+    "FECHA_PROCE": {
+        "alias": "FEC",
+        "dataType": "DateTime"
+    },
+
+    "DESCRIPCION_PROCE": {
+        "alias": "DES",
+        "dataType": "string"
+    },
+
+    "OBSERVACION": {
+        "alias": "OBS",
+        "dataType": "string"
+    },
+
+    "ID_PERITO": {
+        "alias": "ID_",
+        "dataType": "int",
+        "default": "((0))"
+    },
+
+    "CANTIDAD": {
+        "alias": "CAN",
+        "dataType": "int",
+        "default": "((1))"
+    },
+
+    "COMPLEJIDAD": {
+        "alias": "COM",
+        "dataType": "string"
+    }
+
+}

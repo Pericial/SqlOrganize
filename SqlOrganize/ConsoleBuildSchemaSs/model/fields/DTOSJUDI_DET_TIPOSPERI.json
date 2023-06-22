@@ -1,0 +1,28 @@
+{
+    "RID": {
+        "alias": "RID",
+        "dataType": "string"
+    },
+
+    "ID_TIPOPERI": {
+        "alias": "ID_",
+        "dataType": "int"
+    },
+
+    "TIPOPERI": {
+        "alias": "TIP",
+        "dataType": "string"
+    },
+
+    "CODIGO": {
+        "alias": "COD",
+        "dataType": "string"
+    },
+
+    "CANT_PERI_IGUAL_UNA_PERI": {
+        "alias": "CAN",
+        "dataType": "int",
+        "default": "((1))"
+    }
+
+}

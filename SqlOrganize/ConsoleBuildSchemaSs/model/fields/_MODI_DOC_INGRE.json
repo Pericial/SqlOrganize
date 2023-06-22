@@ -1,0 +1,37 @@
+{
+    "DTOJUDI": {
+        "alias": "DTO",
+        "dataType": "string"
+    },
+
+    "SERIE": {
+        "alias": "SER",
+        "dataType": "string"
+    },
+
+    "NUI": {
+        "alias": "NUI",
+        "dataType": "int"
+    },
+
+    "FECHA_MOV": {
+        "alias": "FEC",
+        "dataType": "DateTime"
+    },
+
+    "CODEMP": {
+        "alias": "COD",
+        "dataType": "int"
+    },
+
+    "DOC_INGRE_ORI": {
+        "alias": "DOC",
+        "dataType": "string"
+    },
+
+    "DOC_INGRE_FIN": {
+        "alias": "DOa",
+        "dataType": "string"
+    }
+
+}
