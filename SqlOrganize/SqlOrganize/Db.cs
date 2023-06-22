@@ -10,7 +10,7 @@ namespace SqlOrganize
     */
     public abstract class Db
     {
-        public Dictionary<string, object>? config { get; }
+        public Config Config { get; }
 
         public Dictionary<string, Dictionary<string, EntityTree>> tree { get; set; } = new();
 
@@ -20,30 +20,30 @@ namespace SqlOrganize
 
         public Dictionary<string, Dictionary<string, Field>> fields { get; set; }
 
-        public Db(Dictionary<string, object> _config)
+        public Db(Config config)
         {
-            config = _config;
+            Config = config;
             fields = new Dictionary<string, Dictionary<string, Field>>();
 
-            string path = config["path_model"] + "entity-tree.json";
+            string path = Config.ModelPath + "tree.json";
             using (StreamReader r = new StreamReader(path, Encoding.UTF8))
             {
                 if(r.Peek() != -1) tree = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, EntityTree>>>(r.ReadToEnd())!;
             }
 
-            using (StreamReader r = new StreamReader(config["path_model"] + "entity-relations.json"))
+            using (StreamReader r = new StreamReader(Config.ModelPath + "relations.json"))
             {
                 if (r.Peek() != -1) relations = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, EntityRel>>>(r.ReadToEnd())!;
             }
 
-            using (StreamReader r = new StreamReader(config["path_model"] + "_entities.json"))
+            using (StreamReader r = new StreamReader(Config.ModelPath + "entities.json"))
             {
                 entities = JsonConvert.DeserializeObject<Dictionary<string, Entity>>(r.ReadToEnd())!;
             }
 
-            if (File.Exists(_config["path_model"] + "entities.json"))
+            if (File.Exists(Config.ModelPath + "entities" + Config.modelSuffix + ".json"))
             {
-                using (StreamReader r = new StreamReader(config["path_model"] + "entities.json"))
+                using (StreamReader r = new StreamReader(Config.ModelPath + "entities" + Config.modelSuffix + ".json"))
                 {
                     Dictionary<string, Entity> ee = JsonConvert.DeserializeObject<Dictionary<string, Entity>>(r.ReadToEnd());
                     foreach (KeyValuePair<string, Entity> e in ee)
@@ -135,9 +135,9 @@ namespace SqlOrganize
                 {
                     fields[entity_name] = JsonConvert.DeserializeObject<Dictionary<string, Field>>(r.ReadToEnd())!;
 
-                    if (File.Exists(config["path_model"] + "fields/" + entity_name + ".json"))
+                    if (File.Exists(Config.ModelPath + "fields/" + entity_name + ".json"))
                     {
-                        using (StreamReader r2 = new StreamReader(config["path_model"] + "fields/" + entity_name + ".json"))
+                        using (StreamReader r2 = new StreamReader(Config.ModelPath + "fields/" + entity_name + ".json"))
                         {
                             Dictionary<string, Field> ee = JsonConvert.DeserializeObject<Dictionary<string, Field>>(r2.ReadToEnd());
                             foreach (KeyValuePair<string, Field> e in ee) 

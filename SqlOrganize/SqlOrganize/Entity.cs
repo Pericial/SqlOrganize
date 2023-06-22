@@ -26,16 +26,12 @@ namespace SqlOrganize
         public string? schema { get; set;  }
 
         public string pk { get; set; }
-        public List<string> nf { get; set; }
-        public List<string> nf_add { get; set; } 
-        public List<string> nf_sub { get; set; }
-        public List<string> mo { get; set; }
-        public List<string> mo_add { get; set; }
-        public List<string> mo_sub { get; set; }
-        public List<string> oo { get; set; }
-        public List<string> oo_add { get; set; }
-        public List<string> oo_sub { get; set; }
-
+        public List<string> fields { get; set; }
+        public List<string> fieldsAdd { get; set; } 
+        public List<string> fieldsSub { get; set; }
+        public List<string> fk { get; set; }
+        public List<string> fkAdd { get; set; }
+        public List<string> fkSub { get; set; }
 
 
         /* 
@@ -49,13 +45,13 @@ namespace SqlOrganize
         Valores por defecto para ordenamiento
         @example ["field1"=>"asc","field2"=>"desc",...];
         */
-        public Dictionary<string, string> order_default { get; set; }
+        public Dictionary<string, string> orderDefault { get; set; }
 
         /*
         Valores no administrables
         @example ["field1","field2",...]
         */
-        public List<string> no_admin { get; set; }
+        public List<string> noAdmin { get; set; }
 
         /*
         Valores principales
@@ -69,34 +65,32 @@ namespace SqlOrganize
         @example ["field1","field2",...]
         */
         public List<string> unique { get; set; }
-        public List<string> unique_add { get; set; }
-        public List<string> unique_sub { get; set; }
+        public List<string> uniqueAdd { get; set; }
+        public List<string> uniqueSub { get; set; }
 
         /*
         Valores no nulos        
         */
-        public List<string> not_null { get; set; }
-        public List<string> not_null_add { get; set; }
-        public List<string> not_null_sub { get; set; }
+        public List<string> notNull { get; set; }
+        public List<string> notNullAdd { get; set; }
+        public List<string> notNullSub { get; set; }
 
         /*
         Valores unicos multiples
         Solo puede especificarse un juego de campos unique_multiple
         */
-        public List<string> unique_multiple { get; set; }
+        public List<string> uniqueMultiple { get; set; }
 
         public string schema_ => String.IsNullOrEmpty(schema) ? schema : "";
-        public string schema_name => schema + name;
-        public string schema_name_alias => schema + name + " AS " + alias;
+        public string schemaName => schema + name;
+        public string schemaNameAlias => schema + name + " AS " + alias;
 
        
-        protected List<Field> _fields(List<string> field_names)
+        protected List<Field> _Fields(List<string> fieldNames)
         {
             List<Field> fields = new();
-            foreach (string field_name in field_names)
-            {
-                fields.Add(db.field(name, field_name));
-            }
+            foreach (string fieldName in fieldNames)
+                fields.Add(db.field(name, fieldName));
 
             return fields;
 
@@ -105,83 +99,12 @@ namespace SqlOrganize
         /*
         fields no fk
         */
-        public List<Field> fields_nf() => _fields(nf);
+        public List<Field> Fields() => _Fields(fields);
 
         /*
         fields many to one
         */
-        public List<Field> fields_mo() => _fields(mo);
-
-        /*
-        fields one to one (local fk)
-        */
-        public List<Field> fields_oo() => _fields(oo);
-
-        /*
-        fields fk (mo + oo)
-        */
-        public List<Field> fields_fk() => fields_mo().Concat(fields_oo()).ToList();
-
-        /*
-        all fields except pk
-        */
-        public List<Field> fields_no_pk() => fields_nf().Concat(fields_mo()).ToList().Concat(fields_oo()).ToList();
-
-        public List<Field> fields() => fields_nf().Concat(fields_mo()).ToList().Concat(fields_oo()).ToList();
-
-        /*
-        fields one to many
-        its neccesary to iterate over all entities
-        */
-        public List<Field> fields_om()
-        {
-                List<Field> fields = new();
-
-                foreach (string entity_name in db.entity_names())
-                {
-                    Entity e = db.entity(entity_name);
-                    foreach (Field f in e.fields_mo())
-                    {
-                        if (f.entity_ref().name == this.name)
-                        {
-                            fields.Add(f);
-                        }
-                    }
-                }
-
-                return fields;
-        }
-
-        /*
-        fields one to one without local fk
-        fk pointed to entity outside
-        its neccesary to iterate over all entities
-        */
-        public List<Field>? fields_oon()
-        {
-                List<Field> fields = new();
-
-                foreach (string entity_name in db.entity_names())
-                {
-                    Entity e = db.entity(entity_name);
-                    foreach (Field f in e.fields_oo())
-                    {
-                        if (f.entity_ref().name == this.name)
-                        {
-                            fields.Add(f);
-                        }
-                    }
-                }
-
-                return fields;
-        }
-
-        /*
-        fields referenced (om + oon)
-        fk pointed to entity outside
-        its neccesary to iterate over all entities
-        */
-        public List<Field>? fields_ref() => fields_om().Concat(fields_oon()).ToList();
+        public List<Field> FieldsFk() => _Fields(fk);
 
     }
 }
