@@ -2,11 +2,13 @@
     "MEDIDA": {
         "alias": "MED",
         "dataType": "string"
+        
     },
 
     "CODMEDIDA": {
         "alias": "COD",
         "dataType": "int"
+        
     }
 
 }

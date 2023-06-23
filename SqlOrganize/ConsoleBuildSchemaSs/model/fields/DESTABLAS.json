@@ -2,11 +2,13 @@
     "CODTAB": {
         "alias": "COD",
         "dataType": "string"
+        
     },
 
     "DESCRIPCION": {
         "alias": "DES",
         "dataType": "string"
+        
     }
 
 }

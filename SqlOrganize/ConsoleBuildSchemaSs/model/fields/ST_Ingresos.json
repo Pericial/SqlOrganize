@@ -2,46 +2,55 @@
     "Fecha": {
         "alias": "Fec",
         "dataType": "DateTime"
+        
     },
 
     "NroOrden": {
         "alias": "Nro",
         "dataType": "int"
+        
     },
 
     "NroIngreso": {
         "alias": "Nra",
         "dataType": "int"
+        
     },
 
     "Seccion": {
         "alias": "Sec",
         "dataType": "string"
+        
     },
 
     "IdPProv": {
         "alias": "IdP",
         "dataType": "int"
+        
     },
 
     "Motivo": {
         "alias": "Mot",
         "dataType": "int"
+        
     },
 
     "NroRemito": {
         "alias": "Nrb",
         "dataType": "string"
+        
     },
 
     "NroFactura": {
         "alias": "Nrc",
         "dataType": "string"
+        
     },
 
     "RID": {
         "alias": "RID",
         "dataType": "uniqueidentifier"
+        
     }
 
 }

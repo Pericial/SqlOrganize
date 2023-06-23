@@ -2,16 +2,19 @@
     "RID": {
         "alias": "RID",
         "dataType": "string"
+        
     },
 
     "CodArtInt": {
         "alias": "Cod",
         "dataType": "string"
+        
     },
 
     "Cantidad": {
         "alias": "Can",
         "dataType": "float"
+        
     }
 
 }

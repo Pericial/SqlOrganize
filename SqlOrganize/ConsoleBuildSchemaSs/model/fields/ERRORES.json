@@ -2,76 +2,91 @@
     "hora": {
         "alias": "hor",
         "dataType": "DateTime"
+        
     },
 
     "id_pc": {
         "alias": "id_",
         "dataType": "string"
+        
     },
 
     "referencia_linea": {
         "alias": "ref",
         "dataType": "string"
+        
     },
 
     "tabla_rel": {
         "alias": "tab",
         "dataType": "string"
+        
     },
 
     "sqltext": {
         "alias": "sql",
         "dataType": "string"
+        
     },
 
     "p1": {
         "alias": "p1",
         "dataType": "string"
+        
     },
 
     "p2": {
         "alias": "p2",
         "dataType": "string"
+        
     },
 
     "p3": {
         "alias": "p3",
         "dataType": "string"
+        
     },
 
     "p4": {
         "alias": "p4",
         "dataType": "string"
+        
     },
 
     "p5": {
         "alias": "p5",
         "dataType": "string"
+        
     },
 
     "p6": {
         "alias": "p6",
         "dataType": "string"
+        
     },
 
     "p7": {
         "alias": "p7",
         "dataType": "string"
+        
     },
 
     "p8": {
         "alias": "p8",
         "dataType": "string"
+        
     },
 
     "p9": {
         "alias": "p9",
         "dataType": "string"
+        
     },
 
     "p10": {
         "alias": "p10",
         "dataType": "string"
+        
     }
 
 }

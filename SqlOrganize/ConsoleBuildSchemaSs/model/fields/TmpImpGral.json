@@ -2,126 +2,151 @@
     "id_pc": {
         "alias": "id_",
         "dataType": "string"
+        
     },
 
     "indice": {
         "alias": "ind",
         "dataType": "int"
+        
     },
 
     "Campo1": {
         "alias": "Cam",
         "dataType": "string"
+        
     },
 
     "Campo2": {
         "alias": "Caa",
         "dataType": "string"
+        
     },
 
     "Campo3": {
         "alias": "Cab",
         "dataType": "string"
+        
     },
 
     "Campo4": {
         "alias": "Cac",
         "dataType": "string"
+        
     },
 
     "Campo5": {
         "alias": "Cad",
         "dataType": "string"
+        
     },
 
     "Campo6": {
         "alias": "Cae",
         "dataType": "string"
+        
     },
 
     "Campo7": {
         "alias": "Caf",
         "dataType": "string"
+        
     },
 
     "Campo8": {
         "alias": "Cag",
         "dataType": "string"
+        
     },
 
     "Campo9": {
         "alias": "Cah",
         "dataType": "string"
+        
     },
 
     "Campo10": {
         "alias": "Cai",
         "dataType": "string"
+        
     },
 
     "Campo11": {
         "alias": "Caj",
         "dataType": "string"
+        
     },
 
     "Campo12": {
         "alias": "Cak",
         "dataType": "string"
+        
     },
 
     "Campo13": {
         "alias": "Cal",
         "dataType": "string"
+        
     },
 
     "Campo14": {
         "alias": "Can",
         "dataType": "string"
+        
     },
 
     "Campo15": {
         "alias": "Cao",
         "dataType": "string"
+        
     },
 
     "negrita": {
         "alias": "neg",
         "dataType": "bool"
+        
     },
 
     "cursiva": {
         "alias": "cur",
         "dataType": "bool"
+        
     },
 
     "subrayado": {
         "alias": "sub",
         "dataType": "bool"
+        
     },
 
     "Campo16": {
         "alias": "Cap",
         "dataType": "string"
+        
     },
 
     "Campo17": {
         "alias": "Caq",
         "dataType": "string"
+        
     },
 
     "Campo18": {
         "alias": "Car",
         "dataType": "string"
+        
     },
 
     "Campo19": {
         "alias": "Cas",
         "dataType": "string"
+        
     },
 
     "Campo20": {
         "alias": "Cat",
         "dataType": "string"
+        
     }
 
 }

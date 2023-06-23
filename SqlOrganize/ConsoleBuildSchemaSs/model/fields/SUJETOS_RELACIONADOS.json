@@ -2,21 +2,25 @@
     "DJ_SUJETO": {
         "alias": "DJ_",
         "dataType": "string"
+        
     },
 
     "IDP_SUJETO": {
         "alias": "IDP",
         "dataType": "int"
+        
     },
 
     "DJ_SUJRELA": {
         "alias": "DJa",
         "dataType": "string"
+        
     },
 
     "IDP_RELACIONADO": {
         "alias": "IDa",
         "dataType": "int"
+        
     }
 
 }

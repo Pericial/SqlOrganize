@@ -2,71 +2,85 @@
     "DTOJUDI": {
         "alias": "DTO",
         "dataType": "string"
+        
     },
 
     "SERIE": {
         "alias": "SER",
         "dataType": "string"
+        
     },
 
     "NUI": {
         "alias": "NUI",
         "dataType": "int"
+        
     },
 
     "SERIE_PERI": {
         "alias": "SEa",
         "dataType": "string"
+        
     },
 
     "NROPERI": {
         "alias": "NRO",
         "dataType": "int"
+        
     },
 
     "SUBPERI": {
         "alias": "SUB",
         "dataType": "int"
+        
     },
 
     "ITEM": {
         "alias": "ITE",
         "dataType": "int"
+        
     },
 
     "FECHA_ESTADO": {
         "alias": "FEC",
         "dataType": "DateTime"
+        
     },
 
     "ESTADO": {
         "alias": "EST",
         "dataType": "string"
+        
     },
 
     "FECHA_CARGA": {
         "alias": "FEa",
         "dataType": "DateTime"
+        
     },
 
     "ULTIMO_ESTADO": {
         "alias": "ULT",
         "dataType": "bool"
+        
     },
 
     "SECCION": {
         "alias": "SEC",
         "dataType": "string"
+        
     },
 
     "PRIMER_INGRESO": {
         "alias": "PRI",
         "dataType": "bool"
+        
     },
 
     "PRIMER_INGRESO_SECCION": {
         "alias": "PRa",
         "dataType": "bool"
+        
     }
 
 }

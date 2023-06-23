@@ -1,11 +1,13 @@
-﻿using System.Data.Common;
+﻿using SqlOrganize;
+using System.Data.Common;
+using Utils;
 
-namespace SqlOrganize
+namespace SqlOrganizeMy
 {
     public class EntityQueryMy : EntityQuery
     {
 
-        public EntityQueryMy(Db db, string entity_name) : base(db, entity_name)
+        public EntityQueryMy(Db db, string entityName) : base(db, entityName)
         {
         }
 
@@ -14,7 +16,7 @@ namespace SqlOrganize
             throw new NotImplementedException();
         }
 
-        public override List<Dictionary<string, object>> tree()
+        public override List<Dictionary<string, object>> Tree()
         {
             throw new NotImplementedException();
         }
@@ -31,7 +33,7 @@ namespace SqlOrganize
         {
             if (order.IsNullOrEmpty())
             {
-                var o = db.entity(entity_name).order_default;
+                var o = db.Entity(entityName).orderDefault;
                 order = o.IsNullOrEmpty() ? "" : string.Join(", ", o.Select(x => "$" + x));
             }
 

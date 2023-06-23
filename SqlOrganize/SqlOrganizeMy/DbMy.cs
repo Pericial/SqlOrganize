@@ -1,7 +1,8 @@
 ﻿
 using MySql.Data.MySqlClient;
+using SqlOrganize;
 
-namespace SqlOrganize
+namespace SqlOrganizeMy
 {
 
     public class DbMy : Db
@@ -12,10 +13,10 @@ namespace SqlOrganize
         /*
          * config["connection_string"] = "server=127.0.0.1;uid=root;pwd=12345;database=test"
          */
-        public DbMy(Dictionary<string, object> config): base(config)
+        public DbMy(Config config): base(config)
         {
             _conn = new MySqlConnection();
-            _conn.ConnectionString = (string)config["connection_string"];
+            _conn.ConnectionString = (string)config.connectionString;
             _conn.Open();
         }
 
@@ -27,12 +28,12 @@ namespace SqlOrganize
         }
 
 
-        public override Mapping mapping(string entity_name, string field_id)
+        public override Mapping Mapping(string entity_name, string field_id)
         {
             return new MappingMy(this, entity_name, field_id);
         }
 
-        public override Values values(string entity_name, string field_id)
+        public override Values Values(string entity_name, string field_id)
         {
             return new ValuesMy(this, entity_name, field_id);
         }

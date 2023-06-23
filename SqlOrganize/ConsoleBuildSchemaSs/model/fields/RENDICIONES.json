@@ -2,66 +2,79 @@
     "DTOJUDI": {
         "alias": "DTO",
         "dataType": "string"
+        
     },
 
     "CAJA_NRO": {
         "alias": "CAJ",
         "dataType": "string"
+        
     },
 
     "NRO_RENDICION": {
         "alias": "NRO",
         "dataType": "int"
+        
     },
 
     "NRO_COMPROBANTE": {
         "alias": "NRa",
         "dataType": "string"
+        
     },
 
     "FECHA_RENDICION": {
         "alias": "FEC",
         "dataType": "DateTime"
+        
     },
 
     "ID_PROV": {
         "alias": "ID_",
         "dataType": "int"
+        
     },
 
     "IMPORTE": {
         "alias": "IMP",
         "dataType": "float"
+        
     },
 
     "DESTINO": {
         "alias": "DES",
         "dataType": "string"
+        
     },
 
     "OBS": {
         "alias": "OBS",
         "dataType": "string"
+        
     },
 
     "COD_EMP": {
         "alias": "COD",
         "dataType": "int"
+        
     },
 
     "HORA_CARGA": {
         "alias": "HOR",
         "dataType": "DateTime"
+        
     },
 
     "CEUM": {
         "alias": "CEU",
         "dataType": "int"
+        
     },
 
     "HORA_MODIF": {
         "alias": "HOa",
         "dataType": "DateTime"
+        
     }
 
 }

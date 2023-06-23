@@ -2,11 +2,13 @@
     "CODOPE": {
         "alias": "COD",
         "dataType": "string"
+        
     },
 
     "OPERACION": {
         "alias": "OPE",
         "dataType": "string"
+        
     }
 
 }

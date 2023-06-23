@@ -2,16 +2,19 @@
     "TIPOS": {
         "alias": "TIP",
         "dataType": "string"
+        
     },
 
     "CODTIPOS": {
         "alias": "COD",
         "dataType": "int"
+        
     },
 
     "RUBROREL": {
         "alias": "RUB",
         "dataType": "int"
+        
     }
 
 }

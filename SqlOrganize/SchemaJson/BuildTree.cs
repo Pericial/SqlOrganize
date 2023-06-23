@@ -72,7 +72,8 @@ namespace SchemaJson
                 {
                     FieldId = fieldId,
                     FieldName = field.COLUMN_NAME,
-                    EntityName = field.REFERENCED_TABLE_NAME!,
+                    RefEntityName = field.REFERENCED_TABLE_NAME!,
+                    RefFieldName = field.REFERENCED_COLUMN_NAME!,
                 };
 
                 if (!tablesVisited.Contains(field.REFERENCED_TABLE_NAME!))

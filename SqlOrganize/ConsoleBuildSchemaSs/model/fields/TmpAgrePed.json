@@ -2,86 +2,103 @@
     "DJ": {
         "alias": "DJ",
         "dataType": "string"
+        
     },
 
     "id_pc": {
         "alias": "id_",
         "dataType": "string"
+        
     },
 
     "item": {
         "alias": "ite",
         "dataType": "int"
+        
     },
 
     "cant": {
         "alias": "can",
         "dataType": "float"
+        
     },
 
     "djprod": {
         "alias": "djp",
         "dataType": "string"
+        
     },
 
     "codprod": {
         "alias": "cod",
         "dataType": "int"
+        
     },
 
     "descripcion": {
         "alias": "des",
         "dataType": "string"
+        
     },
 
     "pflista": {
         "alias": "pfl",
         "dataType": "string"
+        
     },
 
     "flista": {
         "alias": "fli",
         "dataType": "bool"
+        
     },
 
     "obsitem": {
         "alias": "obs",
         "dataType": "string"
+        
     },
 
     "marca1": {
         "alias": "mar",
         "dataType": "int"
+        
     },
 
     "desmarca1": {
         "alias": "dea",
         "dataType": "string"
+        
     },
 
     "marca2": {
         "alias": "maa",
         "dataType": "int"
+        
     },
 
     "desmarca2": {
         "alias": "deb",
         "dataType": "string"
+        
     },
 
     "marca3": {
         "alias": "mab",
         "dataType": "int"
+        
     },
 
     "desmarca3": {
         "alias": "dec",
         "dataType": "string"
+        
     },
 
     "osimilar": {
         "alias": "osi",
         "dataType": "bool"
+        
     }
 
 }

@@ -7,7 +7,8 @@ namespace SchemaJson
     {
         public string FieldId { get; set; }
         public string FieldName { get; set; }
-        public string EntityName { get; set; }
+        public string RefFieldName { get; set; }
+        public string RefEntityName { get; set; }
         public List<Tree> Children { get; set; }
     }
 }

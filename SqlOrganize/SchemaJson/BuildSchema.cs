@@ -11,7 +11,6 @@ namespace SchemaJson
         public Config Config { get; }
         public List<Table> Tables { get; } = new();
 
-
         public BuildSchema(Config config) 
         {
             Config = config;
@@ -67,8 +66,6 @@ namespace SchemaJson
                             break;
                     }
                 }
-
-                
                 
                 if(table.PkAux.Count == 1)
                     table.Pk = table.PkAux[0];
@@ -192,12 +189,19 @@ namespace SchemaJson
                     file += @"    """ + f.COLUMN_NAME + @""": {
         ""alias"": """ + f.Alias + @""",
         ""dataType"": """ + f.DataType + @""",
+        
 ";
                 if (!f.COLUMN_DEFAULT.IsNullOrEmpty())
-                    file += @"        ""default"": """ + f.COLUMN_DEFAULT + @""",
+                    file += @"        ""defaultValue"": """ + f.COLUMN_DEFAULT + @""",
+";
+                if(!f.REFERENCED_TABLE_NAME.IsNullOrEmpty())
+                    file += @"        ""refEntityName"": """ + f.REFERENCED_TABLE_NAME + @""",
+";
+                 if (!f.REFERENCED_COLUMN_NAME.IsNullOrEmpty())
+                    file += @"        ""refEntityName"": """ + f.REFERENCED_COLUMN_NAME + @""",
 ";
 
-                file = file.RemoveLastIndex(',');
+                    file = file.RemoveLastIndex(',');
                 file += @"    },
 
 ";
@@ -249,7 +253,7 @@ namespace SchemaJson
             string content = "";
             foreach ( Tree t in tree)
             {
-                content += blankSpaces + "\"" + t.FieldId + "\": { \"fieldName\": \"" + t.FieldName + "\", \"entityName\": \"" + t.EntityName + @""", ""children"": {
+                content += blankSpaces + "\"" + t.FieldId + "\": { \"fieldName\": \"" + t.FieldName + "\", \"refEntityName\": \"" + t.RefEntityName + "\", \"refFieldName\": \"" + t.RefFieldName + @""", ""children"": {
 ";
                 if (!t.Children.IsNullOrEmpty())
                      content += FileTreeRecursive(t.Children, blankSpaces + "    ");
@@ -298,7 +302,7 @@ namespace SchemaJson
             foreach (Tree t in tree)
             {
 
-                content += blankSpaces + "\"" + t.FieldId + "\": { \"fieldName\": \"" + t.FieldName + "\", \"entityName\": \"" + t.EntityName + "\", \"parentId\": " + p + @"},
+                content += blankSpaces + "\"" + t.FieldId + "\": { \"fieldName\": \"" + t.FieldName + "\", \"refEntityName\": \"" + t.RefEntityName + "\", \"refFieldName\": \"" + t.RefFieldName + "\", \"parentId\": " + p + @"},
 ";
                 if (!t.Children.IsNullOrEmpty())
                     content += FileRelationsRecursive(t.Children, blankSpaces + "    ", t.FieldId);

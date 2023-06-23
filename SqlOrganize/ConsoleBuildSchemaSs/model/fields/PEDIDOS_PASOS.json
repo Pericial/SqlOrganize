@@ -1,47 +1,64 @@
 {
     "DTOJUD": {
         "alias": "DTO",
-        "dataType": "string"
+        "dataType": "string",
+        
+        "refEntityName": "PEDIDOS",
+        "refEntityName": "DTOJUD"
     },
 
     "FECHA_PEDIDO": {
         "alias": "FEC",
-        "dataType": "DateTime"
+        "dataType": "DateTime",
+        
+        "refEntityName": "PEDIDOS",
+        "refEntityName": "FECHA_PEDIDO"
     },
 
     "SERIEPED": {
         "alias": "SER",
-        "dataType": "string"
+        "dataType": "string",
+        
+        "refEntityName": "PEDIDOS",
+        "refEntityName": "SERIEPED"
     },
 
     "NROPED": {
         "alias": "NRO",
-        "dataType": "int"
+        "dataType": "int",
+        
+        "refEntityName": "PEDIDOS",
+        "refEntityName": "NROPED"
     },
 
     "ITEM": {
         "alias": "ITE",
         "dataType": "int"
+        
     },
 
     "FECHAPASO": {
         "alias": "FEa",
         "dataType": "DateTime"
+        
     },
 
     "DETALLE": {
         "alias": "DET",
         "dataType": "string"
+        
     },
 
     "FECHA_CARGA": {
         "alias": "FEb",
         "dataType": "DateTime"
+        
     },
 
     "NROIDPEMP": {
         "alias": "NRa",
         "dataType": "int"
+        
     }
 
 }

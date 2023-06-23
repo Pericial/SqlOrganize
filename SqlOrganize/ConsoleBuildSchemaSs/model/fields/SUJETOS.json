@@ -2,90 +2,107 @@
     "NROIDP": {
         "alias": "NRO",
         "dataType": "int"
+        
     },
 
     "APELLIDO": {
         "alias": "APE",
         "dataType": "string"
+        
     },
 
     "NOMBRES": {
         "alias": "NOM",
         "dataType": "string"
+        
     },
 
     "TD": {
         "alias": "TD",
         "dataType": "string"
+        
     },
 
     "NDOC": {
         "alias": "NDO",
         "dataType": "string"
+        
     },
 
     "CARACTER": {
         "alias": "CAR",
         "dataType": "string"
+        
     },
 
     "FECHA_CARGA": {
         "alias": "FEC",
         "dataType": "DateTime",
-        "default": "(getdate())"
+        
+        "defaultValue": "(getdate())"
     },
 
     "DJ": {
         "alias": "DJ",
         "dataType": "string"
+        
     },
 
     "DOCUMENTO": {
         "alias": "DOC",
         "dataType": "int"
+        
     },
 
     "TIPO_DOC": {
         "alias": "TIP",
         "dataType": "string"
+        
     },
 
     "CARACTER_ABO": {
         "alias": "CAa",
         "dataType": "string"
+        
     },
 
     "DOMICILIO": {
         "alias": "DOM",
         "dataType": "string"
+        
     },
 
     "FECHA_NACIM": {
         "alias": "FEa",
         "dataType": "DateTime"
+        
     },
 
     "EDAD": {
         "alias": "EDA",
         "dataType": "int",
-        "default": "((0))"
+        
+        "defaultValue": "((0))"
     },
 
     "ES_MENOR": {
         "alias": "ES_",
         "dataType": "bool",
-        "default": "((0))"
+        
+        "defaultValue": "((0))"
     },
 
     "SUJETO_PRINCIPAL": {
         "alias": "SUJ",
         "dataType": "bool",
-        "default": "((0))"
+        
+        "defaultValue": "((0))"
     },
 
     "DOMICILIO_LABORAL": {
         "alias": "DOa",
         "dataType": "string"
+        
     }
 
 }

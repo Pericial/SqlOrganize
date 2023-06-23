@@ -102,5 +102,29 @@ namespace Utils
         {
             return o.GetType().IsArray;
         }
+
+
+        public static List<object> AddPrefixMultiList(List<object> list, string prefix = "")
+        {
+            List<object> clonedList = new List<object>(list);
+
+            if (!clonedList.IsNullOrEmpty())
+            {
+                if (clonedList.ElementAt(0).IsList())
+                {
+                    for (var i = 0; i < clonedList.Count; i++)
+                    {
+                        var a = AddPrefixMultiList(clonedList[i] as List<object>, prefix);
+                        clonedList[i] = a;
+                    }
+                }
+                else
+                {
+                    clonedList[0] = prefix + (clonedList[0] as string);
+                }
+            }
+
+            return clonedList;
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.Text;
+using Utils;
 
 namespace SqlOrganize
 {
@@ -10,7 +11,7 @@ namespace SqlOrganize
     */
     public abstract class Db
     {
-        public Config Config { get; }
+        public Config config { get; }
 
         public Dictionary<string, Dictionary<string, EntityTree>> tree { get; set; } = new();
 
@@ -20,131 +21,96 @@ namespace SqlOrganize
 
         public Dictionary<string, Dictionary<string, Field>> fields { get; set; }
 
-        public Db(Config config)
+        public Db(Config _config)
         {
-            Config = config;
+            config = _config;
             fields = new Dictionary<string, Dictionary<string, Field>>();
 
-            string path = Config.ModelPath + "tree.json";
+            string path = config.modelPath + "tree.json";
             using (StreamReader r = new StreamReader(path, Encoding.UTF8))
             {
                 if(r.Peek() != -1) tree = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, EntityTree>>>(r.ReadToEnd())!;
             }
 
-            using (StreamReader r = new StreamReader(Config.ModelPath + "relations.json"))
+            using (StreamReader r = new StreamReader(config.modelPath + "relations.json"))
             {
                 if (r.Peek() != -1) relations = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, EntityRel>>>(r.ReadToEnd())!;
             }
 
-            using (StreamReader r = new StreamReader(Config.ModelPath + "entities.json"))
+            using (StreamReader r = new StreamReader(config.modelPath + "entities.json"))
             {
                 entities = JsonConvert.DeserializeObject<Dictionary<string, Entity>>(r.ReadToEnd())!;
+                foreach (KeyValuePair<string, Entity> e in entities)
+                    e.Value.db = this;
             }
 
-            if (File.Exists(Config.ModelPath + "entities" + Config.modelSuffix + ".json"))
+            if (File.Exists(config.modelPath + "entities" + config.modelSuffix + ".json"))
             {
-                using (StreamReader r = new StreamReader(Config.ModelPath + "entities" + Config.modelSuffix + ".json"))
+                using (StreamReader r = new StreamReader(config.modelPath + "entities" + config.modelSuffix + ".json"))
                 {
-                    Dictionary<string, Entity> ee = JsonConvert.DeserializeObject<Dictionary<string, Entity>>(r.ReadToEnd());
-                    foreach (KeyValuePair<string, Entity> e in ee)
+                    Dictionary<string, EntityAux> entitiesAux = JsonConvert.DeserializeObject<Dictionary<string, EntityAux>>(r.ReadToEnd());
+                    foreach (KeyValuePair<string, EntityAux> e in entitiesAux)
                     {
-                        if (entities.ContainsKey(e.Key))
-                        {
-                            Utils.CopyValues(entities[e.Key], e.Value);                            
-                        }
-                    }
-                }
-            }
+                        if (!entities.ContainsKey(e.Key))
+                            continue;
 
-            foreach(KeyValuePair<string, Entity> e in entities)
-            {
-                e.Value.db = this;
-                if(!e.Value.nf_add.IsNullOrEmpty())
-                {
-                    var nf = new List<string>(e.Value.nf.Count + e.Value.nf_add.Count);
-                    nf.AddRange(e.Value.nf);
-                    nf.AddRange(e.Value.nf_add);
-                    e.Value.nf = nf;
-                    e.Value.nf_add.Clear();
-                }
-                if (!e.Value.mo_add.IsNullOrEmpty())
-                {
-                    var mo = new List<string>(e.Value.mo.Count + e.Value.mo_add.Count);
-                    mo.AddRange(e.Value.mo);
-                    mo.AddRange(e.Value.mo_add);
-                    e.Value.mo = mo;
-                    e.Value.mo_add.Clear();
-                }
-                if (!e.Value.oo_add.IsNullOrEmpty())
-                {
-                    var oo = new List<string>(e.Value.oo.Count + e.Value.oo_add.Count);
-                    oo.AddRange(e.Value.oo);
-                    oo.AddRange(e.Value.oo_add);
-                    e.Value.oo = oo;
-                    e.Value.oo_add.Clear();
-                }
-                if (!e.Value.unique_add.IsNullOrEmpty())
-                {
-                    var unique = new List<string>(e.Value.unique.Count + e.Value.unique_add.Count);
-                    unique.AddRange(e.Value.unique);
-                    unique.AddRange(e.Value.unique_add);
-                    e.Value.unique = unique;
-                    e.Value.unique_add.Clear();
-                }
-                if (!e.Value.not_null_add.IsNullOrEmpty())
-                {
-                    var not_null = new List<string>(e.Value.not_null.Count + e.Value.not_null_add.Count);
-                    not_null.AddRange(e.Value.not_null);
-                    not_null.AddRange(e.Value.not_null_add);
-                    e.Value.not_null = not_null;
-                    e.Value.not_null_add.Clear();
-                }
-                if (!e.Value.nf_sub.IsNullOrEmpty())
-                {
-                    e.Value.nf = e.Value.nf.Except(e.Value.nf_sub).ToList();
-                    e.Value.nf_sub.Clear();
-                }
-                if (!e.Value.mo_sub.IsNullOrEmpty())
-                {
-                    e.Value.mo = e.Value.mo.Except(e.Value.mo_sub).ToList();
-                    e.Value.mo_sub.Clear();
-                }
-                if (!e.Value.oo_sub.IsNullOrEmpty())
-                {
-                    e.Value.oo = e.Value.oo.Except(e.Value.oo_sub).ToList();
-                    e.Value.oo_sub.Clear();
-                }
-                if (!e.Value.unique_sub.IsNullOrEmpty())
-                {
-                    e.Value.unique = e.Value.unique.Except(e.Value.unique_sub).ToList();
-                    e.Value.unique_sub.Clear();
-                }
-                if (!e.Value.not_null_sub.IsNullOrEmpty())
-                {
-                    e.Value.not_null = e.Value.not_null.Except(e.Value.not_null_sub).ToList();
-                    e.Value.not_null_sub.Clear();
+                        Utils.CopyValues(entities[e.Key], e.Value);                            
+
+                        var f = new List<string>();
+                        f.AddRange(entities[e.Key].fields);
+                        f.AddRange(e.Value.fieldsAdd);
+                        f = f.Except(e.Value.fieldsSub).ToList();
+                        entities[e.Key].fields = f;
+
+                        f = new List<string>();
+                        f.AddRange(entities[e.Key].fk);
+                        f.AddRange(e.Value.fkAdd);
+                        f = f.Except(e.Value.fkSub).ToList();
+                        entities[e.Key].fk = f;
+
+                        f = new List<string>();
+                        f.AddRange(entities[e.Key].unique);
+                        f.AddRange(e.Value.uniqueAdd);
+                        f = f.Except(e.Value.uniqueSub).ToList();
+                        entities[e.Key].unique = f;
+
+                        f = new List<string>();
+                        f.AddRange(entities[e.Key].notNull);
+                        f.AddRange(e.Value.notNullAdd);
+                        f = f.Except(e.Value.notNullSub).ToList();
+                        entities[e.Key].notNull = f;
+
+                        f = new List<string>();
+                        f.AddRange(entities[e.Key].uniqueMultiple);
+                        f.AddRange(e.Value.uniqueMultipleAdd);
+                        f = f.Except(e.Value.uniqueMultipleSub).ToList();
+                        entities[e.Key].uniqueMultiple = f;
+                    }
                 }
             }
         }
 
-        public Dictionary<string, Field> fields_entity(string entity_name)
+        public Dictionary<string, Field> FieldsEntity(string entityName)
         {
-            if (!fields.ContainsKey(entity_name))
+            if (!fields.ContainsKey(entityName))
             {
-                using (StreamReader r = new StreamReader(config!["path_model"] + "fields/_"+entity_name+".json"))
+                using (StreamReader r = new StreamReader(config.modelPath + "fields/"+ entityName + ".json"))
                 {
-                    fields[entity_name] = JsonConvert.DeserializeObject<Dictionary<string, Field>>(r.ReadToEnd())!;
+                    fields[entityName] = JsonConvert.DeserializeObject<Dictionary<string, Field>>(r.ReadToEnd())!;
 
-                    if (File.Exists(Config.ModelPath + "fields/" + entity_name + ".json"))
+                    foreach (KeyValuePair<string, Field> e in fields[entityName])
+                        e.Value.db = this;
+
+                    if (File.Exists(config.modelPath + "fields/" + entityName + config.modelSuffix + ".json"))
                     {
-                        using (StreamReader r2 = new StreamReader(Config.ModelPath + "fields/" + entity_name + ".json"))
+                        using (StreamReader r2 = new StreamReader(config.modelPath + "fields/" + entityName + config.modelSuffix + ".json"))
                         {
-                            Dictionary<string, Field> ee = JsonConvert.DeserializeObject<Dictionary<string, Field>>(r2.ReadToEnd());
-                            foreach (KeyValuePair<string, Field> e in ee) 
+                            Dictionary<string, Field> fieldsAux = JsonConvert.DeserializeObject<Dictionary<string, Field>>(r2.ReadToEnd());
+                            foreach (KeyValuePair<string, Field> e in fieldsAux) 
                             {
-                                if (fields[entity_name].ContainsKey(e.Key))
+                                if (fields[entityName].ContainsKey(e.Key))
                                 {
-                                    Utils.CopyValues(fields[entity_name][e.Key], e.Value);
+                                    CollectionUtils.CopyValues(fields[entityName][e.Key], e.Value);
                                 }
                             }
                         }
@@ -153,13 +119,10 @@ namespace SqlOrganize
 
                 }
 
-                foreach (KeyValuePair<string, Field> e in fields[entity_name])
-                {
-                    e.Value.db = this;
-                }
+                
             }
 
-            return fields[entity_name];
+            return fields[entityName];
         }
 
         /* 
@@ -168,40 +131,40 @@ namespace SqlOrganize
         Si no existe el field consultado se devuelve una configuracion vacia
         No es obligatorio que exista el field en la configuracion, se cargaran los parametros por defecto.
         */
-        public Field field(string entity_name, string field_name)
+        public Field field(string entityName, string fieldName)
         {
-            Dictionary<string, Field> fe = fields_entity(entity_name);
-            return (fe.ContainsKey(field_name)) ? fe[entity_name] : new Field();
+            Dictionary<string, Field> fe = FieldsEntity(entityName);
+            return (fe.ContainsKey(fieldName)) ? fe[entityName] : new Field();
         }
 
-        public List<string> entity_names() => tree.Keys.ToList();
+        public List<string> EntityNames() => tree.Keys.ToList();
         
-        public List<string> field_names(string entity_name) => fields_entity(entity_name).Keys.ToList();
+        public List<string> FieldNames(string entityName) => FieldsEntity(entityName).Keys.ToList();
         
-        public Dictionary<string, string> explode_field(string entity_name, string field_name)
+        public Dictionary<string, string> ExplodeField(string entityName, string fieldName)
         {
-            List<string> f = field_name.Split("-").ToList();
+            List<string> f = fieldName.Split("-").ToList();
 
             if (f.Count() == 2)
             {
                 return new Dictionary<string, string>
                 {
-                    { "field_id", f[0] },
-                    { "entity_name", relations[entity_name][f[0]].entity_name },
-                    { "field_name", f[1] },
+                    { "fieldId", f[0] },
+                    { "entityName", relations[entityName][f[0]].refEntityName },
+                    { "fieldName", f[1] },
                 };
 
             }
 
             return new Dictionary<string, string>
             {
-                { "field_id", "" },
-                { "entity_name", entity_name },
-                { "field_name", field_name },
+                { "fieldId", "" },
+                { "entityName", entityName },
+                { "fieldName", fieldName },
             };
         }
         
-        public Entity entity(string entity_name)
+        public Entity Entity(string entity_name)
         {
             return entities[entity_name];
         }
@@ -213,11 +176,11 @@ namespace SqlOrganize
 
         public abstract EntityQuery Query(string entity_name);
 
-        public abstract Mapping mapping(string entity_name, string field_id);
+        public abstract Mapping Mapping(string entity_name, string field_id);
 
-        public abstract Values values(string entity_name, string field_id);
+        public abstract Values Values(string entity_name, string field_id);
 
-        //field_by_id(self, entity_name:str, field_id:str) 
+        //public abstract FieldById(string entityName, string fieldId) 
 
     }
 

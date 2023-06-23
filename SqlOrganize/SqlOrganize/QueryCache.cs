@@ -15,7 +15,7 @@ namespace SqlOrganize
         public QueryCache (EntityQuery query)
         {
             Query = query;
-            EntityName = query.entity_name;
+            EntityName = query.entityName;
         }
 
         public QueryCache(string entityName)

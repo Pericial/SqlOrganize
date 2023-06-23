@@ -1,8 +1,9 @@
 ﻿using SqlOrganize;
+using Utils;
 using Microsoft.Data.SqlClient;
 
 
-namespace SqlOrganize
+namespace SqlOrganizeSs
 {
     public class EntityQuerySs : EntityQuery
     {
@@ -13,7 +14,7 @@ namespace SqlOrganize
 
         public override List<Dictionary<string, object>> All()
         {
-            using SqlConnection connection = new SqlConnection((string)db.config["connection_string"]);
+            using SqlConnection connection = new SqlConnection((string)db.config.connectionString);
             connection.Open();
             string sql = Sql();
             using SqlCommand command = new SqlCommand();
@@ -35,7 +36,7 @@ namespace SqlOrganize
                 command.ExecuteNonQuery();
                 using SqlDataReader reader = command.ExecuteReader();
 
-            return Utils.Serialize(reader);
+            return reader.Serialize<object>();
         }
 
         public override List<Dictionary<string, object>> Tree()
@@ -56,7 +57,7 @@ FETCH FIRST " + size + " ROWS ONLY";
         {
             if (order.IsNullOrEmpty())
             {
-                var o = db.entity(entity_name).order_default;
+                var o = db.Entity(entityName).orderDefault;
                 order = o.IsNullOrEmpty() ? "" : string.Join(", ", o.Select(x => "$" + x));
             }
 

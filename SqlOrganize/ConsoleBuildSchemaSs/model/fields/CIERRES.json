@@ -2,31 +2,37 @@
     "DTOJUDI": {
         "alias": "DTO",
         "dataType": "string"
+        
     },
 
     "MES": {
         "alias": "MES",
         "dataType": "int"
+        
     },
 
     "ANIO": {
         "alias": "ANI",
         "dataType": "int"
+        
     },
 
     "NRO_CIERRE": {
         "alias": "NRO",
         "dataType": "int"
+        
     },
 
     "HORA": {
         "alias": "HOR",
         "dataType": "DateTime"
+        
     },
 
     "COD_EMPLE": {
         "alias": "COD",
         "dataType": "string"
+        
     }
 
 }

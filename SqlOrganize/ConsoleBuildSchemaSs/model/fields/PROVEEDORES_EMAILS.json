@@ -1,17 +1,22 @@
 {
     "nroidpprov": {
         "alias": "nro",
-        "dataType": "int"
+        "dataType": "int",
+        
+        "refEntityName": "PROVEEDORES",
+        "refEntityName": "IDPPROV"
     },
 
     "Email": {
         "alias": "Ema",
         "dataType": "string"
+        
     },
 
     "referencia": {
         "alias": "ref",
         "dataType": "string"
+        
     }
 
 }

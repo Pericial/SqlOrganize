@@ -2,36 +2,43 @@
     "DTOJUDI": {
         "alias": "DTO",
         "dataType": "string"
+        
     },
 
     "NROIDPEMP": {
         "alias": "NRO",
         "dataType": "int"
+        
     },
 
     "anio": {
         "alias": "ani",
         "dataType": "int"
+        
     },
 
     "mes": {
         "alias": "mes",
         "dataType": "int"
+        
     },
 
     "tipo_pericia": {
         "alias": "tip",
         "dataType": "string"
+        
     },
 
     "cant_peri_reci": {
         "alias": "can",
         "dataType": "int"
+        
     },
 
     "cant_peri_terminadas": {
         "alias": "caa",
         "dataType": "int"
+        
     }
 
 }

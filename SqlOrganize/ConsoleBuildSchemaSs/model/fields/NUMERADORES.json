@@ -2,128 +2,153 @@
     "DTOJUD": {
         "alias": "DTO",
         "dataType": "string"
+        
     },
 
     "SERIE_PEDIDOS": {
         "alias": "SER",
         "dataType": "string"
+        
     },
 
     "NROPEDIDO": {
         "alias": "NRO",
         "dataType": "int",
-        "default": "(1)"
+        
+        "defaultValue": "(1)"
     },
 
     "NROIDPEMP": {
         "alias": "NRa",
         "dataType": "int",
-        "default": "(1)"
+        
+        "defaultValue": "(1)"
     },
 
     "SERIE_ME": {
         "alias": "SEa",
         "dataType": "string"
+        
     },
 
     "NRODOC_ME": {
         "alias": "NRb",
         "dataType": "int"
+        
     },
 
     "NROPROV": {
         "alias": "NRc",
         "dataType": "int"
+        
     },
 
     "NROPRODUCTO": {
         "alias": "NRd",
         "dataType": "int"
+        
     },
 
     "SERIE_NUI": {
         "alias": "SEb",
         "dataType": "string"
+        
     },
 
     "NRONUI": {
         "alias": "NRe",
         "dataType": "int"
+        
     },
 
     "SERIE_PERICIA": {
         "alias": "SEc",
         "dataType": "string"
+        
     },
 
     "NROPERICIA": {
         "alias": "NRf",
         "dataType": "int"
+        
     },
 
     "SERIE_PERICIA_ADN": {
         "alias": "SEd",
         "dataType": "string"
+        
     },
 
     "NROPERICIA_ADN": {
         "alias": "NRg",
         "dataType": "int"
+        
     },
 
     "SERIE_PERICIA_LAB": {
         "alias": "SEe",
         "dataType": "string"
+        
     },
 
     "NROPERICIA_LAB": {
         "alias": "NRh",
         "dataType": "int"
+        
     },
 
     "SERIE_PERICIA_GRAL": {
         "alias": "SEf",
         "dataType": "string"
+        
     },
 
     "NROPERICIA_GRAL": {
         "alias": "NRi",
         "dataType": "int"
+        
     },
 
     "NRO_RECIBO_MGRAL": {
         "alias": "NRj",
         "dataType": "int"
+        
     },
 
     "NRO_RECIBO_MADN": {
         "alias": "NRk",
         "dataType": "int"
+        
     },
 
     "NRO_RECIBO_MLAB": {
         "alias": "NRl",
         "dataType": "int"
+        
     },
 
     "SERIE_MESA_DIR": {
         "alias": "SEg",
         "dataType": "string"
+        
     },
 
     "NRO_MESA_DIR": {
         "alias": "NRm",
         "dataType": "int"
+        
     },
 
     "SERIE_NOTAS": {
         "alias": "SEh",
         "dataType": "string"
+        
     },
 
     "NRO_NOTA": {
         "alias": "NRn",
         "dataType": "int"
+        
     }
 
 }

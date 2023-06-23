@@ -27,11 +27,7 @@ namespace SqlOrganize
 
         public string pk { get; set; }
         public List<string> fields { get; set; }
-        public List<string> fieldsAdd { get; set; } 
-        public List<string> fieldsSub { get; set; }
         public List<string> fk { get; set; }
-        public List<string> fkAdd { get; set; }
-        public List<string> fkSub { get; set; }
 
 
         /* 
@@ -65,15 +61,11 @@ namespace SqlOrganize
         @example ["field1","field2",...]
         */
         public List<string> unique { get; set; }
-        public List<string> uniqueAdd { get; set; }
-        public List<string> uniqueSub { get; set; }
 
         /*
         Valores no nulos        
         */
         public List<string> notNull { get; set; }
-        public List<string> notNullAdd { get; set; }
-        public List<string> notNullSub { get; set; }
 
         /*
         Valores unicos multiples

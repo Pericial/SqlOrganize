@@ -2,96 +2,115 @@
     "NRODOC": {
         "alias": "NRO",
         "dataType": "string"
+        
     },
 
     "APEYNOM": {
         "alias": "APE",
         "dataType": "string"
+        
     },
 
     "DTOJUD": {
         "alias": "DTO",
         "dataType": "string"
+        
     },
 
     "CODPAR": {
         "alias": "COD",
         "dataType": "string"
+        
     },
 
     "NROJUZ": {
         "alias": "NRa",
         "dataType": "string"
+        
     },
 
     "NROSEC": {
         "alias": "NRb",
         "dataType": "string"
+        
     },
 
     "CODFUE": {
         "alias": "COa",
         "dataType": "string"
+        
     },
 
     "TIPJUZ": {
         "alias": "TIP",
         "dataType": "string"
+        
     },
 
     "INSTAN": {
         "alias": "INS",
         "dataType": "string"
+        
     },
 
     "TIPJUI": {
         "alias": "TIa",
         "dataType": "string"
+        
     },
 
     "NROREC": {
         "alias": "NRc",
         "dataType": "string"
+        
     },
 
     "NROCAU": {
         "alias": "NRd",
         "dataType": "string"
+        
     },
 
     "CARA": {
         "alias": "CAR",
         "dataType": "string"
+        
     },
 
     "TIPMAT": {
         "alias": "TIb",
         "dataType": "string"
+        
     },
 
     "FECHA": {
         "alias": "FEC",
         "dataType": "DateTime"
+        
     },
 
     "MONTO": {
         "alias": "MON",
         "dataType": "float"
+        
     },
 
     "PERIODO": {
         "alias": "PER",
         "dataType": "string"
+        
     },
 
     "SECUENCIA": {
         "alias": "SEC",
         "dataType": "int"
+        
     },
 
     "ELTIPO": {
         "alias": "ELT",
         "dataType": "string"
+        
     }
 
 }

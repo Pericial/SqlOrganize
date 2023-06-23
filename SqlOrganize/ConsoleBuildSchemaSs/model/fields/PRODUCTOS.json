@@ -2,93 +2,119 @@
     "DTOJUD": {
         "alias": "DTO",
         "dataType": "string"
+        
     },
 
     "CODPROD": {
         "alias": "COD",
         "dataType": "int"
+        
     },
 
     "DEPENDENCIA": {
         "alias": "DEP",
         "dataType": "string"
+        
     },
 
     "RUBRO": {
         "alias": "RUB",
-        "dataType": "int"
+        "dataType": "int",
+        
+        "refEntityName": "RUBROS",
+        "refEntityName": "CODRUBRO"
     },
 
     "TIPO": {
         "alias": "TIP",
-        "dataType": "int"
+        "dataType": "int",
+        
+        "refEntityName": "TIPOSPROD",
+        "refEntityName": "CODTIPOS"
     },
 
     "MARCA": {
         "alias": "MAR",
-        "dataType": "int"
+        "dataType": "int",
+        
+        "refEntityName": "MARCAS",
+        "refEntityName": "CODMARCA"
     },
 
     "MEDIDA": {
         "alias": "MED",
-        "dataType": "int"
+        "dataType": "int",
+        
+        "refEntityName": "MEDIDAS",
+        "refEntityName": "CODMEDIDA"
     },
 
     "DESCRIPCION": {
         "alias": "DES",
         "dataType": "string"
+        
     },
 
     "OBS": {
         "alias": "OBS",
         "dataType": "string"
+        
     },
 
     "BAJA": {
         "alias": "BAJ",
         "dataType": "bool",
-        "default": "(0)"
+        
+        "defaultValue": "(0)"
     },
 
     "COSTO_ULT_COMPRA": {
         "alias": "COS",
         "dataType": "float"
+        
     },
 
     "FECHA_ULT_COMPRA": {
         "alias": "FEC",
         "dataType": "DateTime"
+        
     },
 
     "PROV_ULT_COMPRA": {
         "alias": "PRO",
         "dataType": "int"
+        
     },
 
     "USO_INTERNO": {
         "alias": "USO",
         "dataType": "string",
-        "default": "('N')"
+        
+        "defaultValue": "('N')"
     },
 
     "DIAS_AVISO1_DESDE_UC": {
         "alias": "DIA",
         "dataType": "int"
+        
     },
 
     "DIAS_AVISO2_DESDE_UC": {
         "alias": "DIa",
         "dataType": "int"
+        
     },
 
     "EN_ALERTA": {
         "alias": "EN_",
         "dataType": "bool"
+        
     },
 
     "PEDIDO": {
         "alias": "PED",
         "dataType": "bool"
+        
     }
 
 }

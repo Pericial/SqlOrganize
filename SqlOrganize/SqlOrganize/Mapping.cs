@@ -21,7 +21,7 @@ namespace SqlOrganize
     */
     public abstract class Mapping : EntityOptions
     {
-        public Mapping(Db _db, string _entity_name, string _field_id) : base(_db, _entity_name, _field_id)
+        public Mapping(Db _db, string _entityName, string _fieldId) : base(_db, _entityName, _fieldId)
         {
         }
 
@@ -36,12 +36,12 @@ namespace SqlOrganize
         mapping.map("fecha_alta.max.y"); //aplicar max, luego y
         mapping.map("edad.avg")
         */
-        public string map(string field_name)
+        public string map(string fieldName)
         {
-            List<string> p = field_name.Split('.').ToList();
+            List<string> p = fieldName.Split('.').ToList();
 
             if(p.Count == 1) {
-                return _default(field_name);
+                return _default(fieldName);
             }
 
             string method = p[p.Count - 1]; //se traduce el metodo ubicado mas a la derecha (el primero en traducirse se ejecutara al final)
@@ -54,13 +54,11 @@ namespace SqlOrganize
                 default:
                     return this.map(String.Join(".", p.ToArray()));
             }
-
-
         }
 
-        /**
-         * mapeo por defecto
-         */
+        /*
+        mapeo por defecto
+        */
         public abstract string _default(string field_name);
 
         public abstract string _count(string field_name);

@@ -1,87 +1,105 @@
 {
     "DTOJUD": {
         "alias": "DTO",
-        "dataType": "string"
+        "dataType": "string",
+        
+        "refEntityName": "DTOSJUDI",
+        "refEntityName": "DTOJUD"
     },
 
     "DEPENDENCIA": {
         "alias": "DEP",
         "dataType": "string"
+        
     },
 
     "CODIGO": {
         "alias": "COD",
         "dataType": "string"
+        
     },
 
     "DESCRIPCION": {
         "alias": "DES",
         "dataType": "string"
+        
     },
 
     "TIPO_DEPEN": {
         "alias": "TIP",
         "dataType": "string"
+        
     },
 
     "RESP_PEDIDOS": {
         "alias": "RES",
         "dataType": "int"
+        
     },
 
     "RECIBE_PERICIAS": {
         "alias": "REC",
         "dataType": "bool"
+        
     },
 
     "ASIG_AUTO_PERITO": {
         "alias": "ASI",
         "dataType": "bool"
+        
     },
 
     "DESIGN_EN_SECCION": {
         "alias": "DEa",
         "dataType": "bool"
+        
     },
 
     "RID": {
         "alias": "RID",
         "dataType": "uniqueidentifier"
+        
     },
 
     "DISCRIMINA_TIPO_PERICIA": {
         "alias": "DIS",
         "dataType": "bool"
+        
     },
 
     "IMP_RECI_MOVI": {
         "alias": "IMP",
         "dataType": "bool",
-        "default": "(0)"
+        
+        "defaultValue": "(0)"
     },
 
     "IMP_RECI_SALIDA": {
         "alias": "IMa",
         "dataType": "bool",
-        "default": "(0)"
+        
+        "defaultValue": "(0)"
     },
 
     "IMP_NOTA_DESIG": {
         "alias": "IMb",
         "dataType": "bool",
-        "default": "(0)"
+        
+        "defaultValue": "(0)"
     },
 
     "DESIGNACION_PORFUERO": {
         "alias": "DEb",
         "dataType": "bool",
-        "default": "((0))"
+        
+        "defaultValue": "((0))"
     },
 
     "NRO_BOLILLERO": {
         "alias": "NRO",
         "dataType": "int",
-        "default": "((0))"
+        
+        "defaultValue": "((0))"
     }
 
 }

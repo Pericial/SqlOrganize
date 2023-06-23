@@ -2,46 +2,57 @@
     "REFERENCIA": {
         "alias": "REF",
         "dataType": "string"
+        
     },
 
     "CODTAB": {
         "alias": "COD",
-        "dataType": "string"
+        "dataType": "string",
+        
+        "refEntityName": "DESTABLAS",
+        "refEntityName": "CODTAB"
     },
 
     "ITEMTAB": {
         "alias": "ITE",
         "dataType": "string"
+        
     },
 
     "DESCRIPCION": {
         "alias": "DES",
         "dataType": "string"
+        
     },
 
     "SPB": {
         "alias": "SPB",
         "dataType": "bool"
+        
     },
 
     "OPCION_NUMERO": {
         "alias": "OPC",
         "dataType": "bool"
+        
     },
 
     "ORDEN": {
         "alias": "ORD",
         "dataType": "int"
+        
     },
 
     "RELACIONADO_CON": {
         "alias": "REL",
         "dataType": "string"
+        
     },
 
     "PUEDE_CAMBIAR": {
         "alias": "PUE",
         "dataType": "string"
+        
     }
 
 }

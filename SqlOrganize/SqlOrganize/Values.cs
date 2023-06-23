@@ -5,6 +5,7 @@ using System;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
+using Utils;
 
 namespace SqlOrganize
 {
@@ -62,14 +63,14 @@ namespace SqlOrganize
         Si la funcion sset de field_name no se encuentra definida por el usuario,        
         se define en funcion de type
         */
-        public string _define_sset_method(string field_name)
+        public string _define_sset_method(string fieldName)
         {
-            List<string> p = field_name.Split(".").ToList();
+            List<string> p = fieldName.Split(".").ToList();
 
             if (p.Count == 1)
             {
-                Field field = db.field(entity_name, field_name);
-                switch (field.type)
+                Field field = db.field(entityName, fieldName);
+                switch (field.dataType)
                 {
                     
                     default:
@@ -151,10 +152,10 @@ namespace SqlOrganize
 
             if (p.Count == 1) //traducir field_name sin funcion (por el momento solo se validan los fields sin funcion
             {
-                Field field = db.field(entity_name, field_name);
+                Field field = db.field(entityName, field_name);
 
-                r["type"] = field.type;
-                if(field.required) r["required"] = null;
+                r["type"] = field.dataType;
+                if(field.IsRequired()) r["required"] = null;
 
             }
 
@@ -189,8 +190,8 @@ namespace SqlOrganize
 
             if (p.Count == 1)
             {
-                Field field = db.field(entity_name, p[0]);
-                switch (field.type)
+                Field field = db.field(entityName, p[0]);
+                switch (field.dataType)
                 {
                     default:
                         return _sql_default(field_name);
@@ -201,20 +202,20 @@ namespace SqlOrganize
 
         }
 
-        public object _sql_default(string field_name) {
-            return values[field_name];
+        public object _sql_default(string fieldName) {
+            return values[fieldName];
         }
 
-        public object _sql_aux(string field_name)
+        public object _sql_aux(string fieldName)
         {
-            List<string> p = field_name.Split(".").ToList();
+            List<string> p = fieldName.Split(".").ToList();
             if (p.Count == 1)
             {
-                Field field = db.field(entity_name, field_name);
-                switch (field.type)
+                Field field = db.field(entityName, fieldName);
+                switch (field.dataType)
                 {
                     default:
-                        return _sql_default(field_name);
+                        return _sql_default(fieldName);
                 }
             }
 
@@ -226,7 +227,7 @@ namespace SqlOrganize
                 case "count":
                 case "avg":
                 case "sum":
-                    return _sql_default(field_name);
+                    return _sql_default(fieldName);
 
                 default:
                     return _sql_aux(String.Join(".", p.ToArray())); //si no resuelve, intenta nuevamente (ejemplo field.count.max, intentara nuevamente con field.count)

@@ -3,27 +3,27 @@
     public class EntityTools
     {
         public Db db { get; }
-        public string entity_name { get; }
+        public string entityName { get; }
 
-        public EntityTools(Db _db, string _entity_name)
+        public EntityTools(Db _db, string _entityName)
         {
             db = _db;
-            entity_name = _entity_name;
+            entityName = _entityName;
         }
 
         /*
         field_names from entity_name and its relations
         */
-        public List<string> field_names()
+        public List<string> FieldNames()
         {
-            List<string> field_names_r = new();
+            List<string> fieldNamesR = new();
 
-            if(db.relations.ContainsKey(entity_name))
-                foreach((string field_id, EntityRel er) in db.relations[entity_name])
-                    foreach(string field_name in db.field_names(er.entity_name))
-                        field_names_r.Add(field_id + "-" + field_name);
+            if(db.relations.ContainsKey(entityName))
+                foreach((string fieldId, EntityRel er) in db.relations[entityName])
+                    foreach(string fieldName in db.FieldNames(er.refEntityName))
+                        fieldNamesR.Add(fieldId + "-" + fieldName);
 
-            return db.field_names(entity_name).Concat(field_names_r).ToList();
+            return db.FieldNames(entityName).Concat(fieldNamesR).ToList();
         }
 
         

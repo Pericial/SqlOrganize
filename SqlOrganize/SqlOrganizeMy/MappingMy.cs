@@ -1,4 +1,6 @@
-﻿namespace SqlOrganize
+﻿using SqlOrganize;
+
+namespace SqlOrganizeMy
 {
     /*
     Mapear campos para que sean entendidos por el motor de base de datos.
@@ -24,7 +26,7 @@
 
         public override string _default(string field_name)
         {
-            return pt() + "." + field_name;
+            return Pt() + "." + field_name;
         }
 
         public override string _count(string field_name)

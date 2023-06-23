@@ -5,6 +5,7 @@ using System.Data.Common;
 using System.Security.Principal;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
+using Utils;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace SqlOrganize
@@ -18,7 +19,7 @@ namespace SqlOrganize
     public abstract class EntityQuery
     {
         public Db db { get; }
-        public string entity_name { get; }
+        public string entityName { get; }
 
 
         /*
@@ -54,7 +55,7 @@ namespace SqlOrganize
         "$nombres, $curso-horas_catedra.sum" => Se traduce a "alum.nombres, SUM(cur.horas_catedra)"
         */
 
-        public string? fields_as { get; set; } = "";
+        public string? fieldsAs { get; set; } = "";
 
 
         public string? order { get; set; } = "";
@@ -70,10 +71,10 @@ namespace SqlOrganize
 
         public string fetch = "All";
 
-        public EntityQuery(Db _db, string _entity_name)
+        public EntityQuery(Db _db, string _entityName)
         {
             db = _db;
-            entity_name = _entity_name;
+            entityName = _entityName;
         }
 
 
@@ -86,7 +87,7 @@ namespace SqlOrganize
 
         public EntityQuery Fields()
         {
-            fields += string.Join(", ", db.tools(entity_name).field_names().Select(x => "$" + x));
+            fields += string.Join(", ", db.tools(entityName).FieldNames().Select(x => "$" + x));
             return this;
         }
 
@@ -99,13 +100,13 @@ namespace SqlOrganize
 
         public EntityQuery FieldsAs()
         {
-            fields_as += string.Join(", ", db.tools(entity_name).field_names().Select(x => "$" + x));
+            fieldsAs += string.Join(", ", db.tools(entityName).FieldNames().Select(x => "$" + x));
             return this;
         }
 
         public EntityQuery FieldsAs(string f)
         {
-            fields_as += f;
+            fieldsAs += f;
             return this;
         }
 
@@ -158,12 +159,12 @@ namespace SqlOrganize
         protected string traduce_(string _sql, bool flag_as, int field_start, int field_end)
         {
             var field_name = _sql.Substring(field_start + 1, field_end);
-            var f = db.explode_field(entity_name, field_name);
+            var f = db.ExplodeField(entityName, field_name);
 
-            var ff = db.mapping(f["entity_name"], f["field_id"]).map(f["field_name"]);
+            var ff = db.Mapping(f["entityName"], f["fieldId"]).map(f["fieldName"]);
             if (flag_as)
             {
-                var a = (f["field_id"].IsNullOrEmpty()) ? f["field_name"] : field_name;
+                var a = (f["fieldId"].IsNullOrEmpty()) ? f["fieldName"] : field_name;
                 ff += " AS '" + a + "'";
             }
             return ff;
@@ -204,21 +205,21 @@ namespace SqlOrganize
         protected string sql_join()
         {
             string sql = "";
-            if (db.tree.ContainsKey(entity_name))
-                sql += sql_join_fk(db.tree[entity_name], "");
+            if (db.tree.ContainsKey(entityName))
+                sql += sql_join_fk(db.tree[entityName], "");
             return sql;
         }
 
         protected string sql_join_fk(Dictionary<string, EntityTree> tree, string table_id)
         {
             if (table_id.IsNullOrEmpty())
-                table_id = db.entity(entity_name).alias;
+                table_id = db.Entity(entityName).alias;
 
             string sql = "";
             string schema_name;
             foreach (var (field_id, entity_tree) in tree) {
-                schema_name = db.entity(entity_tree.entity_name).schema_name;
-                sql += "LEFT OUTER JOIN " + schema_name + " AS " + field_id + " ON (" + table_id + "." + entity_tree.field_name + " = " + field_id + "." + entity_tree.field_ref_name + @")
+                schema_name = db.Entity(entity_tree.refEntityName).schemaName;
+                sql += "LEFT OUTER JOIN " + schema_name + " AS " + field_id + " ON (" + table_id + "." + entity_tree.fieldName + " = " + field_id + "." + entity_tree.refFieldName + @")
 ";
 
                 if (!entity_tree.children.IsNullOrEmpty()) sql += sql_join_fk(entity_tree.children, field_id);
@@ -264,12 +265,12 @@ namespace SqlOrganize
 
         protected string sql_fields()
         {
-            if(this.fields.IsNullOrEmpty() && this.fields_as.IsNullOrEmpty() && this.group.IsNullOrEmpty())
+            if(this.fields.IsNullOrEmpty() && this.fieldsAs.IsNullOrEmpty() && this.group.IsNullOrEmpty())
                 this.FieldsAs();
 
             string f = concat(traduce(this.fields), @"
 ");
-            var p = traduce(this.fields_as, true);
+            var p = traduce(this.fieldsAs, true);
             f += concat(p, @",
 ", "", !f.IsNullOrEmpty());
 
@@ -282,7 +283,7 @@ namespace SqlOrganize
 
         protected string sql_from()
         {
-            return @"FROM " + db.entity(entity_name).schema_name + " AS " + db.entity(entity_name).alias + @"
+            return @"FROM " + db.Entity(entityName).schemaName + " AS " + db.Entity(entityName).alias + @"
 ";
         }
 
@@ -318,7 +319,7 @@ namespace SqlOrganize
 
         public override string ToString()
         {
-            return Regex.Replace(entity_name + where + having + fields + fields_as + order + size + page + JsonConvert.SerializeObject(parameters), @"\s+", "");
+            return Regex.Replace(entityName + where + having + fields + fieldsAs + order + size + page + JsonConvert.SerializeObject(parameters), @"\s+", "");
         }
 
 

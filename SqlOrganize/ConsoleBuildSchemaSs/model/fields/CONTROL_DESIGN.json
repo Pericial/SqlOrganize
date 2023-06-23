@@ -2,66 +2,79 @@
     "DJ": {
         "alias": "DJ",
         "dataType": "string"
+        
     },
 
     "SECCION": {
         "alias": "SEC",
         "dataType": "string"
+        
     },
 
     "FUERO": {
         "alias": "FUE",
         "dataType": "string"
+        
     },
 
     "ID_ZONA": {
         "alias": "ID_",
         "dataType": "int"
+        
     },
 
     "ID_GRUPO": {
         "alias": "IDa",
         "dataType": "int"
+        
     },
 
     "ID_RAMAL": {
         "alias": "IDb",
         "dataType": "int"
+        
     },
 
     "ID_TIPOPERI": {
         "alias": "IDc",
         "dataType": "int"
+        
     },
 
     "TIPO_DESIG": {
         "alias": "TIP",
         "dataType": "string"
+        
     },
 
     "HORA": {
         "alias": "HOR",
         "dataType": "DateTime"
+        
     },
 
     "PERITO": {
         "alias": "PER",
         "dataType": "int"
+        
     },
 
     "NRO_ORDEN_Q_TENIA": {
         "alias": "NRO",
         "dataType": "int"
+        
     },
 
     "EMPLE_DESIGNO": {
         "alias": "EMP",
         "dataType": "string"
+        
     },
 
     "PC_DESIGNO": {
         "alias": "PC_",
         "dataType": "string"
+        
     }
 
 }

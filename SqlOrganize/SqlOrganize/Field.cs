@@ -17,17 +17,17 @@ namespace SqlOrganize
         /* 
         nombre de la entidad 
         */
-        public string entity_name { get; set; }
+        public string entityName { get; set; }
 
         /* 
         si es clave foranea: Nombre de la entidad referenciada por la clave foranea 
         */
-        public string? entity_ref_name { get; set; }
+        public string? refEntityName { get; set; }
 
         /* 
         si es clave foranea: Nombre del field al que hace referencia de la entidad referenciada
         */
-        public string? field_ref_name { get; set; } = "id";
+        public string? refFieldName { get; set; } = "id";
 
         /* 
         tipo de datos generico 
@@ -40,7 +40,7 @@ namespace SqlOrganize
             timestamp
             date               
          */
-        public string type { get; set; }
+        public string dataType { get; set; }
 
         /* 
         string con el tipo de field
@@ -49,13 +49,9 @@ namespace SqlOrganize
             "mo": Clave foranea muchos a uno
             "oo": Clave foranea uno a uno
         */
-        public string field_type { get; set; }
 
         /* valor por defecto */
-        public object default_value { get; set; }
-
-        public bool required { get; set; } = false;
-
+        public object defaultValue { get; set; }
 
 
         /* longitud maxima permitida */
@@ -70,13 +66,15 @@ namespace SqlOrganize
         /* lista de valores permitidos */
         //List<object> _values;
 
-        public Entity entity() => this.db.entity(entity_name);
+        public Entity Entity() => this.db.Entity(entityName);
 
-        public Entity entity_ref() => this.db.entity(entity_ref_name!);
+        public Entity RefEntity() => this.db.Entity(refEntityName!);
 
-        public bool is_main()
+        public bool IsRequired()
         {
-            return this.db.entity(entity_name).main.Contains(name);
+            var entity = this.db.Entity(entityName);
+            return (entity.notNull.Contains(this.name));
         }
+
     }
 }

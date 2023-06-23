@@ -2,16 +2,19 @@
     "NIVEL_SEGU": {
         "alias": "NIV",
         "dataType": "int"
+        
     },
 
     "DESCRIPCION": {
         "alias": "DES",
         "dataType": "string"
+        
     },
 
     "OPERACIONES": {
         "alias": "OPE",
         "dataType": "string"
+        
     }
 
 }

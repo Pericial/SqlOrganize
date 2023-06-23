@@ -2,11 +2,13 @@
     "NroIdPEmp": {
         "alias": "Nro",
         "dataType": "int"
+        
     },
 
     "Ramal": {
         "alias": "Ram",
         "dataType": "int"
+        
     }
 
 }

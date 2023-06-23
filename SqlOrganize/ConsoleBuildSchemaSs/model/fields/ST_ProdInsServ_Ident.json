@@ -2,26 +2,31 @@
     "CodArtInt": {
         "alias": "Cod",
         "dataType": "string"
+        
     },
 
     "NroSerie": {
         "alias": "Nro",
         "dataType": "string"
+        
     },
 
     "Color": {
         "alias": "Col",
         "dataType": "string"
+        
     },
 
     "Tamanio": {
         "alias": "Tam",
         "dataType": "string"
+        
     },
 
     "Estado": {
         "alias": "Est",
         "dataType": "string"
+        
     }
 
 }

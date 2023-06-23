@@ -2,156 +2,195 @@
     "DTOJUD": {
         "alias": "DTO",
         "dataType": "string"
+        
     },
 
     "SERIEPED": {
         "alias": "SER",
         "dataType": "string"
+        
     },
 
     "NROPED": {
         "alias": "NRO",
         "dataType": "int"
+        
     },
 
     "DTOJUD_PIDE": {
         "alias": "DTa",
         "dataType": "string"
+        
     },
 
     "DEPEN_PIDE": {
         "alias": "DEP",
         "dataType": "string"
+        
     },
 
     "FECHA_PEDIDO": {
         "alias": "FEC",
         "dataType": "DateTime"
+        
     },
 
     "REFERENTE": {
         "alias": "REF",
-        "dataType": "int"
+        "dataType": "int",
+        
+        "refEntityName": "PERSONAL",
+        "refEntityName": "NROIDPEMP"
     },
 
     "SERIENME": {
         "alias": "SEa",
         "dataType": "string"
+        
     },
 
     "NROME": {
         "alias": "NRa",
         "dataType": "int"
+        
     },
 
     "NROEXP": {
         "alias": "NRb",
         "dataType": "string"
+        
     },
 
     "PRESU_ESTI": {
         "alias": "PRE",
         "dataType": "float"
+        
     },
 
     "PROV_ESTI": {
         "alias": "PRO",
-        "dataType": "int"
+        "dataType": "int",
+        
+        "refEntityName": "PROVEEDORES",
+        "refEntityName": "IDPPROV"
     },
 
     "PROV_ESTI2": {
         "alias": "PRa",
         "dataType": "int"
+        
     },
 
     "PROV_ESTI3": {
         "alias": "PRb",
         "dataType": "int"
+        
     },
 
     "FORMA_PRESU": {
         "alias": "FOR",
         "dataType": "string"
+        
     },
 
     "NROIDPEMP": {
         "alias": "NRc",
-        "dataType": "int"
+        "dataType": "int",
+        
+        "refEntityName": "PERSONAL",
+        "refEntityName": "NROIDPEMP"
     },
 
     "FECHA_CARGA": {
         "alias": "FEa",
         "dataType": "DateTime"
+        
     },
 
     "ULTEMPMOD": {
         "alias": "ULT",
         "dataType": "int"
+        
     },
 
     "FECHA_ULT_MOD": {
         "alias": "FEb",
         "dataType": "DateTime"
+        
     },
 
     "ESTADO": {
         "alias": "EST",
-        "dataType": "string"
+        "dataType": "string",
+        
+        "refEntityName": "TABLAS",
+        "refEntityName": "REFERENCIA"
     },
 
     "PRORRATEO": {
         "alias": "PRc",
         "dataType": "bool"
+        
     },
 
     "DTOJUD_CTASUG": {
         "alias": "DTb",
         "dataType": "string"
+        
     },
 
     "CUENTA_SUG": {
         "alias": "CUE",
         "dataType": "string"
+        
     },
 
     "DTOJUD_FIN": {
         "alias": "DTc",
         "dataType": "string"
+        
     },
 
     "CUENTA_FIN": {
         "alias": "CUa",
         "dataType": "string"
+        
     },
 
     "OBS1": {
         "alias": "OBS",
         "dataType": "string"
+        
     },
 
     "OBS2": {
         "alias": "OBa",
         "dataType": "string"
+        
     },
 
     "OBS3": {
         "alias": "OBb",
         "dataType": "string"
+        
     },
 
     "FECHA_CUMPLI": {
         "alias": "FEc",
         "dataType": "DateTime"
+        
     },
 
     "DESTINO": {
         "alias": "DES",
         "dataType": "string"
+        
     },
 
     "DIAS_EST_ENTREGA": {
         "alias": "DIA",
         "dataType": "int"
+        
     }
 
 }

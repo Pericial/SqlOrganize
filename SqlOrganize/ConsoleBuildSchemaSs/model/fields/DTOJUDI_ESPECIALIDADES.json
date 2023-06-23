@@ -2,21 +2,25 @@
     "DTOJUD": {
         "alias": "DTO",
         "dataType": "string"
+        
     },
 
     "DEPENDENCIA": {
         "alias": "DEP",
         "dataType": "string"
+        
     },
 
     "ESPECIALIDAD": {
         "alias": "ESP",
         "dataType": "string"
+        
     },
 
     "DESCRIPCION": {
         "alias": "DES",
         "dataType": "string"
+        
     }
 
 }

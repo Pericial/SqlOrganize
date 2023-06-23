@@ -5,7 +5,7 @@
         /*
         Path a los archivos del modelo
         */
-        public string ModelPath { get; set; } = ".\\model\\";
+        public string modelPath { get; set; } = ".\\model\\";
         
         /*
         Sufijo de sobrescritura de archivos del modelo

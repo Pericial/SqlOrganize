@@ -2,235 +2,284 @@
     "TIPODOC": {
         "alias": "TIP",
         "dataType": "string"
+        
     },
 
     "NRODOC": {
         "alias": "NRO",
         "dataType": "int"
+        
     },
 
     "NROIDPEMP": {
         "alias": "NRa",
         "dataType": "int"
+        
     },
 
     "DTOJUD": {
         "alias": "DTO",
-        "dataType": "string"
+        "dataType": "string",
+        
+        "refEntityName": "DTOSJUDI",
+        "refEntityName": "DTOJUD"
     },
 
     "DEPENDENCIA": {
         "alias": "DEP",
         "dataType": "string"
+        
     },
 
     "LEGAJO": {
         "alias": "LEG",
         "dataType": "string"
+        
     },
 
     "APELLIDO": {
         "alias": "APE",
         "dataType": "string"
+        
     },
 
     "NOMBRES": {
         "alias": "NOM",
         "dataType": "string"
+        
     },
 
     "NICK": {
         "alias": "NIC",
         "dataType": "string"
+        
     },
 
     "CLAVE": {
         "alias": "CLA",
         "dataType": "string"
+        
     },
 
     "CAMPASNL": {
         "alias": "CAM",
         "dataType": "bool",
-        "default": "((0))"
+        
+        "defaultValue": "((0))"
     },
 
     "SUSPEND": {
         "alias": "SUS",
         "dataType": "bool",
-        "default": "((0))"
+        
+        "defaultValue": "((0))"
     },
 
     "SUS_DESDE": {
         "alias": "SUa",
         "dataType": "DateTime"
+        
     },
 
     "SUS_HASTA": {
         "alias": "SUb",
         "dataType": "DateTime"
+        
     },
 
     "CARGO": {
         "alias": "CAR",
         "dataType": "string"
+        
     },
 
     "NIVEL_SEGU": {
         "alias": "NIV",
-        "dataType": "int"
+        "dataType": "int",
+        
+        "refEntityName": "NIVELES",
+        "refEntityName": "NIVEL_SEGU"
     },
 
     "GRUPO": {
         "alias": "GRU",
         "dataType": "string"
+        
     },
 
     "CARACTER": {
         "alias": "CAa",
         "dataType": "string"
+        
     },
 
     "TRABAJA_EN": {
         "alias": "TRA",
         "dataType": "string"
+        
     },
 
     "EMAIL_PERSONAL": {
         "alias": "EMA",
         "dataType": "string"
+        
     },
 
     "PERITO": {
         "alias": "PER",
         "dataType": "bool"
+        
     },
 
     "TIPO_PERITO": {
         "alias": "TIa",
         "dataType": "string"
+        
     },
 
     "DE_LICENCIA": {
         "alias": "DE_",
         "dataType": "bool"
+        
     },
 
     "SANCIONADO": {
         "alias": "SAN",
         "dataType": "bool"
+        
     },
 
     "PERTENECE_A_MESA": {
         "alias": "PEa",
         "dataType": "string"
+        
     },
 
     "CANT_PERI_SEGUIDAS": {
         "alias": "CAN",
         "dataType": "int"
+        
     },
 
     "HACE_PENAL": {
         "alias": "HAC",
         "dataType": "bool"
+        
     },
 
     "HACE_CIVIL": {
         "alias": "HAa",
         "dataType": "bool"
+        
     },
 
     "HACE_LABORAL": {
         "alias": "HAb",
         "dataType": "bool"
+        
     },
 
     "HACE_CONTENCIOSO": {
         "alias": "HAc",
         "dataType": "bool"
+        
     },
 
     "SOLO_LECTURA": {
         "alias": "SOL",
         "dataType": "bool"
+        
     },
 
     "ESPECIALIDAD": {
         "alias": "ESP",
         "dataType": "string"
+        
     },
 
     "CANT_PERI_ASIG": {
         "alias": "CAb",
         "dataType": "int",
-        "default": "((0))"
+        
+        "defaultValue": "((0))"
     },
 
     "NRO_SALIDA_PERITO": {
         "alias": "NRb",
         "dataType": "int"
+        
     },
 
     "CLAVE_NUMERICA": {
         "alias": "CLa",
         "dataType": "int",
-        "default": "((0))"
+        
+        "defaultValue": "((0))"
     },
 
     "PERIODICIDAD": {
         "alias": "PEb",
         "dataType": "int",
-        "default": "((1))"
+        
+        "defaultValue": "((1))"
     },
 
     "CONTROL_PERIODICIDAD": {
         "alias": "CON",
         "dataType": "float",
-        "default": "((0))"
+        
+        "defaultValue": "((0))"
     },
 
     "CANT_PERI_ASIG_MENSUAL": {
         "alias": "CAc",
         "dataType": "int",
-        "default": "((0))"
+        
+        "defaultValue": "((0))"
     },
 
     "YA_DESIGNE": {
         "alias": "YA_",
         "dataType": "bool",
-        "default": "((0))"
+        
+        "defaultValue": "((0))"
     },
 
     "HACE_FAMILIA": {
         "alias": "HAd",
         "dataType": "bool"
+        
     },
 
     "HACE_MENORES": {
         "alias": "HAe",
         "dataType": "bool"
+        
     },
 
     "HACE_PENAL_JUVENIL": {
         "alias": "HAf",
         "dataType": "bool"
+        
     },
 
     "HACE_EXTERNO": {
         "alias": "HAg",
         "dataType": "bool"
+        
     },
 
     "HABILITADO": {
         "alias": "HAB",
         "dataType": "bool",
-        "default": "((1))"
+        
+        "defaultValue": "((1))"
     },
 
     "HACE_JUSPAZ": {
         "alias": "HAh",
         "dataType": "bool"
+        
     }
 
 }

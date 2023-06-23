@@ -2,21 +2,25 @@
     "NombreForm": {
         "alias": "Nom",
         "dataType": "string"
+        
     },
 
     "NombreComp": {
         "alias": "Noa",
         "dataType": "string"
+        
     },
 
     "Visible": {
         "alias": "Vis",
         "dataType": "bool"
+        
     },
 
     "habilitado": {
         "alias": "hab",
         "dataType": "bool"
+        
     }
 
 }
