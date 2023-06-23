@@ -54,7 +54,7 @@ namespace SqlOrganize
                         if (!entities.ContainsKey(e.Key))
                             continue;
 
-                        Utils.CopyValues(entities[e.Key], e.Value);                            
+                        CollectionUtils.CopyValues(entities[e.Key], e.Value);                            
 
                         var f = new List<string>();
                         f.AddRange(entities[e.Key].fields);

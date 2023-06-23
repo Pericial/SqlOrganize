@@ -236,7 +236,7 @@ namespace SqlOrganize
             sql += sql_where();
             sql += sql_group();
             sql += sql_having();
-            sql += sql_order();
+            sql += SqlOrder();
             sql += sql_limit();
 
             return sql;
@@ -260,7 +260,7 @@ namespace SqlOrganize
 ";
         }
 
-        protected abstract string sql_order();
+        protected abstract string SqlOrder();
 
 
         protected string sql_fields()

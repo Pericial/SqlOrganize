@@ -53,7 +53,7 @@ FETCH FIRST " + size + " ROWS ONLY";
         }
 
 
-        protected override string sql_order()
+        protected override string SqlOrder()
         {
             if (order.IsNullOrEmpty())
             {
