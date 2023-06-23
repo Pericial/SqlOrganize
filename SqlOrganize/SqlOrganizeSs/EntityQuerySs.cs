@@ -1,7 +1,7 @@
 ﻿using SqlOrganize;
 using Utils;
 using Microsoft.Data.SqlClient;
-
+using System.Data.Common;
 
 namespace SqlOrganizeSs
 {
@@ -44,6 +44,8 @@ namespace SqlOrganizeSs
             throw new NotImplementedException();
         }
 
+
+
         protected override string sql_limit()
         {
             if (size.IsNullOrEmpty()) return "";
@@ -63,6 +65,34 @@ FETCH FIRST " + size + " ROWS ONLY";
 
             return ((order.IsNullOrEmpty()) ? "ORDER BY (SELECT NULL)" : "ORDER BY " + traduce(order!)) + @"
 ";
+        }
+
+        public override DbDataReader Execute()
+        {
+            SqlConnection connection = new SqlConnection((string)db.config.connectionString);
+            connection.Open();
+            string sql = Sql();
+            SqlCommand command = new SqlCommand();
+            command.Connection = connection;
+            for (var i = 0; i < parameters.Count; i++)
+            {
+                if (parameters[i].IsList())
+                {
+                    var _parameters = (parameters[i] as List<object>).Select((x, j) => Tuple.Create($"@{i}_{j}", x));
+                    sql = sql.ReplaceFirst("@" + i.ToString(), string.Join(",", _parameters.Select(x => x.Item1)));
+                    foreach (var parameter in _parameters)
+                        command.Parameters.AddWithValue(parameter.Item1, parameter.Item2);
+                }
+                else
+                {
+                    command.Parameters.AddWithValue(i.ToString(), parameters[i]);
+                }
+            }
+
+            command.CommandText = sql;
+            command.ExecuteNonQuery();
+            return command.ExecuteReader();
+
         }
     }
 }

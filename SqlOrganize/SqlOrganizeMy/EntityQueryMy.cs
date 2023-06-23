@@ -40,6 +40,11 @@ namespace SqlOrganizeMy
             return (order.IsNullOrEmpty()) ? "" : "ORDER BY " + traduce(order!) + @"
 ";
         }
+
+        public override DbDataReader Execute()
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

@@ -1,3 +1,7 @@
+using SqlOrganize;
+using System.Data.Common;
+using Utils;
+
 namespace WinFormsAppSs
 {
     public partial class Form1 : Form
@@ -9,8 +13,9 @@ namespace WinFormsAppSs
 
         protected override void OnLoad(EventArgs e)
         {
-            sujetoBindingSource1.Add(new Sujeto() { APELLIDO = "Castañeda", NOMBRES = "Iván", FECHA_NACIM = new DateTime(1984, 09, 01), NDOC = "31073351" });
-
+            Db db = ContainerApp.db;
+            using DbDataReader reader = db.Query("SUJETOS").Size(100).Execute();
+            sujetoBindingSource1.DataSource = reader.ConvertToListOfObject<Sujeto>();
         }
 
 

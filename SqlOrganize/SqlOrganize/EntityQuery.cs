@@ -303,13 +303,16 @@ namespace SqlOrganize
             return connect + " " + value;
         }
 
+        abstract public DbDataReader Execute();
+
+
         public object Exec() { 
             switch (fetch) {
                 case "All":
                     return All();
 
-                case "Tree":
-                    return Tree();
+                case "Assoc":
+                    return Assoc();
 
                 default:
                     throw new Exception("No se encuentra definido el Fetch");
@@ -329,6 +332,12 @@ namespace SqlOrganize
         Convert the result to json with "JsonConvert.SerializeObject(data, Formatting.Indented)"
         */
         public abstract List<Dictionary<string, object>> All();
+
+        public abstract List<T> All<T>();
+
+        public abstract List<Dictionary<string, object>> Assoc();
+        public abstract List<T> Assoc<T>();
+
 
         /*
         Obtener arbol
