@@ -9,6 +9,4 @@ var c = new ConfigMy()
 };
 
 BuildSchemaMy t = new(c);
-t.Entities();
-
-Console.WriteLine("end");
+t.FileEntities();

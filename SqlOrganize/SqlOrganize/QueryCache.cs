@@ -48,11 +48,12 @@ namespace SqlOrganize
         }
 
         /*
-        Ejecuta la consulta almacena resultado en cache
+        Ejecucion recursiva de consulta
         Solo funciona con campos de configuracion.
         */
         public List<Dictionary<string, object>> ExecuteR()
         {
+
             return Query!.All();
             //Cache.Clear();
         }

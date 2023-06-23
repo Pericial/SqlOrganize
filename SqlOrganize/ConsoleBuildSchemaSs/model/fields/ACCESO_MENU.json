@@ -2,25 +2,21 @@
     "CODIGO_MENU": {
         "alias": "COD",
         "dataType": "string"
-        
     },
 
     "Sucursal": {
         "alias": "Suc",
         "dataType": "string"
-        
     },
 
     "Nro_IDP": {
         "alias": "Nro",
         "dataType": "int"
-        
     },
 
     "Codigo_Grupo": {
         "alias": "Cod",
         "dataType": "string"
-        
     }
 
 }

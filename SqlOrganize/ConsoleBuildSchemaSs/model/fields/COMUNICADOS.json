@@ -2,279 +2,233 @@
     "DTOJUDI": {
         "alias": "DTO",
         "dataType": "string"
-        
     },
 
     "SERIE": {
         "alias": "SER",
         "dataType": "string"
-        
     },
 
     "NUI": {
         "alias": "NUI",
         "dataType": "int"
-        
     },
 
     "SERIE_PERI": {
         "alias": "SEa",
         "dataType": "string"
-        
     },
 
     "NROPERI": {
         "alias": "NRO",
         "dataType": "int"
-        
     },
 
     "NRO_TAREA": {
         "alias": "NRa",
         "dataType": "int"
-        
     },
 
     "TIPO_TAREA": {
         "alias": "TIP",
         "dataType": "string"
-        
     },
 
     "FECHA_NOTA": {
         "alias": "FEC",
         "dataType": "DateTime"
-        
     },
 
     "DIRIGIDO_A": {
         "alias": "DIR",
         "dataType": "string"
-        
     },
 
     "PERITO1": {
         "alias": "PER",
         "dataType": "int"
-        
     },
 
     "PERITO2": {
         "alias": "PEa",
         "dataType": "int"
-        
     },
 
     "PERITO3": {
         "alias": "PEb",
         "dataType": "int"
-        
     },
 
     "FECHA_TAREA": {
         "alias": "FEa",
         "dataType": "DateTime"
-        
     },
 
     "HORA_TAREA": {
         "alias": "HOR",
         "dataType": "string"
-        
     },
 
     "CITADO": {
         "alias": "CIT",
         "dataType": "string"
-        
     },
 
     "MAS_DE_UN_DIA": {
         "alias": "MAS",
         "dataType": "string"
-        
     },
 
     "ESTADO": {
         "alias": "EST",
         "dataType": "string"
-        
     },
 
     "EMITIO_INCOMPARENCIA": {
         "alias": "EMI",
         "dataType": "bool"
-        
     },
 
     "FECHA_CARGA": {
         "alias": "FEb",
         "dataType": "DateTime"
-        
     },
 
     "EMP_CARGA": {
         "alias": "EMP",
         "dataType": "int"
-        
     },
 
     "FECHA_ULT_MODI": {
         "alias": "FEc",
         "dataType": "DateTime"
-        
     },
 
     "EMP_ULT_MODI": {
         "alias": "EMa",
         "dataType": "int"
-        
     },
 
     "QUIEN_CITA": {
         "alias": "QUI",
         "dataType": "string"
-        
     },
 
     "ESPECIALIDAD": {
         "alias": "ESP",
         "dataType": "string"
-        
     },
 
     "DIRIGIDO2": {
         "alias": "DIa",
         "dataType": "string"
-        
     },
 
     "CODORGA": {
         "alias": "COD",
         "dataType": "string"
-        
     },
 
     "ALOJADO_DOMICILIADO": {
         "alias": "ALO",
         "dataType": "string"
-        
     },
 
     "NO_ASISTIO": {
         "alias": "NO_",
         "dataType": "bool",
-        
         "defaultValue": "(0)"
     },
 
     "ASISTIO_1": {
         "alias": "ASI",
         "dataType": "string"
-        
     },
 
     "ASISTIO_2": {
         "alias": "ASa",
         "dataType": "string"
-        
     },
 
     "DOC_RELACIONADO": {
         "alias": "DOC",
         "dataType": "string"
-        
     },
 
     "FECHA2": {
         "alias": "FEd",
         "dataType": "DateTime"
-        
     },
 
     "HORA2": {
         "alias": "HOa",
         "dataType": "string"
-        
     },
 
     "SEGCITA_Y_O": {
         "alias": "SEG",
         "dataType": "string"
-        
     },
 
     "ENCABEZADO": {
         "alias": "ENC",
         "dataType": "string"
-        
     },
 
     "CUERPO": {
         "alias": "CUE",
         "dataType": "string"
-        
     },
 
     "FECHA3": {
         "alias": "FEe",
         "dataType": "DateTime"
-        
     },
 
     "HORA3": {
         "alias": "HOb",
         "dataType": "string"
-        
     },
 
     "ASISTIO_3": {
         "alias": "ASb",
         "dataType": "string"
-        
     },
 
     "PASE_A": {
         "alias": "PAS",
         "dataType": "string"
-        
     },
 
     "CARATULA": {
         "alias": "CAR",
         "dataType": "string"
-        
     },
 
     "PERITOS_QUE_CITAN": {
         "alias": "PEc",
         "dataType": "string"
-        
     },
 
     "SUBPERI": {
         "alias": "SUB",
         "dataType": "int"
-        
     },
 
     "DIRECCION": {
         "alias": "DIb",
         "dataType": "string"
-        
     },
 
     "ID_LOCALIDAD": {
         "alias": "ID_",
         "dataType": "int",
-        
         "defaultValue": "((0))"
     },
 
     "OBS": {
         "alias": "OBS",
         "dataType": "string"
-        
     }
 
 }

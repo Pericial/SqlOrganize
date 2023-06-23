@@ -2,49 +2,41 @@
     "CUIT": {
         "alias": "CUI",
         "dataType": "string"
-        
     },
 
     "EMPRESA": {
         "alias": "EMP",
         "dataType": "string"
-        
     },
 
     "IDPPROV": {
         "alias": "IDP",
         "dataType": "int"
-        
     },
 
     "RUBRO": {
         "alias": "RUB",
         "dataType": "string"
-        
     },
 
     "FAX": {
         "alias": "FAX",
         "dataType": "string"
-        
     },
 
     "TEL1": {
         "alias": "TEL",
         "dataType": "string"
-        
     },
 
     "TEL2": {
         "alias": "TEa",
         "dataType": "string"
-        
     },
 
     "CONTACTO": {
         "alias": "CON",
         "dataType": "string"
-        
     }
 
 }

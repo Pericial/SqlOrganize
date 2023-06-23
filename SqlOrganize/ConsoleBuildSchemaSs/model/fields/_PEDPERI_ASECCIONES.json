@@ -2,133 +2,111 @@
     "DTOJUDI": {
         "alias": "DTO",
         "dataType": "string"
-        
     },
 
     "SERIE": {
         "alias": "SER",
         "dataType": "string"
-        
     },
 
     "NUI": {
         "alias": "NUI",
         "dataType": "int"
-        
     },
 
     "SECCION": {
         "alias": "SEC",
         "dataType": "string"
-        
     },
 
     "ESPECIALIDAD": {
         "alias": "ESP",
         "dataType": "string"
-        
     },
 
     "SERIE_PERI": {
         "alias": "SEa",
         "dataType": "string"
-        
     },
 
     "NROPERI": {
         "alias": "NRO",
         "dataType": "int"
-        
     },
 
     "ESTADO": {
         "alias": "EST",
         "dataType": "string"
-        
     },
 
     "FINGRE_PERI": {
         "alias": "FIN",
         "dataType": "DateTime"
-        
     },
 
     "FFIN_PERI": {
         "alias": "FFI",
         "dataType": "DateTime"
-        
     },
 
     "EFECTOS": {
         "alias": "EFE",
         "dataType": "string"
-        
     },
 
     "NROEFECTO": {
         "alias": "NRa",
         "dataType": "string"
-        
     },
 
     "FECHA_ESTI_COBRO": {
         "alias": "FEC",
         "dataType": "DateTime"
-        
     },
 
     "HONO_REGULADO": {
         "alias": "HON",
         "dataType": "float"
-        
     },
 
     "HONO_ESTIMADO": {
         "alias": "HOa",
         "dataType": "float"
-        
     },
 
     "ESTADO_COBRO": {
         "alias": "ESa",
         "dataType": "string"
-        
     },
 
     "EMPLE_RECIBIO": {
         "alias": "EMP",
         "dataType": "int"
-        
     },
 
     "FECHA_RECIBIO": {
         "alias": "FEa",
         "dataType": "DateTime"
-        
     },
 
     "EMPLE_DIOSALIDA": {
         "alias": "EMa",
         "dataType": "int"
-        
     },
 
     "FECHA_DIOSALIDA": {
         "alias": "FEb",
         "dataType": "DateTime"
-        
     },
 
     "ENTREGO_EFECTOS": {
         "alias": "ENT",
         "dataType": "bool"
-        
     },
 
     "SUBPERI": {
         "alias": "SUB",
         "dataType": "int"
-        
     }
 
 }

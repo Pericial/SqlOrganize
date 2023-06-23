@@ -2,31 +2,26 @@
     "DTOJUDI": {
         "alias": "DTO",
         "dataType": "string"
-        
     },
 
     "SECCION": {
         "alias": "SEC",
         "dataType": "string"
-        
     },
 
     "NRO_PROCE": {
         "alias": "NRO",
         "dataType": "int"
-        
     },
 
     "DESCRIPCION_PROCE": {
         "alias": "DES",
         "dataType": "string"
-        
     },
 
     "GENERA_MOV": {
         "alias": "GEN",
         "dataType": "string"
-        
     }
 
 }

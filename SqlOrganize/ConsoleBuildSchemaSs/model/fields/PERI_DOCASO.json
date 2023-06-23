@@ -2,85 +2,71 @@
     "DTOJUDI": {
         "alias": "DTO",
         "dataType": "string"
-        
     },
 
     "SERIE": {
         "alias": "SER",
         "dataType": "string"
-        
     },
 
     "NUI": {
         "alias": "NUI",
         "dataType": "int"
-        
     },
 
     "NRODOC": {
         "alias": "NRO",
         "dataType": "int"
-        
     },
 
     "SERIE_PERI": {
         "alias": "SEa",
         "dataType": "string"
-        
     },
 
     "NROPERI": {
         "alias": "NRa",
         "dataType": "int"
-        
     },
 
     "RUTA_NOMBRE_DOC": {
         "alias": "RUT",
         "dataType": "string"
-        
     },
 
     "EXTENSION": {
         "alias": "EXT",
         "dataType": "string"
-        
     },
 
     "DESCRIPCION": {
         "alias": "DES",
         "dataType": "string"
-        
     },
 
     "SOLOLECTURA": {
         "alias": "SOL",
         "dataType": "bool"
-        
     },
 
     "F_ULT_MODI": {
         "alias": "F_U",
         "dataType": "DateTime"
-        
     },
 
     "CODEMPMODI": {
         "alias": "COD",
         "dataType": "int"
-        
     },
 
     "DOC_IMAGEN": {
         "alias": "DOC",
         "dataType": "image"
-        
     },
 
     "NROSUBPERI": {
         "alias": "NRb",
         "dataType": "int"
-        
     }
 
 }

@@ -2,319 +2,266 @@
     "id_pc": {
         "alias": "id_",
         "dataType": "string"
-        
     },
 
     "indice": {
         "alias": "ind",
         "dataType": "int"
-        
     },
 
     "Texto1": {
         "alias": "Tex",
         "dataType": "string"
-        
     },
 
     "campo1": {
         "alias": "cam",
         "dataType": "string"
-        
     },
 
     "campo2": {
         "alias": "caa",
         "dataType": "string"
-        
     },
 
     "campo3": {
         "alias": "cab",
         "dataType": "string"
-        
     },
 
     "campo4": {
         "alias": "cac",
         "dataType": "string"
-        
     },
 
     "campo5": {
         "alias": "cad",
         "dataType": "string"
-        
     },
 
     "campo6": {
         "alias": "cae",
         "dataType": "string"
-        
     },
 
     "campo7": {
         "alias": "caf",
         "dataType": "string"
-        
     },
 
     "campo8": {
         "alias": "cag",
         "dataType": "string"
-        
     },
 
     "campo9": {
         "alias": "cah",
         "dataType": "string"
-        
     },
 
     "campo10": {
         "alias": "cai",
         "dataType": "string"
-        
     },
 
     "campo11": {
         "alias": "caj",
         "dataType": "string"
-        
     },
 
     "campo12": {
         "alias": "cak",
         "dataType": "string"
-        
     },
 
     "campo13": {
         "alias": "cal",
         "dataType": "string"
-        
     },
 
     "campo14": {
         "alias": "can",
         "dataType": "string"
-        
     },
 
     "campo15": {
         "alias": "cao",
         "dataType": "string"
-        
     },
 
     "campo16": {
         "alias": "cap",
         "dataType": "string"
-        
     },
 
     "campo17": {
         "alias": "caq",
         "dataType": "string"
-        
     },
 
     "campo18": {
         "alias": "car",
         "dataType": "string"
-        
     },
 
     "campo19": {
         "alias": "cas",
         "dataType": "string"
-        
     },
 
     "campo20": {
         "alias": "cat",
         "dataType": "string"
-        
     },
 
     "campo21": {
         "alias": "cau",
         "dataType": "string"
-        
     },
 
     "campo22": {
         "alias": "cav",
         "dataType": "string"
-        
     },
 
     "campo23": {
         "alias": "caw",
         "dataType": "string"
-        
     },
 
     "campo24": {
         "alias": "cax",
         "dataType": "string"
-        
     },
 
     "campo25": {
         "alias": "cay",
         "dataType": "string"
-        
     },
 
     "campo26": {
         "alias": "caz",
         "dataType": "string"
-        
     },
 
     "campo27": {
         "alias": "cazb",
         "dataType": "string"
-        
     },
 
     "campo28": {
         "alias": "cazc",
         "dataType": "string"
-        
     },
 
     "campo29": {
         "alias": "cazd",
         "dataType": "string"
-        
     },
 
     "campo30": {
         "alias": "caze",
         "dataType": "string"
-        
     },
 
     "campo31": {
         "alias": "cazf",
         "dataType": "string"
-        
     },
 
     "campo32": {
         "alias": "cazg",
         "dataType": "string"
-        
     },
 
     "campo33": {
         "alias": "cazh",
         "dataType": "string"
-        
     },
 
     "campo34": {
         "alias": "cazi",
         "dataType": "string"
-        
     },
 
     "campo35": {
         "alias": "cazj",
         "dataType": "string"
-        
     },
 
     "campo36": {
         "alias": "cazk",
         "dataType": "string"
-        
     },
 
     "campo37": {
         "alias": "cazl",
         "dataType": "string"
-        
     },
 
     "campo38": {
         "alias": "cazm",
         "dataType": "string"
-        
     },
 
     "campo39": {
         "alias": "cazn",
         "dataType": "string"
-        
     },
 
     "campo40": {
         "alias": "cazo",
         "dataType": "string"
-        
     },
 
     "campo41": {
         "alias": "cazp",
         "dataType": "string"
-        
     },
 
     "campo42": {
         "alias": "cazq",
         "dataType": "string"
-        
     },
 
     "campo43": {
         "alias": "cazr",
         "dataType": "string"
-        
     },
 
     "campo44": {
         "alias": "cazs",
         "dataType": "string"
-        
     },
 
     "campo45": {
         "alias": "cazt",
         "dataType": "string"
-        
     },
 
     "campo46": {
         "alias": "cazu",
         "dataType": "string"
-        
     },
 
     "campo47": {
         "alias": "cazv",
         "dataType": "string"
-        
     },
 
     "campo48": {
         "alias": "cazw",
         "dataType": "string"
-        
     },
 
     "campo49": {
         "alias": "cazx",
         "dataType": "string"
-        
     },
 
     "campo50": {
         "alias": "cazy",
         "dataType": "string"
-        
     }
 
 }

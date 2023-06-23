@@ -2,13 +2,11 @@
     "NroIdPemp": {
         "alias": "Nro",
         "dataType": "int"
-        
     },
 
     "Grupo": {
         "alias": "Gru",
         "dataType": "int"
-        
     }
 
 }

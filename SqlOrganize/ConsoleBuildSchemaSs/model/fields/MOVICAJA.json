@@ -2,73 +2,61 @@
     "DTOJUDI": {
         "alias": "DTO",
         "dataType": "string"
-        
     },
 
     "CAJA_NRO": {
         "alias": "CAJ",
         "dataType": "string"
-        
     },
 
     "ID_MOV": {
         "alias": "ID_",
         "dataType": "int"
-        
     },
 
     "FECHA_MOV": {
         "alias": "FEC",
         "dataType": "DateTime"
-        
     },
 
     "IMPORTE": {
         "alias": "IMP",
         "dataType": "float"
-        
     },
 
     "SALDO_EN_CAJA": {
         "alias": "SAL",
         "dataType": "float"
-        
     },
 
     "CONCEPTO": {
         "alias": "CON",
         "dataType": "string"
-        
     },
 
     "OBS": {
         "alias": "OBS",
         "dataType": "string"
-        
     },
 
     "COD_EMP": {
         "alias": "COD",
         "dataType": "int"
-        
     },
 
     "HORA": {
         "alias": "HOR",
         "dataType": "DateTime"
-        
     },
 
     "CEUM": {
         "alias": "CEU",
         "dataType": "int"
-        
     },
 
     "HORA_MODIF": {
         "alias": "HOa",
         "dataType": "DateTime"
-        
     }
 
 }

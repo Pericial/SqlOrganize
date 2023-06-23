@@ -2,85 +2,71 @@
     "DTOJUDI": {
         "alias": "DTO",
         "dataType": "string"
-        
     },
 
     "NROIDPEMP": {
         "alias": "NRO",
         "dataType": "int"
-        
     },
 
     "NROMOV": {
         "alias": "NRa",
         "dataType": "int"
-        
     },
 
     "TIPOMOV": {
         "alias": "TIP",
         "dataType": "string"
-        
     },
 
     "FECHA_DESDE": {
         "alias": "FEC",
         "dataType": "DateTime"
-        
     },
 
     "FECHA_HASTA": {
         "alias": "FEa",
         "dataType": "DateTime"
-        
     },
 
     "NRO_RESOLUCION": {
         "alias": "NRb",
         "dataType": "string"
-        
     },
 
     "OBS": {
         "alias": "OBS",
         "dataType": "string"
-        
     },
 
     "FECHA_CARGA": {
         "alias": "FEb",
         "dataType": "DateTime"
-        
     },
 
     "CODEMP": {
         "alias": "COD",
         "dataType": "int"
-        
     },
 
     "FECHA_ULTMODI": {
         "alias": "FEc",
         "dataType": "DateTime"
-        
     },
 
     "CODEMP_MODI": {
         "alias": "COa",
         "dataType": "int"
-        
     },
 
     "CUMPLIDA": {
         "alias": "CUM",
         "dataType": "bool"
-        
     },
 
     "CUMPLIDO": {
         "alias": "CUa",
         "dataType": "bool"
-        
     }
 
 }

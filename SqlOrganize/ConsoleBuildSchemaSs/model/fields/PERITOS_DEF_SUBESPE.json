@@ -2,19 +2,16 @@
     "NroIdPEmp": {
         "alias": "Nro",
         "dataType": "int"
-        
     },
 
     "Espe": {
         "alias": "Esp",
         "dataType": "int"
-        
     },
 
     "SubEspe": {
         "alias": "Sub",
         "dataType": "int"
-        
     }
 
 }

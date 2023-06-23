@@ -2,37 +2,31 @@
     "Sucursal": {
         "alias": "Suc",
         "dataType": "string"
-        
     },
 
     "Id_Pc": {
         "alias": "Id_",
         "dataType": "string"
-        
     },
 
     "Nombre": {
         "alias": "Nom",
         "dataType": "string"
-        
     },
 
     "Descripcion": {
         "alias": "Des",
         "dataType": "string"
-        
     },
 
     "VERIFICA_IE": {
         "alias": "VER",
         "dataType": "string"
-        
     },
 
     "Pertenece_a_mesa": {
         "alias": "Per",
         "dataType": "string"
-        
     }
 
 }

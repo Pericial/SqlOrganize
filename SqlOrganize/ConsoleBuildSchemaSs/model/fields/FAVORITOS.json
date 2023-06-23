@@ -2,25 +2,21 @@
     "Codigo_Menu": {
         "alias": "Cod",
         "dataType": "string"
-        
     },
 
     "SucursalPersona": {
         "alias": "Suc",
         "dataType": "string"
-        
     },
 
     "IDP_Persona": {
         "alias": "IDP",
         "dataType": "int"
-        
     },
 
     "Imagen": {
         "alias": "Ima",
         "dataType": "int"
-        
     }
 
 }

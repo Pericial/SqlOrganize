@@ -2,61 +2,51 @@
     "DtoJud": {
         "alias": "Dto",
         "dataType": "string"
-        
     },
 
     "NroIdpEmp": {
         "alias": "Nro",
         "dataType": "int"
-        
     },
 
     "UltProv": {
         "alias": "Ult",
         "dataType": "int"
-        
     },
 
     "UltProd_N": {
         "alias": "Ula",
         "dataType": "int"
-        
     },
 
     "UltPed_S": {
         "alias": "Ulb",
         "dataType": "string"
-        
     },
 
     "UltPed_N": {
         "alias": "Ulc",
         "dataType": "int"
-        
     },
 
     "UltEmple": {
         "alias": "Uld",
         "dataType": "int"
-        
     },
 
     "Ult_NUI": {
         "alias": "Ule",
         "dataType": "int"
-        
     },
 
     "ULT_SERIE_NUI": {
         "alias": "ULT",
         "dataType": "string"
-        
     },
 
     "ULT_NOTA": {
         "alias": "ULa",
         "dataType": "int"
-        
     }
 
 }

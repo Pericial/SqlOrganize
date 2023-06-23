@@ -2,19 +2,16 @@
     "DTOJUDI": {
         "alias": "DTO",
         "dataType": "string"
-        
     },
 
     "MESA": {
         "alias": "MES",
         "dataType": "string"
-        
     },
 
     "SECCION": {
         "alias": "SEC",
         "dataType": "string"
-        
     }
 
 }

@@ -2,27 +2,22 @@
     "DTOJUD": {
         "alias": "DTO",
         "dataType": "string",
-        
-        "refEntityName": "DTOSJUDI",
         "refEntityName": "DTOJUD"
     },
 
     "NRO_CTA": {
         "alias": "NRO",
         "dataType": "string"
-        
     },
 
     "SALDO": {
         "alias": "SAL",
         "dataType": "float"
-        
     },
 
     "FECHA_SALDO": {
         "alias": "FEC",
         "dataType": "DateTime"
-        
     }
 
 }

@@ -2,175 +2,146 @@
     "TIPDOC": {
         "alias": "TIP",
         "dataType": "string"
-        
     },
 
     "NUMDOC": {
         "alias": "NUM",
         "dataType": "string"
-        
     },
 
     "APYN": {
         "alias": "APY",
         "dataType": "string"
-        
     },
 
     "LEGCON": {
         "alias": "LEG",
         "dataType": "string"
-        
     },
 
     "LEGINT": {
         "alias": "LEa",
         "dataType": "string"
-        
     },
 
     "LEGSUE": {
         "alias": "LEb",
         "dataType": "string"
-        
     },
 
     "CIUDAD": {
         "alias": "CIU",
         "dataType": "string"
-        
     },
 
     "FENAC": {
         "alias": "FEN",
         "dataType": "DateTime"
-        
     },
 
     "APORTA": {
         "alias": "APO",
         "dataType": "DateTime"
-        
     },
 
     "MARCA": {
         "alias": "MAR",
         "dataType": "string"
-        
     },
 
     "CODIGO": {
         "alias": "COD",
         "dataType": "string"
-        
     },
 
     "DEPJUD": {
         "alias": "DEP",
         "dataType": "string"
-        
     },
 
     "GRUPO": {
         "alias": "GRU",
         "dataType": "string"
-        
     },
 
     "NIVEL": {
         "alias": "NIV",
         "dataType": "string"
-        
     },
 
     "CARGO": {
         "alias": "CAR",
         "dataType": "string"
-        
     },
 
     "FUNCION": {
         "alias": "FUN",
         "dataType": "string"
-        
     },
 
     "NOMINA": {
         "alias": "NOM",
         "dataType": "string"
-        
     },
 
     "LLAMADA": {
         "alias": "LLA",
         "dataType": "string"
-        
     },
 
     "NACION": {
         "alias": "NAC",
         "dataType": "string"
-        
     },
 
     "NROCARGO": {
         "alias": "NRO",
         "dataType": "string"
-        
     },
 
     "CONTRATO": {
         "alias": "CON",
         "dataType": "string"
-        
     },
 
     "AUDIT": {
         "alias": "AUD",
         "dataType": "DateTime"
-        
     },
 
     "NUMCAR": {
         "alias": "NUa",
         "dataType": "string"
-        
     },
 
     "SEX": {
         "alias": "SEX",
         "dataType": "string"
-        
     },
 
     "NUMERO": {
         "alias": "NUb",
         "dataType": "string"
-        
     },
 
     "TRABAJA": {
         "alias": "TRA",
         "dataType": "string"
-        
     },
 
     "OFICINA": {
         "alias": "OFI",
         "dataType": "string"
-        
     },
 
     "DOMIC": {
         "alias": "DOM",
         "dataType": "string"
-        
     },
 
     "TRABAJADJ": {
         "alias": "TRa",
         "dataType": "string"
-        
     }
 
 }

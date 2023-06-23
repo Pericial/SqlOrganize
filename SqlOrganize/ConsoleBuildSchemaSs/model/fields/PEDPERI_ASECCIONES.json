@@ -2,250 +2,207 @@
     "DTOJUDI": {
         "alias": "DTO",
         "dataType": "string",
-        
-        "refEntityName": "PEDPERI",
         "refEntityName": "DTOJUDI"
     },
 
     "SERIE": {
         "alias": "SER",
         "dataType": "string",
-        
-        "refEntityName": "PEDPERI",
         "refEntityName": "SERIE"
     },
 
     "NUI": {
         "alias": "NUI",
         "dataType": "int",
-        
-        "refEntityName": "PEDPERI",
         "refEntityName": "NUI"
     },
 
     "SECCION": {
         "alias": "SEC",
         "dataType": "string"
-        
     },
 
     "ESPECIALIDAD": {
         "alias": "ESP",
         "dataType": "string"
-        
     },
 
     "SERIE_PERI": {
         "alias": "SEa",
         "dataType": "string"
-        
     },
 
     "NROPERI": {
         "alias": "NRO",
         "dataType": "int"
-        
     },
 
     "ESTADO": {
         "alias": "EST",
         "dataType": "string"
-        
     },
 
     "FINGRE_PERI": {
         "alias": "FIN",
         "dataType": "DateTime"
-        
     },
 
     "FFIN_PERI": {
         "alias": "FFI",
         "dataType": "DateTime"
-        
     },
 
     "EFECTOS": {
         "alias": "EFE",
         "dataType": "string"
-        
     },
 
     "NROEFECTO": {
         "alias": "NRa",
         "dataType": "string"
-        
     },
 
     "FECHA_ESTI_COBRO": {
         "alias": "FEC",
         "dataType": "DateTime"
-        
     },
 
     "HONO_REGULADO": {
         "alias": "HON",
         "dataType": "float"
-        
     },
 
     "HONO_ESTIMADO": {
         "alias": "HOa",
         "dataType": "float"
-        
     },
 
     "ESTADO_COBRO": {
         "alias": "ESa",
         "dataType": "string"
-        
     },
 
     "EMPLE_RECIBIO": {
         "alias": "EMP",
         "dataType": "int"
-        
     },
 
     "FECHA_RECIBIO": {
         "alias": "FEa",
         "dataType": "DateTime"
-        
     },
 
     "EMPLE_DIOSALIDA": {
         "alias": "EMa",
         "dataType": "int"
-        
     },
 
     "FECHA_DIOSALIDA": {
         "alias": "FEb",
         "dataType": "DateTime"
-        
     },
 
     "ENTREGO_EFECTOS": {
         "alias": "ENT",
         "dataType": "bool"
-        
     },
 
     "TIPO_PERICIA": {
         "alias": "TIP",
         "dataType": "string"
-        
     },
 
     "SUBPERI": {
         "alias": "SUB",
         "dataType": "int",
-        
         "defaultValue": "((1))"
     },
 
     "FOJA_H": {
         "alias": "FOJ",
         "dataType": "int"
-        
     },
 
     "FOJA_D": {
         "alias": "FOa",
         "dataType": "int"
-        
     },
 
     "BIBLIORATO": {
         "alias": "BIB",
         "dataType": "string"
-        
     },
 
     "NRO_SALIDA_PERITO": {
         "alias": "NRb",
         "dataType": "int"
-        
     },
 
     "NRODVD": {
         "alias": "NRc",
         "dataType": "int"
-        
     },
 
     "FECHA_CARGA": {
         "alias": "FEc",
         "dataType": "DateTime",
-        
         "defaultValue": "(getdate())"
     },
 
     "ESTADO_EFECTOS": {
         "alias": "ESb",
         "dataType": "string",
-        
         "defaultValue": "('')"
     },
 
     "NRO_INGRESO": {
         "alias": "NRd",
         "dataType": "int"
-        
     },
 
     "FECHA_247": {
         "alias": "FEd",
         "dataType": "DateTime"
-        
     },
 
     "HORA_247": {
         "alias": "HOR",
         "dataType": "string"
-        
     },
 
     "FECHA_SALIDA_SEC": {
         "alias": "FEe",
         "dataType": "DateTime"
-        
     },
 
     "FECHA_INGRESO_SEC": {
         "alias": "FEf",
         "dataType": "DateTime"
-        
     },
 
     "ULT_CAMBIO_ESTADO": {
         "alias": "ULT",
         "dataType": "DateTime"
-        
     },
 
     "FECHA_DERIV": {
         "alias": "FEg",
         "dataType": "DateTime"
-        
     },
 
     "ORG_DERIV": {
         "alias": "ORG",
         "dataType": "string"
-        
     },
 
     "LOCAL_CABECERA": {
         "alias": "LOC",
         "dataType": "string"
-        
     },
 
     "FECHA_LIMITE_URG": {
         "alias": "FEh",
         "dataType": "DateTime"
-        
     }
 
 }

@@ -13,15 +13,15 @@ var db = new DbSs(config);
 
 var query = db.Query("ORGANISMOS").
 Page(1).
-Size(10);
+Size(10).
+Fetch("All");
 
 
-Console.WriteLine(query.Sql());
-
-/*QueryCache qc = new(query);
-var data = qc.ExecuteR();
-data = qc.ExecuteR();
-
+QueryCache qc = new(query);
+var data = qc.Execute();
+data = qc.Execute();
+System.Console.WriteLine(data);
+/*
 query = db.Query("SUJETOS").
 FieldsAs("$APELLIDO, $NOMBRES").
 Where("CAST($FECHA_CARGA AS DATE) = @0 AND $APELLIDO IN (@1)").

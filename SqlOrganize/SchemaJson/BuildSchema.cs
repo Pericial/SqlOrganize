@@ -189,14 +189,11 @@ namespace SchemaJson
                     file += @"    """ + f.COLUMN_NAME + @""": {
         ""alias"": """ + f.Alias + @""",
         ""dataType"": """ + f.DataType + @""",
-        
 ";
                 if (!f.COLUMN_DEFAULT.IsNullOrEmpty())
                     file += @"        ""defaultValue"": """ + f.COLUMN_DEFAULT + @""",
 ";
-                if(!f.REFERENCED_TABLE_NAME.IsNullOrEmpty())
-                    file += @"        ""refEntityName"": """ + f.REFERENCED_TABLE_NAME + @""",
-";
+            
                  if (!f.REFERENCED_COLUMN_NAME.IsNullOrEmpty())
                     file += @"        ""refEntityName"": """ + f.REFERENCED_COLUMN_NAME + @""",
 ";

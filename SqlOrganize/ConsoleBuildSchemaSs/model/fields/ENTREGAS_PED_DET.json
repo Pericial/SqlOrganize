@@ -2,65 +2,51 @@
     "DTOJUD": {
         "alias": "DTO",
         "dataType": "string",
-        
-        "refEntityName": "ENTREGAS_PED",
         "refEntityName": "DTOJUD"
     },
 
     "FECHA_PEDIDO": {
         "alias": "FEC",
         "dataType": "DateTime",
-        
-        "refEntityName": "ENTREGAS_PED",
         "refEntityName": "FECHA_PEDIDO"
     },
 
     "SERIEPED": {
         "alias": "SER",
         "dataType": "string",
-        
-        "refEntityName": "ENTREGAS_PED",
         "refEntityName": "SERIEPED"
     },
 
     "NROPED": {
         "alias": "NRO",
         "dataType": "int",
-        
-        "refEntityName": "ENTREGAS_PED",
         "refEntityName": "NROPED"
     },
 
     "ORDEN_PROVISION": {
         "alias": "ORD",
         "dataType": "string",
-        
-        "refEntityName": "ENTREGAS_PED",
         "refEntityName": "ORDEN_PROVISION"
     },
 
     "ITEM": {
         "alias": "ITE",
         "dataType": "int"
-        
     },
 
     "PRECIO_UNI": {
         "alias": "PRE",
         "dataType": "float"
-        
     },
 
     "CANT_ENTRE": {
         "alias": "CAN",
         "dataType": "float"
-        
     },
 
     "OBSITEM": {
         "alias": "OBS",
         "dataType": "string"
-        
     }
 
 }

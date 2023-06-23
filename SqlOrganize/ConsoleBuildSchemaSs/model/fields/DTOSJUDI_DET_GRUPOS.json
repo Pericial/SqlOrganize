@@ -2,19 +2,16 @@
     "RID": {
         "alias": "RID",
         "dataType": "string"
-        
     },
 
     "ID_GRUPO": {
         "alias": "ID_",
         "dataType": "int"
-        
     },
 
     "GRUPO": {
         "alias": "GRU",
         "dataType": "string"
-        
     }
 
 }

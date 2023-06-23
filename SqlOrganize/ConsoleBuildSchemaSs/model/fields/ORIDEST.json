@@ -2,37 +2,31 @@
     "COD_OD": {
         "alias": "COD",
         "dataType": "string"
-        
     },
 
     "COD_IND": {
         "alias": "COa",
         "dataType": "string"
-        
     },
 
     "COD_SUP": {
         "alias": "COb",
         "dataType": "string"
-        
     },
 
     "NIVEL": {
         "alias": "NIV",
         "dataType": "int"
-        
     },
 
     "NOMBRE": {
         "alias": "NOM",
         "dataType": "string"
-        
     },
 
     "SUBNIVELES": {
         "alias": "SUB",
         "dataType": "bool",
-        
         "defaultValue": "(0)"
     }
 

@@ -2,19 +2,16 @@
     "CODI": {
         "alias": "COD",
         "dataType": "string"
-        
     },
 
     "DESCR": {
         "alias": "DES",
         "dataType": "string"
-        
     },
 
     "DEPJUD": {
         "alias": "DEP",
         "dataType": "string"
-        
     }
 
 }

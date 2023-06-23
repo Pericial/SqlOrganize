@@ -2,118 +2,94 @@
     "DTOJUD": {
         "alias": "DTO",
         "dataType": "string",
-        
-        "refEntityName": "PEDIDOS",
         "refEntityName": "DTOJUD"
     },
 
     "FECHA_PEDIDO": {
         "alias": "FEC",
         "dataType": "DateTime",
-        
-        "refEntityName": "PEDIDOS",
         "refEntityName": "FECHA_PEDIDO"
     },
 
     "SERIEPED": {
         "alias": "SER",
         "dataType": "string",
-        
-        "refEntityName": "PEDIDOS",
         "refEntityName": "SERIEPED"
     },
 
     "NROPED": {
         "alias": "NRO",
         "dataType": "int",
-        
-        "refEntityName": "PEDIDOS",
         "refEntityName": "NROPED"
     },
 
     "ITEM": {
         "alias": "ITE",
         "dataType": "int"
-        
     },
 
     "CANT": {
         "alias": "CAN",
         "dataType": "float"
-        
     },
 
     "DJPROD": {
         "alias": "DJP",
         "dataType": "string",
-        
-        "refEntityName": "PRODUCTOS",
         "refEntityName": "DTOJUD"
     },
 
     "CODPROD": {
         "alias": "COD",
         "dataType": "int",
-        
-        "refEntityName": "PRODUCTOS",
         "refEntityName": "CODPROD"
     },
 
     "OBSITEM": {
         "alias": "OBS",
         "dataType": "string"
-        
     },
 
     "CANT_ENTRE": {
         "alias": "CAa",
         "dataType": "float",
-        
         "defaultValue": "(0)"
     },
 
     "ESTADO": {
         "alias": "EST",
         "dataType": "string",
-        
-        "refEntityName": "TABLAS",
         "refEntityName": "REFERENCIA"
     },
 
     "PRODFLISTA": {
         "alias": "PRO",
         "dataType": "string"
-        
     },
 
     "FLISTA": {
         "alias": "FLI",
         "dataType": "bool"
-        
     },
 
     "MARCA1": {
         "alias": "MAR",
         "dataType": "int"
-        
     },
 
     "MARCA2": {
         "alias": "MAa",
         "dataType": "int"
-        
     },
 
     "MARCA3": {
         "alias": "MAb",
         "dataType": "int"
-        
     },
 
     "O_SIMILAR": {
         "alias": "O_S",
         "dataType": "bool",
-        
         "defaultValue": "(1)"
     }
 

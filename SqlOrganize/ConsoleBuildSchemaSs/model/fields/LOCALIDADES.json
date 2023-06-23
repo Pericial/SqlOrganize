@@ -2,37 +2,31 @@
     "CP": {
         "alias": "CP",
         "dataType": "string"
-        
     },
 
     "id_partido": {
         "alias": "id_",
         "dataType": "int"
-        
     },
 
     "Id_localidad": {
         "alias": "Id_",
         "dataType": "int"
-        
     },
 
     "Localidad": {
         "alias": "Loc",
         "dataType": "string"
-        
     },
 
     "REGISTRO_OFICIAL": {
         "alias": "REG",
         "dataType": "bool"
-        
     },
 
     "DTOJUDI": {
         "alias": "DTO",
         "dataType": "string"
-        
     }
 
 }

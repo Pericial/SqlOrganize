@@ -2,13 +2,11 @@
     "CodCartucho": {
         "alias": "Cod",
         "dataType": "string"
-        
     },
 
     "CodImpre": {
         "alias": "Coa",
         "dataType": "string"
-        
     }
 
 }

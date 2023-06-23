@@ -2,210 +2,176 @@
     "DTOJUDI": {
         "alias": "DTO",
         "dataType": "string"
-        
     },
 
     "SERIE": {
         "alias": "SER",
         "dataType": "string"
-        
     },
 
     "NUI": {
         "alias": "NUI",
         "dataType": "int"
-        
     },
 
     "SERIE_PERI": {
         "alias": "SEa",
         "dataType": "string"
-        
     },
 
     "NROPERI": {
         "alias": "NRO",
         "dataType": "int"
-        
     },
 
     "NROMOV": {
         "alias": "NRa",
         "dataType": "int"
-        
     },
 
     "FECHA_MOV": {
         "alias": "FEC",
         "dataType": "DateTime"
-        
     },
 
     "FECHA_CARGA": {
         "alias": "FEa",
         "dataType": "DateTime"
-        
     },
 
     "DETALLE": {
         "alias": "DET",
         "dataType": "string"
-        
     },
 
     "CODEMPLE": {
         "alias": "COD",
         "dataType": "int"
-        
     },
 
     "FULTMOD": {
         "alias": "FUL",
         "dataType": "DateTime"
-        
     },
 
     "CODEMPLEMOD": {
         "alias": "COa",
         "dataType": "int"
-        
     },
 
     "TIPO_MOV": {
         "alias": "TIP",
         "dataType": "string"
-        
     },
 
     "NRODOC": {
         "alias": "NRb",
         "dataType": "int"
-        
     },
 
     "ORIGENMOV": {
         "alias": "ORI",
         "dataType": "string"
-        
     },
 
     "ORI_O_DEST": {
         "alias": "ORa",
         "dataType": "string"
-        
     },
 
     "DTOJUDI_OD": {
         "alias": "DTa",
         "dataType": "string"
-        
     },
 
     "CODORG_OD": {
         "alias": "COb",
         "dataType": "string"
-        
     },
 
     "DE_SEC": {
         "alias": "DE_",
         "dataType": "string"
-        
     },
 
     "A_SEC": {
         "alias": "A_S",
         "dataType": "string"
-        
     },
 
     "REQ_CONF": {
         "alias": "REQ",
         "dataType": "bool"
-        
     },
 
     "HORA_CONF": {
         "alias": "HOR",
         "dataType": "DateTime"
-        
     },
 
     "EMPLE_CONF": {
         "alias": "EMP",
         "dataType": "int"
-        
     },
 
     "SUBPERI": {
         "alias": "SUB",
         "dataType": "int",
-        
         "defaultValue": "((1))"
     },
 
     "DESTINATARIO": {
         "alias": "DES",
         "dataType": "string"
-        
     },
 
     "PC_ALTA": {
         "alias": "PC_",
         "dataType": "string"
-        
     },
 
     "PC_ULT_MODI": {
         "alias": "PCa",
         "dataType": "string"
-        
     },
 
     "BORRADO": {
         "alias": "BOR",
         "dataType": "bool",
-        
         "defaultValue": "((0))"
     },
 
     "FECHA_BORRADO": {
         "alias": "FEb",
         "dataType": "DateTime",
-        
         "defaultValue": "(getdate())"
     },
 
     "NOTIF_ELEC": {
         "alias": "NOT",
         "dataType": "bool",
-        
         "defaultValue": "((0))"
     },
 
     "EMPLE_BORRO": {
         "alias": "EMa",
         "dataType": "int"
-        
     },
 
     "PC_BORRO": {
         "alias": "PCb",
         "dataType": "string"
-        
     },
 
     "VERIFICO_JEFATURA": {
         "alias": "VER",
         "dataType": "bool",
-        
         "defaultValue": "((0))"
     },
 
     "HORA_CONF_SALIDA": {
         "alias": "HOa",
         "dataType": "DateTime"
-        
     }
 
 }
