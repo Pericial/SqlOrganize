@@ -1,4 +1,6 @@
-﻿namespace SqlOrganize
+﻿using Utils;
+
+namespace SqlOrganize
 {
     public class EntityTools
     {
@@ -18,8 +20,8 @@
         {
             List<string> fieldNamesR = new();
 
-            if(db.relations.ContainsKey(entityName))
-                foreach((string fieldId, EntityRel er) in db.relations[entityName])
+            if(!db.Entity(entityName).relations.IsNullOrEmpty())
+                foreach((string fieldId, EntityRel er) in db.Entity(entityName).relations)
                     foreach(string fieldName in db.FieldNames(er.refEntityName))
                         fieldNamesR.Add(fieldId + "-" + fieldName);
 

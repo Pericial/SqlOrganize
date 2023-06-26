@@ -137,26 +137,34 @@ namespace SchemaJson
             foreach(Table t in Tables)
 
             {
-                file += @"    """ + t.Name + @""": {
-        ""name"": """ + t.Name + @""",
-        ""alias"": """ + t.Alias + @""",
-        ""fields"": [""" + String.Join("\", \"", t.Fields) + @"""],
+                file += @"  """ + t.Name + @""": {
+    ""name"": """ + t.Name + @""",
+    ""alias"": """ + t.Alias + @""",
+    ""fields"": [""" + String.Join("\", \"", t.Fields) + @"""],
 ";
                 if(t.Pk is not null) 
-                    file += @"        ""pk"": """ + t.Pk + @""",
+                    file += @"    ""pk"": """ + t.Pk + @""",
 ";
                 if (t.Fk.Count >  0)
-                    file += @"        ""fk"": [""" + String.Join("\", \"", t.Fk) + @"""],
+                    file += @"    ""fk"": [""" + String.Join("\", \"", t.Fk) + @"""],
 ";
                 if (t.Unique.Count > 0)
-                    file += @"        ""unique"": [""" + String.Join("\", \"", t.Unique) + @"""],
+                    file += @"    ""unique"": [""" + String.Join("\", \"", t.Unique) + @"""],
 ";
                 if (t.UniqueMultiple.Count > 0)
-                    file += @"        ""uniqueMultiple"": [""" + String.Join("\", \"", t.UniqueMultiple) + @"""],
+                    file += @"    ""uniqueMultiple"": [""" + String.Join("\", \"", t.UniqueMultiple) + @"""],
 ";
 
+                var contentAux = ContentTree(t);
+                if (!contentAux.IsNullOrEmpty())
+                    file += contentAux;
+
+                contentAux = ContentRelations(t);
+                if (!contentAux.IsNullOrEmpty())
+                    file += contentAux;
+
                 file = file.RemoveLastIndex(',');
-                file += @"    },
+                file += @"  },
 
 ";
 
@@ -216,6 +224,30 @@ namespace SchemaJson
                 File.WriteAllText(Config.path + "fields/" + t.Name + ".json", file);
             }
 
+        }
+
+
+        public string ContentTree(Table t)
+        {
+            if (t.Tree.IsNullOrEmpty()) return "";
+            string content = @"    ""tree"": {
+" + FileTreeRecursive(t.Tree, "      ");
+            content += @"    },
+";
+            //content = content.RemoveLastIndex(',');
+            return content;
+        }
+
+        public string ContentRelations(Table t)
+        {
+            if (t.Tree.IsNullOrEmpty()) return "";
+            string content = @"    ""relations"": {
+" + FileRelationsRecursive(t.Tree, "      ");
+            content = content.RemoveLastIndex(',');
+
+            content += @"    },
+";
+            return content;
         }
 
 

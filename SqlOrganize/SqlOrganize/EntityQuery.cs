@@ -171,8 +171,8 @@ namespace SqlOrganize
         protected string SqlJoin()
         {
             string sql = "";
-            if (db.tree.ContainsKey(entityName))
-                sql += SqlJoinFk(db.tree[entityName], "");
+            if (db.Entity(entityName).tree.IsNullOrEmpty())
+                sql += SqlJoinFk(db.Entity(entityName).tree!, "");
             return sql;
         }
 

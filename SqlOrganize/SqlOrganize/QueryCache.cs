@@ -9,14 +9,13 @@ namespace SqlOrganize
     */
     public class QueryCache
     {
-        public Db? Db { get; }
-        public string EntityName { get; }
-        public object? Ids { get; }
+        public Db Db { get; }
         public static MemoryCache Cache { get; set; } = new MemoryCache(new MemoryCacheOptions());
 
-        public QueryCache (Db db)
+        public QueryCache (Db db, MemoryCache cache)
         {
-            Db = db;
+            Db = db;           
+            Cache = cache;
         }
 
         /*
@@ -43,11 +42,45 @@ namespace SqlOrganize
             return result;
         }
 
-        public List<T> ListObject<T>(EntityQuery query) where T : class, new()
+        public List<Dictionary<string,object>> ListDict(string entityName, params object[] ids)
         {
-            return query!.ListObject<T>();
-            //Todo verificar si esta en cache, verificar si query posee campos unicos
+            ids = ids.Distinct().ToArray();
+
+            List<Dictionary<string, object>> response = new(ids.Length); //respuesta que sera devuelta
+
+            List<object> searchIds = new(); //ids que no se encuentran en cache y deben ser buscados
+
+            for(var i = 0; i < ids.Length; i++)
+            {
+                object? data = null;
+                if (Cache.TryGetValue(entityName + ids[i], out data))
+                {
+                    response.Insert(0, (Dictionary<string, object>)data!);
+                }else
+                {
+                    response.Insert(0, null);
+                    searchIds.Insert(0, ids[i]);
+                }
+            }
+
+            if (searchIds.Count == 0) return response;
+
+            List<Dictionary<string, object>> rows = Db.Query(entityName).Where("$id = @0").Parameters(searchIds).ListDict<object>();
+
+            foreach(Dictionary<string, object> row in rows)
+            {
+
+            }
+
+
+
+
+
+
+
         }
+
+        public List
 
 
     }

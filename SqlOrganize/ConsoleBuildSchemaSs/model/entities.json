@@ -1,935 +1,1378 @@
 {
-    "PEDIDOS_DET": {
-        "name": "PEDIDOS_DET",
-        "alias": "PEDI",
-        "fields": ["DTOJUD", "FECHA_PEDIDO", "SERIEPED", "NROPED", "ITEM", "CANT", "DJPROD", "CODPROD", "OBSITEM", "CANT_ENTRE", "ESTADO", "PRODFLISTA", "FLISTA", "MARCA1", "MARCA2", "MARCA3", "O_SIMILAR"],
-        "fk": ["DTOJUD", "FECHA_PEDIDO", "SERIEPED", "NROPED", "DJPROD", "CODPROD", "ESTADO"],
-        "uniqueMultiple": ["DTOJUD", "FECHA_PEDIDO", "SERIEPED", "NROPED", "ITEM"]
-    },
-
-    "DB_ACT_CONGRUENCIAS": {
-        "name": "DB_ACT_CONGRUENCIAS",
-        "alias": "DB_A",
-        "fields": ["CODIGO_INSTR", "INSTRUCCION_SQL", "TIPO", "FECHA", "TEMA"],
-        "pk": "CODIGO_INSTR"
-    },
-
-    "HONORARIOS_FUEROS": {
-        "name": "HONORARIOS_FUEROS",
-        "alias": "HONO",
-        "fields": ["CODFUE", "DESCRIPCION"],
-        "pk": "CODFUE"
-    },
-
-    "ESTADISTICA_SALDOS": {
-        "name": "ESTADISTICA_SALDOS",
-        "alias": "ESTA",
-        "fields": ["DTOJUDI", "ANIO", "MES", "FUERO", "PERITO", "SALDO_ANU", "SALDO_COL", "SALDO_COLAB", "SALDO_DSE", "SALDO_DERIV", "SALDO_PSEDEV", "SALDO_DCS", "SALDO_FINCOL", "SALDO_FINDERI", "SALDO_FIN", "SALDO_IMP", "SALDO_PAR", "SALDO_PEN", "SALDO_PSE", "SALDO_DEV", "SALDO_REC", "SALDO_RP", "SALDO_SS", "CERRADO", "EMPLE_CERRO", "F_CIERRE", "ASIGNADAS", "PROD_TOTAL", "PROD_INGRE_MES", "PROD_INGRE_6MESES", "PROD_CONJ_MES", "DEV_FALTAELEM_MES", "PEND_TOT_FINPERIODO", "PEND_SINELEM_FINPERIODO", "PEND_SINELEM_6MESES", "EN_COND_DE_DICTAMINAR", "PED_COLAB", "INFORME_PED_COLAB", "DESISTIDAS", "ANULADAS", "RECHAZADAS", "DEV_CIERRE_SEC", "DERIVADAS", "IMPUGNADAS", "PEND_CONELEM_TOTAL", "EEE_TOTAL", "INC_TOTAL", "SUS_TOTAL", "SUS_PERIODO", "ACL_FINPERIODO", "INFACL_FINPERIODO"],
-        "uniqueMultiple": ["DTOJUDI", "ANIO", "MES", "FUERO", "PERITO"]
-    },
-
-    "DTOSJUDI_DET_TIPOSPERI": {
-        "name": "DTOSJUDI_DET_TIPOSPERI",
-        "alias": "DTOS",
-        "fields": ["RID", "ID_TIPOPERI", "TIPOPERI", "CODIGO", "CANT_PERI_IGUAL_UNA_PERI"],
-        "uniqueMultiple": ["RID", "ID_TIPOPERI"]
-    },
-
-    "RELA_MESA_SEC": {
-        "name": "RELA_MESA_SEC",
-        "alias": "RELA",
-        "fields": ["DTOJUDI", "MESA", "SECCION"],
-        "uniqueMultiple": ["DTOJUDI", "MESA", "SECCION"]
-    },
-
-    "MARCAS": {
-        "name": "MARCAS",
-        "alias": "MARC",
-        "fields": ["MARCA", "CODMARCA"],
-        "pk": "MARCA",
-        "unique": ["CODMARCA"]
-    },
-
-    "ORGANISMOS": {
-        "name": "ORGANISMOS",
-        "alias": "ORGA",
-        "fields": ["DTOJUDI", "CODORIGEN", "CARACTER", "FUERO", "TIPO_ORGANISMO", "NRO_ORGANISMO", "NOMBRE", "CALLE", "NUMERO", "ENTRE", "TELE1", "TELE2", "TELE3", "FAX", "LOCALIDAD", "CP", "ORIGEN", "TITULAR", "DESC_CORTA", "REGISTRO_OFICIAL"],
-        "fk": ["DTOJUDI", "FUERO", "TIPO_ORGANISMO"],
-        "uniqueMultiple": ["DTOJUDI", "CODORIGEN"]
-    },
-
-    "ST_ImpreCartu_Marcas": {
-        "name": "ST_ImpreCartu_Marcas",
-        "alias": "ST_I",
-        "fields": ["CODMARCA", "IMP_CAR", "DESCRIPCION"]
-    },
-
-    "PROVEEDORES": {
-        "name": "PROVEEDORES",
-        "alias": "PROV",
-        "fields": ["CUIT", "EMPRESA", "IDPPROV", "RUBRO", "FAX", "TEL1", "TEL2", "CONTACTO"],
-        "pk": "EMPRESA",
-        "unique": ["IDPPROV"]
-    },
-
-    "DTOSJUDI_DET": {
-        "name": "DTOSJUDI_DET",
-        "alias": "DTOa",
-        "fields": ["DTOJUD", "DEPENDENCIA", "CODIGO", "DESCRIPCION", "TIPO_DEPEN", "RESP_PEDIDOS", "RECIBE_PERICIAS", "ASIG_AUTO_PERITO", "DESIGN_EN_SECCION", "RID", "DISCRIMINA_TIPO_PERICIA", "IMP_RECI_MOVI", "IMP_RECI_SALIDA", "IMP_NOTA_DESIG", "DESIGNACION_PORFUERO", "NRO_BOLILLERO"],
-        "fk": ["DTOJUD"],
-        "uniqueMultiple": ["DTOJUD", "DEPENDENCIA", "CODIGO"]
-    },
-
-    "_PEDPERI": {
-        "name": "_PEDPERI",
-        "alias": "_PED",
-        "fields": ["DTOJUDI", "SERIE", "NUI", "MESA", "IDP_ACT", "IDP_DEM", "CODCARAT", "DJORI", "CODLOCAL", "FUERO", "ORGANISMO", "JUEZ_FISCAL", "INTERVIENE_ORG", "F_INGRESO", "F_EGRESO", "CODEMP_CARGO", "HORA_CARGA", "F_ULTMODI", "CODEMP_UM", "NRONOTA", "NROEFECTO", "COMI_MORGUE", "ORG_CoM", "OBS", "NROASO_DEL_ORIGEN", "NRO_AUTOPSIA", "TIPO_INGRESO", "DETALLE_INGRESO", "ORI_ING_DIR_INTERNO", "PASA_A_MESA", "PERITO_ACTOR", "PERITO_DEMAN", "RESIDUAL"]
-    },
-
-    "PROVEEDORES_EMAILS": {
-        "name": "PROVEEDORES_EMAILS",
-        "alias": "PROa",
-        "fields": ["nroidpprov", "Email", "referencia"],
-        "fk": ["nroidpprov"],
-        "uniqueMultiple": ["nroidpprov", "Email"]
-    },
-
-    "_PEDPERI_ASECCIONES": {
-        "name": "_PEDPERI_ASECCIONES",
-        "alias": "_PEa",
-        "fields": ["DTOJUDI", "SERIE", "NUI", "SECCION", "ESPECIALIDAD", "SERIE_PERI", "NROPERI", "ESTADO", "FINGRE_PERI", "FFIN_PERI", "EFECTOS", "NROEFECTO", "FECHA_ESTI_COBRO", "HONO_REGULADO", "HONO_ESTIMADO", "ESTADO_COBRO", "EMPLE_RECIBIO", "FECHA_RECIBIO", "EMPLE_DIOSALIDA", "FECHA_DIOSALIDA", "ENTREGO_EFECTOS", "SUBPERI"]
-    },
-
-    "_PEDPERI_DOCINGRE": {
-        "name": "_PEDPERI_DOCINGRE",
-        "alias": "_PEb",
-        "fields": ["DTOJUDI", "SERIE", "NUI", "NRODOC", "COD_DOC_INGRE", "FECHA_INGRE", "DETALLE_DOCINGRE", "ESTA_EN_SEC", "SUBPERI"]
-    },
-
-    "PERI_DOCASO": {
-        "name": "PERI_DOCASO",
-        "alias": "PERI",
-        "fields": ["DTOJUDI", "SERIE", "NUI", "NRODOC", "SERIE_PERI", "NROPERI", "RUTA_NOMBRE_DOC", "EXTENSION", "DESCRIPCION", "SOLOLECTURA", "F_ULT_MODI", "CODEMPMODI", "DOC_IMAGEN", "NROSUBPERI"],
-        "uniqueMultiple": ["DTOJUDI", "SERIE", "NUI", "NRODOC"]
-    },
-
-    "SUJETOS_RELACIONADOS": {
-        "name": "SUJETOS_RELACIONADOS",
-        "alias": "SUJE",
-        "fields": ["DJ_SUJETO", "IDP_SUJETO", "DJ_SUJRELA", "IDP_RELACIONADO"]
-    },
-
-    "MEDIDAS": {
-        "name": "MEDIDAS",
-        "alias": "MEDI",
-        "fields": ["MEDIDA", "CODMEDIDA"],
-        "pk": "MEDIDA",
-        "unique": ["CODMEDIDA"]
-    },
-
-    "_PEDPERI_NROSASO": {
-        "name": "_PEDPERI_NROSASO",
-        "alias": "_PEc",
-        "fields": ["DTOJUDI", "SERIE", "NUI", "NRO_ASO", "REFERENCIA", "SUBPERI"]
-    },
-
-    "_PEDPERI_PERITOS": {
-        "name": "_PEDPERI_PERITOS",
-        "alias": "_PEd",
-        "fields": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "PERITO", "FECHA_DESIG", "OBS", "SUBPERI"]
-    },
-
-    "RUBROS": {
-        "name": "RUBROS",
-        "alias": "RUBR",
-        "fields": ["RUBRO", "CODRUBRO"],
-        "pk": "RUBRO",
-        "unique": ["CODRUBRO"]
-    },
-
-    "_PERI_DOCASO": {
-        "name": "_PERI_DOCASO",
-        "alias": "_PER",
-        "fields": ["DTOJUDI", "SERIE", "NUI", "NRODOC", "SERIE_PERI", "NROPERI", "RUTA_NOMBRE_DOC", "SOLOLECTURA", "F_ULT_MODI", "CODEMPMODI", "SUBPERI"]
-    },
-
-    "PERITOS_DEF_TIPOSPERICIA": {
-        "name": "PERITOS_DEF_TIPOSPERICIA",
-        "alias": "PERa",
-        "fields": ["NroIdPEmp", "Id_Pericia"],
-        "uniqueMultiple": ["NroIdPEmp", "Id_Pericia"]
-    },
-
-    "ST_Cartuchos": {
-        "name": "ST_Cartuchos",
-        "alias": "ST_C",
-        "fields": ["CodCartucho", "Descripcion", "NegroColor", "CodSuministros"]
-    },
-
-    "PERITOS_DEF_ESPE": {
-        "name": "PERITOS_DEF_ESPE",
-        "alias": "PERb",
-        "fields": ["NroIdPEmp", "Espe"],
-        "uniqueMultiple": ["NroIdPEmp", "Espe"]
-    },
-
-    "ST_Impresoras": {
-        "name": "ST_Impresoras",
-        "alias": "ST_a",
-        "fields": ["CodImpre", "Marca", "Modelo", "Descripcion"]
-    },
-
-    "PERITOS_DEF_GRUPOS": {
-        "name": "PERITOS_DEF_GRUPOS",
-        "alias": "PERc",
-        "fields": ["NroIdPemp", "Grupo"],
-        "uniqueMultiple": ["NroIdPemp", "Grupo"]
-    },
-
-    "PERITOS_DEF_RAMALES": {
-        "name": "PERITOS_DEF_RAMALES",
-        "alias": "PERd",
-        "fields": ["NroIdPEmp", "Ramal"],
-        "uniqueMultiple": ["NroIdPEmp", "Ramal"]
-    },
-
-    "DTOSJUDI": {
-        "name": "DTOSJUDI",
-        "alias": "DTOb",
-        "fields": ["DTOJUD", "DESCRIPCION"],
-        "pk": "DTOJUD"
-    },
-
-    "PERITOS_DEF_SUBESPE": {
-        "name": "PERITOS_DEF_SUBESPE",
-        "alias": "PERe",
-        "fields": ["NroIdPEmp", "Espe", "SubEspe"],
-        "uniqueMultiple": ["NroIdPEmp", "Espe", "SubEspe"]
-    },
-
-    "LOCALIDADES": {
-        "name": "LOCALIDADES",
-        "alias": "LOCA",
-        "fields": ["CP", "id_partido", "Id_localidad", "Localidad", "REGISTRO_OFICIAL", "DTOJUDI"],
-        "pk": "Id_localidad"
-    },
-
-    "PERITOS_DEF_ZONAS": {
-        "name": "PERITOS_DEF_ZONAS",
-        "alias": "PERf",
-        "fields": ["NroIdPEmp", "Zona"],
-        "uniqueMultiple": ["NroIdPEmp", "Zona"]
-    },
-
-    "PARTIDOS": {
-        "name": "PARTIDOS",
-        "alias": "PART",
-        "fields": ["ID_PARTIDO", "PARTIDO", "REGISTRO_OFICIAL", "DTOJUDI"],
-        "pk": "ID_PARTIDO"
-    },
-
-    "ST_ImpresorasCartuchos": {
-        "name": "ST_ImpresorasCartuchos",
-        "alias": "ST_b",
-        "fields": ["CodCartucho", "CodImpre"]
-    },
-
-    "PERSONAL": {
-        "name": "PERSONAL",
-        "alias": "PERS",
-        "fields": ["TIPODOC", "NRODOC", "NROIDPEMP", "DTOJUD", "DEPENDENCIA", "LEGAJO", "APELLIDO", "NOMBRES", "NICK", "CLAVE", "CAMPASNL", "SUSPEND", "SUS_DESDE", "SUS_HASTA", "CARGO", "NIVEL_SEGU", "GRUPO", "CARACTER", "TRABAJA_EN", "EMAIL_PERSONAL", "PERITO", "TIPO_PERITO", "DE_LICENCIA", "SANCIONADO", "PERTENECE_A_MESA", "CANT_PERI_SEGUIDAS", "HACE_PENAL", "HACE_CIVIL", "HACE_LABORAL", "HACE_CONTENCIOSO", "SOLO_LECTURA", "ESPECIALIDAD", "CANT_PERI_ASIG", "NRO_SALIDA_PERITO", "CLAVE_NUMERICA", "PERIODICIDAD", "CONTROL_PERIODICIDAD", "CANT_PERI_ASIG_MENSUAL", "YA_DESIGNE", "HACE_FAMILIA", "HACE_MENORES", "HACE_PENAL_JUVENIL", "HACE_EXTERNO", "HABILITADO", "HACE_JUSPAZ"],
-        "fk": ["DTOJUD", "NIVEL_SEGU"],
-        "unique": ["NROIDPEMP"],
-        "uniqueMultiple": ["TIPODOC", "NRODOC"]
-    },
-
-    "DTOSJUDI_CTAS": {
-        "name": "DTOSJUDI_CTAS",
-        "alias": "DTOc",
-        "fields": ["DTOJUD", "NRO_CTA", "SALDO", "FECHA_SALDO"],
-        "fk": ["DTOJUD"],
-        "uniqueMultiple": ["DTOJUD", "NRO_CTA"]
-    },
-
-    "PEDIDOS_PASOS": {
-        "name": "PEDIDOS_PASOS",
-        "alias": "PEDa",
-        "fields": ["DTOJUD", "FECHA_PEDIDO", "SERIEPED", "NROPED", "ITEM", "FECHAPASO", "DETALLE", "FECHA_CARGA", "NROIDPEMP"],
-        "fk": ["DTOJUD", "FECHA_PEDIDO", "SERIEPED", "NROPED"],
-        "uniqueMultiple": ["DTOJUD", "FECHA_PEDIDO", "SERIEPED", "NROPED", "ITEM"]
-    },
-
-    "ENTREGAS_PED": {
-        "name": "ENTREGAS_PED",
-        "alias": "ENTR",
-        "fields": ["DTOJUD", "FECHA_PEDIDO", "SERIEPED", "NROPED", "ORDEN_PROVISION", "NROIDPEMP", "FECHA_CARGA", "FECHA_ENTREGA", "ESTADO", "IDPPROV", "NRO_REMITO", "NRO_FACTURA", "EMP_ULTMODI", "F_ULTMODI", "OBSERVACION"],
-        "fk": ["DTOJUD", "FECHA_PEDIDO", "SERIEPED", "NROPED", "IDPPROV"],
-        "uniqueMultiple": ["DTOJUD", "FECHA_PEDIDO", "SERIEPED", "NROPED", "ORDEN_PROVISION"]
-    },
-
-    "PEDPERI_PERITOS": {
-        "name": "PEDPERI_PERITOS",
-        "alias": "PEDP",
-        "fields": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "PERITO", "FECHA_DESIG", "OBS", "SUBPERI", "CARACTER", "TIPO_DESIGNACION", "HORA_CARGA", "FECHA_ULTIMO_CAMBIO"],
-        "fk": ["DTOJUDI", "SERIE", "NUI"],
-        "uniqueMultiple": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "PERITO", "SUBPERI"]
-    },
-
-    "ENTREGAS_PED_DET": {
-        "name": "ENTREGAS_PED_DET",
-        "alias": "ENTa",
-        "fields": ["DTOJUD", "FECHA_PEDIDO", "SERIEPED", "NROPED", "ORDEN_PROVISION", "ITEM", "PRECIO_UNI", "CANT_ENTRE", "OBSITEM"],
-        "fk": ["DTOJUD", "FECHA_PEDIDO", "SERIEPED", "NROPED", "ORDEN_PROVISION"],
-        "uniqueMultiple": ["DTOJUD", "FECHA_PEDIDO", "SERIEPED", "NROPED", "ORDEN_PROVISION", "ITEM"]
-    },
-
-    "DTOJUDI_ESPECIALIDADES": {
-        "name": "DTOJUDI_ESPECIALIDADES",
-        "alias": "DTOJ",
-        "fields": ["DTOJUD", "DEPENDENCIA", "ESPECIALIDAD", "DESCRIPCION"]
-    },
-
-    "ERRORES": {
-        "name": "ERRORES",
-        "alias": "ERRO",
-        "fields": ["hora", "id_pc", "referencia_linea", "tabla_rel", "sqltext", "p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8", "p9", "p10"]
-    },
-
-    "OPERACIONES": {
-        "name": "OPERACIONES",
-        "alias": "OPER",
-        "fields": ["CODOPE", "OPERACION"],
-        "pk": "CODOPE"
-    },
-
-    "ORDEN_PERITOS": {
-        "name": "ORDEN_PERITOS",
-        "alias": "ORDE",
-        "fields": ["DTOJUDI", "DEPENDENCIA", "ESPECIALIDAD", "NROORDEN", "ID_PERITO", "LE_RESTAN", "SIGUIENTE", "ASIGNADO_EVENTUAL", "SIGUENTE_EVENTUAL", "GRUPO"],
-        "fk": ["ID_PERITO"],
-        "uniqueMultiple": ["DTOJUDI", "DEPENDENCIA", "ESPECIALIDAD", "NROORDEN", "ID_PERITO"]
-    },
-
-    "ORIDEST": {
-        "name": "ORIDEST",
-        "alias": "ORID",
-        "fields": ["COD_OD", "COD_IND", "COD_SUP", "NIVEL", "NOMBRE", "SUBNIVELES"],
-        "pk": "COD_OD"
-    },
-
-    "PROCEDIMIENTOS_PERICIALES": {
-        "name": "PROCEDIMIENTOS_PERICIALES",
-        "alias": "PROC",
-        "fields": ["DTOJUDI", "SECCION", "NRO_PROCE", "DESCRIPCION_PROCE", "GENERA_MOV"],
-        "uniqueMultiple": ["DTOJUDI", "SECCION", "NRO_PROCE"]
-    },
-
-    "OBS_PREDEF": {
-        "name": "OBS_PREDEF",
-        "alias": "OBS_",
-        "fields": ["DJ", "ID_PC", "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "TPD1", "TPD2", "TPD3", "TPD4", "TPD5", "TPD6", "TPD7", "TPD8", "DJEMP", "NROEMP", "TIPO_TEXTO"],
-        "uniqueMultiple": ["DJEMP", "NROEMP"]
-    },
-
-    "PEDPERI_PROCE_PERICIALES": {
-        "name": "PEDPERI_PROCE_PERICIALES",
-        "alias": "PEDb",
-        "fields": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "NROSUBPERI", "ITEM_PP", "FECHA_PROCE", "DESCRIPCION_PROCE", "OBSERVACION", "ID_PERITO", "CANTIDAD", "COMPLEJIDAD"],
-        "uniqueMultiple": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "NROSUBPERI", "ITEM_PP"]
-    },
-
-    "PEDPERI_PERITOS_2": {
-        "name": "PEDPERI_PERITOS_2",
-        "alias": "PEDc",
-        "fields": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "PERITO", "FECHA_DESIG", "OBS", "SUBPERI", "CARACTER"]
-    },
-
-    "ST_Ingresos": {
-        "name": "ST_Ingresos",
-        "alias": "ST_c",
-        "fields": ["Fecha", "NroOrden", "NroIngreso", "Seccion", "IdPProv", "Motivo", "NroRemito", "NroFactura", "RID"]
-    },
-
-    "PRODUCTOS": {
-        "name": "PRODUCTOS",
-        "alias": "PROD",
-        "fields": ["DTOJUD", "CODPROD", "DEPENDENCIA", "RUBRO", "TIPO", "MARCA", "MEDIDA", "DESCRIPCION", "OBS", "BAJA", "COSTO_ULT_COMPRA", "FECHA_ULT_COMPRA", "PROV_ULT_COMPRA", "USO_INTERNO", "DIAS_AVISO1_DESDE_UC", "DIAS_AVISO2_DESDE_UC", "EN_ALERTA", "PEDIDO"],
-        "fk": ["RUBRO", "TIPO", "MARCA", "MEDIDA"],
-        "uniqueMultiple": ["DTOJUD", "CODPROD"]
-    },
-
-    "ST_Ingresos_Det": {
-        "name": "ST_Ingresos_Det",
-        "alias": "ST_d",
-        "fields": ["RID", "CodArtInt", "Cantidad"]
-    },
-
-    "ST_MoviStock": {
-        "name": "ST_MoviStock",
-        "alias": "ST_M",
-        "fields": ["Fecha", "NroOrden", "NroMov", "TipoMov", "FechaOperacion", "DeSeccion", "DeEmp", "ASeccion", "AEmp", "AProv", "RID"]
-    },
-
-    "DESTABLAS": {
-        "name": "DESTABLAS",
-        "alias": "DEST",
-        "fields": ["CODTAB", "DESCRIPCION"],
-        "pk": "CODTAB"
-    },
-
-    "ST_MoviStock_Det": {
-        "name": "ST_MoviStock_Det",
-        "alias": "ST_e",
-        "fields": ["RID", "CodArtInt", "Cantidad"]
-    },
-
-    "ORGANISMOS_INFORMADOS": {
-        "name": "ORGANISMOS_INFORMADOS",
-        "alias": "ORGa",
-        "fields": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "SUBPERI", "NROMOV", "ORG_INFORMADO", "COMENTARIO", "FECHA"],
-        "uniqueMultiple": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "SUBPERI", "NROMOV", "ORG_INFORMADO"]
-    },
-
-    "CIERRE_MES_ESTAD": {
-        "name": "CIERRE_MES_ESTAD",
-        "alias": "CIER",
-        "fields": ["DTOJUDI", "ANIO", "MES", "NRO_REGISTRO", "FUERO", "DJ_PERITO", "PERITO", "FECHA_GENERACION", "COD_EMPLE", "SECCION", "POR_FNPP", "POR_FDESIGNACION", "ASIGNADAS_PERIODO", "PRODUCIDAS_PERIODO", "SALE_NOTA_INF_PERIODO", "PROD_PARCIAL_TOTAL", "PENDIENTES_TOTAL", "SUSPENDIDAS_TOTAL", "SALIDA_INF_ACLAR_PERIODO", "SALIDA_INF_COLAB_PERIODO", "BAJAS_PERIODO", "DESISTIDAS_PERIODO", "ANULADAS_PERIODO", "RECHAZADAS_PERIODO", "DEVUELTAS_CIERRE_PERIODO", "DERIVADAS_TOTAL", "PROD_CONJUNTO_PERIODO", "PSE_TOTAL", "PCE_TOTAL", "ESPERA_DOC_TOTAL", "EN_COND_DICT_TOTAL", "INCOMPARENCIA_TOTAL", "ESPERA_CITADO_TOTAL", "PEND_ACLAR_COLAB_TOTAL", "NUIS_EN_PERIODO", "FIN_GESELL_PERIODO", "FIN_DERIVADAS_PERIODO", "FECHA_DATOS_DESDE", "FECHA_DATOS_HASTA", "FIN_INF_AUTOPSIA_PERIODO", "FIN_X_INC"],
-        "uniqueMultiple": ["DTOJUDI", "ANIO", "MES", "NRO_REGISTRO"]
-    },
-
-    "ST_ProdInsServ": {
-        "name": "ST_ProdInsServ",
-        "alias": "ST_P",
-        "fields": ["CodArtInt", "Descripcion", "CodBar", "Marca", "Modelo", "ArtGenerico", "Grupo", "Rubro", "Tipo", "Seccion", "EmpProp", "Ubicacion", "StockAct", "StockMin", "StockControla", "TReposicion", "Estado", "UnidadMedida"]
-    },
-
-    "ST_ProdInsServ_Ident": {
-        "name": "ST_ProdInsServ_Ident",
-        "alias": "ST_f",
-        "fields": ["CodArtInt", "NroSerie", "Color", "Tamanio", "Estado"]
-    },
-
-    "NIVELES": {
-        "name": "NIVELES",
-        "alias": "NIVE",
-        "fields": ["NIVEL_SEGU", "DESCRIPCION", "OPERACIONES"],
-        "pk": "NIVEL_SEGU"
-    },
-
-    "PEDPERI_CAMBIOS_ESTADOS": {
-        "name": "PEDPERI_CAMBIOS_ESTADOS",
-        "alias": "PEDd",
-        "fields": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "SUBPERI", "ESTADO_ORI", "ESTADO_FIN", "ANIO", "MES", "FUERO", "PERITO", "FECHA_CAMBIO", "EMPLE_CAMBIO", "PC", "ULTIMO_ESTADO_MES", "FECHA_CARGA"]
-    },
-
-    "_PERI_MOVI_CAMBIOS": {
-        "name": "_PERI_MOVI_CAMBIOS",
-        "alias": "_PEe",
-        "fields": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "NROMOV", "HORA", "IDPEMP", "ID_PC", "TEXTO_VIEJO", "TEXTO_NUEVO", "SUBPERI"]
-    },
-
-    "PEDPERI_NROSASO": {
-        "name": "PEDPERI_NROSASO",
-        "alias": "PEDe",
-        "fields": ["DTOJUDI", "SERIE", "NUI", "NRO_ASO", "REFERENCIA"],
-        "uniqueMultiple": ["DTOJUDI", "SERIE", "NUI", "NRO_ASO"]
-    },
-
-    "CIERRES": {
-        "name": "CIERRES",
-        "alias": "CIEa",
-        "fields": ["DTOJUDI", "MES", "ANIO", "NRO_CIERRE", "HORA", "COD_EMPLE"],
-        "uniqueMultiple": ["DTOJUDI", "MES", "ANIO", "NRO_CIERRE"]
-    },
-
-    "PERSONAL_MOVI": {
-        "name": "PERSONAL_MOVI",
-        "alias": "PERg",
-        "fields": ["DTOJUDI", "NROIDPEMP", "NROMOV", "TIPOMOV", "FECHA_DESDE", "FECHA_HASTA", "NRO_RESOLUCION", "OBS", "FECHA_CARGA", "CODEMP", "FECHA_ULTMODI", "CODEMP_MODI", "CUMPLIDA", "CUMPLIDO", "BORRADO"],
-        "uniqueMultiple": ["DTOJUDI", "NROIDPEMP", "NROMOV"]
-    },
-
-    "SUJETOS": {
-        "name": "SUJETOS",
-        "alias": "SUJa",
-        "fields": ["NROIDP", "APELLIDO", "NOMBRES", "TD", "NDOC", "CARACTER", "FECHA_CARGA", "DJ", "DOCUMENTO", "TIPO_DOC", "CARACTER_ABO", "DOMICILIO", "FECHA_NACIM", "EDAD", "ES_MENOR", "SUJETO_PRINCIPAL", "DOMICILIO_LABORAL"],
-        "pk": "NROIDP"
-    },
-
-    "TablaTrace": {
-        "name": "TablaTrace",
-        "alias": "Tabl",
-        "fields": ["DESCRIPCION"]
-    },
-
-    "_PERSONAL_MOVI": {
-        "name": "_PERSONAL_MOVI",
-        "alias": "_PEf",
-        "fields": ["DTOJUDI", "NROIDPEMP", "NROMOV", "TIPOMOV", "FECHA_DESDE", "FECHA_HASTA", "NRO_RESOLUCION", "OBS", "FECHA_CARGA", "CODEMP", "FECHA_ULTMODI", "CODEMP_MODI", "CUMPLIDA", "CUMPLIDO"]
-    },
-
-    "PEDPERI": {
-        "name": "PEDPERI",
-        "alias": "PEDf",
-        "fields": ["DTOJUDI", "SERIE", "NUI", "MESA", "IDP_ACT", "IDP_DEM", "CODCARAT", "DJORI", "CODLOCAL", "FUERO", "ORGANISMO", "JUEZ_FISCAL", "INTERVIENE_ORG", "F_INGRESO", "F_EGRESO", "CODEMP_CARGO", "HORA_CARGA", "F_ULTMODI", "CODEMP_UM", "NRONOTA", "NROEFECTO", "COMI_MORGUE", "ORG_CoM", "OBS", "NROASO_DEL_ORIGEN", "NRO_AUTOPSIA", "TIPO_INGRESO", "DETALLE_INGRESO", "ORI_ING_DIR_INTERNO", "PASA_A_MESA", "PERITO_ACTOR", "PERITO_DEMAN", "NROIPP", "TASA", "DJ_RELA", "SERIE_RELA", "NUI_RELA", "RESIDUAL", "OBS_MATERIA", "FECHA_OFICIO", "FECHA_AUTOPSIA", "CB_PERI", "CB_ORI1", "CB_ORI2", "EXP_EN_SEC"],
-        "fk": ["DTOJUDI", "CODCARAT"],
-        "uniqueMultiple": ["DTOJUDI", "SERIE", "NUI"]
-    },
-
-    "PEDPERI_SUJETOS": {
-        "name": "PEDPERI_SUJETOS",
-        "alias": "PEDg",
-        "fields": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "SUBPERI", "DJ_SUJETO", "IDP_SUJETO", "FECHA_CARGA", "OBS", "ESTADO"],
-        "uniqueMultiple": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "SUBPERI", "DJ_SUJETO", "IDP_SUJETO"]
-    },
-
-    "DATOS_BLOB": {
-        "name": "DATOS_BLOB",
-        "alias": "DATO",
-        "fields": ["DJ", "TRAF_RED_EVAL", "GAP_IMAGEN", "PR_DBACT_IMAGEN", "GAP_SIZE"],
-        "pk": "DJ"
-    },
-
-    "PEDPERI_MASIMPUTADOS": {
-        "name": "PEDPERI_MASIMPUTADOS",
-        "alias": "PEDh",
-        "fields": ["DTOJUDI", "SERIE", "NUI", "NRO_SUJETO", "IDP_SUJETO", "CARACTER", "SERIE_PERI", "NROPERI", "SUBPERI", "FECHA_CARGA", "OBS"],
-        "uniqueMultiple": ["DTOJUDI", "SERIE", "NUI", "NRO_SUJETO", "IDP_SUJETO", "CARACTER"]
-    },
-
-    "TmpImpEstAnual": {
-        "name": "TmpImpEstAnual",
-        "alias": "TmpI",
-        "fields": ["id_pc", "indice", "Texto1", "campo1", "campo2", "campo3", "campo4", "campo5", "campo6", "campo7", "campo8", "campo9", "campo10", "campo11", "campo12", "campo13", "campo14", "campo15", "campo16", "campo17", "campo18", "campo19", "campo20", "campo21", "campo22", "campo23", "campo24", "campo25", "campo26", "campo27", "campo28", "campo29", "campo30", "campo31", "campo32", "campo33", "campo34", "campo35", "campo36", "campo37", "campo38", "campo39", "campo40", "campo41", "campo42", "campo43", "campo44", "campo45", "campo46", "campo47", "campo48", "campo49", "campo50"],
-        "uniqueMultiple": ["id_pc", "indice"]
-    },
-
-    "ORDEN_SORTEO_PERITOS_CONTROL": {
-        "name": "ORDEN_SORTEO_PERITOS_CONTROL",
-        "alias": "ORDa",
-        "fields": ["DTOJUDI", "SECCION", "ID_PERITO", "FUERO", "ORDEN", "SEC", "ID_ZONA", "ID_GRUPO", "ID_RAMAL", "ID_TIPOPERI", "hora", "NRO_BOLILLERO"]
-    },
-
-    "MOVICAJA": {
-        "name": "MOVICAJA",
-        "alias": "MOVI",
-        "fields": ["DTOJUDI", "CAJA_NRO", "ID_MOV", "FECHA_MOV", "IMPORTE", "SALDO_EN_CAJA", "CONCEPTO", "OBS", "COD_EMP", "HORA", "CEUM", "HORA_MODIF"]
-    },
-
-    "PEDIDOS_PRESUP": {
-        "name": "PEDIDOS_PRESUP",
-        "alias": "PEDi",
-        "fields": ["DTOJUDI", "FECHA_PEDIDO", "SERIEPED", "NROPED", "ITEM", "ID_PROV", "NRO_COTIZACION", "CANTIDAD", "PRECIO", "ESTADO", "DESCRIP_ALTER", "COD_EMP", "HORA_CARGA", "UCEM", "HORA_UM"]
-    },
-
-    "RENDICIONES": {
-        "name": "RENDICIONES",
-        "alias": "REND",
-        "fields": ["DTOJUDI", "CAJA_NRO", "NRO_RENDICION", "NRO_COMPROBANTE", "FECHA_RENDICION", "ID_PROV", "IMPORTE", "DESTINO", "OBS", "COD_EMP", "HORA_CARGA", "CEUM", "HORA_MODIF"]
-    },
-
-    "PERI_DOCASO_AUTORIZ": {
-        "name": "PERI_DOCASO_AUTORIZ",
-        "alias": "PERh",
-        "fields": ["NROIDPEMP_PROP", "NROIDPEMP_AUT", "NROPERI", "NroDoc", "NivelAut"],
-        "uniqueMultiple": ["NROIDPEMP_PROP", "NROIDPEMP_AUT", "NROPERI", "NroDoc"]
-    },
-
-    "PEDPERI_MAS_ORGANISMOS": {
-        "name": "PEDPERI_MAS_ORGANISMOS",
-        "alias": "PEDj",
-        "fields": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "SUBPERI", "COD_ORGANISMO", "FECHA_CARGA", "ULTIMO", "FECHA_SOLICITUD"],
-        "uniqueMultiple": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "SUBPERI", "COD_ORGANISMO"]
-    },
-
-    "DB_ACT_INSTRUCCIONES": {
-        "name": "DB_ACT_INSTRUCCIONES",
-        "alias": "DB_a",
-        "fields": ["CODIGO_INSTR", "INSTRUCCION_SQL", "TIPO", "FECHA", "TEMA"],
-        "pk": "CODIGO_INSTR"
-    },
-
-    "NUMERADORES": {
-        "name": "NUMERADORES",
-        "alias": "NUME",
-        "fields": ["DTOJUD", "SERIE_PEDIDOS", "NROPEDIDO", "NROIDPEMP", "SERIE_ME", "NRODOC_ME", "NROPROV", "NROPRODUCTO", "SERIE_NUI", "NRONUI", "SERIE_PERICIA", "NROPERICIA", "SERIE_PERICIA_ADN", "NROPERICIA_ADN", "SERIE_PERICIA_LAB", "NROPERICIA_LAB", "SERIE_PERICIA_GRAL", "NROPERICIA_GRAL", "NRO_RECIBO_MGRAL", "NRO_RECIBO_MADN", "NRO_RECIBO_MLAB", "SERIE_MESA_DIR", "NRO_MESA_DIR", "SERIE_NOTAS", "NRO_NOTA"],
-        "pk": "DTOJUD"
-    },
-
-    "DB_ACT_RESULTADOS": {
-        "name": "DB_ACT_RESULTADOS",
-        "alias": "DB_b",
-        "fields": ["DTOJUDI", "CODIGO_INSTR", "FECHA", "ESTADO", "ERROR_MENSAJE"],
-        "uniqueMultiple": ["DTOJUDI", "CODIGO_INSTR"]
-    },
-
-    "PEDPERI_DOCINGRE": {
-        "name": "PEDPERI_DOCINGRE",
-        "alias": "PEDk",
-        "fields": ["DTOJUDI", "SERIE", "NUI", "NRODOC", "COD_DOC_INGRE", "FECHA_INGRE", "DETALLE_DOCINGRE", "ESTA_EN_SEC", "req_conf", "FECHA_CARGA", "VIENE_DE"],
-        "fk": ["DTOJUDI", "SERIE", "NUI"],
-        "uniqueMultiple": ["DTOJUDI", "SERIE", "NUI", "NRODOC", "COD_DOC_INGRE", "FECHA_INGRE"]
-    },
-
-    "TmpAgrePed": {
-        "name": "TmpAgrePed",
-        "alias": "TmpA",
-        "fields": ["DJ", "id_pc", "item", "cant", "djprod", "codprod", "descripcion", "pflista", "flista", "obsitem", "marca1", "desmarca1", "marca2", "desmarca2", "marca3", "desmarca3", "osimilar"],
-        "uniqueMultiple": ["DJ", "id_pc", "item"]
-    },
-
-    "DB_ACT_LOG": {
-        "name": "DB_ACT_LOG",
-        "alias": "DB_c",
-        "fields": ["REGISTRO"]
-    },
-
-    "ESTADOS_NPP2": {
-        "name": "ESTADOS_NPP2",
-        "alias": "ESTa",
-        "fields": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "SUBPERI", "ITEM", "FECHA_ESTADO", "ESTADO", "FECHA_CARGA", "ULTIMO_ESTADO", "SECCION", "PRIMER_INGRESO", "PRIMER_INGRESO_SECCION"]
-    },
-
-    "VIDEOCONF": {
-        "name": "VIDEOCONF",
-        "alias": "VIDE",
-        "fields": ["DTOJUDI", "NRO_VIDEOCONF", "PERITO", "ORGANISMO_CITO", "DOMI_CITACION", "ORGANISMO_PERITO", "NROIPP_CAUSA", "CARATULA", "FECHA_CITA", "HORA_CITA", "HORA_CARGA", "EMPLE_CARGA"],
-        "uniqueMultiple": ["DTOJUDI", "NRO_VIDEOCONF"]
-    },
-
-    "ORGANISMOS_INTEGRANTES": {
-        "name": "ORGANISMOS_INTEGRANTES",
-        "alias": "ORGb",
-        "fields": ["DTOJUDI", "CODORIGEN", "NRO_INTEGRANTE", "CARACTER", "NROIDPEMP"],
-        "fk": ["DTOJUDI", "CODORIGEN"],
-        "uniqueMultiple": ["DTOJUDI", "CODORIGEN", "NRO_INTEGRANTE"]
-    },
-
-    "TmpImp50": {
-        "name": "TmpImp50",
-        "alias": "Tmpa",
-        "fields": ["id_pc", "indice", "Texto1", "campo1", "campo2", "campo3", "campo4", "campo5", "campo6", "campo7", "campo8", "campo9", "campo10", "campo11", "campo12", "campo13", "campo14", "campo15", "campo16", "campo17", "campo18", "campo19", "campo20", "campo21", "campo22", "campo23", "campo24", "campo25", "campo26", "campo27", "campo28", "campo29", "campo30", "campo31", "campo32", "campo33", "campo34", "campo35", "campo36", "campo37", "campo38", "campo39", "campo40", "campo41", "campo42", "campo43", "campo44", "campo45", "campo46", "campo47", "campo48", "campo49", "campo50"],
-        "uniqueMultiple": ["id_pc", "indice"]
-    },
-
-    "_COMUNICADOS": {
-        "name": "_COMUNICADOS",
-        "alias": "_COM",
-        "fields": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "NRO_TAREA", "TIPO_TAREA", "FECHA_NOTA", "DIRIGIDO_A", "DIRIGIDO2", "PERITO1", "PERITO2", "PERITO3", "FECHA_TAREA", "HORA_TAREA", "CITADO", "MAS_DE_UN_DIA", "ESTADO", "EMITIO_INCOMPARENCIA", "FECHA_CARGA", "EMP_CARGA", "FECHA_ULT_MODI", "EMP_ULT_MODI", "QUIEN_CITA", "ESPECIALIDAD", "CODORGA", "ALOJADO_DOMICILIADO", "NO_ASISTIO", "FECHA2", "HORA2", "SEGCITA_Y_O", "ASISTIO_1", "ASISTIO_2", "DOC_RELACIONADO", "ENCABEZADO", "CUERPO", "FECHA3", "HORA3", "ASISTIO_3", "PASE_A", "CARATULA", "PERITOS_QUE_CITAN", "SUBPERI", "DIRECCION", "ID_LOCALIDAD", "OBS"]
-    },
-
-    "ORGANISMOS_EMAILS": {
-        "name": "ORGANISMOS_EMAILS",
-        "alias": "ORGc",
-        "fields": ["DTOJUDI", "CODORIGEN", "ITEM", "SECCION", "EMAIL", "DESCRIPCION"],
-        "fk": ["DTOJUDI", "CODORIGEN"],
-        "uniqueMultiple": ["DTOJUDI", "CODORIGEN", "ITEM"]
-    },
-
-    "CONTROL_DESIGN": {
-        "name": "CONTROL_DESIGN",
-        "alias": "CONT",
-        "fields": ["DJ", "SECCION", "FUERO", "ID_ZONA", "ID_GRUPO", "ID_RAMAL", "ID_TIPOPERI", "TIPO_DESIG", "HORA", "PERITO", "NRO_ORDEN_Q_TENIA", "EMPLE_DESIGNO", "PC_DESIGNO"]
-    },
-
-    "ESTADOS_NPP": {
-        "name": "ESTADOS_NPP",
-        "alias": "ESTb",
-        "fields": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "SUBPERI", "ITEM", "FECHA_ESTADO", "ESTADO", "FECHA_CARGA", "ULTIMO_ESTADO", "SECCION", "PRIMER_INGRESO", "PRIMER_INGRESO_SECCION"],
-        "uniqueMultiple": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "SUBPERI", "ITEM"]
-    },
-
-    "DTOSJUDI_DET_ESPECIALIDADES": {
-        "name": "DTOSJUDI_DET_ESPECIALIDADES",
-        "alias": "DTOd",
-        "fields": ["RID", "ID_ESPE", "ESPECIALIDAD"],
-        "uniqueMultiple": ["RID", "ID_ESPE"]
-    },
-
-    "HONORARIOS": {
-        "name": "HONORARIOS",
-        "alias": "HONa",
-        "fields": ["NRODOC", "APEYNOM", "DTOJUD", "CODPAR", "NROJUZ", "NROSEC", "CODFUE", "TIPJUZ", "INSTAN", "TIPJUI", "NROREC", "NROCAU", "CARA", "TIPMAT", "FECHA", "MONTO", "PERIODO", "SECUENCIA", "ELTIPO"],
-        "uniqueMultiple": ["APEYNOM", "NROCAU", "MONTO", "PERIODO"]
-    },
-
-    "DOMIPROV": {
-        "name": "DOMIPROV",
-        "alias": "DOMI",
-        "fields": ["IdpProv", "nrodomi", "Calle", "Numero", "Piso", "Depto", "CP", "Tele1", "Tele2", "web", "entre_calle", "y_calle", "cod_local"],
-        "uniqueMultiple": ["IdpProv", "nrodomi"]
-    },
-
-    "DTOSJUDI_DET_ESPECIALIDADES_SUB": {
-        "name": "DTOSJUDI_DET_ESPECIALIDADES_SUB",
-        "alias": "DTOe",
-        "fields": ["RID", "ID_ESPE", "ID_SUBESPE", "SUB_ESPECIALIDAD"],
-        "uniqueMultiple": ["RID", "ID_ESPE", "ID_SUBESPE"]
-    },
-
-    "DTOSJUDI_DET_GRUPOS": {
-        "name": "DTOSJUDI_DET_GRUPOS",
-        "alias": "DTOf",
-        "fields": ["RID", "ID_GRUPO", "GRUPO"],
-        "uniqueMultiple": ["RID", "ID_GRUPO"]
-    },
-
-    "DTOSJUDI_DET_RAMALES": {
-        "name": "DTOSJUDI_DET_RAMALES",
-        "alias": "DTOg",
-        "fields": ["RID", "ID_RAMAL", "RAMAL", "ID_LOCA1", "ID_LOCA2", "ID_LOCA3", "ID_LOCA4", "ID_LOCA5", "ID_LOCA6", "ID_LOCA7", "ID_LOCA8", "ID_LOCA9", "ID_LOCA10"],
-        "uniqueMultiple": ["RID", "ID_RAMAL"]
-    },
-
-    "GRUPOS": {
-        "name": "GRUPOS",
-        "alias": "GRUP",
-        "fields": ["Codigo_Grupo", "Descripcion", "Incluir", "codigo_seccion"],
-        "pk": "Codigo_Grupo"
-    },
-
-    "DTOSJUDI_DET_ZONAS": {
-        "name": "DTOSJUDI_DET_ZONAS",
-        "alias": "DTOh",
-        "fields": ["RID", "ID_ZONA", "ZONA", "LIMITENor", "LIMITESur", "LIMITEEst", "LIMITEOes", "OBSERVACIONES"],
-        "uniqueMultiple": ["RID", "ID_ZONA"]
-    },
-
-    "CONTROL_MODI_DESIGPERI": {
-        "name": "CONTROL_MODI_DESIGPERI",
-        "alias": "CONa",
-        "fields": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "PERITO_ORI", "PERITO_NUE", "HORA", "CODEMP", "ID_PC", "SECCION", "SUBPERI", "MOTIVO"]
-    },
-
-    "CONTROL_COMP": {
-        "name": "CONTROL_COMP",
-        "alias": "CONb",
-        "fields": ["NombreForm", "NombreComp", "Visible", "habilitado"],
-        "uniqueMultiple": ["NombreForm", "NombreComp"]
-    },
-
-    "ORDEN_SORTEO_PERITOS": {
-        "name": "ORDEN_SORTEO_PERITOS",
-        "alias": "ORDb",
-        "fields": ["DTOJUDI", "SECCION", "ID_PERITO", "FUERO", "ORDEN", "SEC", "ID_ZONA", "ID_GRUPO", "ID_RAMAL", "ID_TIPOPERI", "HORA", "NRO_BOLILLERO"],
-        "uniqueMultiple": ["DTOJUDI", "SECCION", "ID_PERITO", "SEC"]
-    },
-
-    "PEDPERI_ASECCIONES": {
-        "name": "PEDPERI_ASECCIONES",
-        "alias": "PEDl",
-        "fields": ["DTOJUDI", "SERIE", "NUI", "SECCION", "ESPECIALIDAD", "SERIE_PERI", "NROPERI", "ESTADO", "FINGRE_PERI", "FFIN_PERI", "EFECTOS", "NROEFECTO", "FECHA_ESTI_COBRO", "HONO_REGULADO", "HONO_ESTIMADO", "ESTADO_COBRO", "EMPLE_RECIBIO", "FECHA_RECIBIO", "EMPLE_DIOSALIDA", "FECHA_DIOSALIDA", "ENTREGO_EFECTOS", "TIPO_PERICIA", "SUBPERI", "FOJA_H", "FOJA_D", "BIBLIORATO", "NRO_SALIDA_PERITO", "NRODVD", "FECHA_CARGA", "ESTADO_EFECTOS", "NRO_INGRESO", "FECHA_247", "HORA_247", "FECHA_SALIDA_SEC", "FECHA_INGRESO_SEC", "ULT_CAMBIO_ESTADO", "FECHA_DERIV", "ORG_DERIV", "LOCAL_CABECERA", "FECHA_LIMITE_URG"],
-        "fk": ["DTOJUDI", "SERIE", "NUI"],
-        "uniqueMultiple": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "SUBPERI"]
-    },
-
-    "PROD_XPROV": {
-        "name": "PROD_XPROV",
-        "alias": "PROb",
-        "fields": ["DTOJUD", "CODPROD", "NROIDPPROV", "FECHA_ULT_COMPRA", "COSTO_ULT_COMPRA"],
-        "fk": ["DTOJUD", "CODPROD"],
-        "uniqueMultiple": ["DTOJUD", "CODPROD", "NROIDPPROV", "FECHA_ULT_COMPRA"]
-    },
-
-    "MENUES": {
-        "name": "MENUES",
-        "alias": "MENU",
-        "fields": ["CODIGO_MENU", "DESCRIPCION", "CODIGO_PAPA", "IDENTIFICADOR", "Texto", "Habilitado"],
-        "pk": "CODIGO_MENU"
-    },
-
-    "sysdiagrams": {
-        "name": "sysdiagrams",
-        "alias": "sysd",
-        "fields": ["name", "principal_id", "diagram_id", "version", "definition"],
-        "pk": "diagram_id",
-        "unique": ["name", "principal_id"]
-    },
-
-    "IMPRE_LOCAL": {
-        "name": "IMPRE_LOCAL",
-        "alias": "IMPR",
-        "fields": ["Sucursal", "Id_PC", "Id_Windows", "Nombre_Windows", "Local"]
-    },
-
-    "_MODI_DOC_INGRE": {
-        "name": "_MODI_DOC_INGRE",
-        "alias": "_MOD",
-        "fields": ["DTOJUDI", "SERIE", "NUI", "FECHA_MOV", "CODEMP", "DOC_INGRE_ORI", "DOC_INGRE_FIN"]
-    },
-
-    "IMPRESORAS": {
-        "name": "IMPRESORAS",
-        "alias": "IMPa",
-        "fields": ["Sucursal", "Id_PC", "Cod_Impresora", "Nombre_Local", "Nombre_Red", "Puerto"]
-    },
-
-    "TIPOSPROD": {
-        "name": "TIPOSPROD",
-        "alias": "TIPO",
-        "fields": ["TIPOS", "CODTIPOS", "RUBROREL"],
-        "pk": "TIPOS",
-        "unique": ["CODTIPOS"]
-    },
-
-    "TmpImpGral": {
-        "name": "TmpImpGral",
-        "alias": "Tmpb",
-        "fields": ["id_pc", "indice", "Campo1", "Campo2", "Campo3", "Campo4", "Campo5", "Campo6", "Campo7", "Campo8", "Campo9", "Campo10", "Campo11", "Campo12", "Campo13", "Campo14", "Campo15", "negrita", "cursiva", "subrayado", "Campo16", "Campo17", "Campo18", "Campo19", "Campo20"],
-        "uniqueMultiple": ["id_pc", "indice"]
-    },
-
-    "AGENTES": {
-        "name": "AGENTES",
-        "alias": "AGEN",
-        "fields": ["TIPDOC", "NUMDOC", "APYN", "LEGCON", "LEGINT", "LEGSUE", "CIUDAD", "FENAC", "APORTA", "MARCA", "CODIGO", "DEPJUD", "GRUPO", "NIVEL", "CARGO", "FUNCION", "NOMINA", "LLAMADA", "NACION", "NROCARGO", "CONTRATO", "AUDIT", "NUMCAR", "SEX", "NUMERO", "TRABAJA", "OFICINA", "DOMIC", "TRABAJADJ"],
-        "pk": "NUMCAR"
-    },
-
-    "ESTACIONES": {
-        "name": "ESTACIONES",
-        "alias": "ESTc",
-        "fields": ["Sucursal", "Id_Pc", "Nombre", "Descripcion", "VERIFICA_IE", "Pertenece_a_mesa"],
-        "uniqueMultiple": ["Sucursal", "Id_Pc"]
-    },
-
-    "PERI_MOVI": {
-        "name": "PERI_MOVI",
-        "alias": "PERi",
-        "fields": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "NROMOV", "FECHA_MOV", "FECHA_CARGA", "DETALLE", "CODEMPLE", "FULTMOD", "CODEMPLEMOD", "TIPO_MOV", "NRODOC", "ORIGENMOV", "ORI_O_DEST", "DTOJUDI_OD", "CODORG_OD", "DE_SEC", "A_SEC", "REQ_CONF", "HORA_CONF", "EMPLE_CONF", "SUBPERI", "DESTINATARIO", "PC_ALTA", "PC_ULT_MODI", "BORRADO", "FECHA_BORRADO", "NOTIF_ELEC", "EMPLE_BORRO", "PC_BORRO", "VERIFICO_JEFATURA", "HORA_CONF_SALIDA"],
-        "uniqueMultiple": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "NROMOV", "SUBPERI"]
-    },
-
-    "_PERI_MOVI": {
-        "name": "_PERI_MOVI",
-        "alias": "_PEg",
-        "fields": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "NROMOV", "FECHA_MOV", "FECHA_CARGA", "DETALLE", "CODEMPLE", "FULTMOD", "CODEMPLEMOD", "TIPO_MOV", "NRODOC", "ORIGENMOV", "ORI_O_DEST", "DTOJUDI_OD", "CODORG_OD", "DE_SEC", "A_SEC", "SUBPERI", "PC_ALTA", "PC_ULT_MODI", "FECHA_BORRADO", "BORRADO", "REQ_CONF", "DESTINATARIO", "EMPLE_CONF", "HORA_CONF", "NOTIF_ELEC"]
-    },
-
-    "ACCESO_MENU": {
-        "name": "ACCESO_MENU",
-        "alias": "ACCE",
-        "fields": ["CODIGO_MENU", "Sucursal", "Nro_IDP", "Codigo_Grupo"],
-        "uniqueMultiple": ["CODIGO_MENU", "Sucursal", "Nro_IDP", "Codigo_Grupo"]
-    },
-
-    "CARRERA": {
-        "name": "CARRERA",
-        "alias": "CARR",
-        "fields": ["NUMCAR", "NUMAGE", "FENOM", "FEPOS", "ORDEN", "RESOLU", "OBSERV", "GRUPO", "NIVEL", "CARGO", "DEPJUD", "DESTINO", "TRABAJA", "MARCA", "AUDIT"]
-    },
-
-    "FAVORITOS": {
-        "name": "FAVORITOS",
-        "alias": "FAVO",
-        "fields": ["Codigo_Menu", "SucursalPersona", "IDP_Persona", "Imagen"]
-    },
-
-    "DESTINOS": {
-        "name": "DESTINOS",
-        "alias": "DESa",
-        "fields": ["CODI", "DESCR", "DEPJUD"],
-        "pk": "CODI"
-    },
-
-    "dtproperties": {
-        "name": "dtproperties",
-        "alias": "dtpr",
-        "fields": ["id", "objectid", "property", "value", "uvalue", "lvalue", "version"],
-        "uniqueMultiple": ["id", "property"]
-    },
-
-    "TABLAS": {
-        "name": "TABLAS",
-        "alias": "TABL",
-        "fields": ["REFERENCIA", "CODTAB", "ITEMTAB", "DESCRIPCION", "SPB", "OPCION_NUMERO", "ORDEN", "RELACIONADO_CON", "PUEDE_CAMBIAR"],
-        "pk": "REFERENCIA",
-        "fk": ["CODTAB"]
-    },
-
-    "GRUPO_PERSONA": {
-        "name": "GRUPO_PERSONA",
-        "alias": "GRUa",
-        "fields": ["DtoJud", "NroIdpEmp", "Codigo_Grupo"],
-        "uniqueMultiple": ["DtoJud", "NroIdpEmp", "Codigo_Grupo"]
-    },
-
-    "DATOS": {
-        "name": "DATOS",
-        "alias": "DATa",
-        "fields": ["DJ", "NOM_ORGANISMO", "DIR_ORGANISMO", "DTOJUDCOMPRAS", "MUESTRA_MSG", "DJ_CTASUG", "NRO_CTASUG", "NROPERICIAGRAL", "PED_DIAS_PRIM_RECLAMO", "PED_DIAS_SEG_RECLAMO", "ALERTA_PRODUCTOS", "ALERTA_PEDIDOS", "TIPO_RECIBO_PP", "PCP_MLAB", "PCP_MADN", "DIRECTOR", "CALLE", "ENTRE", "Y_ENTRE", "EMAIL", "NRO", "LOCALIDAD", "CP", "TELE1", "TELE2", "FAX", "PCP_MGRAL", "INI_PARAM_LOCAL", "VERSION", "COPIAS_247", "COPIAS_CITAS", "DIR_MENORES", "DIR_MINISTRO", "MINISTRO_SEGURIDAD", "NUI_READONLY", "IMP_COMP_SALIDA_PERI", "VISTA_PREVIA", "fecha", "ULT_COD_INST_EJEC", "IMPRIME_RECI", "LEYENDA_MENU", "CUERPO_TECNICO", "PATH_DOC_ASO_EXT", "PEGA_CBARRA_a_EFECTOS", "PATH_INI_LOCAL", "MES_ACTUAL", "SECCIONES_INDEPENDIENTES", "CONTROL_HORA_MOV", "PROX_CIERRE_ESTAD", "ULT_COD_INST_DGAP", "EPA", "FHIPA", "FHFPA", "GAP_NOMBRE", "PR_DBACT_IMAGEN", "GAP_VERSION", "ULTIMO_CIERRE_ESTAD", "PR_DBACT_SIZE", "EMPACTGAP", "FHACTGAP", "NRO_HOJA_CONF_INGRE", "CUAL_SECCION"],
-        "pk": "DJ"
-    },
-
-    "PEDIDOS": {
-        "name": "PEDIDOS",
-        "alias": "PEDm",
-        "fields": ["DTOJUD", "SERIEPED", "NROPED", "DTOJUD_PIDE", "DEPEN_PIDE", "FECHA_PEDIDO", "REFERENTE", "SERIENME", "NROME", "NROEXP", "PRESU_ESTI", "PROV_ESTI", "PROV_ESTI2", "PROV_ESTI3", "FORMA_PRESU", "NROIDPEMP", "FECHA_CARGA", "ULTEMPMOD", "FECHA_ULT_MOD", "ESTADO", "PRORRATEO", "DTOJUD_CTASUG", "CUENTA_SUG", "DTOJUD_FIN", "CUENTA_FIN", "OBS1", "OBS2", "OBS3", "FECHA_CUMPLI", "DESTINO", "DIAS_EST_ENTREGA"],
-        "fk": ["REFERENTE", "PROV_ESTI", "NROIDPEMP", "ESTADO"],
-        "uniqueMultiple": ["DTOJUD", "SERIEPED", "NROPED", "FECHA_PEDIDO"]
-    },
-
-    "MOVI_EXP": {
-        "name": "MOVI_EXP",
-        "alias": "MOVa",
-        "fields": ["DTOJUDI", "SERIE", "NUI", "NROMOV", "ORIGINAL", "COMPLETO", "CANT_CUERPOS", "DESDE", "HACIA", "F_ENVIO", "HORA_CARGA", "F_RECEPCION", "EMPLE_ENV", "EMPLE_RECI", "PC"],
-        "uniqueMultiple": ["DTOJUDI", "SERIE", "NUI", "NROMOV"]
-    },
-
-    "ULTIMOS": {
-        "name": "ULTIMOS",
-        "alias": "ULTI",
-        "fields": ["DtoJud", "NroIdpEmp", "UltProv", "UltProd_N", "UltPed_S", "UltPed_N", "UltEmple", "Ult_NUI", "ULT_SERIE_NUI", "ULT_NOTA"],
-        "uniqueMultiple": ["DtoJud", "NroIdpEmp"]
-    },
-
-    "PERITOS_CANT_PERICIAS": {
-        "name": "PERITOS_CANT_PERICIAS",
-        "alias": "PERj",
-        "fields": ["DTOJUDI", "NROIDPEMP", "anio", "mes", "tipo_pericia", "cant_peri_reci", "cant_peri_terminadas"],
-        "uniqueMultiple": ["DTOJUDI", "NROIDPEMP", "anio", "mes", "tipo_pericia"]
-    },
-
-    "PERI_MOVI_NUI": {
-        "name": "PERI_MOVI_NUI",
-        "alias": "PERk",
-        "fields": ["DTOJUDI", "SERIE", "NUI", "NROMOV", "FECHA_MOV", "FECHA_CARGA", "DETALLE", "CODEMPLE", "FULTMOD", "CODEMPLEMOD", "TIPO_MOV", "NRODOC", "ORIGENMOV", "ORI_O_DEST", "DTOJUDI_OD", "CODORG_OD", "DE_SEC", "A_SEC", "REQ_CONF", "HORA_CONF", "EMPLE_CONF", "DESTINATARIO", "PC_ALTA", "PC_ULT_MODI", "BORRADO", "FECHA_BORRADO", "NOTIF_ELEC", "EMPLE_BORRO", "PC_BORRO", "VERIFICO_JEFATURA", "HORA_CONF_SALIDA"],
-        "uniqueMultiple": ["DTOJUDI", "SERIE", "NUI", "NROMOV"]
-    },
-
-    "COMUNICADOS": {
-        "name": "COMUNICADOS",
-        "alias": "COMU",
-        "fields": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "NRO_TAREA", "TIPO_TAREA", "FECHA_NOTA", "DIRIGIDO_A", "PERITO1", "PERITO2", "PERITO3", "FECHA_TAREA", "HORA_TAREA", "CITADO", "MAS_DE_UN_DIA", "ESTADO", "EMITIO_INCOMPARENCIA", "FECHA_CARGA", "EMP_CARGA", "FECHA_ULT_MODI", "EMP_ULT_MODI", "QUIEN_CITA", "ESPECIALIDAD", "DIRIGIDO2", "CODORGA", "ALOJADO_DOMICILIADO", "NO_ASISTIO", "ASISTIO_1", "ASISTIO_2", "DOC_RELACIONADO", "FECHA2", "HORA2", "SEGCITA_Y_O", "ENCABEZADO", "CUERPO", "FECHA3", "HORA3", "ASISTIO_3", "PASE_A", "CARATULA", "PERITOS_QUE_CITAN", "SUBPERI", "DIRECCION", "ID_LOCALIDAD", "OBS"],
-        "uniqueMultiple": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "NRO_TAREA", "SUBPERI"]
-    },
-
-    "PERITOS_FILTRO": {
-        "name": "PERITOS_FILTRO",
-        "alias": "PERl",
-        "fields": ["NROIDPEMP"],
-        "pk": "NROIDPEMP"
-    },
-
-    "PERSONAL_DOMI": {
-        "name": "PERSONAL_DOMI",
-        "alias": "PERm",
-        "fields": ["NROIDPEMP", "NRO_DOMI", "TIPO_DOM", "CALLE", "NRO", "ENTRE", "Y_ENTRE", "CODLOCAL", "CODPOS", "OBS"],
-        "uniqueMultiple": ["NROIDPEMP", "NRO_DOMI"]
-    },
-
-    "PERSONAL_TELEFONOS": {
-        "name": "PERSONAL_TELEFONOS",
-        "alias": "PERn",
-        "fields": ["NROIDPEMP", "INDICE_TEL", "TIPO_TELE", "CARACTERISTICA", "NRO_TELE", "INTERNO", "OBS"],
-        "uniqueMultiple": ["NROIDPEMP", "INDICE_TEL"]
-    },
-
-    "PERSONAL_EMAIL": {
-        "name": "PERSONAL_EMAIL",
-        "alias": "PERo",
-        "fields": ["NROIDPEMP", "INDICE_EMAIL", "EMAIL", "OBS"],
-        "uniqueMultiple": ["NROIDPEMP", "INDICE_EMAIL"]
+  "PEDIDOS_DET": {
+    "name": "PEDIDOS_DET",
+    "alias": "PEDI",
+    "fields": ["DTOJUD", "FECHA_PEDIDO", "SERIEPED", "NROPED", "ITEM", "CANT", "DJPROD", "CODPROD", "OBSITEM", "CANT_ENTRE", "ESTADO", "PRODFLISTA", "FLISTA", "MARCA1", "MARCA2", "MARCA3", "O_SIMILAR"],
+    "fk": ["DTOJUD", "FECHA_PEDIDO", "SERIEPED", "NROPED", "DJPROD", "CODPROD", "ESTADO"],
+    "uniqueMultiple": ["DTOJUD", "FECHA_PEDIDO", "SERIEPED", "NROPED", "ITEM"],
+    "tree": {
+      "DTOJUD": { "fieldName": "DTOJUD", "refEntityName": "PEDIDOS", "refFieldName": "DTOJUD", "children": {
+          "REFERENTE": { "fieldName": "REFERENTE", "refEntityName": "PERSONAL", "refFieldName": "NROIDPEMP", "children": {
+              "DTOJUD_DTO": { "fieldName": "DTOJUD", "refEntityName": "DTOSJUDI", "refFieldName": "DTOJUD", "children": {
+              }},
+              "NIVEL_SEGU": { "fieldName": "NIVEL_SEGU", "refEntityName": "NIVELES", "refFieldName": "NIVEL_SEGU", "children": {
+              }}
+          }},
+          "PROV_ESTI": { "fieldName": "PROV_ESTI", "refEntityName": "PROVEEDORES", "refFieldName": "IDPPROV", "children": {
+          }},
+          "NROIDPEMP": { "fieldName": "NROIDPEMP", "refEntityName": "PERSONAL", "refFieldName": "NROIDPEMP", "children": {
+          }},
+          "ESTADO": { "fieldName": "ESTADO", "refEntityName": "TABLAS", "refFieldName": "REFERENCIA", "children": {
+              "CODTAB": { "fieldName": "CODTAB", "refEntityName": "DESTABLAS", "refFieldName": "CODTAB", "children": {
+              }}
+          }}
+      }},
+      "FECHA_PEDIDO": { "fieldName": "FECHA_PEDIDO", "refEntityName": "PEDIDOS", "refFieldName": "FECHA_PEDIDO", "children": {
+      }},
+      "SERIEPED": { "fieldName": "SERIEPED", "refEntityName": "PEDIDOS", "refFieldName": "SERIEPED", "children": {
+      }},
+      "NROPED": { "fieldName": "NROPED", "refEntityName": "PEDIDOS", "refFieldName": "NROPED", "children": {
+      }},
+      "DJPROD": { "fieldName": "DJPROD", "refEntityName": "PRODUCTOS", "refFieldName": "DTOJUD", "children": {
+          "RUBRO": { "fieldName": "RUBRO", "refEntityName": "RUBROS", "refFieldName": "CODRUBRO", "children": {
+          }},
+          "TIPO": { "fieldName": "TIPO", "refEntityName": "TIPOSPROD", "refFieldName": "CODTIPOS", "children": {
+          }},
+          "MARCA": { "fieldName": "MARCA", "refEntityName": "MARCAS", "refFieldName": "CODMARCA", "children": {
+          }},
+          "MEDIDA": { "fieldName": "MEDIDA", "refEntityName": "MEDIDAS", "refFieldName": "CODMEDIDA", "children": {
+          }}
+      }},
+      "CODPROD": { "fieldName": "CODPROD", "refEntityName": "PRODUCTOS", "refFieldName": "CODPROD", "children": {
+      }},
+      "ESTADO_EST": { "fieldName": "ESTADO", "refEntityName": "TABLAS", "refFieldName": "REFERENCIA", "children": {
+      }}
+    },
+    "relations": {
+      "DTOJUD": { "fieldName": "DTOJUD", "refEntityName": "PEDIDOS", "refFieldName": "DTOJUD", "parentId": null},
+          "REFERENTE": { "fieldName": "REFERENTE", "refEntityName": "PERSONAL", "refFieldName": "NROIDPEMP", "parentId": "DTOJUD"},
+              "DTOJUD_DTO": { "fieldName": "DTOJUD", "refEntityName": "DTOSJUDI", "refFieldName": "DTOJUD", "parentId": "REFERENTE"},
+              "NIVEL_SEGU": { "fieldName": "NIVEL_SEGU", "refEntityName": "NIVELES", "refFieldName": "NIVEL_SEGU", "parentId": "REFERENTE"},
+          "PROV_ESTI": { "fieldName": "PROV_ESTI", "refEntityName": "PROVEEDORES", "refFieldName": "IDPPROV", "parentId": "DTOJUD"},
+          "NROIDPEMP": { "fieldName": "NROIDPEMP", "refEntityName": "PERSONAL", "refFieldName": "NROIDPEMP", "parentId": "DTOJUD"},
+          "ESTADO": { "fieldName": "ESTADO", "refEntityName": "TABLAS", "refFieldName": "REFERENCIA", "parentId": "DTOJUD"},
+              "CODTAB": { "fieldName": "CODTAB", "refEntityName": "DESTABLAS", "refFieldName": "CODTAB", "parentId": "ESTADO"},
+      "FECHA_PEDIDO": { "fieldName": "FECHA_PEDIDO", "refEntityName": "PEDIDOS", "refFieldName": "FECHA_PEDIDO", "parentId": null},
+      "SERIEPED": { "fieldName": "SERIEPED", "refEntityName": "PEDIDOS", "refFieldName": "SERIEPED", "parentId": null},
+      "NROPED": { "fieldName": "NROPED", "refEntityName": "PEDIDOS", "refFieldName": "NROPED", "parentId": null},
+      "DJPROD": { "fieldName": "DJPROD", "refEntityName": "PRODUCTOS", "refFieldName": "DTOJUD", "parentId": null},
+          "RUBRO": { "fieldName": "RUBRO", "refEntityName": "RUBROS", "refFieldName": "CODRUBRO", "parentId": "DJPROD"},
+          "TIPO": { "fieldName": "TIPO", "refEntityName": "TIPOSPROD", "refFieldName": "CODTIPOS", "parentId": "DJPROD"},
+          "MARCA": { "fieldName": "MARCA", "refEntityName": "MARCAS", "refFieldName": "CODMARCA", "parentId": "DJPROD"},
+          "MEDIDA": { "fieldName": "MEDIDA", "refEntityName": "MEDIDAS", "refFieldName": "CODMEDIDA", "parentId": "DJPROD"},
+      "CODPROD": { "fieldName": "CODPROD", "refEntityName": "PRODUCTOS", "refFieldName": "CODPROD", "parentId": null},
+      "ESTADO_EST": { "fieldName": "ESTADO", "refEntityName": "TABLAS", "refFieldName": "REFERENCIA", "parentId": null}
     }
+  },
+
+  "DB_ACT_CONGRUENCIAS": {
+    "name": "DB_ACT_CONGRUENCIAS",
+    "alias": "DB_A",
+    "fields": ["CODIGO_INSTR", "INSTRUCCION_SQL", "TIPO", "FECHA", "TEMA"],
+    "pk": "CODIGO_INSTR"
+  },
+
+  "HONORARIOS_FUEROS": {
+    "name": "HONORARIOS_FUEROS",
+    "alias": "HONO",
+    "fields": ["CODFUE", "DESCRIPCION"],
+    "pk": "CODFUE"
+  },
+
+  "ESTADISTICA_SALDOS": {
+    "name": "ESTADISTICA_SALDOS",
+    "alias": "ESTA",
+    "fields": ["DTOJUDI", "ANIO", "MES", "FUERO", "PERITO", "SALDO_ANU", "SALDO_COL", "SALDO_COLAB", "SALDO_DSE", "SALDO_DERIV", "SALDO_PSEDEV", "SALDO_DCS", "SALDO_FINCOL", "SALDO_FINDERI", "SALDO_FIN", "SALDO_IMP", "SALDO_PAR", "SALDO_PEN", "SALDO_PSE", "SALDO_DEV", "SALDO_REC", "SALDO_RP", "SALDO_SS", "CERRADO", "EMPLE_CERRO", "F_CIERRE", "ASIGNADAS", "PROD_TOTAL", "PROD_INGRE_MES", "PROD_INGRE_6MESES", "PROD_CONJ_MES", "DEV_FALTAELEM_MES", "PEND_TOT_FINPERIODO", "PEND_SINELEM_FINPERIODO", "PEND_SINELEM_6MESES", "EN_COND_DE_DICTAMINAR", "PED_COLAB", "INFORME_PED_COLAB", "DESISTIDAS", "ANULADAS", "RECHAZADAS", "DEV_CIERRE_SEC", "DERIVADAS", "IMPUGNADAS", "PEND_CONELEM_TOTAL", "EEE_TOTAL", "INC_TOTAL", "SUS_TOTAL", "SUS_PERIODO", "ACL_FINPERIODO", "INFACL_FINPERIODO"],
+    "uniqueMultiple": ["DTOJUDI", "ANIO", "MES", "FUERO", "PERITO"]
+  },
+
+  "DTOSJUDI_DET_TIPOSPERI": {
+    "name": "DTOSJUDI_DET_TIPOSPERI",
+    "alias": "DTOS",
+    "fields": ["RID", "ID_TIPOPERI", "TIPOPERI", "CODIGO", "CANT_PERI_IGUAL_UNA_PERI"],
+    "uniqueMultiple": ["RID", "ID_TIPOPERI"]
+  },
+
+  "RELA_MESA_SEC": {
+    "name": "RELA_MESA_SEC",
+    "alias": "RELA",
+    "fields": ["DTOJUDI", "MESA", "SECCION"],
+    "uniqueMultiple": ["DTOJUDI", "MESA", "SECCION"]
+  },
+
+  "MARCAS": {
+    "name": "MARCAS",
+    "alias": "MARC",
+    "fields": ["MARCA", "CODMARCA"],
+    "pk": "MARCA",
+    "unique": ["CODMARCA"]
+  },
+
+  "ORGANISMOS": {
+    "name": "ORGANISMOS",
+    "alias": "ORGA",
+    "fields": ["DTOJUDI", "CODORIGEN", "CARACTER", "FUERO", "TIPO_ORGANISMO", "NRO_ORGANISMO", "NOMBRE", "CALLE", "NUMERO", "ENTRE", "TELE1", "TELE2", "TELE3", "FAX", "LOCALIDAD", "CP", "ORIGEN", "TITULAR", "DESC_CORTA", "REGISTRO_OFICIAL"],
+    "fk": ["DTOJUDI", "FUERO", "TIPO_ORGANISMO"],
+    "uniqueMultiple": ["DTOJUDI", "CODORIGEN"],
+    "tree": {
+      "DTOJUDI": { "fieldName": "DTOJUDI", "refEntityName": "DTOSJUDI", "refFieldName": "DTOJUD", "children": {
+      }},
+      "FUERO": { "fieldName": "FUERO", "refEntityName": "TABLAS", "refFieldName": "REFERENCIA", "children": {
+          "CODTAB": { "fieldName": "CODTAB", "refEntityName": "DESTABLAS", "refFieldName": "CODTAB", "children": {
+          }}
+      }},
+      "TIPO_ORGANISMO": { "fieldName": "TIPO_ORGANISMO", "refEntityName": "TABLAS", "refFieldName": "REFERENCIA", "children": {
+      }}
+    },
+    "relations": {
+      "DTOJUDI": { "fieldName": "DTOJUDI", "refEntityName": "DTOSJUDI", "refFieldName": "DTOJUD", "parentId": null},
+      "FUERO": { "fieldName": "FUERO", "refEntityName": "TABLAS", "refFieldName": "REFERENCIA", "parentId": null},
+          "CODTAB": { "fieldName": "CODTAB", "refEntityName": "DESTABLAS", "refFieldName": "CODTAB", "parentId": "FUERO"},
+      "TIPO_ORGANISMO": { "fieldName": "TIPO_ORGANISMO", "refEntityName": "TABLAS", "refFieldName": "REFERENCIA", "parentId": null}
+    }
+  },
+
+  "ST_ImpreCartu_Marcas": {
+    "name": "ST_ImpreCartu_Marcas",
+    "alias": "ST_I",
+    "fields": ["CODMARCA", "IMP_CAR", "DESCRIPCION"]
+  },
+
+  "PROVEEDORES": {
+    "name": "PROVEEDORES",
+    "alias": "PROV",
+    "fields": ["CUIT", "EMPRESA", "IDPPROV", "RUBRO", "FAX", "TEL1", "TEL2", "CONTACTO"],
+    "pk": "EMPRESA",
+    "unique": ["IDPPROV"]
+  },
+
+  "DTOSJUDI_DET": {
+    "name": "DTOSJUDI_DET",
+    "alias": "DTOa",
+    "fields": ["DTOJUD", "DEPENDENCIA", "CODIGO", "DESCRIPCION", "TIPO_DEPEN", "RESP_PEDIDOS", "RECIBE_PERICIAS", "ASIG_AUTO_PERITO", "DESIGN_EN_SECCION", "RID", "DISCRIMINA_TIPO_PERICIA", "IMP_RECI_MOVI", "IMP_RECI_SALIDA", "IMP_NOTA_DESIG", "DESIGNACION_PORFUERO", "NRO_BOLILLERO"],
+    "fk": ["DTOJUD"],
+    "uniqueMultiple": ["DTOJUD", "DEPENDENCIA", "CODIGO"],
+    "tree": {
+      "DTOJUD": { "fieldName": "DTOJUD", "refEntityName": "DTOSJUDI", "refFieldName": "DTOJUD", "children": {
+      }}
+    },
+    "relations": {
+      "DTOJUD": { "fieldName": "DTOJUD", "refEntityName": "DTOSJUDI", "refFieldName": "DTOJUD", "parentId": null}
+    }
+  },
+
+  "_PEDPERI": {
+    "name": "_PEDPERI",
+    "alias": "_PED",
+    "fields": ["DTOJUDI", "SERIE", "NUI", "MESA", "IDP_ACT", "IDP_DEM", "CODCARAT", "DJORI", "CODLOCAL", "FUERO", "ORGANISMO", "JUEZ_FISCAL", "INTERVIENE_ORG", "F_INGRESO", "F_EGRESO", "CODEMP_CARGO", "HORA_CARGA", "F_ULTMODI", "CODEMP_UM", "NRONOTA", "NROEFECTO", "COMI_MORGUE", "ORG_CoM", "OBS", "NROASO_DEL_ORIGEN", "NRO_AUTOPSIA", "TIPO_INGRESO", "DETALLE_INGRESO", "ORI_ING_DIR_INTERNO", "PASA_A_MESA", "PERITO_ACTOR", "PERITO_DEMAN", "RESIDUAL"]
+  },
+
+  "PROVEEDORES_EMAILS": {
+    "name": "PROVEEDORES_EMAILS",
+    "alias": "PROa",
+    "fields": ["nroidpprov", "Email", "referencia"],
+    "fk": ["nroidpprov"],
+    "uniqueMultiple": ["nroidpprov", "Email"],
+    "tree": {
+      "nroidpprov": { "fieldName": "nroidpprov", "refEntityName": "PROVEEDORES", "refFieldName": "IDPPROV", "children": {
+      }}
+    },
+    "relations": {
+      "nroidpprov": { "fieldName": "nroidpprov", "refEntityName": "PROVEEDORES", "refFieldName": "IDPPROV", "parentId": null}
+    }
+  },
+
+  "_PEDPERI_ASECCIONES": {
+    "name": "_PEDPERI_ASECCIONES",
+    "alias": "_PEa",
+    "fields": ["DTOJUDI", "SERIE", "NUI", "SECCION", "ESPECIALIDAD", "SERIE_PERI", "NROPERI", "ESTADO", "FINGRE_PERI", "FFIN_PERI", "EFECTOS", "NROEFECTO", "FECHA_ESTI_COBRO", "HONO_REGULADO", "HONO_ESTIMADO", "ESTADO_COBRO", "EMPLE_RECIBIO", "FECHA_RECIBIO", "EMPLE_DIOSALIDA", "FECHA_DIOSALIDA", "ENTREGO_EFECTOS", "SUBPERI"]
+  },
+
+  "_PEDPERI_DOCINGRE": {
+    "name": "_PEDPERI_DOCINGRE",
+    "alias": "_PEb",
+    "fields": ["DTOJUDI", "SERIE", "NUI", "NRODOC", "COD_DOC_INGRE", "FECHA_INGRE", "DETALLE_DOCINGRE", "ESTA_EN_SEC", "SUBPERI"]
+  },
+
+  "PERI_DOCASO": {
+    "name": "PERI_DOCASO",
+    "alias": "PERI",
+    "fields": ["DTOJUDI", "SERIE", "NUI", "NRODOC", "SERIE_PERI", "NROPERI", "RUTA_NOMBRE_DOC", "EXTENSION", "DESCRIPCION", "SOLOLECTURA", "F_ULT_MODI", "CODEMPMODI", "DOC_IMAGEN", "NROSUBPERI"],
+    "uniqueMultiple": ["DTOJUDI", "SERIE", "NUI", "NRODOC"]
+  },
+
+  "SUJETOS_RELACIONADOS": {
+    "name": "SUJETOS_RELACIONADOS",
+    "alias": "SUJE",
+    "fields": ["DJ_SUJETO", "IDP_SUJETO", "DJ_SUJRELA", "IDP_RELACIONADO"]
+  },
+
+  "MEDIDAS": {
+    "name": "MEDIDAS",
+    "alias": "MEDI",
+    "fields": ["MEDIDA", "CODMEDIDA"],
+    "pk": "MEDIDA",
+    "unique": ["CODMEDIDA"]
+  },
+
+  "_PEDPERI_NROSASO": {
+    "name": "_PEDPERI_NROSASO",
+    "alias": "_PEc",
+    "fields": ["DTOJUDI", "SERIE", "NUI", "NRO_ASO", "REFERENCIA", "SUBPERI"]
+  },
+
+  "_PEDPERI_PERITOS": {
+    "name": "_PEDPERI_PERITOS",
+    "alias": "_PEd",
+    "fields": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "PERITO", "FECHA_DESIG", "OBS", "SUBPERI"]
+  },
+
+  "RUBROS": {
+    "name": "RUBROS",
+    "alias": "RUBR",
+    "fields": ["RUBRO", "CODRUBRO"],
+    "pk": "RUBRO",
+    "unique": ["CODRUBRO"]
+  },
+
+  "_PERI_DOCASO": {
+    "name": "_PERI_DOCASO",
+    "alias": "_PER",
+    "fields": ["DTOJUDI", "SERIE", "NUI", "NRODOC", "SERIE_PERI", "NROPERI", "RUTA_NOMBRE_DOC", "SOLOLECTURA", "F_ULT_MODI", "CODEMPMODI", "SUBPERI"]
+  },
+
+  "PERITOS_DEF_TIPOSPERICIA": {
+    "name": "PERITOS_DEF_TIPOSPERICIA",
+    "alias": "PERa",
+    "fields": ["NroIdPEmp", "Id_Pericia"],
+    "uniqueMultiple": ["NroIdPEmp", "Id_Pericia"]
+  },
+
+  "ST_Cartuchos": {
+    "name": "ST_Cartuchos",
+    "alias": "ST_C",
+    "fields": ["CodCartucho", "Descripcion", "NegroColor", "CodSuministros"]
+  },
+
+  "PERITOS_DEF_ESPE": {
+    "name": "PERITOS_DEF_ESPE",
+    "alias": "PERb",
+    "fields": ["NroIdPEmp", "Espe"],
+    "uniqueMultiple": ["NroIdPEmp", "Espe"]
+  },
+
+  "ST_Impresoras": {
+    "name": "ST_Impresoras",
+    "alias": "ST_a",
+    "fields": ["CodImpre", "Marca", "Modelo", "Descripcion"]
+  },
+
+  "PERITOS_DEF_GRUPOS": {
+    "name": "PERITOS_DEF_GRUPOS",
+    "alias": "PERc",
+    "fields": ["NroIdPemp", "Grupo"],
+    "uniqueMultiple": ["NroIdPemp", "Grupo"]
+  },
+
+  "PERITOS_DEF_RAMALES": {
+    "name": "PERITOS_DEF_RAMALES",
+    "alias": "PERd",
+    "fields": ["NroIdPEmp", "Ramal"],
+    "uniqueMultiple": ["NroIdPEmp", "Ramal"]
+  },
+
+  "DTOSJUDI": {
+    "name": "DTOSJUDI",
+    "alias": "DTOb",
+    "fields": ["DTOJUD", "DESCRIPCION"],
+    "pk": "DTOJUD"
+  },
+
+  "PERITOS_DEF_SUBESPE": {
+    "name": "PERITOS_DEF_SUBESPE",
+    "alias": "PERe",
+    "fields": ["NroIdPEmp", "Espe", "SubEspe"],
+    "uniqueMultiple": ["NroIdPEmp", "Espe", "SubEspe"]
+  },
+
+  "LOCALIDADES": {
+    "name": "LOCALIDADES",
+    "alias": "LOCA",
+    "fields": ["CP", "id_partido", "Id_localidad", "Localidad", "REGISTRO_OFICIAL", "DTOJUDI"],
+    "pk": "Id_localidad"
+  },
+
+  "PERITOS_DEF_ZONAS": {
+    "name": "PERITOS_DEF_ZONAS",
+    "alias": "PERf",
+    "fields": ["NroIdPEmp", "Zona"],
+    "uniqueMultiple": ["NroIdPEmp", "Zona"]
+  },
+
+  "PARTIDOS": {
+    "name": "PARTIDOS",
+    "alias": "PART",
+    "fields": ["ID_PARTIDO", "PARTIDO", "REGISTRO_OFICIAL", "DTOJUDI"],
+    "pk": "ID_PARTIDO"
+  },
+
+  "ST_ImpresorasCartuchos": {
+    "name": "ST_ImpresorasCartuchos",
+    "alias": "ST_b",
+    "fields": ["CodCartucho", "CodImpre"]
+  },
+
+  "PERSONAL": {
+    "name": "PERSONAL",
+    "alias": "PERS",
+    "fields": ["TIPODOC", "NRODOC", "NROIDPEMP", "DTOJUD", "DEPENDENCIA", "LEGAJO", "APELLIDO", "NOMBRES", "NICK", "CLAVE", "CAMPASNL", "SUSPEND", "SUS_DESDE", "SUS_HASTA", "CARGO", "NIVEL_SEGU", "GRUPO", "CARACTER", "TRABAJA_EN", "EMAIL_PERSONAL", "PERITO", "TIPO_PERITO", "DE_LICENCIA", "SANCIONADO", "PERTENECE_A_MESA", "CANT_PERI_SEGUIDAS", "HACE_PENAL", "HACE_CIVIL", "HACE_LABORAL", "HACE_CONTENCIOSO", "SOLO_LECTURA", "ESPECIALIDAD", "CANT_PERI_ASIG", "NRO_SALIDA_PERITO", "CLAVE_NUMERICA", "PERIODICIDAD", "CONTROL_PERIODICIDAD", "CANT_PERI_ASIG_MENSUAL", "YA_DESIGNE", "HACE_FAMILIA", "HACE_MENORES", "HACE_PENAL_JUVENIL", "HACE_EXTERNO", "HABILITADO", "HACE_JUSPAZ"],
+    "fk": ["DTOJUD", "NIVEL_SEGU"],
+    "unique": ["NROIDPEMP"],
+    "uniqueMultiple": ["TIPODOC", "NRODOC"],
+    "tree": {
+      "DTOJUD": { "fieldName": "DTOJUD", "refEntityName": "DTOSJUDI", "refFieldName": "DTOJUD", "children": {
+      }},
+      "NIVEL_SEGU": { "fieldName": "NIVEL_SEGU", "refEntityName": "NIVELES", "refFieldName": "NIVEL_SEGU", "children": {
+      }}
+    },
+    "relations": {
+      "DTOJUD": { "fieldName": "DTOJUD", "refEntityName": "DTOSJUDI", "refFieldName": "DTOJUD", "parentId": null},
+      "NIVEL_SEGU": { "fieldName": "NIVEL_SEGU", "refEntityName": "NIVELES", "refFieldName": "NIVEL_SEGU", "parentId": null}
+    }
+  },
+
+  "DTOSJUDI_CTAS": {
+    "name": "DTOSJUDI_CTAS",
+    "alias": "DTOc",
+    "fields": ["DTOJUD", "NRO_CTA", "SALDO", "FECHA_SALDO"],
+    "fk": ["DTOJUD"],
+    "uniqueMultiple": ["DTOJUD", "NRO_CTA"],
+    "tree": {
+      "DTOJUD": { "fieldName": "DTOJUD", "refEntityName": "DTOSJUDI", "refFieldName": "DTOJUD", "children": {
+      }}
+    },
+    "relations": {
+      "DTOJUD": { "fieldName": "DTOJUD", "refEntityName": "DTOSJUDI", "refFieldName": "DTOJUD", "parentId": null}
+    }
+  },
+
+  "PEDIDOS_PASOS": {
+    "name": "PEDIDOS_PASOS",
+    "alias": "PEDa",
+    "fields": ["DTOJUD", "FECHA_PEDIDO", "SERIEPED", "NROPED", "ITEM", "FECHAPASO", "DETALLE", "FECHA_CARGA", "NROIDPEMP"],
+    "fk": ["DTOJUD", "FECHA_PEDIDO", "SERIEPED", "NROPED"],
+    "uniqueMultiple": ["DTOJUD", "FECHA_PEDIDO", "SERIEPED", "NROPED", "ITEM"],
+    "tree": {
+      "DTOJUD": { "fieldName": "DTOJUD", "refEntityName": "PEDIDOS", "refFieldName": "DTOJUD", "children": {
+          "REFERENTE": { "fieldName": "REFERENTE", "refEntityName": "PERSONAL", "refFieldName": "NROIDPEMP", "children": {
+              "DTOJUD_DTO": { "fieldName": "DTOJUD", "refEntityName": "DTOSJUDI", "refFieldName": "DTOJUD", "children": {
+              }},
+              "NIVEL_SEGU": { "fieldName": "NIVEL_SEGU", "refEntityName": "NIVELES", "refFieldName": "NIVEL_SEGU", "children": {
+              }}
+          }},
+          "PROV_ESTI": { "fieldName": "PROV_ESTI", "refEntityName": "PROVEEDORES", "refFieldName": "IDPPROV", "children": {
+          }},
+          "NROIDPEMP": { "fieldName": "NROIDPEMP", "refEntityName": "PERSONAL", "refFieldName": "NROIDPEMP", "children": {
+          }},
+          "ESTADO": { "fieldName": "ESTADO", "refEntityName": "TABLAS", "refFieldName": "REFERENCIA", "children": {
+              "CODTAB": { "fieldName": "CODTAB", "refEntityName": "DESTABLAS", "refFieldName": "CODTAB", "children": {
+              }}
+          }}
+      }},
+      "FECHA_PEDIDO": { "fieldName": "FECHA_PEDIDO", "refEntityName": "PEDIDOS", "refFieldName": "FECHA_PEDIDO", "children": {
+      }},
+      "SERIEPED": { "fieldName": "SERIEPED", "refEntityName": "PEDIDOS", "refFieldName": "SERIEPED", "children": {
+      }},
+      "NROPED": { "fieldName": "NROPED", "refEntityName": "PEDIDOS", "refFieldName": "NROPED", "children": {
+      }}
+    },
+    "relations": {
+      "DTOJUD": { "fieldName": "DTOJUD", "refEntityName": "PEDIDOS", "refFieldName": "DTOJUD", "parentId": null},
+          "REFERENTE": { "fieldName": "REFERENTE", "refEntityName": "PERSONAL", "refFieldName": "NROIDPEMP", "parentId": "DTOJUD"},
+              "DTOJUD_DTO": { "fieldName": "DTOJUD", "refEntityName": "DTOSJUDI", "refFieldName": "DTOJUD", "parentId": "REFERENTE"},
+              "NIVEL_SEGU": { "fieldName": "NIVEL_SEGU", "refEntityName": "NIVELES", "refFieldName": "NIVEL_SEGU", "parentId": "REFERENTE"},
+          "PROV_ESTI": { "fieldName": "PROV_ESTI", "refEntityName": "PROVEEDORES", "refFieldName": "IDPPROV", "parentId": "DTOJUD"},
+          "NROIDPEMP": { "fieldName": "NROIDPEMP", "refEntityName": "PERSONAL", "refFieldName": "NROIDPEMP", "parentId": "DTOJUD"},
+          "ESTADO": { "fieldName": "ESTADO", "refEntityName": "TABLAS", "refFieldName": "REFERENCIA", "parentId": "DTOJUD"},
+              "CODTAB": { "fieldName": "CODTAB", "refEntityName": "DESTABLAS", "refFieldName": "CODTAB", "parentId": "ESTADO"},
+      "FECHA_PEDIDO": { "fieldName": "FECHA_PEDIDO", "refEntityName": "PEDIDOS", "refFieldName": "FECHA_PEDIDO", "parentId": null},
+      "SERIEPED": { "fieldName": "SERIEPED", "refEntityName": "PEDIDOS", "refFieldName": "SERIEPED", "parentId": null},
+      "NROPED": { "fieldName": "NROPED", "refEntityName": "PEDIDOS", "refFieldName": "NROPED", "parentId": null}
+    }
+  },
+
+  "ENTREGAS_PED": {
+    "name": "ENTREGAS_PED",
+    "alias": "ENTR",
+    "fields": ["DTOJUD", "FECHA_PEDIDO", "SERIEPED", "NROPED", "ORDEN_PROVISION", "NROIDPEMP", "FECHA_CARGA", "FECHA_ENTREGA", "ESTADO", "IDPPROV", "NRO_REMITO", "NRO_FACTURA", "EMP_ULTMODI", "F_ULTMODI", "OBSERVACION"],
+    "fk": ["DTOJUD", "FECHA_PEDIDO", "SERIEPED", "NROPED", "IDPPROV"],
+    "uniqueMultiple": ["DTOJUD", "FECHA_PEDIDO", "SERIEPED", "NROPED", "ORDEN_PROVISION"],
+    "tree": {
+      "DTOJUD": { "fieldName": "DTOJUD", "refEntityName": "PEDIDOS", "refFieldName": "DTOJUD", "children": {
+          "REFERENTE": { "fieldName": "REFERENTE", "refEntityName": "PERSONAL", "refFieldName": "NROIDPEMP", "children": {
+              "DTOJUD_DTO": { "fieldName": "DTOJUD", "refEntityName": "DTOSJUDI", "refFieldName": "DTOJUD", "children": {
+              }},
+              "NIVEL_SEGU": { "fieldName": "NIVEL_SEGU", "refEntityName": "NIVELES", "refFieldName": "NIVEL_SEGU", "children": {
+              }}
+          }},
+          "PROV_ESTI": { "fieldName": "PROV_ESTI", "refEntityName": "PROVEEDORES", "refFieldName": "IDPPROV", "children": {
+          }},
+          "NROIDPEMP": { "fieldName": "NROIDPEMP", "refEntityName": "PERSONAL", "refFieldName": "NROIDPEMP", "children": {
+          }},
+          "ESTADO": { "fieldName": "ESTADO", "refEntityName": "TABLAS", "refFieldName": "REFERENCIA", "children": {
+              "CODTAB": { "fieldName": "CODTAB", "refEntityName": "DESTABLAS", "refFieldName": "CODTAB", "children": {
+              }}
+          }}
+      }},
+      "FECHA_PEDIDO": { "fieldName": "FECHA_PEDIDO", "refEntityName": "PEDIDOS", "refFieldName": "FECHA_PEDIDO", "children": {
+      }},
+      "SERIEPED": { "fieldName": "SERIEPED", "refEntityName": "PEDIDOS", "refFieldName": "SERIEPED", "children": {
+      }},
+      "NROPED": { "fieldName": "NROPED", "refEntityName": "PEDIDOS", "refFieldName": "NROPED", "children": {
+      }},
+      "IDPPROV": { "fieldName": "IDPPROV", "refEntityName": "PROVEEDORES", "refFieldName": "IDPPROV", "children": {
+      }}
+    },
+    "relations": {
+      "DTOJUD": { "fieldName": "DTOJUD", "refEntityName": "PEDIDOS", "refFieldName": "DTOJUD", "parentId": null},
+          "REFERENTE": { "fieldName": "REFERENTE", "refEntityName": "PERSONAL", "refFieldName": "NROIDPEMP", "parentId": "DTOJUD"},
+              "DTOJUD_DTO": { "fieldName": "DTOJUD", "refEntityName": "DTOSJUDI", "refFieldName": "DTOJUD", "parentId": "REFERENTE"},
+              "NIVEL_SEGU": { "fieldName": "NIVEL_SEGU", "refEntityName": "NIVELES", "refFieldName": "NIVEL_SEGU", "parentId": "REFERENTE"},
+          "PROV_ESTI": { "fieldName": "PROV_ESTI", "refEntityName": "PROVEEDORES", "refFieldName": "IDPPROV", "parentId": "DTOJUD"},
+          "NROIDPEMP": { "fieldName": "NROIDPEMP", "refEntityName": "PERSONAL", "refFieldName": "NROIDPEMP", "parentId": "DTOJUD"},
+          "ESTADO": { "fieldName": "ESTADO", "refEntityName": "TABLAS", "refFieldName": "REFERENCIA", "parentId": "DTOJUD"},
+              "CODTAB": { "fieldName": "CODTAB", "refEntityName": "DESTABLAS", "refFieldName": "CODTAB", "parentId": "ESTADO"},
+      "FECHA_PEDIDO": { "fieldName": "FECHA_PEDIDO", "refEntityName": "PEDIDOS", "refFieldName": "FECHA_PEDIDO", "parentId": null},
+      "SERIEPED": { "fieldName": "SERIEPED", "refEntityName": "PEDIDOS", "refFieldName": "SERIEPED", "parentId": null},
+      "NROPED": { "fieldName": "NROPED", "refEntityName": "PEDIDOS", "refFieldName": "NROPED", "parentId": null},
+      "IDPPROV": { "fieldName": "IDPPROV", "refEntityName": "PROVEEDORES", "refFieldName": "IDPPROV", "parentId": null}
+    }
+  },
+
+  "PEDPERI_PERITOS": {
+    "name": "PEDPERI_PERITOS",
+    "alias": "PEDP",
+    "fields": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "PERITO", "FECHA_DESIG", "OBS", "SUBPERI", "CARACTER", "TIPO_DESIGNACION", "HORA_CARGA", "FECHA_ULTIMO_CAMBIO"],
+    "fk": ["DTOJUDI", "SERIE", "NUI"],
+    "uniqueMultiple": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "PERITO", "SUBPERI"],
+    "tree": {
+      "DTOJUDI": { "fieldName": "DTOJUDI", "refEntityName": "PEDPERI", "refFieldName": "DTOJUDI", "children": {
+          "DTOJUDI_DTO": { "fieldName": "DTOJUDI", "refEntityName": "DTOSJUDI", "refFieldName": "DTOJUD", "children": {
+          }},
+          "CODCARAT": { "fieldName": "CODCARAT", "refEntityName": "TABLAS", "refFieldName": "REFERENCIA", "children": {
+              "CODTAB": { "fieldName": "CODTAB", "refEntityName": "DESTABLAS", "refFieldName": "CODTAB", "children": {
+              }}
+          }}
+      }},
+      "SERIE": { "fieldName": "SERIE", "refEntityName": "PEDPERI", "refFieldName": "SERIE", "children": {
+      }},
+      "NUI": { "fieldName": "NUI", "refEntityName": "PEDPERI", "refFieldName": "NUI", "children": {
+      }}
+    },
+    "relations": {
+      "DTOJUDI": { "fieldName": "DTOJUDI", "refEntityName": "PEDPERI", "refFieldName": "DTOJUDI", "parentId": null},
+          "DTOJUDI_DTO": { "fieldName": "DTOJUDI", "refEntityName": "DTOSJUDI", "refFieldName": "DTOJUD", "parentId": "DTOJUDI"},
+          "CODCARAT": { "fieldName": "CODCARAT", "refEntityName": "TABLAS", "refFieldName": "REFERENCIA", "parentId": "DTOJUDI"},
+              "CODTAB": { "fieldName": "CODTAB", "refEntityName": "DESTABLAS", "refFieldName": "CODTAB", "parentId": "CODCARAT"},
+      "SERIE": { "fieldName": "SERIE", "refEntityName": "PEDPERI", "refFieldName": "SERIE", "parentId": null},
+      "NUI": { "fieldName": "NUI", "refEntityName": "PEDPERI", "refFieldName": "NUI", "parentId": null}
+    }
+  },
+
+  "ENTREGAS_PED_DET": {
+    "name": "ENTREGAS_PED_DET",
+    "alias": "ENTa",
+    "fields": ["DTOJUD", "FECHA_PEDIDO", "SERIEPED", "NROPED", "ORDEN_PROVISION", "ITEM", "PRECIO_UNI", "CANT_ENTRE", "OBSITEM"],
+    "fk": ["DTOJUD", "FECHA_PEDIDO", "SERIEPED", "NROPED", "ORDEN_PROVISION"],
+    "uniqueMultiple": ["DTOJUD", "FECHA_PEDIDO", "SERIEPED", "NROPED", "ORDEN_PROVISION", "ITEM"],
+    "tree": {
+      "DTOJUD": { "fieldName": "DTOJUD", "refEntityName": "ENTREGAS_PED", "refFieldName": "DTOJUD", "children": {
+          "DTOJUD_DTO": { "fieldName": "DTOJUD", "refEntityName": "PEDIDOS", "refFieldName": "DTOJUD", "children": {
+              "REFERENTE": { "fieldName": "REFERENTE", "refEntityName": "PERSONAL", "refFieldName": "NROIDPEMP", "children": {
+                  "DTOJUD_DTO1": { "fieldName": "DTOJUD", "refEntityName": "DTOSJUDI", "refFieldName": "DTOJUD", "children": {
+                  }},
+                  "NIVEL_SEGU": { "fieldName": "NIVEL_SEGU", "refEntityName": "NIVELES", "refFieldName": "NIVEL_SEGU", "children": {
+                  }}
+              }},
+              "PROV_ESTI": { "fieldName": "PROV_ESTI", "refEntityName": "PROVEEDORES", "refFieldName": "IDPPROV", "children": {
+              }},
+              "NROIDPEMP": { "fieldName": "NROIDPEMP", "refEntityName": "PERSONAL", "refFieldName": "NROIDPEMP", "children": {
+              }},
+              "ESTADO": { "fieldName": "ESTADO", "refEntityName": "TABLAS", "refFieldName": "REFERENCIA", "children": {
+                  "CODTAB": { "fieldName": "CODTAB", "refEntityName": "DESTABLAS", "refFieldName": "CODTAB", "children": {
+                  }}
+              }}
+          }},
+          "FECHA_PEDIDO": { "fieldName": "FECHA_PEDIDO", "refEntityName": "PEDIDOS", "refFieldName": "FECHA_PEDIDO", "children": {
+          }},
+          "SERIEPED": { "fieldName": "SERIEPED", "refEntityName": "PEDIDOS", "refFieldName": "SERIEPED", "children": {
+          }},
+          "NROPED": { "fieldName": "NROPED", "refEntityName": "PEDIDOS", "refFieldName": "NROPED", "children": {
+          }},
+          "IDPPROV": { "fieldName": "IDPPROV", "refEntityName": "PROVEEDORES", "refFieldName": "IDPPROV", "children": {
+          }}
+      }},
+      "FECHA_PEDIDO_FEC": { "fieldName": "FECHA_PEDIDO", "refEntityName": "ENTREGAS_PED", "refFieldName": "FECHA_PEDIDO", "children": {
+      }},
+      "SERIEPED_SER": { "fieldName": "SERIEPED", "refEntityName": "ENTREGAS_PED", "refFieldName": "SERIEPED", "children": {
+      }},
+      "NROPED_NRO": { "fieldName": "NROPED", "refEntityName": "ENTREGAS_PED", "refFieldName": "NROPED", "children": {
+      }},
+      "ORDEN_PROVISION": { "fieldName": "ORDEN_PROVISION", "refEntityName": "ENTREGAS_PED", "refFieldName": "ORDEN_PROVISION", "children": {
+      }}
+    },
+    "relations": {
+      "DTOJUD": { "fieldName": "DTOJUD", "refEntityName": "ENTREGAS_PED", "refFieldName": "DTOJUD", "parentId": null},
+          "DTOJUD_DTO": { "fieldName": "DTOJUD", "refEntityName": "PEDIDOS", "refFieldName": "DTOJUD", "parentId": "DTOJUD"},
+              "REFERENTE": { "fieldName": "REFERENTE", "refEntityName": "PERSONAL", "refFieldName": "NROIDPEMP", "parentId": "DTOJUD_DTO"},
+                  "DTOJUD_DTO1": { "fieldName": "DTOJUD", "refEntityName": "DTOSJUDI", "refFieldName": "DTOJUD", "parentId": "REFERENTE"},
+                  "NIVEL_SEGU": { "fieldName": "NIVEL_SEGU", "refEntityName": "NIVELES", "refFieldName": "NIVEL_SEGU", "parentId": "REFERENTE"},
+              "PROV_ESTI": { "fieldName": "PROV_ESTI", "refEntityName": "PROVEEDORES", "refFieldName": "IDPPROV", "parentId": "DTOJUD_DTO"},
+              "NROIDPEMP": { "fieldName": "NROIDPEMP", "refEntityName": "PERSONAL", "refFieldName": "NROIDPEMP", "parentId": "DTOJUD_DTO"},
+              "ESTADO": { "fieldName": "ESTADO", "refEntityName": "TABLAS", "refFieldName": "REFERENCIA", "parentId": "DTOJUD_DTO"},
+                  "CODTAB": { "fieldName": "CODTAB", "refEntityName": "DESTABLAS", "refFieldName": "CODTAB", "parentId": "ESTADO"},
+          "FECHA_PEDIDO": { "fieldName": "FECHA_PEDIDO", "refEntityName": "PEDIDOS", "refFieldName": "FECHA_PEDIDO", "parentId": "DTOJUD"},
+          "SERIEPED": { "fieldName": "SERIEPED", "refEntityName": "PEDIDOS", "refFieldName": "SERIEPED", "parentId": "DTOJUD"},
+          "NROPED": { "fieldName": "NROPED", "refEntityName": "PEDIDOS", "refFieldName": "NROPED", "parentId": "DTOJUD"},
+          "IDPPROV": { "fieldName": "IDPPROV", "refEntityName": "PROVEEDORES", "refFieldName": "IDPPROV", "parentId": "DTOJUD"},
+      "FECHA_PEDIDO_FEC": { "fieldName": "FECHA_PEDIDO", "refEntityName": "ENTREGAS_PED", "refFieldName": "FECHA_PEDIDO", "parentId": null},
+      "SERIEPED_SER": { "fieldName": "SERIEPED", "refEntityName": "ENTREGAS_PED", "refFieldName": "SERIEPED", "parentId": null},
+      "NROPED_NRO": { "fieldName": "NROPED", "refEntityName": "ENTREGAS_PED", "refFieldName": "NROPED", "parentId": null},
+      "ORDEN_PROVISION": { "fieldName": "ORDEN_PROVISION", "refEntityName": "ENTREGAS_PED", "refFieldName": "ORDEN_PROVISION", "parentId": null}
+    }
+  },
+
+  "DTOJUDI_ESPECIALIDADES": {
+    "name": "DTOJUDI_ESPECIALIDADES",
+    "alias": "DTOJ",
+    "fields": ["DTOJUD", "DEPENDENCIA", "ESPECIALIDAD", "DESCRIPCION"]
+  },
+
+  "ERRORES": {
+    "name": "ERRORES",
+    "alias": "ERRO",
+    "fields": ["hora", "id_pc", "referencia_linea", "tabla_rel", "sqltext", "p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8", "p9", "p10"]
+  },
+
+  "OPERACIONES": {
+    "name": "OPERACIONES",
+    "alias": "OPER",
+    "fields": ["CODOPE", "OPERACION"],
+    "pk": "CODOPE"
+  },
+
+  "ORDEN_PERITOS": {
+    "name": "ORDEN_PERITOS",
+    "alias": "ORDE",
+    "fields": ["DTOJUDI", "DEPENDENCIA", "ESPECIALIDAD", "NROORDEN", "ID_PERITO", "LE_RESTAN", "SIGUIENTE", "ASIGNADO_EVENTUAL", "SIGUENTE_EVENTUAL", "GRUPO"],
+    "fk": ["ID_PERITO"],
+    "uniqueMultiple": ["DTOJUDI", "DEPENDENCIA", "ESPECIALIDAD", "NROORDEN", "ID_PERITO"],
+    "tree": {
+      "ID_PERITO": { "fieldName": "ID_PERITO", "refEntityName": "PERSONAL", "refFieldName": "NROIDPEMP", "children": {
+          "DTOJUD": { "fieldName": "DTOJUD", "refEntityName": "DTOSJUDI", "refFieldName": "DTOJUD", "children": {
+          }},
+          "NIVEL_SEGU": { "fieldName": "NIVEL_SEGU", "refEntityName": "NIVELES", "refFieldName": "NIVEL_SEGU", "children": {
+          }}
+      }}
+    },
+    "relations": {
+      "ID_PERITO": { "fieldName": "ID_PERITO", "refEntityName": "PERSONAL", "refFieldName": "NROIDPEMP", "parentId": null},
+          "DTOJUD": { "fieldName": "DTOJUD", "refEntityName": "DTOSJUDI", "refFieldName": "DTOJUD", "parentId": "ID_PERITO"},
+          "NIVEL_SEGU": { "fieldName": "NIVEL_SEGU", "refEntityName": "NIVELES", "refFieldName": "NIVEL_SEGU", "parentId": "ID_PERITO"}
+    }
+  },
+
+  "ORIDEST": {
+    "name": "ORIDEST",
+    "alias": "ORID",
+    "fields": ["COD_OD", "COD_IND", "COD_SUP", "NIVEL", "NOMBRE", "SUBNIVELES"],
+    "pk": "COD_OD"
+  },
+
+  "PROCEDIMIENTOS_PERICIALES": {
+    "name": "PROCEDIMIENTOS_PERICIALES",
+    "alias": "PROC",
+    "fields": ["DTOJUDI", "SECCION", "NRO_PROCE", "DESCRIPCION_PROCE", "GENERA_MOV"],
+    "uniqueMultiple": ["DTOJUDI", "SECCION", "NRO_PROCE"]
+  },
+
+  "OBS_PREDEF": {
+    "name": "OBS_PREDEF",
+    "alias": "OBS_",
+    "fields": ["DJ", "ID_PC", "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "TPD1", "TPD2", "TPD3", "TPD4", "TPD5", "TPD6", "TPD7", "TPD8", "DJEMP", "NROEMP", "TIPO_TEXTO"],
+    "uniqueMultiple": ["DJEMP", "NROEMP"]
+  },
+
+  "PEDPERI_PROCE_PERICIALES": {
+    "name": "PEDPERI_PROCE_PERICIALES",
+    "alias": "PEDb",
+    "fields": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "NROSUBPERI", "ITEM_PP", "FECHA_PROCE", "DESCRIPCION_PROCE", "OBSERVACION", "ID_PERITO", "CANTIDAD", "COMPLEJIDAD"],
+    "uniqueMultiple": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "NROSUBPERI", "ITEM_PP"]
+  },
+
+  "PEDPERI_PERITOS_2": {
+    "name": "PEDPERI_PERITOS_2",
+    "alias": "PEDc",
+    "fields": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "PERITO", "FECHA_DESIG", "OBS", "SUBPERI", "CARACTER"]
+  },
+
+  "ST_Ingresos": {
+    "name": "ST_Ingresos",
+    "alias": "ST_c",
+    "fields": ["Fecha", "NroOrden", "NroIngreso", "Seccion", "IdPProv", "Motivo", "NroRemito", "NroFactura", "RID"]
+  },
+
+  "PRODUCTOS": {
+    "name": "PRODUCTOS",
+    "alias": "PROD",
+    "fields": ["DTOJUD", "CODPROD", "DEPENDENCIA", "RUBRO", "TIPO", "MARCA", "MEDIDA", "DESCRIPCION", "OBS", "BAJA", "COSTO_ULT_COMPRA", "FECHA_ULT_COMPRA", "PROV_ULT_COMPRA", "USO_INTERNO", "DIAS_AVISO1_DESDE_UC", "DIAS_AVISO2_DESDE_UC", "EN_ALERTA", "PEDIDO"],
+    "fk": ["RUBRO", "TIPO", "MARCA", "MEDIDA"],
+    "uniqueMultiple": ["DTOJUD", "CODPROD"],
+    "tree": {
+      "RUBRO": { "fieldName": "RUBRO", "refEntityName": "RUBROS", "refFieldName": "CODRUBRO", "children": {
+      }},
+      "TIPO": { "fieldName": "TIPO", "refEntityName": "TIPOSPROD", "refFieldName": "CODTIPOS", "children": {
+      }},
+      "MARCA": { "fieldName": "MARCA", "refEntityName": "MARCAS", "refFieldName": "CODMARCA", "children": {
+      }},
+      "MEDIDA": { "fieldName": "MEDIDA", "refEntityName": "MEDIDAS", "refFieldName": "CODMEDIDA", "children": {
+      }}
+    },
+    "relations": {
+      "RUBRO": { "fieldName": "RUBRO", "refEntityName": "RUBROS", "refFieldName": "CODRUBRO", "parentId": null},
+      "TIPO": { "fieldName": "TIPO", "refEntityName": "TIPOSPROD", "refFieldName": "CODTIPOS", "parentId": null},
+      "MARCA": { "fieldName": "MARCA", "refEntityName": "MARCAS", "refFieldName": "CODMARCA", "parentId": null},
+      "MEDIDA": { "fieldName": "MEDIDA", "refEntityName": "MEDIDAS", "refFieldName": "CODMEDIDA", "parentId": null}
+    }
+  },
+
+  "ST_Ingresos_Det": {
+    "name": "ST_Ingresos_Det",
+    "alias": "ST_d",
+    "fields": ["RID", "CodArtInt", "Cantidad"]
+  },
+
+  "ST_MoviStock": {
+    "name": "ST_MoviStock",
+    "alias": "ST_M",
+    "fields": ["Fecha", "NroOrden", "NroMov", "TipoMov", "FechaOperacion", "DeSeccion", "DeEmp", "ASeccion", "AEmp", "AProv", "RID"]
+  },
+
+  "DESTABLAS": {
+    "name": "DESTABLAS",
+    "alias": "DEST",
+    "fields": ["CODTAB", "DESCRIPCION"],
+    "pk": "CODTAB"
+  },
+
+  "ST_MoviStock_Det": {
+    "name": "ST_MoviStock_Det",
+    "alias": "ST_e",
+    "fields": ["RID", "CodArtInt", "Cantidad"]
+  },
+
+  "ORGANISMOS_INFORMADOS": {
+    "name": "ORGANISMOS_INFORMADOS",
+    "alias": "ORGa",
+    "fields": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "SUBPERI", "NROMOV", "ORG_INFORMADO", "COMENTARIO", "FECHA"],
+    "uniqueMultiple": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "SUBPERI", "NROMOV", "ORG_INFORMADO"]
+  },
+
+  "CIERRE_MES_ESTAD": {
+    "name": "CIERRE_MES_ESTAD",
+    "alias": "CIER",
+    "fields": ["DTOJUDI", "ANIO", "MES", "NRO_REGISTRO", "FUERO", "DJ_PERITO", "PERITO", "FECHA_GENERACION", "COD_EMPLE", "SECCION", "POR_FNPP", "POR_FDESIGNACION", "ASIGNADAS_PERIODO", "PRODUCIDAS_PERIODO", "SALE_NOTA_INF_PERIODO", "PROD_PARCIAL_TOTAL", "PENDIENTES_TOTAL", "SUSPENDIDAS_TOTAL", "SALIDA_INF_ACLAR_PERIODO", "SALIDA_INF_COLAB_PERIODO", "BAJAS_PERIODO", "DESISTIDAS_PERIODO", "ANULADAS_PERIODO", "RECHAZADAS_PERIODO", "DEVUELTAS_CIERRE_PERIODO", "DERIVADAS_TOTAL", "PROD_CONJUNTO_PERIODO", "PSE_TOTAL", "PCE_TOTAL", "ESPERA_DOC_TOTAL", "EN_COND_DICT_TOTAL", "INCOMPARENCIA_TOTAL", "ESPERA_CITADO_TOTAL", "PEND_ACLAR_COLAB_TOTAL", "NUIS_EN_PERIODO", "FIN_GESELL_PERIODO", "FIN_DERIVADAS_PERIODO", "FECHA_DATOS_DESDE", "FECHA_DATOS_HASTA", "FIN_INF_AUTOPSIA_PERIODO", "FIN_X_INC"],
+    "uniqueMultiple": ["DTOJUDI", "ANIO", "MES", "NRO_REGISTRO"]
+  },
+
+  "ST_ProdInsServ": {
+    "name": "ST_ProdInsServ",
+    "alias": "ST_P",
+    "fields": ["CodArtInt", "Descripcion", "CodBar", "Marca", "Modelo", "ArtGenerico", "Grupo", "Rubro", "Tipo", "Seccion", "EmpProp", "Ubicacion", "StockAct", "StockMin", "StockControla", "TReposicion", "Estado", "UnidadMedida"]
+  },
+
+  "ST_ProdInsServ_Ident": {
+    "name": "ST_ProdInsServ_Ident",
+    "alias": "ST_f",
+    "fields": ["CodArtInt", "NroSerie", "Color", "Tamanio", "Estado"]
+  },
+
+  "NIVELES": {
+    "name": "NIVELES",
+    "alias": "NIVE",
+    "fields": ["NIVEL_SEGU", "DESCRIPCION", "OPERACIONES"],
+    "pk": "NIVEL_SEGU"
+  },
+
+  "PEDPERI_CAMBIOS_ESTADOS": {
+    "name": "PEDPERI_CAMBIOS_ESTADOS",
+    "alias": "PEDd",
+    "fields": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "SUBPERI", "ESTADO_ORI", "ESTADO_FIN", "ANIO", "MES", "FUERO", "PERITO", "FECHA_CAMBIO", "EMPLE_CAMBIO", "PC", "ULTIMO_ESTADO_MES", "FECHA_CARGA"]
+  },
+
+  "_PERI_MOVI_CAMBIOS": {
+    "name": "_PERI_MOVI_CAMBIOS",
+    "alias": "_PEe",
+    "fields": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "NROMOV", "HORA", "IDPEMP", "ID_PC", "TEXTO_VIEJO", "TEXTO_NUEVO", "SUBPERI"]
+  },
+
+  "PEDPERI_NROSASO": {
+    "name": "PEDPERI_NROSASO",
+    "alias": "PEDe",
+    "fields": ["DTOJUDI", "SERIE", "NUI", "NRO_ASO", "REFERENCIA"],
+    "uniqueMultiple": ["DTOJUDI", "SERIE", "NUI", "NRO_ASO"]
+  },
+
+  "CIERRES": {
+    "name": "CIERRES",
+    "alias": "CIEa",
+    "fields": ["DTOJUDI", "MES", "ANIO", "NRO_CIERRE", "HORA", "COD_EMPLE"],
+    "uniqueMultiple": ["DTOJUDI", "MES", "ANIO", "NRO_CIERRE"]
+  },
+
+  "PERSONAL_MOVI": {
+    "name": "PERSONAL_MOVI",
+    "alias": "PERg",
+    "fields": ["DTOJUDI", "NROIDPEMP", "NROMOV", "TIPOMOV", "FECHA_DESDE", "FECHA_HASTA", "NRO_RESOLUCION", "OBS", "FECHA_CARGA", "CODEMP", "FECHA_ULTMODI", "CODEMP_MODI", "CUMPLIDA", "CUMPLIDO", "BORRADO"],
+    "uniqueMultiple": ["DTOJUDI", "NROIDPEMP", "NROMOV"]
+  },
+
+  "SUJETOS": {
+    "name": "SUJETOS",
+    "alias": "SUJa",
+    "fields": ["NROIDP", "APELLIDO", "NOMBRES", "TD", "NDOC", "CARACTER", "FECHA_CARGA", "DJ", "DOCUMENTO", "TIPO_DOC", "CARACTER_ABO", "DOMICILIO", "FECHA_NACIM", "EDAD", "ES_MENOR", "SUJETO_PRINCIPAL", "DOMICILIO_LABORAL"],
+    "pk": "NROIDP"
+  },
+
+  "TablaTrace": {
+    "name": "TablaTrace",
+    "alias": "Tabl",
+    "fields": ["DESCRIPCION"]
+  },
+
+  "_PERSONAL_MOVI": {
+    "name": "_PERSONAL_MOVI",
+    "alias": "_PEf",
+    "fields": ["DTOJUDI", "NROIDPEMP", "NROMOV", "TIPOMOV", "FECHA_DESDE", "FECHA_HASTA", "NRO_RESOLUCION", "OBS", "FECHA_CARGA", "CODEMP", "FECHA_ULTMODI", "CODEMP_MODI", "CUMPLIDA", "CUMPLIDO"]
+  },
+
+  "PEDPERI": {
+    "name": "PEDPERI",
+    "alias": "PEDf",
+    "fields": ["DTOJUDI", "SERIE", "NUI", "MESA", "IDP_ACT", "IDP_DEM", "CODCARAT", "DJORI", "CODLOCAL", "FUERO", "ORGANISMO", "JUEZ_FISCAL", "INTERVIENE_ORG", "F_INGRESO", "F_EGRESO", "CODEMP_CARGO", "HORA_CARGA", "F_ULTMODI", "CODEMP_UM", "NRONOTA", "NROEFECTO", "COMI_MORGUE", "ORG_CoM", "OBS", "NROASO_DEL_ORIGEN", "NRO_AUTOPSIA", "TIPO_INGRESO", "DETALLE_INGRESO", "ORI_ING_DIR_INTERNO", "PASA_A_MESA", "PERITO_ACTOR", "PERITO_DEMAN", "NROIPP", "TASA", "DJ_RELA", "SERIE_RELA", "NUI_RELA", "RESIDUAL", "OBS_MATERIA", "FECHA_OFICIO", "FECHA_AUTOPSIA", "CB_PERI", "CB_ORI1", "CB_ORI2", "EXP_EN_SEC"],
+    "fk": ["DTOJUDI", "CODCARAT"],
+    "uniqueMultiple": ["DTOJUDI", "SERIE", "NUI"],
+    "tree": {
+      "DTOJUDI": { "fieldName": "DTOJUDI", "refEntityName": "DTOSJUDI", "refFieldName": "DTOJUD", "children": {
+      }},
+      "CODCARAT": { "fieldName": "CODCARAT", "refEntityName": "TABLAS", "refFieldName": "REFERENCIA", "children": {
+          "CODTAB": { "fieldName": "CODTAB", "refEntityName": "DESTABLAS", "refFieldName": "CODTAB", "children": {
+          }}
+      }}
+    },
+    "relations": {
+      "DTOJUDI": { "fieldName": "DTOJUDI", "refEntityName": "DTOSJUDI", "refFieldName": "DTOJUD", "parentId": null},
+      "CODCARAT": { "fieldName": "CODCARAT", "refEntityName": "TABLAS", "refFieldName": "REFERENCIA", "parentId": null},
+          "CODTAB": { "fieldName": "CODTAB", "refEntityName": "DESTABLAS", "refFieldName": "CODTAB", "parentId": "CODCARAT"}
+    }
+  },
+
+  "PEDPERI_SUJETOS": {
+    "name": "PEDPERI_SUJETOS",
+    "alias": "PEDg",
+    "fields": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "SUBPERI", "DJ_SUJETO", "IDP_SUJETO", "FECHA_CARGA", "OBS", "ESTADO"],
+    "uniqueMultiple": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "SUBPERI", "DJ_SUJETO", "IDP_SUJETO"]
+  },
+
+  "DATOS_BLOB": {
+    "name": "DATOS_BLOB",
+    "alias": "DATO",
+    "fields": ["DJ", "TRAF_RED_EVAL", "GAP_IMAGEN", "PR_DBACT_IMAGEN", "GAP_SIZE"],
+    "pk": "DJ"
+  },
+
+  "PEDPERI_MASIMPUTADOS": {
+    "name": "PEDPERI_MASIMPUTADOS",
+    "alias": "PEDh",
+    "fields": ["DTOJUDI", "SERIE", "NUI", "NRO_SUJETO", "IDP_SUJETO", "CARACTER", "SERIE_PERI", "NROPERI", "SUBPERI", "FECHA_CARGA", "OBS"],
+    "uniqueMultiple": ["DTOJUDI", "SERIE", "NUI", "NRO_SUJETO", "IDP_SUJETO", "CARACTER"]
+  },
+
+  "TmpImpEstAnual": {
+    "name": "TmpImpEstAnual",
+    "alias": "TmpI",
+    "fields": ["id_pc", "indice", "Texto1", "campo1", "campo2", "campo3", "campo4", "campo5", "campo6", "campo7", "campo8", "campo9", "campo10", "campo11", "campo12", "campo13", "campo14", "campo15", "campo16", "campo17", "campo18", "campo19", "campo20", "campo21", "campo22", "campo23", "campo24", "campo25", "campo26", "campo27", "campo28", "campo29", "campo30", "campo31", "campo32", "campo33", "campo34", "campo35", "campo36", "campo37", "campo38", "campo39", "campo40", "campo41", "campo42", "campo43", "campo44", "campo45", "campo46", "campo47", "campo48", "campo49", "campo50"],
+    "uniqueMultiple": ["id_pc", "indice"]
+  },
+
+  "ORDEN_SORTEO_PERITOS_CONTROL": {
+    "name": "ORDEN_SORTEO_PERITOS_CONTROL",
+    "alias": "ORDa",
+    "fields": ["DTOJUDI", "SECCION", "ID_PERITO", "FUERO", "ORDEN", "SEC", "ID_ZONA", "ID_GRUPO", "ID_RAMAL", "ID_TIPOPERI", "hora", "NRO_BOLILLERO"]
+  },
+
+  "MOVICAJA": {
+    "name": "MOVICAJA",
+    "alias": "MOVI",
+    "fields": ["DTOJUDI", "CAJA_NRO", "ID_MOV", "FECHA_MOV", "IMPORTE", "SALDO_EN_CAJA", "CONCEPTO", "OBS", "COD_EMP", "HORA", "CEUM", "HORA_MODIF"]
+  },
+
+  "PEDIDOS_PRESUP": {
+    "name": "PEDIDOS_PRESUP",
+    "alias": "PEDi",
+    "fields": ["DTOJUDI", "FECHA_PEDIDO", "SERIEPED", "NROPED", "ITEM", "ID_PROV", "NRO_COTIZACION", "CANTIDAD", "PRECIO", "ESTADO", "DESCRIP_ALTER", "COD_EMP", "HORA_CARGA", "UCEM", "HORA_UM"]
+  },
+
+  "RENDICIONES": {
+    "name": "RENDICIONES",
+    "alias": "REND",
+    "fields": ["DTOJUDI", "CAJA_NRO", "NRO_RENDICION", "NRO_COMPROBANTE", "FECHA_RENDICION", "ID_PROV", "IMPORTE", "DESTINO", "OBS", "COD_EMP", "HORA_CARGA", "CEUM", "HORA_MODIF"]
+  },
+
+  "PERI_DOCASO_AUTORIZ": {
+    "name": "PERI_DOCASO_AUTORIZ",
+    "alias": "PERh",
+    "fields": ["NROIDPEMP_PROP", "NROIDPEMP_AUT", "NROPERI", "NroDoc", "NivelAut"],
+    "uniqueMultiple": ["NROIDPEMP_PROP", "NROIDPEMP_AUT", "NROPERI", "NroDoc"]
+  },
+
+  "PEDPERI_MAS_ORGANISMOS": {
+    "name": "PEDPERI_MAS_ORGANISMOS",
+    "alias": "PEDj",
+    "fields": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "SUBPERI", "COD_ORGANISMO", "FECHA_CARGA", "ULTIMO", "FECHA_SOLICITUD"],
+    "uniqueMultiple": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "SUBPERI", "COD_ORGANISMO"]
+  },
+
+  "DB_ACT_INSTRUCCIONES": {
+    "name": "DB_ACT_INSTRUCCIONES",
+    "alias": "DB_a",
+    "fields": ["CODIGO_INSTR", "INSTRUCCION_SQL", "TIPO", "FECHA", "TEMA"],
+    "pk": "CODIGO_INSTR"
+  },
+
+  "NUMERADORES": {
+    "name": "NUMERADORES",
+    "alias": "NUME",
+    "fields": ["DTOJUD", "SERIE_PEDIDOS", "NROPEDIDO", "NROIDPEMP", "SERIE_ME", "NRODOC_ME", "NROPROV", "NROPRODUCTO", "SERIE_NUI", "NRONUI", "SERIE_PERICIA", "NROPERICIA", "SERIE_PERICIA_ADN", "NROPERICIA_ADN", "SERIE_PERICIA_LAB", "NROPERICIA_LAB", "SERIE_PERICIA_GRAL", "NROPERICIA_GRAL", "NRO_RECIBO_MGRAL", "NRO_RECIBO_MADN", "NRO_RECIBO_MLAB", "SERIE_MESA_DIR", "NRO_MESA_DIR", "SERIE_NOTAS", "NRO_NOTA"],
+    "pk": "DTOJUD"
+  },
+
+  "DB_ACT_RESULTADOS": {
+    "name": "DB_ACT_RESULTADOS",
+    "alias": "DB_b",
+    "fields": ["DTOJUDI", "CODIGO_INSTR", "FECHA", "ESTADO", "ERROR_MENSAJE"],
+    "uniqueMultiple": ["DTOJUDI", "CODIGO_INSTR"]
+  },
+
+  "PEDPERI_DOCINGRE": {
+    "name": "PEDPERI_DOCINGRE",
+    "alias": "PEDk",
+    "fields": ["DTOJUDI", "SERIE", "NUI", "NRODOC", "COD_DOC_INGRE", "FECHA_INGRE", "DETALLE_DOCINGRE", "ESTA_EN_SEC", "req_conf", "FECHA_CARGA", "VIENE_DE"],
+    "fk": ["DTOJUDI", "SERIE", "NUI"],
+    "uniqueMultiple": ["DTOJUDI", "SERIE", "NUI", "NRODOC", "COD_DOC_INGRE", "FECHA_INGRE"],
+    "tree": {
+      "DTOJUDI": { "fieldName": "DTOJUDI", "refEntityName": "PEDPERI", "refFieldName": "DTOJUDI", "children": {
+          "DTOJUDI_DTO": { "fieldName": "DTOJUDI", "refEntityName": "DTOSJUDI", "refFieldName": "DTOJUD", "children": {
+          }},
+          "CODCARAT": { "fieldName": "CODCARAT", "refEntityName": "TABLAS", "refFieldName": "REFERENCIA", "children": {
+              "CODTAB": { "fieldName": "CODTAB", "refEntityName": "DESTABLAS", "refFieldName": "CODTAB", "children": {
+              }}
+          }}
+      }},
+      "SERIE": { "fieldName": "SERIE", "refEntityName": "PEDPERI", "refFieldName": "SERIE", "children": {
+      }},
+      "NUI": { "fieldName": "NUI", "refEntityName": "PEDPERI", "refFieldName": "NUI", "children": {
+      }}
+    },
+    "relations": {
+      "DTOJUDI": { "fieldName": "DTOJUDI", "refEntityName": "PEDPERI", "refFieldName": "DTOJUDI", "parentId": null},
+          "DTOJUDI_DTO": { "fieldName": "DTOJUDI", "refEntityName": "DTOSJUDI", "refFieldName": "DTOJUD", "parentId": "DTOJUDI"},
+          "CODCARAT": { "fieldName": "CODCARAT", "refEntityName": "TABLAS", "refFieldName": "REFERENCIA", "parentId": "DTOJUDI"},
+              "CODTAB": { "fieldName": "CODTAB", "refEntityName": "DESTABLAS", "refFieldName": "CODTAB", "parentId": "CODCARAT"},
+      "SERIE": { "fieldName": "SERIE", "refEntityName": "PEDPERI", "refFieldName": "SERIE", "parentId": null},
+      "NUI": { "fieldName": "NUI", "refEntityName": "PEDPERI", "refFieldName": "NUI", "parentId": null}
+    }
+  },
+
+  "TmpAgrePed": {
+    "name": "TmpAgrePed",
+    "alias": "TmpA",
+    "fields": ["DJ", "id_pc", "item", "cant", "djprod", "codprod", "descripcion", "pflista", "flista", "obsitem", "marca1", "desmarca1", "marca2", "desmarca2", "marca3", "desmarca3", "osimilar"],
+    "uniqueMultiple": ["DJ", "id_pc", "item"]
+  },
+
+  "DB_ACT_LOG": {
+    "name": "DB_ACT_LOG",
+    "alias": "DB_c",
+    "fields": ["REGISTRO"]
+  },
+
+  "ESTADOS_NPP2": {
+    "name": "ESTADOS_NPP2",
+    "alias": "ESTa",
+    "fields": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "SUBPERI", "ITEM", "FECHA_ESTADO", "ESTADO", "FECHA_CARGA", "ULTIMO_ESTADO", "SECCION", "PRIMER_INGRESO", "PRIMER_INGRESO_SECCION"]
+  },
+
+  "VIDEOCONF": {
+    "name": "VIDEOCONF",
+    "alias": "VIDE",
+    "fields": ["DTOJUDI", "NRO_VIDEOCONF", "PERITO", "ORGANISMO_CITO", "DOMI_CITACION", "ORGANISMO_PERITO", "NROIPP_CAUSA", "CARATULA", "FECHA_CITA", "HORA_CITA", "HORA_CARGA", "EMPLE_CARGA"],
+    "uniqueMultiple": ["DTOJUDI", "NRO_VIDEOCONF"]
+  },
+
+  "ORGANISMOS_INTEGRANTES": {
+    "name": "ORGANISMOS_INTEGRANTES",
+    "alias": "ORGb",
+    "fields": ["DTOJUDI", "CODORIGEN", "NRO_INTEGRANTE", "CARACTER", "NROIDPEMP"],
+    "fk": ["DTOJUDI", "CODORIGEN"],
+    "uniqueMultiple": ["DTOJUDI", "CODORIGEN", "NRO_INTEGRANTE"],
+    "tree": {
+      "DTOJUDI": { "fieldName": "DTOJUDI", "refEntityName": "ORGANISMOS", "refFieldName": "DTOJUDI", "children": {
+          "DTOJUDI_DTO": { "fieldName": "DTOJUDI", "refEntityName": "DTOSJUDI", "refFieldName": "DTOJUD", "children": {
+          }},
+          "FUERO": { "fieldName": "FUERO", "refEntityName": "TABLAS", "refFieldName": "REFERENCIA", "children": {
+              "CODTAB": { "fieldName": "CODTAB", "refEntityName": "DESTABLAS", "refFieldName": "CODTAB", "children": {
+              }}
+          }},
+          "TIPO_ORGANISMO": { "fieldName": "TIPO_ORGANISMO", "refEntityName": "TABLAS", "refFieldName": "REFERENCIA", "children": {
+          }}
+      }},
+      "CODORIGEN": { "fieldName": "CODORIGEN", "refEntityName": "ORGANISMOS", "refFieldName": "CODORIGEN", "children": {
+      }}
+    },
+    "relations": {
+      "DTOJUDI": { "fieldName": "DTOJUDI", "refEntityName": "ORGANISMOS", "refFieldName": "DTOJUDI", "parentId": null},
+          "DTOJUDI_DTO": { "fieldName": "DTOJUDI", "refEntityName": "DTOSJUDI", "refFieldName": "DTOJUD", "parentId": "DTOJUDI"},
+          "FUERO": { "fieldName": "FUERO", "refEntityName": "TABLAS", "refFieldName": "REFERENCIA", "parentId": "DTOJUDI"},
+              "CODTAB": { "fieldName": "CODTAB", "refEntityName": "DESTABLAS", "refFieldName": "CODTAB", "parentId": "FUERO"},
+          "TIPO_ORGANISMO": { "fieldName": "TIPO_ORGANISMO", "refEntityName": "TABLAS", "refFieldName": "REFERENCIA", "parentId": "DTOJUDI"},
+      "CODORIGEN": { "fieldName": "CODORIGEN", "refEntityName": "ORGANISMOS", "refFieldName": "CODORIGEN", "parentId": null}
+    }
+  },
+
+  "TmpImp50": {
+    "name": "TmpImp50",
+    "alias": "Tmpa",
+    "fields": ["id_pc", "indice", "Texto1", "campo1", "campo2", "campo3", "campo4", "campo5", "campo6", "campo7", "campo8", "campo9", "campo10", "campo11", "campo12", "campo13", "campo14", "campo15", "campo16", "campo17", "campo18", "campo19", "campo20", "campo21", "campo22", "campo23", "campo24", "campo25", "campo26", "campo27", "campo28", "campo29", "campo30", "campo31", "campo32", "campo33", "campo34", "campo35", "campo36", "campo37", "campo38", "campo39", "campo40", "campo41", "campo42", "campo43", "campo44", "campo45", "campo46", "campo47", "campo48", "campo49", "campo50"],
+    "uniqueMultiple": ["id_pc", "indice"]
+  },
+
+  "_COMUNICADOS": {
+    "name": "_COMUNICADOS",
+    "alias": "_COM",
+    "fields": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "NRO_TAREA", "TIPO_TAREA", "FECHA_NOTA", "DIRIGIDO_A", "DIRIGIDO2", "PERITO1", "PERITO2", "PERITO3", "FECHA_TAREA", "HORA_TAREA", "CITADO", "MAS_DE_UN_DIA", "ESTADO", "EMITIO_INCOMPARENCIA", "FECHA_CARGA", "EMP_CARGA", "FECHA_ULT_MODI", "EMP_ULT_MODI", "QUIEN_CITA", "ESPECIALIDAD", "CODORGA", "ALOJADO_DOMICILIADO", "NO_ASISTIO", "FECHA2", "HORA2", "SEGCITA_Y_O", "ASISTIO_1", "ASISTIO_2", "DOC_RELACIONADO", "ENCABEZADO", "CUERPO", "FECHA3", "HORA3", "ASISTIO_3", "PASE_A", "CARATULA", "PERITOS_QUE_CITAN", "SUBPERI", "DIRECCION", "ID_LOCALIDAD", "OBS"]
+  },
+
+  "ORGANISMOS_EMAILS": {
+    "name": "ORGANISMOS_EMAILS",
+    "alias": "ORGc",
+    "fields": ["DTOJUDI", "CODORIGEN", "ITEM", "SECCION", "EMAIL", "DESCRIPCION"],
+    "fk": ["DTOJUDI", "CODORIGEN"],
+    "uniqueMultiple": ["DTOJUDI", "CODORIGEN", "ITEM"],
+    "tree": {
+      "DTOJUDI": { "fieldName": "DTOJUDI", "refEntityName": "ORGANISMOS", "refFieldName": "DTOJUDI", "children": {
+          "DTOJUDI_DTO": { "fieldName": "DTOJUDI", "refEntityName": "DTOSJUDI", "refFieldName": "DTOJUD", "children": {
+          }},
+          "FUERO": { "fieldName": "FUERO", "refEntityName": "TABLAS", "refFieldName": "REFERENCIA", "children": {
+              "CODTAB": { "fieldName": "CODTAB", "refEntityName": "DESTABLAS", "refFieldName": "CODTAB", "children": {
+              }}
+          }},
+          "TIPO_ORGANISMO": { "fieldName": "TIPO_ORGANISMO", "refEntityName": "TABLAS", "refFieldName": "REFERENCIA", "children": {
+          }}
+      }},
+      "CODORIGEN": { "fieldName": "CODORIGEN", "refEntityName": "ORGANISMOS", "refFieldName": "CODORIGEN", "children": {
+      }}
+    },
+    "relations": {
+      "DTOJUDI": { "fieldName": "DTOJUDI", "refEntityName": "ORGANISMOS", "refFieldName": "DTOJUDI", "parentId": null},
+          "DTOJUDI_DTO": { "fieldName": "DTOJUDI", "refEntityName": "DTOSJUDI", "refFieldName": "DTOJUD", "parentId": "DTOJUDI"},
+          "FUERO": { "fieldName": "FUERO", "refEntityName": "TABLAS", "refFieldName": "REFERENCIA", "parentId": "DTOJUDI"},
+              "CODTAB": { "fieldName": "CODTAB", "refEntityName": "DESTABLAS", "refFieldName": "CODTAB", "parentId": "FUERO"},
+          "TIPO_ORGANISMO": { "fieldName": "TIPO_ORGANISMO", "refEntityName": "TABLAS", "refFieldName": "REFERENCIA", "parentId": "DTOJUDI"},
+      "CODORIGEN": { "fieldName": "CODORIGEN", "refEntityName": "ORGANISMOS", "refFieldName": "CODORIGEN", "parentId": null}
+    }
+  },
+
+  "CONTROL_DESIGN": {
+    "name": "CONTROL_DESIGN",
+    "alias": "CONT",
+    "fields": ["DJ", "SECCION", "FUERO", "ID_ZONA", "ID_GRUPO", "ID_RAMAL", "ID_TIPOPERI", "TIPO_DESIG", "HORA", "PERITO", "NRO_ORDEN_Q_TENIA", "EMPLE_DESIGNO", "PC_DESIGNO"]
+  },
+
+  "ESTADOS_NPP": {
+    "name": "ESTADOS_NPP",
+    "alias": "ESTb",
+    "fields": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "SUBPERI", "ITEM", "FECHA_ESTADO", "ESTADO", "FECHA_CARGA", "ULTIMO_ESTADO", "SECCION", "PRIMER_INGRESO", "PRIMER_INGRESO_SECCION"],
+    "uniqueMultiple": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "SUBPERI", "ITEM"]
+  },
+
+  "DTOSJUDI_DET_ESPECIALIDADES": {
+    "name": "DTOSJUDI_DET_ESPECIALIDADES",
+    "alias": "DTOd",
+    "fields": ["RID", "ID_ESPE", "ESPECIALIDAD"],
+    "uniqueMultiple": ["RID", "ID_ESPE"]
+  },
+
+  "HONORARIOS": {
+    "name": "HONORARIOS",
+    "alias": "HONa",
+    "fields": ["NRODOC", "APEYNOM", "DTOJUD", "CODPAR", "NROJUZ", "NROSEC", "CODFUE", "TIPJUZ", "INSTAN", "TIPJUI", "NROREC", "NROCAU", "CARA", "TIPMAT", "FECHA", "MONTO", "PERIODO", "SECUENCIA", "ELTIPO"],
+    "uniqueMultiple": ["APEYNOM", "NROCAU", "MONTO", "PERIODO"]
+  },
+
+  "DOMIPROV": {
+    "name": "DOMIPROV",
+    "alias": "DOMI",
+    "fields": ["IdpProv", "nrodomi", "Calle", "Numero", "Piso", "Depto", "CP", "Tele1", "Tele2", "web", "entre_calle", "y_calle", "cod_local"],
+    "uniqueMultiple": ["IdpProv", "nrodomi"]
+  },
+
+  "DTOSJUDI_DET_ESPECIALIDADES_SUB": {
+    "name": "DTOSJUDI_DET_ESPECIALIDADES_SUB",
+    "alias": "DTOe",
+    "fields": ["RID", "ID_ESPE", "ID_SUBESPE", "SUB_ESPECIALIDAD"],
+    "uniqueMultiple": ["RID", "ID_ESPE", "ID_SUBESPE"]
+  },
+
+  "DTOSJUDI_DET_GRUPOS": {
+    "name": "DTOSJUDI_DET_GRUPOS",
+    "alias": "DTOf",
+    "fields": ["RID", "ID_GRUPO", "GRUPO"],
+    "uniqueMultiple": ["RID", "ID_GRUPO"]
+  },
+
+  "DTOSJUDI_DET_RAMALES": {
+    "name": "DTOSJUDI_DET_RAMALES",
+    "alias": "DTOg",
+    "fields": ["RID", "ID_RAMAL", "RAMAL", "ID_LOCA1", "ID_LOCA2", "ID_LOCA3", "ID_LOCA4", "ID_LOCA5", "ID_LOCA6", "ID_LOCA7", "ID_LOCA8", "ID_LOCA9", "ID_LOCA10"],
+    "uniqueMultiple": ["RID", "ID_RAMAL"]
+  },
+
+  "GRUPOS": {
+    "name": "GRUPOS",
+    "alias": "GRUP",
+    "fields": ["Codigo_Grupo", "Descripcion", "Incluir", "codigo_seccion"],
+    "pk": "Codigo_Grupo"
+  },
+
+  "DTOSJUDI_DET_ZONAS": {
+    "name": "DTOSJUDI_DET_ZONAS",
+    "alias": "DTOh",
+    "fields": ["RID", "ID_ZONA", "ZONA", "LIMITENor", "LIMITESur", "LIMITEEst", "LIMITEOes", "OBSERVACIONES"],
+    "uniqueMultiple": ["RID", "ID_ZONA"]
+  },
+
+  "CONTROL_MODI_DESIGPERI": {
+    "name": "CONTROL_MODI_DESIGPERI",
+    "alias": "CONa",
+    "fields": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "PERITO_ORI", "PERITO_NUE", "HORA", "CODEMP", "ID_PC", "SECCION", "SUBPERI", "MOTIVO"]
+  },
+
+  "CONTROL_COMP": {
+    "name": "CONTROL_COMP",
+    "alias": "CONb",
+    "fields": ["NombreForm", "NombreComp", "Visible", "habilitado"],
+    "uniqueMultiple": ["NombreForm", "NombreComp"]
+  },
+
+  "ORDEN_SORTEO_PERITOS": {
+    "name": "ORDEN_SORTEO_PERITOS",
+    "alias": "ORDb",
+    "fields": ["DTOJUDI", "SECCION", "ID_PERITO", "FUERO", "ORDEN", "SEC", "ID_ZONA", "ID_GRUPO", "ID_RAMAL", "ID_TIPOPERI", "HORA", "NRO_BOLILLERO"],
+    "uniqueMultiple": ["DTOJUDI", "SECCION", "ID_PERITO", "SEC"]
+  },
+
+  "PEDPERI_ASECCIONES": {
+    "name": "PEDPERI_ASECCIONES",
+    "alias": "PEDl",
+    "fields": ["DTOJUDI", "SERIE", "NUI", "SECCION", "ESPECIALIDAD", "SERIE_PERI", "NROPERI", "ESTADO", "FINGRE_PERI", "FFIN_PERI", "EFECTOS", "NROEFECTO", "FECHA_ESTI_COBRO", "HONO_REGULADO", "HONO_ESTIMADO", "ESTADO_COBRO", "EMPLE_RECIBIO", "FECHA_RECIBIO", "EMPLE_DIOSALIDA", "FECHA_DIOSALIDA", "ENTREGO_EFECTOS", "TIPO_PERICIA", "SUBPERI", "FOJA_H", "FOJA_D", "BIBLIORATO", "NRO_SALIDA_PERITO", "NRODVD", "FECHA_CARGA", "ESTADO_EFECTOS", "NRO_INGRESO", "FECHA_247", "HORA_247", "FECHA_SALIDA_SEC", "FECHA_INGRESO_SEC", "ULT_CAMBIO_ESTADO", "FECHA_DERIV", "ORG_DERIV", "LOCAL_CABECERA", "FECHA_LIMITE_URG"],
+    "fk": ["DTOJUDI", "SERIE", "NUI"],
+    "uniqueMultiple": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "SUBPERI"],
+    "tree": {
+      "DTOJUDI": { "fieldName": "DTOJUDI", "refEntityName": "PEDPERI", "refFieldName": "DTOJUDI", "children": {
+          "DTOJUDI_DTO": { "fieldName": "DTOJUDI", "refEntityName": "DTOSJUDI", "refFieldName": "DTOJUD", "children": {
+          }},
+          "CODCARAT": { "fieldName": "CODCARAT", "refEntityName": "TABLAS", "refFieldName": "REFERENCIA", "children": {
+              "CODTAB": { "fieldName": "CODTAB", "refEntityName": "DESTABLAS", "refFieldName": "CODTAB", "children": {
+              }}
+          }}
+      }},
+      "SERIE": { "fieldName": "SERIE", "refEntityName": "PEDPERI", "refFieldName": "SERIE", "children": {
+      }},
+      "NUI": { "fieldName": "NUI", "refEntityName": "PEDPERI", "refFieldName": "NUI", "children": {
+      }}
+    },
+    "relations": {
+      "DTOJUDI": { "fieldName": "DTOJUDI", "refEntityName": "PEDPERI", "refFieldName": "DTOJUDI", "parentId": null},
+          "DTOJUDI_DTO": { "fieldName": "DTOJUDI", "refEntityName": "DTOSJUDI", "refFieldName": "DTOJUD", "parentId": "DTOJUDI"},
+          "CODCARAT": { "fieldName": "CODCARAT", "refEntityName": "TABLAS", "refFieldName": "REFERENCIA", "parentId": "DTOJUDI"},
+              "CODTAB": { "fieldName": "CODTAB", "refEntityName": "DESTABLAS", "refFieldName": "CODTAB", "parentId": "CODCARAT"},
+      "SERIE": { "fieldName": "SERIE", "refEntityName": "PEDPERI", "refFieldName": "SERIE", "parentId": null},
+      "NUI": { "fieldName": "NUI", "refEntityName": "PEDPERI", "refFieldName": "NUI", "parentId": null}
+    }
+  },
+
+  "PROD_XPROV": {
+    "name": "PROD_XPROV",
+    "alias": "PROb",
+    "fields": ["DTOJUD", "CODPROD", "NROIDPPROV", "FECHA_ULT_COMPRA", "COSTO_ULT_COMPRA"],
+    "fk": ["DTOJUD", "CODPROD"],
+    "uniqueMultiple": ["DTOJUD", "CODPROD", "NROIDPPROV", "FECHA_ULT_COMPRA"],
+    "tree": {
+      "DTOJUD": { "fieldName": "DTOJUD", "refEntityName": "PRODUCTOS", "refFieldName": "DTOJUD", "children": {
+          "RUBRO": { "fieldName": "RUBRO", "refEntityName": "RUBROS", "refFieldName": "CODRUBRO", "children": {
+          }},
+          "TIPO": { "fieldName": "TIPO", "refEntityName": "TIPOSPROD", "refFieldName": "CODTIPOS", "children": {
+          }},
+          "MARCA": { "fieldName": "MARCA", "refEntityName": "MARCAS", "refFieldName": "CODMARCA", "children": {
+          }},
+          "MEDIDA": { "fieldName": "MEDIDA", "refEntityName": "MEDIDAS", "refFieldName": "CODMEDIDA", "children": {
+          }}
+      }},
+      "CODPROD": { "fieldName": "CODPROD", "refEntityName": "PRODUCTOS", "refFieldName": "CODPROD", "children": {
+      }}
+    },
+    "relations": {
+      "DTOJUD": { "fieldName": "DTOJUD", "refEntityName": "PRODUCTOS", "refFieldName": "DTOJUD", "parentId": null},
+          "RUBRO": { "fieldName": "RUBRO", "refEntityName": "RUBROS", "refFieldName": "CODRUBRO", "parentId": "DTOJUD"},
+          "TIPO": { "fieldName": "TIPO", "refEntityName": "TIPOSPROD", "refFieldName": "CODTIPOS", "parentId": "DTOJUD"},
+          "MARCA": { "fieldName": "MARCA", "refEntityName": "MARCAS", "refFieldName": "CODMARCA", "parentId": "DTOJUD"},
+          "MEDIDA": { "fieldName": "MEDIDA", "refEntityName": "MEDIDAS", "refFieldName": "CODMEDIDA", "parentId": "DTOJUD"},
+      "CODPROD": { "fieldName": "CODPROD", "refEntityName": "PRODUCTOS", "refFieldName": "CODPROD", "parentId": null}
+    }
+  },
+
+  "MENUES": {
+    "name": "MENUES",
+    "alias": "MENU",
+    "fields": ["CODIGO_MENU", "DESCRIPCION", "CODIGO_PAPA", "IDENTIFICADOR", "Texto", "Habilitado"],
+    "pk": "CODIGO_MENU"
+  },
+
+  "sysdiagrams": {
+    "name": "sysdiagrams",
+    "alias": "sysd",
+    "fields": ["name", "principal_id", "diagram_id", "version", "definition"],
+    "pk": "diagram_id",
+    "unique": ["name", "principal_id"]
+  },
+
+  "IMPRE_LOCAL": {
+    "name": "IMPRE_LOCAL",
+    "alias": "IMPR",
+    "fields": ["Sucursal", "Id_PC", "Id_Windows", "Nombre_Windows", "Local"]
+  },
+
+  "_MODI_DOC_INGRE": {
+    "name": "_MODI_DOC_INGRE",
+    "alias": "_MOD",
+    "fields": ["DTOJUDI", "SERIE", "NUI", "FECHA_MOV", "CODEMP", "DOC_INGRE_ORI", "DOC_INGRE_FIN"]
+  },
+
+  "IMPRESORAS": {
+    "name": "IMPRESORAS",
+    "alias": "IMPa",
+    "fields": ["Sucursal", "Id_PC", "Cod_Impresora", "Nombre_Local", "Nombre_Red", "Puerto"]
+  },
+
+  "TIPOSPROD": {
+    "name": "TIPOSPROD",
+    "alias": "TIPO",
+    "fields": ["TIPOS", "CODTIPOS", "RUBROREL"],
+    "pk": "TIPOS",
+    "unique": ["CODTIPOS"]
+  },
+
+  "TmpImpGral": {
+    "name": "TmpImpGral",
+    "alias": "Tmpb",
+    "fields": ["id_pc", "indice", "Campo1", "Campo2", "Campo3", "Campo4", "Campo5", "Campo6", "Campo7", "Campo8", "Campo9", "Campo10", "Campo11", "Campo12", "Campo13", "Campo14", "Campo15", "negrita", "cursiva", "subrayado", "Campo16", "Campo17", "Campo18", "Campo19", "Campo20"],
+    "uniqueMultiple": ["id_pc", "indice"]
+  },
+
+  "AGENTES": {
+    "name": "AGENTES",
+    "alias": "AGEN",
+    "fields": ["TIPDOC", "NUMDOC", "APYN", "LEGCON", "LEGINT", "LEGSUE", "CIUDAD", "FENAC", "APORTA", "MARCA", "CODIGO", "DEPJUD", "GRUPO", "NIVEL", "CARGO", "FUNCION", "NOMINA", "LLAMADA", "NACION", "NROCARGO", "CONTRATO", "AUDIT", "NUMCAR", "SEX", "NUMERO", "TRABAJA", "OFICINA", "DOMIC", "TRABAJADJ"],
+    "pk": "NUMCAR"
+  },
+
+  "ESTACIONES": {
+    "name": "ESTACIONES",
+    "alias": "ESTc",
+    "fields": ["Sucursal", "Id_Pc", "Nombre", "Descripcion", "VERIFICA_IE", "Pertenece_a_mesa"],
+    "uniqueMultiple": ["Sucursal", "Id_Pc"]
+  },
+
+  "PERI_MOVI": {
+    "name": "PERI_MOVI",
+    "alias": "PERi",
+    "fields": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "NROMOV", "FECHA_MOV", "FECHA_CARGA", "DETALLE", "CODEMPLE", "FULTMOD", "CODEMPLEMOD", "TIPO_MOV", "NRODOC", "ORIGENMOV", "ORI_O_DEST", "DTOJUDI_OD", "CODORG_OD", "DE_SEC", "A_SEC", "REQ_CONF", "HORA_CONF", "EMPLE_CONF", "SUBPERI", "DESTINATARIO", "PC_ALTA", "PC_ULT_MODI", "BORRADO", "FECHA_BORRADO", "NOTIF_ELEC", "EMPLE_BORRO", "PC_BORRO", "VERIFICO_JEFATURA", "HORA_CONF_SALIDA"],
+    "uniqueMultiple": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "NROMOV", "SUBPERI"]
+  },
+
+  "_PERI_MOVI": {
+    "name": "_PERI_MOVI",
+    "alias": "_PEg",
+    "fields": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "NROMOV", "FECHA_MOV", "FECHA_CARGA", "DETALLE", "CODEMPLE", "FULTMOD", "CODEMPLEMOD", "TIPO_MOV", "NRODOC", "ORIGENMOV", "ORI_O_DEST", "DTOJUDI_OD", "CODORG_OD", "DE_SEC", "A_SEC", "SUBPERI", "PC_ALTA", "PC_ULT_MODI", "FECHA_BORRADO", "BORRADO", "REQ_CONF", "DESTINATARIO", "EMPLE_CONF", "HORA_CONF", "NOTIF_ELEC"]
+  },
+
+  "ACCESO_MENU": {
+    "name": "ACCESO_MENU",
+    "alias": "ACCE",
+    "fields": ["CODIGO_MENU", "Sucursal", "Nro_IDP", "Codigo_Grupo"],
+    "uniqueMultiple": ["CODIGO_MENU", "Sucursal", "Nro_IDP", "Codigo_Grupo"]
+  },
+
+  "CARRERA": {
+    "name": "CARRERA",
+    "alias": "CARR",
+    "fields": ["NUMCAR", "NUMAGE", "FENOM", "FEPOS", "ORDEN", "RESOLU", "OBSERV", "GRUPO", "NIVEL", "CARGO", "DEPJUD", "DESTINO", "TRABAJA", "MARCA", "AUDIT"]
+  },
+
+  "FAVORITOS": {
+    "name": "FAVORITOS",
+    "alias": "FAVO",
+    "fields": ["Codigo_Menu", "SucursalPersona", "IDP_Persona", "Imagen"]
+  },
+
+  "DESTINOS": {
+    "name": "DESTINOS",
+    "alias": "DESa",
+    "fields": ["CODI", "DESCR", "DEPJUD"],
+    "pk": "CODI"
+  },
+
+  "dtproperties": {
+    "name": "dtproperties",
+    "alias": "dtpr",
+    "fields": ["id", "objectid", "property", "value", "uvalue", "lvalue", "version"],
+    "uniqueMultiple": ["id", "property"]
+  },
+
+  "TABLAS": {
+    "name": "TABLAS",
+    "alias": "TABL",
+    "fields": ["REFERENCIA", "CODTAB", "ITEMTAB", "DESCRIPCION", "SPB", "OPCION_NUMERO", "ORDEN", "RELACIONADO_CON", "PUEDE_CAMBIAR"],
+    "pk": "REFERENCIA",
+    "fk": ["CODTAB"],
+    "tree": {
+      "CODTAB": { "fieldName": "CODTAB", "refEntityName": "DESTABLAS", "refFieldName": "CODTAB", "children": {
+      }}
+    },
+    "relations": {
+      "CODTAB": { "fieldName": "CODTAB", "refEntityName": "DESTABLAS", "refFieldName": "CODTAB", "parentId": null}
+    }
+  },
+
+  "GRUPO_PERSONA": {
+    "name": "GRUPO_PERSONA",
+    "alias": "GRUa",
+    "fields": ["DtoJud", "NroIdpEmp", "Codigo_Grupo"],
+    "uniqueMultiple": ["DtoJud", "NroIdpEmp", "Codigo_Grupo"]
+  },
+
+  "DATOS": {
+    "name": "DATOS",
+    "alias": "DATa",
+    "fields": ["DJ", "NOM_ORGANISMO", "DIR_ORGANISMO", "DTOJUDCOMPRAS", "MUESTRA_MSG", "DJ_CTASUG", "NRO_CTASUG", "NROPERICIAGRAL", "PED_DIAS_PRIM_RECLAMO", "PED_DIAS_SEG_RECLAMO", "ALERTA_PRODUCTOS", "ALERTA_PEDIDOS", "TIPO_RECIBO_PP", "PCP_MLAB", "PCP_MADN", "DIRECTOR", "CALLE", "ENTRE", "Y_ENTRE", "EMAIL", "NRO", "LOCALIDAD", "CP", "TELE1", "TELE2", "FAX", "PCP_MGRAL", "INI_PARAM_LOCAL", "VERSION", "COPIAS_247", "COPIAS_CITAS", "DIR_MENORES", "DIR_MINISTRO", "MINISTRO_SEGURIDAD", "NUI_READONLY", "IMP_COMP_SALIDA_PERI", "VISTA_PREVIA", "fecha", "ULT_COD_INST_EJEC", "IMPRIME_RECI", "LEYENDA_MENU", "CUERPO_TECNICO", "PATH_DOC_ASO_EXT", "PEGA_CBARRA_a_EFECTOS", "PATH_INI_LOCAL", "MES_ACTUAL", "SECCIONES_INDEPENDIENTES", "CONTROL_HORA_MOV", "PROX_CIERRE_ESTAD", "ULT_COD_INST_DGAP", "EPA", "FHIPA", "FHFPA", "GAP_NOMBRE", "PR_DBACT_IMAGEN", "GAP_VERSION", "ULTIMO_CIERRE_ESTAD", "PR_DBACT_SIZE", "EMPACTGAP", "FHACTGAP", "NRO_HOJA_CONF_INGRE", "CUAL_SECCION"],
+    "pk": "DJ"
+  },
+
+  "PEDIDOS": {
+    "name": "PEDIDOS",
+    "alias": "PEDm",
+    "fields": ["DTOJUD", "SERIEPED", "NROPED", "DTOJUD_PIDE", "DEPEN_PIDE", "FECHA_PEDIDO", "REFERENTE", "SERIENME", "NROME", "NROEXP", "PRESU_ESTI", "PROV_ESTI", "PROV_ESTI2", "PROV_ESTI3", "FORMA_PRESU", "NROIDPEMP", "FECHA_CARGA", "ULTEMPMOD", "FECHA_ULT_MOD", "ESTADO", "PRORRATEO", "DTOJUD_CTASUG", "CUENTA_SUG", "DTOJUD_FIN", "CUENTA_FIN", "OBS1", "OBS2", "OBS3", "FECHA_CUMPLI", "DESTINO", "DIAS_EST_ENTREGA"],
+    "fk": ["REFERENTE", "PROV_ESTI", "NROIDPEMP", "ESTADO"],
+    "uniqueMultiple": ["DTOJUD", "SERIEPED", "NROPED", "FECHA_PEDIDO"],
+    "tree": {
+      "REFERENTE": { "fieldName": "REFERENTE", "refEntityName": "PERSONAL", "refFieldName": "NROIDPEMP", "children": {
+          "DTOJUD": { "fieldName": "DTOJUD", "refEntityName": "DTOSJUDI", "refFieldName": "DTOJUD", "children": {
+          }},
+          "NIVEL_SEGU": { "fieldName": "NIVEL_SEGU", "refEntityName": "NIVELES", "refFieldName": "NIVEL_SEGU", "children": {
+          }}
+      }},
+      "PROV_ESTI": { "fieldName": "PROV_ESTI", "refEntityName": "PROVEEDORES", "refFieldName": "IDPPROV", "children": {
+      }},
+      "NROIDPEMP": { "fieldName": "NROIDPEMP", "refEntityName": "PERSONAL", "refFieldName": "NROIDPEMP", "children": {
+      }},
+      "ESTADO": { "fieldName": "ESTADO", "refEntityName": "TABLAS", "refFieldName": "REFERENCIA", "children": {
+          "CODTAB": { "fieldName": "CODTAB", "refEntityName": "DESTABLAS", "refFieldName": "CODTAB", "children": {
+          }}
+      }}
+    },
+    "relations": {
+      "REFERENTE": { "fieldName": "REFERENTE", "refEntityName": "PERSONAL", "refFieldName": "NROIDPEMP", "parentId": null},
+          "DTOJUD": { "fieldName": "DTOJUD", "refEntityName": "DTOSJUDI", "refFieldName": "DTOJUD", "parentId": "REFERENTE"},
+          "NIVEL_SEGU": { "fieldName": "NIVEL_SEGU", "refEntityName": "NIVELES", "refFieldName": "NIVEL_SEGU", "parentId": "REFERENTE"},
+      "PROV_ESTI": { "fieldName": "PROV_ESTI", "refEntityName": "PROVEEDORES", "refFieldName": "IDPPROV", "parentId": null},
+      "NROIDPEMP": { "fieldName": "NROIDPEMP", "refEntityName": "PERSONAL", "refFieldName": "NROIDPEMP", "parentId": null},
+      "ESTADO": { "fieldName": "ESTADO", "refEntityName": "TABLAS", "refFieldName": "REFERENCIA", "parentId": null},
+          "CODTAB": { "fieldName": "CODTAB", "refEntityName": "DESTABLAS", "refFieldName": "CODTAB", "parentId": "ESTADO"}
+    }
+  },
+
+  "MOVI_EXP": {
+    "name": "MOVI_EXP",
+    "alias": "MOVa",
+    "fields": ["DTOJUDI", "SERIE", "NUI", "NROMOV", "ORIGINAL", "COMPLETO", "CANT_CUERPOS", "DESDE", "HACIA", "F_ENVIO", "HORA_CARGA", "F_RECEPCION", "EMPLE_ENV", "EMPLE_RECI", "PC"],
+    "uniqueMultiple": ["DTOJUDI", "SERIE", "NUI", "NROMOV"]
+  },
+
+  "ULTIMOS": {
+    "name": "ULTIMOS",
+    "alias": "ULTI",
+    "fields": ["DtoJud", "NroIdpEmp", "UltProv", "UltProd_N", "UltPed_S", "UltPed_N", "UltEmple", "Ult_NUI", "ULT_SERIE_NUI", "ULT_NOTA"],
+    "uniqueMultiple": ["DtoJud", "NroIdpEmp"]
+  },
+
+  "PERITOS_CANT_PERICIAS": {
+    "name": "PERITOS_CANT_PERICIAS",
+    "alias": "PERj",
+    "fields": ["DTOJUDI", "NROIDPEMP", "anio", "mes", "tipo_pericia", "cant_peri_reci", "cant_peri_terminadas"],
+    "uniqueMultiple": ["DTOJUDI", "NROIDPEMP", "anio", "mes", "tipo_pericia"]
+  },
+
+  "PERI_MOVI_NUI": {
+    "name": "PERI_MOVI_NUI",
+    "alias": "PERk",
+    "fields": ["DTOJUDI", "SERIE", "NUI", "NROMOV", "FECHA_MOV", "FECHA_CARGA", "DETALLE", "CODEMPLE", "FULTMOD", "CODEMPLEMOD", "TIPO_MOV", "NRODOC", "ORIGENMOV", "ORI_O_DEST", "DTOJUDI_OD", "CODORG_OD", "DE_SEC", "A_SEC", "REQ_CONF", "HORA_CONF", "EMPLE_CONF", "DESTINATARIO", "PC_ALTA", "PC_ULT_MODI", "BORRADO", "FECHA_BORRADO", "NOTIF_ELEC", "EMPLE_BORRO", "PC_BORRO", "VERIFICO_JEFATURA", "HORA_CONF_SALIDA"],
+    "uniqueMultiple": ["DTOJUDI", "SERIE", "NUI", "NROMOV"]
+  },
+
+  "COMUNICADOS": {
+    "name": "COMUNICADOS",
+    "alias": "COMU",
+    "fields": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "NRO_TAREA", "TIPO_TAREA", "FECHA_NOTA", "DIRIGIDO_A", "PERITO1", "PERITO2", "PERITO3", "FECHA_TAREA", "HORA_TAREA", "CITADO", "MAS_DE_UN_DIA", "ESTADO", "EMITIO_INCOMPARENCIA", "FECHA_CARGA", "EMP_CARGA", "FECHA_ULT_MODI", "EMP_ULT_MODI", "QUIEN_CITA", "ESPECIALIDAD", "DIRIGIDO2", "CODORGA", "ALOJADO_DOMICILIADO", "NO_ASISTIO", "ASISTIO_1", "ASISTIO_2", "DOC_RELACIONADO", "FECHA2", "HORA2", "SEGCITA_Y_O", "ENCABEZADO", "CUERPO", "FECHA3", "HORA3", "ASISTIO_3", "PASE_A", "CARATULA", "PERITOS_QUE_CITAN", "SUBPERI", "DIRECCION", "ID_LOCALIDAD", "OBS"],
+    "uniqueMultiple": ["DTOJUDI", "SERIE", "NUI", "SERIE_PERI", "NROPERI", "NRO_TAREA", "SUBPERI"]
+  },
+
+  "PERITOS_FILTRO": {
+    "name": "PERITOS_FILTRO",
+    "alias": "PERl",
+    "fields": ["NROIDPEMP"],
+    "pk": "NROIDPEMP"
+  },
+
+  "PERSONAL_DOMI": {
+    "name": "PERSONAL_DOMI",
+    "alias": "PERm",
+    "fields": ["NROIDPEMP", "NRO_DOMI", "TIPO_DOM", "CALLE", "NRO", "ENTRE", "Y_ENTRE", "CODLOCAL", "CODPOS", "OBS"],
+    "uniqueMultiple": ["NROIDPEMP", "NRO_DOMI"]
+  },
+
+  "PERSONAL_TELEFONOS": {
+    "name": "PERSONAL_TELEFONOS",
+    "alias": "PERn",
+    "fields": ["NROIDPEMP", "INDICE_TEL", "TIPO_TELE", "CARACTERISTICA", "NRO_TELE", "INTERNO", "OBS"],
+    "uniqueMultiple": ["NROIDPEMP", "INDICE_TEL"]
+  },
+
+  "PERSONAL_EMAIL": {
+    "name": "PERSONAL_EMAIL",
+    "alias": "PERo",
+    "fields": ["NROIDPEMP", "INDICE_EMAIL", "EMAIL", "OBS"],
+    "uniqueMultiple": ["NROIDPEMP", "INDICE_EMAIL"]
+  }
 
 }
