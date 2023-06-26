@@ -8,6 +8,9 @@ namespace Utils
     {
         /*
         https://stackoverflow.com/questions/41040189/fastest-way-to-map-result-of-sqldatareader-to-object
+        
+        Los caracteres especiales de fieldName son reemplazados por "__"
+            Ej. persona-nombres.max > persona__nombres__max         
         */
         public static T ConvertToObject<T>(this DbDataReader rd) where T : class, new()
         {
@@ -20,12 +23,10 @@ namespace Utils
             {
                 if (!rd.IsDBNull(i))
                 {
-                    string fieldName = rd.GetName(i);
+                    string fieldName = rd.GetName(i).Replace("-","__").Replace(".","__");
 
                     if (members.Any(m => string.Equals(m.Name, fieldName, StringComparison.OrdinalIgnoreCase)))
-                    {
                         accessor[t, fieldName] = rd.GetValue(i);
-                    }
                 }
             }
 
@@ -49,14 +50,23 @@ namespace Utils
         public static List<Dictionary<string, T>> Serialize<T>(this DbDataReader reader)
         {
             var results = new List<Dictionary<string, T>>();
-            var cols = ColumnNames(reader);
+            var cols = reader.ColumnNames();
 
             while (reader.Read())
-                results.Add(reader.SerializeRow<T>(cols));
+                results.Add(reader.SerializeRowCols<T>(cols));
 
             return results;
         }
-        public static Dictionary<string, T> SerializeRow<T>(this DbDataReader reader, List<string> cols)
+        public static Dictionary<string, T> SerializeRow<T>(this DbDataReader reader)
+        {
+            var cols = reader.ColumnNames();
+            var result = new Dictionary<string, T>();
+            foreach (var col in cols)
+                result.Add(col, (T)reader[col]);
+            return result;
+        }
+
+        public static Dictionary<string, T> SerializeRowCols<T>(this DbDataReader reader, List<string> cols)
         {
             var result = new Dictionary<string, T>();
             foreach (var col in cols)
@@ -64,12 +74,12 @@ namespace Utils
             return result;
         }
 
-        public static List<string> ColumnNames(DbDataReader reader)
+        public static List<string> ColumnNames(this DbDataReader reader)
         {
             return Enumerable.Range(0, reader.FieldCount).Select(reader.GetName).ToList();
         }
 
-        public static List<T> ColumnValues<T>(DbDataReader reader, string columnName)
+        public static List<T> ColumnValues<T>(this DbDataReader reader, string columnName)
         {
             var result = new List<T>();
             while (reader.Read())

@@ -15,9 +15,7 @@
         /*
         String de conexin con la base de datos
         */
-        public string connectionString { get; set; } = "_";
-
-
+        public string connectionString { get; set; }
 
     }
 

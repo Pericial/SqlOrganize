@@ -14,8 +14,7 @@ namespace WinFormsAppSs
         protected override void OnLoad(EventArgs e)
         {
             Db db = ContainerApp.db;
-            using DbDataReader reader = db.Query("SUJETOS").Size(100).Execute();
-            sujetoBindingSource1.DataSource = reader.ConvertToListOfObject<Sujeto>();
+            sujetoBindingSource1.DataSource = db.Query("SUJETOS").Size(100).ListObject<Sujeto>();
         }
 
 

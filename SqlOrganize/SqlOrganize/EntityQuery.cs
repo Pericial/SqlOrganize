@@ -1,12 +1,6 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Data.Common;
-using System.Security.Principal;
 using System.Text.RegularExpressions;
-using System.Xml.Linq;
 using Utils;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace SqlOrganize
 {
@@ -14,62 +8,40 @@ namespace SqlOrganize
     /*
     Consulta y formato de datos
 
-    Efectua la consulta a la base de datos y la transforma en el formato solicitado
+    Efectua la consulta a la base de datos y la transforma en el formato so-
+    licitado.
+    
+    Los fields se traducen con los metodos de mapeo, deben indicarse con el 
+    prefijo $
+        . indica aplicacion de funcion de agregacion
+        - indica que pertenece a una relacion
+        Ej "($ingreso = %p1) AND ($persona-nombres.max = %p1)"
     */
     public abstract class EntityQuery
     {
         public Db db { get; }
+
         public string entityName { get; }
 
-
-        /*
-        Debe respetar el formato del motor de base de datos
-        Los fields se traducen con los metodos de mapeo, deben indicarse con el prefijo $
-        . indica aplicacion de funcion de agregacion
-        - indica que pertenece a una relacion
-        Ej "($ingreso = %p1) AND ($persona-nombres = %p1)"
-        */
         public string? where { get; set; }
 
-        /*
-        Debe respetar el formato del motor de base de datos
-        Los fields se traducen con los metodos de mapeo, deben indicarse con el prefijo $
-        . indica aplicacion de funcion de agregacion
-        - indica que pertenece a una relacion
-        Ej "($ingreso = %p1) AND ($persona-nombres = %p1)"
-        */
         public string? having { get; set; }
 
-        /*
-        Los fields deben estar definidos en el mapping field, se realizará la 
-        traducción correspondiente
-        Para traducir se les debe indicar el prefijo "$"
-        . indica aplicacion de funcion de agregacion
-        - indica que pertenece a una relacion
-        Ej "$nombres, $curso-horas_catedra.sum" => Se traduce a "alum.nombres as 'nombres', SUM(cur.horas_catedra) AS 'curso-horas_catedra.sum'"
-        */
         public string? fields { get; set; } = "";
-        /*
-        Similar a fields, pero no se aplica renombramiento
-
-        "$nombres, $curso-horas_catedra.sum" => Se traduce a "alum.nombres, SUM(cur.horas_catedra)"
-        */
 
         public string? fieldsAs { get; set; } = "";
 
-
         public string? order { get; set; } = "";
+
         public int? size { get; set; } = 100;
+
         public int? page { get; set; } = 1;
 
-        /*
-        Similar a fields pero campo de agrupamiento
-        */
         public string group { get; set; } = "";
 
         public List<object> parameters = new List<object> { };
 
-        public string fetch = "All";
+        public string fetch = "ListDict";
 
         public EntityQuery(Db _db, string _entityName)
         {
@@ -77,13 +49,11 @@ namespace SqlOrganize
             entityName = _entityName;
         }
 
-
         public EntityQuery Where(string w)
         {
             where = w;
             return this;
         }
-
 
         public EntityQuery Fields()
         {
@@ -96,7 +66,6 @@ namespace SqlOrganize
             fields += f;
             return this;
         }
-
 
         public EntityQuery FieldsAs()
         {
@@ -122,8 +91,7 @@ namespace SqlOrganize
             return this;
         }
 
-
-        protected string traduce(string _sql, bool flag_as = false)
+        protected string Traduce(string _sql, bool flag_as = false)
         {
             string sql = "";
             int field_start = -1;
@@ -139,7 +107,7 @@ namespace SqlOrganize
                 if (field_start != -1)
                 {
                     if ((_sql[i] != ' ') && (_sql[i] != ')') && (_sql[i] != ',')) continue;
-                    sql += traduce_(_sql, flag_as, field_start, i - field_start - 1);
+                    sql += Traduce_(_sql, flag_as, field_start, i - field_start - 1);
                     field_start = -1;
                 }
 
@@ -149,14 +117,14 @@ namespace SqlOrganize
 
             if (field_start != -1)
             {
-                sql += traduce_(_sql, flag_as, field_start, _sql.Length - field_start - 1);
+                sql += Traduce_(_sql, flag_as, field_start, _sql.Length - field_start - 1);
             }
 
 
             return sql;
         }
 
-        protected string traduce_(string _sql, bool flag_as, int field_start, int field_end)
+        protected string Traduce_(string _sql, bool flag_as, int field_start, int field_end)
         {
             var field_name = _sql.Substring(field_start + 1, field_end);
             var f = db.ExplodeField(entityName, field_name);
@@ -170,12 +138,12 @@ namespace SqlOrganize
             return ff;
         }
 
-
         public EntityQuery Size(int _size)
         {
             size = _size;
             return this;
         }
+
         public EntityQuery Page(int _page)
         {
             page = _page;
@@ -187,8 +155,6 @@ namespace SqlOrganize
             order = _order;
             return this;
         }
-
-
 
         public EntityQuery Having(string h)
         {
@@ -202,15 +168,15 @@ namespace SqlOrganize
             return this;
         }
 
-        protected string sql_join()
+        protected string SqlJoin()
         {
             string sql = "";
             if (db.tree.ContainsKey(entityName))
-                sql += sql_join_fk(db.tree[entityName], "");
+                sql += SqlJoinFk(db.tree[entityName], "");
             return sql;
         }
 
-        protected string sql_join_fk(Dictionary<string, EntityTree> tree, string table_id)
+        protected string SqlJoinFk(Dictionary<string, EntityTree> tree, string table_id)
         {
             if (table_id.IsNullOrEmpty())
                 table_id = db.Entity(entityName).alias;
@@ -222,7 +188,7 @@ namespace SqlOrganize
                 sql += "LEFT OUTER JOIN " + schema_name + " AS " + field_id + " ON (" + table_id + "." + entity_tree.fieldName + " = " + field_id + "." + entity_tree.refFieldName + @")
 ";
 
-                if (!entity_tree.children.IsNullOrEmpty()) sql += sql_join_fk(entity_tree.children, field_id);
+                if (!entity_tree.children.IsNullOrEmpty()) sql += SqlJoinFk(entity_tree.children, field_id);
             }
             return sql;
         }
@@ -230,67 +196,65 @@ namespace SqlOrganize
         public string Sql()
         {
             var sql = "SELECT ";
-            sql += sql_fields();
-            sql += sql_from();
-            sql += sql_join();
-            sql += sql_where();
-            sql += sql_group();
-            sql += sql_having();
+            sql += SqlFields();
+            sql += SqlFrom();
+            sql += SqlJoin();
+            sql += SqlWhere();
+            sql += SqlGroup();
+            sql += SqlHaving();
             sql += SqlOrder();
-            sql += sql_limit();
+            sql += SqlLimit();
 
             return sql;
         }
 
-        protected string sql_where()
+        protected string SqlWhere()
         {
-            return (where.IsNullOrEmpty()) ? "" : "WHERE " + traduce(where!) + @"
+            return (where.IsNullOrEmpty()) ? "" : "WHERE " + Traduce(where!) + @"
 ";
         }
 
-        protected string sql_group()
+        protected string SqlGroup()
         {
-            return (group.IsNullOrEmpty()) ? "" : "GROUP BY " + traduce(group!) + @"
+            return (group.IsNullOrEmpty()) ? "" : "GROUP BY " + Traduce(group!) + @"
 ";
         }
 
-        protected string sql_having()
+        protected string SqlHaving()
         {
-            return (having.IsNullOrEmpty()) ? "" : "HAVING " + traduce(having!) + @"
+            return (having.IsNullOrEmpty()) ? "" : "HAVING " + Traduce(having!) + @"
 ";
         }
 
         protected abstract string SqlOrder();
 
-
-        protected string sql_fields()
+        protected string SqlFields()
         {
             if(this.fields.IsNullOrEmpty() && this.fieldsAs.IsNullOrEmpty() && this.group.IsNullOrEmpty())
                 this.FieldsAs();
 
-            string f = concat(traduce(this.fields), @"
+            string f = Concat(Traduce(this.fields), @"
 ");
-            var p = traduce(this.fieldsAs, true);
-            f += concat(p, @",
+            var p = Traduce(this.fieldsAs, true);
+            f += Concat(p, @",
 ", "", !f.IsNullOrEmpty());
 
-            f += concat(traduce(this.group), @",
+            f += Concat(Traduce(this.group), @",
 ", "", !f.IsNullOrEmpty());
 
             return f + @"
 ";
         }
 
-        protected string sql_from()
+        protected string SqlFrom()
         {
             return @"FROM " + db.Entity(entityName).schemaName + " AS " + db.Entity(entityName).alias + @"
 ";
         }
 
-        protected abstract string sql_limit();
+        protected abstract string SqlLimit();
        
-
-        protected string concat(string? value, string connect_true, string connect_false = "", bool connect_cond = true)
+        protected string Concat(string? value, string connect_true, string connect_false = "", bool connect_cond = true)
         {
             if (value.IsNullOrEmpty()) return "";
 
@@ -303,16 +267,21 @@ namespace SqlOrganize
             return connect + " " + value;
         }
 
-        abstract public DbDataReader Execute();
+        public object Exec<T>() { 
+            switch (fetch.ToLower()) {
+                case "listdict":
+                case "list_dict":
+                case "list":
+                    return ListDict<T>();
 
+                case "dict":
+                    return Dict<T>();
 
-        public object Exec() { 
-            switch (fetch) {
-                case "All":
-                    return All();
+                case "column":
+                    return Column<T>(0);
 
-                case "Assoc":
-                    return Assoc();
+                case "value":
+                    return Value<T>();
 
                 default:
                     throw new Exception("No se encuentra definido el Fetch");
@@ -331,28 +300,28 @@ namespace SqlOrganize
 
         Convert the result to json with "JsonConvert.SerializeObject(data, Formatting.Indented)"
         */
-        public abstract List<Dictionary<string, object>> All();
+        public abstract List<Dictionary<string, T>> ListDict<T>();
 
-        public abstract List<T> All<T>();
+        public abstract List<T> ListObject<T>() where T : class, new();
 
-        public abstract List<Dictionary<string, object>> Assoc();
-        public abstract List<T> Assoc<T>();
+        public abstract Dictionary<string, T> Dict<T>();
+        public abstract T Object<T>() where T : class, new();
 
+        public abstract T Column<T>(string columnName);
 
+        public abstract T Column<T>(int columnValue = 0);
+
+        public abstract T Value<T>(string columnName);
+
+        public abstract T Value<T>(int columnValue = 0);
         /*
         Obtener arbol
 
         Convert the result to json with "JsonConvert.SerializeObject(data, Formatting.Indented)"
         */
-        public abstract List<Dictionary<string, object>> Tree();
+        public abstract List<Dictionary<string, T>> Tree<T>();
 
-
-        /*
-        Obtener todas las filas
-
-        Convert the result to json with "JsonConvert.SerializeObject(data, Formatting.Indented)"
-        */
-
+  
 
         /*
         public abstract Dictionary<string, object> fetch_assoc();

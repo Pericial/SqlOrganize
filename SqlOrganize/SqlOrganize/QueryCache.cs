@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
+using Utils;
 
 namespace SqlOrganize
 {
@@ -8,25 +9,20 @@ namespace SqlOrganize
     */
     public class QueryCache
     {
-        public EntityQuery? Query { get; }
+        public Db? Db { get; }
         public string EntityName { get; }
+        public object? Ids { get; }
         public static MemoryCache Cache { get; set; } = new MemoryCache(new MemoryCacheOptions());
 
-        public QueryCache (EntityQuery query)
+        public QueryCache (Db db)
         {
-            Query = query;
-            EntityName = query.entityName;
-        }
-
-        public QueryCache(string entityName)
-        {
-            EntityName = entityName;
+            Db = db;
         }
 
         /*
         Ejecuta la consulta y la almacena en Cache
         */
-        public object Execute()
+        public object Exec(EntityQuery Query)
         {
             List<string> queries = null;
             if (!Cache.TryGetValue("queries", out queries))
@@ -39,7 +35,7 @@ namespace SqlOrganize
             string queryKey = Query!.ToString();
             if (!Cache.TryGetValue(queryKey, out result))
             {
-                result = Query.Exec();
+                result = Query.Exec<object>();
                 Cache.Set(queryKey, result);
                 queries.Add(queryKey);
                 Cache.Set<List<string>>("queries", queries);
@@ -47,20 +43,12 @@ namespace SqlOrganize
             return result;
         }
 
-        /*
-        Ejecucion recursiva de consulta
-        Solo funciona con campos de configuracion.
-        */
-        public List<Dictionary<string, object>> ExecuteR()
+        public List<T> ListObject<T>(EntityQuery query) where T : class, new()
         {
-
-            return Query!.All();
-            //Cache.Clear();
+            return query!.ListObject<T>();
+            //Todo verificar si esta en cache, verificar si query posee campos unicos
         }
 
-        public List<Dictionary<string, object>> GetAll(List<object> ids)
-        {
-            return Query!.All();
-        }
+
     }
 }

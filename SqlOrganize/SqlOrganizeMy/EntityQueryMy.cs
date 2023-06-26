@@ -1,4 +1,5 @@
-﻿using SqlOrganize;
+﻿using MySql.Data.MySqlClient;
+using SqlOrganize;
 using System.Data.Common;
 using Utils;
 
@@ -11,17 +12,12 @@ namespace SqlOrganizeMy
         {
         }
 
-        public override List<Dictionary<string, object>> All()
+        public override List<Dictionary<string, T>> Tree<T>()
         {
             throw new NotImplementedException();
         }
 
-        public override List<Dictionary<string, object>> Tree()
-        {
-            throw new NotImplementedException();
-        }
-
-        protected override string sql_limit()
+        protected override string SqlLimit()
         {
             if (size.IsNullOrEmpty()) return "";
             page = page.IsNullOrEmpty() ? 1 : page;
@@ -37,11 +33,70 @@ namespace SqlOrganizeMy
                 order = o.IsNullOrEmpty() ? "" : string.Join(", ", o.Select(x => "$" + x));
             }
 
-            return (order.IsNullOrEmpty()) ? "" : "ORDER BY " + traduce(order!) + @"
+            return (order.IsNullOrEmpty()) ? "" : "ORDER BY " + Traduce(order!) + @"
 ";
         }
 
-        public override DbDataReader Execute()
+  
+        public override List<Dictionary<string, T>> ListDict<T>()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override List<T> ListObject<T>()
+        {
+            using MySqlConnection connection = new MySqlConnection((string)db.config.connectionString);
+            connection.Open();
+            string sql = Sql();
+            using MySqlCommand command = new MySqlCommand();
+            command.Connection = connection;
+            for (var i = 0; i < parameters.Count; i++)
+            {
+                if (parameters[i].IsList())
+                {
+                    var _parameters = (parameters[i] as List<object>).Select((x, j) => Tuple.Create($"@{i}_{j}", x));
+                    sql = sql.ReplaceFirst("@" + i.ToString(), string.Join(",", _parameters.Select(x => x.Item1)));
+                    foreach (var parameter in _parameters)
+                        command.Parameters.AddWithValue(parameter.Item1, parameter.Item2);
+                }
+                else
+                {
+                    command.Parameters.AddWithValue(i.ToString(), parameters[i]);
+                }
+            }
+
+            command.CommandText = sql;
+            command.ExecuteNonQuery();
+            using MySqlDataReader reader = command.ExecuteReader();
+
+            return reader.ConvertToListOfObject<T>();
+        }
+
+        public override Dictionary<string, T> Dict<T>()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override T Object<T>()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override T Column<T>(string columnName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override T Column<T>(int columnValue = 0)
+        {
+            throw new NotImplementedException();
+        }
+        public override T Value<T>(string columnName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override T Value<T>(int columnValue = 0)
         {
             throw new NotImplementedException();
         }
