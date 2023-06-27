@@ -10,7 +10,8 @@ namespace SqlOrganize
     public class QueryCache
     {
         public Db Db { get; }
-        public static MemoryCache Cache { get; set; } = new MemoryCache(new MemoryCacheOptions());
+        
+        public MemoryCache Cache { get; set; }
 
         public QueryCache (Db db, MemoryCache cache)
         {
@@ -42,6 +43,11 @@ namespace SqlOrganize
             return result;
         }
 
+        /*
+        Obtener campos de una entidad (sin relaciones)
+        Si no encuentra valores en el Cache, realiza una consulta a la base de datos
+        y lo almacena en Cache.
+        */
         public List<Dictionary<string,object>> ListDict(string entityName, params object[] ids)
         {
             ids = ids.Distinct().ToArray();
@@ -52,14 +58,14 @@ namespace SqlOrganize
 
             for(var i = 0; i < ids.Length; i++)
             {
-                object? data = null;
+                object? data;
                 if (Cache.TryGetValue(entityName + ids[i], out data))
                 {
-                    response.Insert(0, (Dictionary<string, object>)data!);
+                    response.Insert(i, (Dictionary<string, object>)data!);
                 }else
                 {
-                    response.Insert(0, null);
-                    searchIds.Insert(0, ids[i]);
+                    response.Insert(i, null);
+                    searchIds.Add(ids[i]);
                 }
             }
 
@@ -69,18 +75,23 @@ namespace SqlOrganize
 
             foreach(Dictionary<string, object> row in rows)
             {
-
+                int index = Array.IndexOf(ids, row["id"]);
+                response[index] = row;
             }
 
-
-
-
-
-
-
+            return response;
         }
 
-        public List
+
+        protected List<Dictionary<string, object>> CacheEntity(string entityName, List<Dictionary<string, object>> row)
+        {
+            
+        }
+
+        protected List<Dictionary<string, object>> CacheEntityRecursive()
+        {
+
+        }
 
 
     }
