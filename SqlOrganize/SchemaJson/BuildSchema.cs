@@ -40,6 +40,9 @@ namespace SchemaJson
                         table.PkAux.Add(field.COLUMN_NAME);
                     if (field.IS_UNIQUE_KEY == 1)
                         table.Unique.Add(field.COLUMN_NAME);
+                    if (field.IS_NULLABLE == 0)
+                        table.NotNull.Add(field.COLUMN_NAME);
+
                     switch (field.DATA_TYPE)
                     {
                         case "varchar":
@@ -153,6 +156,9 @@ namespace SchemaJson
 ";
                 if (t.UniqueMultiple.Count > 0)
                     file += @"    ""uniqueMultiple"": [""" + String.Join("\", \"", t.UniqueMultiple) + @"""],
+";
+                if (t.NotNull.Count > 0)
+                    file += @"    ""notNull"": [""" + String.Join("\", \"", t.NotNull) + @"""],
 ";
 
                 var contentAux = ContentTree(t);

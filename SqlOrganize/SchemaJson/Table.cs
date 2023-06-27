@@ -14,6 +14,8 @@ namespace SchemaJson
         public List<string> Unique { get; set; } = new();
         public List<string> UniqueMultiple { get; set; } = new();
         public List<Tree> Tree { get; set; } = new();
+        public List<string> NotNull { get; set; } = new();
+
 
 
 

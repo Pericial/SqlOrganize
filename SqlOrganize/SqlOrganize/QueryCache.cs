@@ -21,17 +21,14 @@ namespace SqlOrganize
 
         /*
         Ejecuta la consulta y la almacena en Cache
-        */
+        *
         public object Exec(EntityQuery Query)
         {
-            List<string> queries = null;
+            List<string> queries;
             if (!Cache.TryGetValue("queries", out queries))
-            {
                 queries = new();
-                Cache.Set<List<string>>("queries", queries);
-            }
 
-            object result = null;
+            object result;
             string queryKey = Query!.ToString();
             if (!Cache.TryGetValue(queryKey, out result))
             {
@@ -41,7 +38,7 @@ namespace SqlOrganize
                 Cache.Set<List<string>>("queries", queries);
             }
             return result;
-        }
+        }*/
 
         /*
         Obtener campos de una entidad (sin relaciones)
@@ -76,23 +73,39 @@ namespace SqlOrganize
             foreach(Dictionary<string, object> row in rows)
             {
                 int index = Array.IndexOf(ids, row["id"]);
-                response[index] = row;
+                response[index] = EntityCache(entityName,row);
             }
 
             return response;
         }
 
 
-        protected List<Dictionary<string, object>> CacheEntity(string entityName, List<Dictionary<string, object>> row)
+        protected Dictionary<string, object> EntityCache(string entityName, Dictionary<string, object> row)
         {
-            
+            if(!Db.Entity(entityName).relations.IsNullOrEmpty()) 
+                EntityCacheRecursive(Db.Entity(entityName).relations!, row);
+
+            Cache.Set<Dictionary<string, object>>(entityName+row["id"].ToString(), row);
+            return row;
         }
 
-        protected List<Dictionary<string, object>> CacheEntityRecursive()
+        protected void EntityCacheRecursive(Dictionary<string, EntityRel> relations, Dictionary<string, object> row)
         {
-
+            foreach (var (fieldId, rel) in relations)
+            {
+                var entityName = rel.refEntityName;
+                Dictionary<string, object> rowAux = new();
+                foreach (var (column, value) in row)
+                {
+                    if (column.Contains(fieldId))
+                    {
+                        rowAux[column] = value;
+                        row.Remove(column);
+                    }
+                    Cache.Set<Dictionary<string, object>>(entityName + rowAux["id"].ToString(), row);
+                }
+            }
         }
-
 
     }
 }

@@ -50,7 +50,7 @@ namespace Utils
             return (List == null || List.Count < 1);
         }
 
-        public static bool IsNullOrEmpty(this IDictionary Dictionary)
+        public static bool IsNullOrEmpty(this IDictionary? Dictionary)
         {
             return (Dictionary == null || Dictionary.Count < 1);
         }

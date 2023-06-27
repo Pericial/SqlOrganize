@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualBasic;
 using System.Reflection;
+using Utils;
 
 namespace SqlOrganize
 {
@@ -56,6 +57,17 @@ namespace SqlOrganize
             }
         }
 
+        public string id()
+        {
+            if (!db.Entity(entityName).pk.IsNullOrEmpty())
+            {
+                return map(db.Entity(entityName).pk);
+            } else
+            {
+                
+            }
+
+        }
         /*
         mapeo por defecto
         */

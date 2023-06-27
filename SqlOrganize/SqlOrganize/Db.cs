@@ -40,8 +40,14 @@ namespace SqlOrganize
             using (StreamReader r = new StreamReader(config.modelPath + "entities.json"))
             {
                 entities = JsonConvert.DeserializeObject<Dictionary<string, Entity>>(r.ReadToEnd())!;
-                foreach (KeyValuePair<string, Entity> e in entities)
+                foreach (KeyValuePair<string, Entity> e in entities) { 
                     e.Value.db = this;
+
+                    if (!e.Value.pk.IsNullOrEmpty())
+                    {
+                        e.Value
+                    }
+                }
             }
 
             if (File.Exists(config.modelPath + "entities" + config.modelSuffix + ".json"))

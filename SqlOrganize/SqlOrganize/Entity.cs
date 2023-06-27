@@ -79,8 +79,17 @@ namespace SqlOrganize
         public string schema_ => String.IsNullOrEmpty(schema) ? schema : "";
         public string schemaName => schema + name;
         public string schemaNameAlias => schema + name + " AS " + alias;
-        
-       
+
+        /*
+        Campo de identificacion
+        - Si existe un campo pk, entonces la pk sera el id. 
+        - Si existe al menos un campo unique not null, se toma como id. 
+        - Si existe multiples campos pk, se toman la concatenacion como id. 
+        - Si existe multiples campos uniqueMultiple, se toman la concatenacion como id. 
+        */
+        List<string> id { get; set; }
+
+
         protected List<Field> _Fields(List<string> fieldNames)
         {
             List<Field> fields = new();
