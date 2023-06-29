@@ -1,0 +1,31 @@
+{
+    "id": {
+        "alias": "id",
+        "dataType": "string"
+    },
+
+    "nombre": {
+        "alias": "nom",
+        "dataType": "string"
+    },
+
+    "cue": {
+        "alias": "cue",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "domicilio": {
+        "alias": "dom",
+        "dataType": "string",
+        "defaultValue": "NULL",
+        "refEntityName": "id"
+    },
+
+    "observaciones": {
+        "alias": "obs",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    }
+
+}

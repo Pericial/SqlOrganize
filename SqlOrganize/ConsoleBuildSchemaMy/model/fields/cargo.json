@@ -1,0 +1,12 @@
+{
+    "id": {
+        "alias": "id",
+        "dataType": "string"
+    },
+
+    "descripcion": {
+        "alias": "des",
+        "dataType": "string"
+    }
+
+}

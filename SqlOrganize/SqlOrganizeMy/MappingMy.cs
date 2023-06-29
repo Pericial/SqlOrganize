@@ -24,12 +24,12 @@ namespace SqlOrganizeMy
         {
         }
 
-        public override string _default(string field_name)
+        public override string _Default(string field_name)
         {
             return Pt() + "." + field_name;
         }
 
-        public override string _count(string field_name)
+        public override string _Count(string field_name)
         {
             return "COUNT(DISTINCT " + map(field_name) + ")";
         }

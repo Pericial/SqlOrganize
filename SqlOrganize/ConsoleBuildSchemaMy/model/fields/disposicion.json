@@ -1,0 +1,19 @@
+{
+    "id": {
+        "alias": "id",
+        "dataType": "string"
+    },
+
+    "asignatura": {
+        "alias": "asi",
+        "dataType": "string",
+        "refEntityName": "id"
+    },
+
+    "planificacion": {
+        "alias": "pla",
+        "dataType": "string",
+        "refEntityName": "id"
+    }
+
+}

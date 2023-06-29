@@ -1,0 +1,43 @@
+{
+    "id": {
+        "alias": "id",
+        "dataType": "string"
+    },
+
+    "desde": {
+        "alias": "des",
+        "dataType": "date",
+        "defaultValue": "NULL"
+    },
+
+    "hasta": {
+        "alias": "has",
+        "dataType": "date",
+        "defaultValue": "NULL"
+    },
+
+    "cargo": {
+        "alias": "car",
+        "dataType": "string",
+        "refEntityName": "id"
+    },
+
+    "sede": {
+        "alias": "sed",
+        "dataType": "string",
+        "refEntityName": "id"
+    },
+
+    "persona": {
+        "alias": "per",
+        "dataType": "string",
+        "refEntityName": "id"
+    },
+
+    "alta": {
+        "alias": "alt",
+        "dataType": "timestamp",
+        "defaultValue": "current_timestamp()"
+    }
+
+}

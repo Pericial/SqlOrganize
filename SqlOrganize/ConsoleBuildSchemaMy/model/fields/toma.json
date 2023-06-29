@@ -1,0 +1,99 @@
+{
+    "id": {
+        "alias": "id",
+        "dataType": "string"
+    },
+
+    "fecha_toma": {
+        "alias": "fec",
+        "dataType": "date",
+        "defaultValue": "NULL"
+    },
+
+    "estado": {
+        "alias": "est",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "observaciones": {
+        "alias": "obs",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "comentario": {
+        "alias": "com",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "tipo_movimiento": {
+        "alias": "tip",
+        "dataType": "string"
+    },
+
+    "estado_contralor": {
+        "alias": "esa",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "alta": {
+        "alias": "alt",
+        "dataType": "timestamp",
+        "defaultValue": "current_timestamp()"
+    },
+
+    "curso": {
+        "alias": "cur",
+        "dataType": "string",
+        "refEntityName": "id"
+    },
+
+    "docente": {
+        "alias": "doc",
+        "dataType": "string",
+        "defaultValue": "NULL",
+        "refEntityName": "id"
+    },
+
+    "reemplazo": {
+        "alias": "ree",
+        "dataType": "string",
+        "defaultValue": "NULL",
+        "refEntityName": "id"
+    },
+
+    "planilla_docente": {
+        "alias": "pla",
+        "dataType": "string",
+        "defaultValue": "NULL",
+        "refEntityName": "id"
+    },
+
+    "calificacion": {
+        "alias": "cal",
+        "dataType": "tinyint",
+        "defaultValue": "0"
+    },
+
+    "temas_tratados": {
+        "alias": "tem",
+        "dataType": "tinyint",
+        "defaultValue": "0"
+    },
+
+    "asistencia": {
+        "alias": "asi",
+        "dataType": "tinyint",
+        "defaultValue": "0"
+    },
+
+    "sin_planillas": {
+        "alias": "sin",
+        "dataType": "tinyint",
+        "defaultValue": "0"
+    }
+
+}

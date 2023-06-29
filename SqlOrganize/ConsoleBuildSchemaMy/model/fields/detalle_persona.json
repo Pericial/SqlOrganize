@@ -1,0 +1,49 @@
+{
+    "id": {
+        "alias": "id",
+        "dataType": "string"
+    },
+
+    "descripcion": {
+        "alias": "des",
+        "dataType": "string"
+    },
+
+    "archivo": {
+        "alias": "arc",
+        "dataType": "string",
+        "defaultValue": "NULL",
+        "refEntityName": "id"
+    },
+
+    "creado": {
+        "alias": "cre",
+        "dataType": "timestamp",
+        "defaultValue": "current_timestamp()"
+    },
+
+    "persona": {
+        "alias": "per",
+        "dataType": "string",
+        "refEntityName": "id"
+    },
+
+    "fecha": {
+        "alias": "fec",
+        "dataType": "date",
+        "defaultValue": "curdate()"
+    },
+
+    "tipo": {
+        "alias": "tip",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "asunto": {
+        "alias": "asu",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    }
+
+}

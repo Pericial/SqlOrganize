@@ -1,0 +1,44 @@
+{
+    "id": {
+        "alias": "id",
+        "dataType": "string"
+    },
+
+    "creado": {
+        "alias": "cre",
+        "dataType": "timestamp",
+        "defaultValue": "current_timestamp()"
+    },
+
+    "activo": {
+        "alias": "act",
+        "dataType": "tinyint",
+        "defaultValue": "0"
+    },
+
+    "observaciones": {
+        "alias": "obs",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "comision": {
+        "alias": "com",
+        "dataType": "string",
+        "defaultValue": "NULL",
+        "refEntityName": "id"
+    },
+
+    "alumno": {
+        "alias": "alu",
+        "dataType": "string",
+        "refEntityName": "id"
+    },
+
+    "estado": {
+        "alias": "est",
+        "dataType": "string",
+        "defaultValue": "'Activo'"
+    }
+
+}

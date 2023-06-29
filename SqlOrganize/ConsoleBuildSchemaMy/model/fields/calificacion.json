@@ -1,0 +1,80 @@
+{
+    "id": {
+        "alias": "id",
+        "dataType": "string"
+    },
+
+    "nota1": {
+        "alias": "not",
+        "dataType": "decimal",
+        "defaultValue": "NULL"
+    },
+
+    "nota2": {
+        "alias": "noa",
+        "dataType": "decimal",
+        "defaultValue": "NULL"
+    },
+
+    "nota3": {
+        "alias": "nob",
+        "dataType": "decimal",
+        "defaultValue": "NULL"
+    },
+
+    "nota_final": {
+        "alias": "noc",
+        "dataType": "decimal",
+        "defaultValue": "NULL"
+    },
+
+    "crec": {
+        "alias": "cre",
+        "dataType": "decimal",
+        "defaultValue": "NULL"
+    },
+
+    "curso": {
+        "alias": "cur",
+        "dataType": "string",
+        "defaultValue": "NULL",
+        "refEntityName": "id"
+    },
+
+    "porcentaje_asistencia": {
+        "alias": "por",
+        "dataType": "int",
+        "defaultValue": "NULL"
+    },
+
+    "observaciones": {
+        "alias": "obs",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "division": {
+        "alias": "div",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "alumno": {
+        "alias": "alu",
+        "dataType": "string",
+        "refEntityName": "id"
+    },
+
+    "disposicion": {
+        "alias": "dis",
+        "dataType": "string",
+        "refEntityName": "id"
+    },
+
+    "fecha": {
+        "alias": "fec",
+        "dataType": "date",
+        "defaultValue": "NULL"
+    }
+
+}

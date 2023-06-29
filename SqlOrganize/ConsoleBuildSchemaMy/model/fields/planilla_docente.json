@@ -1,0 +1,36 @@
+{
+    "id": {
+        "alias": "id",
+        "dataType": "string"
+    },
+
+    "numero": {
+        "alias": "num",
+        "dataType": "string"
+    },
+
+    "insertado": {
+        "alias": "ins",
+        "dataType": "timestamp",
+        "defaultValue": "current_timestamp()"
+    },
+
+    "fecha_contralor": {
+        "alias": "fec",
+        "dataType": "date",
+        "defaultValue": "NULL"
+    },
+
+    "fecha_consejo": {
+        "alias": "fea",
+        "dataType": "date",
+        "defaultValue": "NULL"
+    },
+
+    "observaciones": {
+        "alias": "obs",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    }
+
+}

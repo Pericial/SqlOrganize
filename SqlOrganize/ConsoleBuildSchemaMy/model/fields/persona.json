@@ -1,0 +1,102 @@
+{
+    "id": {
+        "alias": "id",
+        "dataType": "string"
+    },
+
+    "nombres": {
+        "alias": "nom",
+        "dataType": "string"
+    },
+
+    "apellidos": {
+        "alias": "ape",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "fecha_nacimiento": {
+        "alias": "fec",
+        "dataType": "date",
+        "defaultValue": "NULL"
+    },
+
+    "numero_documento": {
+        "alias": "num",
+        "dataType": "string"
+    },
+
+    "cuil": {
+        "alias": "cui",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "genero": {
+        "alias": "gen",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "apodo": {
+        "alias": "apo",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "telefono": {
+        "alias": "tel",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "email": {
+        "alias": "ema",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "email_abc": {
+        "alias": "emb",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "alta": {
+        "alias": "alt",
+        "dataType": "timestamp",
+        "defaultValue": "current_timestamp()"
+    },
+
+    "domicilio": {
+        "alias": "dom",
+        "dataType": "string",
+        "defaultValue": "NULL",
+        "refEntityName": "id"
+    },
+
+    "lugar_nacimiento": {
+        "alias": "lug",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "telefono_verificado": {
+        "alias": "tea",
+        "dataType": "tinyint",
+        "defaultValue": "0"
+    },
+
+    "email_verificado": {
+        "alias": "emc",
+        "dataType": "tinyint",
+        "defaultValue": "0"
+    },
+
+    "info_verificada": {
+        "alias": "inf",
+        "dataType": "tinyint",
+        "defaultValue": "0"
+    }
+
+}

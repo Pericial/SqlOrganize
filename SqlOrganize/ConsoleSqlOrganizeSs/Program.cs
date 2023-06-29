@@ -6,16 +6,18 @@ using SqlOrganizeSs;
 Config config = new Config
 {
     connectionString = @"Data Source=DQFC2G3;Initial Catalog=Gestadm_CTAPilar;Integrated Security=True;TrustServerCertificate=true;",
-    modelPath = @"C:\projects\SqlOrganize\SqlOrganize\ConsoleBuildSchemaSs\model\"
+    //modelPath = @"C:\projects\SqlOrganize\SqlOrganize\ConsoleBuildSchemaSs\model\"
+    modelPath = @"C:\xampp\htdocs\SqlOrganize\SqlOrganize\ConsoleBuildSchemaSs\model\"
 };
 
 var db = new DbSs(config);
 
-var query = db.Query("$id").
-Page(1).
-Size(10).
-Where("$id > 0 OR $id > 'A'").
-Sql();
+var query = db.Query("PEDIDOS_DET").
+    FieldsAs("$Id").
+    Page(1).
+    Size(10).
+    Where("$Id > 0 OR $Id > 'A'").
+    Sql();
 Console.WriteLine(query);
 
 

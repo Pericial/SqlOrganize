@@ -1,0 +1,36 @@
+{
+    "id": {
+        "alias": "id",
+        "dataType": "string"
+    },
+
+    "horas_catedra": {
+        "alias": "hor",
+        "dataType": "int"
+    },
+
+    "ige": {
+        "alias": "ige",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "comision": {
+        "alias": "com",
+        "dataType": "string",
+        "refEntityName": "id"
+    },
+
+    "asignatura": {
+        "alias": "asi",
+        "dataType": "string",
+        "refEntityName": "id"
+    },
+
+    "alta": {
+        "alias": "alt",
+        "dataType": "timestamp",
+        "defaultValue": "current_timestamp()"
+    }
+
+}

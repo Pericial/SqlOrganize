@@ -1,0 +1,37 @@
+{
+    "id": {
+        "alias": "id",
+        "dataType": "string"
+    },
+
+    "planilla_docente": {
+        "alias": "pla",
+        "dataType": "string",
+        "refEntityName": "id"
+    },
+
+    "toma": {
+        "alias": "tom",
+        "dataType": "string",
+        "refEntityName": "id"
+    },
+
+    "insertado": {
+        "alias": "ins",
+        "dataType": "timestamp",
+        "defaultValue": "current_timestamp()"
+    },
+
+    "comentario": {
+        "alias": "com",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "reclamo": {
+        "alias": "rec",
+        "dataType": "tinyint",
+        "defaultValue": "0"
+    }
+
+}

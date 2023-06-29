@@ -1,0 +1,19 @@
+{
+    "id": {
+        "alias": "id",
+        "dataType": "string"
+    },
+
+    "comision": {
+        "alias": "com",
+        "dataType": "string",
+        "refEntityName": "id"
+    },
+
+    "relacion": {
+        "alias": "rel",
+        "dataType": "string",
+        "refEntityName": "id"
+    }
+
+}

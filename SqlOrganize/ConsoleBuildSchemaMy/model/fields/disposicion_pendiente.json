@@ -1,0 +1,25 @@
+{
+    "id": {
+        "alias": "id",
+        "dataType": "string"
+    },
+
+    "disposicion": {
+        "alias": "dis",
+        "dataType": "string",
+        "refEntityName": "id"
+    },
+
+    "alumno": {
+        "alias": "alu",
+        "dataType": "string",
+        "refEntityName": "id"
+    },
+
+    "modo": {
+        "alias": "mod",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    }
+
+}

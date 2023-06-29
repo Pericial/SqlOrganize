@@ -1,0 +1,46 @@
+{
+    "id": {
+        "alias": "id",
+        "dataType": "string"
+    },
+
+    "calle": {
+        "alias": "cal",
+        "dataType": "string"
+    },
+
+    "entre": {
+        "alias": "ent",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "numero": {
+        "alias": "num",
+        "dataType": "string"
+    },
+
+    "piso": {
+        "alias": "pis",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "departamento": {
+        "alias": "dep",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "barrio": {
+        "alias": "bar",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "localidad": {
+        "alias": "loc",
+        "dataType": "string"
+    }
+
+}

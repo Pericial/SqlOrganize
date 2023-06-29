@@ -1,0 +1,24 @@
+{
+    "id": {
+        "alias": "id",
+        "dataType": "string"
+    },
+
+    "orientacion": {
+        "alias": "ori",
+        "dataType": "string"
+    },
+
+    "resolucion": {
+        "alias": "res",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "distribucion_horaria": {
+        "alias": "dis",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    }
+
+}

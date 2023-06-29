@@ -10,3 +10,4 @@ var c = new ConfigMy()
 
 BuildSchemaMy t = new(c);
 t.FileEntities();
+t.FileFields();

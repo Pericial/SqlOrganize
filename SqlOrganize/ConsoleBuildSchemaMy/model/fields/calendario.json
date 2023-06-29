@@ -1,0 +1,41 @@
+{
+    "id": {
+        "alias": "id",
+        "dataType": "string"
+    },
+
+    "inicio": {
+        "alias": "ini",
+        "dataType": "date",
+        "defaultValue": "NULL"
+    },
+
+    "fin": {
+        "alias": "fin",
+        "dataType": "date",
+        "defaultValue": "NULL"
+    },
+
+    "anio": {
+        "alias": "ani",
+        "dataType": "year"
+    },
+
+    "semestre": {
+        "alias": "sem",
+        "dataType": "int"
+    },
+
+    "insertado": {
+        "alias": "ins",
+        "dataType": "timestamp",
+        "defaultValue": "current_timestamp()"
+    },
+
+    "descripcion": {
+        "alias": "des",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    }
+
+}

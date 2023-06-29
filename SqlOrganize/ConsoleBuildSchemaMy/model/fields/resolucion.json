@@ -1,0 +1,24 @@
+{
+    "id": {
+        "alias": "id",
+        "dataType": "string"
+    },
+
+    "numero": {
+        "alias": "num",
+        "dataType": "string"
+    },
+
+    "anio": {
+        "alias": "ani",
+        "dataType": "year",
+        "defaultValue": "NULL"
+    },
+
+    "tipo": {
+        "alias": "tip",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    }
+
+}

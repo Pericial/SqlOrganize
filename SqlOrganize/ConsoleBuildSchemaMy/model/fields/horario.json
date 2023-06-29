@@ -1,0 +1,29 @@
+{
+    "id": {
+        "alias": "id",
+        "dataType": "string"
+    },
+
+    "hora_inicio": {
+        "alias": "hor",
+        "dataType": "time"
+    },
+
+    "hora_fin": {
+        "alias": "hoa",
+        "dataType": "time"
+    },
+
+    "curso": {
+        "alias": "cur",
+        "dataType": "string",
+        "refEntityName": "id"
+    },
+
+    "dia": {
+        "alias": "dia",
+        "dataType": "string",
+        "refEntityName": "id"
+    }
+
+}

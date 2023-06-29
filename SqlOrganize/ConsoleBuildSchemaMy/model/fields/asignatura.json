@@ -1,0 +1,36 @@
+{
+    "id": {
+        "alias": "id",
+        "dataType": "string"
+    },
+
+    "nombre": {
+        "alias": "nom",
+        "dataType": "string"
+    },
+
+    "formacion": {
+        "alias": "for",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "clasificacion": {
+        "alias": "cla",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "codigo": {
+        "alias": "cod",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "perfil": {
+        "alias": "per",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    }
+
+}

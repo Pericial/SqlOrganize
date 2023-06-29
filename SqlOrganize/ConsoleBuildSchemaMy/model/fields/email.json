@@ -1,0 +1,36 @@
+{
+    "id": {
+        "alias": "id",
+        "dataType": "string"
+    },
+
+    "email": {
+        "alias": "ema",
+        "dataType": "string"
+    },
+
+    "verificado": {
+        "alias": "ver",
+        "dataType": "tinyint",
+        "defaultValue": "0"
+    },
+
+    "insertado": {
+        "alias": "ins",
+        "dataType": "timestamp",
+        "defaultValue": "current_timestamp()"
+    },
+
+    "eliminado": {
+        "alias": "eli",
+        "dataType": "timestamp",
+        "defaultValue": "NULL"
+    },
+
+    "persona": {
+        "alias": "per",
+        "dataType": "string",
+        "refEntityName": "id"
+    }
+
+}

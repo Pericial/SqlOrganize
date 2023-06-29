@@ -1,0 +1,24 @@
+{
+    "id": {
+        "alias": "id",
+        "dataType": "string"
+    },
+
+    "horas_catedra": {
+        "alias": "hor",
+        "dataType": "int"
+    },
+
+    "dia": {
+        "alias": "dia",
+        "dataType": "int"
+    },
+
+    "disposicion": {
+        "alias": "dis",
+        "dataType": "string",
+        "defaultValue": "NULL",
+        "refEntityName": "id"
+    }
+
+}

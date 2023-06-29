@@ -1,0 +1,69 @@
+{
+    "id": {
+        "alias": "id",
+        "dataType": "string"
+    },
+
+    "numero": {
+        "alias": "num",
+        "dataType": "string"
+    },
+
+    "nombre": {
+        "alias": "nom",
+        "dataType": "string"
+    },
+
+    "observaciones": {
+        "alias": "obs",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "alta": {
+        "alias": "alt",
+        "dataType": "timestamp",
+        "defaultValue": "current_timestamp()"
+    },
+
+    "baja": {
+        "alias": "baj",
+        "dataType": "timestamp",
+        "defaultValue": "NULL"
+    },
+
+    "domicilio": {
+        "alias": "dom",
+        "dataType": "string",
+        "defaultValue": "NULL",
+        "refEntityName": "id"
+    },
+
+    "tipo_sede": {
+        "alias": "tip",
+        "dataType": "string",
+        "defaultValue": "NULL",
+        "refEntityName": "id"
+    },
+
+    "centro_educativo": {
+        "alias": "cen",
+        "dataType": "string",
+        "defaultValue": "NULL",
+        "refEntityName": "id"
+    },
+
+    "fecha_traspaso": {
+        "alias": "fec",
+        "dataType": "date",
+        "defaultValue": "NULL"
+    },
+
+    "organizacion": {
+        "alias": "org",
+        "dataType": "string",
+        "defaultValue": "NULL",
+        "refEntityName": "id"
+    }
+
+}

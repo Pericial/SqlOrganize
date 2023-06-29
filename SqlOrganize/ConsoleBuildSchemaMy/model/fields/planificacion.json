@@ -1,0 +1,23 @@
+{
+    "id": {
+        "alias": "id",
+        "dataType": "string"
+    },
+
+    "anio": {
+        "alias": "ani",
+        "dataType": "string"
+    },
+
+    "semestre": {
+        "alias": "sem",
+        "dataType": "string"
+    },
+
+    "plan": {
+        "alias": "pla",
+        "dataType": "string",
+        "refEntityName": "id"
+    }
+
+}

@@ -1,0 +1,165 @@
+{
+    "id": {
+        "alias": "id",
+        "dataType": "string"
+    },
+
+    "anio_ingreso": {
+        "alias": "ani",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "observaciones": {
+        "alias": "obs",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "persona": {
+        "alias": "per",
+        "dataType": "string",
+        "refEntityName": "id"
+    },
+
+    "estado_inscripcion": {
+        "alias": "est",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "fecha_titulacion": {
+        "alias": "fec",
+        "dataType": "date",
+        "defaultValue": "NULL"
+    },
+
+    "plan": {
+        "alias": "pla",
+        "dataType": "string",
+        "defaultValue": "NULL",
+        "refEntityName": "id"
+    },
+
+    "resolucion_inscripcion": {
+        "alias": "res",
+        "dataType": "string",
+        "defaultValue": "NULL",
+        "refEntityName": "id"
+    },
+
+    "anio_inscripcion": {
+        "alias": "ana",
+        "dataType": "int",
+        "defaultValue": "NULL"
+    },
+
+    "semestre_inscripcion": {
+        "alias": "sem",
+        "dataType": "int",
+        "defaultValue": "NULL"
+    },
+
+    "semestre_ingreso": {
+        "alias": "sea",
+        "dataType": "int",
+        "defaultValue": "NULL"
+    },
+
+    "adeuda_legajo": {
+        "alias": "ade",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "adeuda_deudores": {
+        "alias": "ada",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "documentacion_inscripcion": {
+        "alias": "doc",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "anio_inscripcion_completo": {
+        "alias": "anb",
+        "dataType": "tinyint",
+        "defaultValue": "NULL"
+    },
+
+    "establecimiento_inscripcion": {
+        "alias": "esa",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "libro_folio": {
+        "alias": "lib",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "libro": {
+        "alias": "lia",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "folio": {
+        "alias": "fol",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "comentarios": {
+        "alias": "com",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "tiene_dni": {
+        "alias": "tie",
+        "dataType": "tinyint",
+        "defaultValue": "0"
+    },
+
+    "tiene_constancia": {
+        "alias": "tia",
+        "dataType": "tinyint",
+        "defaultValue": "0"
+    },
+
+    "tiene_certificado": {
+        "alias": "tib",
+        "dataType": "tinyint",
+        "defaultValue": "0"
+    },
+
+    "previas_completas": {
+        "alias": "pre",
+        "dataType": "tinyint",
+        "defaultValue": "0"
+    },
+
+    "tiene_partida": {
+        "alias": "tic",
+        "dataType": "tinyint",
+        "defaultValue": "0"
+    },
+
+    "creado": {
+        "alias": "cre",
+        "dataType": "timestamp",
+        "defaultValue": "current_timestamp()"
+    },
+
+    "confirmado_direccion": {
+        "alias": "con",
+        "dataType": "tinyint",
+        "defaultValue": "0"
+    }
+
+}

@@ -1,0 +1,17 @@
+{
+    "id": {
+        "alias": "id",
+        "dataType": "string"
+    },
+
+    "numero": {
+        "alias": "num",
+        "dataType": "int"
+    },
+
+    "dia": {
+        "alias": "dia",
+        "dataType": "string"
+    }
+
+}

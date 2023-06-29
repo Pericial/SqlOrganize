@@ -1,0 +1,42 @@
+{
+    "id": {
+        "alias": "id",
+        "dataType": "string"
+    },
+
+    "tipo": {
+        "alias": "tip",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "prefijo": {
+        "alias": "pre",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "numero": {
+        "alias": "num",
+        "dataType": "string"
+    },
+
+    "insertado": {
+        "alias": "ins",
+        "dataType": "timestamp",
+        "defaultValue": "current_timestamp()"
+    },
+
+    "eliminado": {
+        "alias": "eli",
+        "dataType": "timestamp",
+        "defaultValue": "NULL"
+    },
+
+    "persona": {
+        "alias": "per",
+        "dataType": "string",
+        "refEntityName": "id"
+    }
+
+}

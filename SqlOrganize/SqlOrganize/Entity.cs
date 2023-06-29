@@ -25,9 +25,9 @@ namespace SqlOrganize
 
         public string? schema { get; set;  }
 
-        public List<string> pk { get; set; }
-        public List<string> fields { get; set; }
-        public List<string> fk { get; set; }
+        public List<string> pk { get; set; } = new();
+        public List<string> fields { get; set; } = new();
+        public List<string> fk { get; set; } = new();
 
 
         /* 
@@ -35,47 +35,47 @@ namespace SqlOrganize
         @example
         identifier = ["fecha_anio", "fecha_semestre","persona-numero_documento"]
         */
-        public List<string> identifier { get; set; }
+        public List<string> identifier { get; set; } = new();
 
         /*
         Valores por defecto para ordenamiento
         @example ["field1"=>"asc","field2"=>"desc",...];
         */
-        public Dictionary<string, string> orderDefault { get; set; }
+        public Dictionary<string, string> orderDefault { get; set; } = new();
 
         /*
         Valores no administrables
         @example ["field1","field2",...]
         */
-        public List<string> noAdmin { get; set; }
+        public List<string> noAdmin { get; set; } = new();
 
         /*
         Valores principales
         @example ["field1","field2",...]
         */
-        public List<string> main { get; set; }
+        public List<string> main { get; set; } = new();
 
         /*
         Valores unicos
         Una entidad puede tener varios campos que determinen un valor unico
         @example ["field1","field2",...]
         */
-        public List<string> unique { get; set; }
+        public List<string> unique { get; set; } = new();
 
         /*
         Valores no nulos        
         */
-        public List<string> notNull { get; set; }
+        public List<string> notNull { get; set; } = new();
 
         /*
         Valores unicos multiples
         Solo puede especificarse un juego de campos unique_multiple
         */
-        public List<string> uniqueMultiple { get; set; }
+        public List<string> uniqueMultiple { get; set; } = new();
 
-        public Dictionary<string, EntityTree>? tree { get; set; }
+        public Dictionary<string, EntityTree>? tree { get; set; } = new();
 
-        public Dictionary<string, EntityRel>? relations { get; set; }
+        public Dictionary<string, EntityRel>? relations { get; set; } = new();
         public string schema_ => String.IsNullOrEmpty(schema) ? schema : "";
         public string schemaName => schema + name;
         public string schemaNameAlias => schema + name + " AS " + alias;

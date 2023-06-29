@@ -69,7 +69,7 @@ namespace SqlOrganize
 
         public EntityQuery FieldsAs()
         {
-            fieldsAs += string.Join(", ", db.tools(entityName).FieldNames().Select(x => "$" + x));
+            fieldsAs += "$id, "+string.Join(", ", db.tools(entityName).FieldNames().Select(x => "$" + x));
             return this;
         }
 
@@ -116,9 +116,7 @@ namespace SqlOrganize
             }
 
             if (field_start != -1)
-            {
                 sql += Traduce_(_sql, flag_as, field_start, _sql.Length - field_start - 1);
-            }
 
 
             return sql;

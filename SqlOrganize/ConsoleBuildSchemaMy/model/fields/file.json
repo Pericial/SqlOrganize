@@ -1,0 +1,33 @@
+{
+    "id": {
+        "alias": "id",
+        "dataType": "string"
+    },
+
+    "name": {
+        "alias": "nam",
+        "dataType": "string"
+    },
+
+    "type": {
+        "alias": "typ",
+        "dataType": "string"
+    },
+
+    "content": {
+        "alias": "con",
+        "dataType": "string"
+    },
+
+    "size": {
+        "alias": "siz",
+        "dataType": "int"
+    },
+
+    "created": {
+        "alias": "cre",
+        "dataType": "timestamp",
+        "defaultValue": "current_timestamp()"
+    }
+
+}

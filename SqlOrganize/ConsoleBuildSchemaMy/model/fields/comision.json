@@ -1,0 +1,101 @@
+{
+    "id": {
+        "alias": "id",
+        "dataType": "string"
+    },
+
+    "turno": {
+        "alias": "tur",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "division": {
+        "alias": "div",
+        "dataType": "string"
+    },
+
+    "comentario": {
+        "alias": "com",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "autorizada": {
+        "alias": "aut",
+        "dataType": "tinyint"
+    },
+
+    "apertura": {
+        "alias": "ape",
+        "dataType": "tinyint"
+    },
+
+    "publicada": {
+        "alias": "pub",
+        "dataType": "tinyint"
+    },
+
+    "observaciones": {
+        "alias": "obs",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "alta": {
+        "alias": "alt",
+        "dataType": "timestamp",
+        "defaultValue": "current_timestamp()"
+    },
+
+    "sede": {
+        "alias": "sed",
+        "dataType": "string",
+        "refEntityName": "id"
+    },
+
+    "modalidad": {
+        "alias": "mod",
+        "dataType": "string",
+        "refEntityName": "id"
+    },
+
+    "planificacion": {
+        "alias": "pla",
+        "dataType": "string",
+        "defaultValue": "NULL",
+        "refEntityName": "id"
+    },
+
+    "comision_siguiente": {
+        "alias": "coa",
+        "dataType": "string",
+        "defaultValue": "NULL",
+        "refEntityName": "id"
+    },
+
+    "calendario": {
+        "alias": "cal",
+        "dataType": "string",
+        "refEntityName": "id"
+    },
+
+    "identificacion": {
+        "alias": "ide",
+        "dataType": "string",
+        "defaultValue": "NULL"
+    },
+
+    "estado": {
+        "alias": "est",
+        "dataType": "string",
+        "defaultValue": "'Confirma'"
+    },
+
+    "configuracion": {
+        "alias": "con",
+        "dataType": "string",
+        "defaultValue": "'Histórica'"
+    }
+
+}
