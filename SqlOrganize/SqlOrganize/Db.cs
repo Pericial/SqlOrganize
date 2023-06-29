@@ -43,10 +43,7 @@ namespace SqlOrganize
                 foreach (KeyValuePair<string, Entity> e in entities) { 
                     e.Value.db = this;
 
-                    if (!e.Value.pk.IsNullOrEmpty())
-                    {
-                        e.Value
-                    }
+                    e.Value.id = DefineId(e.Value);
                 }
             }
 
@@ -96,6 +93,45 @@ namespace SqlOrganize
             }
         }
 
+        protected List<string> DefineId(Entity entity)
+        {
+            if (entity.pk.Count == 1)
+                return entity.pk;
+
+            foreach(string f in entity.unique){
+                if (entity.notNull.Contains(f))
+                {
+                    return new List<string> { f };
+                }
+            }
+
+
+            if(entity.uniqueMultiple.Count > 1) {
+                bool uniqueMultipleFlag = true;
+                foreach (string f in entity.uniqueMultiple)
+                {
+                
+                    if (!entity.uniqueMultiple.Contains(f))
+                    {
+                        uniqueMultipleFlag = false;
+                        break;
+                    }
+                }
+
+                if (uniqueMultipleFlag)
+                {
+                    return entity.uniqueMultiple;
+                }
+            }
+
+            if(entity.notNull.Count > 1)
+            {
+                return entity.notNull;
+            }
+
+            return entity.fields;
+        }
+
         public Dictionary<string, Field> FieldsEntity(string entityName)
         {
             if (!fields.ContainsKey(entityName))
@@ -143,8 +179,9 @@ namespace SqlOrganize
             return (fe.ContainsKey(fieldName)) ? fe[entityName] : new Field();
         }
 
-        public List<string> EntityNames() => tree.Keys.ToList();
-        
+        public List<string> EntityNames() => entities.Select(o => o.Key).ToList();
+
+
         public List<string> FieldNames(string entityName) => FieldsEntity(entityName).Keys.ToList();
         
         public Dictionary<string, string> ExplodeField(string entityName, string fieldName)
@@ -156,7 +193,7 @@ namespace SqlOrganize
                 return new Dictionary<string, string>
                 {
                     { "fieldId", f[0] },
-                    { "entityName", relations[entityName][f[0]].refEntityName },
+                    { "entityName", Entity(entityName).relations![f[0]].refEntityName },
                     { "fieldName", f[1] },
                 };
 

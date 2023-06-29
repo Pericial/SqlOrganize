@@ -59,15 +59,18 @@ namespace SqlOrganize
 
         public string id()
         {
-            if (!db.Entity(entityName).pk.IsNullOrEmpty())
+            List<string> map_ = new();
+            foreach(string f in db.Entity(entityName).pk)
+                map_.Add(map(f));
+           
+            if (map_.Count == 1)
             {
-                return map(db.Entity(entityName).pk);
-            } else
-            {
-                
+                return map_[0]; 
             }
 
+            return "CONCAT_WS(\"-\"," + String.Join(",", map_) + ") ";
         }
+
         /*
         mapeo por defecto
         */

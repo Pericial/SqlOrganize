@@ -11,17 +11,21 @@ Config config = new Config
 
 var db = new DbSs(config);
 
-var query = db.Query("ORGANISMOS").
+var query = db.Query("$id").
 Page(1).
 Size(10).
-Fetch("All");
+Where("$id > 0 OR $id > 'A'").
+Sql();
+Console.WriteLine(query);
 
+
+/*
 
 QueryCache qc = new(query);
 var data = qc.Execute();
 data = qc.Execute();
 System.Console.WriteLine(data);
-/*
+
 query = db.Query("SUJETOS").
 FieldsAs("$APELLIDO, $NOMBRES").
 Where("CAST($FECHA_CARGA AS DATE) = @0 AND $APELLIDO IN (@1)").

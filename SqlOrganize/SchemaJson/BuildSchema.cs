@@ -9,6 +9,7 @@ namespace SchemaJson
     public abstract class BuildSchema
     {
         public Config Config { get; }
+
         public List<Table> Tables { get; } = new();
 
         public BuildSchema(Config config) 
@@ -37,7 +38,7 @@ namespace SchemaJson
                     if (field.IS_FOREIGN_KEY == 1)
                         table.Fk.Add(field.COLUMN_NAME);
                     if (field.IS_PRIMARY_KEY == 1)
-                        table.PkAux.Add(field.COLUMN_NAME);
+                        table.Pk.Add(field.COLUMN_NAME);
                     if (field.IS_UNIQUE_KEY == 1)
                         table.Unique.Add(field.COLUMN_NAME);
                     if (field.IS_NULLABLE == 0)
@@ -70,11 +71,6 @@ namespace SchemaJson
                     }
                 }
                 
-                if(table.PkAux.Count == 1)
-                    table.Pk = table.PkAux[0];
-                else
-                    table.UniqueMultiple = table.PkAux;
-            
                 Tables.Add(table);
             }
 
@@ -146,7 +142,7 @@ namespace SchemaJson
     ""fields"": [""" + String.Join("\", \"", t.Fields) + @"""],
 ";
                 if(t.Pk is not null) 
-                    file += @"    ""pk"": """ + t.Pk + @""",
+                    file += @"    ""pk"": [""" + String.Join("\", \"", t.Pk) + @"""],
 ";
                 if (t.Fk.Count >  0)
                     file += @"    ""fk"": [""" + String.Join("\", \"", t.Fk) + @"""],
@@ -154,9 +150,7 @@ namespace SchemaJson
                 if (t.Unique.Count > 0)
                     file += @"    ""unique"": [""" + String.Join("\", \"", t.Unique) + @"""],
 ";
-                if (t.UniqueMultiple.Count > 0)
-                    file += @"    ""uniqueMultiple"": [""" + String.Join("\", \"", t.UniqueMultiple) + @"""],
-";
+   
                 if (t.NotNull.Count > 0)
                     file += @"    ""notNull"": [""" + String.Join("\", \"", t.NotNull) + @"""],
 ";

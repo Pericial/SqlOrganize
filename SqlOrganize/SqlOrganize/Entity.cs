@@ -25,7 +25,7 @@ namespace SqlOrganize
 
         public string? schema { get; set;  }
 
-        public string pk { get; set; }
+        public List<string> pk { get; set; }
         public List<string> fields { get; set; }
         public List<string> fk { get; set; }
 
@@ -82,12 +82,12 @@ namespace SqlOrganize
 
         /*
         Campo de identificacion
-        - Si existe un campo pk, entonces la pk sera el id. 
-        - Si existe al menos un campo unique not null, se toma como id. 
+        - Si existe un solo campo pk, entonces la pk sera el id. 
+        - Si existe al menos un campo unique not null, se toma como id.     
         - Si existe multiples campos pk, se toman la concatenacion como id. 
         - Si existe multiples campos uniqueMultiple, se toman la concatenacion como id. 
         */
-        List<string> id { get; set; }
+        public List<string> id { get; set; }
 
 
         protected List<Field> _Fields(List<string> fieldNames)
