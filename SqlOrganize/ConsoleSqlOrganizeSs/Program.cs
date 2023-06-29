@@ -1,25 +1,29 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using Newtonsoft.Json;
 using SqlOrganize;
 using SqlOrganizeSs;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
 Config config = new Config
 {
     connectionString = @"Data Source=DQFC2G3;Initial Catalog=Gestadm_CTAPilar;Integrated Security=True;TrustServerCertificate=true;",
-    //modelPath = @"C:\projects\SqlOrganize\SqlOrganize\ConsoleBuildSchemaSs\model\"
-    modelPath = @"C:\xampp\htdocs\SqlOrganize\SqlOrganize\ConsoleBuildSchemaSs\model\"
+    modelPath = @"C:\projects\SqlOrganize\SqlOrganize\ConsoleBuildSchemaSs\model\"
+    //modelPath = @"C:\xampp\htdocs\SqlOrganize\SqlOrganize\ConsoleBuildSchemaSs\model\"
 };
 
 var db = new DbSs(config);
 
-var query = db.Query("PEDIDOS_DET").
-    FieldsAs("$Id").
+var data = db.Query("ESTADISTICA_SALDOS").
     Page(1).
     Size(10).
-    Where("$Id > 0 OR $Id > 'A'").
-    Sql();
-Console.WriteLine(query);
+    Where("$Id > 'A'").
+    ListDict();
 
+
+string json = JsonConvert.SerializeObject(data, Newtonsoft.Json.Formatting.Indented);
+
+Console.WriteLine(json);
 
 /*
 

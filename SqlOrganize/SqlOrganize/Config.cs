@@ -17,6 +17,8 @@
         */
         public string connectionString { get; set; }
 
+        public string concatString { get; set; } = "~";
+
     }
 
 }

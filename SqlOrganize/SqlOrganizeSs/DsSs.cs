@@ -3,6 +3,12 @@ using SqlOrganize;
 
 namespace SqlOrganizeSs
 {
+    /*
+    Comentarios del DBMS
+    - Sql Server agrega espacios en blanco adicionales cuando se utiliza CONCAT y CONCAT_WS.
+    - CONCAT_WS agrega 3 espacios en blanco al final.
+    - CONCAT agrega espacios en blanco por cada concatenacion.
+    */
     public class DbSs : Db
     {
         SqlConnection _conn;

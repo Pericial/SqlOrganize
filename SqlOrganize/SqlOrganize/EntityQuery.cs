@@ -270,10 +270,10 @@ namespace SqlOrganize
                 case "listdict":
                 case "list_dict":
                 case "list":
-                    return ListDict<T>();
+                    return ListDict();
 
                 case "dict":
-                    return Dict<T>();
+                    return Dict();
 
                 case "column":
                     return Column<T>(0);
@@ -298,11 +298,11 @@ namespace SqlOrganize
 
         Convert the result to json with "JsonConvert.SerializeObject(data, Formatting.Indented)"
         */
-        public abstract List<Dictionary<string, T>> ListDict<T>();
+        public abstract List<Dictionary<string, object>> ListDict();
 
         public abstract List<T> ListObject<T>() where T : class, new();
 
-        public abstract Dictionary<string, T> Dict<T>();
+        public abstract Dictionary<string, object> Dict();
         public abstract T Object<T>() where T : class, new();
 
         public abstract T Column<T>(string columnName);

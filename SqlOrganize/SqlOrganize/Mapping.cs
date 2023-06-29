@@ -79,7 +79,7 @@ namespace SqlOrganize
                 return map_[0]; 
             }
 
-            return "CONCAT_WS(\"-\"," + String.Join(",", map_) + ") ";
+            return "CAST(CONCAT_WS('"+ db.config.concatString + "'," + String.Join(",", map_) + ") AS char)";
         }
 
         /*

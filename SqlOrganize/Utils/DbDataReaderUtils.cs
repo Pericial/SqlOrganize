@@ -47,30 +47,30 @@ namespace Utils
         /*
         https://stackoverflow.com/questions/5083709/convert-from-sqldatareader-to-json 
         */
-        public static List<Dictionary<string, T>> Serialize<T>(this DbDataReader reader)
+        public static List<Dictionary<string, object>> Serialize(this DbDataReader reader)
         {
-            var results = new List<Dictionary<string, T>>();
+            var results = new List<Dictionary<string, object>>();
             var cols = reader.ColumnNames();
 
             while (reader.Read())
-                results.Add(reader.SerializeRowCols<T>(cols));
+                results.Add(reader.SerializeRowCols(cols));
 
             return results;
         }
-        public static Dictionary<string, T> SerializeRow<T>(this DbDataReader reader)
+        public static Dictionary<string, object> SerializeRow(this DbDataReader reader)
         {
             var cols = reader.ColumnNames();
-            var result = new Dictionary<string, T>();
+            var result = new Dictionary<string, object>();
             foreach (var col in cols)
-                result.Add(col, (T)reader[col]);
+                result.Add(col, reader[col]);
             return result;
         }
 
-        public static Dictionary<string, T> SerializeRowCols<T>(this DbDataReader reader, List<string> cols)
+        public static Dictionary<string, object> SerializeRowCols(this DbDataReader reader, List<string> cols)
         {
-            var result = new Dictionary<string, T>();
+            var result = new Dictionary<string, object>();
             foreach (var col in cols)
-                result.Add(col, (T)reader[col]);
+                result.Add(col, reader[col]);
             return result;
         }
 

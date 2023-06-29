@@ -38,7 +38,7 @@ FETCH FIRST " + size + " ROWS ONLY";
 ";
         }
 
-        public override List<Dictionary<string, T>> ListDict<T>()
+        public override List<Dictionary<string, object>> ListDict()
         {
             using SqlConnection connection = new SqlConnection((string)db.config.connectionString);
             connection.Open();
@@ -64,7 +64,7 @@ FETCH FIRST " + size + " ROWS ONLY";
             command.ExecuteNonQuery();
             using SqlDataReader reader = command.ExecuteReader();
 
-            return reader.Serialize<T>();
+            return reader.Serialize();
         }
 
         public override List<T> ListObject<T>()
@@ -96,7 +96,7 @@ FETCH FIRST " + size + " ROWS ONLY";
             return reader.ConvertToListOfObject<T>();
         }
 
-        public override Dictionary<string, T> Dict<T>()
+        public override Dictionary<string, object> Dict()
         {
             using SqlConnection connection = new SqlConnection((string)db.config.connectionString);
             connection.Open();
@@ -122,7 +122,7 @@ FETCH FIRST " + size + " ROWS ONLY";
             command.ExecuteNonQuery();
             using SqlDataReader reader = command.ExecuteReader(System.Data.CommandBehavior.SingleResult);
 
-            return reader.SerializeRowCols<T>(reader.ColumnNames());
+            return reader.SerializeRowCols(reader.ColumnNames());
         }
 
         public override T Object<T>()
