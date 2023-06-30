@@ -1,18 +1,23 @@
 ﻿
+using Newtonsoft.Json;
 using SqlOrganize;
 using SqlOrganizeMy;
 
 Config config = new Config
 {
-    connectionString = "server=localhost;database=planfi10_20203;uid=root;",
+    connectionString = "",
     modelPath = @"C:\xampp\htdocs\SqlOrganize\SqlOrganize\ConsoleBuildSchemaMy\model\"
 };
 
 var db = new DbMy(config);
 
-var query = db.Query("persona").
+var data = db.Query("persona").
 Page(1).
 Size(10).
-Where("$id > 0 OR $id > 'A'").
-Sql();
-Console.WriteLine(query);
+ListDict();
+
+
+string json = JsonConvert.SerializeObject(data, Newtonsoft.Json.Formatting.Indented);
+
+Console.WriteLine(json);
+

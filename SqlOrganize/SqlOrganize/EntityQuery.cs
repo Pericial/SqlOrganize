@@ -69,7 +69,7 @@ namespace SqlOrganize
 
         public EntityQuery FieldsAs()
         {
-            fieldsAs += "$id, "+string.Join(", ", db.tools(entityName).FieldNames().Select(x => "$" + x));
+            fieldsAs += "$_Id, "+string.Join(", ", db.tools(entityName).FieldNames().Select(x => "$" + x));
             return this;
         }
 
@@ -169,7 +169,7 @@ namespace SqlOrganize
         protected string SqlJoin()
         {
             string sql = "";
-            if (db.Entity(entityName).tree.IsNullOrEmpty())
+            if (!db.Entity(entityName).tree.IsNullOrEmpty())
                 sql += SqlJoinFk(db.Entity(entityName).tree!, "");
             return sql;
         }

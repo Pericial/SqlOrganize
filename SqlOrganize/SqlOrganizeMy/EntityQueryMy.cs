@@ -38,9 +38,33 @@ namespace SqlOrganizeMy
         }
 
   
-        public override List<Dictionary<string, T>> ListDict<T>()
+        public override List<Dictionary<string, object>> ListDict()
         {
-            throw new NotImplementedException();
+            using MySqlConnection connection = new MySqlConnection((string)db.config.connectionString);
+            connection.Open();
+            string sql = Sql();
+            using MySqlCommand command = new MySqlCommand();
+            command.Connection = connection;
+            for (var i = 0; i < parameters.Count; i++)
+            {
+                if (parameters[i].IsList())
+                {
+                    var _parameters = (parameters[i] as List<object>).Select((x, j) => Tuple.Create($"@{i}_{j}", x));
+                    sql = sql.ReplaceFirst("@" + i.ToString(), string.Join(",", _parameters.Select(x => x.Item1)));
+                    foreach (var parameter in _parameters)
+                        command.Parameters.AddWithValue(parameter.Item1, parameter.Item2);
+                }
+                else
+                {
+                    command.Parameters.AddWithValue(i.ToString(), parameters[i]);
+                }
+            }
+
+            command.CommandText = sql;
+            command.ExecuteNonQuery();
+            using MySqlDataReader reader = command.ExecuteReader();
+
+            return reader.Serialize();
         }
 
         public override List<T> ListObject<T>()
@@ -72,7 +96,7 @@ namespace SqlOrganizeMy
             return reader.ConvertToListOfObject<T>();
         }
 
-        public override Dictionary<string, T> Dict<T>()
+        public override Dictionary<string, object> Dict()
         {
             throw new NotImplementedException();
         }

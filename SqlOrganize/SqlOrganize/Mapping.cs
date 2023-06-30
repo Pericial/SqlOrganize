@@ -43,7 +43,6 @@ namespace SqlOrganize
         {
             //invocar metodo local, si existe
             string method = fieldName.Replace(".", "_");
-            method = char.ToUpper(method[0]) + method.Substring(1).ToLower();
             Type thisType = this.GetType();
             MethodInfo m = thisType.GetMethod(method);
             if (!m.IsNullOrEmpty())
@@ -68,16 +67,16 @@ namespace SqlOrganize
             }
         }
 
-        public string Id()
+        public string _Id()
         {
             List<string> map_ = new();
-            foreach(string f in db.Entity(entityName).pk)
+            
+            foreach (string f in db.Entity(entityName).pk)
                 map_.Add(map(f));
-           
+
             if (map_.Count == 1)
-            {
-                return map_[0]; 
-            }
+                return map_[0];
+
 
             return "CAST(CONCAT_WS('"+ db.config.concatString + "'," + String.Join(",", map_) + ") AS char)";
         }
