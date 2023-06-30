@@ -2,14 +2,16 @@
 using Newtonsoft.Json;
 using SqlOrganize;
 using SqlOrganizeSs;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Configuration;
+using System.Collections.Specialized;
+
+
 
 
 Config config = new Config
 {
-    connectionString = @"Data Source=DQFC2G3;Initial Catalog=Gestadm_CTAPilar;Integrated Security=True;TrustServerCertificate=true;",
-    modelPath = @"C:\projects\SqlOrganize\SqlOrganize\ConsoleBuildSchemaSs\model\"
-    //modelPath = @"C:\xampp\htdocs\SqlOrganize\SqlOrganize\ConsoleBuildSchemaSs\model\"
+    connectionString = ConfigurationManager.AppSettings.Get("connectionString"),
+    modelPath = ConfigurationManager.AppSettings.Get("modelPath"),
 };
 
 var db = new DbSs(config);
@@ -17,7 +19,7 @@ var db = new DbSs(config);
 var data = db.Query("ESTADISTICA_SALDOS").
     Page(1).
     Size(10).
-    Where("$Id > 'A'").
+    Where("$_Id > 'A'").
     ListDict();
 
 
@@ -25,7 +27,7 @@ string json = JsonConvert.SerializeObject(data, Newtonsoft.Json.Formatting.Inden
 
 Console.WriteLine(json);
 
-/*
+/*W
 
 QueryCache qc = new(query);
 var data = qc.Execute();

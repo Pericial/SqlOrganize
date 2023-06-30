@@ -6,18 +6,25 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
+using System.Collections.Specialized;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace WinFormsAppSs
 {
     public class ContainerApp
     {
-        public static Config config = new Config()
+        public static Config config = new Config
         {
-            modelPath = @"C:\projects\SqlOrganize\SqlOrganize\ConsoleBuildSchemaSs\model\",
-            connectionString = "Data Source=DQFC2G3;Initial Catalog=Gestadm_CTAPilar;Integrated Security=True;TrustServerCertificate=true;",
+            connectionString = ConfigurationManager.AppSettings.Get("connectionString"),
+            modelPath = ConfigurationManager.AppSettings.Get("modelPath"),
         };
 
         public static Db db = new DbSs(config);
+
+        public static MemoryCache cache = new MemoryCache(new MemoryCacheOptions());
+
+        public static QueryCache queryCache = new QueryCache(db, cache);
 
         public Config Config()
         {
@@ -26,6 +33,11 @@ namespace WinFormsAppSs
         public Db Db()
         {
             return db;
+        }
+
+        public QueryCache QueryCache()
+        {
+            return new Quer
         }
     }
 }
