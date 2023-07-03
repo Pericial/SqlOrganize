@@ -18,6 +18,12 @@
         public string connectionString { get; set; }
 
         public string concatString { get; set; } = "~";
+        
+        /*
+        String de separacion entre fieldId y fieldName
+        */
+        public string idNameSeparatorString { get; set; } = "-";
+
 
     }
 

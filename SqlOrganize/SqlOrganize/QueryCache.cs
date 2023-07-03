@@ -97,13 +97,16 @@ namespace SqlOrganize
                 Dictionary<string, object> rowAux = new();
                 foreach (var (column, value) in row)
                 {
-                    if (column.Contains(fieldId))
+                    string f = fieldId + Db.config.idNameSeparatorString;
+                    if (column.Contains(f))
                     {
-                        rowAux[column] = value;
+                        string ff = column.Substring(f.Length);
+                        rowAux[ff] = value;
                         row.Remove(column);
                     }
-                    Cache.Set<Dictionary<string, object>>(entityName + rowAux["id"].ToString(), row);
                 }
+                Cache.Set<Dictionary<string, object>>(entityName + rowAux["_Id"].ToString(), row);
+
             }
         }
 

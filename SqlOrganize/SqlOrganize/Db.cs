@@ -182,7 +182,11 @@ namespace SqlOrganize
         public List<string> EntityNames() => entities.Select(o => o.Key).ToList();
 
 
-        public List<string> FieldNames(string entityName) => FieldsEntity(entityName).Keys.ToList();
+        public List<string> FieldNames(string entityName) {
+            var l = FieldsEntity(entityName).Keys.ToList();
+                l.Insert(0, "_Id");
+            return l;
+        }
         
         public Dictionary<string, string> ExplodeField(string entityName, string fieldName)
         {
