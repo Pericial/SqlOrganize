@@ -124,6 +124,21 @@ namespace SqlOrganizeMy
         {
             throw new NotImplementedException();
         }
+
+        public override EntityQuery Clone()
+        {
+            var eq = new EntityQueryMy(db, entityName);
+            eq.size = size;
+            eq.where = where;
+            eq.page = page;
+            eq.parameters = parameters;
+            eq.group = group;
+            eq.fetch = fetch;
+            eq.having = having;
+            eq.fields = fields;
+            eq.fieldsAs = fieldsAs;
+            eq.order = order;
+        }
     }
 
 }

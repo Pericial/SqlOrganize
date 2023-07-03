@@ -43,6 +43,7 @@ namespace SqlOrganize
 
         public string fetch = "ListDict";
 
+
         public EntityQuery(Db _db, string _entityName)
         {
             db = _db;
@@ -319,7 +320,10 @@ namespace SqlOrganize
         */
         public abstract List<Dictionary<string, T>> Tree<T>();
 
-  
+        public abstract EntityQuery Clone();
+
+
+
 
         /*
         public abstract Dictionary<string, object> fetch_assoc();

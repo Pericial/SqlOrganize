@@ -79,6 +79,63 @@ namespace SqlOrganize
             return response;
         }
 
+        protected List<Dictionary<string, object>> _ListDict(EntityQuery query)
+        {
+            List<string> queries;
+            if (!Cache.TryGetValue("queries", out queries))
+                queries = new();
+
+            List<Dictionary<string, object>> result;
+            string queryKey = query!.ToString();
+            if (!Cache.TryGetValue(queryKey, out result))
+            {
+                result = query.ListDict();
+                Cache.Set(queryKey, result);
+                queries!.Add(queryKey);
+                Cache.Set<List<string>>("queries", queries);
+            }
+            return result!;
+        }
+
+
+        public List<Dictionary<string, object>> ListDict(EntityQuery query)
+        {
+            if (query.fieldsAs.IsNullOrEmpty() || !query.fields.IsNullOrEmpty() || !query.group.IsNullOrEmpty())
+                return _ListDict(query);
+
+            
+
+
+            List<Dictionary<string, object>> response = new(ids.Length); //respuesta que sera devuelta
+
+            List<object> searchIds = new(); //ids que no se encuentran en cache y deben ser buscados
+
+            for (var i = 0; i < ids.Length; i++)
+            {
+                object? data;
+                if (Cache.TryGetValue(entityName + ids[i], out data))
+                {
+                    response.Insert(i, (Dictionary<string, object>)data!);
+                }
+                else
+                {
+                    response.Insert(i, null);
+                    searchIds.Add(ids[i]);
+                }
+            }
+
+            if (searchIds.Count == 0) return response;
+
+            List<Dictionary<string, object>> rows = Db.Query(entityName).Where("$_Id IN (@0)").Parameters(searchIds).ListDict();
+
+            foreach (Dictionary<string, object> row in rows)
+            {
+                int index = Array.IndexOf(ids, row["id"]);
+                response[index] = EntityCache(entityName, row);
+            }
+
+            return response;
+        }
 
         protected Dictionary<string, object> EntityCache(string entityName, Dictionary<string, object> row)
         {
