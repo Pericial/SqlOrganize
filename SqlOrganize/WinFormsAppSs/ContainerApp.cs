@@ -37,7 +37,7 @@ namespace WinFormsAppSs
 
         public QueryCache QueryCache()
         {
-            return new Quer
+            return queryCache;
         }
     }
 }

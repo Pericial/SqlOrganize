@@ -30,7 +30,7 @@ namespace SqlOrganizeMy
 
         public override Mapping Mapping(string entity_name, string field_id)
         {
-            return new MappingMy(this, entity_name, field_id);
+            return new Mapping(this, entity_name, field_id);
         }
 
         public override Values Values(string entity_name, string field_id)

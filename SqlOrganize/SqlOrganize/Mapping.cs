@@ -21,50 +21,35 @@ namespace SqlOrganize
 
     Las subclases deben soportar la sintaxis del motor que se encuentran utilizando.
     */
-    public abstract class Mapping : EntityOptions
+    public class Mapping : EntityOptions
     {
         public Mapping(Db _db, string _entityName, string _fieldId) : base(_db, _entityName, _fieldId)
         {
         }
 
         /*
-        Realizar mapeo de field_name
+        Realizar mapeo de fieldName
 
-        Verifica la existencia de metodo eclusivo, si no exite, buscar metodo
-        predefinido.
+        Antes de mapear verifica la existencia de metodo "exclusivo".
+        Map se invoca solo con fieldName, fieldId asignado en constructor.
 
         # ejemplo
-        mapping.map("nombre")
-        mapping.map("fecha_alta.max.y"); //aplicar y, luego max CAST_TO_DATE(MAX(fecha_alta));
-        mapping.map("fecha_alta.y.count"); //aplicar count, luego y COUNT(CAST_TO_DATE(fecha_alta));
-        mapping.map("edad.avg.max")
+        Db.mapping("persona").map("nombre") //correcto se mapea sin fieldId
+        Db.mapping("persona", "persona).map("nombre") //correcto se mapea con fieldId
+        Db.mapping("alumno").map("persona-nombre") //error, la traduccion de fieldId se hace en otro nivel
+
+        
         */
         public string map(string fieldName)
         {
             //invocar metodo local, si existe
-            string method = fieldName.Replace(".", "_");
             Type thisType = this.GetType();
-            MethodInfo m = thisType.GetMethod(method);
+            MethodInfo m = thisType.GetMethod(fieldName);
             if (!m.IsNullOrEmpty())
                 return (string)m!.Invoke(this, Array.Empty<object>())!;
 
             //invocar metodo general
-            List<string> p = fieldName.Split('.').ToList();
-
-            if(p.Count == 1)
-                return _Default(fieldName);
-
-            method = p[p.Count-1];
-            p.RemoveAt(p.Count-1);
-
-            switch (method)
-            {
-                case "count":
-                    return _Count(String.Join(".", p.ToArray()));
-
-                default: //por defecto se ignora el metodo y se invoca nuevamente
-                    return this.map(String.Join(".", p.ToArray()));
-            }
+            return _Map(fieldName);
         }
 
         public string _Id()
@@ -81,13 +66,10 @@ namespace SqlOrganize
             return "CAST(CONCAT_WS('"+ db.config.concatString + "'," + String.Join(",", map_) + ") AS char)";
         }
 
-        /*
-        mapeo por defecto
-        */
-        public abstract string _Default(string field_name);
-
-        public abstract string _Count(string field_name);
-
+        protected string _Map(string fieldName)
+        {
+            return Pt() + "." + fieldName;
+        }
 
     }
 }
