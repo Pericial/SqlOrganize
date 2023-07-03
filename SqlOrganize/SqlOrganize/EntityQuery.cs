@@ -122,15 +122,15 @@ namespace SqlOrganize
             return sql;
         }
 
-        protected string Traduce_(string _sql, bool flag_as, int field_start, int field_end)
+        protected string Traduce_(string _sql, bool flagAs, int fieldStart, int fieldEnd)
         {
-            var field_name = _sql.Substring(field_start + 1, field_end);
-            var f = db.ExplodeField(entityName, field_name);
+            var fieldName = _sql.Substring(fieldStart + 1, fieldEnd);
+            var f = db.ExplodeField(entityName, fieldName);
 
-            var ff = db.Mapping(f["entityName"], f["fieldId"]).map(f["fieldName"]);
-            if (flag_as)
+            var ff = db.Mapping(f["entityName"], f["fieldId"]).Map(f["fieldName"]);
+            if (flagAs)
             {
-                var a = (f["fieldId"].IsNullOrEmpty()) ? f["fieldName"] : field_name;
+                var a = (f["fieldId"].IsNullOrEmpty()) ? f["fieldName"] : fieldName;
                 ff += " AS '" + a + "'";
             }
             return ff;

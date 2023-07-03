@@ -219,7 +219,10 @@ namespace SqlOrganize
 
         public abstract EntityQuery Query(string entity_name);
 
-        public abstract Mapping Mapping(string entity_name, string field_id);
+        public Mapping Mapping(string entityName, string? fieldId = null)
+        {
+            return new(this, entityName, fieldId);
+        }
 
         public abstract Values Values(string entity_name, string field_id);
 

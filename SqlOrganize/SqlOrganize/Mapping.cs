@@ -13,17 +13,17 @@ namespace SqlOrganize
 
     Ejemplo de subclase opcional:
 
-    -class ComisionMapping: Mapping:
-        def numero(self):
+    -class ComisionMapping extiende Mapping
+        Metodo numero()
            return '''
-    CONCAT("+self.pf()+"sed.numero, "+self.pt()+".division)
+    CONCAT("+this.pf()+"this.numero, "+this.pt()+".division)
 '''
 
     Las subclases deben soportar la sintaxis del motor que se encuentran utilizando.
     */
     public class Mapping : EntityOptions
     {
-        public Mapping(Db _db, string _entityName, string _fieldId) : base(_db, _entityName, _fieldId)
+        public Mapping(Db db, string entityName, string? fieldId) : base(db, entityName, fieldId)
         {
         }
 
@@ -40,7 +40,7 @@ namespace SqlOrganize
 
         
         */
-        public string map(string fieldName)
+        public string Map(string fieldName)
         {
             //invocar metodo local, si existe
             Type thisType = this.GetType();
@@ -57,7 +57,7 @@ namespace SqlOrganize
             List<string> map_ = new();
             
             foreach (string f in db.Entity(entityName).pk)
-                map_.Add(map(f));
+                map_.Add(Map(f));
 
             if (map_.Count == 1)
                 return map_[0];

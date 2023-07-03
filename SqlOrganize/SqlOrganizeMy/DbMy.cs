@@ -27,12 +27,6 @@ namespace SqlOrganizeMy
             return new EntityQueryMy(this, entity_name);
         }
 
-
-        public override Mapping Mapping(string entity_name, string field_id)
-        {
-            return new Mapping(this, entity_name, field_id);
-        }
-
         public override Values Values(string entity_name, string field_id)
         {
             return new ValuesMy(this, entity_name, field_id);

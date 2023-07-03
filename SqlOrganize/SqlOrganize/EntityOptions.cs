@@ -8,9 +8,9 @@ namespace SqlOrganize
         public Db db { get; }
         public string entityName { get; }
 
-        public string fieldId { get; }
+        public string? fieldId { get; }
 
-        public EntityOptions(Db _db, string _entityName, string _fieldId)
+        public EntityOptions(Db _db, string _entityName, string? _fieldId)
         {
             db = _db;
             entityName = _entityName;
