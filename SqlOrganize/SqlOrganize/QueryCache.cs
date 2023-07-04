@@ -102,41 +102,21 @@ namespace SqlOrganize
         {
             if (query.fieldsAs.IsNullOrEmpty() || !query.fields.IsNullOrEmpty() || !query.group.IsNullOrEmpty())
                 return _ListDict(query);
-
             
             EntityQuery queryAux = (EntityQuery)query.Clone();
-            queryAux.fieldsAs.
+            queryAux.fieldsAs = "$_Id";
+
+            List<string> ids = queryAux.Column<string>();
 
 
-            List<Dictionary<string, object>> response = new(ids.Length); //respuesta que sera devuelta
+            List<string> fields = query.fieldsAs!.Replace("$", "").Split(',').ToList().Select(s => s.Trim()).ToList();
 
-            List<object> searchIds = new(); //ids que no se encuentran en cache y deben ser buscados
-
-            for (var i = 0; i < ids.Length; i++)
+            foreach(var (key, rel) in Db.Entity(query.entityName).relations)
             {
-                object? data;
-                if (Cache.TryGetValue(entityName + ids[i], out data))
-                {
-                    response.Insert(i, (Dictionary<string, object>)data!);
-                }
-                else
-                {
-                    response.Insert(i, null);
-                    searchIds.Add(ids[i]);
-                }
+
             }
 
-            if (searchIds.Count == 0) return response;
 
-            List<Dictionary<string, object>> rows = Db.Query(entityName).Where("$_Id IN (@0)").Parameters(searchIds).ListDict();
-
-            foreach (Dictionary<string, object> row in rows)
-            {
-                int index = Array.IndexOf(ids, row["id"]);
-                response[index] = EntityCache(entityName, row);
-            }
-
-            return response;
         }
 
         protected Dictionary<string, object> EntityCache(string entityName, Dictionary<string, object> row)

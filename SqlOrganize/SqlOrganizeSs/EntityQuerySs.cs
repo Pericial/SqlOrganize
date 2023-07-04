@@ -25,7 +25,6 @@ namespace SqlOrganizeSs
 FETCH FIRST " + size + " ROWS ONLY";
         }
 
-
         protected override string SqlOrder()
         {
             if (order.IsNullOrEmpty())
@@ -154,12 +153,12 @@ FETCH FIRST " + size + " ROWS ONLY";
             return reader.ConvertToObject<T>();
         }
 
-        public override T Column<T>(string columnName)
+        public override List<T> Column<T>(string columnName)
         {
             throw new NotImplementedException();
         }
 
-        public override T Column<T>(int columnValue = 0)
+        public override List<T> Column<T>(int columnValue = 0)
         {
             throw new NotImplementedException();
         }
@@ -174,6 +173,19 @@ FETCH FIRST " + size + " ROWS ONLY";
             throw new NotImplementedException();
         }
 
-
+        public override EntityQuery Clone()
+        {
+            var eq = new EntityQuerySs(db, entityName);
+            eq.size = size;
+            eq.where = where;
+            eq.page = page;
+            eq.parameters = parameters;
+            eq.group = group;
+            eq.having = having;
+            eq.fields = fields;
+            eq.select = select;
+            eq.order = order;
+            return eq;
+        }
     }
 }

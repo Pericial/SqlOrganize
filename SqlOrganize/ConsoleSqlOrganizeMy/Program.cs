@@ -20,14 +20,17 @@ ListDict();
 
 
 
-string json = JsonConvert.SerializeObject(data, Newtonsoft.Json.Formatting.Indented);
-
-Console.WriteLine(json);
 
 MemoryCache cache = new MemoryCache(new MemoryCacheOptions());
 
 QueryCache queryCache = new QueryCache(db, cache);
 
-queryCache.ListDict("persona", "10", "100", "101", "102");
+object[] ids = new object[4] { "10", "100", "101", "102"  };
+
+ data = queryCache.ListDict("persona", ids);
+
+string json = JsonConvert.SerializeObject(data, Newtonsoft.Json.Formatting.Indented);
+
+Console.WriteLine(json);
 
 

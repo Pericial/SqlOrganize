@@ -29,7 +29,7 @@ namespace SqlOrganize
 
         public string? fields { get; set; } = "";
 
-        public string? fieldsAs { get; set; } = "";
+        public string? select { get; set; } = "";
 
         public string? order { get; set; } = "";
 
@@ -40,8 +40,6 @@ namespace SqlOrganize
         public string group { get; set; } = "";
 
         public List<object> parameters = new List<object> { };
-
-        public string fetch = "ListDict";
 
 
         public EntityQuery(Db _db, string _entityName)
@@ -68,15 +66,9 @@ namespace SqlOrganize
             return this;
         }
 
-        public EntityQuery FieldsAs()
+        public EntityQuery Select(string f)
         {
-            fieldsAs += string.Join(", ", db.tools(entityName).FieldNames().Select(x => "$" + x));
-            return this;
-        }
-
-        public EntityQuery FieldsAs(string f)
-        {
-            fieldsAs += f;
+            select += f;
             return this;
         }
 
@@ -86,10 +78,18 @@ namespace SqlOrganize
             return this;
         }
 
-        public EntityQuery Fetch(string fetch)
+        protected string TraduceFields(string _sql)
         {
-            this.fetch = fetch;
-            return this;
+            List<string> fields = _sql!.Replace("$", "").Split(',').ToList().Select(s => s.Trim()).ToList();
+            string sql = "";
+            foreach(var fieldName in fields)
+            {
+                var f = db.ExplodeField(entityName, fieldName);
+                sql += db.Mapping(f["entityName"], f["fieldId"]).Map(f["fieldName"]);
+                var a = (f["fieldId"].IsNullOrEmpty()) ? f["fieldName"] : fieldName;
+                sql += " AS '" + a + "'";
+            }
+            return sql;
         }
 
         protected string Traduce(string _sql, bool flag_as = false)
@@ -229,12 +229,12 @@ namespace SqlOrganize
 
         protected string SqlFields()
         {
-            if(this.fields.IsNullOrEmpty() && this.fieldsAs.IsNullOrEmpty() && this.group.IsNullOrEmpty())
-                this.FieldsAs();
+            if(this.fields.IsNullOrEmpty() && this.select.IsNullOrEmpty() && this.group.IsNullOrEmpty())
+                this.Fields();
 
-            string f = Concat(Traduce(this.fields), @"
+            string f = Concat(TraduceFields(this.fields), @"
 ");
-            var p = Traduce(this.fieldsAs, true);
+            var p = Traduce(this.select, true);
             f += Concat(p, @",
 ", "", !f.IsNullOrEmpty());
 
@@ -266,31 +266,9 @@ namespace SqlOrganize
             return connect + " " + value;
         }
 
-        public object Exec<T>() { 
-            switch (fetch.ToLower()) {
-                case "listdict":
-                case "list_dict":
-                case "list":
-                    return ListDict();
-
-                case "dict":
-                    return Dict();
-
-                case "column":
-                    return Column<T>(0);
-
-                case "value":
-                    return Value<T>();
-
-                default:
-                    throw new Exception("No se encuentra definido el Fetch");
-            }
-
-        }
-
         public override string ToString()
         {
-            return Regex.Replace(entityName + where + having + fields + fieldsAs + order + size + page + JsonConvert.SerializeObject(parameters), @"\s+", "");
+            return Regex.Replace(entityName + where + having + fields + select + order + size + page + JsonConvert.SerializeObject(parameters), @"\s+", "");
         }
 
 
@@ -306,9 +284,9 @@ namespace SqlOrganize
         public abstract Dictionary<string, object> Dict();
         public abstract T Object<T>() where T : class, new();
 
-        public abstract T Column<T>(string columnName);
+        public abstract List<T> Column<T>(string columnName);
 
-        public abstract T Column<T>(int columnValue = 0);
+        public abstract List<T> Column<T>(int columnValue = 0);
 
         public abstract T Value<T>(string columnName);
 

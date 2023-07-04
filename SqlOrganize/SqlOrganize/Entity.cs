@@ -73,9 +73,9 @@ namespace SqlOrganize
         */
         public List<string> uniqueMultiple { get; set; } = new();
 
-        public Dictionary<string, EntityTree>? tree { get; set; } = new();
+        public Dictionary<string, EntityTree> tree { get; set; } = new();
 
-        public Dictionary<string, EntityRel>? relations { get; set; } = new();
+        public Dictionary<string, EntityRel> relations { get; set; } = new();
         public string schema_ => String.IsNullOrEmpty(schema) ? schema : "";
         public string schemaName => schema + name;
         public string schemaNameAlias => schema + name + " AS " + alias;

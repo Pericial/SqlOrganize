@@ -106,12 +106,12 @@ namespace SqlOrganizeMy
             throw new NotImplementedException();
         }
 
-        public override T Column<T>(string columnName)
+        public override List<T> Column<T>(string columnName)
         {
             throw new NotImplementedException();
         }
 
-        public override T Column<T>(int columnValue = 0)
+        public override List<T> Column<T>(int columnValue = 0)
         {
             throw new NotImplementedException();
         }
@@ -133,11 +133,11 @@ namespace SqlOrganizeMy
             eq.page = page;
             eq.parameters = parameters;
             eq.group = group;
-            eq.fetch = fetch;
             eq.having = having;
             eq.fields = fields;
-            eq.fieldsAs = fieldsAs;
+            eq.select = select;
             eq.order = order;
+            return eq;
         }
     }
 
