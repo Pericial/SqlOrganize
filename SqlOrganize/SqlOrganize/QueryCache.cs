@@ -104,6 +104,8 @@ namespace SqlOrganize
                 return _ListDict(query);
 
             
+            EntityQuery queryAux = (EntityQuery)query.Clone();
+            queryAux.fieldsAs.
 
 
             List<Dictionary<string, object>> response = new(ids.Length); //respuesta que sera devuelta
