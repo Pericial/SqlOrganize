@@ -188,29 +188,6 @@ namespace SqlOrganize
             return l;
         }
         
-        public Dictionary<string, string> ExplodeField(string entityName, string fieldName)
-        {
-            List<string> f = fieldName.Split("-").ToList();
-
-            if (f.Count() == 2)
-            {
-                return new Dictionary<string, string>
-                {
-                    { "fieldId", f[0] },
-                    { "entityName", Entity(entityName).relations![f[0]].refEntityName },
-                    { "fieldName", f[1] },
-                };
-
-            }
-
-            return new Dictionary<string, string>
-            {
-                { "fieldId", "" },
-                { "entityName", entityName },
-                { "fieldName", fieldName },
-            };
-        }
-        
         public Entity Entity(string entity_name)
         {
             return entities[entity_name];

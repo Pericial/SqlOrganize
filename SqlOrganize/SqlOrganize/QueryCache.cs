@@ -1,8 +1,86 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
+using System;
+using System.Collections.Generic;
 using Utils;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace SqlOrganize
 {
+
+    /*
+    Clase interna para organizar campos
+    */
+    internal class FieldsOrganize
+    {
+        Db Db;
+
+        string EntityName;
+
+        /*
+        Campos a consultar de relaciones, 
+        Se pueden agregar fk adicionales necesarias para comparar
+        */
+        public List<string> Fields;
+
+        /*
+        FieldsId que deben ser consultados en el orden correspondiente
+        */
+        public List<string> FieldsIdOrder = new();
+
+        /*
+        Campos a consultar de la entidad principal "entityName", 
+        */
+        public List<string> FieldsMain = new();
+
+        public FieldsOrganize(Db db, string entityName, List<string> fields)
+        {
+            Db = db;
+            EntityName = entityName;
+            Fields = fields;
+            this.OrganizeFields(0);
+            this.OrganizeOrder(Db.Entity(entityName).tree);
+        }
+        /*
+        Organizar fields 
+        Se agregan los campos necesarios para consultar y comparar el arbol de fields
+        */
+        protected void OrganizeFields(int index) {
+            if (Fields[index].Contains("-"))
+            {
+                var f = Fields[index].Split('-');
+                EntityRel r = Db.Entity(EntityName).relations[f[0]];
+                string fkName = (!r.parentId.IsNullOrEmpty()) ? r.parentId + "-" + r.fieldName : r.fieldName;
+                if (!Fields.Contains(fkName)) { Fields.Add(fkName); }
+            } else
+                FieldsMain.Add(Fields[index]);
+
+            if (++index < Fields.Count)
+                OrganizeFields(index);
+        }
+
+        protected void OrganizeOrder(Dictionary<string, EntityTree> tree)
+        {
+            foreach(var (fieldId, et) in tree)
+            {
+                bool recorrerChildren = false;
+                for(var j = 0; j < Fields.Count; j++)
+                {
+                    if (Fields[j].Contains("-"))
+                    {
+                        var f = Fields[j].Split("-");
+                        if (f[0] == fieldId && !FieldsIdOrder.Contains(fieldId))
+                        {
+                            FieldsIdOrder.Add(fieldId);
+                            recorrerChildren = true;
+                        }
+                            
+                    }
+                }
+                if(recorrerChildren && !et.children.IsNullOrEmpty())
+                    OrganizeOrder(et.children);
+            }
+        }
+    }
 
     /*
     Uso de cache para resutado de consulta
@@ -97,27 +175,79 @@ namespace SqlOrganize
             return result!;
         }
 
-
         public List<Dictionary<string, object>> ListDict(EntityQuery query)
         {
-            if (query.fieldsAs.IsNullOrEmpty() || !query.fields.IsNullOrEmpty() || !query.group.IsNullOrEmpty())
+            List<Dictionary<string, object>> response = new();
+
+            if (query.fields.IsNullOrEmpty() || !query.select.IsNullOrEmpty() || !query.group.IsNullOrEmpty())
                 return _ListDict(query);
             
             EntityQuery queryAux = (EntityQuery)query.Clone();
-            queryAux.fieldsAs = "$_Id";
+            queryAux.fields = "$_Id";
 
             List<string> ids = queryAux.Column<string>();
 
+            List<string> fields = query.fields!.Replace("$", "").Split(',').ToList().Select(s => s.Trim()).ToList();
 
-            List<string> fields = query.fieldsAs!.Replace("$", "").Split(',').ToList().Select(s => s.Trim()).ToList();
+            FieldsOrganize fo = new(Db, query.entityName, fields);
 
-            foreach(var (key, rel) in Db.Entity(query.entityName).relations)
+            List<Dictionary<string, object>> data = ListDict(query.entityName, ids.ToArray());
+
+            
+            for (var i = 0; i < data.Count; i++)
             {
-
+                response.Add(new());
+                for (var j = 0; j < fo.Fields.Count; j++) response[i][fo.Fields[j]] = null;
+                for (var j = 0; j < fo.FieldsMain.Count; j++) response[i][fo.FieldsMain[j]] = data[i][fo.FieldsMain[j]];
             }
-
+            return TraduceFieldsId(fo, response, 0);
 
         }
+
+        public void TraduceFieldsId(FieldsOrganize fo, List<Dictionary<string, object>> response, int index)
+        {
+            if (index >= fo.FieldsIdOrder.Count) return response;
+            {
+                if (response.Count == 0) return response;
+
+                var entity_name:string = efo.relations[fieldId]["entity_name"];
+                var parentId:string = efo.relations[fieldId]["parent_id"];
+                var field_name:string = efo.relations[fieldId]["field_name"];
+                var fkName:string = (parentId) ? efo.prefix + parentId + "-" + field_name : efo.prefix + field_name;
+
+                var ids = arrayUnique(
+                  arrayColumn(response, fkName).filter(function(el) { return el != null; })
+      );
+
+                return this.getAll(entity_name, ids).pipe(
+                  map(
+                    data => {
+                        if (!data.length) return response;
+
+                        for (var i = 0; i < response.length; i++)
+                        {
+                            for (var j = 0; j < data.length; j++)
+                            {
+                                if (response[i][fkName] == data[j]["id"])
+                                {
+                                    for (var k = 0; k < efo.relQuery[fieldId].length; k++)
+                                    {
+                                        var n = efo.relQuery[fieldId][k]
+        
+                              response[i][efo.prefix + fieldId + "-" + n] = data[j][n]
+        
+                            }
+                                    break;
+                                }
+                            }
+                        }
+                        return response;
+                    }
+                  )
+                );
+            }
+        }
+
 
         protected Dictionary<string, object> EntityCache(string entityName, Dictionary<string, object> row)
         {

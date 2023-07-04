@@ -82,12 +82,15 @@ namespace SqlOrganize
         {
             List<string> fields = _sql!.Replace("$", "").Split(',').ToList().Select(s => s.Trim()).ToList();
             string sql = "";
-            foreach(var fieldName in fields)
+            
+            foreach (var fieldName in fields)
             {
-                var f = db.ExplodeField(entityName, fieldName);
-                sql += db.Mapping(f["entityName"], f["fieldId"]).Map(f["fieldName"]);
-                var a = (f["fieldId"].IsNullOrEmpty()) ? f["fieldName"] : fieldName;
-                sql += " AS '" + a + "'";
+                if (fieldName.Contains('-'))
+                {
+                    List<string> ff = fieldName.Split("-").ToList();
+                    sql += db.Mapping(db.Entity(entityName).relations[ff[0]].refEntityName, ff[0]).Map(ff[1]) + " AS '" + fieldName;
+                } else
+                    sql += db.Mapping(entityName).Map(fieldName) + " AS '" + fieldName + "'";
             }
             return sql;
         }
@@ -126,14 +129,19 @@ namespace SqlOrganize
         protected string Traduce_(string _sql, bool flagAs, int fieldStart, int fieldEnd)
         {
             var fieldName = _sql.Substring(fieldStart + 1, fieldEnd);
-            var f = db.ExplodeField(entityName, fieldName);
 
-            var ff = db.Mapping(f["entityName"], f["fieldId"]).Map(f["fieldName"]);
-            if (flagAs)
+            string ff = "";
+            if (fieldName.Contains('-'))
             {
-                var a = (f["fieldId"].IsNullOrEmpty()) ? f["fieldName"] : fieldName;
-                ff += " AS '" + a + "'";
+                List<string> fff = fieldName.Split("-").ToList();
+                ff += db.Mapping(db.Entity(entityName).relations[fff[0]].refEntityName, fff[0]).Map(fff[1]);
             }
+            else
+                ff += db.Mapping(entityName).Map(fieldName) + " AS '" + fieldName + "'";
+
+            if (flagAs)
+                ff += " AS '" + fieldName + "'";
+            
             return ff;
         }
 
