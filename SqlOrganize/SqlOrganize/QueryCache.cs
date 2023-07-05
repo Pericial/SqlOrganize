@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Utils;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -10,7 +11,7 @@ namespace SqlOrganize
     /*
     Clase interna para organizar campos
     */
-    internal class FieldsOrganize
+    public class FieldsOrganize
     {
         Db Db;
 
@@ -21,6 +22,12 @@ namespace SqlOrganize
         Se pueden agregar fk adicionales necesarias para comparar
         */
         public List<string> Fields;
+
+        /*
+        Campos de relaciones
+        Para facilitar el filtro de campos de relaciones se agregan agrupadas por fieldId
+        */
+        public Dictionary<string, List<string>> FieldsRel;
 
         /*
         FieldsId que deben ser consultados en el orden correspondiente
@@ -50,6 +57,9 @@ namespace SqlOrganize
                 var f = Fields[index].Split('-');
                 EntityRel r = Db.Entity(EntityName).relations[f[0]];
                 string fkName = (!r.parentId.IsNullOrEmpty()) ? r.parentId + "-" + r.fieldName : r.fieldName;
+
+                if (!FieldsRel.ContainsKey(f[0])) FieldsRel.Add(f[0], new List<string>());
+                if (!FieldsRel[f[0]].Contains(r.fieldName)) FieldsRel[f[0]].Add(r.fieldName);
                 if (!Fields.Contains(fkName)) { Fields.Add(fkName); }
             } else
                 FieldsMain.Add(Fields[index]);
@@ -98,27 +108,6 @@ namespace SqlOrganize
         }
 
         /*
-        Ejecuta la consulta y la almacena en Cache
-        *
-        public object Exec(EntityQuery Query)
-        {
-            List<string> queries;
-            if (!Cache.TryGetValue("queries", out queries))
-                queries = new();
-
-            object result;
-            string queryKey = Query!.ToString();
-            if (!Cache.TryGetValue(queryKey, out result))
-            {
-                result = Query.Exec<object>();
-                Cache.Set(queryKey, result);
-                queries.Add(queryKey);
-                Cache.Set<List<string>>("queries", queries);
-            }
-            return result;
-        }*/
-
-        /*
         Obtener campos de una entidad (sin relaciones)
         Si no encuentra valores en el Cache, realiza una consulta a la base de datos
         y lo almacena en Cache.
@@ -144,13 +133,14 @@ namespace SqlOrganize
                 }
             }
 
-            if (searchIds.Count == 0) return response;
+            if (searchIds.Count == 0) 
+                return response;
 
             List<Dictionary<string, object>> rows = Db.Query(entityName).Where("$_Id IN (@0)").Parameters(searchIds).ListDict();
 
             foreach(Dictionary<string, object> row in rows)
             {
-                int index = Array.IndexOf(ids, row["id"]);
+                int index = Array.IndexOf(ids, row["_Id"]);
                 response[index] = EntityCache(entityName,row);
             }
 
@@ -192,7 +182,6 @@ namespace SqlOrganize
             FieldsOrganize fo = new(Db, query.entityName, fields);
 
             List<Dictionary<string, object>> data = ListDict(query.entityName, ids.ToArray());
-
             
             for (var i = 0; i < data.Count; i++)
             {
@@ -200,50 +189,48 @@ namespace SqlOrganize
                 for (var j = 0; j < fo.Fields.Count; j++) response[i][fo.Fields[j]] = null;
                 for (var j = 0; j < fo.FieldsMain.Count; j++) response[i][fo.FieldsMain[j]] = data[i][fo.FieldsMain[j]];
             }
-            return TraduceFieldsId(fo, response, 0);
+            return ListDictRecursive(fo, response, 0);
 
         }
 
-        public List<Dictionary<string, object>> TraduceFieldsId(FieldsOrganize fo, List<Dictionary<string, object>> response, int index)
+        public List<Dictionary<string, object>> ListDictRecursive(FieldsOrganize fo, List<Dictionary<string, object>> response, int index)
         {
             if (index >= fo.FieldsIdOrder.Count) return response;
             {
                 if (response.Count == 0) return response;
 
-                string refEntityName = Db.Entity(fo.EntityName).relations[fo.FieldsIdOrder[index]].refEntityName;
-                string? parentId = Db.Entity(fo.EntityName).relations[fo.FieldsIdOrder[index]].parentId;
-                string fieldName = Db.Entity(fo.EntityName).relations[fo.FieldsIdOrder[index]].fieldName;
+                string fieldId = fo.FieldsIdOrder[index];
+                string refEntityName = Db.Entity(fo.EntityName).relations[fieldId].refEntityName;
+                string? parentId = Db.Entity(fo.EntityName).relations[fieldId].parentId;
+                string fieldName = Db.Entity(fo.EntityName).relations[fieldId].fieldName;
+                string refFieldName = Db.Entity(fo.EntityName).relations[fieldId].refFieldName;
+
                 string fkName = (!parentId.IsNullOrEmpty()) ? parentId + "-" + fieldName : fieldName;
+
 
                 List<object> ids = response.Column<object>(fkName).Distinct().ToList();
                 ids.RemoveAll(item => item == null);
 
-                return this.getAll(entity_name, ids).pipe(
-                  map(
-                    data => {
-                        if (!data.length) return response;
+                List<Dictionary<string, object>> data = ListDict(refEntityName, ids.ToArray());
+                if (data.Count == 0) return response;
 
-                        for (var i = 0; i < response.length; i++)
+                for(var i = 0; i < response.Count; i++)
+                {
+                    for (var j = 0; j < data.Count; j++)
+                    {
+                        if (response[i][fkName] == data[j][refFieldName])
                         {
-                            for (var j = 0; j < data.length; j++)
+                            for (var k = 0; k < fo.FieldsRel[fieldId].Count; k++)
                             {
-                                if (response[i][fkName] == data[j]["id"])
-                                {
-                                    for (var k = 0; k < efo.relQuery[fieldId].length; k++)
-                                    {
-                                        var n = efo.relQuery[fieldId][k]
-        
-                              response[i][efo.prefix + fieldId + "-" + n] = data[j][n]
-        
+                                var n = fo.FieldsRel[fieldId][k];
+                                response[i][fieldId + "-" + n] = data[j][n];
                             }
-                                    break;
-                                }
-                            }
+                            break;
                         }
-                        return response;
                     }
-                  )
-                );
+                }
+
+                return (++index < fo.FieldsIdOrder.Count) ? ListDictRecursive(fo, response, index) : response;
             }
         }
 
@@ -253,7 +240,7 @@ namespace SqlOrganize
             if(!Db.Entity(entityName).relations.IsNullOrEmpty()) 
                 EntityCacheRecursive(Db.Entity(entityName).relations!, row);
 
-            Cache.Set<Dictionary<string, object>>(entityName+row["id"].ToString(), row);
+            Cache.Set(entityName+row["_Id"].ToString(), row);
             return row;
         }
 

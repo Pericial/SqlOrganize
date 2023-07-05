@@ -88,14 +88,15 @@ namespace SqlOrganize
                 if (fieldName.Contains('-'))
                 {
                     List<string> ff = fieldName.Split("-").ToList();
-                    sql += db.Mapping(db.Entity(entityName).relations[ff[0]].refEntityName, ff[0]).Map(ff[1]) + " AS '" + fieldName;
+                    sql += db.Mapping(db.Entity(entityName).relations[ff[0]].refEntityName, ff[0]).Map(ff[1]) + " AS '" + fieldName + "', ";
                 } else
-                    sql += db.Mapping(entityName).Map(fieldName) + " AS '" + fieldName + "'";
+                    sql += db.Mapping(entityName).Map(fieldName) + " AS '" + fieldName + "', ";
             }
+            sql = sql.RemoveLastIndex(',');
             return sql;
         }
 
-        protected string Traduce(string _sql, bool flag_as = false)
+        protected string Traduce(string _sql)
         {
             string sql = "";
             int field_start = -1;
@@ -111,7 +112,7 @@ namespace SqlOrganize
                 if (field_start != -1)
                 {
                     if ((_sql[i] != ' ') && (_sql[i] != ')') && (_sql[i] != ',')) continue;
-                    sql += Traduce_(_sql, flag_as, field_start, i - field_start - 1);
+                    sql += Traduce_(_sql, field_start, i - field_start - 1);
                     field_start = -1;
                 }
 
@@ -120,13 +121,13 @@ namespace SqlOrganize
             }
 
             if (field_start != -1)
-                sql += Traduce_(_sql, flag_as, field_start, _sql.Length - field_start - 1);
+                sql += Traduce_(_sql, field_start, _sql.Length - field_start - 1);
 
 
             return sql;
         }
 
-        protected string Traduce_(string _sql, bool flagAs, int fieldStart, int fieldEnd)
+        protected string Traduce_(string _sql, int fieldStart, int fieldEnd)
         {
             var fieldName = _sql.Substring(fieldStart + 1, fieldEnd);
 
@@ -137,11 +138,8 @@ namespace SqlOrganize
                 ff += db.Mapping(db.Entity(entityName).relations[fff[0]].refEntityName, fff[0]).Map(fff[1]);
             }
             else
-                ff += db.Mapping(entityName).Map(fieldName) + " AS '" + fieldName + "'";
+                ff += db.Mapping(entityName).Map(fieldName);
 
-            if (flagAs)
-                ff += " AS '" + fieldName + "'";
-            
             return ff;
         }
 
@@ -240,10 +238,9 @@ namespace SqlOrganize
             if(this.fields.IsNullOrEmpty() && this.select.IsNullOrEmpty() && this.group.IsNullOrEmpty())
                 this.Fields();
 
-            string f = Concat(TraduceFields(this.fields), @"
-");
-            var p = Traduce(this.select, true);
-            f += Concat(p, @",
+            string f = TraduceFields(this.fields);
+
+            f += Concat(Traduce(this.select), @",
 ", "", !f.IsNullOrEmpty());
 
             f += Concat(Traduce(this.group), @",

@@ -87,7 +87,7 @@ namespace Utils
             return result;
         }
 
-        public static List<T> ColumnValues<T>(DbDataReader reader, int columnNumber)
+        public static List<T> ColumnValues<T>(this DbDataReader reader, int columnNumber)
         {
             var result = new List<T>();
             while (reader.Read())

@@ -4,9 +4,8 @@ using SqlOrganize;
 using SqlOrganizeSs;
 using System.Configuration;
 using System.Collections.Specialized;
-
-
-
+using Microsoft.Extensions.Caching.Memory;
+using System.Net;
 
 Config config = new Config
 {
@@ -16,12 +15,15 @@ Config config = new Config
 
 var db = new DbSs(config);
 
-var data = db.Query("ESTADISTICA_SALDOS").
-    Page(1).
-    Size(10).
-    Where("$_Id > 'A'").
-    ListDict();
+var query = db.Query("PERSONAL").Where("$_Id IN (@0)").Parameters(new List<object> {"01-DNI~90", "01-DNI~91"}).Fields();
 
+var cache = new MemoryCache(new MemoryCacheOptions());
+
+var qc = new QueryCache(db, cache);
+
+var data = qc.ListDict(query);
+
+data = qc.ListDict(query);
 
 string json = JsonConvert.SerializeObject(data, Newtonsoft.Json.Formatting.Indented);
 

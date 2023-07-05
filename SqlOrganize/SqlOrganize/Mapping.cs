@@ -52,6 +52,9 @@ namespace SqlOrganize
             return _Map(fieldName);
         }
 
+        /*
+        Para sql server se debe aplicar trim porque agrega espacios adicionales
+        */
         public string _Id()
         {
             List<string> map_ = new();
@@ -63,7 +66,7 @@ namespace SqlOrganize
                 return map_[0];
 
 
-            return "CAST(CONCAT_WS('"+ db.config.concatString + "'," + String.Join(",", map_) + ") AS char)";
+            return "TRIM(CAST(CONCAT_WS('"+ db.config.concatString + "'," + String.Join(",", map_) + ") AS char))";
         }
 
         protected string _Map(string fieldName)
