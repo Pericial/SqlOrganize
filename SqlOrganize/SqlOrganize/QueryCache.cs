@@ -14,7 +14,7 @@ namespace SqlOrganize
     {
         Db Db;
 
-        string EntityName;
+        public string EntityName;
 
         /*
         Campos a consultar de relaciones, 
@@ -37,14 +37,14 @@ namespace SqlOrganize
             Db = db;
             EntityName = entityName;
             Fields = fields;
-            this.OrganizeFields(0);
+            this.OrganizeRelations(0);
             this.OrganizeOrder(Db.Entity(entityName).tree);
         }
         /*
         Organizar fields 
         Se agregan los campos necesarios para consultar y comparar el arbol de fields
         */
-        protected void OrganizeFields(int index) {
+        protected void OrganizeRelations(int index) {
             if (Fields[index].Contains("-"))
             {
                 var f = Fields[index].Split('-');
@@ -55,7 +55,7 @@ namespace SqlOrganize
                 FieldsMain.Add(Fields[index]);
 
             if (++index < Fields.Count)
-                OrganizeFields(index);
+                OrganizeRelations(index);
         }
 
         protected void OrganizeOrder(Dictionary<string, EntityTree> tree)
@@ -204,20 +204,19 @@ namespace SqlOrganize
 
         }
 
-        public void TraduceFieldsId(FieldsOrganize fo, List<Dictionary<string, object>> response, int index)
+        public List<Dictionary<string, object>> TraduceFieldsId(FieldsOrganize fo, List<Dictionary<string, object>> response, int index)
         {
             if (index >= fo.FieldsIdOrder.Count) return response;
             {
                 if (response.Count == 0) return response;
 
-                var entity_name:string = efo.relations[fieldId]["entity_name"];
-                var parentId:string = efo.relations[fieldId]["parent_id"];
-                var field_name:string = efo.relations[fieldId]["field_name"];
-                var fkName:string = (parentId) ? efo.prefix + parentId + "-" + field_name : efo.prefix + field_name;
+                string refEntityName = Db.Entity(fo.EntityName).relations[fo.FieldsIdOrder[index]].refEntityName;
+                string? parentId = Db.Entity(fo.EntityName).relations[fo.FieldsIdOrder[index]].parentId;
+                string fieldName = Db.Entity(fo.EntityName).relations[fo.FieldsIdOrder[index]].fieldName;
+                string fkName = (!parentId.IsNullOrEmpty()) ? parentId + "-" + fieldName : fieldName;
 
-                var ids = arrayUnique(
-                  arrayColumn(response, fkName).filter(function(el) { return el != null; })
-      );
+                List<object> ids = response.Column<object>(fkName).Distinct().ToList();
+                ids.RemoveAll(item => item == null);
 
                 return this.getAll(entity_name, ids).pipe(
                   map(

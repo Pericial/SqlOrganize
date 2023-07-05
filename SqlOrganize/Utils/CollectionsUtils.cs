@@ -126,5 +126,24 @@ namespace Utils
 
             return clonedList;
         }
+
+        /*
+        TODO Optimizar
+        */
+        public static List<T> Column<T>(this List<Dictionary<string, object>> rows, string key)
+        {
+            List<T> response = new();
+            foreach (Dictionary<string, object> row in rows)
+                foreach (var (k, v) in row)
+                    if (k == key)
+                        response.Add((T)v);
+
+            return response;
+        }
     }
+
+
+   
+
+
 }
