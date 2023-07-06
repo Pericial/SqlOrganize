@@ -13,21 +13,17 @@ Config config = new Config
 
 var db = new DbMy(config);
 
-var data = db.Query("persona").
-Page(1).
-Size(10).
-ListDict();
+var query = db.Query("curso").
+    Where("$_Id IN (@0)").
+    Parameters(new List<object> { "6496098054a4f", "6496098051999" });
 
+var cache = new MemoryCache(new MemoryCacheOptions());
 
+var qc = new QueryCache(db, cache);
 
+var data = qc.ListDict(query);
 
-MemoryCache cache = new MemoryCache(new MemoryCacheOptions());
-
-QueryCache queryCache = new QueryCache(db, cache);
-
-object[] ids = new object[4] { "10", "100", "101", "102"  };
-
- data = queryCache.ListDict("persona", ids);
+data = qc.ListDict(query);
 
 string json = JsonConvert.SerializeObject(data, Newtonsoft.Json.Formatting.Indented);
 
