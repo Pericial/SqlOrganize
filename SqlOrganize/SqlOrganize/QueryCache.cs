@@ -212,10 +212,11 @@ namespace SqlOrganize
 
                 List<object> ids = response.Column<object>(fkName).Distinct().ToList();
                 ids.RemoveAll(item => item == null);
-                if(ids.Count == 1 && ids[0] == System.DBNull.Value) 
-                    return response;
-
-                List<Dictionary<string, object>> data = ListDict(refEntityName, ids.ToArray());
+                List<Dictionary<string, object>> data;
+                if (ids.Count == 1 && ids[0] == System.DBNull.Value)
+                    data = new();
+                else 
+                    data = ListDict(refEntityName, ids.ToArray());
 
                 for(var i = 0; i < response.Count; i++)
                 {
