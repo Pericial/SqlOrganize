@@ -4,92 +4,7 @@ using Utils;
 namespace SqlOrganize
 {
 
-    /*
-    Clase interna para organizar campos
-    */
-    public class FieldsOrganize
-    {
-        Db Db;
-
-        public string EntityName;
-
-        /*
-        Campos a consultar de relaciones, 
-        Se pueden agregar fk adicionales necesarias para comparar
-        */
-        public List<string> Fields;
-
-        /*
-        Campos de relaciones
-        Para facilitar el filtro de campos de relaciones se agregan agrupadas por fieldId
-        */
-        public Dictionary<string, List<string>> FieldsRel = new();
-
-        /*
-        FieldsId que deben ser consultados en el orden correspondiente
-        */
-        public List<string> FieldsIdOrder = new();
-
-        /*
-        Campos a consultar de la entidad principal "entityName", 
-        */
-        public List<string> FieldsMain = new();
-
-        public FieldsOrganize(Db db, string entityName, List<string> fields)
-        {
-            Db = db;
-            EntityName = entityName;
-            Fields = fields;
-            this.OrganizeRelations(0);
-            this.OrganizeOrder(Db.Entity(entityName).tree);
-        }
-        /*
-        Organizar fields 
-        Se agregan los campos necesarios para consultar y comparar el arbol de fields
-        */
-        protected void OrganizeRelations(int index) {
-            if (Fields[index].Contains(Db.config.idNameSeparatorString))
-            {
-                var f = Fields[index].Split(Db.config.idNameSeparatorString);
-                EntityRel r = Db.Entity(EntityName).relations[f[0]];
-                string fkName = (!r.parentId.IsNullOrEmpty()) ? r.parentId + Db.config.idNameSeparatorString + r.fieldName : r.fieldName;
-
-                if (!FieldsRel.ContainsKey(f[0])) 
-                    FieldsRel.Add(f[0], new List<string>());
-                if (!FieldsRel[f[0]].Contains(f[1])) 
-                    FieldsRel[f[0]].Add(f[1]);
-                if (!Fields.Contains(fkName))
-                    Fields.Add(fkName);
-            } else
-                FieldsMain.Add(Fields[index]);
-
-            if (++index < Fields.Count)
-                OrganizeRelations(index);
-        }
-
-        protected void OrganizeOrder(Dictionary<string, EntityTree> tree)
-        {
-            foreach(var (fieldId, et) in tree)
-            {
-                bool recorrerChildren = false;
-                for(var j = 0; j < Fields.Count; j++)
-                {
-                    if (Fields[j].Contains(Db.config.idNameSeparatorString))
-                    {
-                        var f = Fields[j].Split(Db.config.idNameSeparatorString);
-                        if (f[0] == fieldId && !FieldsIdOrder.Contains(fieldId))
-                        {
-                            FieldsIdOrder.Add(fieldId);
-                            recorrerChildren = true;
-                        }
-                            
-                    }
-                }
-                if(recorrerChildren && !et.children.IsNullOrEmpty())
-                    OrganizeOrder(et.children);
-            }
-        }
-    }
+   
 
     /*
     Uso de cache para resutado de consulta
@@ -97,21 +12,22 @@ namespace SqlOrganize
     public class QueryCache
     {
         public Db Db { get; }
-        
+
         public MemoryCache Cache { get; set; }
 
-        public QueryCache (Db db, MemoryCache cache)
+        public QueryCache(Db db, MemoryCache cache)
         {
-            Db = db;           
+            Db = db;
             Cache = cache;
         }
+
 
         /*
         Obtener campos de una entidad (sin relaciones)
         Si no encuentra valores en el Cache, realiza una consulta a la base de datos
         y lo almacena en Cache.
         */
-        public List<Dictionary<string,object>> ListDict(string entityName, params object[] ids)
+        public List<Dictionary<string, object>> ListDict(string entityName, params object[] ids)
         {
             ids = ids.Distinct().ToArray();
 
@@ -119,32 +35,33 @@ namespace SqlOrganize
 
             List<object> searchIds = new(); //ids que no se encuentran en cache y deben ser buscados
 
-            for(var i = 0; i < ids.Length; i++)
+            for (var i = 0; i < ids.Length; i++)
             {
                 object? data;
                 if (Cache.TryGetValue(entityName + ids[i], out data))
                 {
                     response.Insert(i, (Dictionary<string, object>)data!);
-                }else
+                } else
                 {
                     response.Insert(i, null);
                     searchIds.Add(ids[i]);
                 }
             }
 
-            if (searchIds.Count == 0) 
+            if (searchIds.Count == 0)
                 return response;
 
             List<Dictionary<string, object>> rows = Db.Query(entityName).Where("$_Id IN (@0)").Parameters(searchIds).ListDict();
 
-            foreach(Dictionary<string, object> row in rows)
+            foreach (Dictionary<string, object> row in rows)
             {
                 int index = Array.IndexOf(ids, row["_Id"]);
-                response[index] = EntityCache(entityName,row);
+                response[index] = EntityCache(entityName, row);
             }
 
             return response;
         }
+
 
         protected List<Dictionary<string, object>> _ListDict(EntityQuery query)
         {
@@ -164,6 +81,15 @@ namespace SqlOrganize
             return result!;
         }
 
+        /*
+        TODO se puede optimizar y evitar tantos loops?
+        */        
+        public List<T> ListObj<T>(EntityQuery query) where T : class, new()
+        {
+            List<Dictionary<string, object>> response = ListDict(query);
+            return response.ConvertToListOfObject<T>();
+        }
+
         public List<Dictionary<string, object>> ListDict(EntityQuery query)
         {
             List<Dictionary<string, object>> response = new();
@@ -175,7 +101,7 @@ namespace SqlOrganize
                 query.Fields();
             
             EntityQuery queryAux = (EntityQuery)query.Clone();
-            queryAux.fields = "$_Id";
+            queryAux.fields = "_Id";
 
             List<string> ids = queryAux.Column<string>();
 
@@ -208,7 +134,6 @@ namespace SqlOrganize
                 string refFieldName = Db.Entity(fo.EntityName).relations[fieldId].refFieldName;
 
                 string fkName = (!parentId.IsNullOrEmpty()) ? parentId + Db.config.idNameSeparatorString + fieldName : fieldName;
-
 
                 List<object> ids = response.Column<object>(fkName).Distinct().ToList();
                 ids.RemoveAll(item => item == null);
@@ -269,5 +194,94 @@ namespace SqlOrganize
             }
         }
 
+    }
+
+    /*
+   Clase interna para organizar campos
+   */
+    public class FieldsOrganize
+    {
+        Db Db;
+
+        public string EntityName;
+
+        /*
+        Campos a consultar de relaciones, 
+        Se pueden agregar fk adicionales necesarias para comparar
+        */
+        public List<string> Fields;
+
+        /*
+        Campos de relaciones
+        Para facilitar el filtro de campos de relaciones se agregan agrupadas por fieldId
+        */
+        public Dictionary<string, List<string>> FieldsRel = new();
+
+        /*
+        FieldsId que deben ser consultados en el orden correspondiente
+        */
+        public List<string> FieldsIdOrder = new();
+
+        /*
+        Campos a consultar de la entidad principal "entityName", 
+        */
+        public List<string> FieldsMain = new();
+
+        public FieldsOrganize(Db db, string entityName, List<string> fields)
+        {
+            Db = db;
+            EntityName = entityName;
+            Fields = fields;
+            this.OrganizeRelations(0);
+            this.OrganizeOrder(Db.Entity(entityName).tree);
+        }
+        /*
+        Organizar fields 
+        Se agregan los campos necesarios para consultar y comparar el arbol de fields
+        */
+        protected void OrganizeRelations(int index)
+        {
+            if (Fields[index].Contains(Db.config.idNameSeparatorString))
+            {
+                var f = Fields[index].Split(Db.config.idNameSeparatorString);
+                EntityRel r = Db.Entity(EntityName).relations[f[0]];
+                string fkName = (!r.parentId.IsNullOrEmpty()) ? r.parentId + Db.config.idNameSeparatorString + r.fieldName : r.fieldName;
+
+                if (!FieldsRel.ContainsKey(f[0]))
+                    FieldsRel.Add(f[0], new List<string>());
+                if (!FieldsRel[f[0]].Contains(f[1]))
+                    FieldsRel[f[0]].Add(f[1]);
+                if (!Fields.Contains(fkName))
+                    Fields.Add(fkName);
+            }
+            else
+                FieldsMain.Add(Fields[index]);
+
+            if (++index < Fields.Count)
+                OrganizeRelations(index);
+        }
+
+        protected void OrganizeOrder(Dictionary<string, EntityTree> tree)
+        {
+            foreach (var (fieldId, et) in tree)
+            {
+                bool recorrerChildren = false;
+                for (var j = 0; j < Fields.Count; j++)
+                {
+                    if (Fields[j].Contains(Db.config.idNameSeparatorString))
+                    {
+                        var f = Fields[j].Split(Db.config.idNameSeparatorString);
+                        if (f[0] == fieldId && !FieldsIdOrder.Contains(fieldId))
+                        {
+                            FieldsIdOrder.Add(fieldId);
+                            recorrerChildren = true;
+                        }
+
+                    }
+                }
+                if (recorrerChildren && !et.children.IsNullOrEmpty())
+                    OrganizeOrder(et.children);
+            }
+        }
     }
 }

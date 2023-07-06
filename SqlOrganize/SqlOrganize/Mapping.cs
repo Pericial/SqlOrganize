@@ -63,7 +63,7 @@ namespace SqlOrganize
                 map_.Add(Map(f));
 
             if (map_.Count == 1)
-                return map_[0];
+                return "CAST(" + map_[0] + " AS char)";
 
 
             return "TRIM(CAST(CONCAT_WS('"+ db.config.concatString + "'," + String.Join(",", map_) + ") AS char))";

@@ -3,9 +3,9 @@ using Newtonsoft.Json;
 using SqlOrganize;
 using SqlOrganizeSs;
 using System.Configuration;
-using System.Collections.Specialized;
 using Microsoft.Extensions.Caching.Memory;
-using System.Net;
+
+
 
 Config config = new Config
 {
@@ -16,7 +16,6 @@ Config config = new Config
 var db = new DbSs(config);
 
 var query = db.Query("PERSONAL").
-    Fields("NIVEL_SEGU-NIVEL_SEGU, DTOJUD-DESCRIPCION, APELLIDO").
     Where("$_Id IN (@0)").
     Parameters(new List<object> {"01-DNI~90", "01-DNI~91"});
 
@@ -26,12 +25,22 @@ var qc = new QueryCache(db, cache);
 
 var data = qc.ListDict(query);
 
-data = qc.ListDict(query);
+var data2 = qc.ListObj<Personal>(query);
+
 
 string json = JsonConvert.SerializeObject(data, Newtonsoft.Json.Formatting.Indented);
 
 Console.WriteLine(json);
 
+
+public class Personal
+{
+    public string TIPODOC { get; set; }
+    public int NRODOC { get; set; }
+    public string DTOJUD__DESCRIPCION { get; set; }
+    public string NIVEL_SEGU__DESCRIPCION { get; set; }
+
+}
 /*W
 
 QueryCache qc = new(query);

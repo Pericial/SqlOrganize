@@ -56,7 +56,7 @@ namespace SqlOrganize
 
         public EntityQuery Fields()
         {
-            fields += string.Join(", ", db.tools(entityName).FieldNames().Select(x => "$" + x));
+            fields += string.Join(", ", db.tools(entityName).FieldNames());
             return this;
         }
 

@@ -1,6 +1,5 @@
 ﻿using FastMember;
 using System.Data.Common;
-using System.Reflection.PortableExecutable;
 
 namespace Utils
 {
@@ -10,7 +9,7 @@ namespace Utils
         https://stackoverflow.com/questions/41040189/fastest-way-to-map-result-of-sqldatareader-to-object
         
         Los caracteres especiales de fieldName son reemplazados por "__"
-            Ej. persona-nombres.max > persona__nombres__max         
+            Ej. persona-nombres > persona__nombres         
         */
         public static T ConvertToObject<T>(this DbDataReader rd) where T : class, new()
         {

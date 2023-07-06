@@ -1,7 +1,10 @@
-﻿using System;
+﻿using FastMember;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -139,6 +142,49 @@ namespace Utils
                         response.Add((T)v);
 
             return response;
+        }
+
+        public static List<T> ConvertToListOfObject<T>(this List<Dictionary<string, object>> rows) where T : class, new()
+        {
+            var results = new List<T>();
+
+            foreach(var row in rows)
+                results.Add(row.ConvertToObject<T>());
+
+            return results;
+        }
+
+        public static T ConvertToObject<T>(this IDictionary<string, object> source) where T : class, new()
+        {
+            var someObject = new T();
+            var someObjectType = someObject.GetType();
+
+            foreach (var item in source)
+            {
+                string fieldName = item.Key.Replace("-", "__");
+
+                if(someObjectType.GetProperty(fieldName) != null)
+                    if (item.Value != System.DBNull.Value)
+                        someObjectType
+                            .GetProperty(fieldName)
+                            .SetValue(someObject, item.Value, null);
+                    else
+                        someObjectType
+                            .GetProperty(fieldName)
+                            .SetValue(someObject, null, null);
+            }
+
+            return someObject;
+        }
+
+        public static IDictionary<string, object> ConvertToDict(this object source, BindingFlags bindingAttr = BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance)
+        {
+            return source.GetType().GetProperties(bindingAttr).ToDictionary
+            (
+                propInfo => propInfo.Name,
+                propInfo => propInfo.GetValue(source, null)
+            );
+
         }
     }
 

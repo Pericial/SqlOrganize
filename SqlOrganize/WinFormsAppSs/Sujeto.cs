@@ -11,7 +11,7 @@ namespace WinFormsAppSs
         public string APELLIDO { get; set; }
         public string NOMBRES { get; set; }
         public string NDOC { get; set; }
-        public DateTime FECHA_NACIM { get; set; }
+        public DateTime? FECHA_NACIM { get; set; }
 
     }
 
