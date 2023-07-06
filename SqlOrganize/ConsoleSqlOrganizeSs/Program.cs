@@ -15,7 +15,10 @@ Config config = new Config
 
 var db = new DbSs(config);
 
-var query = db.Query("PERSONAL").Where("$_Id IN (@0)").Parameters(new List<object> {"01-DNI~90", "01-DNI~91"}).Fields();
+var query = db.Query("PERSONAL").
+    Fields("NIVEL_SEGU-NIVEL_SEGU, DTOJUD-DESCRIPCION, APELLIDO").
+    Where("$_Id IN (@0)").
+    Parameters(new List<object> {"01-DNI~90", "01-DNI~91"});
 
 var cache = new MemoryCache(new MemoryCacheOptions());
 

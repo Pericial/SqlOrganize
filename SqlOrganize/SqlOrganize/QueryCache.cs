@@ -27,7 +27,7 @@ namespace SqlOrganize
         Campos de relaciones
         Para facilitar el filtro de campos de relaciones se agregan agrupadas por fieldId
         */
-        public Dictionary<string, List<string>> FieldsRel;
+        public Dictionary<string, List<string>> FieldsRel = new();
 
         /*
         FieldsId que deben ser consultados en el orden correspondiente
@@ -169,8 +169,11 @@ namespace SqlOrganize
         {
             List<Dictionary<string, object>> response = new();
 
-            if (query.fields.IsNullOrEmpty() || !query.select.IsNullOrEmpty() || !query.group.IsNullOrEmpty())
+            if (!query.select.IsNullOrEmpty() || !query.group.IsNullOrEmpty())
                 return _ListDict(query);
+
+            if (query.fields.IsNullOrEmpty())
+                query.Fields();
             
             EntityQuery queryAux = (EntityQuery)query.Clone();
             queryAux.fields = "$_Id";
@@ -211,21 +214,20 @@ namespace SqlOrganize
                 List<object> ids = response.Column<object>(fkName).Distinct().ToList();
                 ids.RemoveAll(item => item == null);
 
+
                 List<Dictionary<string, object>> data = ListDict(refEntityName, ids.ToArray());
-                if (data.Count == 0) return response;
 
                 for(var i = 0; i < response.Count; i++)
                 {
                     for (var j = 0; j < data.Count; j++)
                     {
-                        if (response[i][fkName] == data[j][refFieldName])
+                        if (response[i][fkName].Equals(data[j][refFieldName]))
                         {
                             for (var k = 0; k < fo.FieldsRel[fieldId].Count; k++)
                             {
                                 var n = fo.FieldsRel[fieldId][k];
                                 response[i][fieldId + "-" + n] = data[j][n];
                             }
-                            break;
                         }
                     }
                 }
@@ -250,9 +252,9 @@ namespace SqlOrganize
             {
                 var entityName = rel.refEntityName;
                 Dictionary<string, object> rowAux = new();
+                string f = fieldId + Db.config.idNameSeparatorString;
                 foreach (var (column, value) in row)
                 {
-                    string f = fieldId + Db.config.idNameSeparatorString;
                     if (column.Contains(f))
                     {
                         string ff = column.Substring(f.Length);
@@ -260,7 +262,7 @@ namespace SqlOrganize
                         row.Remove(column);
                     }
                 }
-                Cache.Set<Dictionary<string, object>>(entityName + rowAux["_Id"].ToString(), row);
+                Cache.Set<Dictionary<string, object>>(entityName + rowAux["_Id"].ToString(), rowAux);
 
             }
         }
