@@ -69,7 +69,7 @@ namespace SqlOrganize
 
             if (p.Count == 1)
             {
-                Field field = db.field(entityName, fieldName);
+                Field field = db.Field(entityName, fieldName);
                 switch (field.dataType)
                 {
                     
@@ -152,7 +152,7 @@ namespace SqlOrganize
 
             if (p.Count == 1) //traducir field_name sin funcion (por el momento solo se validan los fields sin funcion
             {
-                Field field = db.field(entityName, field_name);
+                Field field = db.Field(entityName, field_name);
 
                 r["type"] = field.dataType;
                 if(field.IsRequired()) r["required"] = null;
@@ -190,7 +190,7 @@ namespace SqlOrganize
 
             if (p.Count == 1)
             {
-                Field field = db.field(entityName, p[0]);
+                Field field = db.Field(entityName, p[0]);
                 switch (field.dataType)
                 {
                     default:
@@ -211,7 +211,7 @@ namespace SqlOrganize
             List<string> p = fieldName.Split(".").ToList();
             if (p.Count == 1)
             {
-                Field field = db.field(entityName, fieldName);
+                Field field = db.Field(entityName, fieldName);
                 switch (field.dataType)
                 {
                     default:

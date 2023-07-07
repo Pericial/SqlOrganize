@@ -173,7 +173,7 @@ namespace SqlOrganize
         Si no existe el field consultado se devuelve una configuracion vacia
         No es obligatorio que exista el field en la configuracion, se cargaran los parametros por defecto.
         */
-        public Field field(string entityName, string fieldName)
+        public Field Field(string entityName, string fieldName)
         {
             Dictionary<string, Field> fe = FieldsEntity(entityName);
             return (fe.ContainsKey(fieldName)) ? fe[entityName] : new Field();
@@ -187,13 +187,19 @@ namespace SqlOrganize
                 l.Insert(0, "_Id");
             return l;
         }
-        
+
+        public List<string> FieldNamesNoAdmin(string entityName)
+        {
+            var e = Entity(entityName);
+            return e.fields.Except(e.noAdmin).ToList();
+        }
+
         public Entity Entity(string entity_name)
         {
             return entities[entity_name];
         }
 
-        public EntityTools tools(string entity_name)
+        public EntityTools Tools(string entity_name)
         {
             return new (this, entity_name);
         }

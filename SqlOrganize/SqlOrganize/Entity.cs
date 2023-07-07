@@ -94,7 +94,7 @@ namespace SqlOrganize
         {
             List<Field> fields = new();
             foreach (string fieldName in fieldNames)
-                fields.Add(db.field(name, fieldName));
+                fields.Add(db.Field(name, fieldName));
 
             return fields;
 
