@@ -23,9 +23,9 @@ namespace SqlOrganizeSs
         public SqlConnection conn() => _conn;
 
 
-        public override EntityQuery Query(string entity_name)
+        public override Query Query(string entity_name)
         {
-            return new EntityQuerySs(this, entity_name);
+            return new QuerySs(this, entity_name);
         }
 
         public override Values Values(string entity_name, string field_id)

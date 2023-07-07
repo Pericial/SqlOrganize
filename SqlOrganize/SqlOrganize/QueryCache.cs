@@ -63,7 +63,7 @@ namespace SqlOrganize
         }
 
 
-        protected List<Dictionary<string, object>> _ListDict(EntityQuery query)
+        protected List<Dictionary<string, object>> _ListDict(Query query)
         {
             List<string> queries;
             if (!Cache.TryGetValue("queries", out queries))
@@ -84,13 +84,13 @@ namespace SqlOrganize
         /*
         TODO se puede optimizar y evitar tantos loops?
         */        
-        public List<T> ListObj<T>(EntityQuery query) where T : class, new()
+        public List<T> ListObj<T>(Query query) where T : class, new()
         {
             List<Dictionary<string, object>> response = ListDict(query);
             return response.ConvertToListOfObject<T>();
         }
 
-        public List<Dictionary<string, object>> ListDict(EntityQuery query)
+        public List<Dictionary<string, object>> ListDict(Query query)
         {
             List<Dictionary<string, object>> response = new();
 
@@ -100,7 +100,7 @@ namespace SqlOrganize
             if (query.fields.IsNullOrEmpty())
                 query.Fields();
             
-            EntityQuery queryAux = (EntityQuery)query.Clone();
+            Query queryAux = (Query)query.Clone();
             queryAux.fields = "_Id";
 
             List<string> ids = queryAux.Column<string>();
@@ -172,7 +172,7 @@ namespace SqlOrganize
             return row;
         }
 
-        protected void EntityCacheRecursive(Dictionary<string, EntityRel> relations, Dictionary<string, object> row)
+        protected void EntityCacheRecursive(Dictionary<string, Relation> relations, Dictionary<string, object> row)
         {
             foreach (var (fieldId, rel) in relations)
             {
@@ -244,7 +244,7 @@ namespace SqlOrganize
             if (Fields[index].Contains(Db.config.idNameSeparatorString))
             {
                 var f = Fields[index].Split(Db.config.idNameSeparatorString);
-                EntityRel r = Db.Entity(EntityName).relations[f[0]];
+                Relation r = Db.Entity(EntityName).relations[f[0]];
                 string fkName = (!r.parentId.IsNullOrEmpty()) ? r.parentId + Db.config.idNameSeparatorString + r.fieldName : r.fieldName;
 
                 if (!FieldsRel.ContainsKey(f[0]))
@@ -261,7 +261,7 @@ namespace SqlOrganize
                 OrganizeRelations(index);
         }
 
-        protected void OrganizeOrder(Dictionary<string, EntityTree> tree)
+        protected void OrganizeOrder(Dictionary<string, Tree> tree)
         {
             foreach (var (fieldId, et) in tree)
             {

@@ -5,7 +5,7 @@ using System.Data.Common;
 
 namespace SqlOrganizeSs
 {
-    public class EntityQuerySs : EntityQuery
+    public class EntityQuerySs : Query
     {
 
         public EntityQuerySs(Db db, string entity_name) : base(db, entity_name)
@@ -221,7 +221,7 @@ FETCH FIRST " + size + " ROWS ONLY";
             throw new NotImplementedException();
         }
 
-        public override EntityQuery Clone()
+        public override Query Clone()
         {
             var eq = new EntityQuerySs(db, entityName);
             eq.size = size;

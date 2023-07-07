@@ -13,7 +13,7 @@ namespace WinFormsAppSs
 
         protected override void OnLoad(EventArgs e)
         {
-            EntityQuery q = ContainerApp.db.Query("SUJETOS").
+            Query q = ContainerApp.db.Query("SUJETOS").
                 Size(100).
                 Where("$FECHA_NACIM IS NOT NULL");
             sujetoBindingSource1.DataSource = ContainerApp.queryCache.ListObj<Sujeto>(q);

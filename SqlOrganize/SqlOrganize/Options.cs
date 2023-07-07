@@ -3,14 +3,14 @@ using Utils;
 
 namespace SqlOrganize
 {
-    public class EntityOptions
+    public class Options
     {
         public Db db { get; }
         public string entityName { get; }
 
         public string? fieldId { get; }
 
-        public EntityOptions(Db _db, string _entityName, string? _fieldId)
+        public Options(Db _db, string _entityName, string? _fieldId)
         {
             db = _db;
             entityName = _entityName;
@@ -32,7 +32,7 @@ namespace SqlOrganize
 
         Los metodos posibles para ejecucion no deben llevar otro parametro mas que el field_name
         */
-        public EntityOptions CallFields(List<string> fieldNames, string method)
+        public Options CallFields(List<string> fieldNames, string method)
         {
             Type thisType = this.GetType();
             MethodInfo m = thisType.GetMethod(method)!;
@@ -50,7 +50,7 @@ namespace SqlOrganize
 
         Los metodos posibles para ejecucion no deben llevar otro parametro mas que el field_name
         */
-        public EntityOptions Call(string method)
+        public Options Call(string method)
         {
             return CallFields(db.FieldNames(entityName), method);
         }
@@ -79,7 +79,7 @@ namespace SqlOrganize
             return to_fields(db.FieldNames(entityName), method);
         }
 
-        public EntityOptions FromFields(Dictionary<string, object> row, List<string> fieldNames, string method)
+        public Options FromFields(Dictionary<string, object> row, List<string> fieldNames, string method)
         {
             Type thisType = this.GetType();
             MethodInfo m = thisType.GetMethod(method)!;
@@ -93,7 +93,7 @@ namespace SqlOrganize
 
             return this;
         }
-        public EntityOptions from(Dictionary<string, object> row, string method)
+        public Options from(Dictionary<string, object> row, string method)
         {
             return FromFields(row, db.FieldNames(entityName), method);
         }

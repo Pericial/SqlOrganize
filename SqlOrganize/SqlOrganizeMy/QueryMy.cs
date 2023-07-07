@@ -5,10 +5,10 @@ using Utils;
 
 namespace SqlOrganizeMy
 {
-    public class EntityQueryMy : EntityQuery
+    public class QueryMy : Query
     {
 
-        public EntityQueryMy(Db db, string entityName) : base(db, entityName)
+        public QueryMy(Db db, string entityName) : base(db, entityName)
         {
         }
 
@@ -173,9 +173,9 @@ namespace SqlOrganizeMy
             throw new NotImplementedException();
         }
 
-        public override EntityQuery Clone()
+        public override Query Clone()
         {
-            var eq = new EntityQueryMy(db, entityName);
+            var eq = new QueryMy(db, entityName);
             eq.size = size;
             eq.where = where;
             eq.page = page;

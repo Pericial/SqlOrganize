@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SqlOrganize
 {
-    public class EntityRel
+    public class Relation
     {
         public string fieldName { get; set; }
         public string refEntityName { get; set; }

@@ -199,12 +199,12 @@ namespace SqlOrganize
             return entities[entity_name];
         }
 
-        public EntityTools Tools(string entity_name)
+        public Tools Tools(string entity_name)
         {
             return new (this, entity_name);
         }
 
-        public abstract EntityQuery Query(string entity_name);
+        public abstract Query Query(string entity_name);
 
         public Mapping Mapping(string entityName, string? fieldId = null)
         {

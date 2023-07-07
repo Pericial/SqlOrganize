@@ -22,9 +22,9 @@ namespace SqlOrganizeMy
 
         public MySqlConnection conn() => _conn;
 
-        public override EntityQuery Query(string entity_name)
+        public override Query Query(string entity_name)
         {
-            return new EntityQueryMy(this, entity_name);
+            return new QueryMy(this, entity_name);
         }
 
         public override Values Values(string entity_name, string field_id)

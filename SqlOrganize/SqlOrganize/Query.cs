@@ -17,7 +17,7 @@ namespace SqlOrganize
         - indica que pertenece a una relacion
         Ej "($ingreso = %p1) AND ($persona-nombres.max = %p1)"
     */
-    public abstract class EntityQuery
+    public abstract class Query
     {
         public Db db { get; }
 
@@ -42,37 +42,37 @@ namespace SqlOrganize
         public List<object> parameters = new List<object> { };
 
 
-        public EntityQuery(Db _db, string _entityName)
+        public Query(Db _db, string _entityName)
         {
             db = _db;
             entityName = _entityName;
         }
 
-        public EntityQuery Where(string w)
+        public Query Where(string w)
         {
             where = w;
             return this;
         }
 
-        public EntityQuery Fields()
+        public Query Fields()
         {
             fields += string.Join(", ", db.Tools(entityName).FieldNames());
             return this;
         }
 
-        public EntityQuery Fields(string f)
+        public Query Fields(string f)
         {
             fields += f;
             return this;
         }
 
-        public EntityQuery Select(string f)
+        public Query Select(string f)
         {
             select += f;
             return this;
         }
 
-        public EntityQuery Parameters(params object[] parameters)
+        public Query Parameters(params object[] parameters)
         {
             this.parameters.AddRange(parameters.ToList());
             return this;
@@ -143,31 +143,31 @@ namespace SqlOrganize
             return ff;
         }
 
-        public EntityQuery Size(int _size)
+        public Query Size(int _size)
         {
             size = _size;
             return this;
         }
 
-        public EntityQuery Page(int _page)
+        public Query Page(int _page)
         {
             page = _page;
             return this;
         }
 
-        public EntityQuery Order(string _order)
+        public Query Order(string _order)
         {
             order = _order;
             return this;
         }
 
-        public EntityQuery Having(string h)
+        public Query Having(string h)
         {
             having += h;
             return this;
         }
 
-        public EntityQuery Group(string g)
+        public Query Group(string g)
         {
             group += g;
             return this;
@@ -181,7 +181,7 @@ namespace SqlOrganize
             return sql;
         }
 
-        protected string SqlJoinFk(Dictionary<string, EntityTree> tree, string table_id)
+        protected string SqlJoinFk(Dictionary<string, Tree> tree, string table_id)
         {
             if (table_id.IsNullOrEmpty())
                 table_id = db.Entity(entityName).alias;
@@ -303,7 +303,7 @@ namespace SqlOrganize
         */
         public abstract List<Dictionary<string, T>> Tree<T>();
 
-        public abstract EntityQuery Clone();
+        public abstract Query Clone();
 
 
 

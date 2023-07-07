@@ -2,12 +2,12 @@
 
 namespace SqlOrganize
 {
-    public class EntityTools
+    public class Tools
     {
         public Db db { get; }
         public string entityName { get; }
 
-        public EntityTools(Db _db, string _entityName)
+        public Tools(Db _db, string _entityName)
         {
             db = _db;
             entityName = _entityName;
@@ -21,7 +21,7 @@ namespace SqlOrganize
             List<string> fieldNamesR = new();
 
             if(!db.Entity(entityName).relations.IsNullOrEmpty())
-                foreach((string fieldId, EntityRel er) in db.Entity(entityName).relations)
+                foreach((string fieldId, Relation er) in db.Entity(entityName).relations)
                     foreach(string fieldName in db.FieldNames(er.refEntityName))
                         fieldNamesR.Add(fieldId + "-" + fieldName);
 

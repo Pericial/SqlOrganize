@@ -22,7 +22,7 @@ namespace SqlOrganize
     -json: Transformar a json
     -sql: Transformar a sql
     */
-    public abstract class Values : EntityOptions
+    public abstract class Values : Options
     {
 
         public Logging logging { get; set; } = new Logging();
