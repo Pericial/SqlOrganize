@@ -25,7 +25,7 @@ namespace SchemaJsonSs
             command.Parameters.AddWithValue("db_name", Config.db_name);
             command.ExecuteNonQuery();
             using SqlDataReader reader = command.ExecuteReader();
-            return DbDataReaderUtils.ColumnValues<string>(reader, "TABLE_NAME");
+            return SqlUtils.ColumnValues<string>(reader, "TABLE_NAME");
         }
 
         protected override List<Field> GetFields(string tableName)

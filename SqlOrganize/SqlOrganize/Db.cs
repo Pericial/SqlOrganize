@@ -206,6 +206,8 @@ namespace SqlOrganize
 
         public abstract Query Query(string entity_name);
 
+        public abstract Persist Persist(string entityName);
+
         public Mapping Mapping(string entityName, string? fieldId = null)
         {
             return new(this, entityName, fieldId);

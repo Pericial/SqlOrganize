@@ -22,6 +22,10 @@ namespace SqlOrganizeSs
 
         public SqlConnection conn() => _conn;
 
+        public override Persist Persist(string entityName)
+        {
+            return new PersistSs(this, entityName);
+        }
 
         public override Query Query(string entity_name)
         {

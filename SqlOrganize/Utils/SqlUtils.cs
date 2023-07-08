@@ -3,7 +3,7 @@ using System.Data.Common;
 
 namespace Utils
 {
-    public static class DbDataReaderUtils
+    public static class SqlUtils
     {
         /*
         https://stackoverflow.com/questions/41040189/fastest-way-to-map-result-of-sqldatareader-to-object
@@ -93,6 +93,8 @@ namespace Utils
                 result.Add((T)reader.GetValue(columnNumber));
             return result;
         }
+
+        
     }
 
 

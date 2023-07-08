@@ -10,20 +10,22 @@ using Utils;
 
 namespace SqlOrganize
 {
-    public class Persist
+    public abstract class Persist
     {
         public Db db { get; }
+
+        public string? entityName { get; }
 
         public List<object> parameters { get; set; }  = new List<object> { };
 
         public int count = 0;
 
         public string sql { get; set; } = "";
-        
 
-        public Persist(Db _db)
+        public Persist(Db _db, string? _entityName = null)
         {
             db = _db;
+            entityName = _entityName;
         }
 
         public Persist Parameters(params object[] parameters)
@@ -32,28 +34,35 @@ namespace SqlOrganize
             return this;
         }
 
-        protected Persist _Update(string entityName, Dictionary<string, object> row)
+        protected Persist _Update(Dictionary<string, object> row, string? _entityName = null)
         {
-            string sn = db.Entity(entityName).schemaName;
+            _entityName = _entityName ?? entityName;
+            string sn = db.Entity(_entityName).schemaName;
             sql += @"
-UPDATE " + sn + @"SET
+UPDATE " + sn + @" SET
 ";
-            List<string> fieldNames = db.FieldNamesNoAdmin(entityName);
+            List<string> fieldNames = db.FieldNamesNoAdmin(_entityName);
             foreach (string fieldName in fieldNames)
-                if (row.ContainsKey(fieldName)) sql += fieldName + " = @" + fieldName + count + ", ";
+                if (row.ContainsKey(fieldName))
+                {
+                    sql += fieldName + " = @" + count + ", ";
+                    count++;
+                    parameters.Add(row[fieldName]);
+                }
             sql.RemoveLastIndex(',');
-            parameters.Add(row);
             return this;
         }
 
-        public Persist UpdateId(string entityName, Dictionary<string, object> row)
+        public Persist Update(Dictionary<string, object> row, string? _entityName = null)
         {
-            _Update(entityName, row);
+            _entityName = _entityName ?? entityName;
+
+            _Update(row, _entityName);
             sql += @"
-WHERE $_Id = @_Id" + count + @";
+WHERE $_Id = @" + count + @";
 ";
             count++;
-                
+            parameters.Add(row["_Id"]);
             return this;
         }
 
@@ -76,6 +85,13 @@ VALUES (" + String.Join(", ", keys) + @")
             return this;
 
         }
+
+        public string Sql()
+        {
+            return sql;
+        }
+
+        public abstract void Exec();
 
     }
 }

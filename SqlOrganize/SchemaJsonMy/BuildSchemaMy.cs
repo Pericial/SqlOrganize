@@ -91,7 +91,7 @@ order by COL.TABLE_NAME, COL.ORDINAL_POSITION;
             command.Connection = connection;
             command.ExecuteNonQuery();
             using MySqlDataReader reader = command.ExecuteReader();
-            return DbDataReaderUtils.ColumnValues<string>(reader, 0);
+            return SqlUtils.ColumnValues<string>(reader, 0);
         }
 
      

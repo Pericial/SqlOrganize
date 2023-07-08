@@ -25,12 +25,25 @@ var qc = new QueryCache(db, cache);
 
 var data = qc.ListDict(query);
 
-var data2 = qc.ListObj<Personal>(query);
+
+data[0]["APELLIDO"] = "CIERRESAP";
+    data[0]["NOMBRES"] = "CIERRESNOM";
+
+
+
+
+//var data2 = qc.ListObj<Personal>(query);
+
 
 
 string json = JsonConvert.SerializeObject(data, Newtonsoft.Json.Formatting.Indented);
 
+db.Persist("PERSONAL").Update(data[0]).Exec();
+
 Console.WriteLine(json);
+
+
+
 
 
 public class Personal

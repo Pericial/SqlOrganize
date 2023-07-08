@@ -13,6 +13,8 @@ Config config = new Config
 
 var db = new DbMy(config);
 
+
+
 var query = db.Query("curso").
     Where("$_Id IN (@0)").
     Parameters(new List<object> { "6496098054a4f", "6496098051999" });
