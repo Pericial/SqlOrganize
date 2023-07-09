@@ -15,20 +15,23 @@ var db = new DbMy(config);
 
 
 
-var query = db.Query("curso").
-    Where("$_Id IN (@0)").
-    Parameters(new List<object> { "6496098054a4f", "6496098051999" });
+var query = db.Query("persona").
+    Where("$numero_documento = @0").
+    Parameters("31073351");
 
-var cache = new MemoryCache(new MemoryCacheOptions());
 
-var qc = new QueryCache(db, cache);
-
-var data = qc.ListDict(query);
-
-data = qc.ListDict(query);
+var data = query.ListDict();
 
 string json = JsonConvert.SerializeObject(data, Newtonsoft.Json.Formatting.Indented);
 
 Console.WriteLine(json);
 
+data[0]["nombres"] = "IIIII";
+data[0]["apellidos"] = "CCCCC";
 
+var ep = db.Persist("persona").Insert(data[0]);
+ep = db.Persist("persona").Update(data[0]);
+ep = db.Persist("persona").Persist(data[0]);
+
+
+//ep.Update(data[0]).Exec();

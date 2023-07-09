@@ -22,24 +22,25 @@ namespace SqlOrganize
     -json: Transformar a json
     -sql: Transformar a sql
     */
-    public abstract class Values : Options
+    public abstract class EntityValues : EntityOptions
     {
 
         public Logging logging { get; set; } = new Logging();
 
         public Dictionary <string, object>  values = new Dictionary<string, object> ();
 
-        public Values(Db _db, string _entity_name, string _field_id) : base(_db, _entity_name, _field_id)
+        public EntityValues(Db _db, string _entity_name, string _field_id) : base(_db, _entity_name, _field_id)
         {
 
         }
 
-        public void set(string field_name, object value)
+        public EntityValues Set(string fieldName, object value)
         {
-            values[field_name] = value;
+            values[fieldName] = value;
+            return this;
         }
 
-        public object get(string field_name)
+        public object Get(string field_name)
         {
             return values[field_name];
         }

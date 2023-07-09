@@ -100,5 +100,17 @@ namespace SqlOrganize
             return level;
         }
 
+        public bool Error()
+        {
+            foreach(var (key, logsEntity) in logs)
+            {
+                foreach(var log in logsEntity)
+                {
+                    if (log.level == Level.Error) return true;
+                }
+            }
+            return false;
+        }
+
     }
 }

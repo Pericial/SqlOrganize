@@ -5,10 +5,10 @@ using System.Data.Common;
 
 namespace SqlOrganizeSs
 {
-    public class PersistSs : Persist
+    public class EntityPersistSs : EntityPersist
     {
 
-        public PersistSs(Db db, string entity_name) : base(db, entity_name)
+        public EntityPersistSs(Db db, string entity_name) : base(db, entity_name)
         {
         }
 

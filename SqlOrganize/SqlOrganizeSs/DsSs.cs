@@ -22,17 +22,17 @@ namespace SqlOrganizeSs
 
         public SqlConnection conn() => _conn;
 
-        public override Persist Persist(string entityName)
+        public override EntityPersist Persist(string entityName)
         {
-            return new PersistSs(this, entityName);
+            return new EntityPersistSs(this, entityName);
         }
 
-        public override Query Query(string entity_name)
+        public override EntityQuery Query(string entity_name)
         {
-            return new QuerySs(this, entity_name);
+            return new EntityQuerySs(this, entity_name);
         }
 
-        public override Values Values(string entity_name, string field_id)
+        public override EntityValues Values(string entity_name, string field_id)
         {
             return new ValuesSs(this, entity_name, field_id);
         }

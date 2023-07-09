@@ -188,7 +188,7 @@ namespace SqlOrganize
             return l;
         }
 
-        public List<string> FieldNamesNoAdmin(string entityName)
+        public List<string> FieldNamesAdmin(string entityName)
         {
             var e = Entity(entityName);
             return e.fields.Except(e.noAdmin).ToList();
@@ -199,21 +199,21 @@ namespace SqlOrganize
             return entities[entity_name];
         }
 
-        public Tools Tools(string entity_name)
+        public EntityTools Tools(string entity_name)
         {
             return new (this, entity_name);
         }
 
-        public abstract Query Query(string entity_name);
+        public abstract EntityQuery Query(string entity_name);
 
-        public abstract Persist Persist(string entityName);
+        public abstract EntityPersist Persist(string entityName);
 
-        public Mapping Mapping(string entityName, string? fieldId = null)
+        public EntityMapping Mapping(string entityName, string? fieldId = null)
         {
             return new(this, entityName, fieldId);
         }
 
-        public abstract Values Values(string entity_name, string field_id);
+        public abstract EntityValues Values(string entityName, string? fieldId = null);
 
         //public abstract FieldById(string entityName, string fieldId) 
 

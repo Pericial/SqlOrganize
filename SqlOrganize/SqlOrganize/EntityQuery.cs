@@ -17,7 +17,7 @@ namespace SqlOrganize
         - indica que pertenece a una relacion
         Ej "($ingreso = %p1) AND ($persona-nombres.max = %p1)"
     */
-    public abstract class Query
+    public abstract class EntityQuery
     {
         public Db db { get; }
 
@@ -42,37 +42,95 @@ namespace SqlOrganize
         public List<object> parameters = new List<object> { };
 
 
-        public Query(Db _db, string _entityName)
+        public EntityQuery(Db _db, string _entityName)
         {
             db = _db;
             entityName = _entityName;
         }
 
-        public Query Where(string w)
+        public EntityQuery Where(string w)
         {
             where = w;
             return this;
         }
 
-        public Query Fields()
+        public EntityQuery Unique(Dictionary<string, object> row)
+        {
+            List<string> pk = db.Entity(entityName).pk;
+
+            List<string> whereUnique = new();
+            foreach (string fieldName in db.Entity(entityName).unique)
+            {
+                foreach (var (key, value) in row)
+                {
+                    if (key == fieldName)
+                    {
+                        whereUnique.Add(key + " = " + value);
+                        break;
+                    }
+                }
+            }
+
+            if (whereUnique.Count > 0)
+            {
+                string w = "(" + String.Join(") OR (", whereUnique) + ")";
+                where += (where.IsNullOrEmpty()) ? w : " OR " + w;
+            }
+
+            UniqueMultiple(row, db.Entity(entityName).uniqueMultiple);
+            UniqueMultiple(row, db.Entity(entityName).pk);
+
+            return this;
+        }
+
+        protected EntityQuery UniqueMultiple(Dictionary<string, object> row, List<string> fields)
+        {
+            bool existsUniqueMultiple = true;
+            List<string> whereMultiple = new();
+            foreach(string field in fields)
+            {
+                if (!existsUniqueMultiple) 
+                    break;
+
+                existsUniqueMultiple = false;
+
+                foreach(var (key, value) in row)
+                {
+                    if(key == field)
+                    {
+                        existsUniqueMultiple = true;
+                        whereMultiple.Add(key + " = " + value);
+                        break;
+                    }
+                }
+            }
+            if(existsUniqueMultiple && whereMultiple.Count > 0)
+            {
+                string w = "(" + String.Join(") AND (", whereMultiple) + ")";
+                where += (where.IsNullOrEmpty()) ? w : " OR " + w;
+            }
+            return this;
+        }
+
+        public EntityQuery Fields()
         {
             fields += string.Join(", ", db.Tools(entityName).FieldNames());
             return this;
         }
 
-        public Query Fields(string f)
+        public EntityQuery Fields(string f)
         {
             fields += f;
             return this;
         }
 
-        public Query Select(string f)
+        public EntityQuery Select(string f)
         {
             select += f;
             return this;
         }
 
-        public Query Parameters(params object[] parameters)
+        public EntityQuery Parameters(params object[] parameters)
         {
             this.parameters.AddRange(parameters.ToList());
             return this;
@@ -143,31 +201,31 @@ namespace SqlOrganize
             return ff;
         }
 
-        public Query Size(int _size)
+        public EntityQuery Size(int _size)
         {
             size = _size;
             return this;
         }
 
-        public Query Page(int _page)
+        public EntityQuery Page(int _page)
         {
             page = _page;
             return this;
         }
 
-        public Query Order(string _order)
+        public EntityQuery Order(string _order)
         {
             order = _order;
             return this;
         }
 
-        public Query Having(string h)
+        public EntityQuery Having(string h)
         {
             having += h;
             return this;
         }
 
-        public Query Group(string g)
+        public EntityQuery Group(string g)
         {
             group += g;
             return this;
@@ -181,7 +239,7 @@ namespace SqlOrganize
             return sql;
         }
 
-        protected string SqlJoinFk(Dictionary<string, Tree> tree, string table_id)
+        protected string SqlJoinFk(Dictionary<string, EntityTree> tree, string table_id)
         {
             if (table_id.IsNullOrEmpty())
                 table_id = db.Entity(entityName).alias;
@@ -303,45 +361,20 @@ namespace SqlOrganize
         */
         public abstract List<Dictionary<string, T>> Tree<T>();
 
-        public abstract Query Clone();
+        public abstract EntityQuery Clone();
 
-
-
-
-        /*
-        public abstract Dictionary<string, object> fetch_assoc();
-
-        public abstract List<List<object>> fetch_row();
-
-        public abstract List<object> fetch_column();
-
-        public abstract List<Dictionary<string, object>> tree();
-
-        public abstract List<Dictionary<string, string>> json_tree();
-
-        public abstract List<Dictionary<string, object>> rel();
-
-        public abstract List<Dictionary<string, string>> json_rel();
-
-        public abstract Dictionary<string, object>? one_or_null();
-
-        public abstract Dictionary<string, object>? one();
-
-        public abstract Dictionary<string, object>? first_or_null();
-
-        public abstract Dictionary<string, object>? first();
-
-        public abstract Dictionary<string, string>? json_one();
-
-        public abstract List<object>? column(int number = 0);
-        */
-
-
-
-
-
-
-
+        protected EntityQuery _Clone(EntityQuery eq)
+        {
+            eq.size = size;
+            eq.where = where;
+            eq.page = page;
+            eq.parameters = parameters;
+            eq.group = group;
+            eq.having = having;
+            eq.fields = fields;
+            eq.select = select;
+            eq.order = order;
+            return eq;
+        }
     }
-
 }

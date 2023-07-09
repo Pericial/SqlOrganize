@@ -18,9 +18,9 @@ namespace SqlOrganizeMy
 
     Las subclases deben soportar la sintaxis del motor que se encuentran utilizando.
     */
-    public class ValuesMy : Values
+    public class ValuesMy : EntityValues
     {
-        public ValuesMy(Db _db, string _entity_name, string _field_id) : base(_db, _entity_name, _field_id)
+        public ValuesMy(Db db, string entityName, string fieldId) : base(db, entityName, fieldId)
         {
         }
 

@@ -21,7 +21,7 @@ var query = db.Query("PERSONAL").
 
 var cache = new MemoryCache(new MemoryCacheOptions());
 
-var qc = new QueryCache(db, cache);
+var qc = new DbCache(db, cache);
 
 var data = qc.ListDict(query);
 
@@ -38,7 +38,7 @@ data[0]["APELLIDO"] = "CIERRESAP";
 
 string json = JsonConvert.SerializeObject(data, Newtonsoft.Json.Formatting.Indented);
 
-db.Persist("PERSONAL").Update(data[0]).Exec();
+//db.Persist("PERSONAL").Update(data[0]).Exec();
 
 Console.WriteLine(json);
 

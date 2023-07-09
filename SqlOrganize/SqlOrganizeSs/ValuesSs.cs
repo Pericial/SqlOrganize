@@ -16,9 +16,9 @@
 
     Las subclases deben soportar la sintaxis del motor que se encuentran utilizando.
     */
-    public class ValuesSs : Values
+    public class ValuesSs : EntityValues
     {
-        public ValuesSs(Db _db, string _entity_name, string _field_id) : base(_db, _entity_name, _field_id)
+        public ValuesSs(Db db, string entityName, string fieldId) : base(db, entityName, fieldId)
         {
         }
 

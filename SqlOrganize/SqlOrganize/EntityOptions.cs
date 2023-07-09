@@ -3,14 +3,14 @@ using Utils;
 
 namespace SqlOrganize
 {
-    public class Options
+    public class EntityOptions
     {
         public Db db { get; }
         public string entityName { get; }
 
         public string? fieldId { get; }
 
-        public Options(Db _db, string _entityName, string? _fieldId)
+        public EntityOptions(Db _db, string _entityName, string? _fieldId)
         {
             db = _db;
             entityName = _entityName;
@@ -19,20 +19,20 @@ namespace SqlOrganize
 
         public string Pf()
         {
-            return (fieldId.IsNullOrEmpty()) ? fieldId + "-" : "";
+            return (!fieldId.IsNullOrEmpty()) ? fieldId! + "-" : "";
         }
 
         public string Pt()
         {
-            return (!fieldId.IsNullOrEmpty()) ? fieldId : db.Entity(entityName).alias;
+            return (!fieldId.IsNullOrEmpty()) ? fieldId! : db.Entity(entityName).alias;
         }
 
         /*
         Recorrer fields y ejecutar metodo indicado
 
-        Los metodos posibles para ejecucion no deben llevar otro parametro mas que el field_name
+        Los metodos posibles para ejecucion no deben llevar otro parametro mas que el fieldName
         */
-        public Options CallFields(List<string> fieldNames, string method)
+        public EntityOptions CallFields(List<string> fieldNames, string method)
         {
             Type thisType = this.GetType();
             MethodInfo m = thisType.GetMethod(method)!;
@@ -46,11 +46,11 @@ namespace SqlOrganize
         }
 
         /*
-        Ejecutar metodo indicado para field_names de la entidad
+        Ejecutar metodo indicado para fieldNames de la entidad
 
-        Los metodos posibles para ejecucion no deben llevar otro parametro mas que el field_name
+        Los metodos posibles para ejecucion no deben llevar otro parametro mas que el fieldName
         */
-        public Options Call(string method)
+        public EntityOptions Call(string method)
         {
             return CallFields(db.FieldNames(entityName), method);
         }
@@ -79,23 +79,23 @@ namespace SqlOrganize
             return to_fields(db.FieldNames(entityName), method);
         }
 
-        public Options FromFields(Dictionary<string, object> row, List<string> fieldNames, string method)
+        public EntityOptions FromFields(List<string> fieldNames, Dictionary<string, object> row, string method)
         {
             Type thisType = this.GetType();
             MethodInfo m = thisType.GetMethod(method)!;
 
             if (!row.IsNullOrEmpty())
-                foreach (var field_name in fieldNames)
-                    if (row.ContainsKey(Pf()+field_name))
+                foreach (var fieldName in fieldNames)
+                    if (row.ContainsKey(Pf()+fieldName))
                     {
-                        object r = m.Invoke(this, new object[2] { field_name, row[Pf() + field_name] });
+                        object r = m.Invoke(this, new object[2] { fieldName, row[Pf() + fieldName] });
                     }
 
             return this;
         }
-        public Options from(Dictionary<string, object> row, string method)
+        public EntityOptions From(Dictionary<string, object> row, string method)
         {
-            return FromFields(row, db.FieldNames(entityName), method);
+            return FromFields(db.FieldNames(entityName), row, method);
         }
 
     }

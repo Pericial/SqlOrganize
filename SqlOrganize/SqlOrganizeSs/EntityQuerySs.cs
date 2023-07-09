@@ -5,10 +5,10 @@ using System.Data.Common;
 
 namespace SqlOrganizeSs
 {
-    public class QuerySs : Query
+    public class EntityQuerySs : EntityQuery
     {
 
-        public QuerySs(Db db, string entity_name) : base(db, entity_name)
+        public EntityQuerySs(Db db, string entity_name) : base(db, entity_name)
         {
         }
 
@@ -129,19 +129,10 @@ FETCH FIRST " + size + " ROWS ONLY";
             throw new NotImplementedException();
         }
 
-        public override Query Clone()
+        public override EntityQuery Clone()
         {
-            var eq = new QuerySs(db, entityName);
-            eq.size = size;
-            eq.where = where;
-            eq.page = page;
-            eq.parameters = parameters;
-            eq.group = group;
-            eq.having = having;
-            eq.fields = fields;
-            eq.select = select;
-            eq.order = order;
-            return eq;
+            var eq = new EntityQuerySs(db, entityName);
+            return _Clone(eq);
         }
     }
 }

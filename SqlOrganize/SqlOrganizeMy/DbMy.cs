@@ -1,6 +1,7 @@
 ﻿
 using MySql.Data.MySqlClient;
 using SqlOrganize;
+using SqlOrganizeSs;
 
 namespace SqlOrganizeMy
 {
@@ -22,14 +23,19 @@ namespace SqlOrganizeMy
 
         public MySqlConnection conn() => _conn;
 
-        public override Query Query(string entity_name)
+        public override EntityPersist Persist(string entityName)
         {
-            return new QueryMy(this, entity_name);
+            return new EntityPersistMy(this, entityName);
         }
 
-        public override Values Values(string entity_name, string field_id)
+        public override EntityQuery Query(string entity_name)
         {
-            return new ValuesMy(this, entity_name, field_id);
+            return new EntityQueryMy(this, entity_name);
+        }
+
+        public override EntityValues Values(string entityName, string? fieldId = null)
+        {
+            return new ValuesMy(this, entityName, fieldId);
         }
     }
 

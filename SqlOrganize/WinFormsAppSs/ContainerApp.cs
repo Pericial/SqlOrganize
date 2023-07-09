@@ -24,7 +24,7 @@ namespace WinFormsAppSs
 
         public static MemoryCache cache = new MemoryCache(new MemoryCacheOptions());
 
-        public static QueryCache queryCache = new QueryCache(db, cache);
+        public static DbCache queryCache = new DbCache(db, cache);
 
         public Config Config()
         {
@@ -35,7 +35,7 @@ namespace WinFormsAppSs
             return db;
         }
 
-        public QueryCache QueryCache()
+        public DbCache QueryCache()
         {
             return queryCache;
         }
