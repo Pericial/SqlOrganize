@@ -27,7 +27,7 @@ namespace SqlOrganize
 
         public Logging logging { get; set; } = new Logging();
 
-        public Dictionary <string, object>  values = new Dictionary<string, object> ();
+        public Dictionary<string, object> values = new Dictionary<string, object>();
 
         public EntityValues(Db _db, string _entity_name, string _field_id) : base(_db, _entity_name, _field_id)
         {
@@ -40,201 +40,116 @@ namespace SqlOrganize
             return this;
         }
 
-        public object Get(string field_name)
+        public object Get(string fieldName)
         {
-            return values[field_name];
+            return values[fieldName];
         }
 
-        public void sset(string field_name, object value)
+        public EntityValues Sset(string fieldName, object value)
         {
-            var method = "sset_" + field_name.Replace(".", "_");
+            var method = "Sset_" + fieldName;
             Type thisType = this.GetType();
             MethodInfo m = thisType.GetMethod(method);
             if (!m.IsNullOrEmpty())
+                m!.Invoke(this, new object[] { value });
+
+            Field field = db.Field(entityName, fieldName);
+            switch (field.dataType)
             {
-                m.Invoke(this, new object[] { value });
+                case "string":
+                    values[fieldName] = Regex.Replace((string)value, @"\s+", " ").Trim();
+                    break;
+                case "int":
+                    values[fieldName] = (int)value;
+                    break;
             }
 
-            method = _define_sset_method(field_name);
-            m = thisType.GetMethod(method);
-            m.Invoke(this, new object[] { field_name, value });
+            return this;
         }
 
-        /*
-        Si la funcion sset de field_name no se encuentra definida por el usuario,        
-        se define en funcion de type
-        */
-        public string _define_sset_method(string fieldName)
+        public EntityValues Reset(string fieldName, object value)
         {
-            List<string> p = fieldName.Split(".").ToList();
+            var method = "Reset_" + fieldName;
+            Type thisType = this.GetType();
+            MethodInfo m = thisType.GetMethod(method);
+            if (!m.IsNullOrEmpty())
+                m!.Invoke(this, new object[] { value });
 
-            if (p.Count == 1)
+            Field field = db.Field(entityName, fieldName);
+            switch (field.dataType)
             {
-                Field field = db.Field(entityName, fieldName);
-                switch (field.dataType)
-                {
-                    
-                    default:
-                        return "_sset_string";
-
-                }
+                case "string":
+                    values[fieldName] = Regex.Replace((string)value, @"\s+", " ").Trim();
+                break;
             }
 
-            string method = "_" + p[p.Count - 1]; //se traduce el metodo ubicado mas a la derecha (el primero en traducirse se ejecutara al final)
-            p.RemoveAt(p.Count - 1);
+            return this;
+        }
 
-            switch (method)
+        public EntityValues Default(string fieldName, object value)
+        {
+            if (values.ContainsKey(fieldName))
+                return this;
+
+            var method = "Default_" + fieldName;
+            Type thisType = this.GetType();
+            MethodInfo m = thisType.GetMethod(method);
+            if (!m.IsNullOrEmpty())
+                m!.Invoke(this, new object[] { value });
+
+            Field field = db.Field(entityName, fieldName);
+            switch (field.dataType)
             {
-                case "count":
-                case "avg":
-                case "sum":
-                    return "_sset_int";
-
+                case "date":
+                case "datetime":
+                case "year":
+                case "time":
+                    if (field.defaultValue.ToString().ToLower().Contains("cur"))
+                        values[fieldName] = DateTime.Now;
+                    break;
                 default:
-                    return _define_sset_method(String.Join(".", p.ToArray())); //si no resuelve, intenta nuevamente (ejemplo field.count.max, intentara nuevamente con field.count)
+                    values[fieldName] = field.defaultValue;
+                    break;
             }
-        }
 
-        public void _sset_string(string field_name, object value)
-        {
-            values[field_name] = Regex.Replace((string)value, @"\s+", " ").Trim();
-        }
-
-        public void _sset_int(string field_name, object value)
-        {
-            values[field_name] = (int)value;
+            return this;
         }
 
         /*
         Validacion
         */
-        public bool check(string field_name)
+        public bool Check(string fieldName)
         {
-            logging.reset_logs(field_name);
-
-            var method = "check_" + field_name.Replace(".", "_");
+            logging.ResetLogs(fieldName);
+            var method = "check_" + fieldName;
             Type thisType = this.GetType();
             MethodInfo? m = thisType.GetMethod(method);
             if (!m.IsNullOrEmpty())
-            {
                 return (bool)m!.Invoke(this, null);
-            }
 
-            Dictionary<string, object?> check_methods = _define_check_methods(field_name);
+            Field field = db.Field(entityName, fieldName);
+            Dictionary<string, object> checkMethods = new();
+            checkMethods["type"] = field.dataType;
+            if (field.IsRequired()) 
+                checkMethods["required"] = true;
 
-            Validation v = new(values[field_name]);
+            Validation v = new(values[fieldName]);
 
-            foreach (var (check_method, param) in check_methods)
+            foreach (var (checkMethod, param) in checkMethods)
             {
                 Type validationType = v.GetType();
-                m = validationType.GetMethod(check_method);
+                m = validationType.GetMethod(checkMethod);
                 if (!m.IsNullOrEmpty())
-                {
                     m!.Invoke(v, new object[] { param });
-                }
                 else
-                {
-                    logging.add_log(key: field_name, msg: "No existe el metodo de validacion", type: "check");
-                }
+                    logging.AddLog(key: fieldName, msg: "No existe el metodo de validacion:  " + checkMethod, type: "check");
             }
 
             foreach (var error in v.errors)
-            {
-                logging.add_error(key: field_name, type: error.type, msg: error.msg);
-            }
+                logging.AddError(key: fieldName, type: error.type, msg: error.msg);
 
-            return v.is_success();
+            return v.IsSuccess();
         }
-
-        public Dictionary<string, object?> _define_check_methods(string field_name)
-        {
-            List<string> p = field_name.Split(".").ToList();
-            Dictionary<string, object> r = new();
-
-            if (p.Count == 1) //traducir field_name sin funcion (por el momento solo se validan los fields sin funcion
-            {
-                Field field = db.Field(entityName, field_name);
-
-                r["type"] = field.dataType;
-                if(field.IsRequired()) r["required"] = null;
-
-            }
-
-            return new();
-
-        }
-
-        /*
-        Convertir valor para que sea entendido por el motor de base de datos
-        */
-        /*
-        @example 
-        _sql("nombre")
-        _sql("nombre.max");
-        */
-        public object sql(string field_name)
-        {
-            if (!values.ContainsKey(field_name))
-            {
-                throw new Exception(field_name + " no tiene valor definido");
-            }
-
-            var method = "sql_" + field_name.Replace(".", "_");
-            Type thisType = this.GetType();
-            MethodInfo m = thisType.GetMethod(method);
-            if (!m.IsNullOrEmpty())
-            {
-                return m!.Invoke(this, null);
-            }
-
-            List<string> p = field_name.Split('.').ToList();
-
-            if (p.Count == 1)
-            {
-                Field field = db.Field(entityName, p[0]);
-                switch (field.dataType)
-                {
-                    default:
-                        return _sql_default(field_name);
-                }
-            }
-
-            return _sql_aux(field_name);
-
-        }
-
-        public object _sql_default(string fieldName) {
-            return values[fieldName];
-        }
-
-        public object _sql_aux(string fieldName)
-        {
-            List<string> p = fieldName.Split(".").ToList();
-            if (p.Count == 1)
-            {
-                Field field = db.Field(entityName, fieldName);
-                switch (field.dataType)
-                {
-                    default:
-                        return _sql_default(fieldName);
-                }
-            }
-
-            string f = "_" + p[p.Count - 1]; //se traduce el metodo ubicado mas a la derecha (el primero en traducirse se ejecutara al final)
-            p.RemoveAt(p.Count - 1);
-
-            switch (f)
-            {
-                case "count":
-                case "avg":
-                case "sum":
-                    return _sql_default(fieldName);
-
-                default:
-                    return _sql_aux(String.Join(".", p.ToArray())); //si no resuelve, intenta nuevamente (ejemplo field.count.max, intentara nuevamente con field.count)
-            }
-        }
-
     }
 
 }

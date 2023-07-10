@@ -20,7 +20,7 @@ namespace SqlOrganize
             value = _value;
         }
 
-        public Validation required()
+        public Validation Required()
         {
             if (value is null) {
                 errors.Add(("Value is null", "required"));
@@ -28,29 +28,24 @@ namespace SqlOrganize
             return this;
         }
 
-        public Validation type(string type)
+        public Validation Type(string type)
         {
             switch (type)
             {
                 case "string":
                     if(value is not String)
-                    {
                         errors.Add(("Value is not string", "type"));
-
-                    }
                 break;
                 case "integer":
                     if (value is int)
-                    {
                         errors.Add(("Value is not string", "type"));
 
-                    }
                 break;
             }
             return this;
         }
 
-        public bool is_success() {
+        public bool IsSuccess() {
             return (errors.IsNullOrEmpty()) ? true : false;
         }
 

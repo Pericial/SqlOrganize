@@ -38,9 +38,7 @@ namespace SqlOrganize
             MethodInfo m = thisType.GetMethod(method)!;
             
             foreach (var fieldName in fieldNames)
-            {
                 m.Invoke(this, new String[1] { fieldName });
-            }
 
             return this;
         }

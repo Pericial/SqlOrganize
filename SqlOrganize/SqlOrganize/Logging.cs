@@ -59,7 +59,7 @@ namespace SqlOrganize
 
         Reasignar level
         */
-        public void reset_logs(string key)
+        public void ResetLogs(string key)
         {
             if (logs.ContainsKey(key))
             {
@@ -67,7 +67,7 @@ namespace SqlOrganize
             }
         }
             
-        public void add_log(string key, string msg, string type = null, Level level = 0)
+        public void AddLog(string key, string msg, string type = null, Level level = 0)
         {
             if (!logs.ContainsKey(key))
                 logs[key] = new List<(Level level, string msg, string? type)> { };
@@ -78,9 +78,9 @@ namespace SqlOrganize
             });
         }
 
-        public void add_error(string key, string msg, string type = null)
+        public void AddError(string key, string msg, string type = null)
         {
-            add_log(key, msg, type, Level.Error);
+            AddLog(key, msg, type, Level.Error);
         }
 
         public Level? level_key(string key)

@@ -119,7 +119,7 @@ VALUES (";
                 return Update(v.values, _entityName);
             }
 
-            v.Call("SetDefault").Call("Reset").Call("Check");
+            v.Call("Default").Call("Reset").Call("Check");
             if (v.logging.Error())
                 throw new Exception("Los campos a insertar poseen errores: " + v.logging.ToString());
             return Insert(v.values, _entityName);
