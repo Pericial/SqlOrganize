@@ -10,9 +10,7 @@ var c = new ConfigSs()
 
 BuildSchemaSs t = new(c);
 t.FileEntities();
-//t.FileTree();
-//t.FileRelations();
-//t.FileFields();
+t.FileFields();
 
 
 

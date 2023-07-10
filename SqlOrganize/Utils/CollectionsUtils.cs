@@ -38,14 +38,10 @@ namespace Utils
             return result;
         }
 
-        public static Dictionary<K, V> MergeDicts<K, V>(Dictionary<K, V> dictionary1, Dictionary<K, V> dictionary2) where K : notnull
+
+        public static void Merge<K, V>(this Dictionary<K, V> dictionary1, Dictionary<K, V> dictionary2) where K : notnull
         {
-            Dictionary<K, V> result = new Dictionary<K, V>();
-
-            dictionary1.ToList().ForEach(pair => result[pair.Key] = pair.Value);
-            dictionary2.ToList().ForEach(pair => result[pair.Key] = pair.Value);
-
-            return result;
+            dictionary2.ToList().ForEach(pair => dictionary1[pair.Key] = pair.Value);
         }
 
         public static bool IsNullOrEmpty(this IList List)
@@ -186,6 +182,30 @@ namespace Utils
             );
 
         }
+
+        public static Dictionary<object, Dictionary<string, object>> ListToDict(this List<Dictionary<string, object>> source , string key)
+        {
+            var response = new Dictionary<object, Dictionary<string, object>>();
+            foreach(Dictionary<string, object> i in source)
+                response[i[key]] = i;
+
+            return response;
+        }
+
+        public static void Merge(this List<Dictionary<string, object>> source, List<Dictionary<string, object>> source2, string key1, string? key2 = null)
+        {
+            key2 = key2 ?? key1;
+
+            var s = source2.ListToDict(key2);
+
+            foreach (var item in source)
+            {
+                if (s.ContainsKey(item[key1]))
+                    item.Merge(s[item[key1]]);
+            }
+        }
+
+
     }
 
 

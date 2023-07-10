@@ -19,7 +19,7 @@ namespace SqlOrganizeSs
 
         protected override string SqlLimit()
         {
-            if (size.IsNullOrEmpty()) return "";
+            if (size.IsNullOrEmpty() || size == 0) return "";
             page = page.IsNullOrEmpty() ? 1 : page;
             return "OFFSET " + ((page - 1) * size) + @" ROWS
 FETCH FIRST " + size + " ROWS ONLY";

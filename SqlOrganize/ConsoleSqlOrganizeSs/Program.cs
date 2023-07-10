@@ -4,8 +4,7 @@ using SqlOrganize;
 using SqlOrganizeSs;
 using System.Configuration;
 using Microsoft.Extensions.Caching.Memory;
-
-
+using Utils;
 
 Config config = new Config
 {
@@ -15,6 +14,20 @@ Config config = new Config
 
 var db = new DbSs(config);
 
+var data = db.Query("PERSONAL").
+    Select("COUNT(*) AS cantidad_personal").
+    Group("$DTOJUD").ListDict();
+
+
+var dataCantidadPersonal = db.Query("PERSONAL").Select("COUNT(*) AS cantidad_personal").Group("$DTOJUD").ListDict();
+var d = dataCantidadPersonal.ListToDict("DTOJUD");
+
+
+string json = JsonConvert.SerializeObject(data, Newtonsoft.Json.Formatting.Indented);
+
+
+Console.WriteLine(json);
+/*
 var query = db.Query("PERSONAL").
     Where("$_Id IN (@0)").
     Parameters(new List<object> {"01-DNI~90", "01-DNI~91"});
@@ -25,24 +38,17 @@ var qc = new DbCache(db, cache);
 
 var data = qc.ListDict(query);
 
-
 data[0]["APELLIDO"] = "CIERRESAP";
-    data[0]["NOMBRES"] = "CIERRESNOM";
-
-
-
+data[0]["NOMBRES"] = "CIERRESNOM";
 
 //var data2 = qc.ListObj<Personal>(query);
-
-
 
 string json = JsonConvert.SerializeObject(data, Newtonsoft.Json.Formatting.Indented);
 
 //db.Persist("PERSONAL").Update(data[0]).Exec();
 
 Console.WriteLine(json);
-
-
+*/
 
 
 

@@ -29,34 +29,111 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            dataGridView1 = new DataGridView();
-            aPELLIDODataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            dataGridViewDTOSJUDI = new DataGridView();
+            dTOJUDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            dESCRIPCIONDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            cantidad_personal = new DataGridViewTextBoxColumn();
+            form1DTOSJUDIBindingSource = new BindingSource(components);
+            form1DTOSJUDIBindingSource1 = new BindingSource(components);
+            dataGridViewPERSONAL = new DataGridView();
+            personalBindingSource = new BindingSource(components);
+            form1PERSONALBindingSource = new BindingSource(components);
+            buttonSave = new Button();
+            personalBindingSource1 = new BindingSource(components);
             nOMBRESDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            nDOCDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            fECHANACIMDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            sujetoBindingSource1 = new BindingSource(components);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)sujetoBindingSource1).BeginInit();
+            APELLIDO = new DataGridViewTextBoxColumn();
+            TIPODOC = new DataGridViewTextBoxColumn();
+            NRODOC = new DataGridViewTextBoxColumn();
+            NROIDPEMP = new DataGridViewTextBoxColumn();
+            _Id = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewDTOSJUDI).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)form1DTOSJUDIBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)form1DTOSJUDIBindingSource1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewPERSONAL).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)personalBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)form1PERSONALBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)personalBindingSource1).BeginInit();
             SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridViewDTOSJUDI
             // 
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { aPELLIDODataGridViewTextBoxColumn, nOMBRESDataGridViewTextBoxColumn, nDOCDataGridViewTextBoxColumn, fECHANACIMDataGridViewTextBoxColumn });
-            dataGridView1.DataSource = sujetoBindingSource1;
-            dataGridView1.Location = new Point(83, 112);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(566, 150);
-            dataGridView1.TabIndex = 0;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            dataGridViewDTOSJUDI.AllowUserToOrderColumns = true;
+            dataGridViewDTOSJUDI.AutoGenerateColumns = false;
+            dataGridViewDTOSJUDI.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewDTOSJUDI.Columns.AddRange(new DataGridViewColumn[] { dTOJUDDataGridViewTextBoxColumn, dESCRIPCIONDataGridViewTextBoxColumn, cantidad_personal });
+            dataGridViewDTOSJUDI.DataSource = form1DTOSJUDIBindingSource;
+            dataGridViewDTOSJUDI.Location = new Point(12, 31);
+            dataGridViewDTOSJUDI.Name = "dataGridViewDTOSJUDI";
+            dataGridViewDTOSJUDI.RowTemplate.Height = 25;
+            dataGridViewDTOSJUDI.Size = new Size(389, 349);
+            dataGridViewDTOSJUDI.TabIndex = 0;
+            dataGridViewDTOSJUDI.CellContentClick += dataGridViewDTOSJUDI_CellContentClick;
+            dataGridViewDTOSJUDI.SelectionChanged += dataGridViewDTOSJUDI_SelectionChanged;
             // 
-            // aPELLIDODataGridViewTextBoxColumn
+            // dTOJUDDataGridViewTextBoxColumn
             // 
-            aPELLIDODataGridViewTextBoxColumn.DataPropertyName = "APELLIDO";
-            aPELLIDODataGridViewTextBoxColumn.HeaderText = "APELLIDO";
-            aPELLIDODataGridViewTextBoxColumn.Name = "aPELLIDODataGridViewTextBoxColumn";
+            dTOJUDDataGridViewTextBoxColumn.DataPropertyName = "DTOJUD";
+            dTOJUDDataGridViewTextBoxColumn.HeaderText = "DTOJUD";
+            dTOJUDDataGridViewTextBoxColumn.Name = "dTOJUDDataGridViewTextBoxColumn";
+            // 
+            // dESCRIPCIONDataGridViewTextBoxColumn
+            // 
+            dESCRIPCIONDataGridViewTextBoxColumn.DataPropertyName = "DESCRIPCION";
+            dESCRIPCIONDataGridViewTextBoxColumn.HeaderText = "DESCRIPCION";
+            dESCRIPCIONDataGridViewTextBoxColumn.Name = "dESCRIPCIONDataGridViewTextBoxColumn";
+            // 
+            // cantidad_personal
+            // 
+            cantidad_personal.DataPropertyName = "cantidad_personal";
+            cantidad_personal.HeaderText = "cantidad_personal";
+            cantidad_personal.Name = "cantidad_personal";
+            // 
+            // form1DTOSJUDIBindingSource
+            // 
+            form1DTOSJUDIBindingSource.DataSource = typeof(Form1_DTOSJUDI);
+            // 
+            // form1DTOSJUDIBindingSource1
+            // 
+            form1DTOSJUDIBindingSource1.DataSource = typeof(Form1_DTOSJUDI);
+            // 
+            // dataGridViewPERSONAL
+            // 
+            dataGridViewPERSONAL.AllowUserToOrderColumns = true;
+            dataGridViewPERSONAL.AutoGenerateColumns = false;
+            dataGridViewPERSONAL.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewPERSONAL.Columns.AddRange(new DataGridViewColumn[] { nOMBRESDataGridViewTextBoxColumn, APELLIDO, TIPODOC, NRODOC, NROIDPEMP, _Id });
+            dataGridViewPERSONAL.DataSource = personalBindingSource;
+            dataGridViewPERSONAL.Location = new Point(407, 31);
+            dataGridViewPERSONAL.Name = "dataGridViewPERSONAL";
+            dataGridViewPERSONAL.RowTemplate.Height = 25;
+            dataGridViewPERSONAL.Size = new Size(555, 349);
+            dataGridViewPERSONAL.TabIndex = 1;
+            dataGridViewPERSONAL.CellContentClick += dataGridViewPERSONAL_CellContentClick;
+            dataGridViewPERSONAL.CellEndEdit += dataGridViewPERSONAL_CellEndEdit;
+            // 
+            // personalBindingSource
+            // 
+            personalBindingSource.DataMember = "Personal";
+            personalBindingSource.DataSource = form1DTOSJUDIBindingSource;
+            // 
+            // form1PERSONALBindingSource
+            // 
+            form1PERSONALBindingSource.DataSource = typeof(Form1_PERSONAL);
+            // 
+            // buttonSave
+            // 
+            buttonSave.Location = new Point(638, 386);
+            buttonSave.Name = "buttonSave";
+            buttonSave.Size = new Size(75, 23);
+            buttonSave.TabIndex = 2;
+            buttonSave.Text = "Guardar";
+            buttonSave.UseVisualStyleBackColor = true;
+            buttonSave.Click += buttonSave_Click;
+            // 
+            // personalBindingSource1
+            // 
+            personalBindingSource1.DataMember = "Personal";
+            personalBindingSource1.DataSource = form1DTOSJUDIBindingSource;
             // 
             // nOMBRESDataGridViewTextBoxColumn
             // 
@@ -64,43 +141,76 @@
             nOMBRESDataGridViewTextBoxColumn.HeaderText = "NOMBRES";
             nOMBRESDataGridViewTextBoxColumn.Name = "nOMBRESDataGridViewTextBoxColumn";
             // 
-            // nDOCDataGridViewTextBoxColumn
+            // APELLIDO
             // 
-            nDOCDataGridViewTextBoxColumn.DataPropertyName = "NDOC";
-            nDOCDataGridViewTextBoxColumn.HeaderText = "NDOC";
-            nDOCDataGridViewTextBoxColumn.Name = "nDOCDataGridViewTextBoxColumn";
+            APELLIDO.DataPropertyName = "APELLIDO";
+            APELLIDO.HeaderText = "APELLIDO";
+            APELLIDO.Name = "APELLIDO";
             // 
-            // fECHANACIMDataGridViewTextBoxColumn
+            // TIPODOC
             // 
-            fECHANACIMDataGridViewTextBoxColumn.DataPropertyName = "FECHA_NACIM";
-            fECHANACIMDataGridViewTextBoxColumn.HeaderText = "FECHA_NACIM";
-            fECHANACIMDataGridViewTextBoxColumn.Name = "fECHANACIMDataGridViewTextBoxColumn";
+            TIPODOC.DataPropertyName = "TIPODOC";
+            TIPODOC.HeaderText = "TIPODOC";
+            TIPODOC.Name = "TIPODOC";
             // 
-            // sujetoBindingSource1
+            // NRODOC
             // 
-            sujetoBindingSource1.DataSource = typeof(Sujeto);
-            sujetoBindingSource1.CurrentChanged += sujetoBindingSource1_CurrentChanged;
+            NRODOC.DataPropertyName = "NRODOC";
+            NRODOC.HeaderText = "NRODOC";
+            NRODOC.Name = "NRODOC";
+            // 
+            // NROIDPEMP
+            // 
+            NROIDPEMP.DataPropertyName = "NROIDPEMP";
+            NROIDPEMP.HeaderText = "NROIDPEMP";
+            NROIDPEMP.Name = "NROIDPEMP";
+            // 
+            // _Id
+            // 
+            _Id.DataPropertyName = "_Id";
+            _Id.HeaderText = "_Id";
+            _Id.Name = "_Id";
+            _Id.ReadOnly = true;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(dataGridView1);
+            ClientSize = new Size(998, 450);
+            Controls.Add(buttonSave);
+            Controls.Add(dataGridViewPERSONAL);
+            Controls.Add(dataGridViewDTOSJUDI);
             Name = "Form1";
-            Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)sujetoBindingSource1).EndInit();
+            Text = "Departamento Judicial - Personal";
+            ((System.ComponentModel.ISupportInitialize)dataGridViewDTOSJUDI).EndInit();
+            ((System.ComponentModel.ISupportInitialize)form1DTOSJUDIBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)form1DTOSJUDIBindingSource1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewPERSONAL).EndInit();
+            ((System.ComponentModel.ISupportInitialize)personalBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)form1PERSONALBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)personalBindingSource1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn aPELLIDODataGridViewTextBoxColumn;
+        private DataGridView dataGridViewDTOSJUDI;
+        private DataGridView dataGridViewPERSONAL;
+        private Button buttonSave;
+        private BindingSource form1DTOSJUDIBindingSource1;
+        private DataGridViewTextBoxColumn aPELLIDOSDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn lEGAJODataGridViewTextBoxColumn;
+        private BindingSource form1PERSONALBindingSource;
+        private BindingSource form1DTOSJUDIBindingSource;
+        private BindingSource personalBindingSource;
+        private BindingSource personalBindingSource1;
+        private DataGridViewTextBoxColumn dTOJUDDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn dESCRIPCIONDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn cantidad_personal;
         private DataGridViewTextBoxColumn nOMBRESDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn nDOCDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn fECHANACIMDataGridViewTextBoxColumn;
-        private BindingSource sujetoBindingSource1;
+        private DataGridViewTextBoxColumn APELLIDO;
+        private DataGridViewTextBoxColumn TIPODOC;
+        private DataGridViewTextBoxColumn NRODOC;
+        private DataGridViewTextBoxColumn NROIDPEMP;
+        private DataGridViewTextBoxColumn _Id;
     }
 }

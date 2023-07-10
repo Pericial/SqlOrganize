@@ -138,14 +138,17 @@ namespace SqlOrganize
 
         protected string TraduceFields(string _sql)
         {
+            if (_sql.IsNullOrEmpty())
+                return "";
+
             List<string> fields = _sql!.Replace("$", "").Split(',').ToList().Select(s => s.Trim()).ToList();
             string sql = "";
             
             foreach (var fieldName in fields)
             {
-                if (fieldName.Contains('-'))
+                if (fieldName.Contains(db.config.idNameSeparatorString))
                 {
-                    List<string> ff = fieldName.Split("-").ToList();
+                    List<string> ff = fieldName.Split(db.config.idNameSeparatorString).ToList();
                     sql += db.Mapping(db.Entity(entityName).relations[ff[0]].refEntityName, ff[0]).Map(ff[1]) + " AS '" + fieldName + "', ";
                 } else
                     sql += db.Mapping(entityName).Map(fieldName) + " AS '" + fieldName + "', ";
@@ -154,7 +157,7 @@ namespace SqlOrganize
             return sql;
         }
 
-        protected string Traduce(string _sql)
+        protected string Traduce(string _sql, bool fieldAs = false )
         {
             string sql = "";
             int field_start = -1;
@@ -170,7 +173,7 @@ namespace SqlOrganize
                 if (field_start != -1)
                 {
                     if ((_sql[i] != ' ') && (_sql[i] != ')') && (_sql[i] != ',')) continue;
-                    sql += Traduce_(_sql, field_start, i - field_start - 1);
+                    sql += Traduce_(_sql, field_start, i - field_start - 1, fieldAs);
                     field_start = -1;
                 }
 
@@ -179,13 +182,13 @@ namespace SqlOrganize
             }
 
             if (field_start != -1)
-                sql += Traduce_(_sql, field_start, _sql.Length - field_start - 1);
+                sql += Traduce_(_sql, field_start, _sql.Length - field_start - 1, fieldAs);
 
 
             return sql;
         }
 
-        protected string Traduce_(string _sql, int fieldStart, int fieldEnd)
+        protected string Traduce_(string _sql, int fieldStart, int fieldEnd, bool fieldAs)
         {
             var fieldName = _sql.Substring(fieldStart + 1, fieldEnd);
 
@@ -198,6 +201,7 @@ namespace SqlOrganize
             else
                 ff += db.Mapping(entityName).Map(fieldName);
 
+            if (fieldAs) ff += " AS '" + fieldName + "'";
             return ff;
         }
 
@@ -301,7 +305,7 @@ namespace SqlOrganize
             f += Concat(Traduce(this.select), @",
 ", "", !f.IsNullOrEmpty());
 
-            f += Concat(Traduce(this.group), @",
+            f += Concat(Traduce(this.group, true), @",
 ", "", !f.IsNullOrEmpty());
 
             return f + @"

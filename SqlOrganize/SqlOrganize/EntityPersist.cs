@@ -34,24 +34,7 @@ namespace SqlOrganize
             return this;
         }
 
-        protected EntityPersist _Update(Dictionary<string, object> row, string? _entityName = null)
-        {
-            _entityName = _entityName ?? entityName;
-            string sna = db.Entity(_entityName).schemaNameAlias;
-            sql += @"
-UPDATE " + sna + @" SET
-";
-            List<string> fieldNames = db.FieldNamesAdmin(_entityName);
-            foreach (string fieldName in fieldNames)
-                if (row.ContainsKey(fieldName))
-                {
-                    sql += fieldName + " = @" + count + ", ";
-                    count++;
-                    parameters.Add(row[fieldName]);
-                }
-            sql = sql.RemoveLastIndex(',');
-            return this;
-        }
+        abstract protected EntityPersist _Update(Dictionary<string, object> row, string? _entityName = null);
 
         public EntityPersist Update(Dictionary<string, object> row, string? _entityName = null)
         {
@@ -66,6 +49,7 @@ WHERE " + _Id + " = @" + count + @";
             parameters.Add(row["_Id"]);
             return this;
         }
+
 
 
         public EntityPersist Insert(Dictionary<string, object> row, string? _entityName = null)
@@ -125,8 +109,20 @@ VALUES (";
             return Insert(v.values, _entityName);
         }
 
+        public EntityPersist List(List<Dictionary<string, object>> list, string? _entityName = null)
+        {
+            _entityName = _entityName ?? entityName;
+
+            foreach (var row in list)
+            {
+
+            }
+            return this;
+        }
+
         public abstract void Exec();
 
     }
+
 }
  
