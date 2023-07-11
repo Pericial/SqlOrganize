@@ -13,4 +13,6 @@ namespace WinFormsAppSs
         public int cantidad_personal { set; get; }
         public List<Form1_PERSONAL> Personal { set; get; }
     }
+
+
 }

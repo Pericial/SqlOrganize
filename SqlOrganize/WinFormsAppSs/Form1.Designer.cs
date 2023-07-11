@@ -36,16 +36,18 @@
             form1DTOSJUDIBindingSource = new BindingSource(components);
             form1DTOSJUDIBindingSource1 = new BindingSource(components);
             dataGridViewPERSONAL = new DataGridView();
-            personalBindingSource = new BindingSource(components);
-            form1PERSONALBindingSource = new BindingSource(components);
-            buttonSave = new Button();
-            personalBindingSource1 = new BindingSource(components);
             nOMBRESDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             APELLIDO = new DataGridViewTextBoxColumn();
             TIPODOC = new DataGridViewTextBoxColumn();
             NRODOC = new DataGridViewTextBoxColumn();
             NROIDPEMP = new DataGridViewTextBoxColumn();
             _Id = new DataGridViewTextBoxColumn();
+            personalBindingSource = new BindingSource(components);
+            form1PERSONALBindingSource = new BindingSource(components);
+            buttonSave = new Button();
+            personalBindingSource1 = new BindingSource(components);
+            linkLabel1 = new LinkLabel();
+            menuStrip1 = new MenuStrip();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDTOSJUDI).BeginInit();
             ((System.ComponentModel.ISupportInitialize)form1DTOSJUDIBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)form1DTOSJUDIBindingSource1).BeginInit();
@@ -111,30 +113,6 @@
             dataGridViewPERSONAL.CellContentClick += dataGridViewPERSONAL_CellContentClick;
             dataGridViewPERSONAL.CellEndEdit += dataGridViewPERSONAL_CellEndEdit;
             // 
-            // personalBindingSource
-            // 
-            personalBindingSource.DataMember = "Personal";
-            personalBindingSource.DataSource = form1DTOSJUDIBindingSource;
-            // 
-            // form1PERSONALBindingSource
-            // 
-            form1PERSONALBindingSource.DataSource = typeof(Form1_PERSONAL);
-            // 
-            // buttonSave
-            // 
-            buttonSave.Location = new Point(638, 386);
-            buttonSave.Name = "buttonSave";
-            buttonSave.Size = new Size(75, 23);
-            buttonSave.TabIndex = 2;
-            buttonSave.Text = "Guardar";
-            buttonSave.UseVisualStyleBackColor = true;
-            buttonSave.Click += buttonSave_Click;
-            // 
-            // personalBindingSource1
-            // 
-            personalBindingSource1.DataMember = "Personal";
-            personalBindingSource1.DataSource = form1DTOSJUDIBindingSource;
-            // 
             // nOMBRESDataGridViewTextBoxColumn
             // 
             nOMBRESDataGridViewTextBoxColumn.DataPropertyName = "NOMBRES";
@@ -172,14 +150,60 @@
             _Id.Name = "_Id";
             _Id.ReadOnly = true;
             // 
+            // personalBindingSource
+            // 
+            personalBindingSource.DataMember = "Personal";
+            personalBindingSource.DataSource = form1DTOSJUDIBindingSource;
+            // 
+            // form1PERSONALBindingSource
+            // 
+            form1PERSONALBindingSource.DataSource = typeof(Form1_PERSONAL);
+            // 
+            // buttonSave
+            // 
+            buttonSave.Location = new Point(638, 386);
+            buttonSave.Name = "buttonSave";
+            buttonSave.Size = new Size(75, 23);
+            buttonSave.TabIndex = 2;
+            buttonSave.Text = "Guardar";
+            buttonSave.UseVisualStyleBackColor = true;
+            buttonSave.Click += buttonSave_Click;
+            // 
+            // personalBindingSource1
+            // 
+            personalBindingSource1.DataMember = "Personal";
+            personalBindingSource1.DataSource = form1DTOSJUDIBindingSource;
+            // 
+            // linkLabel1
+            // 
+            linkLabel1.AutoSize = true;
+            linkLabel1.Location = new Point(17, 409);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(60, 15);
+            linkLabel1.TabIndex = 3;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "linkLabel1";
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
+            // 
+            // menuStrip1
+            // 
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(998, 24);
+            menuStrip1.TabIndex = 4;
+            menuStrip1.Text = "menuStrip1";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(998, 450);
+            Controls.Add(linkLabel1);
             Controls.Add(buttonSave);
             Controls.Add(dataGridViewPERSONAL);
             Controls.Add(dataGridViewDTOSJUDI);
+            Controls.Add(menuStrip1);
+            MainMenuStrip = menuStrip1;
             Name = "Form1";
             Text = "Departamento Judicial - Personal";
             ((System.ComponentModel.ISupportInitialize)dataGridViewDTOSJUDI).EndInit();
@@ -190,6 +214,7 @@
             ((System.ComponentModel.ISupportInitialize)form1PERSONALBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)personalBindingSource1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -212,5 +237,7 @@
         private DataGridViewTextBoxColumn NRODOC;
         private DataGridViewTextBoxColumn NROIDPEMP;
         private DataGridViewTextBoxColumn _Id;
+        private LinkLabel linkLabel1;
+        private MenuStrip menuStrip1;
     }
 }

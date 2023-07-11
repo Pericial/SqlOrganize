@@ -15,14 +15,15 @@ namespace WinFormsAppSs
 
         protected override void OnLoad(EventArgs e)
         {
-            var dataDtosJudi = ContainerApp.db.Query("DTOSJUDI").
+            List<Dictionary<string, object>> dataDtosJudi = ContainerApp.db.Query("DTOSJUDI").
                 Size(0).
                 ListDict();
 
-            var dataCantidadPersonal = ContainerApp.db.Query("PERSONAL").
+            List<Dictionary<string, object>> dataCantidadPersonal = ContainerApp.db.Query("PERSONAL").
                 Select("COUNT(*) AS cantidad_personal").
                 Group("$DTOJUD").
                 ListDict();
+
 
             dataDtosJudi.Merge(dataCantidadPersonal, "DTOJUD");
 
@@ -78,6 +79,14 @@ namespace WinFormsAppSs
             };
 
             ContainerApp.db.Persist("PERSONAL").Update(row).Exec();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FormLocalidades.Form1 formLocalidades = new FormLocalidades.Form1();
+            //this.Hide();
+            formLocalidades.ShowDialog();
+            //this.Show();
         }
     }
 }

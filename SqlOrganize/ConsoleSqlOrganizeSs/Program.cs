@@ -12,14 +12,26 @@ Config config = new Config
     modelPath = ConfigurationManager.AppSettings.Get("modelPath"),
 };
 
+
 var db = new DbSs(config);
 
-var data = db.Query("PERSONAL").
+
+var query = db.Query("PERSONAL");
+
+var cache = new MemoryCache(new MemoryCacheOptions());
+
+var qc = new DbCache(db, cache);
+
+var data = qc.ListDict(query);
+
+
+
+
+var dataCantidadPersonal = db.Query("PERSONAL").
     Select("COUNT(*) AS cantidad_personal").
     Group("$DTOJUD").ListDict();
 
 
-var dataCantidadPersonal = db.Query("PERSONAL").Select("COUNT(*) AS cantidad_personal").Group("$DTOJUD").ListDict();
 var d = dataCantidadPersonal.ListToDict("DTOJUD");
 
 

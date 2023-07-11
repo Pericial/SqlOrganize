@@ -205,12 +205,23 @@ namespace SqlOrganize
             return ff;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="_size"></param>
+        /// <returns></returns>
         public EntityQuery Size(int _size)
         {
             size = _size;
             return this;
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="_page"></param>
+        /// <returns></returns>
         public EntityQuery Page(int _page)
         {
             page = _page;

@@ -24,7 +24,9 @@ namespace SqlOrganizeSs
         protected void SqlExecute(SqlConnection connection, SqlCommand command)
         {
             connection.Open();
-            string sql = Sql();
+            string sql = @"BEGIN TRAN; 
+" + Sql() + @"
+COMMIT TRAN;";
             command.Connection = connection;
             for (var i = 0; i < parameters.Count; i++)
             {
@@ -62,7 +64,8 @@ UPDATE " + e.alias + @" SET
                     parameters.Add(row[fieldName]);
                 }
             sql = sql.RemoveLastIndex(',');
-            sql += " FROM " + e.schemaNameAlias;
+            sql += " FROM " + e.schemaNameAlias + @"
+";
             return this;
         }
 
