@@ -1,4 +1,254 @@
 {
+    "campo1": {
+        "alias": "cam",
+        "dataType": "int"
+    },
+
+    "campo10": {
+        "alias": "ca1",
+        "dataType": "int"
+    },
+
+    "campo11": {
+        "alias": "ca2",
+        "dataType": "int"
+    },
+
+    "campo12": {
+        "alias": "ca3",
+        "dataType": "int"
+    },
+
+    "campo13": {
+        "alias": "ca4",
+        "dataType": "int"
+    },
+
+    "campo14": {
+        "alias": "ca5",
+        "dataType": "int"
+    },
+
+    "campo15": {
+        "alias": "ca6",
+        "dataType": "int"
+    },
+
+    "campo16": {
+        "alias": "ca7",
+        "dataType": "int"
+    },
+
+    "campo17": {
+        "alias": "ca8",
+        "dataType": "int"
+    },
+
+    "campo18": {
+        "alias": "ca9",
+        "dataType": "int"
+    },
+
+    "campo19": {
+        "alias": "ca10",
+        "dataType": "int"
+    },
+
+    "campo2": {
+        "alias": "ca11",
+        "dataType": "int"
+    },
+
+    "campo20": {
+        "alias": "ca12",
+        "dataType": "int"
+    },
+
+    "campo21": {
+        "alias": "ca13",
+        "dataType": "int"
+    },
+
+    "campo22": {
+        "alias": "ca14",
+        "dataType": "int"
+    },
+
+    "campo23": {
+        "alias": "ca15",
+        "dataType": "int"
+    },
+
+    "campo24": {
+        "alias": "ca16",
+        "dataType": "int"
+    },
+
+    "campo25": {
+        "alias": "ca17",
+        "dataType": "int"
+    },
+
+    "campo26": {
+        "alias": "ca18",
+        "dataType": "int"
+    },
+
+    "campo27": {
+        "alias": "ca19",
+        "dataType": "int"
+    },
+
+    "campo28": {
+        "alias": "ca20",
+        "dataType": "int"
+    },
+
+    "campo29": {
+        "alias": "ca21",
+        "dataType": "int"
+    },
+
+    "campo3": {
+        "alias": "ca22",
+        "dataType": "int"
+    },
+
+    "campo30": {
+        "alias": "ca23",
+        "dataType": "int"
+    },
+
+    "campo31": {
+        "alias": "ca24",
+        "dataType": "int"
+    },
+
+    "campo32": {
+        "alias": "ca25",
+        "dataType": "int"
+    },
+
+    "campo33": {
+        "alias": "ca26",
+        "dataType": "int"
+    },
+
+    "campo34": {
+        "alias": "ca27",
+        "dataType": "int"
+    },
+
+    "campo35": {
+        "alias": "ca28",
+        "dataType": "int"
+    },
+
+    "campo36": {
+        "alias": "ca29",
+        "dataType": "int"
+    },
+
+    "campo37": {
+        "alias": "ca30",
+        "dataType": "int"
+    },
+
+    "campo38": {
+        "alias": "ca31",
+        "dataType": "int"
+    },
+
+    "campo39": {
+        "alias": "ca32",
+        "dataType": "int"
+    },
+
+    "campo4": {
+        "alias": "ca33",
+        "dataType": "int"
+    },
+
+    "campo40": {
+        "alias": "ca34",
+        "dataType": "int"
+    },
+
+    "campo41": {
+        "alias": "ca35",
+        "dataType": "int"
+    },
+
+    "campo42": {
+        "alias": "ca36",
+        "dataType": "int"
+    },
+
+    "campo43": {
+        "alias": "ca37",
+        "dataType": "int"
+    },
+
+    "campo44": {
+        "alias": "ca38",
+        "dataType": "int"
+    },
+
+    "campo45": {
+        "alias": "ca39",
+        "dataType": "int"
+    },
+
+    "campo46": {
+        "alias": "ca40",
+        "dataType": "int"
+    },
+
+    "campo47": {
+        "alias": "ca41",
+        "dataType": "int"
+    },
+
+    "campo48": {
+        "alias": "ca42",
+        "dataType": "int"
+    },
+
+    "campo49": {
+        "alias": "ca43",
+        "dataType": "int"
+    },
+
+    "campo5": {
+        "alias": "ca44",
+        "dataType": "int"
+    },
+
+    "campo50": {
+        "alias": "ca45",
+        "dataType": "int"
+    },
+
+    "campo6": {
+        "alias": "ca46",
+        "dataType": "int"
+    },
+
+    "campo7": {
+        "alias": "ca47",
+        "dataType": "int"
+    },
+
+    "campo8": {
+        "alias": "ca48",
+        "dataType": "int"
+    },
+
+    "campo9": {
+        "alias": "ca49",
+        "dataType": "int"
+    },
+
     "id_pc": {
         "alias": "id_",
         "dataType": "string"
@@ -12,256 +262,6 @@
     "Texto1": {
         "alias": "Tex",
         "dataType": "string"
-    },
-
-    "campo1": {
-        "alias": "cam",
-        "dataType": "int"
-    },
-
-    "campo2": {
-        "alias": "ca1",
-        "dataType": "int"
-    },
-
-    "campo3": {
-        "alias": "ca2",
-        "dataType": "int"
-    },
-
-    "campo4": {
-        "alias": "ca3",
-        "dataType": "int"
-    },
-
-    "campo5": {
-        "alias": "ca4",
-        "dataType": "int"
-    },
-
-    "campo6": {
-        "alias": "ca5",
-        "dataType": "int"
-    },
-
-    "campo7": {
-        "alias": "ca6",
-        "dataType": "int"
-    },
-
-    "campo8": {
-        "alias": "ca7",
-        "dataType": "int"
-    },
-
-    "campo9": {
-        "alias": "ca8",
-        "dataType": "int"
-    },
-
-    "campo10": {
-        "alias": "ca9",
-        "dataType": "int"
-    },
-
-    "campo11": {
-        "alias": "ca10",
-        "dataType": "int"
-    },
-
-    "campo12": {
-        "alias": "ca11",
-        "dataType": "int"
-    },
-
-    "campo13": {
-        "alias": "ca12",
-        "dataType": "int"
-    },
-
-    "campo14": {
-        "alias": "ca13",
-        "dataType": "int"
-    },
-
-    "campo15": {
-        "alias": "ca14",
-        "dataType": "int"
-    },
-
-    "campo16": {
-        "alias": "ca15",
-        "dataType": "int"
-    },
-
-    "campo17": {
-        "alias": "ca16",
-        "dataType": "int"
-    },
-
-    "campo18": {
-        "alias": "ca17",
-        "dataType": "int"
-    },
-
-    "campo19": {
-        "alias": "ca18",
-        "dataType": "int"
-    },
-
-    "campo20": {
-        "alias": "ca19",
-        "dataType": "int"
-    },
-
-    "campo21": {
-        "alias": "ca20",
-        "dataType": "int"
-    },
-
-    "campo22": {
-        "alias": "ca21",
-        "dataType": "int"
-    },
-
-    "campo23": {
-        "alias": "ca22",
-        "dataType": "int"
-    },
-
-    "campo24": {
-        "alias": "ca23",
-        "dataType": "int"
-    },
-
-    "campo25": {
-        "alias": "ca24",
-        "dataType": "int"
-    },
-
-    "campo26": {
-        "alias": "ca25",
-        "dataType": "int"
-    },
-
-    "campo27": {
-        "alias": "ca26",
-        "dataType": "int"
-    },
-
-    "campo28": {
-        "alias": "ca27",
-        "dataType": "int"
-    },
-
-    "campo29": {
-        "alias": "ca28",
-        "dataType": "int"
-    },
-
-    "campo30": {
-        "alias": "ca29",
-        "dataType": "int"
-    },
-
-    "campo31": {
-        "alias": "ca30",
-        "dataType": "int"
-    },
-
-    "campo32": {
-        "alias": "ca31",
-        "dataType": "int"
-    },
-
-    "campo33": {
-        "alias": "ca32",
-        "dataType": "int"
-    },
-
-    "campo34": {
-        "alias": "ca33",
-        "dataType": "int"
-    },
-
-    "campo35": {
-        "alias": "ca34",
-        "dataType": "int"
-    },
-
-    "campo36": {
-        "alias": "ca35",
-        "dataType": "int"
-    },
-
-    "campo37": {
-        "alias": "ca36",
-        "dataType": "int"
-    },
-
-    "campo38": {
-        "alias": "ca37",
-        "dataType": "int"
-    },
-
-    "campo39": {
-        "alias": "ca38",
-        "dataType": "int"
-    },
-
-    "campo40": {
-        "alias": "ca39",
-        "dataType": "int"
-    },
-
-    "campo41": {
-        "alias": "ca40",
-        "dataType": "int"
-    },
-
-    "campo42": {
-        "alias": "ca41",
-        "dataType": "int"
-    },
-
-    "campo43": {
-        "alias": "ca42",
-        "dataType": "int"
-    },
-
-    "campo44": {
-        "alias": "ca43",
-        "dataType": "int"
-    },
-
-    "campo45": {
-        "alias": "ca44",
-        "dataType": "int"
-    },
-
-    "campo46": {
-        "alias": "ca45",
-        "dataType": "int"
-    },
-
-    "campo47": {
-        "alias": "ca46",
-        "dataType": "int"
-    },
-
-    "campo48": {
-        "alias": "ca47",
-        "dataType": "int"
-    },
-
-    "campo49": {
-        "alias": "ca48",
-        "dataType": "int"
-    },
-
-    "campo50": {
-        "alias": "ca49",
-        "dataType": "int"
     }
 
 }

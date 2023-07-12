@@ -1,14 +1,35 @@
 {
+    "CARACTER": {
+        "alias": "CAR",
+        "dataType": "string",
+        "defaultValue": "('P')"
+    },
+
     "DTOJUDI": {
         "alias": "DTO",
         "dataType": "string",
         "refEntityName": "DTOJUDI"
     },
 
-    "SERIE": {
-        "alias": "SER",
-        "dataType": "string",
-        "refEntityName": "SERIE"
+    "FECHA_DESIG": {
+        "alias": "FEC",
+        "dataType": "DateTime"
+    },
+
+    "FECHA_ULTIMO_CAMBIO": {
+        "alias": "FE1",
+        "dataType": "DateTime"
+    },
+
+    "HORA_CARGA": {
+        "alias": "HOR",
+        "dataType": "DateTime",
+        "defaultValue": "(getdate())"
+    },
+
+    "NROPERI": {
+        "alias": "NRO",
+        "dataType": "int"
     },
 
     "NUI": {
@@ -17,14 +38,9 @@
         "refEntityName": "NUI"
     },
 
-    "SERIE_PERI": {
-        "alias": "SE1",
+    "OBS": {
+        "alias": "OBS",
         "dataType": "string"
-    },
-
-    "NROPERI": {
-        "alias": "NRO",
-        "dataType": "int"
     },
 
     "PERITO": {
@@ -32,13 +48,14 @@
         "dataType": "int"
     },
 
-    "FECHA_DESIG": {
-        "alias": "FEC",
-        "dataType": "DateTime"
+    "SERIE": {
+        "alias": "SER",
+        "dataType": "string",
+        "refEntityName": "SERIE"
     },
 
-    "OBS": {
-        "alias": "OBS",
+    "SERIE_PERI": {
+        "alias": "SE1",
         "dataType": "string"
     },
 
@@ -48,26 +65,9 @@
         "defaultValue": "(1)"
     },
 
-    "CARACTER": {
-        "alias": "CAR",
-        "dataType": "string",
-        "defaultValue": "('P')"
-    },
-
     "TIPO_DESIGNACION": {
         "alias": "TIP",
         "dataType": "string"
-    },
-
-    "HORA_CARGA": {
-        "alias": "HOR",
-        "dataType": "DateTime",
-        "defaultValue": "(getdate())"
-    },
-
-    "FECHA_ULTIMO_CAMBIO": {
-        "alias": "FE1",
-        "dataType": "DateTime"
     }
 
 }

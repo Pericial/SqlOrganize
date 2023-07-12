@@ -4,126 +4,126 @@
         "dataType": "string"
     },
 
-    "SERIE_PEDIDOS": {
-        "alias": "SER",
-        "dataType": "string"
-    },
-
-    "NROPEDIDO": {
+    "NRO_MESA_DIR": {
         "alias": "NRO",
-        "dataType": "int",
-        "defaultValue": "(1)"
+        "dataType": "int"
     },
 
-    "NROIDPEMP": {
+    "NRO_NOTA": {
         "alias": "NR1",
-        "dataType": "int",
-        "defaultValue": "(1)"
-    },
-
-    "SERIE_ME": {
-        "alias": "SE1",
-        "dataType": "string"
-    },
-
-    "NRODOC_ME": {
-        "alias": "NR2",
-        "dataType": "int"
-    },
-
-    "NROPROV": {
-        "alias": "NR3",
-        "dataType": "int"
-    },
-
-    "NROPRODUCTO": {
-        "alias": "NR4",
-        "dataType": "int"
-    },
-
-    "SERIE_NUI": {
-        "alias": "SE2",
-        "dataType": "string"
-    },
-
-    "NRONUI": {
-        "alias": "NR5",
-        "dataType": "int"
-    },
-
-    "SERIE_PERICIA": {
-        "alias": "SE3",
-        "dataType": "string"
-    },
-
-    "NROPERICIA": {
-        "alias": "NR6",
-        "dataType": "int"
-    },
-
-    "SERIE_PERICIA_ADN": {
-        "alias": "SE4",
-        "dataType": "string"
-    },
-
-    "NROPERICIA_ADN": {
-        "alias": "NR7",
-        "dataType": "int"
-    },
-
-    "SERIE_PERICIA_LAB": {
-        "alias": "SE5",
-        "dataType": "string"
-    },
-
-    "NROPERICIA_LAB": {
-        "alias": "NR8",
-        "dataType": "int"
-    },
-
-    "SERIE_PERICIA_GRAL": {
-        "alias": "SE6",
-        "dataType": "string"
-    },
-
-    "NROPERICIA_GRAL": {
-        "alias": "NR9",
-        "dataType": "int"
-    },
-
-    "NRO_RECIBO_MGRAL": {
-        "alias": "NR10",
         "dataType": "int"
     },
 
     "NRO_RECIBO_MADN": {
-        "alias": "NR11",
+        "alias": "NR2",
+        "dataType": "int"
+    },
+
+    "NRO_RECIBO_MGRAL": {
+        "alias": "NR3",
         "dataType": "int"
     },
 
     "NRO_RECIBO_MLAB": {
+        "alias": "NR4",
+        "dataType": "int"
+    },
+
+    "NRODOC_ME": {
+        "alias": "NR5",
+        "dataType": "int"
+    },
+
+    "NROIDPEMP": {
+        "alias": "NR6",
+        "dataType": "int",
+        "defaultValue": "(1)"
+    },
+
+    "NRONUI": {
+        "alias": "NR7",
+        "dataType": "int"
+    },
+
+    "NROPEDIDO": {
+        "alias": "NR8",
+        "dataType": "int",
+        "defaultValue": "(1)"
+    },
+
+    "NROPERICIA": {
+        "alias": "NR9",
+        "dataType": "int"
+    },
+
+    "NROPERICIA_ADN": {
+        "alias": "NR10",
+        "dataType": "int"
+    },
+
+    "NROPERICIA_GRAL": {
+        "alias": "NR11",
+        "dataType": "int"
+    },
+
+    "NROPERICIA_LAB": {
         "alias": "NR12",
         "dataType": "int"
     },
 
-    "SERIE_MESA_DIR": {
-        "alias": "SE7",
-        "dataType": "string"
-    },
-
-    "NRO_MESA_DIR": {
+    "NROPRODUCTO": {
         "alias": "NR13",
         "dataType": "int"
     },
 
-    "SERIE_NOTAS": {
-        "alias": "SE8",
+    "NROPROV": {
+        "alias": "NR14",
+        "dataType": "int"
+    },
+
+    "SERIE_ME": {
+        "alias": "SER",
         "dataType": "string"
     },
 
-    "NRO_NOTA": {
-        "alias": "NR14",
-        "dataType": "int"
+    "SERIE_MESA_DIR": {
+        "alias": "SE1",
+        "dataType": "string"
+    },
+
+    "SERIE_NOTAS": {
+        "alias": "SE2",
+        "dataType": "string"
+    },
+
+    "SERIE_NUI": {
+        "alias": "SE3",
+        "dataType": "string"
+    },
+
+    "SERIE_PEDIDOS": {
+        "alias": "SE4",
+        "dataType": "string"
+    },
+
+    "SERIE_PERICIA": {
+        "alias": "SE5",
+        "dataType": "string"
+    },
+
+    "SERIE_PERICIA_ADN": {
+        "alias": "SE6",
+        "dataType": "string"
+    },
+
+    "SERIE_PERICIA_GRAL": {
+        "alias": "SE7",
+        "dataType": "string"
+    },
+
+    "SERIE_PERICIA_LAB": {
+        "alias": "SE8",
+        "dataType": "string"
     }
 
 }

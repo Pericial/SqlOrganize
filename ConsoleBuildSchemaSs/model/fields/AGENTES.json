@@ -1,16 +1,61 @@
 {
-    "TIPDOC": {
-        "alias": "TIP",
-        "dataType": "string"
-    },
-
-    "NUMDOC": {
-        "alias": "NUM",
-        "dataType": "string"
+    "APORTA": {
+        "alias": "APO",
+        "dataType": "DateTime"
     },
 
     "APYN": {
         "alias": "APY",
+        "dataType": "string"
+    },
+
+    "AUDIT": {
+        "alias": "AUD",
+        "dataType": "DateTime"
+    },
+
+    "CARGO": {
+        "alias": "CAR",
+        "dataType": "string"
+    },
+
+    "CIUDAD": {
+        "alias": "CIU",
+        "dataType": "string"
+    },
+
+    "CODIGO": {
+        "alias": "COD",
+        "dataType": "string"
+    },
+
+    "CONTRATO": {
+        "alias": "CON",
+        "dataType": "string"
+    },
+
+    "DEPJUD": {
+        "alias": "DEP",
+        "dataType": "string"
+    },
+
+    "DOMIC": {
+        "alias": "DOM",
+        "dataType": "string"
+    },
+
+    "FENAC": {
+        "alias": "FEN",
+        "dataType": "DateTime"
+    },
+
+    "FUNCION": {
+        "alias": "FUN",
+        "dataType": "string"
+    },
+
+    "GRUPO": {
+        "alias": "GRU",
         "dataType": "string"
     },
 
@@ -29,63 +74,13 @@
         "dataType": "string"
     },
 
-    "CIUDAD": {
-        "alias": "CIU",
+    "LLAMADA": {
+        "alias": "LLA",
         "dataType": "string"
-    },
-
-    "FENAC": {
-        "alias": "FEN",
-        "dataType": "DateTime"
-    },
-
-    "APORTA": {
-        "alias": "APO",
-        "dataType": "DateTime"
     },
 
     "MARCA": {
         "alias": "MAR",
-        "dataType": "string"
-    },
-
-    "CODIGO": {
-        "alias": "COD",
-        "dataType": "string"
-    },
-
-    "DEPJUD": {
-        "alias": "DEP",
-        "dataType": "string"
-    },
-
-    "GRUPO": {
-        "alias": "GRU",
-        "dataType": "string"
-    },
-
-    "NIVEL": {
-        "alias": "NIV",
-        "dataType": "string"
-    },
-
-    "CARGO": {
-        "alias": "CAR",
-        "dataType": "string"
-    },
-
-    "FUNCION": {
-        "alias": "FUN",
-        "dataType": "string"
-    },
-
-    "NOMINA": {
-        "alias": "NOM",
-        "dataType": "string"
-    },
-
-    "LLAMADA": {
-        "alias": "LLA",
         "dataType": "string"
     },
 
@@ -94,28 +89,28 @@
         "dataType": "string"
     },
 
+    "NIVEL": {
+        "alias": "NIV",
+        "dataType": "string"
+    },
+
+    "NOMINA": {
+        "alias": "NOM",
+        "dataType": "string"
+    },
+
     "NROCARGO": {
         "alias": "NRO",
         "dataType": "string"
     },
 
-    "CONTRATO": {
-        "alias": "CON",
-        "dataType": "string"
-    },
-
-    "AUDIT": {
-        "alias": "AUD",
-        "dataType": "DateTime"
-    },
-
     "NUMCAR": {
-        "alias": "NU1",
+        "alias": "NUM",
         "dataType": "string"
     },
 
-    "SEX": {
-        "alias": "SEX",
+    "NUMDOC": {
+        "alias": "NU1",
         "dataType": "string"
     },
 
@@ -124,18 +119,23 @@
         "dataType": "string"
     },
 
-    "TRABAJA": {
-        "alias": "TRA",
-        "dataType": "string"
-    },
-
     "OFICINA": {
         "alias": "OFI",
         "dataType": "string"
     },
 
-    "DOMIC": {
-        "alias": "DOM",
+    "SEX": {
+        "alias": "SEX",
+        "dataType": "string"
+    },
+
+    "TIPDOC": {
+        "alias": "TIP",
+        "dataType": "string"
+    },
+
+    "TRABAJA": {
+        "alias": "TRA",
         "dataType": "string"
     },
 

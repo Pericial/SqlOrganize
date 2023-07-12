@@ -4,13 +4,18 @@
         "dataType": "string"
     },
 
-    "id_partido": {
-        "alias": "id_",
-        "dataType": "int"
+    "DTOJUDI": {
+        "alias": "DTO",
+        "dataType": "string"
     },
 
     "Id_localidad": {
         "alias": "Id_",
+        "dataType": "int"
+    },
+
+    "id_partido": {
+        "alias": "id_",
         "dataType": "int"
     },
 
@@ -22,11 +27,6 @@
     "REGISTRO_OFICIAL": {
         "alias": "REG",
         "dataType": "bool"
-    },
-
-    "DTOJUDI": {
-        "alias": "DTO",
-        "dataType": "string"
     }
 
 }

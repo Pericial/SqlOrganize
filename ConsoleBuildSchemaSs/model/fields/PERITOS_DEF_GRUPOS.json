@@ -1,11 +1,11 @@
 {
-    "NroIdPemp": {
-        "alias": "Nro",
+    "Grupo": {
+        "alias": "Gru",
         "dataType": "int"
     },
 
-    "Grupo": {
-        "alias": "Gru",
+    "NroIdPemp": {
+        "alias": "Nro",
         "dataType": "int"
     }
 

@@ -1,4 +1,9 @@
 {
+    "CANT_ENTRE": {
+        "alias": "CAN",
+        "dataType": "float"
+    },
+
     "DTOJUD": {
         "alias": "DTO",
         "dataType": "string",
@@ -11,10 +16,9 @@
         "refEntityName": "FECHA_PEDIDO"
     },
 
-    "SERIEPED": {
-        "alias": "SER",
-        "dataType": "string",
-        "refEntityName": "SERIEPED"
+    "ITEM": {
+        "alias": "ITE",
+        "dataType": "int"
     },
 
     "NROPED": {
@@ -23,15 +27,15 @@
         "refEntityName": "NROPED"
     },
 
+    "OBSITEM": {
+        "alias": "OBS",
+        "dataType": "string"
+    },
+
     "ORDEN_PROVISION": {
         "alias": "ORD",
         "dataType": "string",
         "refEntityName": "ORDEN_PROVISION"
-    },
-
-    "ITEM": {
-        "alias": "ITE",
-        "dataType": "int"
     },
 
     "PRECIO_UNI": {
@@ -39,14 +43,10 @@
         "dataType": "float"
     },
 
-    "CANT_ENTRE": {
-        "alias": "CAN",
-        "dataType": "float"
-    },
-
-    "OBSITEM": {
-        "alias": "OBS",
-        "dataType": "string"
+    "SERIEPED": {
+        "alias": "SER",
+        "dataType": "string",
+        "refEntityName": "SERIEPED"
     }
 
 }

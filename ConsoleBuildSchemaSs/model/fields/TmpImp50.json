@@ -1,4 +1,254 @@
 {
+    "campo1": {
+        "alias": "cam",
+        "dataType": "string"
+    },
+
+    "campo10": {
+        "alias": "ca1",
+        "dataType": "string"
+    },
+
+    "campo11": {
+        "alias": "ca2",
+        "dataType": "string"
+    },
+
+    "campo12": {
+        "alias": "ca3",
+        "dataType": "string"
+    },
+
+    "campo13": {
+        "alias": "ca4",
+        "dataType": "string"
+    },
+
+    "campo14": {
+        "alias": "ca5",
+        "dataType": "string"
+    },
+
+    "campo15": {
+        "alias": "ca6",
+        "dataType": "string"
+    },
+
+    "campo16": {
+        "alias": "ca7",
+        "dataType": "string"
+    },
+
+    "campo17": {
+        "alias": "ca8",
+        "dataType": "string"
+    },
+
+    "campo18": {
+        "alias": "ca9",
+        "dataType": "string"
+    },
+
+    "campo19": {
+        "alias": "ca10",
+        "dataType": "string"
+    },
+
+    "campo2": {
+        "alias": "ca11",
+        "dataType": "string"
+    },
+
+    "campo20": {
+        "alias": "ca12",
+        "dataType": "string"
+    },
+
+    "campo21": {
+        "alias": "ca13",
+        "dataType": "string"
+    },
+
+    "campo22": {
+        "alias": "ca14",
+        "dataType": "string"
+    },
+
+    "campo23": {
+        "alias": "ca15",
+        "dataType": "string"
+    },
+
+    "campo24": {
+        "alias": "ca16",
+        "dataType": "string"
+    },
+
+    "campo25": {
+        "alias": "ca17",
+        "dataType": "string"
+    },
+
+    "campo26": {
+        "alias": "ca18",
+        "dataType": "string"
+    },
+
+    "campo27": {
+        "alias": "ca19",
+        "dataType": "string"
+    },
+
+    "campo28": {
+        "alias": "ca20",
+        "dataType": "string"
+    },
+
+    "campo29": {
+        "alias": "ca21",
+        "dataType": "string"
+    },
+
+    "campo3": {
+        "alias": "ca22",
+        "dataType": "string"
+    },
+
+    "campo30": {
+        "alias": "ca23",
+        "dataType": "string"
+    },
+
+    "campo31": {
+        "alias": "ca24",
+        "dataType": "string"
+    },
+
+    "campo32": {
+        "alias": "ca25",
+        "dataType": "string"
+    },
+
+    "campo33": {
+        "alias": "ca26",
+        "dataType": "string"
+    },
+
+    "campo34": {
+        "alias": "ca27",
+        "dataType": "string"
+    },
+
+    "campo35": {
+        "alias": "ca28",
+        "dataType": "string"
+    },
+
+    "campo36": {
+        "alias": "ca29",
+        "dataType": "string"
+    },
+
+    "campo37": {
+        "alias": "ca30",
+        "dataType": "string"
+    },
+
+    "campo38": {
+        "alias": "ca31",
+        "dataType": "string"
+    },
+
+    "campo39": {
+        "alias": "ca32",
+        "dataType": "string"
+    },
+
+    "campo4": {
+        "alias": "ca33",
+        "dataType": "string"
+    },
+
+    "campo40": {
+        "alias": "ca34",
+        "dataType": "string"
+    },
+
+    "campo41": {
+        "alias": "ca35",
+        "dataType": "string"
+    },
+
+    "campo42": {
+        "alias": "ca36",
+        "dataType": "string"
+    },
+
+    "campo43": {
+        "alias": "ca37",
+        "dataType": "string"
+    },
+
+    "campo44": {
+        "alias": "ca38",
+        "dataType": "string"
+    },
+
+    "campo45": {
+        "alias": "ca39",
+        "dataType": "string"
+    },
+
+    "campo46": {
+        "alias": "ca40",
+        "dataType": "string"
+    },
+
+    "campo47": {
+        "alias": "ca41",
+        "dataType": "string"
+    },
+
+    "campo48": {
+        "alias": "ca42",
+        "dataType": "string"
+    },
+
+    "campo49": {
+        "alias": "ca43",
+        "dataType": "string"
+    },
+
+    "campo5": {
+        "alias": "ca44",
+        "dataType": "string"
+    },
+
+    "campo50": {
+        "alias": "ca45",
+        "dataType": "string"
+    },
+
+    "campo6": {
+        "alias": "ca46",
+        "dataType": "string"
+    },
+
+    "campo7": {
+        "alias": "ca47",
+        "dataType": "string"
+    },
+
+    "campo8": {
+        "alias": "ca48",
+        "dataType": "string"
+    },
+
+    "campo9": {
+        "alias": "ca49",
+        "dataType": "string"
+    },
+
     "id_pc": {
         "alias": "id_",
         "dataType": "string"
@@ -11,256 +261,6 @@
 
     "Texto1": {
         "alias": "Tex",
-        "dataType": "string"
-    },
-
-    "campo1": {
-        "alias": "cam",
-        "dataType": "string"
-    },
-
-    "campo2": {
-        "alias": "ca1",
-        "dataType": "string"
-    },
-
-    "campo3": {
-        "alias": "ca2",
-        "dataType": "string"
-    },
-
-    "campo4": {
-        "alias": "ca3",
-        "dataType": "string"
-    },
-
-    "campo5": {
-        "alias": "ca4",
-        "dataType": "string"
-    },
-
-    "campo6": {
-        "alias": "ca5",
-        "dataType": "string"
-    },
-
-    "campo7": {
-        "alias": "ca6",
-        "dataType": "string"
-    },
-
-    "campo8": {
-        "alias": "ca7",
-        "dataType": "string"
-    },
-
-    "campo9": {
-        "alias": "ca8",
-        "dataType": "string"
-    },
-
-    "campo10": {
-        "alias": "ca9",
-        "dataType": "string"
-    },
-
-    "campo11": {
-        "alias": "ca10",
-        "dataType": "string"
-    },
-
-    "campo12": {
-        "alias": "ca11",
-        "dataType": "string"
-    },
-
-    "campo13": {
-        "alias": "ca12",
-        "dataType": "string"
-    },
-
-    "campo14": {
-        "alias": "ca13",
-        "dataType": "string"
-    },
-
-    "campo15": {
-        "alias": "ca14",
-        "dataType": "string"
-    },
-
-    "campo16": {
-        "alias": "ca15",
-        "dataType": "string"
-    },
-
-    "campo17": {
-        "alias": "ca16",
-        "dataType": "string"
-    },
-
-    "campo18": {
-        "alias": "ca17",
-        "dataType": "string"
-    },
-
-    "campo19": {
-        "alias": "ca18",
-        "dataType": "string"
-    },
-
-    "campo20": {
-        "alias": "ca19",
-        "dataType": "string"
-    },
-
-    "campo21": {
-        "alias": "ca20",
-        "dataType": "string"
-    },
-
-    "campo22": {
-        "alias": "ca21",
-        "dataType": "string"
-    },
-
-    "campo23": {
-        "alias": "ca22",
-        "dataType": "string"
-    },
-
-    "campo24": {
-        "alias": "ca23",
-        "dataType": "string"
-    },
-
-    "campo25": {
-        "alias": "ca24",
-        "dataType": "string"
-    },
-
-    "campo26": {
-        "alias": "ca25",
-        "dataType": "string"
-    },
-
-    "campo27": {
-        "alias": "ca26",
-        "dataType": "string"
-    },
-
-    "campo28": {
-        "alias": "ca27",
-        "dataType": "string"
-    },
-
-    "campo29": {
-        "alias": "ca28",
-        "dataType": "string"
-    },
-
-    "campo30": {
-        "alias": "ca29",
-        "dataType": "string"
-    },
-
-    "campo31": {
-        "alias": "ca30",
-        "dataType": "string"
-    },
-
-    "campo32": {
-        "alias": "ca31",
-        "dataType": "string"
-    },
-
-    "campo33": {
-        "alias": "ca32",
-        "dataType": "string"
-    },
-
-    "campo34": {
-        "alias": "ca33",
-        "dataType": "string"
-    },
-
-    "campo35": {
-        "alias": "ca34",
-        "dataType": "string"
-    },
-
-    "campo36": {
-        "alias": "ca35",
-        "dataType": "string"
-    },
-
-    "campo37": {
-        "alias": "ca36",
-        "dataType": "string"
-    },
-
-    "campo38": {
-        "alias": "ca37",
-        "dataType": "string"
-    },
-
-    "campo39": {
-        "alias": "ca38",
-        "dataType": "string"
-    },
-
-    "campo40": {
-        "alias": "ca39",
-        "dataType": "string"
-    },
-
-    "campo41": {
-        "alias": "ca40",
-        "dataType": "string"
-    },
-
-    "campo42": {
-        "alias": "ca41",
-        "dataType": "string"
-    },
-
-    "campo43": {
-        "alias": "ca42",
-        "dataType": "string"
-    },
-
-    "campo44": {
-        "alias": "ca43",
-        "dataType": "string"
-    },
-
-    "campo45": {
-        "alias": "ca44",
-        "dataType": "string"
-    },
-
-    "campo46": {
-        "alias": "ca45",
-        "dataType": "string"
-    },
-
-    "campo47": {
-        "alias": "ca46",
-        "dataType": "string"
-    },
-
-    "campo48": {
-        "alias": "ca47",
-        "dataType": "string"
-    },
-
-    "campo49": {
-        "alias": "ca48",
-        "dataType": "string"
-    },
-
-    "campo50": {
-        "alias": "ca49",
         "dataType": "string"
     }
 

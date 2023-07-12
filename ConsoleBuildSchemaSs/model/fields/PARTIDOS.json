@@ -1,4 +1,9 @@
 {
+    "DTOJUDI": {
+        "alias": "DTO",
+        "dataType": "string"
+    },
+
     "ID_PARTIDO": {
         "alias": "ID_",
         "dataType": "int"
@@ -12,11 +17,6 @@
     "REGISTRO_OFICIAL": {
         "alias": "REG",
         "dataType": "bool"
-    },
-
-    "DTOJUDI": {
-        "alias": "DTO",
-        "dataType": "string"
     }
 
 }

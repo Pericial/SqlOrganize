@@ -1,11 +1,11 @@
 {
-    "DTOJUD": {
-        "alias": "DTO",
+    "DESCRIPCION": {
+        "alias": "DES",
         "dataType": "string"
     },
 
-    "DESCRIPCION": {
-        "alias": "DES",
+    "DTOJUD": {
+        "alias": "DTO",
         "dataType": "string"
     }
 

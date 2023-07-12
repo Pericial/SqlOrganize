@@ -4,6 +4,11 @@
         "dataType": "int"
     },
 
+    "lvalue": {
+        "alias": "lva",
+        "dataType": "image"
+    },
+
     "objectid": {
         "alias": "obj",
         "dataType": "int"
@@ -14,19 +19,14 @@
         "dataType": "string"
     },
 
-    "value": {
-        "alias": "val",
-        "dataType": "string"
-    },
-
     "uvalue": {
         "alias": "uva",
         "dataType": "string"
     },
 
-    "lvalue": {
-        "alias": "lva",
-        "dataType": "image"
+    "value": {
+        "alias": "val",
+        "dataType": "string"
     },
 
     "version": {

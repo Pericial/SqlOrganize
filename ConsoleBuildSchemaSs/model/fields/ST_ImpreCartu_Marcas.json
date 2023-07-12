@@ -4,13 +4,13 @@
         "dataType": "string"
     },
 
-    "IMP_CAR": {
-        "alias": "IMP",
+    "DESCRIPCION": {
+        "alias": "DES",
         "dataType": "string"
     },
 
-    "DESCRIPCION": {
-        "alias": "DES",
+    "IMP_CAR": {
+        "alias": "IMP",
         "dataType": "string"
     }
 

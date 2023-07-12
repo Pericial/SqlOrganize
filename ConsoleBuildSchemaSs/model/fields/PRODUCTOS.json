@@ -1,7 +1,8 @@
 {
-    "DTOJUD": {
-        "alias": "DTO",
-        "dataType": "string"
+    "BAJA": {
+        "alias": "BAJ",
+        "dataType": "bool",
+        "defaultValue": "(0)"
     },
 
     "CODPROD": {
@@ -9,21 +10,44 @@
         "dataType": "int"
     },
 
+    "COSTO_ULT_COMPRA": {
+        "alias": "COS",
+        "dataType": "float"
+    },
+
     "DEPENDENCIA": {
         "alias": "DEP",
         "dataType": "string"
     },
 
-    "RUBRO": {
-        "alias": "RUB",
-        "dataType": "int",
-        "refEntityName": "CODRUBRO"
+    "DESCRIPCION": {
+        "alias": "DES",
+        "dataType": "string"
     },
 
-    "TIPO": {
-        "alias": "TIP",
-        "dataType": "int",
-        "refEntityName": "CODTIPOS"
+    "DIAS_AVISO1_DESDE_UC": {
+        "alias": "DIA",
+        "dataType": "int"
+    },
+
+    "DIAS_AVISO2_DESDE_UC": {
+        "alias": "DI1",
+        "dataType": "int"
+    },
+
+    "DTOJUD": {
+        "alias": "DTO",
+        "dataType": "string"
+    },
+
+    "EN_ALERTA": {
+        "alias": "EN_",
+        "dataType": "bool"
+    },
+
+    "FECHA_ULT_COMPRA": {
+        "alias": "FEC",
+        "dataType": "DateTime"
     },
 
     "MARCA": {
@@ -38,30 +62,14 @@
         "refEntityName": "CODMEDIDA"
     },
 
-    "DESCRIPCION": {
-        "alias": "DES",
-        "dataType": "string"
-    },
-
     "OBS": {
         "alias": "OBS",
         "dataType": "string"
     },
 
-    "BAJA": {
-        "alias": "BAJ",
-        "dataType": "bool",
-        "defaultValue": "(0)"
-    },
-
-    "COSTO_ULT_COMPRA": {
-        "alias": "COS",
-        "dataType": "float"
-    },
-
-    "FECHA_ULT_COMPRA": {
-        "alias": "FEC",
-        "dataType": "DateTime"
+    "PEDIDO": {
+        "alias": "PED",
+        "dataType": "bool"
     },
 
     "PROV_ULT_COMPRA": {
@@ -69,30 +77,22 @@
         "dataType": "int"
     },
 
+    "RUBRO": {
+        "alias": "RUB",
+        "dataType": "int",
+        "refEntityName": "CODRUBRO"
+    },
+
+    "TIPO": {
+        "alias": "TIP",
+        "dataType": "int",
+        "refEntityName": "CODTIPOS"
+    },
+
     "USO_INTERNO": {
         "alias": "USO",
         "dataType": "string",
         "defaultValue": "('N')"
-    },
-
-    "DIAS_AVISO1_DESDE_UC": {
-        "alias": "DIA",
-        "dataType": "int"
-    },
-
-    "DIAS_AVISO2_DESDE_UC": {
-        "alias": "DI1",
-        "dataType": "int"
-    },
-
-    "EN_ALERTA": {
-        "alias": "EN_",
-        "dataType": "bool"
-    },
-
-    "PEDIDO": {
-        "alias": "PED",
-        "dataType": "bool"
     }
 
 }

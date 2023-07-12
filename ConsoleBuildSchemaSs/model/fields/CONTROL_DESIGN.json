@@ -4,8 +4,8 @@
         "dataType": "string"
     },
 
-    "SECCION": {
-        "alias": "SEC",
+    "EMPLE_DESIGNO": {
+        "alias": "EMP",
         "dataType": "string"
     },
 
@@ -14,38 +14,28 @@
         "dataType": "string"
     },
 
-    "ID_ZONA": {
-        "alias": "ID_",
-        "dataType": "int"
-    },
-
-    "ID_GRUPO": {
-        "alias": "ID1",
-        "dataType": "int"
-    },
-
-    "ID_RAMAL": {
-        "alias": "ID2",
-        "dataType": "int"
-    },
-
-    "ID_TIPOPERI": {
-        "alias": "ID3",
-        "dataType": "int"
-    },
-
-    "TIPO_DESIG": {
-        "alias": "TIP",
-        "dataType": "string"
-    },
-
     "HORA": {
         "alias": "HOR",
         "dataType": "DateTime"
     },
 
-    "PERITO": {
-        "alias": "PER",
+    "ID_GRUPO": {
+        "alias": "ID_",
+        "dataType": "int"
+    },
+
+    "ID_RAMAL": {
+        "alias": "ID1",
+        "dataType": "int"
+    },
+
+    "ID_TIPOPERI": {
+        "alias": "ID2",
+        "dataType": "int"
+    },
+
+    "ID_ZONA": {
+        "alias": "ID3",
         "dataType": "int"
     },
 
@@ -54,13 +44,23 @@
         "dataType": "int"
     },
 
-    "EMPLE_DESIGNO": {
-        "alias": "EMP",
+    "PC_DESIGNO": {
+        "alias": "PC_",
         "dataType": "string"
     },
 
-    "PC_DESIGNO": {
-        "alias": "PC_",
+    "PERITO": {
+        "alias": "PER",
+        "dataType": "int"
+    },
+
+    "SECCION": {
+        "alias": "SEC",
+        "dataType": "string"
+    },
+
+    "TIPO_DESIG": {
+        "alias": "TIP",
         "dataType": "string"
     }
 

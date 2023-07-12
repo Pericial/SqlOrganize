@@ -1,7 +1,7 @@
 {
-    "RID": {
-        "alias": "RID",
-        "dataType": "string"
+    "Cantidad": {
+        "alias": "Can",
+        "dataType": "float"
     },
 
     "CodArtInt": {
@@ -9,9 +9,9 @@
         "dataType": "string"
     },
 
-    "Cantidad": {
-        "alias": "Can",
-        "dataType": "float"
+    "RID": {
+        "alias": "RID",
+        "dataType": "string"
     }
 
 }

@@ -1,17 +1,17 @@
 {
+    "CODEMPMODI": {
+        "alias": "COD",
+        "dataType": "int"
+    },
+
     "DTOJUDI": {
         "alias": "DTO",
         "dataType": "string"
     },
 
-    "SERIE": {
-        "alias": "SER",
-        "dataType": "string"
-    },
-
-    "NUI": {
-        "alias": "NUI",
-        "dataType": "int"
+    "F_ULT_MODI": {
+        "alias": "F_U",
+        "dataType": "DateTime"
     },
 
     "NRODOC": {
@@ -19,13 +19,13 @@
         "dataType": "int"
     },
 
-    "SERIE_PERI": {
-        "alias": "SE1",
-        "dataType": "string"
-    },
-
     "NROPERI": {
         "alias": "NR1",
+        "dataType": "int"
+    },
+
+    "NUI": {
+        "alias": "NUI",
         "dataType": "int"
     },
 
@@ -34,19 +34,19 @@
         "dataType": "string"
     },
 
+    "SERIE": {
+        "alias": "SER",
+        "dataType": "string"
+    },
+
+    "SERIE_PERI": {
+        "alias": "SE1",
+        "dataType": "string"
+    },
+
     "SOLOLECTURA": {
         "alias": "SOL",
         "dataType": "bool"
-    },
-
-    "F_ULT_MODI": {
-        "alias": "F_U",
-        "dataType": "DateTime"
-    },
-
-    "CODEMPMODI": {
-        "alias": "COD",
-        "dataType": "int"
     },
 
     "SUBPERI": {

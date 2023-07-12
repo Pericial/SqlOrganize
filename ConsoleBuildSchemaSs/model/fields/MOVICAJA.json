@@ -1,52 +1,7 @@
 {
-    "DTOJUDI": {
-        "alias": "DTO",
-        "dataType": "string"
-    },
-
     "CAJA_NRO": {
         "alias": "CAJ",
         "dataType": "string"
-    },
-
-    "ID_MOV": {
-        "alias": "ID_",
-        "dataType": "int"
-    },
-
-    "FECHA_MOV": {
-        "alias": "FEC",
-        "dataType": "DateTime"
-    },
-
-    "IMPORTE": {
-        "alias": "IMP",
-        "dataType": "float"
-    },
-
-    "SALDO_EN_CAJA": {
-        "alias": "SAL",
-        "dataType": "float"
-    },
-
-    "CONCEPTO": {
-        "alias": "CON",
-        "dataType": "string"
-    },
-
-    "OBS": {
-        "alias": "OBS",
-        "dataType": "string"
-    },
-
-    "COD_EMP": {
-        "alias": "COD",
-        "dataType": "int"
-    },
-
-    "HORA": {
-        "alias": "HOR",
-        "dataType": "DateTime"
     },
 
     "CEUM": {
@@ -54,9 +9,54 @@
         "dataType": "int"
     },
 
+    "COD_EMP": {
+        "alias": "COD",
+        "dataType": "int"
+    },
+
+    "CONCEPTO": {
+        "alias": "CON",
+        "dataType": "string"
+    },
+
+    "DTOJUDI": {
+        "alias": "DTO",
+        "dataType": "string"
+    },
+
+    "FECHA_MOV": {
+        "alias": "FEC",
+        "dataType": "DateTime"
+    },
+
+    "HORA": {
+        "alias": "HOR",
+        "dataType": "DateTime"
+    },
+
     "HORA_MODIF": {
         "alias": "HO1",
         "dataType": "DateTime"
+    },
+
+    "ID_MOV": {
+        "alias": "ID_",
+        "dataType": "int"
+    },
+
+    "IMPORTE": {
+        "alias": "IMP",
+        "dataType": "float"
+    },
+
+    "OBS": {
+        "alias": "OBS",
+        "dataType": "string"
+    },
+
+    "SALDO_EN_CAJA": {
+        "alias": "SAL",
+        "dataType": "float"
     }
 
 }

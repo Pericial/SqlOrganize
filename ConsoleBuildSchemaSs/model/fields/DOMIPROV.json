@@ -1,4 +1,29 @@
 {
+    "Calle": {
+        "alias": "Cal",
+        "dataType": "string"
+    },
+
+    "cod_local": {
+        "alias": "cod",
+        "dataType": "int"
+    },
+
+    "CP": {
+        "alias": "CP",
+        "dataType": "string"
+    },
+
+    "Depto": {
+        "alias": "Dep",
+        "dataType": "string"
+    },
+
+    "entre_calle": {
+        "alias": "ent",
+        "dataType": "string"
+    },
+
     "IdpProv": {
         "alias": "Idp",
         "dataType": "int"
@@ -9,11 +34,6 @@
         "dataType": "int"
     },
 
-    "Calle": {
-        "alias": "Cal",
-        "dataType": "string"
-    },
-
     "Numero": {
         "alias": "Num",
         "dataType": "string"
@@ -21,16 +41,6 @@
 
     "Piso": {
         "alias": "Pis",
-        "dataType": "string"
-    },
-
-    "Depto": {
-        "alias": "Dep",
-        "dataType": "string"
-    },
-
-    "CP": {
-        "alias": "CP",
         "dataType": "string"
     },
 
@@ -49,19 +59,9 @@
         "dataType": "string"
     },
 
-    "entre_calle": {
-        "alias": "ent",
-        "dataType": "string"
-    },
-
     "y_calle": {
         "alias": "y_c",
         "dataType": "string"
-    },
-
-    "cod_local": {
-        "alias": "cod",
-        "dataType": "int"
     }
 
 }

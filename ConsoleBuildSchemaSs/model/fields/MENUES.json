@@ -4,14 +4,19 @@
         "dataType": "string"
     },
 
+    "CODIGO_PAPA": {
+        "alias": "CO1",
+        "dataType": "string"
+    },
+
     "DESCRIPCION": {
         "alias": "DES",
         "dataType": "string"
     },
 
-    "CODIGO_PAPA": {
-        "alias": "CO1",
-        "dataType": "string"
+    "Habilitado": {
+        "alias": "Hab",
+        "dataType": "bool"
     },
 
     "IDENTIFICADOR": {
@@ -22,11 +27,6 @@
     "Texto": {
         "alias": "Tex",
         "dataType": "string"
-    },
-
-    "Habilitado": {
-        "alias": "Hab",
-        "dataType": "bool"
     }
 
 }

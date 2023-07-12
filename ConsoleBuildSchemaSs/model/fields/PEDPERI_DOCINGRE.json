@@ -1,14 +1,39 @@
 {
+    "COD_DOC_INGRE": {
+        "alias": "COD",
+        "dataType": "string"
+    },
+
+    "DETALLE_DOCINGRE": {
+        "alias": "DET",
+        "dataType": "string"
+    },
+
     "DTOJUDI": {
         "alias": "DTO",
         "dataType": "string",
         "refEntityName": "DTOJUDI"
     },
 
-    "SERIE": {
-        "alias": "SER",
-        "dataType": "string",
-        "refEntityName": "SERIE"
+    "ESTA_EN_SEC": {
+        "alias": "EST",
+        "dataType": "string"
+    },
+
+    "FECHA_CARGA": {
+        "alias": "FEC",
+        "dataType": "DateTime",
+        "defaultValue": "(getdate())"
+    },
+
+    "FECHA_INGRE": {
+        "alias": "FE1",
+        "dataType": "DateTime"
+    },
+
+    "NRODOC": {
+        "alias": "NRO",
+        "dataType": "int"
     },
 
     "NUI": {
@@ -17,40 +42,15 @@
         "refEntityName": "NUI"
     },
 
-    "NRODOC": {
-        "alias": "NRO",
-        "dataType": "int"
-    },
-
-    "COD_DOC_INGRE": {
-        "alias": "COD",
-        "dataType": "string"
-    },
-
-    "FECHA_INGRE": {
-        "alias": "FEC",
-        "dataType": "DateTime"
-    },
-
-    "DETALLE_DOCINGRE": {
-        "alias": "DET",
-        "dataType": "string"
-    },
-
-    "ESTA_EN_SEC": {
-        "alias": "EST",
-        "dataType": "string"
-    },
-
     "req_conf": {
         "alias": "req",
         "dataType": "bool"
     },
 
-    "FECHA_CARGA": {
-        "alias": "FE1",
-        "dataType": "DateTime",
-        "defaultValue": "(getdate())"
+    "SERIE": {
+        "alias": "SER",
+        "dataType": "string",
+        "refEntityName": "SERIE"
     },
 
     "VIENE_DE": {

@@ -1,4 +1,14 @@
 {
+    "definition": {
+        "alias": "def",
+        "dataType": "varbinary"
+    },
+
+    "diagram_id": {
+        "alias": "dia",
+        "dataType": "int"
+    },
+
     "name": {
         "alias": "nam",
         "dataType": "string"
@@ -9,19 +19,9 @@
         "dataType": "int"
     },
 
-    "diagram_id": {
-        "alias": "dia",
-        "dataType": "int"
-    },
-
     "version": {
         "alias": "ver",
         "dataType": "int"
-    },
-
-    "definition": {
-        "alias": "def",
-        "dataType": "varbinary"
     }
 
 }

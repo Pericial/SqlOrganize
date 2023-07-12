@@ -9,23 +9,13 @@
         "dataType": "string"
     },
 
-    "referencia_linea": {
-        "alias": "ref",
-        "dataType": "string"
-    },
-
-    "tabla_rel": {
-        "alias": "tab",
-        "dataType": "string"
-    },
-
-    "sqltext": {
-        "alias": "sql",
-        "dataType": "string"
-    },
-
     "p1": {
         "alias": "p1",
+        "dataType": "string"
+    },
+
+    "p10": {
+        "alias": "p10",
         "dataType": "string"
     },
 
@@ -69,8 +59,18 @@
         "dataType": "string"
     },
 
-    "p10": {
-        "alias": "p10",
+    "referencia_linea": {
+        "alias": "ref",
+        "dataType": "string"
+    },
+
+    "sqltext": {
+        "alias": "sql",
+        "dataType": "string"
+    },
+
+    "tabla_rel": {
+        "alias": "tab",
         "dataType": "string"
     }
 

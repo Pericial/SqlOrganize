@@ -1,19 +1,19 @@
 {
-    "DTOJUD": {
-        "alias": "DTO",
-        "dataType": "string",
-        "refEntityName": "DTOJUD"
-    },
-
     "CODPROD": {
         "alias": "COD",
         "dataType": "int",
         "refEntityName": "CODPROD"
     },
 
-    "NROIDPPROV": {
-        "alias": "NRO",
-        "dataType": "int"
+    "COSTO_ULT_COMPRA": {
+        "alias": "COS",
+        "dataType": "float"
+    },
+
+    "DTOJUD": {
+        "alias": "DTO",
+        "dataType": "string",
+        "refEntityName": "DTOJUD"
     },
 
     "FECHA_ULT_COMPRA": {
@@ -21,9 +21,9 @@
         "dataType": "DateTime"
     },
 
-    "COSTO_ULT_COMPRA": {
-        "alias": "COS",
-        "dataType": "float"
+    "NROIDPPROV": {
+        "alias": "NRO",
+        "dataType": "int"
     }
 
 }

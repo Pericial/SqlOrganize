@@ -1,21 +1,6 @@
 {
-    "DTOJUDI": {
-        "alias": "DTO",
-        "dataType": "string"
-    },
-
-    "NRO_VIDEOCONF": {
-        "alias": "NRO",
-        "dataType": "int"
-    },
-
-    "PERITO": {
-        "alias": "PER",
-        "dataType": "string"
-    },
-
-    "ORGANISMO_CITO": {
-        "alias": "ORG",
+    "CARATULA": {
+        "alias": "CAR",
         "dataType": "string"
     },
 
@@ -24,19 +9,14 @@
         "dataType": "string"
     },
 
-    "ORGANISMO_PERITO": {
-        "alias": "OR1",
+    "DTOJUDI": {
+        "alias": "DTO",
         "dataType": "string"
     },
 
-    "NROIPP_CAUSA": {
-        "alias": "NR1",
-        "dataType": "string"
-    },
-
-    "CARATULA": {
-        "alias": "CAR",
-        "dataType": "string"
+    "EMPLE_CARGA": {
+        "alias": "EMP",
+        "dataType": "int"
     },
 
     "FECHA_CITA": {
@@ -44,19 +24,39 @@
         "dataType": "DateTime"
     },
 
-    "HORA_CITA": {
-        "alias": "HOR",
-        "dataType": "string"
-    },
-
     "HORA_CARGA": {
-        "alias": "HO1",
+        "alias": "HOR",
         "dataType": "DateTime"
     },
 
-    "EMPLE_CARGA": {
-        "alias": "EMP",
+    "HORA_CITA": {
+        "alias": "HO1",
+        "dataType": "string"
+    },
+
+    "NRO_VIDEOCONF": {
+        "alias": "NRO",
         "dataType": "int"
+    },
+
+    "NROIPP_CAUSA": {
+        "alias": "NR1",
+        "dataType": "string"
+    },
+
+    "ORGANISMO_CITO": {
+        "alias": "ORG",
+        "dataType": "string"
+    },
+
+    "ORGANISMO_PERITO": {
+        "alias": "OR1",
+        "dataType": "string"
+    },
+
+    "PERITO": {
+        "alias": "PER",
+        "dataType": "string"
     }
 
 }

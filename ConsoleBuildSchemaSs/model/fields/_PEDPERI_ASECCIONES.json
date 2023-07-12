@@ -4,9 +4,84 @@
         "dataType": "string"
     },
 
-    "SERIE": {
-        "alias": "SER",
+    "EFECTOS": {
+        "alias": "EFE",
         "dataType": "string"
+    },
+
+    "EMPLE_DIOSALIDA": {
+        "alias": "EMP",
+        "dataType": "int"
+    },
+
+    "EMPLE_RECIBIO": {
+        "alias": "EM1",
+        "dataType": "int"
+    },
+
+    "ENTREGO_EFECTOS": {
+        "alias": "ENT",
+        "dataType": "bool"
+    },
+
+    "ESPECIALIDAD": {
+        "alias": "ESP",
+        "dataType": "string"
+    },
+
+    "ESTADO": {
+        "alias": "EST",
+        "dataType": "string"
+    },
+
+    "ESTADO_COBRO": {
+        "alias": "ES1",
+        "dataType": "string"
+    },
+
+    "FECHA_DIOSALIDA": {
+        "alias": "FEC",
+        "dataType": "DateTime"
+    },
+
+    "FECHA_ESTI_COBRO": {
+        "alias": "FE1",
+        "dataType": "DateTime"
+    },
+
+    "FECHA_RECIBIO": {
+        "alias": "FE2",
+        "dataType": "DateTime"
+    },
+
+    "FFIN_PERI": {
+        "alias": "FFI",
+        "dataType": "DateTime"
+    },
+
+    "FINGRE_PERI": {
+        "alias": "FIN",
+        "dataType": "DateTime"
+    },
+
+    "HONO_ESTIMADO": {
+        "alias": "HON",
+        "dataType": "float"
+    },
+
+    "HONO_REGULADO": {
+        "alias": "HO1",
+        "dataType": "float"
+    },
+
+    "NROEFECTO": {
+        "alias": "NRO",
+        "dataType": "string"
+    },
+
+    "NROPERI": {
+        "alias": "NR1",
+        "dataType": "int"
     },
 
     "NUI": {
@@ -19,89 +94,14 @@
         "dataType": "string"
     },
 
-    "ESPECIALIDAD": {
-        "alias": "ESP",
+    "SERIE": {
+        "alias": "SER",
         "dataType": "string"
     },
 
     "SERIE_PERI": {
         "alias": "SE1",
         "dataType": "string"
-    },
-
-    "NROPERI": {
-        "alias": "NRO",
-        "dataType": "int"
-    },
-
-    "ESTADO": {
-        "alias": "EST",
-        "dataType": "string"
-    },
-
-    "FINGRE_PERI": {
-        "alias": "FIN",
-        "dataType": "DateTime"
-    },
-
-    "FFIN_PERI": {
-        "alias": "FFI",
-        "dataType": "DateTime"
-    },
-
-    "EFECTOS": {
-        "alias": "EFE",
-        "dataType": "string"
-    },
-
-    "NROEFECTO": {
-        "alias": "NR1",
-        "dataType": "string"
-    },
-
-    "FECHA_ESTI_COBRO": {
-        "alias": "FEC",
-        "dataType": "DateTime"
-    },
-
-    "HONO_REGULADO": {
-        "alias": "HON",
-        "dataType": "float"
-    },
-
-    "HONO_ESTIMADO": {
-        "alias": "HO1",
-        "dataType": "float"
-    },
-
-    "ESTADO_COBRO": {
-        "alias": "ES1",
-        "dataType": "string"
-    },
-
-    "EMPLE_RECIBIO": {
-        "alias": "EMP",
-        "dataType": "int"
-    },
-
-    "FECHA_RECIBIO": {
-        "alias": "FE1",
-        "dataType": "DateTime"
-    },
-
-    "EMPLE_DIOSALIDA": {
-        "alias": "EM1",
-        "dataType": "int"
-    },
-
-    "FECHA_DIOSALIDA": {
-        "alias": "FE2",
-        "dataType": "DateTime"
-    },
-
-    "ENTREGO_EFECTOS": {
-        "alias": "ENT",
-        "dataType": "bool"
     },
 
     "SUBPERI": {

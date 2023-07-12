@@ -1,21 +1,21 @@
 {
-    "NombreForm": {
+    "habilitado": {
+        "alias": "hab",
+        "dataType": "bool"
+    },
+
+    "NombreComp": {
         "alias": "Nom",
         "dataType": "string"
     },
 
-    "NombreComp": {
+    "NombreForm": {
         "alias": "No1",
         "dataType": "string"
     },
 
     "Visible": {
         "alias": "Vis",
-        "dataType": "bool"
-    },
-
-    "habilitado": {
-        "alias": "hab",
         "dataType": "bool"
     }
 

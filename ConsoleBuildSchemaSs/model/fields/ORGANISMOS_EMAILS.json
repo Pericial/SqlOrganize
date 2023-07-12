@@ -1,14 +1,24 @@
 {
+    "CODORIGEN": {
+        "alias": "COD",
+        "dataType": "int",
+        "refEntityName": "CODORIGEN"
+    },
+
+    "DESCRIPCION": {
+        "alias": "DES",
+        "dataType": "string"
+    },
+
     "DTOJUDI": {
         "alias": "DTO",
         "dataType": "string",
         "refEntityName": "DTOJUDI"
     },
 
-    "CODORIGEN": {
-        "alias": "COD",
-        "dataType": "int",
-        "refEntityName": "CODORIGEN"
+    "EMAIL": {
+        "alias": "EMA",
+        "dataType": "string"
     },
 
     "ITEM": {
@@ -18,16 +28,6 @@
 
     "SECCION": {
         "alias": "SEC",
-        "dataType": "string"
-    },
-
-    "EMAIL": {
-        "alias": "EMA",
-        "dataType": "string"
-    },
-
-    "DESCRIPCION": {
-        "alias": "DES",
         "dataType": "string"
     }
 

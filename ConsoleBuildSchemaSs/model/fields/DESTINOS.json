@@ -4,13 +4,13 @@
         "dataType": "string"
     },
 
-    "DESCR": {
-        "alias": "DES",
+    "DEPJUD": {
+        "alias": "DEP",
         "dataType": "string"
     },
 
-    "DEPJUD": {
-        "alias": "DEP",
+    "DESCR": {
+        "alias": "DES",
         "dataType": "string"
     }
 

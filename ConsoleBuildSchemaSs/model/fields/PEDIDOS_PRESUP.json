@@ -1,6 +1,26 @@
 {
+    "CANTIDAD": {
+        "alias": "CAN",
+        "dataType": "float"
+    },
+
+    "COD_EMP": {
+        "alias": "COD",
+        "dataType": "int"
+    },
+
+    "DESCRIP_ALTER": {
+        "alias": "DES",
+        "dataType": "string"
+    },
+
     "DTOJUDI": {
         "alias": "DTO",
+        "dataType": "string"
+    },
+
+    "ESTADO": {
+        "alias": "EST",
         "dataType": "string"
     },
 
@@ -9,13 +29,18 @@
         "dataType": "DateTime"
     },
 
-    "SERIEPED": {
-        "alias": "SER",
-        "dataType": "string"
+    "HORA_CARGA": {
+        "alias": "HOR",
+        "dataType": "DateTime"
     },
 
-    "NROPED": {
-        "alias": "NRO",
+    "HORA_UM": {
+        "alias": "HO1",
+        "dataType": "DateTime"
+    },
+
+    "ID_PROV": {
+        "alias": "ID_",
         "dataType": "int"
     },
 
@@ -24,19 +49,14 @@
         "dataType": "int"
     },
 
-    "ID_PROV": {
-        "alias": "ID_",
+    "NRO_COTIZACION": {
+        "alias": "NRO",
         "dataType": "int"
     },
 
-    "NRO_COTIZACION": {
+    "NROPED": {
         "alias": "NR1",
         "dataType": "int"
-    },
-
-    "CANTIDAD": {
-        "alias": "CAN",
-        "dataType": "float"
     },
 
     "PRECIO": {
@@ -44,34 +64,14 @@
         "dataType": "money"
     },
 
-    "ESTADO": {
-        "alias": "EST",
+    "SERIEPED": {
+        "alias": "SER",
         "dataType": "string"
-    },
-
-    "DESCRIP_ALTER": {
-        "alias": "DES",
-        "dataType": "string"
-    },
-
-    "COD_EMP": {
-        "alias": "COD",
-        "dataType": "int"
-    },
-
-    "HORA_CARGA": {
-        "alias": "HOR",
-        "dataType": "DateTime"
     },
 
     "UCEM": {
         "alias": "UCE",
         "dataType": "int"
-    },
-
-    "HORA_UM": {
-        "alias": "HO1",
-        "dataType": "DateTime"
     }
 
 }

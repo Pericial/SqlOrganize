@@ -1,22 +1,17 @@
 {
-    "DTOJUDI": {
-        "alias": "DTO",
-        "dataType": "string"
-    },
-
-    "MES": {
-        "alias": "MES",
-        "dataType": "int"
-    },
-
     "ANIO": {
         "alias": "ANI",
         "dataType": "int"
     },
 
-    "NRO_CIERRE": {
-        "alias": "NRO",
-        "dataType": "int"
+    "COD_EMPLE": {
+        "alias": "COD",
+        "dataType": "string"
+    },
+
+    "DTOJUDI": {
+        "alias": "DTO",
+        "dataType": "string"
     },
 
     "HORA": {
@@ -24,9 +19,14 @@
         "dataType": "DateTime"
     },
 
-    "COD_EMPLE": {
-        "alias": "COD",
-        "dataType": "string"
+    "MES": {
+        "alias": "MES",
+        "dataType": "int"
+    },
+
+    "NRO_CIERRE": {
+        "alias": "NRO",
+        "dataType": "int"
     }
 
 }

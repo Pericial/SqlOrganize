@@ -1,21 +1,26 @@
 {
+    "CODEMP": {
+        "alias": "COD",
+        "dataType": "int"
+    },
+
     "DTOJUDI": {
         "alias": "DTO",
         "dataType": "string"
     },
 
-    "SERIE": {
-        "alias": "SER",
+    "HORA": {
+        "alias": "HOR",
+        "dataType": "DateTime"
+    },
+
+    "ID_PC": {
+        "alias": "ID_",
         "dataType": "string"
     },
 
-    "NUI": {
-        "alias": "NUI",
-        "dataType": "int"
-    },
-
-    "SERIE_PERI": {
-        "alias": "SE1",
+    "MOTIVO": {
+        "alias": "MOT",
         "dataType": "string"
     },
 
@@ -24,29 +29,19 @@
         "dataType": "int"
     },
 
-    "PERITO_ORI": {
-        "alias": "PER",
+    "NUI": {
+        "alias": "NUI",
         "dataType": "int"
     },
 
     "PERITO_NUE": {
+        "alias": "PER",
+        "dataType": "int"
+    },
+
+    "PERITO_ORI": {
         "alias": "PE1",
         "dataType": "int"
-    },
-
-    "HORA": {
-        "alias": "HOR",
-        "dataType": "DateTime"
-    },
-
-    "CODEMP": {
-        "alias": "COD",
-        "dataType": "int"
-    },
-
-    "ID_PC": {
-        "alias": "ID_",
-        "dataType": "string"
     },
 
     "SECCION": {
@@ -54,14 +49,19 @@
         "dataType": "string"
     },
 
+    "SERIE": {
+        "alias": "SER",
+        "dataType": "string"
+    },
+
+    "SERIE_PERI": {
+        "alias": "SE1",
+        "dataType": "string"
+    },
+
     "SUBPERI": {
         "alias": "SUB",
         "dataType": "int"
-    },
-
-    "MOTIVO": {
-        "alias": "MOT",
-        "dataType": "string"
     }
 
 }

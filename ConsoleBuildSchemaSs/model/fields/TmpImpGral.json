@@ -1,4 +1,109 @@
 {
+    "Campo1": {
+        "alias": "Cam",
+        "dataType": "string"
+    },
+
+    "Campo10": {
+        "alias": "Ca1",
+        "dataType": "string"
+    },
+
+    "Campo11": {
+        "alias": "Ca2",
+        "dataType": "string"
+    },
+
+    "Campo12": {
+        "alias": "Ca3",
+        "dataType": "string"
+    },
+
+    "Campo13": {
+        "alias": "Ca4",
+        "dataType": "string"
+    },
+
+    "Campo14": {
+        "alias": "Ca5",
+        "dataType": "string"
+    },
+
+    "Campo15": {
+        "alias": "Ca6",
+        "dataType": "string"
+    },
+
+    "Campo16": {
+        "alias": "Ca7",
+        "dataType": "string"
+    },
+
+    "Campo17": {
+        "alias": "Ca8",
+        "dataType": "string"
+    },
+
+    "Campo18": {
+        "alias": "Ca9",
+        "dataType": "string"
+    },
+
+    "Campo19": {
+        "alias": "Ca10",
+        "dataType": "string"
+    },
+
+    "Campo2": {
+        "alias": "Ca11",
+        "dataType": "string"
+    },
+
+    "Campo20": {
+        "alias": "Ca12",
+        "dataType": "string"
+    },
+
+    "Campo3": {
+        "alias": "Ca13",
+        "dataType": "string"
+    },
+
+    "Campo4": {
+        "alias": "Ca14",
+        "dataType": "string"
+    },
+
+    "Campo5": {
+        "alias": "Ca15",
+        "dataType": "string"
+    },
+
+    "Campo6": {
+        "alias": "Ca16",
+        "dataType": "string"
+    },
+
+    "Campo7": {
+        "alias": "Ca17",
+        "dataType": "string"
+    },
+
+    "Campo8": {
+        "alias": "Ca18",
+        "dataType": "string"
+    },
+
+    "Campo9": {
+        "alias": "Ca19",
+        "dataType": "string"
+    },
+
+    "cursiva": {
+        "alias": "cur",
+        "dataType": "bool"
+    },
+
     "id_pc": {
         "alias": "id_",
         "dataType": "string"
@@ -9,119 +114,14 @@
         "dataType": "int"
     },
 
-    "Campo1": {
-        "alias": "Cam",
-        "dataType": "string"
-    },
-
-    "Campo2": {
-        "alias": "Ca1",
-        "dataType": "string"
-    },
-
-    "Campo3": {
-        "alias": "Ca2",
-        "dataType": "string"
-    },
-
-    "Campo4": {
-        "alias": "Ca3",
-        "dataType": "string"
-    },
-
-    "Campo5": {
-        "alias": "Ca4",
-        "dataType": "string"
-    },
-
-    "Campo6": {
-        "alias": "Ca5",
-        "dataType": "string"
-    },
-
-    "Campo7": {
-        "alias": "Ca6",
-        "dataType": "string"
-    },
-
-    "Campo8": {
-        "alias": "Ca7",
-        "dataType": "string"
-    },
-
-    "Campo9": {
-        "alias": "Ca8",
-        "dataType": "string"
-    },
-
-    "Campo10": {
-        "alias": "Ca9",
-        "dataType": "string"
-    },
-
-    "Campo11": {
-        "alias": "Ca10",
-        "dataType": "string"
-    },
-
-    "Campo12": {
-        "alias": "Ca11",
-        "dataType": "string"
-    },
-
-    "Campo13": {
-        "alias": "Ca12",
-        "dataType": "string"
-    },
-
-    "Campo14": {
-        "alias": "Ca13",
-        "dataType": "string"
-    },
-
-    "Campo15": {
-        "alias": "Ca14",
-        "dataType": "string"
-    },
-
     "negrita": {
         "alias": "neg",
-        "dataType": "bool"
-    },
-
-    "cursiva": {
-        "alias": "cur",
         "dataType": "bool"
     },
 
     "subrayado": {
         "alias": "sub",
         "dataType": "bool"
-    },
-
-    "Campo16": {
-        "alias": "Ca15",
-        "dataType": "string"
-    },
-
-    "Campo17": {
-        "alias": "Ca16",
-        "dataType": "string"
-    },
-
-    "Campo18": {
-        "alias": "Ca17",
-        "dataType": "string"
-    },
-
-    "Campo19": {
-        "alias": "Ca18",
-        "dataType": "string"
-    },
-
-    "Campo20": {
-        "alias": "Ca19",
-        "dataType": "string"
     }
 
 }

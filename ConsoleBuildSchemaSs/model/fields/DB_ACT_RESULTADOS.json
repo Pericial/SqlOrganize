@@ -1,17 +1,17 @@
 {
-    "DTOJUDI": {
-        "alias": "DTO",
-        "dataType": "string"
-    },
-
     "CODIGO_INSTR": {
         "alias": "COD",
         "dataType": "int"
     },
 
-    "FECHA": {
-        "alias": "FEC",
-        "dataType": "DateTime"
+    "DTOJUDI": {
+        "alias": "DTO",
+        "dataType": "string"
+    },
+
+    "ERROR_MENSAJE": {
+        "alias": "ERR",
+        "dataType": "string"
     },
 
     "ESTADO": {
@@ -19,9 +19,9 @@
         "dataType": "int"
     },
 
-    "ERROR_MENSAJE": {
-        "alias": "ERR",
-        "dataType": "string"
+    "FECHA": {
+        "alias": "FEC",
+        "dataType": "DateTime"
     }
 
 }

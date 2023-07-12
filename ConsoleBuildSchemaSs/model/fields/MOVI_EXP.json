@@ -1,27 +1,7 @@
 {
-    "DTOJUDI": {
-        "alias": "DTO",
-        "dataType": "string"
-    },
-
-    "SERIE": {
-        "alias": "SER",
-        "dataType": "string"
-    },
-
-    "NUI": {
-        "alias": "NUI",
+    "CANT_CUERPOS": {
+        "alias": "CAN",
         "dataType": "int"
-    },
-
-    "NROMOV": {
-        "alias": "NRO",
-        "dataType": "int"
-    },
-
-    "ORIGINAL": {
-        "alias": "ORI",
-        "dataType": "bool"
     },
 
     "COMPLETO": {
@@ -29,34 +9,14 @@
         "dataType": "string"
     },
 
-    "CANT_CUERPOS": {
-        "alias": "CAN",
-        "dataType": "int"
-    },
-
     "DESDE": {
         "alias": "DES",
         "dataType": "string"
     },
 
-    "HACIA": {
-        "alias": "HAC",
+    "DTOJUDI": {
+        "alias": "DTO",
         "dataType": "string"
-    },
-
-    "F_ENVIO": {
-        "alias": "F_E",
-        "dataType": "DateTime"
-    },
-
-    "HORA_CARGA": {
-        "alias": "HOR",
-        "dataType": "DateTime"
-    },
-
-    "F_RECEPCION": {
-        "alias": "F_R",
-        "dataType": "DateTime"
     },
 
     "EMPLE_ENV": {
@@ -69,8 +29,48 @@
         "dataType": "int"
     },
 
+    "F_ENVIO": {
+        "alias": "F_E",
+        "dataType": "DateTime"
+    },
+
+    "F_RECEPCION": {
+        "alias": "F_R",
+        "dataType": "DateTime"
+    },
+
+    "HACIA": {
+        "alias": "HAC",
+        "dataType": "string"
+    },
+
+    "HORA_CARGA": {
+        "alias": "HOR",
+        "dataType": "DateTime"
+    },
+
+    "NROMOV": {
+        "alias": "NRO",
+        "dataType": "int"
+    },
+
+    "NUI": {
+        "alias": "NUI",
+        "dataType": "int"
+    },
+
+    "ORIGINAL": {
+        "alias": "ORI",
+        "dataType": "bool"
+    },
+
     "PC": {
         "alias": "PC",
+        "dataType": "string"
+    },
+
+    "SERIE": {
+        "alias": "SER",
         "dataType": "string"
     }
 

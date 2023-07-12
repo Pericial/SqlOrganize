@@ -1,6 +1,6 @@
 {
-    "RID": {
-        "alias": "RID",
+    "GRUPO": {
+        "alias": "GRU",
         "dataType": "string"
     },
 
@@ -9,8 +9,8 @@
         "dataType": "int"
     },
 
-    "GRUPO": {
-        "alias": "GRU",
+    "RID": {
+        "alias": "RID",
         "dataType": "string"
     }
 

@@ -1,62 +1,27 @@
 {
-    "DTOJUDI": {
-        "alias": "DTO",
-        "dataType": "string"
-    },
-
-    "SERIE": {
-        "alias": "SER",
-        "dataType": "string"
-    },
-
-    "NUI": {
-        "alias": "NUI",
-        "dataType": "int"
-    },
-
-    "SERIE_PERI": {
-        "alias": "SE1",
-        "dataType": "string"
-    },
-
-    "NROPERI": {
-        "alias": "NRO",
-        "dataType": "int"
-    },
-
-    "SUBPERI": {
-        "alias": "SUB",
-        "dataType": "int"
-    },
-
-    "ESTADO_ORI": {
-        "alias": "EST",
-        "dataType": "string"
-    },
-
-    "ESTADO_FIN": {
-        "alias": "ES1",
-        "dataType": "string"
-    },
-
     "ANIO": {
         "alias": "ANI",
         "dataType": "int"
     },
 
-    "MES": {
-        "alias": "MES",
-        "dataType": "int"
-    },
-
-    "FUERO": {
-        "alias": "FUE",
+    "DTOJUDI": {
+        "alias": "DTO",
         "dataType": "string"
     },
 
-    "PERITO": {
-        "alias": "PER",
+    "EMPLE_CAMBIO": {
+        "alias": "EMP",
         "dataType": "int"
+    },
+
+    "ESTADO_FIN": {
+        "alias": "EST",
+        "dataType": "string"
+    },
+
+    "ESTADO_ORI": {
+        "alias": "ES1",
+        "dataType": "string"
     },
 
     "FECHA_CAMBIO": {
@@ -64,8 +29,29 @@
         "dataType": "DateTime"
     },
 
-    "EMPLE_CAMBIO": {
-        "alias": "EMP",
+    "FECHA_CARGA": {
+        "alias": "FE1",
+        "dataType": "DateTime",
+        "defaultValue": "(getdate())"
+    },
+
+    "FUERO": {
+        "alias": "FUE",
+        "dataType": "string"
+    },
+
+    "MES": {
+        "alias": "MES",
+        "dataType": "int"
+    },
+
+    "NROPERI": {
+        "alias": "NRO",
+        "dataType": "int"
+    },
+
+    "NUI": {
+        "alias": "NUI",
         "dataType": "int"
     },
 
@@ -74,15 +60,29 @@
         "dataType": "string"
     },
 
+    "PERITO": {
+        "alias": "PER",
+        "dataType": "int"
+    },
+
+    "SERIE": {
+        "alias": "SER",
+        "dataType": "string"
+    },
+
+    "SERIE_PERI": {
+        "alias": "SE1",
+        "dataType": "string"
+    },
+
+    "SUBPERI": {
+        "alias": "SUB",
+        "dataType": "int"
+    },
+
     "ULTIMO_ESTADO_MES": {
         "alias": "ULT",
         "dataType": "bool"
-    },
-
-    "FECHA_CARGA": {
-        "alias": "FE1",
-        "dataType": "DateTime",
-        "defaultValue": "(getdate())"
     }
 
 }

@@ -1,61 +1,6 @@
 {
-    "NRODOC": {
-        "alias": "NRO",
-        "dataType": "string"
-    },
-
     "APEYNOM": {
         "alias": "APE",
-        "dataType": "string"
-    },
-
-    "DTOJUD": {
-        "alias": "DTO",
-        "dataType": "string"
-    },
-
-    "CODPAR": {
-        "alias": "COD",
-        "dataType": "string"
-    },
-
-    "NROJUZ": {
-        "alias": "NR1",
-        "dataType": "string"
-    },
-
-    "NROSEC": {
-        "alias": "NR2",
-        "dataType": "string"
-    },
-
-    "CODFUE": {
-        "alias": "CO1",
-        "dataType": "string"
-    },
-
-    "TIPJUZ": {
-        "alias": "TIP",
-        "dataType": "string"
-    },
-
-    "INSTAN": {
-        "alias": "INS",
-        "dataType": "string"
-    },
-
-    "TIPJUI": {
-        "alias": "TI1",
-        "dataType": "string"
-    },
-
-    "NROREC": {
-        "alias": "NR3",
-        "dataType": "string"
-    },
-
-    "NROCAU": {
-        "alias": "NR4",
         "dataType": "string"
     },
 
@@ -64,8 +9,23 @@
         "dataType": "string"
     },
 
-    "TIPMAT": {
-        "alias": "TI2",
+    "CODFUE": {
+        "alias": "COD",
+        "dataType": "string"
+    },
+
+    "CODPAR": {
+        "alias": "CO1",
+        "dataType": "string"
+    },
+
+    "DTOJUD": {
+        "alias": "DTO",
+        "dataType": "string"
+    },
+
+    "ELTIPO": {
+        "alias": "ELT",
         "dataType": "string"
     },
 
@@ -74,9 +34,39 @@
         "dataType": "DateTime"
     },
 
+    "INSTAN": {
+        "alias": "INS",
+        "dataType": "string"
+    },
+
     "MONTO": {
         "alias": "MON",
         "dataType": "float"
+    },
+
+    "NROCAU": {
+        "alias": "NRO",
+        "dataType": "string"
+    },
+
+    "NRODOC": {
+        "alias": "NR1",
+        "dataType": "string"
+    },
+
+    "NROJUZ": {
+        "alias": "NR2",
+        "dataType": "string"
+    },
+
+    "NROREC": {
+        "alias": "NR3",
+        "dataType": "string"
+    },
+
+    "NROSEC": {
+        "alias": "NR4",
+        "dataType": "string"
     },
 
     "PERIODO": {
@@ -89,8 +79,18 @@
         "dataType": "int"
     },
 
-    "ELTIPO": {
-        "alias": "ELT",
+    "TIPJUI": {
+        "alias": "TIP",
+        "dataType": "string"
+    },
+
+    "TIPJUZ": {
+        "alias": "TI1",
+        "dataType": "string"
+    },
+
+    "TIPMAT": {
+        "alias": "TI2",
         "dataType": "string"
     }
 

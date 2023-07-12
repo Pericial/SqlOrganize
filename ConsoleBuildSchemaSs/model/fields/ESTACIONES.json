@@ -1,6 +1,6 @@
 {
-    "Sucursal": {
-        "alias": "Suc",
+    "Descripcion": {
+        "alias": "Des",
         "dataType": "string"
     },
 
@@ -14,18 +14,18 @@
         "dataType": "string"
     },
 
-    "Descripcion": {
-        "alias": "Des",
+    "Pertenece_a_mesa": {
+        "alias": "Per",
+        "dataType": "string"
+    },
+
+    "Sucursal": {
+        "alias": "Suc",
         "dataType": "string"
     },
 
     "VERIFICA_IE": {
         "alias": "VER",
-        "dataType": "string"
-    },
-
-    "Pertenece_a_mesa": {
-        "alias": "Per",
         "dataType": "string"
     }
 

@@ -1,44 +1,4 @@
 {
-    "Fecha": {
-        "alias": "Fec",
-        "dataType": "DateTime"
-    },
-
-    "NroOrden": {
-        "alias": "Nro",
-        "dataType": "int"
-    },
-
-    "NroMov": {
-        "alias": "Nr1",
-        "dataType": "int"
-    },
-
-    "TipoMov": {
-        "alias": "Tip",
-        "dataType": "string"
-    },
-
-    "FechaOperacion": {
-        "alias": "Fe1",
-        "dataType": "DateTime"
-    },
-
-    "DeSeccion": {
-        "alias": "DeS",
-        "dataType": "string"
-    },
-
-    "DeEmp": {
-        "alias": "DeE",
-        "dataType": "int"
-    },
-
-    "ASeccion": {
-        "alias": "ASe",
-        "dataType": "string"
-    },
-
     "AEmp": {
         "alias": "AEm",
         "dataType": "int"
@@ -49,9 +9,49 @@
         "dataType": "string"
     },
 
+    "ASeccion": {
+        "alias": "ASe",
+        "dataType": "string"
+    },
+
+    "DeEmp": {
+        "alias": "DeE",
+        "dataType": "int"
+    },
+
+    "DeSeccion": {
+        "alias": "DeS",
+        "dataType": "string"
+    },
+
+    "Fecha": {
+        "alias": "Fec",
+        "dataType": "DateTime"
+    },
+
+    "FechaOperacion": {
+        "alias": "Fe1",
+        "dataType": "DateTime"
+    },
+
+    "NroMov": {
+        "alias": "Nro",
+        "dataType": "int"
+    },
+
+    "NroOrden": {
+        "alias": "Nr1",
+        "dataType": "int"
+    },
+
     "RID": {
         "alias": "RID",
         "dataType": "uniqueidentifier"
+    },
+
+    "TipoMov": {
+        "alias": "Tip",
+        "dataType": "string"
     }
 
 }

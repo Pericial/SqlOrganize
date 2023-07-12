@@ -1,6 +1,12 @@
 {
-    "RID": {
-        "alias": "RID",
+    "CANT_PERI_IGUAL_UNA_PERI": {
+        "alias": "CAN",
+        "dataType": "int",
+        "defaultValue": "((1))"
+    },
+
+    "CODIGO": {
+        "alias": "COD",
         "dataType": "string"
     },
 
@@ -9,20 +15,14 @@
         "dataType": "int"
     },
 
+    "RID": {
+        "alias": "RID",
+        "dataType": "string"
+    },
+
     "TIPOPERI": {
         "alias": "TIP",
         "dataType": "string"
-    },
-
-    "CODIGO": {
-        "alias": "COD",
-        "dataType": "string"
-    },
-
-    "CANT_PERI_IGUAL_UNA_PERI": {
-        "alias": "CAN",
-        "dataType": "int",
-        "defaultValue": "((1))"
     }
 
 }

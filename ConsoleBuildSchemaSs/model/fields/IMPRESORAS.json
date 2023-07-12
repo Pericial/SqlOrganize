@@ -1,16 +1,11 @@
 {
-    "Sucursal": {
-        "alias": "Suc",
+    "Cod_Impresora": {
+        "alias": "Cod",
         "dataType": "string"
     },
 
     "Id_PC": {
         "alias": "Id_",
-        "dataType": "string"
-    },
-
-    "Cod_Impresora": {
-        "alias": "Cod",
         "dataType": "string"
     },
 
@@ -26,6 +21,11 @@
 
     "Puerto": {
         "alias": "Pue",
+        "dataType": "string"
+    },
+
+    "Sucursal": {
+        "alias": "Suc",
         "dataType": "string"
     }
 

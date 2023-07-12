@@ -1,53 +1,7 @@
 {
-    "DTOJUD": {
-        "alias": "DTO",
-        "dataType": "string",
-        "refEntityName": "DTOJUD"
-    },
-
-    "FECHA_PEDIDO": {
-        "alias": "FEC",
-        "dataType": "DateTime",
-        "refEntityName": "FECHA_PEDIDO"
-    },
-
-    "SERIEPED": {
-        "alias": "SER",
-        "dataType": "string",
-        "refEntityName": "SERIEPED"
-    },
-
-    "NROPED": {
-        "alias": "NRO",
-        "dataType": "int",
-        "refEntityName": "NROPED"
-    },
-
-    "ITEM": {
-        "alias": "ITE",
-        "dataType": "int"
-    },
-
     "CANT": {
         "alias": "CAN",
         "dataType": "float"
-    },
-
-    "DJPROD": {
-        "alias": "DJP",
-        "dataType": "string",
-        "refEntityName": "DTOJUD"
-    },
-
-    "CODPROD": {
-        "alias": "COD",
-        "dataType": "int",
-        "refEntityName": "CODPROD"
-    },
-
-    "OBSITEM": {
-        "alias": "OBS",
-        "dataType": "string"
     },
 
     "CANT_ENTRE": {
@@ -56,20 +10,44 @@
         "defaultValue": "(0)"
     },
 
+    "CODPROD": {
+        "alias": "COD",
+        "dataType": "int",
+        "refEntityName": "CODPROD"
+    },
+
+    "DJPROD": {
+        "alias": "DJP",
+        "dataType": "string",
+        "refEntityName": "DTOJUD"
+    },
+
+    "DTOJUD": {
+        "alias": "DTO",
+        "dataType": "string",
+        "refEntityName": "DTOJUD"
+    },
+
     "ESTADO": {
         "alias": "EST",
         "dataType": "string",
         "refEntityName": "REFERENCIA"
     },
 
-    "PRODFLISTA": {
-        "alias": "PRO",
-        "dataType": "string"
+    "FECHA_PEDIDO": {
+        "alias": "FEC",
+        "dataType": "DateTime",
+        "refEntityName": "FECHA_PEDIDO"
     },
 
     "FLISTA": {
         "alias": "FLI",
         "dataType": "bool"
+    },
+
+    "ITEM": {
+        "alias": "ITE",
+        "dataType": "int"
     },
 
     "MARCA1": {
@@ -87,10 +65,32 @@
         "dataType": "int"
     },
 
+    "NROPED": {
+        "alias": "NRO",
+        "dataType": "int",
+        "refEntityName": "NROPED"
+    },
+
     "O_SIMILAR": {
         "alias": "O_S",
         "dataType": "bool",
         "defaultValue": "(1)"
+    },
+
+    "OBSITEM": {
+        "alias": "OBS",
+        "dataType": "string"
+    },
+
+    "PRODFLISTA": {
+        "alias": "PRO",
+        "dataType": "string"
+    },
+
+    "SERIEPED": {
+        "alias": "SER",
+        "dataType": "string",
+        "refEntityName": "SERIEPED"
     }
 
 }

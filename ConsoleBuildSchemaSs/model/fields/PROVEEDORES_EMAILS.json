@@ -1,13 +1,13 @@
 {
+    "Email": {
+        "alias": "Ema",
+        "dataType": "string"
+    },
+
     "nroidpprov": {
         "alias": "nro",
         "dataType": "int",
         "refEntityName": "IDPPROV"
-    },
-
-    "Email": {
-        "alias": "Ema",
-        "dataType": "string"
     },
 
     "referencia": {

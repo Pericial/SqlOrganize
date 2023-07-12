@@ -1,12 +1,12 @@
 {
-    "RUBRO": {
-        "alias": "RUB",
-        "dataType": "string"
-    },
-
     "CODRUBRO": {
         "alias": "COD",
         "dataType": "int"
+    },
+
+    "RUBRO": {
+        "alias": "RUB",
+        "dataType": "string"
     }
 
 }

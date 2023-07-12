@@ -1,6 +1,6 @@
 {
-    "RID": {
-        "alias": "RID",
+    "ESPECIALIDAD": {
+        "alias": "ESP",
         "dataType": "string"
     },
 
@@ -9,8 +9,8 @@
         "dataType": "int"
     },
 
-    "ESPECIALIDAD": {
-        "alias": "ESP",
+    "RID": {
+        "alias": "RID",
         "dataType": "string"
     }
 

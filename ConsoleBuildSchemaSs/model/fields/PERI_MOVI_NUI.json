@@ -1,37 +1,13 @@
 {
-    "DTOJUDI": {
-        "alias": "DTO",
+    "A_SEC": {
+        "alias": "A_S",
         "dataType": "string"
     },
 
-    "SERIE": {
-        "alias": "SER",
-        "dataType": "string"
-    },
-
-    "NUI": {
-        "alias": "NUI",
-        "dataType": "int"
-    },
-
-    "NROMOV": {
-        "alias": "NRO",
-        "dataType": "int"
-    },
-
-    "FECHA_MOV": {
-        "alias": "FEC",
-        "dataType": "DateTime"
-    },
-
-    "FECHA_CARGA": {
-        "alias": "FE1",
-        "dataType": "DateTime"
-    },
-
-    "DETALLE": {
-        "alias": "DET",
-        "dataType": "string"
+    "BORRADO": {
+        "alias": "BOR",
+        "dataType": "bool",
+        "defaultValue": "((0))"
     },
 
     "CODEMPLE": {
@@ -39,39 +15,9 @@
         "dataType": "int"
     },
 
-    "FULTMOD": {
-        "alias": "FUL",
-        "dataType": "DateTime"
-    },
-
     "CODEMPLEMOD": {
         "alias": "CO1",
         "dataType": "int"
-    },
-
-    "TIPO_MOV": {
-        "alias": "TIP",
-        "dataType": "string"
-    },
-
-    "NRODOC": {
-        "alias": "NR1",
-        "dataType": "int"
-    },
-
-    "ORIGENMOV": {
-        "alias": "ORI",
-        "dataType": "string"
-    },
-
-    "ORI_O_DEST": {
-        "alias": "OR1",
-        "dataType": "string"
-    },
-
-    "DTOJUDI_OD": {
-        "alias": "DT1",
-        "dataType": "string"
     },
 
     "CODORG_OD": {
@@ -84,14 +30,54 @@
         "dataType": "string"
     },
 
-    "A_SEC": {
-        "alias": "A_S",
+    "DESTINATARIO": {
+        "alias": "DES",
         "dataType": "string"
     },
 
-    "REQ_CONF": {
-        "alias": "REQ",
-        "dataType": "bool"
+    "DETALLE": {
+        "alias": "DET",
+        "dataType": "string"
+    },
+
+    "DTOJUDI": {
+        "alias": "DTO",
+        "dataType": "string"
+    },
+
+    "DTOJUDI_OD": {
+        "alias": "DT1",
+        "dataType": "string"
+    },
+
+    "EMPLE_BORRO": {
+        "alias": "EMP",
+        "dataType": "int"
+    },
+
+    "EMPLE_CONF": {
+        "alias": "EM1",
+        "dataType": "int"
+    },
+
+    "FECHA_BORRADO": {
+        "alias": "FEC",
+        "dataType": "DateTime"
+    },
+
+    "FECHA_CARGA": {
+        "alias": "FE1",
+        "dataType": "DateTime"
+    },
+
+    "FECHA_MOV": {
+        "alias": "FE2",
+        "dataType": "DateTime"
+    },
+
+    "FULTMOD": {
+        "alias": "FUL",
+        "dataType": "DateTime"
     },
 
     "HORA_CONF": {
@@ -99,34 +85,8 @@
         "dataType": "DateTime"
     },
 
-    "EMPLE_CONF": {
-        "alias": "EMP",
-        "dataType": "int"
-    },
-
-    "DESTINATARIO": {
-        "alias": "DES",
-        "dataType": "string"
-    },
-
-    "PC_ALTA": {
-        "alias": "PC_",
-        "dataType": "string"
-    },
-
-    "PC_ULT_MODI": {
-        "alias": "PC1",
-        "dataType": "string"
-    },
-
-    "BORRADO": {
-        "alias": "BOR",
-        "dataType": "bool",
-        "defaultValue": "((0))"
-    },
-
-    "FECHA_BORRADO": {
-        "alias": "FE2",
+    "HORA_CONF_SALIDA": {
+        "alias": "HO1",
         "dataType": "DateTime"
     },
 
@@ -135,24 +95,64 @@
         "dataType": "bool"
     },
 
-    "EMPLE_BORRO": {
-        "alias": "EM1",
+    "NRODOC": {
+        "alias": "NRO",
         "dataType": "int"
     },
 
+    "NROMOV": {
+        "alias": "NR1",
+        "dataType": "int"
+    },
+
+    "NUI": {
+        "alias": "NUI",
+        "dataType": "int"
+    },
+
+    "ORI_O_DEST": {
+        "alias": "ORI",
+        "dataType": "string"
+    },
+
+    "ORIGENMOV": {
+        "alias": "OR1",
+        "dataType": "string"
+    },
+
+    "PC_ALTA": {
+        "alias": "PC_",
+        "dataType": "string"
+    },
+
     "PC_BORRO": {
+        "alias": "PC1",
+        "dataType": "string"
+    },
+
+    "PC_ULT_MODI": {
         "alias": "PC2",
+        "dataType": "string"
+    },
+
+    "REQ_CONF": {
+        "alias": "REQ",
+        "dataType": "bool"
+    },
+
+    "SERIE": {
+        "alias": "SER",
+        "dataType": "string"
+    },
+
+    "TIPO_MOV": {
+        "alias": "TIP",
         "dataType": "string"
     },
 
     "VERIFICO_JEFATURA": {
         "alias": "VER",
         "dataType": "bool"
-    },
-
-    "HORA_CONF_SALIDA": {
-        "alias": "HO1",
-        "dataType": "DateTime"
     }
 
 }

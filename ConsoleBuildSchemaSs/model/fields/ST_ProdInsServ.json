@@ -1,6 +1,16 @@
 {
+    "ArtGenerico": {
+        "alias": "Art",
+        "dataType": "bool"
+    },
+
     "CodArtInt": {
         "alias": "Cod",
+        "dataType": "string"
+    },
+
+    "CodBar": {
+        "alias": "Co1",
         "dataType": "string"
     },
 
@@ -9,8 +19,18 @@
         "dataType": "string"
     },
 
-    "CodBar": {
-        "alias": "Co1",
+    "EmpProp": {
+        "alias": "Emp",
+        "dataType": "string"
+    },
+
+    "Estado": {
+        "alias": "Est",
+        "dataType": "string"
+    },
+
+    "Grupo": {
+        "alias": "Gru",
         "dataType": "string"
     },
 
@@ -24,23 +44,8 @@
         "dataType": "string"
     },
 
-    "ArtGenerico": {
-        "alias": "Art",
-        "dataType": "bool"
-    },
-
-    "Grupo": {
-        "alias": "Gru",
-        "dataType": "string"
-    },
-
     "Rubro": {
         "alias": "Rub",
-        "dataType": "string"
-    },
-
-    "Tipo": {
-        "alias": "Tip",
         "dataType": "string"
     },
 
@@ -49,29 +54,24 @@
         "dataType": "string"
     },
 
-    "EmpProp": {
-        "alias": "Emp",
-        "dataType": "string"
-    },
-
-    "Ubicacion": {
-        "alias": "Ubi",
-        "dataType": "string"
-    },
-
     "StockAct": {
         "alias": "Sto",
         "dataType": "float"
     },
 
-    "StockMin": {
+    "StockControla": {
         "alias": "St1",
+        "dataType": "bool"
+    },
+
+    "StockMin": {
+        "alias": "St2",
         "dataType": "float"
     },
 
-    "StockControla": {
-        "alias": "St2",
-        "dataType": "bool"
+    "Tipo": {
+        "alias": "Tip",
+        "dataType": "string"
     },
 
     "TReposicion": {
@@ -79,8 +79,8 @@
         "dataType": "int"
     },
 
-    "Estado": {
-        "alias": "Est",
+    "Ubicacion": {
+        "alias": "Ubi",
         "dataType": "string"
     },
 

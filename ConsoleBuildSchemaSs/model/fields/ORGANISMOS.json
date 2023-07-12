@@ -1,8 +1,12 @@
 {
-    "DTOJUDI": {
-        "alias": "DTO",
-        "dataType": "string",
-        "refEntityName": "DTOJUD"
+    "CALLE": {
+        "alias": "CAL",
+        "dataType": "string"
+    },
+
+    "CARACTER": {
+        "alias": "CAR",
+        "dataType": "string"
     },
 
     "CODORIGEN": {
@@ -10,8 +14,29 @@
         "dataType": "int"
     },
 
-    "CARACTER": {
-        "alias": "CAR",
+    "CP": {
+        "alias": "CP",
+        "dataType": "string"
+    },
+
+    "DESC_CORTA": {
+        "alias": "DES",
+        "dataType": "string"
+    },
+
+    "DTOJUDI": {
+        "alias": "DTO",
+        "dataType": "string",
+        "refEntityName": "DTOJUD"
+    },
+
+    "ENTRE": {
+        "alias": "ENT",
+        "dataType": "string"
+    },
+
+    "FAX": {
+        "alias": "FAX",
         "dataType": "string"
     },
 
@@ -21,15 +46,9 @@
         "refEntityName": "REFERENCIA"
     },
 
-    "TIPO_ORGANISMO": {
-        "alias": "TIP",
-        "dataType": "string",
-        "refEntityName": "REFERENCIA"
-    },
-
-    "NRO_ORGANISMO": {
-        "alias": "NRO",
-        "dataType": "string"
+    "LOCALIDAD": {
+        "alias": "LOC",
+        "dataType": "int"
     },
 
     "NOMBRE": {
@@ -37,8 +56,8 @@
         "dataType": "string"
     },
 
-    "CALLE": {
-        "alias": "CAL",
+    "NRO_ORGANISMO": {
+        "alias": "NRO",
         "dataType": "string"
     },
 
@@ -47,9 +66,14 @@
         "dataType": "string"
     },
 
-    "ENTRE": {
-        "alias": "ENT",
+    "ORIGEN": {
+        "alias": "ORI",
         "dataType": "string"
+    },
+
+    "REGISTRO_OFICIAL": {
+        "alias": "REG",
+        "dataType": "bool"
     },
 
     "TELE1": {
@@ -67,39 +91,15 @@
         "dataType": "string"
     },
 
-    "FAX": {
-        "alias": "FAX",
-        "dataType": "string"
-    },
-
-    "LOCALIDAD": {
-        "alias": "LOC",
-        "dataType": "int"
-    },
-
-    "CP": {
-        "alias": "CP",
-        "dataType": "string"
-    },
-
-    "ORIGEN": {
-        "alias": "ORI",
-        "dataType": "string"
+    "TIPO_ORGANISMO": {
+        "alias": "TIP",
+        "dataType": "string",
+        "refEntityName": "REFERENCIA"
     },
 
     "TITULAR": {
         "alias": "TIT",
         "dataType": "string"
-    },
-
-    "DESC_CORTA": {
-        "alias": "DES",
-        "dataType": "string"
-    },
-
-    "REGISTRO_OFICIAL": {
-        "alias": "REG",
-        "dataType": "bool"
     }
 
 }

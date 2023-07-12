@@ -4,21 +4,6 @@
         "dataType": "DateTime"
     },
 
-    "NroOrden": {
-        "alias": "Nro",
-        "dataType": "int"
-    },
-
-    "NroIngreso": {
-        "alias": "Nr1",
-        "dataType": "int"
-    },
-
-    "Seccion": {
-        "alias": "Sec",
-        "dataType": "string"
-    },
-
     "IdPProv": {
         "alias": "IdP",
         "dataType": "int"
@@ -29,12 +14,22 @@
         "dataType": "int"
     },
 
-    "NroRemito": {
-        "alias": "Nr2",
+    "NroFactura": {
+        "alias": "Nro",
         "dataType": "string"
     },
 
-    "NroFactura": {
+    "NroIngreso": {
+        "alias": "Nr1",
+        "dataType": "int"
+    },
+
+    "NroOrden": {
+        "alias": "Nr2",
+        "dataType": "int"
+    },
+
+    "NroRemito": {
         "alias": "Nr3",
         "dataType": "string"
     },
@@ -42,6 +37,11 @@
     "RID": {
         "alias": "RID",
         "dataType": "uniqueidentifier"
+    },
+
+    "Seccion": {
+        "alias": "Sec",
+        "dataType": "string"
     }
 
 }

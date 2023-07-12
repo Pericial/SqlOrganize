@@ -4,54 +4,9 @@
         "dataType": "string"
     },
 
-    "SECCION": {
-        "alias": "SEC",
-        "dataType": "string"
-    },
-
-    "ID_PERITO": {
-        "alias": "ID_",
-        "dataType": "int"
-    },
-
     "FUERO": {
         "alias": "FUE",
         "dataType": "string"
-    },
-
-    "ORDEN": {
-        "alias": "ORD",
-        "dataType": "int"
-    },
-
-    "SEC": {
-        "alias": "SE1",
-        "dataType": "int",
-        "defaultValue": "((0))"
-    },
-
-    "ID_ZONA": {
-        "alias": "ID1",
-        "dataType": "int",
-        "defaultValue": "((0))"
-    },
-
-    "ID_GRUPO": {
-        "alias": "ID2",
-        "dataType": "int",
-        "defaultValue": "((0))"
-    },
-
-    "ID_RAMAL": {
-        "alias": "ID3",
-        "dataType": "int",
-        "defaultValue": "((0))"
-    },
-
-    "ID_TIPOPERI": {
-        "alias": "ID4",
-        "dataType": "int",
-        "defaultValue": "((0))"
     },
 
     "HORA": {
@@ -60,10 +15,55 @@
         "defaultValue": "(getdate())"
     },
 
+    "ID_GRUPO": {
+        "alias": "ID_",
+        "dataType": "int",
+        "defaultValue": "((0))"
+    },
+
+    "ID_PERITO": {
+        "alias": "ID1",
+        "dataType": "int"
+    },
+
+    "ID_RAMAL": {
+        "alias": "ID2",
+        "dataType": "int",
+        "defaultValue": "((0))"
+    },
+
+    "ID_TIPOPERI": {
+        "alias": "ID3",
+        "dataType": "int",
+        "defaultValue": "((0))"
+    },
+
+    "ID_ZONA": {
+        "alias": "ID4",
+        "dataType": "int",
+        "defaultValue": "((0))"
+    },
+
     "NRO_BOLILLERO": {
         "alias": "NRO",
         "dataType": "int",
         "defaultValue": "((0))"
+    },
+
+    "ORDEN": {
+        "alias": "ORD",
+        "dataType": "int"
+    },
+
+    "SEC": {
+        "alias": "SEC",
+        "dataType": "int",
+        "defaultValue": "((0))"
+    },
+
+    "SECCION": {
+        "alias": "SE1",
+        "dataType": "string"
     }
 
 }

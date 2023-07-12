@@ -5,47 +5,35 @@
         "refEntityName": "DTOJUD"
     },
 
-    "FECHA_PEDIDO": {
-        "alias": "FEC",
-        "dataType": "DateTime",
-        "refEntityName": "FECHA_PEDIDO"
-    },
-
-    "SERIEPED": {
-        "alias": "SER",
-        "dataType": "string",
-        "refEntityName": "SERIEPED"
-    },
-
-    "NROPED": {
-        "alias": "NRO",
-        "dataType": "int",
-        "refEntityName": "NROPED"
-    },
-
-    "ORDEN_PROVISION": {
-        "alias": "ORD",
-        "dataType": "string"
-    },
-
-    "NROIDPEMP": {
-        "alias": "NR1",
+    "EMP_ULTMODI": {
+        "alias": "EMP",
         "dataType": "int"
-    },
-
-    "FECHA_CARGA": {
-        "alias": "FE1",
-        "dataType": "DateTime"
-    },
-
-    "FECHA_ENTREGA": {
-        "alias": "FE2",
-        "dataType": "DateTime"
     },
 
     "ESTADO": {
         "alias": "EST",
         "dataType": "string"
+    },
+
+    "F_ULTMODI": {
+        "alias": "F_U",
+        "dataType": "DateTime"
+    },
+
+    "FECHA_CARGA": {
+        "alias": "FEC",
+        "dataType": "DateTime"
+    },
+
+    "FECHA_ENTREGA": {
+        "alias": "FE1",
+        "dataType": "DateTime"
+    },
+
+    "FECHA_PEDIDO": {
+        "alias": "FE2",
+        "dataType": "DateTime",
+        "refEntityName": "FECHA_PEDIDO"
     },
 
     "IDPPROV": {
@@ -54,29 +42,41 @@
         "refEntityName": "IDPPROV"
     },
 
-    "NRO_REMITO": {
-        "alias": "NR2",
-        "dataType": "string"
-    },
-
     "NRO_FACTURA": {
-        "alias": "NR3",
+        "alias": "NRO",
         "dataType": "string"
     },
 
-    "EMP_ULTMODI": {
-        "alias": "EMP",
+    "NRO_REMITO": {
+        "alias": "NR1",
+        "dataType": "string"
+    },
+
+    "NROIDPEMP": {
+        "alias": "NR2",
         "dataType": "int"
     },
 
-    "F_ULTMODI": {
-        "alias": "F_U",
-        "dataType": "DateTime"
+    "NROPED": {
+        "alias": "NR3",
+        "dataType": "int",
+        "refEntityName": "NROPED"
     },
 
     "OBSERVACION": {
         "alias": "OBS",
         "dataType": "string"
+    },
+
+    "ORDEN_PROVISION": {
+        "alias": "ORD",
+        "dataType": "string"
+    },
+
+    "SERIEPED": {
+        "alias": "SER",
+        "dataType": "string",
+        "refEntityName": "SERIEPED"
     }
 
 }

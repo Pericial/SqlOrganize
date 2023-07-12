@@ -4,8 +4,8 @@
         "dataType": "string"
     },
 
-    "ID_PC": {
-        "alias": "ID_",
+    "DJEMP": {
+        "alias": "DJE",
         "dataType": "string"
     },
 
@@ -49,6 +49,22 @@
         "dataType": "string"
     },
 
+    "ID_PC": {
+        "alias": "ID_",
+        "dataType": "string"
+    },
+
+    "NROEMP": {
+        "alias": "NRO",
+        "dataType": "int",
+        "defaultValue": "(0)"
+    },
+
+    "TIPO_TEXTO": {
+        "alias": "TIP",
+        "dataType": "string"
+    },
+
     "TPD1": {
         "alias": "TPD",
         "dataType": "string"
@@ -86,22 +102,6 @@
 
     "TPD8": {
         "alias": "TP7",
-        "dataType": "string"
-    },
-
-    "DJEMP": {
-        "alias": "DJE",
-        "dataType": "string"
-    },
-
-    "NROEMP": {
-        "alias": "NRO",
-        "dataType": "int",
-        "defaultValue": "(0)"
-    },
-
-    "TIPO_TEXTO": {
-        "alias": "TIP",
         "dataType": "string"
     }
 

@@ -9,12 +9,11 @@
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            var data = ContainerApp.db.
+            var q = ContainerApp.db.
                 Query("LOCALIDADES").
-                Size(0).
-                ListObject<Localidades>();
+                Size(0);
 
-            //var data = ContainerApp.queryCache.ListObj<Localidades>(q);
+            var data = ContainerApp.queryCache.ListObj<Localidades>(q);
 
             localidadesBindingSource.DataSource = data;
         }

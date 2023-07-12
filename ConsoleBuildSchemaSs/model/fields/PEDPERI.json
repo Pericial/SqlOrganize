@@ -1,23 +1,104 @@
 {
+    "CB_ORI1": {
+        "alias": "CB_",
+        "dataType": "string"
+    },
+
+    "CB_ORI2": {
+        "alias": "CB1",
+        "dataType": "string"
+    },
+
+    "CB_PERI": {
+        "alias": "CB2",
+        "dataType": "string"
+    },
+
+    "CODCARAT": {
+        "alias": "COD",
+        "dataType": "string",
+        "refEntityName": "REFERENCIA"
+    },
+
+    "CODEMP_CARGO": {
+        "alias": "CO1",
+        "dataType": "int"
+    },
+
+    "CODEMP_UM": {
+        "alias": "CO2",
+        "dataType": "int"
+    },
+
+    "CODLOCAL": {
+        "alias": "CO3",
+        "dataType": "string"
+    },
+
+    "COMI_MORGUE": {
+        "alias": "COM",
+        "dataType": "string"
+    },
+
+    "DETALLE_INGRESO": {
+        "alias": "DET",
+        "dataType": "string"
+    },
+
+    "DJ_RELA": {
+        "alias": "DJ_",
+        "dataType": "string"
+    },
+
+    "DJORI": {
+        "alias": "DJO",
+        "dataType": "string"
+    },
+
     "DTOJUDI": {
         "alias": "DTO",
         "dataType": "string",
         "refEntityName": "DTOJUD"
     },
 
-    "SERIE": {
-        "alias": "SER",
+    "EXP_EN_SEC": {
+        "alias": "EXP",
         "dataType": "string"
     },
 
-    "NUI": {
-        "alias": "NUI",
-        "dataType": "int"
+    "F_EGRESO": {
+        "alias": "F_E",
+        "dataType": "DateTime"
     },
 
-    "MESA": {
-        "alias": "MES",
+    "F_INGRESO": {
+        "alias": "F_I",
+        "dataType": "DateTime"
+    },
+
+    "F_ULTMODI": {
+        "alias": "F_U",
+        "dataType": "DateTime"
+    },
+
+    "FECHA_AUTOPSIA": {
+        "alias": "FEC",
+        "dataType": "DateTime"
+    },
+
+    "FECHA_OFICIO": {
+        "alias": "FE1",
+        "dataType": "DateTime"
+    },
+
+    "FUERO": {
+        "alias": "FUE",
         "dataType": "string"
+    },
+
+    "HORA_CARGA": {
+        "alias": "HOR",
+        "dataType": "DateTime"
     },
 
     "IDP_ACT": {
@@ -30,29 +111,8 @@
         "dataType": "int"
     },
 
-    "CODCARAT": {
-        "alias": "COD",
-        "dataType": "string",
-        "refEntityName": "REFERENCIA"
-    },
-
-    "DJORI": {
-        "alias": "DJO",
-        "dataType": "string"
-    },
-
-    "CODLOCAL": {
-        "alias": "CO1",
-        "dataType": "string"
-    },
-
-    "FUERO": {
-        "alias": "FUE",
-        "dataType": "string"
-    },
-
-    "ORGANISMO": {
-        "alias": "ORG",
+    "INTERVIENE_ORG": {
+        "alias": "INT",
         "dataType": "string"
     },
 
@@ -61,59 +121,45 @@
         "dataType": "int"
     },
 
-    "INTERVIENE_ORG": {
-        "alias": "INT",
+    "MESA": {
+        "alias": "MES",
         "dataType": "string"
     },
 
-    "F_INGRESO": {
-        "alias": "F_I",
-        "dataType": "DateTime"
-    },
-
-    "F_EGRESO": {
-        "alias": "F_E",
-        "dataType": "DateTime"
-    },
-
-    "CODEMP_CARGO": {
-        "alias": "CO2",
-        "dataType": "int"
-    },
-
-    "HORA_CARGA": {
-        "alias": "HOR",
-        "dataType": "DateTime"
-    },
-
-    "F_ULTMODI": {
-        "alias": "F_U",
-        "dataType": "DateTime"
-    },
-
-    "CODEMP_UM": {
-        "alias": "CO3",
-        "dataType": "int"
-    },
-
-    "NRONOTA": {
+    "NRO_AUTOPSIA": {
         "alias": "NRO",
         "dataType": "string"
     },
 
-    "NROEFECTO": {
+    "NROASO_DEL_ORIGEN": {
         "alias": "NR1",
         "dataType": "string"
     },
 
-    "COMI_MORGUE": {
-        "alias": "COM",
+    "NROEFECTO": {
+        "alias": "NR2",
         "dataType": "string"
     },
 
-    "ORG_CoM": {
-        "alias": "OR1",
+    "NROIPP": {
+        "alias": "NR3",
         "dataType": "string"
+    },
+
+    "NRONOTA": {
+        "alias": "NR4",
+        "dataType": "string"
+    },
+
+    "NUI": {
+        "alias": "NUI",
+        "dataType": "int"
+    },
+
+    "NUI_RELA": {
+        "alias": "NU1",
+        "dataType": "int",
+        "defaultValue": "(0)"
     },
 
     "OBS": {
@@ -121,23 +167,18 @@
         "dataType": "string"
     },
 
-    "NROASO_DEL_ORIGEN": {
-        "alias": "NR2",
+    "OBS_MATERIA": {
+        "alias": "OB1",
         "dataType": "string"
     },
 
-    "NRO_AUTOPSIA": {
-        "alias": "NR3",
+    "ORG_CoM": {
+        "alias": "ORG",
         "dataType": "string"
     },
 
-    "TIPO_INGRESO": {
-        "alias": "TIP",
-        "dataType": "string"
-    },
-
-    "DETALLE_INGRESO": {
-        "alias": "DET",
+    "ORGANISMO": {
+        "alias": "OR1",
         "dataType": "string"
     },
 
@@ -161,18 +202,14 @@
         "dataType": "int"
     },
 
-    "NROIPP": {
-        "alias": "NR4",
-        "dataType": "string"
+    "RESIDUAL": {
+        "alias": "RES",
+        "dataType": "bool",
+        "defaultValue": "((0))"
     },
 
-    "TASA": {
-        "alias": "TAS",
-        "dataType": "money"
-    },
-
-    "DJ_RELA": {
-        "alias": "DJ_",
+    "SERIE": {
+        "alias": "SER",
         "dataType": "string"
     },
 
@@ -181,50 +218,13 @@
         "dataType": "string"
     },
 
-    "NUI_RELA": {
-        "alias": "NU1",
-        "dataType": "int",
-        "defaultValue": "(0)"
+    "TASA": {
+        "alias": "TAS",
+        "dataType": "money"
     },
 
-    "RESIDUAL": {
-        "alias": "RES",
-        "dataType": "bool",
-        "defaultValue": "((0))"
-    },
-
-    "OBS_MATERIA": {
-        "alias": "OB1",
-        "dataType": "string"
-    },
-
-    "FECHA_OFICIO": {
-        "alias": "FEC",
-        "dataType": "DateTime"
-    },
-
-    "FECHA_AUTOPSIA": {
-        "alias": "FE1",
-        "dataType": "DateTime"
-    },
-
-    "CB_PERI": {
-        "alias": "CB_",
-        "dataType": "string"
-    },
-
-    "CB_ORI1": {
-        "alias": "CB1",
-        "dataType": "string"
-    },
-
-    "CB_ORI2": {
-        "alias": "CB2",
-        "dataType": "string"
-    },
-
-    "EXP_EN_SEC": {
-        "alias": "EXP",
+    "TIPO_INGRESO": {
+        "alias": "TIP",
         "dataType": "string"
     }
 

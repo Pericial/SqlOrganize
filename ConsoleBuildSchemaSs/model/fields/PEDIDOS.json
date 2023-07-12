@@ -1,21 +1,11 @@
 {
-    "DTOJUD": {
-        "alias": "DTO",
+    "CUENTA_FIN": {
+        "alias": "CUE",
         "dataType": "string"
     },
 
-    "SERIEPED": {
-        "alias": "SER",
-        "dataType": "string"
-    },
-
-    "NROPED": {
-        "alias": "NRO",
-        "dataType": "int"
-    },
-
-    "DTOJUD_PIDE": {
-        "alias": "DT1",
+    "CUENTA_SUG": {
+        "alias": "CU1",
         "dataType": "string"
     },
 
@@ -24,77 +14,34 @@
         "dataType": "string"
     },
 
-    "FECHA_PEDIDO": {
-        "alias": "FEC",
-        "dataType": "DateTime"
-    },
-
-    "REFERENTE": {
-        "alias": "REF",
-        "dataType": "int",
-        "refEntityName": "NROIDPEMP"
-    },
-
-    "SERIENME": {
-        "alias": "SE1",
+    "DESTINO": {
+        "alias": "DES",
         "dataType": "string"
     },
 
-    "NROME": {
-        "alias": "NR1",
+    "DIAS_EST_ENTREGA": {
+        "alias": "DIA",
         "dataType": "int"
     },
 
-    "NROEXP": {
-        "alias": "NR2",
+    "DTOJUD": {
+        "alias": "DTO",
         "dataType": "string"
     },
 
-    "PRESU_ESTI": {
-        "alias": "PRE",
-        "dataType": "float"
-    },
-
-    "PROV_ESTI": {
-        "alias": "PRO",
-        "dataType": "int",
-        "refEntityName": "IDPPROV"
-    },
-
-    "PROV_ESTI2": {
-        "alias": "PR1",
-        "dataType": "int"
-    },
-
-    "PROV_ESTI3": {
-        "alias": "PR2",
-        "dataType": "int"
-    },
-
-    "FORMA_PRESU": {
-        "alias": "FOR",
+    "DTOJUD_CTASUG": {
+        "alias": "DT1",
         "dataType": "string"
     },
 
-    "NROIDPEMP": {
-        "alias": "NR3",
-        "dataType": "int",
-        "refEntityName": "NROIDPEMP"
+    "DTOJUD_FIN": {
+        "alias": "DT2",
+        "dataType": "string"
     },
 
-    "FECHA_CARGA": {
-        "alias": "FE1",
-        "dataType": "DateTime"
-    },
-
-    "ULTEMPMOD": {
-        "alias": "ULT",
-        "dataType": "int"
-    },
-
-    "FECHA_ULT_MOD": {
-        "alias": "FE2",
-        "dataType": "DateTime"
+    "DTOJUD_PIDE": {
+        "alias": "DT3",
+        "dataType": "string"
     },
 
     "ESTADO": {
@@ -103,29 +50,50 @@
         "refEntityName": "REFERENCIA"
     },
 
-    "PRORRATEO": {
-        "alias": "PR3",
-        "dataType": "bool"
+    "FECHA_CARGA": {
+        "alias": "FEC",
+        "dataType": "DateTime"
     },
 
-    "DTOJUD_CTASUG": {
-        "alias": "DT2",
+    "FECHA_CUMPLI": {
+        "alias": "FE1",
+        "dataType": "DateTime"
+    },
+
+    "FECHA_PEDIDO": {
+        "alias": "FE2",
+        "dataType": "DateTime"
+    },
+
+    "FECHA_ULT_MOD": {
+        "alias": "FE3",
+        "dataType": "DateTime"
+    },
+
+    "FORMA_PRESU": {
+        "alias": "FOR",
         "dataType": "string"
     },
 
-    "CUENTA_SUG": {
-        "alias": "CUE",
+    "NROEXP": {
+        "alias": "NRO",
         "dataType": "string"
     },
 
-    "DTOJUD_FIN": {
-        "alias": "DT3",
-        "dataType": "string"
+    "NROIDPEMP": {
+        "alias": "NR1",
+        "dataType": "int",
+        "refEntityName": "NROIDPEMP"
     },
 
-    "CUENTA_FIN": {
-        "alias": "CU1",
-        "dataType": "string"
+    "NROME": {
+        "alias": "NR2",
+        "dataType": "int"
+    },
+
+    "NROPED": {
+        "alias": "NR3",
+        "dataType": "int"
     },
 
     "OBS1": {
@@ -143,18 +111,50 @@
         "dataType": "string"
     },
 
-    "FECHA_CUMPLI": {
-        "alias": "FE3",
-        "dataType": "DateTime"
+    "PRESU_ESTI": {
+        "alias": "PRE",
+        "dataType": "float"
     },
 
-    "DESTINO": {
-        "alias": "DES",
+    "PRORRATEO": {
+        "alias": "PRO",
+        "dataType": "bool"
+    },
+
+    "PROV_ESTI": {
+        "alias": "PR1",
+        "dataType": "int",
+        "refEntityName": "IDPPROV"
+    },
+
+    "PROV_ESTI2": {
+        "alias": "PR2",
+        "dataType": "int"
+    },
+
+    "PROV_ESTI3": {
+        "alias": "PR3",
+        "dataType": "int"
+    },
+
+    "REFERENTE": {
+        "alias": "REF",
+        "dataType": "int",
+        "refEntityName": "NROIDPEMP"
+    },
+
+    "SERIENME": {
+        "alias": "SER",
         "dataType": "string"
     },
 
-    "DIAS_EST_ENTREGA": {
-        "alias": "DIA",
+    "SERIEPED": {
+        "alias": "SE1",
+        "dataType": "string"
+    },
+
+    "ULTEMPMOD": {
+        "alias": "ULT",
         "dataType": "int"
     }
 

@@ -9,43 +9,43 @@
         "dataType": "int"
     },
 
-    "UltProv": {
-        "alias": "Ult",
-        "dataType": "int"
-    },
-
-    "UltProd_N": {
-        "alias": "Ul1",
-        "dataType": "int"
-    },
-
-    "UltPed_S": {
-        "alias": "Ul2",
-        "dataType": "string"
-    },
-
-    "UltPed_N": {
-        "alias": "Ul3",
-        "dataType": "int"
-    },
-
-    "UltEmple": {
-        "alias": "Ul4",
+    "ULT_NOTA": {
+        "alias": "ULT",
         "dataType": "int"
     },
 
     "Ult_NUI": {
-        "alias": "Ul5",
+        "alias": "Ult",
         "dataType": "int"
     },
 
     "ULT_SERIE_NUI": {
-        "alias": "ULT",
+        "alias": "UL1",
         "dataType": "string"
     },
 
-    "ULT_NOTA": {
-        "alias": "UL1",
+    "UltEmple": {
+        "alias": "Ul1",
+        "dataType": "int"
+    },
+
+    "UltPed_N": {
+        "alias": "Ul2",
+        "dataType": "int"
+    },
+
+    "UltPed_S": {
+        "alias": "Ul3",
+        "dataType": "string"
+    },
+
+    "UltProd_N": {
+        "alias": "Ul4",
+        "dataType": "int"
+    },
+
+    "UltProv": {
+        "alias": "Ul5",
         "dataType": "int"
     }
 

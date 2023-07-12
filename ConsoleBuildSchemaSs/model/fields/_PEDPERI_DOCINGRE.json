@@ -1,26 +1,21 @@
 {
+    "COD_DOC_INGRE": {
+        "alias": "COD",
+        "dataType": "string"
+    },
+
+    "DETALLE_DOCINGRE": {
+        "alias": "DET",
+        "dataType": "string"
+    },
+
     "DTOJUDI": {
         "alias": "DTO",
         "dataType": "string"
     },
 
-    "SERIE": {
-        "alias": "SER",
-        "dataType": "string"
-    },
-
-    "NUI": {
-        "alias": "NUI",
-        "dataType": "int"
-    },
-
-    "NRODOC": {
-        "alias": "NRO",
-        "dataType": "int"
-    },
-
-    "COD_DOC_INGRE": {
-        "alias": "COD",
+    "ESTA_EN_SEC": {
+        "alias": "EST",
         "dataType": "string"
     },
 
@@ -29,13 +24,18 @@
         "dataType": "DateTime"
     },
 
-    "DETALLE_DOCINGRE": {
-        "alias": "DET",
-        "dataType": "string"
+    "NRODOC": {
+        "alias": "NRO",
+        "dataType": "int"
     },
 
-    "ESTA_EN_SEC": {
-        "alias": "EST",
+    "NUI": {
+        "alias": "NUI",
+        "dataType": "int"
+    },
+
+    "SERIE": {
+        "alias": "SER",
         "dataType": "string"
     },
 

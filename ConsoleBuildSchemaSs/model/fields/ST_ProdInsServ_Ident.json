@@ -4,23 +4,23 @@
         "dataType": "string"
     },
 
-    "NroSerie": {
-        "alias": "Nro",
-        "dataType": "string"
-    },
-
     "Color": {
         "alias": "Col",
         "dataType": "string"
     },
 
-    "Tamanio": {
-        "alias": "Tam",
+    "Estado": {
+        "alias": "Est",
         "dataType": "string"
     },
 
-    "Estado": {
-        "alias": "Est",
+    "NroSerie": {
+        "alias": "Nro",
+        "dataType": "string"
+    },
+
+    "Tamanio": {
+        "alias": "Tam",
         "dataType": "string"
     }
 

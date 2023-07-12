@@ -4,8 +4,8 @@
         "dataType": "string"
     },
 
-    "SERIE": {
-        "alias": "SER",
+    "NRO_ASO": {
+        "alias": "NRO",
         "dataType": "string"
     },
 
@@ -14,13 +14,13 @@
         "dataType": "int"
     },
 
-    "NRO_ASO": {
-        "alias": "NRO",
+    "REFERENCIA": {
+        "alias": "REF",
         "dataType": "string"
     },
 
-    "REFERENCIA": {
-        "alias": "REF",
+    "SERIE": {
+        "alias": "SER",
         "dataType": "string"
     }
 

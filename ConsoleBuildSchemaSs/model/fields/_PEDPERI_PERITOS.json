@@ -4,19 +4,9 @@
         "dataType": "string"
     },
 
-    "SERIE": {
-        "alias": "SER",
-        "dataType": "string"
-    },
-
-    "NUI": {
-        "alias": "NUI",
-        "dataType": "int"
-    },
-
-    "SERIE_PERI": {
-        "alias": "SE1",
-        "dataType": "string"
+    "FECHA_DESIG": {
+        "alias": "FEC",
+        "dataType": "DateTime"
     },
 
     "NROPERI": {
@@ -24,18 +14,28 @@
         "dataType": "int"
     },
 
+    "NUI": {
+        "alias": "NUI",
+        "dataType": "int"
+    },
+
+    "OBS": {
+        "alias": "OBS",
+        "dataType": "string"
+    },
+
     "PERITO": {
         "alias": "PER",
         "dataType": "int"
     },
 
-    "FECHA_DESIG": {
-        "alias": "FEC",
-        "dataType": "DateTime"
+    "SERIE": {
+        "alias": "SER",
+        "dataType": "string"
     },
 
-    "OBS": {
-        "alias": "OBS",
+    "SERIE_PERI": {
+        "alias": "SE1",
         "dataType": "string"
     },
 

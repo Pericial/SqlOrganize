@@ -1,17 +1,22 @@
 {
+    "CODEMP": {
+        "alias": "COD",
+        "dataType": "int"
+    },
+
+    "DOC_INGRE_FIN": {
+        "alias": "DOC",
+        "dataType": "string"
+    },
+
+    "DOC_INGRE_ORI": {
+        "alias": "DO1",
+        "dataType": "string"
+    },
+
     "DTOJUDI": {
         "alias": "DTO",
         "dataType": "string"
-    },
-
-    "SERIE": {
-        "alias": "SER",
-        "dataType": "string"
-    },
-
-    "NUI": {
-        "alias": "NUI",
-        "dataType": "int"
     },
 
     "FECHA_MOV": {
@@ -19,18 +24,13 @@
         "dataType": "DateTime"
     },
 
-    "CODEMP": {
-        "alias": "COD",
+    "NUI": {
+        "alias": "NUI",
         "dataType": "int"
     },
 
-    "DOC_INGRE_ORI": {
-        "alias": "DOC",
-        "dataType": "string"
-    },
-
-    "DOC_INGRE_FIN": {
-        "alias": "DO1",
+    "SERIE": {
+        "alias": "SER",
         "dataType": "string"
     }
 

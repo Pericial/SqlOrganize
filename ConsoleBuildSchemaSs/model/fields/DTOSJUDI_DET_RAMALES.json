@@ -1,20 +1,10 @@
 {
-    "RID": {
-        "alias": "RID",
-        "dataType": "string"
-    },
-
-    "ID_RAMAL": {
+    "ID_LOCA1": {
         "alias": "ID_",
         "dataType": "int"
     },
 
-    "RAMAL": {
-        "alias": "RAM",
-        "dataType": "string"
-    },
-
-    "ID_LOCA1": {
+    "ID_LOCA10": {
         "alias": "ID1",
         "dataType": "int"
     },
@@ -59,9 +49,19 @@
         "dataType": "int"
     },
 
-    "ID_LOCA10": {
+    "ID_RAMAL": {
         "alias": "ID10",
         "dataType": "int"
+    },
+
+    "RAMAL": {
+        "alias": "RAM",
+        "dataType": "string"
+    },
+
+    "RID": {
+        "alias": "RID",
+        "dataType": "string"
     }
 
 }

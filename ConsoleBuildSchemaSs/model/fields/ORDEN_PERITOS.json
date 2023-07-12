@@ -1,11 +1,16 @@
 {
-    "DTOJUDI": {
-        "alias": "DTO",
-        "dataType": "string"
+    "ASIGNADO_EVENTUAL": {
+        "alias": "ASI",
+        "dataType": "bool"
     },
 
     "DEPENDENCIA": {
         "alias": "DEP",
+        "dataType": "string"
+    },
+
+    "DTOJUDI": {
+        "alias": "DTO",
         "dataType": "string"
     },
 
@@ -14,9 +19,9 @@
         "dataType": "string"
     },
 
-    "NROORDEN": {
-        "alias": "NRO",
-        "dataType": "int"
+    "GRUPO": {
+        "alias": "GRU",
+        "dataType": "string"
     },
 
     "ID_PERITO": {
@@ -30,24 +35,19 @@
         "dataType": "int"
     },
 
-    "SIGUIENTE": {
+    "NROORDEN": {
+        "alias": "NRO",
+        "dataType": "int"
+    },
+
+    "SIGUENTE_EVENTUAL": {
         "alias": "SIG",
         "dataType": "bool"
     },
 
-    "ASIGNADO_EVENTUAL": {
-        "alias": "ASI",
-        "dataType": "bool"
-    },
-
-    "SIGUENTE_EVENTUAL": {
+    "SIGUIENTE": {
         "alias": "SI1",
         "dataType": "bool"
-    },
-
-    "GRUPO": {
-        "alias": "GRU",
-        "dataType": "string"
     }
 
 }

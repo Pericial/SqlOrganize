@@ -1,17 +1,16 @@
 {
-    "DTOJUD": {
-        "alias": "DTO",
-        "dataType": "string",
-        "refEntityName": "DTOJUD"
-    },
-
-    "DEPENDENCIA": {
-        "alias": "DEP",
-        "dataType": "string"
+    "ASIG_AUTO_PERITO": {
+        "alias": "ASI",
+        "dataType": "bool"
     },
 
     "CODIGO": {
         "alias": "COD",
+        "dataType": "string"
+    },
+
+    "DEPENDENCIA": {
+        "alias": "DEP",
         "dataType": "string"
     },
 
@@ -20,57 +19,9 @@
         "dataType": "string"
     },
 
-    "TIPO_DEPEN": {
-        "alias": "TIP",
-        "dataType": "string"
-    },
-
-    "RESP_PEDIDOS": {
-        "alias": "RES",
-        "dataType": "int"
-    },
-
-    "RECIBE_PERICIAS": {
-        "alias": "REC",
-        "dataType": "bool"
-    },
-
-    "ASIG_AUTO_PERITO": {
-        "alias": "ASI",
-        "dataType": "bool"
-    },
-
     "DESIGN_EN_SECCION": {
         "alias": "DE1",
         "dataType": "bool"
-    },
-
-    "RID": {
-        "alias": "RID",
-        "dataType": "uniqueidentifier"
-    },
-
-    "DISCRIMINA_TIPO_PERICIA": {
-        "alias": "DIS",
-        "dataType": "bool"
-    },
-
-    "IMP_RECI_MOVI": {
-        "alias": "IMP",
-        "dataType": "bool",
-        "defaultValue": "(0)"
-    },
-
-    "IMP_RECI_SALIDA": {
-        "alias": "IM1",
-        "dataType": "bool",
-        "defaultValue": "(0)"
-    },
-
-    "IMP_NOTA_DESIG": {
-        "alias": "IM2",
-        "dataType": "bool",
-        "defaultValue": "(0)"
     },
 
     "DESIGNACION_PORFUERO": {
@@ -79,10 +30,59 @@
         "defaultValue": "((0))"
     },
 
+    "DISCRIMINA_TIPO_PERICIA": {
+        "alias": "DIS",
+        "dataType": "bool"
+    },
+
+    "DTOJUD": {
+        "alias": "DTO",
+        "dataType": "string",
+        "refEntityName": "DTOJUD"
+    },
+
+    "IMP_NOTA_DESIG": {
+        "alias": "IMP",
+        "dataType": "bool",
+        "defaultValue": "(0)"
+    },
+
+    "IMP_RECI_MOVI": {
+        "alias": "IM1",
+        "dataType": "bool",
+        "defaultValue": "(0)"
+    },
+
+    "IMP_RECI_SALIDA": {
+        "alias": "IM2",
+        "dataType": "bool",
+        "defaultValue": "(0)"
+    },
+
     "NRO_BOLILLERO": {
         "alias": "NRO",
         "dataType": "int",
         "defaultValue": "((0))"
+    },
+
+    "RECIBE_PERICIAS": {
+        "alias": "REC",
+        "dataType": "bool"
+    },
+
+    "RESP_PEDIDOS": {
+        "alias": "RES",
+        "dataType": "int"
+    },
+
+    "RID": {
+        "alias": "RID",
+        "dataType": "uniqueidentifier"
+    },
+
+    "TIPO_DEPEN": {
+        "alias": "TIP",
+        "dataType": "string"
     }
 
 }

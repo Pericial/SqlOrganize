@@ -1,32 +1,12 @@
 {
+    "CARACTER": {
+        "alias": "CAR",
+        "dataType": "string"
+    },
+
     "DTOJUDI": {
         "alias": "DTO",
         "dataType": "string"
-    },
-
-    "SERIE": {
-        "alias": "SER",
-        "dataType": "string"
-    },
-
-    "NUI": {
-        "alias": "NUI",
-        "dataType": "int"
-    },
-
-    "SERIE_PERI": {
-        "alias": "SE1",
-        "dataType": "string"
-    },
-
-    "NROPERI": {
-        "alias": "NRO",
-        "dataType": "int"
-    },
-
-    "PERITO": {
-        "alias": "PER",
-        "dataType": "int"
     },
 
     "FECHA_DESIG": {
@@ -34,8 +14,33 @@
         "dataType": "DateTime"
     },
 
+    "NROPERI": {
+        "alias": "NRO",
+        "dataType": "int"
+    },
+
+    "NUI": {
+        "alias": "NUI",
+        "dataType": "int"
+    },
+
     "OBS": {
         "alias": "OBS",
+        "dataType": "string"
+    },
+
+    "PERITO": {
+        "alias": "PER",
+        "dataType": "int"
+    },
+
+    "SERIE": {
+        "alias": "SER",
+        "dataType": "string"
+    },
+
+    "SERIE_PERI": {
+        "alias": "SE1",
         "dataType": "string"
     },
 
@@ -43,11 +48,6 @@
         "alias": "SUB",
         "dataType": "int",
         "defaultValue": "(1)"
-    },
-
-    "CARACTER": {
-        "alias": "CAR",
-        "dataType": "string"
     }
 
 }

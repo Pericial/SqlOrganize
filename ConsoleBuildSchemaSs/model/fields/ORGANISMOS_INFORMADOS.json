@@ -1,36 +1,31 @@
 {
+    "COMENTARIO": {
+        "alias": "COM",
+        "dataType": "string"
+    },
+
     "DTOJUDI": {
         "alias": "DTO",
         "dataType": "string"
     },
 
-    "SERIE": {
-        "alias": "SER",
-        "dataType": "string"
+    "FECHA": {
+        "alias": "FEC",
+        "dataType": "DateTime"
     },
 
-    "NUI": {
-        "alias": "NUI",
-        "dataType": "int"
-    },
-
-    "SERIE_PERI": {
-        "alias": "SE1",
-        "dataType": "string"
-    },
-
-    "NROPERI": {
+    "NROMOV": {
         "alias": "NRO",
         "dataType": "int"
     },
 
-    "SUBPERI": {
-        "alias": "SUB",
+    "NROPERI": {
+        "alias": "NR1",
         "dataType": "int"
     },
 
-    "NROMOV": {
-        "alias": "NR1",
+    "NUI": {
+        "alias": "NUI",
         "dataType": "int"
     },
 
@@ -39,14 +34,19 @@
         "dataType": "string"
     },
 
-    "COMENTARIO": {
-        "alias": "COM",
+    "SERIE": {
+        "alias": "SER",
         "dataType": "string"
     },
 
-    "FECHA": {
-        "alias": "FEC",
-        "dataType": "DateTime"
+    "SERIE_PERI": {
+        "alias": "SE1",
+        "dataType": "string"
+    },
+
+    "SUBPERI": {
+        "alias": "SUB",
+        "dataType": "int"
     }
 
 }

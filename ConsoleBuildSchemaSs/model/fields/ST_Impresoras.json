@@ -4,6 +4,11 @@
         "dataType": "string"
     },
 
+    "Descripcion": {
+        "alias": "Des",
+        "dataType": "string"
+    },
+
     "Marca": {
         "alias": "Mar",
         "dataType": "string"
@@ -11,11 +16,6 @@
 
     "Modelo": {
         "alias": "Mod",
-        "dataType": "string"
-    },
-
-    "Descripcion": {
-        "alias": "Des",
         "dataType": "string"
     }
 

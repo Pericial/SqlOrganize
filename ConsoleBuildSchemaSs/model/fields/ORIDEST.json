@@ -1,10 +1,10 @@
 {
-    "COD_OD": {
+    "COD_IND": {
         "alias": "COD",
         "dataType": "string"
     },
 
-    "COD_IND": {
+    "COD_OD": {
         "alias": "CO1",
         "dataType": "string"
     },

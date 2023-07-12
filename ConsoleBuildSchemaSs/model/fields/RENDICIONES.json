@@ -1,26 +1,41 @@
 {
-    "DTOJUDI": {
-        "alias": "DTO",
-        "dataType": "string"
-    },
-
     "CAJA_NRO": {
         "alias": "CAJ",
         "dataType": "string"
     },
 
-    "NRO_RENDICION": {
-        "alias": "NRO",
+    "CEUM": {
+        "alias": "CEU",
         "dataType": "int"
     },
 
-    "NRO_COMPROBANTE": {
-        "alias": "NR1",
+    "COD_EMP": {
+        "alias": "COD",
+        "dataType": "int"
+    },
+
+    "DESTINO": {
+        "alias": "DES",
+        "dataType": "string"
+    },
+
+    "DTOJUDI": {
+        "alias": "DTO",
         "dataType": "string"
     },
 
     "FECHA_RENDICION": {
         "alias": "FEC",
+        "dataType": "DateTime"
+    },
+
+    "HORA_CARGA": {
+        "alias": "HOR",
+        "dataType": "DateTime"
+    },
+
+    "HORA_MODIF": {
+        "alias": "HO1",
         "dataType": "DateTime"
     },
 
@@ -34,34 +49,19 @@
         "dataType": "float"
     },
 
-    "DESTINO": {
-        "alias": "DES",
+    "NRO_COMPROBANTE": {
+        "alias": "NRO",
         "dataType": "string"
+    },
+
+    "NRO_RENDICION": {
+        "alias": "NR1",
+        "dataType": "int"
     },
 
     "OBS": {
         "alias": "OBS",
         "dataType": "string"
-    },
-
-    "COD_EMP": {
-        "alias": "COD",
-        "dataType": "int"
-    },
-
-    "HORA_CARGA": {
-        "alias": "HOR",
-        "dataType": "DateTime"
-    },
-
-    "CEUM": {
-        "alias": "CEU",
-        "dataType": "int"
-    },
-
-    "HORA_MODIF": {
-        "alias": "HO1",
-        "dataType": "DateTime"
     }
 
 }

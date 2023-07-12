@@ -1,4 +1,9 @@
 {
+    "Codigo_Grupo": {
+        "alias": "Cod",
+        "dataType": "string"
+    },
+
     "DtoJud": {
         "alias": "Dto",
         "dataType": "string"
@@ -7,11 +12,6 @@
     "NroIdpEmp": {
         "alias": "Nro",
         "dataType": "int"
-    },
-
-    "Codigo_Grupo": {
-        "alias": "Cod",
-        "dataType": "string"
     }
 
 }

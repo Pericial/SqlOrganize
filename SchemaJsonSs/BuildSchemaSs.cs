@@ -20,7 +20,8 @@ namespace SchemaJsonSs
             command.CommandText = @"
                 SELECT TABLE_NAME
                 FROM INFORMATION_SCHEMA.TABLES
-                WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_CATALOG=@db_name";
+                WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_CATALOG=@db_name
+				ORDER BY TABLE_NAME ASC;";
             command.Connection = connection;
             command.Parameters.AddWithValue("db_name", Config.db_name);
             command.ExecuteNonQuery();
@@ -108,7 +109,8 @@ LEFT JOIN (
 	)
 	WHERE CONSTRAINT_TYPE = 'FOREIGN KEY'
 ) AS INFO_FK2 ON (INFO_FK2.TABLE_NAME = Col.TABLE_NAME AND Col.COLUMN_NAME = INFO_FK2.COLUMN_NAME)
-WHERE tbl.table_type = 'base table' AND tbl.TABLE_CATALOG=@db_name AND tbl.TABLE_NAME = @table_name;
+WHERE tbl.table_type = 'base table' AND tbl.TABLE_CATALOG=@db_name AND tbl.TABLE_NAME = @table_name
+ORDER BY col.TABLE_NAME ASC, col.COLUMN_NAME ASC;
 ";
             command.Connection = connection;
             command.Parameters.AddWithValue("db_name", Config.db_name);

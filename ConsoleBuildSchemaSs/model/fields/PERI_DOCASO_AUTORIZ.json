@@ -1,16 +1,6 @@
 {
-    "NROIDPEMP_PROP": {
-        "alias": "NRO",
-        "dataType": "int"
-    },
-
-    "NROIDPEMP_AUT": {
-        "alias": "NR1",
-        "dataType": "int"
-    },
-
-    "NROPERI": {
-        "alias": "NR2",
+    "NivelAut": {
+        "alias": "Niv",
         "dataType": "int"
     },
 
@@ -19,8 +9,18 @@
         "dataType": "int"
     },
 
-    "NivelAut": {
-        "alias": "Niv",
+    "NROIDPEMP_AUT": {
+        "alias": "NRO",
+        "dataType": "int"
+    },
+
+    "NROIDPEMP_PROP": {
+        "alias": "NR1",
+        "dataType": "int"
+    },
+
+    "NROPERI": {
+        "alias": "NR2",
         "dataType": "int"
     }
 

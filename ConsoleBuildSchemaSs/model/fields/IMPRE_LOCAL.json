@@ -1,9 +1,4 @@
 {
-    "Sucursal": {
-        "alias": "Suc",
-        "dataType": "string"
-    },
-
     "Id_PC": {
         "alias": "Id_",
         "dataType": "string"
@@ -14,14 +9,19 @@
         "dataType": "int"
     },
 
+    "Local": {
+        "alias": "Loc",
+        "dataType": "bool"
+    },
+
     "Nombre_Windows": {
         "alias": "Nom",
         "dataType": "string"
     },
 
-    "Local": {
-        "alias": "Loc",
-        "dataType": "bool"
+    "Sucursal": {
+        "alias": "Suc",
+        "dataType": "string"
     }
 
 }

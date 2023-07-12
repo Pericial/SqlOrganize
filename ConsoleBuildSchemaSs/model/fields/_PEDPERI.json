@@ -1,22 +1,67 @@
 {
+    "CODCARAT": {
+        "alias": "COD",
+        "dataType": "string"
+    },
+
+    "CODEMP_CARGO": {
+        "alias": "CO1",
+        "dataType": "int"
+    },
+
+    "CODEMP_UM": {
+        "alias": "CO2",
+        "dataType": "int"
+    },
+
+    "CODLOCAL": {
+        "alias": "CO3",
+        "dataType": "string"
+    },
+
+    "COMI_MORGUE": {
+        "alias": "COM",
+        "dataType": "string"
+    },
+
+    "DETALLE_INGRESO": {
+        "alias": "DET",
+        "dataType": "string"
+    },
+
+    "DJORI": {
+        "alias": "DJO",
+        "dataType": "string"
+    },
+
     "DTOJUDI": {
         "alias": "DTO",
         "dataType": "string"
     },
 
-    "SERIE": {
-        "alias": "SER",
+    "F_EGRESO": {
+        "alias": "F_E",
+        "dataType": "DateTime"
+    },
+
+    "F_INGRESO": {
+        "alias": "F_I",
+        "dataType": "DateTime"
+    },
+
+    "F_ULTMODI": {
+        "alias": "F_U",
+        "dataType": "DateTime"
+    },
+
+    "FUERO": {
+        "alias": "FUE",
         "dataType": "string"
     },
 
-    "NUI": {
-        "alias": "NUI",
-        "dataType": "int"
-    },
-
-    "MESA": {
-        "alias": "MES",
-        "dataType": "string"
+    "HORA_CARGA": {
+        "alias": "HOR",
+        "dataType": "DateTime"
     },
 
     "IDP_ACT": {
@@ -29,28 +74,8 @@
         "dataType": "int"
     },
 
-    "CODCARAT": {
-        "alias": "COD",
-        "dataType": "string"
-    },
-
-    "DJORI": {
-        "alias": "DJO",
-        "dataType": "string"
-    },
-
-    "CODLOCAL": {
-        "alias": "CO1",
-        "dataType": "string"
-    },
-
-    "FUERO": {
-        "alias": "FUE",
-        "dataType": "string"
-    },
-
-    "ORGANISMO": {
-        "alias": "ORG",
+    "INTERVIENE_ORG": {
+        "alias": "INT",
         "dataType": "string"
     },
 
@@ -59,59 +84,34 @@
         "dataType": "int"
     },
 
-    "INTERVIENE_ORG": {
-        "alias": "INT",
+    "MESA": {
+        "alias": "MES",
         "dataType": "string"
     },
 
-    "F_INGRESO": {
-        "alias": "F_I",
-        "dataType": "DateTime"
-    },
-
-    "F_EGRESO": {
-        "alias": "F_E",
-        "dataType": "DateTime"
-    },
-
-    "CODEMP_CARGO": {
-        "alias": "CO2",
-        "dataType": "int"
-    },
-
-    "HORA_CARGA": {
-        "alias": "HOR",
-        "dataType": "DateTime"
-    },
-
-    "F_ULTMODI": {
-        "alias": "F_U",
-        "dataType": "DateTime"
-    },
-
-    "CODEMP_UM": {
-        "alias": "CO3",
-        "dataType": "int"
-    },
-
-    "NRONOTA": {
+    "NRO_AUTOPSIA": {
         "alias": "NRO",
         "dataType": "string"
     },
 
-    "NROEFECTO": {
+    "NROASO_DEL_ORIGEN": {
         "alias": "NR1",
         "dataType": "string"
     },
 
-    "COMI_MORGUE": {
-        "alias": "COM",
+    "NROEFECTO": {
+        "alias": "NR2",
         "dataType": "string"
     },
 
-    "ORG_CoM": {
-        "alias": "OR1",
+    "NRONOTA": {
+        "alias": "NR3",
         "dataType": "string"
+    },
+
+    "NUI": {
+        "alias": "NUI",
+        "dataType": "int"
     },
 
     "OBS": {
@@ -119,23 +119,13 @@
         "dataType": "string"
     },
 
-    "NROASO_DEL_ORIGEN": {
-        "alias": "NR2",
+    "ORG_CoM": {
+        "alias": "ORG",
         "dataType": "string"
     },
 
-    "NRO_AUTOPSIA": {
-        "alias": "NR3",
-        "dataType": "string"
-    },
-
-    "TIPO_INGRESO": {
-        "alias": "TIP",
-        "dataType": "string"
-    },
-
-    "DETALLE_INGRESO": {
-        "alias": "DET",
+    "ORGANISMO": {
+        "alias": "OR1",
         "dataType": "string"
     },
 
@@ -163,6 +153,16 @@
         "alias": "RES",
         "dataType": "bool",
         "defaultValue": "((0))"
+    },
+
+    "SERIE": {
+        "alias": "SER",
+        "dataType": "string"
+    },
+
+    "TIPO_INGRESO": {
+        "alias": "TIP",
+        "dataType": "string"
     }
 
 }

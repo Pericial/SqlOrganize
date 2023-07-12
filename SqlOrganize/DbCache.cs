@@ -51,8 +51,7 @@ namespace SqlOrganize
             if (searchIds.Count == 0)
                 return response;
 
-            string q = Db.Query(entityName).Where("$_Id IN (@0)").Parameters(searchIds).Sql();
-            List<Dictionary<string, object>> rows = Db.Query(entityName).Where("$_Id IN (@0)").Parameters(searchIds).ListDict();
+            List<Dictionary<string, object>> rows = Db.Query(entityName).Size(0).Where("$_Id IN (@0)").Parameters(searchIds).ListDict();
 
             foreach (Dictionary<string, object> row in rows)
             {
@@ -115,8 +114,10 @@ namespace SqlOrganize
             for (var i = 0; i < data.Count; i++)
             {
                 response.Add(new());
-                for (var j = 0; j < fo.Fields.Count; j++) response[i][fo.Fields[j]] = null;
-                for (var j = 0; j < fo.FieldsMain.Count; j++) response[i][fo.FieldsMain[j]] = data[i][fo.FieldsMain[j]];
+                for (var j = 0; j < fo.Fields.Count; j++)
+                    response[i][fo.Fields[j]] = null;
+                for (var j = 0; j < fo.FieldsMain.Count; j++) 
+                    response[i][fo.FieldsMain[j]] = data[i][fo.FieldsMain[j]];
             }
             return ListDictRecursive(fo, response, 0);
 

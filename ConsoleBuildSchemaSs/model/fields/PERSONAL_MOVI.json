@@ -1,57 +1,13 @@
 {
-    "DTOJUDI": {
-        "alias": "DTO",
-        "dataType": "string"
-    },
-
-    "NROIDPEMP": {
-        "alias": "NRO",
-        "dataType": "int"
-    },
-
-    "NROMOV": {
-        "alias": "NR1",
-        "dataType": "int"
-    },
-
-    "TIPOMOV": {
-        "alias": "TIP",
-        "dataType": "string"
-    },
-
-    "FECHA_DESDE": {
-        "alias": "FEC",
-        "dataType": "DateTime"
-    },
-
-    "FECHA_HASTA": {
-        "alias": "FE1",
-        "dataType": "DateTime"
-    },
-
-    "NRO_RESOLUCION": {
-        "alias": "NR2",
-        "dataType": "string"
-    },
-
-    "OBS": {
-        "alias": "OBS",
-        "dataType": "string"
-    },
-
-    "FECHA_CARGA": {
-        "alias": "FE2",
-        "dataType": "DateTime"
+    "BORRADO": {
+        "alias": "BOR",
+        "dataType": "bool",
+        "defaultValue": "((0))"
     },
 
     "CODEMP": {
         "alias": "COD",
         "dataType": "int"
-    },
-
-    "FECHA_ULTMODI": {
-        "alias": "FE3",
-        "dataType": "DateTime"
     },
 
     "CODEMP_MODI": {
@@ -71,10 +27,54 @@
         "defaultValue": "(0)"
     },
 
-    "BORRADO": {
-        "alias": "BOR",
-        "dataType": "bool",
-        "defaultValue": "((0))"
+    "DTOJUDI": {
+        "alias": "DTO",
+        "dataType": "string"
+    },
+
+    "FECHA_CARGA": {
+        "alias": "FEC",
+        "dataType": "DateTime"
+    },
+
+    "FECHA_DESDE": {
+        "alias": "FE1",
+        "dataType": "DateTime"
+    },
+
+    "FECHA_HASTA": {
+        "alias": "FE2",
+        "dataType": "DateTime"
+    },
+
+    "FECHA_ULTMODI": {
+        "alias": "FE3",
+        "dataType": "DateTime"
+    },
+
+    "NRO_RESOLUCION": {
+        "alias": "NRO",
+        "dataType": "string"
+    },
+
+    "NROIDPEMP": {
+        "alias": "NR1",
+        "dataType": "int"
+    },
+
+    "NROMOV": {
+        "alias": "NR2",
+        "dataType": "int"
+    },
+
+    "OBS": {
+        "alias": "OBS",
+        "dataType": "string"
+    },
+
+    "TIPOMOV": {
+        "alias": "TIP",
+        "dataType": "string"
     }
 
 }

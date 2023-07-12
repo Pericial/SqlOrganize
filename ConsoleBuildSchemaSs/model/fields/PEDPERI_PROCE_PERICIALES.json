@@ -1,22 +1,39 @@
 {
+    "CANTIDAD": {
+        "alias": "CAN",
+        "dataType": "int",
+        "defaultValue": "((1))"
+    },
+
+    "COMPLEJIDAD": {
+        "alias": "COM",
+        "dataType": "string"
+    },
+
+    "DESCRIPCION_PROCE": {
+        "alias": "DES",
+        "dataType": "string"
+    },
+
     "DTOJUDI": {
         "alias": "DTO",
         "dataType": "string"
     },
 
-    "SERIE": {
-        "alias": "SER",
-        "dataType": "string"
+    "FECHA_PROCE": {
+        "alias": "FEC",
+        "dataType": "DateTime"
     },
 
-    "NUI": {
-        "alias": "NUI",
+    "ID_PERITO": {
+        "alias": "ID_",
+        "dataType": "int",
+        "defaultValue": "((0))"
+    },
+
+    "ITEM_PP": {
+        "alias": "ITE",
         "dataType": "int"
-    },
-
-    "SERIE_PERI": {
-        "alias": "SE1",
-        "dataType": "string"
     },
 
     "NROPERI": {
@@ -29,19 +46,9 @@
         "dataType": "int"
     },
 
-    "ITEM_PP": {
-        "alias": "ITE",
+    "NUI": {
+        "alias": "NUI",
         "dataType": "int"
-    },
-
-    "FECHA_PROCE": {
-        "alias": "FEC",
-        "dataType": "DateTime"
-    },
-
-    "DESCRIPCION_PROCE": {
-        "alias": "DES",
-        "dataType": "string"
     },
 
     "OBSERVACION": {
@@ -49,20 +56,13 @@
         "dataType": "string"
     },
 
-    "ID_PERITO": {
-        "alias": "ID_",
-        "dataType": "int",
-        "defaultValue": "((0))"
+    "SERIE": {
+        "alias": "SER",
+        "dataType": "string"
     },
 
-    "CANTIDAD": {
-        "alias": "CAN",
-        "dataType": "int",
-        "defaultValue": "((1))"
-    },
-
-    "COMPLEJIDAD": {
-        "alias": "COM",
+    "SERIE_PERI": {
+        "alias": "SE1",
         "dataType": "string"
     }
 

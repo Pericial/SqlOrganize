@@ -1,26 +1,29 @@
 {
+    "DETALLE": {
+        "alias": "DET",
+        "dataType": "string"
+    },
+
     "DTOJUD": {
         "alias": "DTO",
         "dataType": "string",
         "refEntityName": "DTOJUD"
     },
 
-    "FECHA_PEDIDO": {
+    "FECHA_CARGA": {
         "alias": "FEC",
+        "dataType": "DateTime"
+    },
+
+    "FECHA_PEDIDO": {
+        "alias": "FE1",
         "dataType": "DateTime",
         "refEntityName": "FECHA_PEDIDO"
     },
 
-    "SERIEPED": {
-        "alias": "SER",
-        "dataType": "string",
-        "refEntityName": "SERIEPED"
-    },
-
-    "NROPED": {
-        "alias": "NRO",
-        "dataType": "int",
-        "refEntityName": "NROPED"
+    "FECHAPASO": {
+        "alias": "FE2",
+        "dataType": "DateTime"
     },
 
     "ITEM": {
@@ -28,24 +31,21 @@
         "dataType": "int"
     },
 
-    "FECHAPASO": {
-        "alias": "FE1",
-        "dataType": "DateTime"
-    },
-
-    "DETALLE": {
-        "alias": "DET",
-        "dataType": "string"
-    },
-
-    "FECHA_CARGA": {
-        "alias": "FE2",
-        "dataType": "DateTime"
-    },
-
     "NROIDPEMP": {
-        "alias": "NR1",
+        "alias": "NRO",
         "dataType": "int"
+    },
+
+    "NROPED": {
+        "alias": "NR1",
+        "dataType": "int",
+        "refEntityName": "NROPED"
+    },
+
+    "SERIEPED": {
+        "alias": "SER",
+        "dataType": "string",
+        "refEntityName": "SERIEPED"
     }
 
 }

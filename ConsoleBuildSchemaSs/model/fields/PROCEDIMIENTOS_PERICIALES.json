@@ -1,11 +1,16 @@
 {
+    "DESCRIPCION_PROCE": {
+        "alias": "DES",
+        "dataType": "string"
+    },
+
     "DTOJUDI": {
         "alias": "DTO",
         "dataType": "string"
     },
 
-    "SECCION": {
-        "alias": "SEC",
+    "GENERA_MOV": {
+        "alias": "GEN",
         "dataType": "string"
     },
 
@@ -14,13 +19,8 @@
         "dataType": "int"
     },
 
-    "DESCRIPCION_PROCE": {
-        "alias": "DES",
-        "dataType": "string"
-    },
-
-    "GENERA_MOV": {
-        "alias": "GEN",
+    "SECCION": {
+        "alias": "SEC",
         "dataType": "string"
     }
 

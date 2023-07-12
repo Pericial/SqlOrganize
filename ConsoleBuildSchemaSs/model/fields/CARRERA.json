@@ -1,47 +1,7 @@
 {
-    "NUMCAR": {
-        "alias": "NUM",
-        "dataType": "string"
-    },
-
-    "NUMAGE": {
-        "alias": "NU1",
-        "dataType": "string"
-    },
-
-    "FENOM": {
-        "alias": "FEN",
+    "AUDIT": {
+        "alias": "AUD",
         "dataType": "DateTime"
-    },
-
-    "FEPOS": {
-        "alias": "FEP",
-        "dataType": "DateTime"
-    },
-
-    "ORDEN": {
-        "alias": "ORD",
-        "dataType": "string"
-    },
-
-    "RESOLU": {
-        "alias": "RES",
-        "dataType": "string"
-    },
-
-    "OBSERV": {
-        "alias": "OBS",
-        "dataType": "string"
-    },
-
-    "GRUPO": {
-        "alias": "GRU",
-        "dataType": "string"
-    },
-
-    "NIVEL": {
-        "alias": "NIV",
-        "dataType": "string"
     },
 
     "CARGO": {
@@ -59,8 +19,18 @@
         "dataType": "string"
     },
 
-    "TRABAJA": {
-        "alias": "TRA",
+    "FENOM": {
+        "alias": "FEN",
+        "dataType": "DateTime"
+    },
+
+    "FEPOS": {
+        "alias": "FEP",
+        "dataType": "DateTime"
+    },
+
+    "GRUPO": {
+        "alias": "GRU",
         "dataType": "string"
     },
 
@@ -69,9 +39,39 @@
         "dataType": "string"
     },
 
-    "AUDIT": {
-        "alias": "AUD",
-        "dataType": "DateTime"
+    "NIVEL": {
+        "alias": "NIV",
+        "dataType": "string"
+    },
+
+    "NUMAGE": {
+        "alias": "NUM",
+        "dataType": "string"
+    },
+
+    "NUMCAR": {
+        "alias": "NU1",
+        "dataType": "string"
+    },
+
+    "OBSERV": {
+        "alias": "OBS",
+        "dataType": "string"
+    },
+
+    "ORDEN": {
+        "alias": "ORD",
+        "dataType": "string"
+    },
+
+    "RESOLU": {
+        "alias": "RES",
+        "dataType": "string"
+    },
+
+    "TRABAJA": {
+        "alias": "TRA",
+        "dataType": "string"
     }
 
 }

@@ -1,9 +1,4 @@
 {
-    "RID": {
-        "alias": "RID",
-        "dataType": "string"
-    },
-
     "ID_ESPE": {
         "alias": "ID_",
         "dataType": "int"
@@ -12,6 +7,11 @@
     "ID_SUBESPE": {
         "alias": "ID1",
         "dataType": "int"
+    },
+
+    "RID": {
+        "alias": "RID",
+        "dataType": "string"
     },
 
     "SUB_ESPECIALIDAD": {

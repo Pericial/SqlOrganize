@@ -1,26 +1,6 @@
 {
-    "NROIDP": {
-        "alias": "NRO",
-        "dataType": "int"
-    },
-
     "APELLIDO": {
         "alias": "APE",
-        "dataType": "string"
-    },
-
-    "NOMBRES": {
-        "alias": "NOM",
-        "dataType": "string"
-    },
-
-    "TD": {
-        "alias": "TD",
-        "dataType": "string"
-    },
-
-    "NDOC": {
-        "alias": "NDO",
         "dataType": "string"
     },
 
@@ -29,10 +9,9 @@
         "dataType": "string"
     },
 
-    "FECHA_CARGA": {
-        "alias": "FEC",
-        "dataType": "DateTime",
-        "defaultValue": "(getdate())"
+    "CARACTER_ABO": {
+        "alias": "CA1",
+        "dataType": "string"
     },
 
     "DJ": {
@@ -45,24 +24,14 @@
         "dataType": "int"
     },
 
-    "TIPO_DOC": {
-        "alias": "TIP",
-        "dataType": "string"
-    },
-
-    "CARACTER_ABO": {
-        "alias": "CA1",
-        "dataType": "string"
-    },
-
     "DOMICILIO": {
         "alias": "DOM",
         "dataType": "string"
     },
 
-    "FECHA_NACIM": {
-        "alias": "FE1",
-        "dataType": "DateTime"
+    "DOMICILIO_LABORAL": {
+        "alias": "DO1",
+        "dataType": "string"
     },
 
     "EDAD": {
@@ -77,14 +46,45 @@
         "defaultValue": "((0))"
     },
 
+    "FECHA_CARGA": {
+        "alias": "FEC",
+        "dataType": "DateTime",
+        "defaultValue": "(getdate())"
+    },
+
+    "FECHA_NACIM": {
+        "alias": "FE1",
+        "dataType": "DateTime"
+    },
+
+    "NDOC": {
+        "alias": "NDO",
+        "dataType": "string"
+    },
+
+    "NOMBRES": {
+        "alias": "NOM",
+        "dataType": "string"
+    },
+
+    "NROIDP": {
+        "alias": "NRO",
+        "dataType": "int"
+    },
+
     "SUJETO_PRINCIPAL": {
         "alias": "SUJ",
         "dataType": "bool",
         "defaultValue": "((0))"
     },
 
-    "DOMICILIO_LABORAL": {
-        "alias": "DO1",
+    "TD": {
+        "alias": "TD",
+        "dataType": "string"
+    },
+
+    "TIPO_DOC": {
+        "alias": "TIP",
         "dataType": "string"
     }
 

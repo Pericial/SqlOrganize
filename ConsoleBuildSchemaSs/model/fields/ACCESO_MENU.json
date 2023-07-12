@@ -1,11 +1,11 @@
 {
-    "CODIGO_MENU": {
-        "alias": "COD",
+    "Codigo_Grupo": {
+        "alias": "Cod",
         "dataType": "string"
     },
 
-    "Sucursal": {
-        "alias": "Suc",
+    "CODIGO_MENU": {
+        "alias": "COD",
         "dataType": "string"
     },
 
@@ -14,8 +14,8 @@
         "dataType": "int"
     },
 
-    "Codigo_Grupo": {
-        "alias": "Cod",
+    "Sucursal": {
+        "alias": "Suc",
         "dataType": "string"
     }
 
