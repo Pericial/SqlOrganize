@@ -1,7 +1,6 @@
 ﻿
 using MySql.Data.MySqlClient;
 using SqlOrganize;
-using SqlOrganizeSs;
 
 namespace SqlOrganizeMy
 {

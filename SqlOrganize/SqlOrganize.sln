@@ -25,7 +25,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleSqlOrganizeSs", "Con
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsAppSs", "WinFormsAppSs\WinFormsAppSs.csproj", "{9E2C060A-D1BA-4DB6-80C1-FB6DF81532AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleSqlOrganizeMy", "ConsoleSqlOrganizeMy\ConsoleSqlOrganizeMy.csproj", "{DC04B61A-B876-41BC-AD23-46FE671E2E91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleSqlOrganizeMy", "ConsoleSqlOrganizeMy\ConsoleSqlOrganizeMy.csproj", "{DC04B61A-B876-41BC-AD23-46FE671E2E91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsAppMy", "WinFormsAppMy\WinFormsAppMy.csproj", "{C440872D-026F-41E7-8472-AF5657F66CF5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{DC04B61A-B876-41BC-AD23-46FE671E2E91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC04B61A-B876-41BC-AD23-46FE671E2E91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC04B61A-B876-41BC-AD23-46FE671E2E91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C440872D-026F-41E7-8472-AF5657F66CF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C440872D-026F-41E7-8472-AF5657F66CF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C440872D-026F-41E7-8472-AF5657F66CF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C440872D-026F-41E7-8472-AF5657F66CF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

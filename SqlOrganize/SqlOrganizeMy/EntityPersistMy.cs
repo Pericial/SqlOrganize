@@ -2,7 +2,7 @@
 using SqlOrganize;
 using Utils;
 
-namespace SqlOrganizeSs
+namespace SqlOrganizeMy
 {
     public class EntityPersistMy : EntityPersist
     {

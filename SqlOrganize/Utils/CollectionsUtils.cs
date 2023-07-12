@@ -7,6 +7,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Utils
 {
@@ -204,6 +205,38 @@ namespace Utils
                     item.Merge(s[item[key1]]);
             }
         }
+
+        public static Dictionary<string, List<Dictionary<string, object>>> GroupByKey(this List<Dictionary<string, object>> source, string key)
+        {
+            Dictionary<string, List<Dictionary<string, object>>> response = new();
+            foreach(Dictionary<string, object> row in source)
+            {
+                object v = row[key];
+                if (!response.ContainsKey(key))
+                    response[key] = new();
+                response[key].Add(row);
+            }
+            return response;
+        }
+
+        public static Dictionary<string, object> AddPrefix(this Dictionary<string, object> source, string prefix)
+        {
+            Dictionary<string, object> response = new();
+            foreach(var (key, obj) in source)
+                response[prefix + key] = obj;
+
+            return response;
+        }
+
+        public static List<Dictionary<string, object>> AddPrefix(this List<Dictionary<string, object>> source, string prefix)
+        {
+            List<Dictionary<string, object>> response = new();
+            foreach(Dictionary<string, object> row in source)
+                response.Add(row.AddPrefix(prefix));
+            return response;
+        }
+
+    }
 
 
     }
