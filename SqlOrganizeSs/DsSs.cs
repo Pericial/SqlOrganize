@@ -3,24 +3,28 @@ using SqlOrganize;
 
 namespace SqlOrganizeSs
 {
-    /*
-    Comentarios del DBMS
-    - Sql Server agrega espacios en blanco adicionales cuando se utiliza CONCAT y CONCAT_WS.
-    - CONCAT_WS agrega 3 espacios en blanco al final.
-    - CONCAT agrega espacios en blanco por cada concatenacion.
-    */
+    /// <summary>
+    /// Contenedor principal para sql server
+    /// </summary>
+    /// <remarks>
+    /// Sql Server agrega espacios en blanco adicionales cuando se utiliza 
+    /// CONCAT y CONCAT_WS.<br/>
+    /// </remarks>
     public class DbSs : Db
     {
-        SqlConnection _conn;
 
-        /*
-         * config["connection_string"] = "server=127.0.0.1;uid=root;pwd=12345;database=test"
-         */
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="config">
+        /// Configuracion
+        /// </param>
+        /// <example>
+        ///   connection_string = "server=127.0.0.1;uid=root;pwd=12345;database=test"
+        /// </example>
         public DbSs(Config config) : base(config)
         {
         }
-
-        public SqlConnection conn() => _conn;
 
         public override EntityPersist Persist(string entityName)
         {

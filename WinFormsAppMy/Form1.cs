@@ -11,5 +11,11 @@ namespace WinFormsAppMy
         {
 
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            WinFormsAppMy.Forms.InformeCoordinacionDistrital.Form1 form = new();
+            form.Show();
+        }
     }
 }

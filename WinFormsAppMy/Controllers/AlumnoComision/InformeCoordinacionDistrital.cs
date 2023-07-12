@@ -10,10 +10,10 @@ namespace WinFormsAppMy.Controllers.AlumnoComision
 {
     public class InformeCoordinacionDistrital
     {
-        public List<Dictionary<string, object>> GenerarInforme(string anioCalendario, int semestreCalendario)
+        public static List<Dictionary<string, object>> GenerarInforme(string anioCalendario, int semestreCalendario)
         {
             var q = ContainerApp.Db().Query("alumno_comision").
-                 Size(0).
+                 Size(10).
                  Where("$estado != @0 AND $calendario-anio = @1 AND calendario-semestre = @2").
                  Parameters("Mesa", anioCalendario, semestreCalendario).
                  Order("$sede-numero ASC, comision-division ASC, persona-apellidos ASC, persona-nombres ASC");

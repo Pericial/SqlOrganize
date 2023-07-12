@@ -4,23 +4,35 @@ using SqlOrganize;
 
 namespace SqlOrganizeMy
 {
-
+    /// <summary>
+    /// Contenedor principal para mysql
+    /// </summary>
     public class DbMy : Db
     {
 
-        MySqlConnection _conn;
 
-        /*
-         * config["connection_string"] = "server=127.0.0.1;uid=root;pwd=12345;database=test"
-         */
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="config">
+        /// </param>
+        /// <example>
+        ///   connection_string = "server=127.0.0.1;uid=root;pwd=12345;database=test"
+        /// </example>
         public DbMy(Config config): base(config)
-        {
-            _conn = new MySqlConnection();
-            _conn.ConnectionString = (string)config.connectionString;
-            _conn.Open();
+        {            
+            /*
+            prueba de conexion
+            Las conexiones se realizan directamente cuando se requiere la eje-
+            cucion de una consulta a la base de datos.
+            Este codigo esta como referencia, se deja como ejemplo por si es
+            necesario verificar la conexion                       
+            var conn = new MySqlConnection();
+            conn.ConnectionString = (string)config.connectionString;
+            conn.Open();
+            conn.Close();
+            */
         }
-
-        public MySqlConnection conn() => _conn;
 
         public override EntityPersist Persist(string entityName)
         {
