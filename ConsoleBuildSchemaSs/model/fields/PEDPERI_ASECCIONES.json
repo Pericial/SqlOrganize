@@ -1,0 +1,208 @@
+{
+    "DTOJUDI": {
+        "alias": "DTO",
+        "dataType": "string",
+        "refEntityName": "DTOJUDI"
+    },
+
+    "SERIE": {
+        "alias": "SER",
+        "dataType": "string",
+        "refEntityName": "SERIE"
+    },
+
+    "NUI": {
+        "alias": "NUI",
+        "dataType": "int",
+        "refEntityName": "NUI"
+    },
+
+    "SECCION": {
+        "alias": "SEC",
+        "dataType": "string"
+    },
+
+    "ESPECIALIDAD": {
+        "alias": "ESP",
+        "dataType": "string"
+    },
+
+    "SERIE_PERI": {
+        "alias": "SE1",
+        "dataType": "string"
+    },
+
+    "NROPERI": {
+        "alias": "NRO",
+        "dataType": "int"
+    },
+
+    "ESTADO": {
+        "alias": "EST",
+        "dataType": "string"
+    },
+
+    "FINGRE_PERI": {
+        "alias": "FIN",
+        "dataType": "DateTime"
+    },
+
+    "FFIN_PERI": {
+        "alias": "FFI",
+        "dataType": "DateTime"
+    },
+
+    "EFECTOS": {
+        "alias": "EFE",
+        "dataType": "string"
+    },
+
+    "NROEFECTO": {
+        "alias": "NR1",
+        "dataType": "string"
+    },
+
+    "FECHA_ESTI_COBRO": {
+        "alias": "FEC",
+        "dataType": "DateTime"
+    },
+
+    "HONO_REGULADO": {
+        "alias": "HON",
+        "dataType": "float"
+    },
+
+    "HONO_ESTIMADO": {
+        "alias": "HO1",
+        "dataType": "float"
+    },
+
+    "ESTADO_COBRO": {
+        "alias": "ES1",
+        "dataType": "string"
+    },
+
+    "EMPLE_RECIBIO": {
+        "alias": "EMP",
+        "dataType": "int"
+    },
+
+    "FECHA_RECIBIO": {
+        "alias": "FE1",
+        "dataType": "DateTime"
+    },
+
+    "EMPLE_DIOSALIDA": {
+        "alias": "EM1",
+        "dataType": "int"
+    },
+
+    "FECHA_DIOSALIDA": {
+        "alias": "FE2",
+        "dataType": "DateTime"
+    },
+
+    "ENTREGO_EFECTOS": {
+        "alias": "ENT",
+        "dataType": "bool"
+    },
+
+    "TIPO_PERICIA": {
+        "alias": "TIP",
+        "dataType": "string"
+    },
+
+    "SUBPERI": {
+        "alias": "SUB",
+        "dataType": "int",
+        "defaultValue": "((1))"
+    },
+
+    "FOJA_H": {
+        "alias": "FOJ",
+        "dataType": "int"
+    },
+
+    "FOJA_D": {
+        "alias": "FO1",
+        "dataType": "int"
+    },
+
+    "BIBLIORATO": {
+        "alias": "BIB",
+        "dataType": "string"
+    },
+
+    "NRO_SALIDA_PERITO": {
+        "alias": "NR2",
+        "dataType": "int"
+    },
+
+    "NRODVD": {
+        "alias": "NR3",
+        "dataType": "int"
+    },
+
+    "FECHA_CARGA": {
+        "alias": "FE3",
+        "dataType": "DateTime",
+        "defaultValue": "(getdate())"
+    },
+
+    "ESTADO_EFECTOS": {
+        "alias": "ES2",
+        "dataType": "string",
+        "defaultValue": "('')"
+    },
+
+    "NRO_INGRESO": {
+        "alias": "NR4",
+        "dataType": "int"
+    },
+
+    "FECHA_247": {
+        "alias": "FE4",
+        "dataType": "DateTime"
+    },
+
+    "HORA_247": {
+        "alias": "HOR",
+        "dataType": "string"
+    },
+
+    "FECHA_SALIDA_SEC": {
+        "alias": "FE5",
+        "dataType": "DateTime"
+    },
+
+    "FECHA_INGRESO_SEC": {
+        "alias": "FE6",
+        "dataType": "DateTime"
+    },
+
+    "ULT_CAMBIO_ESTADO": {
+        "alias": "ULT",
+        "dataType": "DateTime"
+    },
+
+    "FECHA_DERIV": {
+        "alias": "FE7",
+        "dataType": "DateTime"
+    },
+
+    "ORG_DERIV": {
+        "alias": "ORG",
+        "dataType": "string"
+    },
+
+    "LOCAL_CABECERA": {
+        "alias": "LOC",
+        "dataType": "string"
+    },
+
+    "FECHA_LIMITE_URG": {
+        "alias": "FE8",
+        "dataType": "DateTime"
+    }
+
+}

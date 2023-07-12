@@ -1,0 +1,27 @@
+{
+    "NROIDPEMP_PROP": {
+        "alias": "NRO",
+        "dataType": "int"
+    },
+
+    "NROIDPEMP_AUT": {
+        "alias": "NR1",
+        "dataType": "int"
+    },
+
+    "NROPERI": {
+        "alias": "NR2",
+        "dataType": "int"
+    },
+
+    "NroDoc": {
+        "alias": "Nro",
+        "dataType": "int"
+    },
+
+    "NivelAut": {
+        "alias": "Niv",
+        "dataType": "int"
+    }
+
+}

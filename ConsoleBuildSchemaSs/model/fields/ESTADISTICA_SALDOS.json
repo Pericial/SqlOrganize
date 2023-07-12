@@ -1,0 +1,267 @@
+{
+    "DTOJUDI": {
+        "alias": "DTO",
+        "dataType": "string"
+    },
+
+    "ANIO": {
+        "alias": "ANI",
+        "dataType": "int"
+    },
+
+    "MES": {
+        "alias": "MES",
+        "dataType": "int"
+    },
+
+    "FUERO": {
+        "alias": "FUE",
+        "dataType": "string"
+    },
+
+    "PERITO": {
+        "alias": "PER",
+        "dataType": "int"
+    },
+
+    "SALDO_ANU": {
+        "alias": "SAL",
+        "dataType": "int"
+    },
+
+    "SALDO_COL": {
+        "alias": "SA1",
+        "dataType": "int"
+    },
+
+    "SALDO_COLAB": {
+        "alias": "SA2",
+        "dataType": "int"
+    },
+
+    "SALDO_DSE": {
+        "alias": "SA3",
+        "dataType": "int"
+    },
+
+    "SALDO_DERIV": {
+        "alias": "SA4",
+        "dataType": "int"
+    },
+
+    "SALDO_PSEDEV": {
+        "alias": "SA5",
+        "dataType": "int"
+    },
+
+    "SALDO_DCS": {
+        "alias": "SA6",
+        "dataType": "int"
+    },
+
+    "SALDO_FINCOL": {
+        "alias": "SA7",
+        "dataType": "int"
+    },
+
+    "SALDO_FINDERI": {
+        "alias": "SA8",
+        "dataType": "int"
+    },
+
+    "SALDO_FIN": {
+        "alias": "SA9",
+        "dataType": "int"
+    },
+
+    "SALDO_IMP": {
+        "alias": "SA10",
+        "dataType": "int"
+    },
+
+    "SALDO_PAR": {
+        "alias": "SA11",
+        "dataType": "int"
+    },
+
+    "SALDO_PEN": {
+        "alias": "SA12",
+        "dataType": "int"
+    },
+
+    "SALDO_PSE": {
+        "alias": "SA13",
+        "dataType": "int"
+    },
+
+    "SALDO_DEV": {
+        "alias": "SA14",
+        "dataType": "int"
+    },
+
+    "SALDO_REC": {
+        "alias": "SA15",
+        "dataType": "int"
+    },
+
+    "SALDO_RP": {
+        "alias": "SA16",
+        "dataType": "int"
+    },
+
+    "SALDO_SS": {
+        "alias": "SA17",
+        "dataType": "int"
+    },
+
+    "CERRADO": {
+        "alias": "CER",
+        "dataType": "bool"
+    },
+
+    "EMPLE_CERRO": {
+        "alias": "EMP",
+        "dataType": "int"
+    },
+
+    "F_CIERRE": {
+        "alias": "F_C",
+        "dataType": "DateTime"
+    },
+
+    "ASIGNADAS": {
+        "alias": "ASI",
+        "dataType": "int",
+        "defaultValue": "((0))"
+    },
+
+    "PROD_TOTAL": {
+        "alias": "PRO",
+        "dataType": "int",
+        "defaultValue": "((0))"
+    },
+
+    "PROD_INGRE_MES": {
+        "alias": "PR1",
+        "dataType": "int",
+        "defaultValue": "((0))"
+    },
+
+    "PROD_INGRE_6MESES": {
+        "alias": "PR2",
+        "dataType": "int",
+        "defaultValue": "((0))"
+    },
+
+    "PROD_CONJ_MES": {
+        "alias": "PR3",
+        "dataType": "int",
+        "defaultValue": "((0))"
+    },
+
+    "DEV_FALTAELEM_MES": {
+        "alias": "DEV",
+        "dataType": "int",
+        "defaultValue": "((0))"
+    },
+
+    "PEND_TOT_FINPERIODO": {
+        "alias": "PEN",
+        "dataType": "int",
+        "defaultValue": "((0))"
+    },
+
+    "PEND_SINELEM_FINPERIODO": {
+        "alias": "PE1",
+        "dataType": "int",
+        "defaultValue": "((0))"
+    },
+
+    "PEND_SINELEM_6MESES": {
+        "alias": "PE2",
+        "dataType": "int",
+        "defaultValue": "((0))"
+    },
+
+    "EN_COND_DE_DICTAMINAR": {
+        "alias": "EN_",
+        "dataType": "int",
+        "defaultValue": "((0))"
+    },
+
+    "PED_COLAB": {
+        "alias": "PED",
+        "dataType": "int"
+    },
+
+    "INFORME_PED_COLAB": {
+        "alias": "INF",
+        "dataType": "int"
+    },
+
+    "DESISTIDAS": {
+        "alias": "DES",
+        "dataType": "int"
+    },
+
+    "ANULADAS": {
+        "alias": "ANU",
+        "dataType": "int"
+    },
+
+    "RECHAZADAS": {
+        "alias": "REC",
+        "dataType": "int"
+    },
+
+    "DEV_CIERRE_SEC": {
+        "alias": "DE1",
+        "dataType": "int"
+    },
+
+    "DERIVADAS": {
+        "alias": "DER",
+        "dataType": "int"
+    },
+
+    "IMPUGNADAS": {
+        "alias": "IMP",
+        "dataType": "int"
+    },
+
+    "PEND_CONELEM_TOTAL": {
+        "alias": "PE3",
+        "dataType": "int"
+    },
+
+    "EEE_TOTAL": {
+        "alias": "EEE",
+        "dataType": "int"
+    },
+
+    "INC_TOTAL": {
+        "alias": "INC",
+        "dataType": "int"
+    },
+
+    "SUS_TOTAL": {
+        "alias": "SUS",
+        "dataType": "int"
+    },
+
+    "SUS_PERIODO": {
+        "alias": "SU1",
+        "dataType": "int"
+    },
+
+    "ACL_FINPERIODO": {
+        "alias": "ACL",
+        "dataType": "int"
+    },
+
+    "INFACL_FINPERIODO": {
+        "alias": "IN1",
+        "dataType": "int"
+    }
+
+}

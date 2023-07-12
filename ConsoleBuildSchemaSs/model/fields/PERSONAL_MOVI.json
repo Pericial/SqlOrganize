@@ -1,0 +1,80 @@
+{
+    "DTOJUDI": {
+        "alias": "DTO",
+        "dataType": "string"
+    },
+
+    "NROIDPEMP": {
+        "alias": "NRO",
+        "dataType": "int"
+    },
+
+    "NROMOV": {
+        "alias": "NR1",
+        "dataType": "int"
+    },
+
+    "TIPOMOV": {
+        "alias": "TIP",
+        "dataType": "string"
+    },
+
+    "FECHA_DESDE": {
+        "alias": "FEC",
+        "dataType": "DateTime"
+    },
+
+    "FECHA_HASTA": {
+        "alias": "FE1",
+        "dataType": "DateTime"
+    },
+
+    "NRO_RESOLUCION": {
+        "alias": "NR2",
+        "dataType": "string"
+    },
+
+    "OBS": {
+        "alias": "OBS",
+        "dataType": "string"
+    },
+
+    "FECHA_CARGA": {
+        "alias": "FE2",
+        "dataType": "DateTime"
+    },
+
+    "CODEMP": {
+        "alias": "COD",
+        "dataType": "int"
+    },
+
+    "FECHA_ULTMODI": {
+        "alias": "FE3",
+        "dataType": "DateTime"
+    },
+
+    "CODEMP_MODI": {
+        "alias": "CO1",
+        "dataType": "int"
+    },
+
+    "CUMPLIDA": {
+        "alias": "CUM",
+        "dataType": "bool",
+        "defaultValue": "(0)"
+    },
+
+    "CUMPLIDO": {
+        "alias": "CU1",
+        "dataType": "bool",
+        "defaultValue": "(0)"
+    },
+
+    "BORRADO": {
+        "alias": "BOR",
+        "dataType": "bool",
+        "defaultValue": "((0))"
+    }
+
+}

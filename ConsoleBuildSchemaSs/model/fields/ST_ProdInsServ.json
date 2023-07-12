@@ -1,0 +1,92 @@
+{
+    "CodArtInt": {
+        "alias": "Cod",
+        "dataType": "string"
+    },
+
+    "Descripcion": {
+        "alias": "Des",
+        "dataType": "string"
+    },
+
+    "CodBar": {
+        "alias": "Co1",
+        "dataType": "string"
+    },
+
+    "Marca": {
+        "alias": "Mar",
+        "dataType": "string"
+    },
+
+    "Modelo": {
+        "alias": "Mod",
+        "dataType": "string"
+    },
+
+    "ArtGenerico": {
+        "alias": "Art",
+        "dataType": "bool"
+    },
+
+    "Grupo": {
+        "alias": "Gru",
+        "dataType": "string"
+    },
+
+    "Rubro": {
+        "alias": "Rub",
+        "dataType": "string"
+    },
+
+    "Tipo": {
+        "alias": "Tip",
+        "dataType": "string"
+    },
+
+    "Seccion": {
+        "alias": "Sec",
+        "dataType": "string"
+    },
+
+    "EmpProp": {
+        "alias": "Emp",
+        "dataType": "string"
+    },
+
+    "Ubicacion": {
+        "alias": "Ubi",
+        "dataType": "string"
+    },
+
+    "StockAct": {
+        "alias": "Sto",
+        "dataType": "float"
+    },
+
+    "StockMin": {
+        "alias": "St1",
+        "dataType": "float"
+    },
+
+    "StockControla": {
+        "alias": "St2",
+        "dataType": "bool"
+    },
+
+    "TReposicion": {
+        "alias": "TRe",
+        "dataType": "int"
+    },
+
+    "Estado": {
+        "alias": "Est",
+        "dataType": "string"
+    },
+
+    "UnidadMedida": {
+        "alias": "Uni",
+        "dataType": "string"
+    }
+
+}

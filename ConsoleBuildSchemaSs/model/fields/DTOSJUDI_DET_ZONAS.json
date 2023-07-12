@@ -1,0 +1,42 @@
+{
+    "RID": {
+        "alias": "RID",
+        "dataType": "string"
+    },
+
+    "ID_ZONA": {
+        "alias": "ID_",
+        "dataType": "string"
+    },
+
+    "ZONA": {
+        "alias": "ZON",
+        "dataType": "string"
+    },
+
+    "LIMITENor": {
+        "alias": "LIM",
+        "dataType": "string"
+    },
+
+    "LIMITESur": {
+        "alias": "LI1",
+        "dataType": "string"
+    },
+
+    "LIMITEEst": {
+        "alias": "LI2",
+        "dataType": "string"
+    },
+
+    "LIMITEOes": {
+        "alias": "LI3",
+        "dataType": "string"
+    },
+
+    "OBSERVACIONES": {
+        "alias": "OBS",
+        "dataType": "string"
+    }
+
+}

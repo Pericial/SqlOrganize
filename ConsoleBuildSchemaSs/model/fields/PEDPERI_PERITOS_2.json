@@ -1,0 +1,53 @@
+{
+    "DTOJUDI": {
+        "alias": "DTO",
+        "dataType": "string"
+    },
+
+    "SERIE": {
+        "alias": "SER",
+        "dataType": "string"
+    },
+
+    "NUI": {
+        "alias": "NUI",
+        "dataType": "int"
+    },
+
+    "SERIE_PERI": {
+        "alias": "SE1",
+        "dataType": "string"
+    },
+
+    "NROPERI": {
+        "alias": "NRO",
+        "dataType": "int"
+    },
+
+    "PERITO": {
+        "alias": "PER",
+        "dataType": "int"
+    },
+
+    "FECHA_DESIG": {
+        "alias": "FEC",
+        "dataType": "DateTime"
+    },
+
+    "OBS": {
+        "alias": "OBS",
+        "dataType": "string"
+    },
+
+    "SUBPERI": {
+        "alias": "SUB",
+        "dataType": "int",
+        "defaultValue": "(1)"
+    },
+
+    "CARACTER": {
+        "alias": "CAR",
+        "dataType": "string"
+    }
+
+}

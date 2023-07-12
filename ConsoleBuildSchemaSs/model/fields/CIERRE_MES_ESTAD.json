@@ -1,0 +1,207 @@
+{
+    "DTOJUDI": {
+        "alias": "DTO",
+        "dataType": "string"
+    },
+
+    "ANIO": {
+        "alias": "ANI",
+        "dataType": "int"
+    },
+
+    "MES": {
+        "alias": "MES",
+        "dataType": "int"
+    },
+
+    "NRO_REGISTRO": {
+        "alias": "NRO",
+        "dataType": "int"
+    },
+
+    "FUERO": {
+        "alias": "FUE",
+        "dataType": "string"
+    },
+
+    "DJ_PERITO": {
+        "alias": "DJ_",
+        "dataType": "string"
+    },
+
+    "PERITO": {
+        "alias": "PER",
+        "dataType": "int"
+    },
+
+    "FECHA_GENERACION": {
+        "alias": "FEC",
+        "dataType": "DateTime"
+    },
+
+    "COD_EMPLE": {
+        "alias": "COD",
+        "dataType": "int"
+    },
+
+    "SECCION": {
+        "alias": "SEC",
+        "dataType": "string"
+    },
+
+    "POR_FNPP": {
+        "alias": "POR",
+        "dataType": "bool"
+    },
+
+    "POR_FDESIGNACION": {
+        "alias": "PO1",
+        "dataType": "bool"
+    },
+
+    "ASIGNADAS_PERIODO": {
+        "alias": "ASI",
+        "dataType": "int"
+    },
+
+    "PRODUCIDAS_PERIODO": {
+        "alias": "PRO",
+        "dataType": "int"
+    },
+
+    "SALE_NOTA_INF_PERIODO": {
+        "alias": "SAL",
+        "dataType": "int"
+    },
+
+    "PROD_PARCIAL_TOTAL": {
+        "alias": "PR1",
+        "dataType": "int"
+    },
+
+    "PENDIENTES_TOTAL": {
+        "alias": "PEN",
+        "dataType": "int"
+    },
+
+    "SUSPENDIDAS_TOTAL": {
+        "alias": "SUS",
+        "dataType": "int"
+    },
+
+    "SALIDA_INF_ACLAR_PERIODO": {
+        "alias": "SA1",
+        "dataType": "int"
+    },
+
+    "SALIDA_INF_COLAB_PERIODO": {
+        "alias": "SA2",
+        "dataType": "int"
+    },
+
+    "BAJAS_PERIODO": {
+        "alias": "BAJ",
+        "dataType": "int"
+    },
+
+    "DESISTIDAS_PERIODO": {
+        "alias": "DES",
+        "dataType": "int"
+    },
+
+    "ANULADAS_PERIODO": {
+        "alias": "ANU",
+        "dataType": "int"
+    },
+
+    "RECHAZADAS_PERIODO": {
+        "alias": "REC",
+        "dataType": "int"
+    },
+
+    "DEVUELTAS_CIERRE_PERIODO": {
+        "alias": "DEV",
+        "dataType": "int"
+    },
+
+    "DERIVADAS_TOTAL": {
+        "alias": "DER",
+        "dataType": "int"
+    },
+
+    "PROD_CONJUNTO_PERIODO": {
+        "alias": "PR2",
+        "dataType": "int"
+    },
+
+    "PSE_TOTAL": {
+        "alias": "PSE",
+        "dataType": "int"
+    },
+
+    "PCE_TOTAL": {
+        "alias": "PCE",
+        "dataType": "int"
+    },
+
+    "ESPERA_DOC_TOTAL": {
+        "alias": "ESP",
+        "dataType": "int"
+    },
+
+    "EN_COND_DICT_TOTAL": {
+        "alias": "EN_",
+        "dataType": "int"
+    },
+
+    "INCOMPARENCIA_TOTAL": {
+        "alias": "INC",
+        "dataType": "int"
+    },
+
+    "ESPERA_CITADO_TOTAL": {
+        "alias": "ES1",
+        "dataType": "int"
+    },
+
+    "PEND_ACLAR_COLAB_TOTAL": {
+        "alias": "PE1",
+        "dataType": "int"
+    },
+
+    "NUIS_EN_PERIODO": {
+        "alias": "NUI",
+        "dataType": "int"
+    },
+
+    "FIN_GESELL_PERIODO": {
+        "alias": "FIN",
+        "dataType": "int"
+    },
+
+    "FIN_DERIVADAS_PERIODO": {
+        "alias": "FI1",
+        "dataType": "int"
+    },
+
+    "FECHA_DATOS_DESDE": {
+        "alias": "FE1",
+        "dataType": "DateTime"
+    },
+
+    "FECHA_DATOS_HASTA": {
+        "alias": "FE2",
+        "dataType": "DateTime"
+    },
+
+    "FIN_INF_AUTOPSIA_PERIODO": {
+        "alias": "FI2",
+        "dataType": "int"
+    },
+
+    "FIN_X_INC": {
+        "alias": "FI3",
+        "dataType": "int"
+    }
+
+}

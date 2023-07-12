@@ -1,0 +1,22 @@
+{
+    "NombreForm": {
+        "alias": "Nom",
+        "dataType": "string"
+    },
+
+    "NombreComp": {
+        "alias": "No1",
+        "dataType": "string"
+    },
+
+    "Visible": {
+        "alias": "Vis",
+        "dataType": "bool"
+    },
+
+    "habilitado": {
+        "alias": "hab",
+        "dataType": "bool"
+    }
+
+}

@@ -1,0 +1,37 @@
+{
+    "NROIDPEMP": {
+        "alias": "NRO",
+        "dataType": "int"
+    },
+
+    "INDICE_TEL": {
+        "alias": "IND",
+        "dataType": "int"
+    },
+
+    "TIPO_TELE": {
+        "alias": "TIP",
+        "dataType": "string"
+    },
+
+    "CARACTERISTICA": {
+        "alias": "CAR",
+        "dataType": "string"
+    },
+
+    "NRO_TELE": {
+        "alias": "NR1",
+        "dataType": "string"
+    },
+
+    "INTERNO": {
+        "alias": "INT",
+        "dataType": "string"
+    },
+
+    "OBS": {
+        "alias": "OBS",
+        "dataType": "string"
+    }
+
+}

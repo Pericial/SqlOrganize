@@ -1,0 +1,22 @@
+{
+    "CodCartucho": {
+        "alias": "Cod",
+        "dataType": "string"
+    },
+
+    "Descripcion": {
+        "alias": "Des",
+        "dataType": "string"
+    },
+
+    "NegroColor": {
+        "alias": "Neg",
+        "dataType": "string"
+    },
+
+    "CodSuministros": {
+        "alias": "Co1",
+        "dataType": "string"
+    }
+
+}

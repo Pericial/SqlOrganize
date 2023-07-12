@@ -1,0 +1,77 @@
+{
+    "NUMCAR": {
+        "alias": "NUM",
+        "dataType": "string"
+    },
+
+    "NUMAGE": {
+        "alias": "NU1",
+        "dataType": "string"
+    },
+
+    "FENOM": {
+        "alias": "FEN",
+        "dataType": "DateTime"
+    },
+
+    "FEPOS": {
+        "alias": "FEP",
+        "dataType": "DateTime"
+    },
+
+    "ORDEN": {
+        "alias": "ORD",
+        "dataType": "string"
+    },
+
+    "RESOLU": {
+        "alias": "RES",
+        "dataType": "string"
+    },
+
+    "OBSERV": {
+        "alias": "OBS",
+        "dataType": "string"
+    },
+
+    "GRUPO": {
+        "alias": "GRU",
+        "dataType": "string"
+    },
+
+    "NIVEL": {
+        "alias": "NIV",
+        "dataType": "string"
+    },
+
+    "CARGO": {
+        "alias": "CAR",
+        "dataType": "string"
+    },
+
+    "DEPJUD": {
+        "alias": "DEP",
+        "dataType": "string"
+    },
+
+    "DESTINO": {
+        "alias": "DES",
+        "dataType": "string"
+    },
+
+    "TRABAJA": {
+        "alias": "TRA",
+        "dataType": "string"
+    },
+
+    "MARCA": {
+        "alias": "MAR",
+        "dataType": "string"
+    },
+
+    "AUDIT": {
+        "alias": "AUD",
+        "dataType": "DateTime"
+    }
+
+}

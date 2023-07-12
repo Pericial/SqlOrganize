@@ -1,0 +1,234 @@
+{
+    "DTOJUDI": {
+        "alias": "DTO",
+        "dataType": "string"
+    },
+
+    "SERIE": {
+        "alias": "SER",
+        "dataType": "string"
+    },
+
+    "NUI": {
+        "alias": "NUI",
+        "dataType": "int"
+    },
+
+    "SERIE_PERI": {
+        "alias": "SE1",
+        "dataType": "string"
+    },
+
+    "NROPERI": {
+        "alias": "NRO",
+        "dataType": "int"
+    },
+
+    "NRO_TAREA": {
+        "alias": "NR1",
+        "dataType": "int"
+    },
+
+    "TIPO_TAREA": {
+        "alias": "TIP",
+        "dataType": "string"
+    },
+
+    "FECHA_NOTA": {
+        "alias": "FEC",
+        "dataType": "DateTime"
+    },
+
+    "DIRIGIDO_A": {
+        "alias": "DIR",
+        "dataType": "string"
+    },
+
+    "PERITO1": {
+        "alias": "PER",
+        "dataType": "int"
+    },
+
+    "PERITO2": {
+        "alias": "PE1",
+        "dataType": "int"
+    },
+
+    "PERITO3": {
+        "alias": "PE2",
+        "dataType": "int"
+    },
+
+    "FECHA_TAREA": {
+        "alias": "FE1",
+        "dataType": "DateTime"
+    },
+
+    "HORA_TAREA": {
+        "alias": "HOR",
+        "dataType": "string"
+    },
+
+    "CITADO": {
+        "alias": "CIT",
+        "dataType": "string"
+    },
+
+    "MAS_DE_UN_DIA": {
+        "alias": "MAS",
+        "dataType": "string"
+    },
+
+    "ESTADO": {
+        "alias": "EST",
+        "dataType": "string"
+    },
+
+    "EMITIO_INCOMPARENCIA": {
+        "alias": "EMI",
+        "dataType": "bool"
+    },
+
+    "FECHA_CARGA": {
+        "alias": "FE2",
+        "dataType": "DateTime"
+    },
+
+    "EMP_CARGA": {
+        "alias": "EMP",
+        "dataType": "int"
+    },
+
+    "FECHA_ULT_MODI": {
+        "alias": "FE3",
+        "dataType": "DateTime"
+    },
+
+    "EMP_ULT_MODI": {
+        "alias": "EM1",
+        "dataType": "int"
+    },
+
+    "QUIEN_CITA": {
+        "alias": "QUI",
+        "dataType": "string"
+    },
+
+    "ESPECIALIDAD": {
+        "alias": "ESP",
+        "dataType": "string"
+    },
+
+    "DIRIGIDO2": {
+        "alias": "DI1",
+        "dataType": "string"
+    },
+
+    "CODORGA": {
+        "alias": "COD",
+        "dataType": "string"
+    },
+
+    "ALOJADO_DOMICILIADO": {
+        "alias": "ALO",
+        "dataType": "string"
+    },
+
+    "NO_ASISTIO": {
+        "alias": "NO_",
+        "dataType": "bool",
+        "defaultValue": "(0)"
+    },
+
+    "ASISTIO_1": {
+        "alias": "ASI",
+        "dataType": "string"
+    },
+
+    "ASISTIO_2": {
+        "alias": "AS1",
+        "dataType": "string"
+    },
+
+    "DOC_RELACIONADO": {
+        "alias": "DOC",
+        "dataType": "string"
+    },
+
+    "FECHA2": {
+        "alias": "FE4",
+        "dataType": "DateTime"
+    },
+
+    "HORA2": {
+        "alias": "HO1",
+        "dataType": "string"
+    },
+
+    "SEGCITA_Y_O": {
+        "alias": "SEG",
+        "dataType": "string"
+    },
+
+    "ENCABEZADO": {
+        "alias": "ENC",
+        "dataType": "string"
+    },
+
+    "CUERPO": {
+        "alias": "CUE",
+        "dataType": "string"
+    },
+
+    "FECHA3": {
+        "alias": "FE5",
+        "dataType": "DateTime"
+    },
+
+    "HORA3": {
+        "alias": "HO2",
+        "dataType": "string"
+    },
+
+    "ASISTIO_3": {
+        "alias": "AS2",
+        "dataType": "string"
+    },
+
+    "PASE_A": {
+        "alias": "PAS",
+        "dataType": "string"
+    },
+
+    "CARATULA": {
+        "alias": "CAR",
+        "dataType": "string"
+    },
+
+    "PERITOS_QUE_CITAN": {
+        "alias": "PE3",
+        "dataType": "string"
+    },
+
+    "SUBPERI": {
+        "alias": "SUB",
+        "dataType": "int"
+    },
+
+    "DIRECCION": {
+        "alias": "DI2",
+        "dataType": "string"
+    },
+
+    "ID_LOCALIDAD": {
+        "alias": "ID_",
+        "dataType": "int",
+        "defaultValue": "((0))"
+    },
+
+    "OBS": {
+        "alias": "OBS",
+        "dataType": "string"
+    }
+
+}

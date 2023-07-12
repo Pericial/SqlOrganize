@@ -1,0 +1,61 @@
+{
+    "DTOJUDI": {
+        "alias": "DTO",
+        "dataType": "string",
+        "refEntityName": "DTOJUDI"
+    },
+
+    "SERIE": {
+        "alias": "SER",
+        "dataType": "string",
+        "refEntityName": "SERIE"
+    },
+
+    "NUI": {
+        "alias": "NUI",
+        "dataType": "int",
+        "refEntityName": "NUI"
+    },
+
+    "NRODOC": {
+        "alias": "NRO",
+        "dataType": "int"
+    },
+
+    "COD_DOC_INGRE": {
+        "alias": "COD",
+        "dataType": "string"
+    },
+
+    "FECHA_INGRE": {
+        "alias": "FEC",
+        "dataType": "DateTime"
+    },
+
+    "DETALLE_DOCINGRE": {
+        "alias": "DET",
+        "dataType": "string"
+    },
+
+    "ESTA_EN_SEC": {
+        "alias": "EST",
+        "dataType": "string"
+    },
+
+    "req_conf": {
+        "alias": "req",
+        "dataType": "bool"
+    },
+
+    "FECHA_CARGA": {
+        "alias": "FE1",
+        "dataType": "DateTime",
+        "defaultValue": "(getdate())"
+    },
+
+    "VIENE_DE": {
+        "alias": "VIE",
+        "dataType": "string"
+    }
+
+}

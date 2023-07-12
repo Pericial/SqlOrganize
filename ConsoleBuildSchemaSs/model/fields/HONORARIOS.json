@@ -1,0 +1,97 @@
+{
+    "NRODOC": {
+        "alias": "NRO",
+        "dataType": "string"
+    },
+
+    "APEYNOM": {
+        "alias": "APE",
+        "dataType": "string"
+    },
+
+    "DTOJUD": {
+        "alias": "DTO",
+        "dataType": "string"
+    },
+
+    "CODPAR": {
+        "alias": "COD",
+        "dataType": "string"
+    },
+
+    "NROJUZ": {
+        "alias": "NR1",
+        "dataType": "string"
+    },
+
+    "NROSEC": {
+        "alias": "NR2",
+        "dataType": "string"
+    },
+
+    "CODFUE": {
+        "alias": "CO1",
+        "dataType": "string"
+    },
+
+    "TIPJUZ": {
+        "alias": "TIP",
+        "dataType": "string"
+    },
+
+    "INSTAN": {
+        "alias": "INS",
+        "dataType": "string"
+    },
+
+    "TIPJUI": {
+        "alias": "TI1",
+        "dataType": "string"
+    },
+
+    "NROREC": {
+        "alias": "NR3",
+        "dataType": "string"
+    },
+
+    "NROCAU": {
+        "alias": "NR4",
+        "dataType": "string"
+    },
+
+    "CARA": {
+        "alias": "CAR",
+        "dataType": "string"
+    },
+
+    "TIPMAT": {
+        "alias": "TI2",
+        "dataType": "string"
+    },
+
+    "FECHA": {
+        "alias": "FEC",
+        "dataType": "DateTime"
+    },
+
+    "MONTO": {
+        "alias": "MON",
+        "dataType": "float"
+    },
+
+    "PERIODO": {
+        "alias": "PER",
+        "dataType": "string"
+    },
+
+    "SECUENCIA": {
+        "alias": "SEC",
+        "dataType": "int"
+    },
+
+    "ELTIPO": {
+        "alias": "ELT",
+        "dataType": "string"
+    }
+
+}

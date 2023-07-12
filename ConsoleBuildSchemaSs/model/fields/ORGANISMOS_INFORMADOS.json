@@ -1,0 +1,52 @@
+{
+    "DTOJUDI": {
+        "alias": "DTO",
+        "dataType": "string"
+    },
+
+    "SERIE": {
+        "alias": "SER",
+        "dataType": "string"
+    },
+
+    "NUI": {
+        "alias": "NUI",
+        "dataType": "int"
+    },
+
+    "SERIE_PERI": {
+        "alias": "SE1",
+        "dataType": "string"
+    },
+
+    "NROPERI": {
+        "alias": "NRO",
+        "dataType": "int"
+    },
+
+    "SUBPERI": {
+        "alias": "SUB",
+        "dataType": "int"
+    },
+
+    "NROMOV": {
+        "alias": "NR1",
+        "dataType": "int"
+    },
+
+    "ORG_INFORMADO": {
+        "alias": "ORG",
+        "dataType": "string"
+    },
+
+    "COMENTARIO": {
+        "alias": "COM",
+        "dataType": "string"
+    },
+
+    "FECHA": {
+        "alias": "FEC",
+        "dataType": "DateTime"
+    }
+
+}

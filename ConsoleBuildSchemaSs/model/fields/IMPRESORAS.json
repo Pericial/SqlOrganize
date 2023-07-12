@@ -1,0 +1,32 @@
+{
+    "Sucursal": {
+        "alias": "Suc",
+        "dataType": "string"
+    },
+
+    "Id_PC": {
+        "alias": "Id_",
+        "dataType": "string"
+    },
+
+    "Cod_Impresora": {
+        "alias": "Cod",
+        "dataType": "string"
+    },
+
+    "Nombre_Local": {
+        "alias": "Nom",
+        "dataType": "string"
+    },
+
+    "Nombre_Red": {
+        "alias": "No1",
+        "dataType": "string"
+    },
+
+    "Puerto": {
+        "alias": "Pue",
+        "dataType": "string"
+    }
+
+}

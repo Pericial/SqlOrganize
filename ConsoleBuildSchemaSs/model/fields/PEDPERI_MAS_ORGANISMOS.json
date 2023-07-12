@@ -1,0 +1,54 @@
+{
+    "DTOJUDI": {
+        "alias": "DTO",
+        "dataType": "string"
+    },
+
+    "SERIE": {
+        "alias": "SER",
+        "dataType": "string"
+    },
+
+    "NUI": {
+        "alias": "NUI",
+        "dataType": "int"
+    },
+
+    "SERIE_PERI": {
+        "alias": "SE1",
+        "dataType": "string"
+    },
+
+    "NROPERI": {
+        "alias": "NRO",
+        "dataType": "int"
+    },
+
+    "SUBPERI": {
+        "alias": "SUB",
+        "dataType": "int"
+    },
+
+    "COD_ORGANISMO": {
+        "alias": "COD",
+        "dataType": "string"
+    },
+
+    "FECHA_CARGA": {
+        "alias": "FEC",
+        "dataType": "DateTime",
+        "defaultValue": "(getdate())"
+    },
+
+    "ULTIMO": {
+        "alias": "ULT",
+        "dataType": "bool",
+        "defaultValue": "((1))"
+    },
+
+    "FECHA_SOLICITUD": {
+        "alias": "FE1",
+        "dataType": "DateTime"
+    }
+
+}
