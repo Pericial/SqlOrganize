@@ -10,11 +10,6 @@ namespace WinFormsAppMy.Controllers.AlumnoComision
 {
     public class InformeCoordinacionDistrital
     {
-        internal class InfoComision
-        {
-            public string id;
-            List
-        }
         public List<Dictionary<string, object>> GenerarInforme(string anioCalendario, int semestreCalendario)
         {
             var q = ContainerApp.Db().Query("alumno_comision").
@@ -60,13 +55,28 @@ namespace WinFormsAppMy.Controllers.AlumnoComision
 
                 q = ContainerApp.Db().Query("calificacion")
                     .Size(0)
-                    .Where("$planificacion-plan = @0")
+                    .Where("$alumno = @0 AND ($nota_final >= 7 OR $crec >= 4")
                     .Parameters(alu_com["planificacion-plan"])
                     .Order("$planificacion-anio ASC, $planificacion-semestre ASC, $asignatura-nombre ASC");
 
+                /*$calificacion_ = $this->container->query("calificacion")
+      ->cond([
+        ["alumno", "=",$idAlumno_],
+        [
+          ["nota_final",">=","7"],
+          ["crec",">=","4","OR"]
+        ],
+        ["planificacion_dis-plan","=",$plan],
 
-                List<Dictionary<string, object>> calificacion = ContainerApp.QueryCache().ListDict(q);
+      ])
+      ->order(["planificacion_dis-anio"=>"ASC", "planificacion_dis-semestre"=>"ASC"])
+      ->all();
+                List<Dictionary<string, object>> calificaciones = ContainerApp.QueryCache().ListDict(q);
 
+                foreach(Dictionary<string, object> calificacion in calificaciones)
+                {
+                    
+                }
 {
 
 
@@ -97,7 +107,7 @@ namespace WinFormsAppMy.Controllers.AlumnoComision
         $comision_[$idComision]["disposicion_"] = $this->disposicion_($aluCom_[0]["planificacion-plan"]);
         $comision_[$idComision]["calificacion_"] = $this->alumno__calificacionAprobada_($idAlumno_, $aluCom_[0]["planificacion-plan"]);
 
-
+                */
             }
 
             return new();

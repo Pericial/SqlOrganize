@@ -66,7 +66,7 @@ namespace SchemaJson
             List<Tree> list = new();
             foreach (Field field in fk)
             {
-                string fieldId = GetName(field.COLUMN_NAME, field.Alias);
+                string fieldId = GetName(field.COLUMN_NAME, alias);
 
                 Tree tree = new()
                 {
@@ -76,8 +76,9 @@ namespace SchemaJson
                     RefFieldName = field.REFERENCED_COLUMN_NAME!,
                 };
 
-                if (!tablesVisited.Contains(field.REFERENCED_TABLE_NAME!))
-                    tree.Children = Fk(getTableByName(field.REFERENCED_TABLE_NAME!), tablesVisited, field.Alias);
+                if (!tablesVisited.Contains(field.REFERENCED_TABLE_NAME!)) { }
+
+                tree.Children = Fk(getTableByName(field.REFERENCED_TABLE_NAME!), new List<string>(tablesVisited), field.Alias);
 
                 list.Add(tree);
             }
