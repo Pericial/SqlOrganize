@@ -10,7 +10,7 @@
     },
 
     "hora_fin": {
-        "alias": "hoa",
+        "alias": "ho1",
         "dataType": "time"
     },
 

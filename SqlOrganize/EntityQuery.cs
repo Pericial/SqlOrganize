@@ -33,9 +33,9 @@ namespace SqlOrganize
 
         public string? order { get; set; } = "";
 
-        public int? size { get; set; } = 100;
+        public int size { get; set; } = 100;
 
-        public int? page { get; set; } = 1;
+        public int page { get; set; } = 1;
 
         public string group { get; set; } = "";
 

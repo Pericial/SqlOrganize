@@ -34,7 +34,7 @@
     },
 
     "estado_contralor": {
-        "alias": "esa",
+        "alias": "es1",
         "dataType": "string",
         "defaultValue": "NULL"
     },

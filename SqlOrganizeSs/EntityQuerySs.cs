@@ -7,7 +7,6 @@ namespace SqlOrganizeSs
 {
     public class EntityQuerySs : EntityQuery
     {
-
         public EntityQuerySs(Db db, string entity_name) : base(db, entity_name)
         {
         }

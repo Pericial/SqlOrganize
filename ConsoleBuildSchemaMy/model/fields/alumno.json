@@ -49,7 +49,7 @@
     },
 
     "anio_inscripcion": {
-        "alias": "ana",
+        "alias": "an1",
         "dataType": "int",
         "defaultValue": "NULL"
     },
@@ -61,7 +61,7 @@
     },
 
     "semestre_ingreso": {
-        "alias": "sea",
+        "alias": "se1",
         "dataType": "int",
         "defaultValue": "NULL"
     },
@@ -73,7 +73,7 @@
     },
 
     "adeuda_deudores": {
-        "alias": "ada",
+        "alias": "ad1",
         "dataType": "string",
         "defaultValue": "NULL"
     },
@@ -85,13 +85,13 @@
     },
 
     "anio_inscripcion_completo": {
-        "alias": "anb",
+        "alias": "an2",
         "dataType": "tinyint",
         "defaultValue": "NULL"
     },
 
     "establecimiento_inscripcion": {
-        "alias": "esa",
+        "alias": "es1",
         "dataType": "string",
         "defaultValue": "NULL"
     },
@@ -103,7 +103,7 @@
     },
 
     "libro": {
-        "alias": "lia",
+        "alias": "li1",
         "dataType": "string",
         "defaultValue": "NULL"
     },
@@ -127,13 +127,13 @@
     },
 
     "tiene_constancia": {
-        "alias": "tia",
+        "alias": "ti1",
         "dataType": "tinyint",
         "defaultValue": "0"
     },
 
     "tiene_certificado": {
-        "alias": "tib",
+        "alias": "ti2",
         "dataType": "tinyint",
         "defaultValue": "0"
     },
@@ -145,7 +145,7 @@
     },
 
     "tiene_partida": {
-        "alias": "tic",
+        "alias": "ti3",
         "dataType": "tinyint",
         "defaultValue": "0"
     },

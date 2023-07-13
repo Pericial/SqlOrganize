@@ -1,0 +1,125 @@
+﻿using MySql.Data.MySqlClient;
+using SqlOrganize;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics.Metrics;
+using System.Linq;
+using System.Net;
+using System.Text;
+using System.Threading.Tasks;
+using Utils;
+
+namespace SqlOrganizeMy
+{
+    /// <summary>
+    /// Ejecucion de consultas a la base de datos
+    /// </summary>
+    public class QueryMy : Query
+    {
+        public QueryMy(Db db) : base(db)
+        {
+        }
+
+        protected void SqlExecute(MySqlConnection connection, MySqlCommand command)
+        {
+            connection.Open();
+            string sql = Sql();
+            command.Connection = connection;
+            for (var i = 0; i < parameters.Count; i++)
+            {
+                if (parameters[i].IsList())
+                {
+                    var _parameters = (parameters[i] as List<object>).Select((x, j) => Tuple.Create($"@{i}_{j}", x));
+                    sql = sql.ReplaceFirst("@" + i.ToString(), string.Join(",", _parameters.Select(x => x.Item1)));
+                    foreach (var parameter in _parameters)
+                        command.Parameters.AddWithValue(parameter.Item1, parameter.Item2);
+                }
+                else
+                {
+                    command.Parameters.AddWithValue(i.ToString(), parameters[i]);
+                }
+            }
+
+            command.CommandText = sql;
+            command.ExecuteNonQuery();
+        }
+
+        public override List<Dictionary<string, object>> ListDict()
+        {
+            using MySqlConnection connection = new(db.config.connectionString);
+            using MySqlCommand command = new();
+            SqlExecute(connection, command);
+            using MySqlDataReader reader = command.ExecuteReader();
+            return reader.Serialize();
+        }
+
+        public override List<T> ListObject<T>()
+        {
+            using MySqlConnection connection = new(db.config.connectionString);
+            using MySqlCommand command = new();
+            SqlExecute(connection, command);
+            using MySqlDataReader reader = command.ExecuteReader();
+            return reader.ConvertToListOfObject<T>();
+        }
+
+        public override Dictionary<string, object> Dict()
+        {
+            using MySqlConnection connection = new(db.config.connectionString);
+            using MySqlCommand command = new();
+            SqlExecute(connection, command);
+            using MySqlDataReader reader = command.ExecuteReader(System.Data.CommandBehavior.SingleResult);
+            return reader.SerializeRowCols(reader.ColumnNames());
+        }
+
+        public override T Object<T>()
+        {
+            using MySqlConnection connection = new(db.config.connectionString);
+            using MySqlCommand command = new();
+            SqlExecute(connection, command);
+            using MySqlDataReader reader = command.ExecuteReader(System.Data.CommandBehavior.SingleResult);
+            return reader.ConvertToObject<T>();
+        }
+
+        public override List<T> Column<T>(string columnName)
+        {
+            using MySqlConnection connection = new(db.config.connectionString);
+            using MySqlCommand command = new();
+            SqlExecute(connection, command);
+            using MySqlDataReader reader = command.ExecuteReader();
+            return reader.ColumnValues<T>(columnName);
+        }
+
+        public override List<T> Column<T>(int columnValue = 0)
+        {
+            using MySqlConnection connection = new(db.config.connectionString);
+            using MySqlCommand command = new();
+            SqlExecute(connection, command);
+            using MySqlDataReader reader = command.ExecuteReader();
+            return reader.ColumnValues<T>(columnValue);
+        }
+        public override T Value<T>(string columnName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override T Value<T>(int columnValue = 0)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Transaction()
+        {
+            sql = @"BEGIN TRAN; 
+" + sql + @"
+COMMIT TRAN;";
+            using MySqlConnection connection = new MySqlConnection((string)db.config.connectionString);
+            using MySqlCommand command = new MySqlCommand();
+            SqlExecute(connection, command);
+            using MySqlDataReader reader = command.ExecuteReader();
+
+        }
+    }
+
+}
+ 

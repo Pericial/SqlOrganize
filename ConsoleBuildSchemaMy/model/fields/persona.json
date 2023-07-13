@@ -57,7 +57,7 @@
     },
 
     "email_abc": {
-        "alias": "emb",
+        "alias": "em1",
         "dataType": "string",
         "defaultValue": "NULL"
     },
@@ -82,13 +82,13 @@
     },
 
     "telefono_verificado": {
-        "alias": "tea",
+        "alias": "te1",
         "dataType": "tinyint",
         "defaultValue": "0"
     },
 
     "email_verificado": {
-        "alias": "emc",
+        "alias": "em2",
         "dataType": "tinyint",
         "defaultValue": "0"
     },

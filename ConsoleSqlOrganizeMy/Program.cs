@@ -14,24 +14,33 @@ Config config = new Config
 var db = new DbMy(config);
 
 
+var query = db.Query("disposicion").Size(0).
+    Where("$planificacion-plan != '3' AND $planificacion-plan != '367FE6CBD444EB' AND $planificacion-plan != '5D7ACEDBE52A7'").
+    Order("$planificacion-anio ASC, $planificacion-semestre ASC, $planificacion-plan ASC");
 
-var query = db.Query("persona").
-    Where("$numero_documento = @0").
-    Parameters("31073351");
-
+/*
+var query = db.Query("alumno").
+    Where("$plan IS NULL");
+*/
 
 var data = query.ListDict();
+var sql = "";
+var i = 0;
+foreach (var item in data)
+{
+    if (i == 5) 
+        i = 0;
+    i++;
+    sql += @"UPDATE disposicion SET orden_informe_coordinacion_distrital = " + i + " WHERE id = '" + item["id"] + @"';
+";
+}
+
+Console.WriteLine(sql);
 
 string json = JsonConvert.SerializeObject(data, Newtonsoft.Json.Formatting.Indented);
 
 Console.WriteLine(json);
 
-data[0]["nombres"] = "IIIII";
-data[0]["apellidos"] = "CCCCC";
-
-var ep = db.Persist("persona").Insert(data[0]);
-ep = db.Persist("persona").Update(data[0]);
-ep = db.Persist("persona").Persist(data[0]);
 
 
 //ep.Update(data[0]).Exec();

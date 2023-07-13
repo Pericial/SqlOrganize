@@ -20,8 +20,8 @@ namespace SqlOrganizeMy
 
         protected override string SqlLimit()
         {
-            if (size.IsNullOrEmpty()) return "";
-            page = page.IsNullOrEmpty() ? 1 : page;
+            if (size == 0) return "";
+            page = page == 0 ? 1 : page;
             return "LIMIT " + size + " OFFSET " + ((page - 1) * size) + @"
 ";
         }
@@ -64,65 +64,42 @@ namespace SqlOrganizeMy
 
         public override List<Dictionary<string, object>> ListDict()
         {
-            using MySqlConnection connection = new(db.config.connectionString);
-            using MySqlCommand command = new();
-            SqlExecute(connection, command);
-            using MySqlDataReader reader = command.ExecuteReader();
-            return reader.Serialize();
+            return db.Query().Sql(Sql()).Parameters(Parameters()).ListDict();
         }
 
         public override List<T> ListObject<T>()
         {
-            using MySqlConnection connection = new(db.config.connectionString);
-            using MySqlCommand command = new();
-            SqlExecute(connection, command);
-            using MySqlDataReader reader = command.ExecuteReader();
-            return reader.ConvertToListOfObject<T>();
+            return db.Query().Sql(Sql()).Parameters(Parameters()).ListObject<T>();
         }
 
         public override Dictionary<string, object> Dict()
         {
-            using MySqlConnection connection = new(db.config.connectionString);
-            using MySqlCommand command = new();
-            SqlExecute(connection, command);
-            using MySqlDataReader reader = command.ExecuteReader(System.Data.CommandBehavior.SingleResult);
-            return reader.SerializeRowCols(reader.ColumnNames());
+            return db.Query().Sql(Sql()).Parameters(Parameters()).Dict();
         }
 
         public override T Object<T>()
         {
-            using MySqlConnection connection = new(db.config.connectionString);
-            using MySqlCommand command = new();
-            SqlExecute(connection, command);
-            using MySqlDataReader reader = command.ExecuteReader(System.Data.CommandBehavior.SingleResult);
-            return reader.ConvertToObject<T>();
+            return db.Query().Sql(Sql()).Parameters(Parameters()).Object<T>();
+
         }
 
         public override List<T> Column<T>(string columnName)
         {
-            using MySqlConnection connection = new(db.config.connectionString);
-            using MySqlCommand command = new();
-            SqlExecute(connection, command);
-            using MySqlDataReader reader = command.ExecuteReader();
-            return reader.ColumnValues<T>(columnName);
+            return db.Query().Sql(Sql()).Parameters(Parameters()).Column<T>(columnName);
         }
 
         public override List<T> Column<T>(int columnValue = 0)
         {
-            using MySqlConnection connection = new(db.config.connectionString);
-            using MySqlCommand command = new();
-            SqlExecute(connection, command);
-            using MySqlDataReader reader = command.ExecuteReader();
-            return reader.ColumnValues<T>(columnValue);
+            return db.Query().Sql(Sql()).Parameters(Parameters()).Column<T>(columnValue);
         }
         public override T Value<T>(string columnName)
         {
-            throw new NotImplementedException();
+            return db.Query().Sql(Sql()).Parameters(Parameters()).Value<T>(columnName);
         }
 
         public override T Value<T>(int columnValue = 0)
         {
-            throw new NotImplementedException();
+            return db.Query().Sql(Sql()).Parameters(parameters).Value<T>(columnValue);
         }
 
         public override EntityQuery Clone()

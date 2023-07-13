@@ -204,6 +204,12 @@ namespace SqlOrganize
             return new (this, entity_name);
         }
 
+        /// <summary>
+        /// Instancia de Query para simplificar la ejecucion de consultas a la base de datos
+        /// </summary>
+        /// <returns>Instancia de Query</returns>
+        public abstract Query Query();
+
         public abstract EntityQuery Query(string entity_name);
 
         public abstract EntityPersist Persist(string entityName);

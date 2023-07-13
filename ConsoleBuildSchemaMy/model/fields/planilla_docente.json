@@ -22,7 +22,7 @@
     },
 
     "fecha_consejo": {
-        "alias": "fea",
+        "alias": "fe1",
         "dataType": "date",
         "defaultValue": "NULL"
     },

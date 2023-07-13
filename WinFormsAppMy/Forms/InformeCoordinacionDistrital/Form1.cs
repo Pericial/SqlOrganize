@@ -19,7 +19,7 @@ namespace WinFormsAppMy.Forms.InformeCoordinacionDistrital
 
         protected override void OnLoad(EventArgs e)
         {
-            List<Dictionary<string, object>> data = WinFormsAppMy.Controllers.AlumnoComision.InformeCoordinacionDistrital.GenerarInforme("2022", 1);
+            List<Dictionary<string, object>> data = WinFormsAppMy.Controllers.AlumnoComision.InformeCoordinacionDistrital.GenerarInforme("2022", 2);
             informeCoordinacionDistritalBindingSource.Add(new InformeCoordinacionDistrital());
             informeCoordinacionDistritalBindingSource.Add(new InformeCoordinacionDistrital());
         }

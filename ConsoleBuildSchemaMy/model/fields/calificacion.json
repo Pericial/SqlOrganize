@@ -11,19 +11,19 @@
     },
 
     "nota2": {
-        "alias": "noa",
+        "alias": "no1",
         "dataType": "decimal",
         "defaultValue": "NULL"
     },
 
     "nota3": {
-        "alias": "nob",
+        "alias": "no2",
         "dataType": "decimal",
         "defaultValue": "NULL"
     },
 
     "nota_final": {
-        "alias": "noc",
+        "alias": "no3",
         "dataType": "decimal",
         "defaultValue": "NULL"
     },

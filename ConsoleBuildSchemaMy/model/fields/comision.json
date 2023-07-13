@@ -68,7 +68,7 @@
     },
 
     "comision_siguiente": {
-        "alias": "coa",
+        "alias": "co1",
         "dataType": "string",
         "defaultValue": "NULL",
         "refEntityName": "id"

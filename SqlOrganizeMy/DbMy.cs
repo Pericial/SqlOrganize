@@ -44,6 +44,11 @@ namespace SqlOrganizeMy
             return new EntityQueryMy(this, entity_name);
         }
 
+        public override QueryMy Query()
+        {
+            return new QueryMy(this);
+        }
+
         public override EntityValues Values(string entityName, string? fieldId = null)
         {
             return new ValuesMy(this, entityName, fieldId);

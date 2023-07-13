@@ -27,7 +27,7 @@
 
   "alumno_comision": {
     "name": "alumno_comision",
-    "alias": "alua",
+    "alias": "alu1",
     "fields": ["id", "creado", "activo", "observaciones", "comision", "alumno", "estado"],
     "pk": ["id"],
     "fk": ["comision", "alumno"],
@@ -155,7 +155,7 @@
 
   "asignatura": {
     "name": "asignatura",
-    "alias": "asia",
+    "alias": "asi1",
     "fields": ["id", "nombre", "formacion", "clasificacion", "codigo", "perfil"],
     "pk": ["id"],
     "unique": ["nombre", "codigo"],
@@ -314,7 +314,7 @@
 
   "comision_relacionada": {
     "name": "comision_relacionada",
-    "alias": "coma",
+    "alias": "com1",
     "fields": ["id", "comision", "relacion"],
     "pk": ["id"],
     "fk": ["comision", "relacion"],
@@ -518,7 +518,7 @@
   "disposicion": {
     "name": "disposicion",
     "alias": "disp",
-    "fields": ["id", "asignatura", "planificacion"],
+    "fields": ["id", "asignatura", "planificacion", "orden_informe_coordinacion_distrital"],
     "pk": ["id"],
     "fk": ["asignatura", "planificacion"],
     "notNull": ["id", "asignatura", "planificacion"],
@@ -539,7 +539,7 @@
 
   "disposicion_pendiente": {
     "name": "disposicion_pendiente",
-    "alias": "disa",
+    "alias": "dis1",
     "fields": ["id", "disposicion", "alumno", "modo"],
     "pk": ["id"],
     "fk": ["disposicion", "alumno"],
@@ -725,7 +725,7 @@
 
   "planificacion": {
     "name": "planificacion",
-    "alias": "plaa",
+    "alias": "pla1",
     "fields": ["id", "anio", "semestre", "plan"],
     "pk": ["id"],
     "fk": ["plan"],
@@ -741,7 +741,7 @@
 
   "planilla_docente": {
     "name": "planilla_docente",
-    "alias": "plab",
+    "alias": "pla2",
     "fields": ["id", "numero", "insertado", "fecha_contralor", "fecha_consejo", "observaciones"],
     "pk": ["id"],
     "notNull": ["id", "numero", "insertado"]
