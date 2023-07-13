@@ -1,13 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using SqlOrganize;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics.Metrics;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using Utils;
 
 namespace SqlOrganizeMy
@@ -24,7 +16,6 @@ namespace SqlOrganizeMy
         protected void SqlExecute(MySqlConnection connection, MySqlCommand command)
         {
             connection.Open();
-            string sql = Sql();
             command.Connection = connection;
             for (var i = 0; i < parameters.Count; i++)
             {
@@ -54,7 +45,7 @@ namespace SqlOrganizeMy
             return reader.Serialize();
         }
 
-        public override List<T> ListObject<T>()
+        public override List<T> ListObj<T>()
         {
             using MySqlConnection connection = new(db.config.connectionString);
             using MySqlCommand command = new();
@@ -72,7 +63,7 @@ namespace SqlOrganizeMy
             return reader.SerializeRowCols(reader.ColumnNames());
         }
 
-        public override T Object<T>()
+        public override T Obj<T>()
         {
             using MySqlConnection connection = new(db.config.connectionString);
             using MySqlCommand command = new();

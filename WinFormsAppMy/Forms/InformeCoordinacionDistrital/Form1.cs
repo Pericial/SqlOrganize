@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Utils;
 
 namespace WinFormsAppMy.Forms.InformeCoordinacionDistrital
 {
@@ -19,9 +20,9 @@ namespace WinFormsAppMy.Forms.InformeCoordinacionDistrital
 
         protected override void OnLoad(EventArgs e)
         {
-            List<Dictionary<string, object>> data = WinFormsAppMy.Controllers.AlumnoComision.InformeCoordinacionDistrital.GenerarInforme("2022", 2);
-            informeCoordinacionDistritalBindingSource.Add(new InformeCoordinacionDistrital());
-            informeCoordinacionDistritalBindingSource.Add(new InformeCoordinacionDistrital());
+            List<Dictionary<string, object>> data = Data.AlumnoComision.InformeCoordinacionDistrital("1", "2023", 1);
+            informeCoordinacionDistritalBindingSource.DataSource = data.ConvertToListOfObject<InformeCoordinacionDistrital>();
+
         }
 
 

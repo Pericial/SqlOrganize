@@ -12,66 +12,100 @@ namespace WinFormsAppMy.Data
     public static class AlumnoComision 
     {
 
-        public static List<Dictionary<string,object>> AnioSemestreCalendario(string anioCalendario, int semestreCalendario)
+        public static List<Dictionary<string,object>> AnioSemestreCalendario(string modalidad, string anioCalendario, int semestreCalendario, bool? comisionSiguienteNull = null)
         {
-            return ContainerApp.db.Query("alumno_comision").
-                Fields("$sede-nombre, $comision-identificacion,  $alumno-id, $plan_alu-id, $persona-apellidos, $persona-nombres, $persona-numero_documento, $persona-genero, $persona-fecha_nacimiento, $persona-telefono, $persona-email").
+            var q = ContainerApp.db.Query("alumno_comision").
+                Fields("estado, sede-nombre, comision-identificacion, alumno-id, plan_alu-id, persona-apellidos, persona-nombres, persona-numero_documento, persona-genero, persona-fecha_nacimiento, persona-telefono, persona-email, alumno-tiene_dni, alumno-tiene_partida, alumno-tiene_certificado, alumno-creado, alumno-estado_inscripcion, planificacion-plan").
                 Select(@"CONCAT($planificacion-anio, '°', $planificacion-semestre, 'C') AS tramo").
                 Size(0).
-                Where("$estado != @0 AND $calendario-anio = @1 AND $calendario-semestre = @2").
+                Where(@"
+                    $modalidad-id = @0 AND
+                    $estado != @1 AND $calendario-anio = @2 AND $calendario-semestre = @3
+                    AND $comision-autorizada IS TRUE
+                ").
                 Order("$sede-numero ASC, $comision-division ASC, $persona-apellidos ASC, $persona-nombres ASC").
-                Parameters("Mesa",anioCalendario,semestreCalendario).
-                ListDict();
+                Parameters(modalidad, "Mesa", anioCalendario, semestreCalendario);
+
+
+            if (!comisionSiguienteNull.IsNullOrEmpty() && comisionSiguienteNull == true)
+            {
+                q.Where("AND $comision-comision_siguiente IS NULL");
+            }
+            else if (!comisionSiguienteNull.IsNullOrEmpty() && !comisionSiguienteNull == false)
+            {
+                q.Where("AND $comision-comision_siguiente IS NOT NULL");
+            }
+
+            return q.ListDict();
         }
 
-        public static List<Dictionary<string, object>> InformeCoordinacionDistrital(string anioCalendario, int semestreCalendario)
+        public static List<Dictionary<string, object>> InformeCoordinacionDistrital(string modalidad, string anioCalendario, int semestreCalendario, bool? comisionSiguienteNull = null)
         {
-            var alumno_comision_ = AnioSemestreCalendario(anioCalendario, semestreCalendario);
+            var alumno_comision_ = AnioSemestreCalendario(modalidad, anioCalendario, semestreCalendario, comisionSiguienteNull);
 
             foreach (Dictionary<string, object> alu_com in alumno_comision_)
             {
-                alu_com["asignatura111"] = "";
-                alu_com["asignatura112"] = "";
-                alu_com["asignatura113"] = "";
-                alu_com["asignatura114"] = "";
-                alu_com["asignatura115"] = "";
-                alu_com["asignatura121"] = "";
-                alu_com["asignatura122"] = "";
-                alu_com["asignatura123"] = "";
-                alu_com["asignatura124"] = "";
-                alu_com["asignatura125"] = "";
-                alu_com["asignatura211"] = "";
-                alu_com["asignatura212"] = "";
-                alu_com["asignatura213"] = "";
-                alu_com["asignatura214"] = "";
-                alu_com["asignatura215"] = "";
-                alu_com["asignatura221"] = "";
-                alu_com["asignatura222"] = "";
-                alu_com["asignatura223"] = "";
-                alu_com["asignatura224"] = "";
-                alu_com["asignatura225"] = "";
-                alu_com["asignatura311"] = "";
-                alu_com["asignatura312"] = "";
-                alu_com["asignatura313"] = "";
-                alu_com["asignatura314"] = "";
-                alu_com["asignatura315"] = "";
-                alu_com["asignatura321"] = "";
-                alu_com["asignatura322"] = "";
-                alu_com["asignatura323"] = "";
-                alu_com["asignatura324"] = "";
-                alu_com["asignatura325"] = "";
+                alu_com["persona-genero"] = alu_com["persona-genero"].ToString().ToUpper();
+                alu_com["tiene_dni"] = (bool)alu_com["alumno-tiene_dni"] ? "SÍ" : "NO";
+                alu_com["tiene_cuil"] = (bool)alu_com["alumno-tiene_dni"] ? "SÍ" : "NO";
+                alu_com["tiene_partida"] = (bool)alu_com["alumno-tiene_partida"] ? "SÍ" : "NO";
+                alu_com["tiene_certificado"] = (bool)alu_com["alumno-tiene_certificado"] ? "SÍ" : "NO";
+                DateTime creado = (DateTime)alu_com["alumno-creado"];
+                string estado = (alu_com["estado"].IsDbNull()) ? "Activo" : (string)alu_com["estado"];
+                alu_com["cuatrimestre_ingreso"] = Values.Alumno.cuatrimestre_ingreso(creado);               
+                alu_com["estado_ingreso"] = Values.AlumnoComision.estado_ingreso(estado, creado);
+                alu_com["asignatura111"] = null;
+                alu_com["asignatura112"] = null;
+                alu_com["asignatura113"] = null;
+                alu_com["asignatura114"] = null;
+                alu_com["asignatura115"] = null;
+                alu_com["asignatura121"] = null;
+                alu_com["asignatura122"] = null;
+                alu_com["asignatura123"] = null;
+                alu_com["asignatura124"] = null;
+                alu_com["asignatura125"] = null;
+                alu_com["asignatura211"] = null;
+                alu_com["asignatura212"] = null;
+                alu_com["asignatura213"] = null;
+                alu_com["asignatura214"] = null;
+                alu_com["asignatura215"] = null;
+                alu_com["asignatura221"] = null;
+                alu_com["asignatura222"] = null;
+                alu_com["asignatura223"] = null;
+                alu_com["asignatura224"] = null;
+                alu_com["asignatura225"] = null;
+                alu_com["asignatura311"] = null;
+                alu_com["asignatura312"] = null;
+                alu_com["asignatura313"] = null;
+                alu_com["asignatura314"] = null;
+                alu_com["asignatura315"] = null;
+                alu_com["asignatura321"] = null;
+                alu_com["asignatura322"] = null;
+                alu_com["asignatura323"] = null;
+                alu_com["asignatura324"] = null;
+                alu_com["asignatura325"] = null;
 
-                var calificaciones = Calificacion.AprobadasPorAlumnoPlan((string)alu_com["alumno-id"], (string)alu_com["plan_alu-id"]);
+                var plan = (!alu_com["plan_alu-id"].IsDbNull()) ? alu_com["plan_alu-id"] : alu_com["planificacion-plan"]; 
+                var calificaciones = Calificacion.AprobadasPorAlumnoPlan((string)alu_com["alumno-id"], (string)plan);
 
                 foreach (Dictionary<string, object> calificacion in calificaciones)
                 {
-                    var nota = (!calificacion["nota_final"].IsNullOrEmpty() || (decimal)calificacion["nota_final"] >= 7) ? calificacion["nota_final"] : calificacion["crec"];
+                    string? nota = null;
+                    if ((!calificacion["nota_final"].IsDbNull() && (decimal)calificacion["nota_final"] >= 7))
+                    {
+                         nota = Decimal.ToInt32((decimal)calificacion["nota_final"]).ToString();
+                    }
+                    else if ((!calificacion["crec"].IsDbNull() && (decimal)calificacion["crec"] >= 4))
+
+                    {
+                         nota = Decimal.ToInt32((decimal)calificacion["crec"]).ToString() + "c";
+                    }
                     string key = "asignatura" + calificacion["planificacion_dis-anio"].ToString() + calificacion["planificacion_dis-semestre"].ToString() + (string)calificacion["disposicion-orden_informe_coordinacion_distrital"].ToString();
                     alu_com[key] = nota;
                 }
             }
 
-            return new();
+            return alumno_comision_;
         }
 
     }

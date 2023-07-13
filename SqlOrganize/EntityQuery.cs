@@ -23,7 +23,7 @@ namespace SqlOrganize
 
         public string entityName { get; }
 
-        public string? where { get; set; }
+        public string? where { get; set; } = "";
 
         public string? having { get; set; }
 
@@ -50,7 +50,7 @@ namespace SqlOrganize
 
         public EntityQuery Where(string w)
         {
-            where = w;
+            where += w;
             return this;
         }
 

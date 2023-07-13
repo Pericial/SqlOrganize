@@ -94,6 +94,12 @@ namespace Utils
             return result;
         }
 
+
+        public static bool IsDbNull(this object value)
+        {
+            return (value == System.DBNull.Value);
+        }
+
         
     }
 

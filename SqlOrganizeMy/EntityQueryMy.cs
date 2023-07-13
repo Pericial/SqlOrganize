@@ -64,42 +64,66 @@ namespace SqlOrganizeMy
 
         public override List<Dictionary<string, object>> ListDict()
         {
-            return db.Query().Sql(Sql()).Parameters(Parameters()).ListDict();
+            var q = db.Query();
+            q.sql = Sql();
+            q.parameters.AddRange(parameters);
+            return q.ListDict();
         }
 
         public override List<T> ListObject<T>()
         {
-            return db.Query().Sql(Sql()).Parameters(Parameters()).ListObject<T>();
+            var q = db.Query();
+            q.sql = Sql();
+            q.parameters.AddRange(parameters);
+            return q.ListObj<T>();
         }
 
         public override Dictionary<string, object> Dict()
         {
-            return db.Query().Sql(Sql()).Parameters(Parameters()).Dict();
+            var q = db.Query();
+            q.sql = Sql();
+            q.parameters.AddRange(parameters);
+            return q.Dict();
         }
 
         public override T Object<T>()
         {
-            return db.Query().Sql(Sql()).Parameters(Parameters()).Object<T>();
+            var q = db.Query();
+            q.sql = Sql();
+            q.parameters.AddRange(parameters);
+            return q.Obj<T>();
 
         }
 
         public override List<T> Column<T>(string columnName)
         {
-            return db.Query().Sql(Sql()).Parameters(Parameters()).Column<T>(columnName);
+            var q = db.Query();
+            q.sql = Sql();
+            q.parameters.AddRange(parameters);
+            return q.Column<T>(columnName);
         }
 
         public override List<T> Column<T>(int columnValue = 0)
         {
-            return db.Query().Sql(Sql()).Parameters(Parameters()).Column<T>(columnValue);
+            var q = db.Query();
+            q.sql = Sql();
+            q.parameters.AddRange(parameters);
+            return q.Column<T>(columnValue);
         }
         public override T Value<T>(string columnName)
         {
-            return db.Query().Sql(Sql()).Parameters(Parameters()).Value<T>(columnName);
+            var q = db.Query();
+            q.sql = Sql();
+            q.parameters.AddRange(parameters);
+            return q.Value<T>(columnName);
         }
 
         public override T Value<T>(int columnValue = 0)
         {
-            return db.Query().Sql(Sql()).Parameters(parameters).Value<T>(columnValue);
+            var q = db.Query();
+            q.sql = Sql();
+            q.parameters.AddRange(parameters);
+            return q.Value<T>(columnValue);
         }
 
         public override EntityQuery Clone()

@@ -13,7 +13,10 @@ namespace SqlOrganizeMy
 
         public override void Exec()
         {
-            db.Query().Sql(sql).Parameters(parameters).Transaction();
+            var q = db.Query();
+            q.sql = sql;
+            q.parameters = parameters;
+            q.Transaction();
         }
 
         protected override EntityPersist _Update(Dictionary<string, object> row, string? _entityName = null)

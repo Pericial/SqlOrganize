@@ -62,7 +62,6 @@ namespace SqlOrganize
             return response;
         }
 
-
         protected List<Dictionary<string, object>> _ListDict(EntityQuery query)
         {
             List<string> queries;
