@@ -366,7 +366,7 @@ namespace SqlOrganize
             return q.ListDict();
         }
 
-        public List<T> ListObject<T>()
+        public List<T> ListObj<T>() where T : class, new()
         {
             var q = db.Query();
             q.sql = Sql();
@@ -382,7 +382,7 @@ namespace SqlOrganize
             return q.Dict();
         }
 
-        public T Object<T>()
+        public T Obj<T>() where T : class, new()
         {
             var q = db.Query();
             q.sql = Sql();
