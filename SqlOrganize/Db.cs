@@ -26,17 +26,6 @@ namespace SqlOrganize
             config = _config;
             fields = new Dictionary<string, Dictionary<string, Field>>();
 
-            //string path = config.modelPath + "tree.json";
-            //using (StreamReader r = new StreamReader(path, Encoding.UTF8))
-            //{
-                //if(r.Peek() != -1) tree = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, EntityTree>>>(r.ReadToEnd())!;
-            //}
-
-            //using (StreamReader r = new StreamReader(config.modelPath + "relations.json"))
-            //{
-                //if (r.Peek() != -1) relations = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, EntityRel>>>(r.ReadToEnd())!;
-            //}
-
             using (StreamReader r = new StreamReader(config.modelPath + "entities.json"))
             {
                 entities = JsonConvert.DeserializeObject<Dictionary<string, Entity>>(r.ReadToEnd())!;

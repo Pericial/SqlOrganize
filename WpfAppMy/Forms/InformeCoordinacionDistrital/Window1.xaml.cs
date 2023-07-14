@@ -25,17 +25,12 @@ namespace WpfAppMy.Forms.InformeCoordinacionDistrital
             InitializeComponent();
         }
 
-        private void InformeCoordinacionDistrital_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             var alumnoComisionData = new Data.AlumnoComision();
             List<Dictionary<string, object>> data = alumnoComisionData.InformeCoordinacionDistrital("1", "2023", 1);
-            InformeCoordinacionDistrital.ItemsSource = data.ConvertToListOfObject<InformeCoordinacionDistrital>();
-
+            InformeCoordinacionDistritalDataGrid.ItemsSource = data.ConvertToListOfObject<InformeCoordinacionDistrital>();
         }
+
     }
 }
