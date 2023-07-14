@@ -101,7 +101,7 @@ namespace SqlOrganize
             
             EntityQuery queryAux = (EntityQuery)query.Clone();
             queryAux.fields = "_Id";
-            string s = queryAux.Sql();
+
             List<string> ids = queryAux.Column<string>();
 
             List<string> fields = query.fields!.Replace("$", "").Split(',').ToList().Select(s => s.Trim()).ToList();

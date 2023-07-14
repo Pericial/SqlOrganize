@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WinFormsAppMy.Data
+namespace WinFormsAppMy.Forms.InformeCoordinacionDistrital.Data
 {
-    public static class Calificacion 
+    public class Calificacion 
     {
-        public static List<Dictionary<string,object>> AprobadasPorAlumnoPlan(string idAlumno, string idPlan)
+        public List<Dictionary<string,object>> AprobadasPorAlumnoPlan(string idAlumno, string idPlan)
         {
             var q = ContainerApp.Db().Query("calificacion")
                     .Size(0)

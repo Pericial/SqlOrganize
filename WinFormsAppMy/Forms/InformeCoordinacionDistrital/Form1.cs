@@ -17,10 +17,11 @@ namespace WinFormsAppMy.Forms.InformeCoordinacionDistrital
         {
             InitializeComponent();
         }
-
+    
         protected override void OnLoad(EventArgs e)
         {
-            List<Dictionary<string, object>> data = Data.AlumnoComision.InformeCoordinacionDistrital("1", "2023", 1);
+            var alumnoComisionData = new Data.AlumnoComision();
+            List<Dictionary<string, object>> data = alumnoComisionData.InformeCoordinacionDistrital("1", "2023", 1);
             informeCoordinacionDistritalBindingSource.DataSource = data.ConvertToListOfObject<InformeCoordinacionDistrital>();
 
         }

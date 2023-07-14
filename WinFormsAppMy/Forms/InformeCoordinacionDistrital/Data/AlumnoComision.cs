@@ -7,41 +7,36 @@ using System.Text;
 using System.Threading.Tasks;
 using Utils;
 
-namespace WinFormsAppMy.Data
+namespace WinFormsAppMy.Forms.InformeCoordinacionDistrital.Data
 {
-    public static class AlumnoComision 
+    public class AlumnoComision 
     {
 
-        public static List<Dictionary<string,object>> AnioSemestreCalendario(string modalidad, string anioCalendario, int semestreCalendario, bool? comisionSiguienteNull = null)
+        protected List<Dictionary<string,object>> FiltroInformeCoordinacionDistrital(string modalidad, string anioCalendario, int semestreCalendario, bool? comisionSiguienteNull = null)
         {
             var q = ContainerApp.db.Query("alumno_comision").
                 Fields("estado, sede-nombre, comision-identificacion, alumno-id, plan_alu-id, persona-apellidos, persona-nombres, persona-numero_documento, persona-genero, persona-fecha_nacimiento, persona-telefono, persona-email, alumno-tiene_dni, alumno-tiene_partida, alumno-tiene_certificado, alumno-creado, alumno-estado_inscripcion, planificacion-plan").
                 Select(@"CONCAT($planificacion-anio, '°', $planificacion-semestre, 'C') AS tramo").
                 Size(0).
                 Where(@"
-                    $modalidad-id = @0 AND
-                    $estado != @1 AND $calendario-anio = @2 AND $calendario-semestre = @3
-                    AND $comision-autorizada IS TRUE
+                    $modalidad-id = @0 AND $calendario-anio = @1 AND $calendario-semestre = @2 AND
+                    $estado != 'Mesa' AND $comision-autorizada IS TRUE
                 ").
                 Order("$sede-numero ASC, $comision-division ASC, $persona-apellidos ASC, $persona-nombres ASC").
-                Parameters(modalidad, "Mesa", anioCalendario, semestreCalendario);
-
+                Parameters(modalidad, anioCalendario, semestreCalendario);
 
             if (!comisionSiguienteNull.IsNullOrEmpty() && comisionSiguienteNull == true)
-            {
                 q.Where("AND $comision-comision_siguiente IS NULL");
-            }
             else if (!comisionSiguienteNull.IsNullOrEmpty() && !comisionSiguienteNull == false)
-            {
                 q.Where("AND $comision-comision_siguiente IS NOT NULL");
-            }
 
             return q.ListDict();
         }
 
-        public static List<Dictionary<string, object>> InformeCoordinacionDistrital(string modalidad, string anioCalendario, int semestreCalendario, bool? comisionSiguienteNull = null)
+        public List<Dictionary<string, object>> InformeCoordinacionDistrital(string modalidad, string anioCalendario, int semestreCalendario, bool? comisionSiguienteNull = null)
         {
-            var alumno_comision_ = AnioSemestreCalendario(modalidad, anioCalendario, semestreCalendario, comisionSiguienteNull);
+            var calificacionData = new Calificacion();
+            var alumno_comision_ = FiltroInformeCoordinacionDistrital(modalidad, anioCalendario, semestreCalendario, comisionSiguienteNull);
 
             foreach (Dictionary<string, object> alu_com in alumno_comision_)
             {
@@ -86,7 +81,7 @@ namespace WinFormsAppMy.Data
                 alu_com["asignatura325"] = null;
 
                 var plan = (!alu_com["plan_alu-id"].IsDbNull()) ? alu_com["plan_alu-id"] : alu_com["planificacion-plan"]; 
-                var calificaciones = Calificacion.AprobadasPorAlumnoPlan((string)alu_com["alumno-id"], (string)plan);
+                var calificaciones = calificacionData.AprobadasPorAlumnoPlan((string)alu_com["alumno-id"], (string)plan);
 
                 foreach (Dictionary<string, object> calificacion in calificaciones)
                 {
