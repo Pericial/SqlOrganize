@@ -37,70 +37,7 @@ namespace SqlOrganizeMy
             return (order.IsNullOrEmpty()) ? "" : "ORDER BY " + Traduce(order!) + @"
 ";
         }
-
-        public override List<Dictionary<string, object>> ListDict()
-        {
-            var q = db.Query();
-            q.sql = Sql();
-            q.parameters.AddRange(parameters);
-            return q.ListDict();
-        }
-
-        public override List<T> ListObject<T>()
-        {
-            var q = db.Query();
-            q.sql = Sql();
-            q.parameters.AddRange(parameters);
-            return q.ListObj<T>();
-        }
-
-        public override Dictionary<string, object> Dict()
-        {
-            var q = db.Query();
-            q.sql = Sql();
-            q.parameters.AddRange(parameters);
-            return q.Dict();
-        }
-
-        public override T Object<T>()
-        {
-            var q = db.Query();
-            q.sql = Sql();
-            q.parameters.AddRange(parameters);
-            return q.Obj<T>();
-
-        }
-
-        public override List<T> Column<T>(string columnName)
-        {
-            var q = db.Query();
-            q.sql = Sql();
-            q.parameters.AddRange(parameters);
-            return q.Column<T>(columnName);
-        }
-
-        public override List<T> Column<T>(int columnValue = 0)
-        {
-            var q = db.Query();
-            q.sql = Sql();
-            q.parameters.AddRange(parameters);
-            return q.Column<T>(columnValue);
-        }
-        public override T Value<T>(string columnName)
-        {
-            var q = db.Query();
-            q.sql = Sql();
-            q.parameters.AddRange(parameters);
-            return q.Value<T>(columnName);
-        }
-
-        public override T Value<T>(int columnValue = 0)
-        {
-            var q = db.Query();
-            q.sql = Sql();
-            q.parameters.AddRange(parameters);
-            return q.Value<T>(columnValue);
-        }
+        
 
         public override EntityQuery Clone()
         {

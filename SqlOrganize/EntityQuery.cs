@@ -350,31 +350,81 @@ namespace SqlOrganize
         }
 
 
-        /*
-        Obtener todas las filas
 
-        Convert the result to json with "JsonConvert.SerializeObject(data, Formatting.Indented)"
-        */
-        public abstract List<Dictionary<string, object>> ListDict();
 
-        public abstract List<T> ListObject<T>() where T : class, new();
 
-        public abstract Dictionary<string, object> Dict();
-        public abstract T Object<T>() where T : class, new();
 
-        public abstract List<T> Column<T>(string columnName);
 
-        public abstract List<T> Column<T>(int columnValue = 0);
-
-        public abstract T Value<T>(string columnName);
-
-        public abstract T Value<T>(int columnValue = 0);
         /*
         Obtener arbol
 
         Convert the result to json with "JsonConvert.SerializeObject(data, Formatting.Indented)"
         */
         public abstract List<Dictionary<string, T>> Tree<T>();
+
+        public List<Dictionary<string, object>> ListDict()
+        {
+            var q = db.Query();
+            q.sql = Sql();
+            q.parameters.AddRange(parameters);
+            return q.ListDict();
+        }
+
+        public List<T> ListObject<T>()
+        {
+            var q = db.Query();
+            q.sql = Sql();
+            q.parameters.AddRange(parameters);
+            return q.ListObj<T>();
+        }
+
+        public Dictionary<string, object> Dict()
+        {
+            var q = db.Query();
+            q.sql = Sql();
+            q.parameters.AddRange(parameters);
+            return q.Dict();
+        }
+
+        public T Object<T>()
+        {
+            var q = db.Query();
+            q.sql = Sql();
+            q.parameters.AddRange(parameters);
+            return q.Obj<T>();
+
+        }
+
+        public List<T> Column<T>(string columnName)
+        {
+            var q = db.Query();
+            q.sql = Sql();
+            q.parameters.AddRange(parameters);
+            return q.Column<T>(columnName);
+        }
+
+        public List<T> Column<T>(int columnValue = 0)
+        {
+            var q = db.Query();
+            q.sql = Sql();
+            q.parameters.AddRange(parameters);
+            return q.Column<T>(columnValue);
+        }
+        public T Value<T>(string columnName)
+        {
+            var q = db.Query();
+            q.sql = Sql();
+            q.parameters.AddRange(parameters);
+            return q.Value<T>(columnName);
+        }
+
+        public T Value<T>(int columnValue = 0)
+        {
+            var q = db.Query();
+            q.sql = Sql();
+            q.parameters.AddRange(parameters);
+            return q.Value<T>(columnValue);
+        }
 
         public abstract EntityQuery Clone();
 
