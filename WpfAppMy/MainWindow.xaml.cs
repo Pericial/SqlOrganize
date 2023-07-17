@@ -26,10 +26,16 @@ namespace WpfAppMy
             InitializeComponent();
         }
 
+        private void listaComisiones_Click(object sender, RoutedEventArgs e)
+        {
+            Forms.ListaComisiones.Window1 win = new();
+            win.Show();
+        }
+
         private void informeCoordinacionDistrital_Click(object sender, RoutedEventArgs e)
         {
-            Forms.InformeCoordinacionDistrital.Window1 winInformeCoordinacionDistrital = new ();
-            winInformeCoordinacionDistrital.Show();
+            Forms.InformeCoordinacionDistrital.Window1 win = new ();
+            win.Show();
 
         }
 

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Utils;
 
-namespace WpfAppMy.Forms.InformeCoordinacionDistrital.Data
+namespace WpfAppMy.Forms.InformeCoordinacionDistrital.DAO
 {
     class AlumnoComision
     {
@@ -32,7 +32,7 @@ namespace WpfAppMy.Forms.InformeCoordinacionDistrital.Data
 
         public List<Dictionary<string, object>> InformeCoordinacionDistrital(string modalidad, string anioCalendario, int semestreCalendario, bool? comisionSiguienteNull = null)
         {
-            var calificacionData = new Calificacion();
+            var calificacionDAO = new Calificacion();
             var alumno_comision_ = FiltroInformeCoordinacionDistrital(modalidad, anioCalendario, semestreCalendario, comisionSiguienteNull);
 
             foreach (Dictionary<string, object> alu_com in alumno_comision_)
@@ -78,7 +78,7 @@ namespace WpfAppMy.Forms.InformeCoordinacionDistrital.Data
                 alu_com["asignatura325"] = null;
 
                 var plan = (!alu_com["plan_alu-id"].IsDbNull()) ? alu_com["plan_alu-id"] : alu_com["planificacion-plan"];
-                var calificaciones = calificacionData.AprobadasPorAlumnoPlan((string)alu_com["alumno-id"], (string)plan);
+                var calificaciones = calificacionDAO.AprobadasPorAlumnoPlan((string)alu_com["alumno-id"], (string)plan);
 
                 foreach (Dictionary<string, object> calificacion in calificaciones)
                 {

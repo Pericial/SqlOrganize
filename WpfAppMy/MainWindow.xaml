@@ -9,6 +9,9 @@
 
     <DockPanel>
         <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_Comisiones">
+                <MenuItem Header="Lista de Comisiones" Click="listaComisiones_Click"/>
+            </MenuItem>
             <MenuItem Header="_Informes">
                 <MenuItem Header="Informe Coordinación Distrital" Click="informeCoordinacionDistrital_Click"/>
             </MenuItem>

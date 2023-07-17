@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using Utils;
 
@@ -53,7 +55,7 @@ namespace SqlOrganize
             where += w;
             return this;
         }
-
+        
         public EntityQuery Unique(Dictionary<string, object> row)
         {
             List<string> pk = db.Entity(entityName).pk;

@@ -13,24 +13,32 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Utils;
 
-namespace WpfAppMy.Forms.InformeCoordinacionDistrital
+namespace WpfAppMy.Forms.ListaComisiones
 {
     /// <summary>
     /// Lógica de interacción para Window1.xaml
     /// </summary>
     public partial class Window1 : Window
     {
+        ComisionSearch comisionSearch = new ();
         public Window1()
         {
             InitializeComponent();
+            DataContext = comisionSearch;
+            Search();
         }
 
-        private void OnLoaded(object sender, RoutedEventArgs e)
+        private void Search()
         {
-            var alumnoComisionData = new DAO.AlumnoComision();
-            List<Dictionary<string, object>> data = alumnoComisionData.InformeCoordinacionDistrital("1", "2023", 1);
-            InformeCoordinacionDistritalDataGrid.ItemsSource = data.ConvertToListOfObject<InformeCoordinacionDistrital>();
+            DAO.Comision comisionDAO = new DAO.Comision();
+            List<Dictionary<string, object>> list = comisionDAO.Search(comisionSearch);
+            ComisionDataGrid.ItemsSource = list.ConvertToListOfObject<Comision>();
         }
 
+
+        private void BuscarButton_Click(object sender, RoutedEventArgs e)
+        {
+            Search();
+        }
     }
 }
