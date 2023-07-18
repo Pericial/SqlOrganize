@@ -11,6 +11,6 @@ namespace WpfAppMy.Forms.ListaComisiones
     {
         public string calendario__anio { get; set; } = DateTime.Now.Year.ToString();
         public int calendario__semestre { get; set; } = DateTime.Now.ToSemester();
-        public bool autorizada { get; set; } = true;
+        public bool? autorizada { get; set; } = true;
     }
 }

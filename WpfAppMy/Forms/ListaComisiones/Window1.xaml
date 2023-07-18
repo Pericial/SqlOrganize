@@ -12,7 +12,8 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height = "Auto" />
                 <RowDefinition Height = "Auto" />
-                <RowDefinition Height = "*" />
+                <RowDefinition Height = "Auto" />
+                <RowDefinition Height = "Auto" />
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -30,7 +31,16 @@
             <TextBox Name = "calendarioSemestreText" Grid.Column = "1" Grid.Row = "1" Margin = "2" 
          Text = "{Binding calendario__semestre, Mode = TwoWay}"/>
 
-            <StackPanel Grid.Row = "2" Grid.ColumnSpan = "2">
+            <Label Name = "autorizadaLabel" Margin = "2" Grid.Row = "2">_Autorizada:</Label>
+
+            <ComboBox Name = "autorizadaCombo" 
+                      Grid.Column="1"  
+                      Grid.Row="2" 
+                      Margin = "2"
+                      SelectedValue="{Binding autorizada, Mode = TwoWay}" />
+
+
+            <StackPanel Grid.Row = "3" Grid.ColumnSpan = "2">
                 <Button Content = "_Buscar..." Click="BuscarButton_Click" />
             </StackPanel>
 

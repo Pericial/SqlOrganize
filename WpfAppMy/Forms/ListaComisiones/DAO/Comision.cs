@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utils;
 
 namespace WpfAppMy.Forms.ListaComisiones.DAO
 {
@@ -18,9 +19,14 @@ namespace WpfAppMy.Forms.ListaComisiones.DAO
                 .Where(@"
                     $calendario-anio = @0 
                     AND $calendario-semestre = @1 
-                    AND $autorizada = @2
                 ")
-                .Parameters(search.calendario__anio, search.calendario__semestre, search.autorizada);
+                .Parameters(search.calendario__anio, search.calendario__semestre);
+            if (!search.autorizada.IsNullOrEmpty())
+            {
+                q.Where("AND $autorizada = @2");
+                q.Parameters(search.autorizada!);
+            }
+                
             return ContainerApp.QueryCache().ListDict(q);
         }
 

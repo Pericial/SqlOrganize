@@ -21,11 +21,19 @@ namespace WpfAppMy.Forms.ListaComisiones
     public partial class Window1 : Window
     {
         ComisionSearch comisionSearch = new ();
+
+       
         public Window1()
         {
             InitializeComponent();
             DataContext = comisionSearch;
             Search();
+
+            this.autorizadaCombo.SelectedValuePath = "Key";
+            this.autorizadaCombo.DisplayMemberPath = "Value";
+            this.autorizadaCombo.Items.Add(new KeyValuePair<bool?, string>(null, "(Todos)"));
+            this.autorizadaCombo.Items.Add(new KeyValuePair<bool, string>(true, "Sí"));
+            this.autorizadaCombo.Items.Add(new KeyValuePair<bool, string>(false, "No"));
         }
 
         private void Search()
