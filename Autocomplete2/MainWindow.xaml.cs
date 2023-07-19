@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,38 +12,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WpfAppMy.Forms;
 
-namespace WpfAppMy
+namespace Autocomplete2
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-
-        private string _selectedItem;
-
-     
-
         public MainWindow()
         {
             InitializeComponent();
+            this.autoSuggestionUseControl.AutoSuggestionList = new() { "Arababa", "rebebebe", "sibibibi" };
+            this.autoSuggestionUseControl2.AutoSuggestionList = new() { "Alemania", "Barcelona", "Comodoro" };
 
         }
 
-        private void listaComisiones_Click(object sender, RoutedEventArgs e)
-        {
-            Forms.ListaComisiones.Window1 win = new();
-            win.Show();
-        }
-
-        private void informeCoordinacionDistrital_Click(object sender, RoutedEventArgs e)
-        {
-            Forms.InformeCoordinacionDistrital.Window1 win = new ();
-            win.Show();
-
-        }
 
     }
 }

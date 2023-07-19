@@ -16,7 +16,7 @@
                 <MenuItem Header="Informe Coordinación Distrital" Click="informeCoordinacionDistrital_Click"/>
             </MenuItem>
         </Menu>
-        <TextBox AcceptsReturn="True" />
+
     </DockPanel>
 
 </Window>

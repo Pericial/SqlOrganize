@@ -25,12 +25,12 @@
             <Label Name = "calendarioAnioLabel" Margin = "2">_Año:</Label>
 
             <TextBox Name = "calendarioAnioText" Grid.Column = "1" Margin = "2" 
-         Text = "{Binding calendario__anio, Mode = TwoWay}"/>
+         />
 
             <Label Name = "calendarioSemestreLabel" Margin = "2" Grid.Row = "1">_Semestre:</Label>
 
             <TextBox Name = "calendarioSemestreText" Grid.Column = "1" Grid.Row = "1" Margin = "2" 
-         Text = "{Binding calendario__semestre, Mode = TwoWay}"/>
+         />
 
             <Label Name = "autorizadaLabel" Margin = "2" Grid.Row = "2">_Autorizada:</Label>
 
@@ -38,18 +38,34 @@
                       Grid.Column="1"  
                       Grid.Row="2" 
                       Margin = "2"
-                      SelectedValue="{Binding autorizada, Mode = TwoWay}" />
+                       />
 
             <Label Name = "sedeLabel" Margin = "2" Grid.Row = "3">_Sede:</Label>
 
-            <ComboBox Name = "sedeCombo" 
-                      Grid.Column="1"  
-                      Grid.Row="3" 
-                      Margin = "2"
-                      SelectedValue="{Binding sede, Mode = TwoWay}"
-                      IsEditable="True"
-                      Text="{Binding SearchString, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox 
+                Name="sedeText"
+                TextChanged="SedeText_TextChanged"
+                Margin="2"
+                Grid.Row = "3"
+                Grid.Column="2" />
 
+            <WrapPanel     Panel.ZIndex="4" Grid.Row = "4"
+                Grid.Column="2">
+            <ListBox 
+            
+                Name="sedeList"    
+                Margin="2"
+                SelectionChanged="SedeList_SelectionChanged"
+                >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding nombre}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            </WrapPanel>
             <StackPanel Grid.Row = "4" Grid.ColumnSpan = "2">
                 <Button Content = "_Buscar..." Click="BuscarButton_Click" />
             </StackPanel>

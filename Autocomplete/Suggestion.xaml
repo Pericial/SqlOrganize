@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="Autocomplete.Suggestion"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Autocomplete"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             mc:Ignorable="d" >
+
+    <UserControl.DataContext>
+        <local:SuggestionViewModel />
+    </UserControl.DataContext>
+
+    <StackPanel Orientation="Vertical" >
+        <TextBox Name="textBox"
+                 VerticalAlignment="Center"
+                 VerticalContentAlignment="Center"
+                 HorizontalAlignment="Center"
+                 Width="200"
+                 Height="30"
+                 Margin="2"
+                 Text="{Binding LabelText}" >
+
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="TextChanged">
+                    <i:InvokeCommandAction CommandParameter="{Binding Text, ElementName=textBox}"
+                                           Command="{Binding TextChangedCommand}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </TextBox>
+
+        <ComboBox  
+            Width="200" 
+            Height="30"
+            VerticalContentAlignment="Bottom"
+            IsDropDownOpen="{Binding IsDropdownOpen}"
+            Visibility="{Binding Visibility}"
+            SelectedItem="{Binding SelectedSuggestionModel}"
+            ItemsSource="{Binding Path=Suggestions}"
+            DisplayMemberPath="Name">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="DropDownOpened">
+                    <i:InvokeCommandAction Command="{Binding DropdownSelectionChanged}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </ComboBox>
+    </StackPanel>
+</UserControl>
