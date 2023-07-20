@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
+using System.Collections.Generic;
 using Utils;
 
 namespace SqlOrganize
@@ -75,24 +76,41 @@ namespace SqlOrganize
                 result = query.ListDict();
                 Cache.Set(queryKey, result);
                 queries!.Add(queryKey);
-                Cache.Set<List<string>>("queries", queries);
+                Cache.Set("queries", queries);
             }
             return result!;
         }
 
-        /*
-        TODO se puede optimizar y evitar tantos loops?
-        */        
-        public List<T> ListObj<T>(EntityQuery query) where T : class, new()
+        protected Dictionary<string, object> _Dict(EntityQuery query)
         {
-            List<Dictionary<string, object>> response = ListDict(query);
-            return response.ConvertToListOfObject<T>();
+            List<string> queries;
+            if (!Cache.TryGetValue("queries", out queries))
+                queries = new();
+
+            Dictionary<string, object> result;
+            string queryKey = query!.ToString();
+            if (!Cache.TryGetValue(queryKey, out result))
+            {
+                result = query.Dict();
+                Cache.Set(queryKey, result);
+                queries!.Add(queryKey);
+                Cache.Set("queries", queries);
+            }
+            return result!;
         }
 
+
+
+        /// <summary>
+        /// Efectua una consulta a la base de datos.
+        /// Verifica la existencia de la consulta en cache.
+        /// Almacena los resultados de la consulta en cache.
+        /// Si la consulta solo posee campos de configuracion, almacena los valores en cache
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
         public List<Dictionary<string, object>> ListDict(EntityQuery query)
         {
-            List<Dictionary<string, object>> response = new();
-
             if (!query.select.IsNullOrEmpty() || !query.group.IsNullOrEmpty())
                 return _ListDict(query);
 
@@ -106,20 +124,56 @@ namespace SqlOrganize
 
             List<string> fields = query.fields!.Replace("$", "").Split(',').ToList().Select(s => s.Trim()).ToList();
 
-            FieldsOrganize fo = new(Db, query.entityName, fields);
+            return PreListDictRecursive(query.entityName, fields, ids.ToArray());
+        }
 
-            List<Dictionary<string, object>> data = ListDict(query.entityName, ids.ToArray());
-            
+        /// <summary>
+        /// Similiar a ListDict, pero para una sola fila
+        /// </summary>
+        /// <param name="query"></param>
+        /// <remarks>Cuando se esta seguro de que se desea consultar una sola fila. Utilizar este metodo para evitar que se tenga que procesar un tamaño grande de resultado</remarks>
+        /// <returns></returns>
+        public Dictionary<string, object>? Dict(EntityQuery query)
+        {
+            if (!query.select.IsNullOrEmpty() || !query.group.IsNullOrEmpty())
+                return _Dict(query);
+
+            if (query.fields.IsNullOrEmpty())
+                query.Fields();
+
+            EntityQuery queryAux = (EntityQuery)query.Clone();
+            queryAux.fields = "_Id";
+
+            string id = queryAux.Value<string>();
+
+            if (id.IsNullOrEmpty())
+                return null;
+
+            List<string> fields = query.fields!.Replace("$", "").Split(',').ToList().Select(s => s.Trim()).ToList();
+
+            List<Dictionary<string, object>> response = PreListDictRecursive(query.entityName, fields, id);
+
+            return response[0];
+        }
+
+        protected List<Dictionary<string, object>> PreListDictRecursive(string entityName, List<string> fields, params string[] ids)
+        {
+            FieldsOrganize fo = new(Db, entityName, fields);
+
+            List<Dictionary<string, object>> data = ListDict(entityName, ids);
+
+            List<Dictionary<string, object>> response = new();
+
             for (var i = 0; i < data.Count; i++)
             {
                 response.Add(new());
                 for (var j = 0; j < fo.Fields.Count; j++)
                     response[i][fo.Fields[j]] = null;
-                for (var j = 0; j < fo.FieldsMain.Count; j++) 
+                for (var j = 0; j < fo.FieldsMain.Count; j++)
                     response[i][fo.FieldsMain[j]] = data[i][fo.FieldsMain[j]];
             }
-            return ListDictRecursive(fo, response, 0);
 
+            return ListDictRecursive(fo, response, 0);
         }
 
         public List<Dictionary<string, object>> ListDictRecursive(FieldsOrganize fo, List<Dictionary<string, object>> response, int index)
@@ -193,6 +247,38 @@ namespace SqlOrganize
                     Cache.Set(entityName + rowAux["_Id"].ToString(), rowAux);
 
             }
+        }
+
+
+
+
+        /// <summary>
+        /// Efectua una consulta a la base de datos y la convierte en el objeto indicado
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        public List<T> ListObj<T>(EntityQuery query) where T : class, new()
+        {
+            List<Dictionary<string, object>> response = ListDict(query);
+            return response.ConvertToListOfObject<T>();
+        }
+
+        /// <summary>
+        /// Efectua una consulta a la base de datos y la convierte en el objeto indicado
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        public T? Value<T>(EntityQuery query, int columnNumber = 0)
+        {
+            Dictionary<string, object>? response = Dict(query);
+            if (response.IsNullOrEmpty())
+                return default(T);
+
+            string k = response.Keys.ElementAt(columnNumber).ToString();
+            
+            return (T)response[k];
         }
 
     }
