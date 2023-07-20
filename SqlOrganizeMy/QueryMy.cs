@@ -60,7 +60,8 @@ namespace SqlOrganizeMy
             using MySqlCommand command = new();
             SqlExecute(connection, command);
             using MySqlDataReader reader = command.ExecuteReader(System.Data.CommandBehavior.SingleResult);
-            return reader.SerializeRowCols(reader.ColumnNames());
+            List<string> columnNames = reader.ColumnNames();
+            return reader.SerializeRow();
         }
 
         public override T Obj<T>()
