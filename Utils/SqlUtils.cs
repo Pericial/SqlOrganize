@@ -60,6 +60,7 @@ namespace Utils
         {
             var cols = reader.ColumnNames();
             var result = new Dictionary<string, object>();
+            reader.Read();
             foreach (var col in cols)
                 result.Add(col, reader[col]);
             return result;
