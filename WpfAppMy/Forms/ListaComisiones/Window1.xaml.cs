@@ -27,8 +27,6 @@ namespace WpfAppMy.Forms.ListaComisiones
     {
         ComisionSearch comisionSearch = new ();
 
-        private List<SedeItem> sedeSuggestionList = new ();
-
         private DAO.Sede sedeDAO = new ();
         private DAO.Comision comisionDAO = new();
 
@@ -37,7 +35,7 @@ namespace WpfAppMy.Forms.ListaComisiones
             InitializeComponent();
             this.sedeList.Visibility = Visibility.Collapsed; //al iniciar que no se vea la lista de opciones (estara vacia)
 
-            //DataContext = comisionSearch;
+            DataContext = comisionSearch;
 
             this.autorizadaCombo.SelectedValuePath = "Key";
             this.autorizadaCombo.DisplayMemberPath = "Value";
@@ -45,29 +43,19 @@ namespace WpfAppMy.Forms.ListaComisiones
             this.autorizadaCombo.Items.Add(new KeyValuePair<bool, string>(true, "Sí"));
             this.autorizadaCombo.Items.Add(new KeyValuePair<bool, string>(false, "No"));
             
-            this.calendarioAnioText.Text = comisionSearch.calendario__anio;
-            this.calendarioSemestreText.Text = comisionSearch.calendario__semestre.ToString();
-            this.autorizadaCombo.SelectedValue = comisionSearch.autorizada;
-
-
-            Search();
-
+            ComisionSearch();
         }
 
-        private void Search()
+        private void ComisionSearch()
         {
-            var cs = new ComisionSearch();
-            cs.calendario__anio = calendarioAnioText.Text;
-            cs.calendario__semestre = Int32.Parse(calendarioSemestreText.Text);
-            cs.autorizada = (bool)autorizadaCombo.SelectedValue;
-            List<Dictionary<string, object>> list = comisionDAO.Search(cs);
+            List<Dictionary<string, object>> list = comisionDAO.Search(comisionSearch);
             ComisionDataGrid.ItemsSource = list.ConvertToListOfObject<Comision>();
         }
 
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-            Search();
+            ComisionSearch();
         }
 
         private void SedeText_TextChanged(object sender, TextChangedEventArgs e)
@@ -75,8 +63,13 @@ namespace WpfAppMy.Forms.ListaComisiones
             if (this.sedeList.SelectedIndex > -1)
                 if (this.sedeText.Text.Equals(((SedeItem)this.sedeList.SelectedItem).nombre))
                     return;
-                else 
+                else
+                {
                     this.sedeList.SelectedIndex = -1;
+                    this.comisionSearch.sede = null;
+                }
+                    
+
 
             if (string.IsNullOrEmpty(this.sedeText.Text) || this.sedeText.Text.Length < 3)
             {
@@ -94,16 +87,36 @@ namespace WpfAppMy.Forms.ListaComisiones
         {
                 this.sedeList.Visibility = Visibility.Collapsed;
 
-                if (this.sedeList.SelectedIndex > -1)
-                    this.sedeText.Text = ((SedeItem)this.sedeList.SelectedItem).nombre;
+            if (this.sedeList.SelectedIndex > -1)
+            {
+                this.sedeText.Text = ((SedeItem)this.sedeList.SelectedItem).nombre;
+                this.comisionSearch.sede = ((SedeItem)this.sedeList.SelectedItem).id;
+            }
         }
     }
 
-    public class SedeItem
+    internal class ComisionSearch
+    {
+        public string calendario__anio { get; set; } = DateTime.Now.Year.ToString();
+        public int calendario__semestre { get; set; } = DateTime.Now.ToSemester();
+        public bool? autorizada { get; set; } = true;
+        public string? sede { get; set; }
+    }
+
+    internal class SedeItem
     {
         public string id { get; set; }
         public string numero { get; set; }
         public string nombre { get; set; }
     }
 
+    internal class Comision
+    {
+        public string id { get; set; }
+
+        public string numero { get; set; }
+
+
+
+    }
 }

@@ -21,12 +21,19 @@ namespace WpfAppMy.Forms.ListaComisiones.DAO
                     AND $calendario-semestre = @1 
                 ")
                 .Parameters(search.calendario__anio, search.calendario__semestre);
+            var count = 2;
             if (!search.autorizada.IsNullOrEmpty())
             {
-                q.Where("AND $autorizada = @2");
+                q.Where("AND $autorizada = @" + count + " ");
                 q.Parameters(search.autorizada!);
+                count++;
             }
-                
+            if (!search.sede.IsNullOrEmpty())
+            {
+                q.Where("AND sede = @" + count + " ");
+                q.Parameters(search.sede!);
+            }
+
             return ContainerApp.QueryCache().ListDict(q);
         }
 

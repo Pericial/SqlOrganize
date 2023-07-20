@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
 
-    <DockPanel>
+    <DockPanel >
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_Comisiones">
                 <MenuItem Header="Lista de Comisiones" Click="listaComisiones_Click"/>
@@ -16,6 +16,66 @@
                 <MenuItem Header="Informe Coordinación Distrital" Click="informeCoordinacionDistrital_Click"/>
             </MenuItem>
         </Menu>
+
+        <StackPanel DockPanel.Dock="Bottom"
+            Orientation="Horizontal" 
+            HorizontalAlignment="Center" >
+                    
+            <Button 
+                Name="btnFirst" 
+                Click="btnFirst_Click"
+                Content="&lt;&lt;"
+                Height="23" 
+                HorizontalAlignment="Left"  
+                VerticalAlignment="Bottom" 
+                Width="40" />
+                    
+            <Button 
+                Name="btnPrev" 
+                Click="btnPrev_Click" 
+                Content="&lt;"
+                Height="23"
+                VerticalAlignment="Bottom" 
+                Width="40" />
+                    
+            <Label 
+                x:Name="lblpageInformation" 
+                HorizontalContentAlignment="Center" 
+                HorizontalAlignment="Left" 
+                Height="30" 
+                Width="100" 
+                VerticalContentAlignment="Center" 
+                VerticalAlignment="Bottom" />
+                    
+            <Button 
+                Name="btnNext" 
+                Click="btnNext_Click" 
+                Content="&gt;" 
+                Height="23" 
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Bottom" 
+                Width="40" />
+                    
+            <Button 
+                Name="btnLast" 
+                Click="btnLast_Click" 
+                Content="&gt;&gt;"
+                Height="23"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Width="40" />
+                    
+            <ComboBox 
+                x:Name="sizeCombo"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Width="120"
+                SelectedIndex="0" 
+                SelectionChanged="sizeCombo_SelectionChanged" />
+                    
+        </StackPanel>
+        
+        <DataGrid Name="sedeGrid"/>
 
     </DockPanel>
 

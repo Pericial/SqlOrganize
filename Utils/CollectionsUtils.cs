@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.Common;
 using System.Linq;
 using System.Reflection;
@@ -150,6 +151,16 @@ namespace Utils
             return results;
         }
 
+        public static ObservableCollection<T> ConvertToObservableCollectionOfObject<T>(this List<Dictionary<string, object>> rows) where T : class, new()
+        {
+            var results = new ObservableCollection<T>();
+
+            foreach (var row in rows)
+                results.Add(row.ConvertToObject<T>());
+
+            return results;
+        }
+
         public static T ConvertToObject<T>(this IDictionary<string, object> source) where T : class, new()
         {
             var someObject = new T();
@@ -233,6 +244,15 @@ namespace Utils
             foreach(Dictionary<string, object> row in source)
                 response.Add(row.AddPrefix(prefix));
             return response;
+        }
+
+
+        public static void AddRange<T>(this ObservableCollection<T> oc, IEnumerable<T> items)
+        {
+            foreach (var item in items)
+            {
+                oc.Add(item);
+            }
         }
 
     }

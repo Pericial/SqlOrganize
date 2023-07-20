@@ -15,6 +15,7 @@
                 <RowDefinition Height = "Auto" />
                 <RowDefinition Height = "Auto" />
                 <RowDefinition Height = "Auto" />
+                <RowDefinition Height = "Auto" />
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -22,22 +23,44 @@
                 <ColumnDefinition Width = "200" />
             </Grid.ColumnDefinitions>
 
-            <Label Name = "calendarioAnioLabel" Margin = "2">_Año:</Label>
+            <Label 
+                Name = "calendarioAnioLabel"
+                Margin = "2">_Año:</Label>
 
-            <TextBox Name = "calendarioAnioText" Grid.Column = "1" Margin = "2" />
+            <TextBox 
+                Name = "calendarioAnioText" 
+                Text="{Binding calendario__anio}"
+                Grid.Column = "1" 
+                Margin = "2" />
 
-            <Label Name = "calendarioSemestreLabel" Margin = "2" Grid.Row = "1">_Semestre:</Label>
+            <Label 
+                Name = "calendarioSemestreLabel" 
+                Margin = "2" 
+                Grid.Row = "1">_Semestre:</Label>
 
-            <TextBox Name = "calendarioSemestreText" Grid.Column = "1" Grid.Row = "1" Margin = "2" />
+            <TextBox 
+                Name = "calendarioSemestreText" 
+                Text="{Binding calendario__semestre}"
+                Grid.Column = "1" 
+                Grid.Row = "1" 
+                Margin = "2" />
 
-            <Label Name = "autorizadaLabel" Margin = "2" Grid.Row = "2">_Autorizada:</Label>
+            <Label 
+                Name = "autorizadaLabel"
+                Margin = "2" 
+                Grid.Row = "2">_Autorizada:</Label>
 
-            <ComboBox Name = "autorizadaCombo" 
-                      Grid.Column="1"  
-                      Grid.Row="2" 
-                      Margin = "2" />
+            <ComboBox 
+                Name = "autorizadaCombo" 
+                SelectedValue="{Binding autorizada}"
+                Grid.Column="1"  
+                Grid.Row="2" 
+                Margin = "2" />
 
-            <Label Name = "sedeLabel" Margin = "2" Grid.Row = "3">_Sede:</Label>
+            <Label 
+                Name = "sedeLabel" 
+                Margin = "2" 
+                Grid.Row = "3">_Sede:</Label>
 
             <TextBox 
                 Name="sedeText"
@@ -71,6 +94,9 @@
             </StackPanel>
         </Grid>
 
-        <DataGrid Name="ComisionDataGrid"/>
+        <DataGrid Name="ComisionDataGrid" />
+
+       
+
     </DockPanel>
 </Window>
