@@ -1,0 +1,68 @@
+﻿<Window x:Class="WpfAppMy.Forms.ListaSedesSemestre.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppMy.Forms.ListaSedesSemestre"
+        mc:Ignorable="d"
+        Title="Window1" Height="450" Width="800">
+    <DockPanel>
+        <Grid DockPanel.Dock="Top">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height = "Auto" />
+                <RowDefinition Height = "Auto" />
+                <RowDefinition Height = "Auto" />
+                <RowDefinition Height = "Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width = "Auto" />
+                <ColumnDefinition Width = "200" />
+            </Grid.ColumnDefinitions>
+
+            <Label 
+                Name = "calendarioAnioLabel"
+                Margin = "2">_Año:</Label>
+
+            <TextBox 
+                Name = "calendarioAnioText" 
+                Text="{Binding calendario__anio}"
+                Grid.Column = "1" 
+                Margin = "2" />
+
+            <Label 
+                Name = "calendarioSemestreLabel" 
+                Margin = "2" 
+                Grid.Row = "1">_Semestre:</Label>
+
+            <TextBox 
+                Name = "calendarioSemestreText" 
+                Text="{Binding calendario__semestre}"
+                Grid.Column = "1" 
+                Grid.Row = "1" 
+                Margin = "2" />
+
+            <Label 
+                Name = "autorizadaLabel"
+                Margin = "2" 
+                Grid.Row = "2">_Autorizada:</Label>
+
+            <ComboBox 
+                Name = "autorizadaCombo" 
+                SelectedValue="{Binding autorizada}"
+                Grid.Column="1"  
+                Grid.Row="2" 
+                Margin = "2" />
+
+            <StackPanel Grid.Row = "3" Grid.ColumnSpan = "2">
+                <Button Content = "_Buscar..." Click="BuscarButton_Click" />
+            </StackPanel>
+        </Grid>
+
+        <DataGrid Name="sedeGrid" />
+
+
+
+    </DockPanel>
+</Window>

@@ -102,9 +102,9 @@ namespace SqlOrganizeMy
 
         public override void Transaction()
         {
-            sql = @"BEGIN TRAN; 
+            sql = @"BEGIN;
 " + sql + @"
-COMMIT TRAN;";
+COMMIT;";
             using MySqlConnection connection = new MySqlConnection((string)db.config.connectionString);
             using MySqlCommand command = new MySqlCommand();
             SqlExecute(connection, command);

@@ -22,6 +22,8 @@ namespace SqlOrganize
 
         public string sql { get; set; } = "";
 
+        public List<(string entityName, string _Id)> detail = new ();
+
         public EntityPersist(Db _db, string? _entityName = null)
         {
             db = _db;
@@ -47,7 +49,27 @@ WHERE " + _Id + " = @" + count + @";
 ";
             count++;
             parameters.Add(row["_Id"]);
+            detail.Add((_entityName!, (string)row["_Id"]));
             return this;
+        }
+
+
+        /// <summary>
+        /// Actualizar un unico campo
+        /// </summary>
+        /// <param name="key">Nombre del campo a actualizar</param>
+        /// <param name="value">Valor del campo a actualizar</param>
+        /// <param name="_Id">Identificacion de la fila a actualizar</param>
+        /// <param name="_entityName">Nombre de la entidad, si no se especifica se toma el atributo</param>
+        /// <returns>Mismo objeto</returns>
+        public EntityPersist UpdateValue(string key, object value, string _Id, string? _entityName = null)
+        {
+            Dictionary<string, object> row = new Dictionary<string, object>()
+            {
+                { "_Id", _Id },
+                { key, value }
+            };
+            return Update(row, _entityName);
         }
 
 
@@ -77,6 +99,7 @@ VALUES (";
 
             sql = @");
 ";
+            detail.Add((_entityName!, (string)row["_Id"]));
 
             return this;
         }
@@ -86,6 +109,17 @@ VALUES (";
             return sql;
         }
 
+        /// <summary>
+        /// Verifica existencia de valor unico en base a la configuracion de la entidad
+        /// Si encuentra resultado, actualiza
+        /// Si no encuentra resultado, inserta
+        /// </summary>
+        /// <param name="row">Conjunto de valores a persistir</param>
+        /// <param name="_entityName">Nombre de la entidad, si no existe toma el atributo</param>
+        /// <returns>El mismo objeto</returns>
+        /// <exception cref="Exception">Si encuentra mas de un conjunto de valores a partir de los campos unicos</exception>
+        /// <exception cref="Exception">Si encuentra errores de configuracion en los campos a actualizar</exception>
+        /// <exception cref="Exception">Si encuentra errores de configuracion en los campos a insertar</exception>
         public EntityPersist Persist(Dictionary<string, object> row, string? _entityName = null)
         {
             _entityName = _entityName ?? entityName;
@@ -109,18 +143,8 @@ VALUES (";
             return Insert(v.values, _entityName);
         }
 
-        public EntityPersist List(List<Dictionary<string, object>> list, string? _entityName = null)
-        {
-            _entityName = _entityName ?? entityName;
 
-            foreach (var row in list)
-            {
-
-            }
-            return this;
-        }
-
-        public abstract void Exec();
+        public abstract EntityPersist Exec();
 
     }
 

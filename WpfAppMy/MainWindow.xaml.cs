@@ -26,119 +26,133 @@ namespace WpfAppMy
     /// </summary>
     public partial class MainWindow : Window
     {
+        private DAO.Sede sedeDAO = new(); //objeto de acceso a datos
 
-        //To check the paging direction according to use selection.
+        #region sedeGrid con paginacion
         private int sedeCount = 0; //cantidad total de elementos
         protected int sedePage = 1; //pagina a mostrar
-        private DAO.Sede sedeDAO = new (); //objeto de acceso a datos
         private ObservableCollection<Sede> sedeData = new ();
-
     
         public MainWindow()
         {
             InitializeComponent();
 
-            sizeCombo.Items.Add(10);
-            sizeCombo.Items.Add(20);
-            sizeCombo.Items.Add(30);
-            sizeCombo.Items.Add(50);
-            sizeCombo.Items.Add(100);
-            sizeCombo.Items.Add(200);
-            sizeCombo.SelectedItem = 10;
+            sedeSizeCombo.Items.Add(10);
+            sedeSizeCombo.Items.Add(100);
+            sedeSizeCombo.Items.Add(500);
+            sedeSizeCombo.Items.Add(1000);
+            sedeSizeCombo.SelectedItem = 10;
             sedeGrid.ItemsSource = sedeData;
             this.Loaded += MainWindow_Loaded;
-            
+
+            sedeGrid.CellEditEnding += SedeGrid_CellEditEnding;
+        }
+
+        private void SedeGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            if (e.EditAction == DataGridEditAction.Commit)
+            {
+                var column = e.Column as DataGridBoundColumn;
+                if (column != null)
+                {
+                    string key = (column.Binding as Binding).Path.Path; //column's binding
+                    string value = (e.EditingElement as TextBox).Text;
+                    string _Id = (e.Row.DataContext as Sede).id;
+
+                    sedeDAO.UpdateValue(key, value, _Id);
+                }
+            }
         }
 
         private void SedeGridData()
         {
-            List<Dictionary<string, object>> sedeList = sedeDAO.ConsultaPaginacion(sedePage, (int)sizeCombo.SelectedItem);
+            List<Dictionary<string, object>> sedeList = sedeDAO.FiltroPaginacion(sedePage, (int)sedeSizeCombo.SelectedItem);
             sedeData.Clear();
             sedeData.AddRange(sedeList.ConvertToObservableCollectionOfObject<Sede>());
         }
 
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        private void OnSedePaginationChanged()
         {
-            sedeCount = sedeDAO.CantidadTotal();
-            DisablePaginationButtons();
             SedeGridData();
             ChangeLabelContent();
             EnablePaginationButtons();
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            DisablePaginationButtons();
+            sedeCount = sedeDAO.CantidadTotal();
+            OnSedePaginationChanged();
         }   
 
         private void ChangeLabelContent()
         {
-            int count = sedePage * (int)sizeCombo.SelectedItem;
+            int count = sedePage * (int)sedeSizeCombo.SelectedItem;
             if(count > sedeCount)
                 count = sedeCount;
-            lblpageInformation.Content = count + " of " + sedeCount;
+            sedePageInformationLabel.Content = count + " of " + sedeCount;
         }
 
         private void DisablePaginationButtons()
         {
-            btnPrev.IsEnabled = false;
-            btnFirst.IsEnabled = false;
-            btnNext.IsEnabled = false;
-            btnLast.IsEnabled = false;
+            sedePreviousButton.IsEnabled = false;
+            sedeFirstButton.IsEnabled = false;
+            sedeNextButton.IsEnabled = false;
+            sedeLastButton.IsEnabled = false;
         }
 
         private void EnablePaginationButtons()
         {
-            if (sedeCount > (sedePage * (int)sizeCombo.SelectedItem))
+            if (sedeCount > (sedePage * (int)sedeSizeCombo.SelectedItem))
             {
-                btnNext.IsEnabled = true;
-                btnLast.IsEnabled = true;
+                sedeNextButton.IsEnabled = true;
+                sedeLastButton.IsEnabled = true;
             }
             if (sedePage > 1)
             {
-                btnFirst.IsEnabled = true;
-                btnPrev.IsEnabled = true;
+                sedeFirstButton.IsEnabled = true;
+                sedePreviousButton.IsEnabled = true;
             }
         }
-        private void btnFirst_Click(object sender, System.EventArgs e)
+        private void sedeFirstButton_Click(object sender, System.EventArgs e)
         {
             DisablePaginationButtons();
             sedePage = 1;
-            SedeGridData();
-            ChangeLabelContent();
-            EnablePaginationButtons();
+            OnSedePaginationChanged();
         }
 
-        private void btnNext_Click(object sender, System.EventArgs e)
+        private void sedeNextButton_Click(object sender, System.EventArgs e)
         {
             DisablePaginationButtons();
             sedePage++;
-            SedeGridData();
-            ChangeLabelContent();
-            EnablePaginationButtons();
-
+            OnSedePaginationChanged();
         }
 
-        private void btnPrev_Click(object sender, System.EventArgs e)
+        private void sedePreviousButton_Click(object sender, System.EventArgs e)
         {
             DisablePaginationButtons();
             sedePage--;
-            SedeGridData();
-            ChangeLabelContent();
-            EnablePaginationButtons();
+            OnSedePaginationChanged();
         }
 
-        private void btnLast_Click(object sender, System.EventArgs e)
+        private void sedeLastButton_Click(object sender, System.EventArgs e)
         {
             DisablePaginationButtons();
-            sedePage = (int)Math.Ceiling((double)sedeCount / (int)sizeCombo.SelectedItem);
-            SedeGridData();
-            ChangeLabelContent();
-            EnablePaginationButtons();
+            sedePage = (int)Math.Ceiling((double)sedeCount / (int)sedeSizeCombo.SelectedItem);
+            OnSedePaginationChanged();
         }
 
-        private void sizeCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void sedeSizeCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (sedeCount == 0)
                 return;
-            btnFirst_Click(sender, e);
+            sedeFirstButton_Click(sender, e);
         }
+        #endregion
 
+
+
+        #region menu principal
         private void listaComisiones_Click(object sender, RoutedEventArgs e)
         {
             Forms.ListaComisiones.Window1 win = new();
@@ -151,6 +165,14 @@ namespace WpfAppMy
             win.Show();
 
         }
+
+        private void listaSedesSemestre_Click(object sender, RoutedEventArgs e)
+        {
+            Forms.ListaSedesSemestre.Window1 win = new();
+            win.Show();
+
+        }
+        #endregion
     }
 
     internal class Sede
@@ -158,6 +180,7 @@ namespace WpfAppMy
         public string id { get; set; }
         public string numero { get; set; }
         public string nombre { get; set; }
+        public string domicilio__calle { get; set; }
     }
 }
 

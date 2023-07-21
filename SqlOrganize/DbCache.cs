@@ -281,6 +281,31 @@ namespace SqlOrganize
             return (T)response[k];
         }
 
+        public void RemoveQueries()
+        {
+            List<string> queries;
+
+            if (Cache.TryGetValue("queries", out queries))
+            {
+                foreach (string q in queries!)
+                    Cache.Remove(q);
+
+                Cache.Remove("queries");
+            }
+
+        }
+
+        /// <summary>
+        /// Remover de la cache todas las consultas y las entidades indicadas en el parametro
+        /// </summary>
+        /// <param name="detail">Detalle de entidades a remover, la llave estara formada por la concatenacion de los valores de cada tupla</param>
+        public void Remove(List<(string entityName, string _Id)> detail)
+        {
+            RemoveQueries();
+            foreach (var d in detail)
+                Cache.Remove(d.entityName + d._Id);
+        }
+
     }
 
     /*

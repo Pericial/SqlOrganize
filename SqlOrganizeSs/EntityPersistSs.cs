@@ -12,12 +12,13 @@ namespace SqlOrganizeSs
         {
         }
 
-        public override void Exec()
+        public override EntityPersist Exec()
         {
             using SqlConnection connection = new SqlConnection((string)db.config.connectionString);
             using SqlCommand command = new SqlCommand();
             SqlExecute(connection, command);
             using SqlDataReader reader = command.ExecuteReader();
+            return this;
 
         }
 

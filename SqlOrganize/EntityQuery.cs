@@ -275,7 +275,7 @@ namespace SqlOrganize
 
         public string Sql()
         {
-            var sql = "SELECT ";
+            var sql = "SELECT DISTINCT ";
             sql += SqlFields();
             sql += SqlFrom();
             sql += SqlJoin();

@@ -11,6 +11,8 @@
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_Comisiones">
                 <MenuItem Header="Lista de Comisiones" Click="listaComisiones_Click"/>
+                <MenuItem Header="Lista de Sedes del Semestre" Click="listaSedesSemestre_Click"/>
+
             </MenuItem>
             <MenuItem Header="_Informes">
                 <MenuItem Header="Informe Coordinación Distrital" Click="informeCoordinacionDistrital_Click"/>
@@ -22,8 +24,8 @@
             HorizontalAlignment="Center" >
                     
             <Button 
-                Name="btnFirst" 
-                Click="btnFirst_Click"
+                Name="sedeFirstButton" 
+                Click="sedeFirstButton_Click"
                 Content="&lt;&lt;"
                 Height="23" 
                 HorizontalAlignment="Left"  
@@ -31,15 +33,15 @@
                 Width="40" />
                     
             <Button 
-                Name="btnPrev" 
-                Click="btnPrev_Click" 
+                Name="sedePreviousButton" 
+                Click="sedePreviousButton_Click" 
                 Content="&lt;"
                 Height="23"
                 VerticalAlignment="Bottom" 
                 Width="40" />
                     
             <Label 
-                x:Name="lblpageInformation" 
+                x:Name="sedePageInformationLabel" 
                 HorizontalContentAlignment="Center" 
                 HorizontalAlignment="Left" 
                 Height="30" 
@@ -48,8 +50,8 @@
                 VerticalAlignment="Bottom" />
                     
             <Button 
-                Name="btnNext" 
-                Click="btnNext_Click" 
+                Name="sedeNextButton" 
+                Click="sedeNextButton_Click" 
                 Content="&gt;" 
                 Height="23" 
                 HorizontalAlignment="Right" 
@@ -57,8 +59,8 @@
                 Width="40" />
                     
             <Button 
-                Name="btnLast" 
-                Click="btnLast_Click" 
+                Name="sedeLastButton" 
+                Click="sedeLastButton_Click" 
                 Content="&gt;&gt;"
                 Height="23"
                 HorizontalAlignment="Right"
@@ -66,12 +68,12 @@
                 Width="40" />
                     
             <ComboBox 
-                x:Name="sizeCombo"
+                x:Name="sedeSizeCombo"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Bottom"
                 Width="120"
                 SelectedIndex="0" 
-                SelectionChanged="sizeCombo_SelectionChanged" />
+                SelectionChanged="sedeSizeCombo_SelectionChanged" />
                     
         </StackPanel>
         
