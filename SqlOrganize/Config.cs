@@ -19,10 +19,15 @@
 
         public string concatString { get; set; } = "~";
         
-        /*
-        String de separacion entre fieldId y fieldName
-        */
+        /// <summary>
+        /// String de separacion entre fieldId y fieldName para consultas a la base de datos
+        /// </summary>
         public string idNameSeparatorString { get; set; } = "-";
+
+        /// <summary>
+        /// String utilizado para separar fieldId de atributos en una clase
+        /// </summary>
+        public string idAttrSeparatorString { get; set; } = "__";
 
 
     }

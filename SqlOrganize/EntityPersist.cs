@@ -72,6 +72,31 @@ WHERE " + _Id + " = @" + count + @";
             return Update(row, _entityName);
         }
 
+        /// <summary>
+        /// Actualiza valor local o de relacion
+        /// </summary>
+        /// <param name="key">Nombre del campo a actualizar</param>
+        /// <param name="value">Nuevo valor del campo a actualizar</param>
+        /// <param name="source">Fuente con todos los valores sin actualizar</param>
+        /// <param name="_entityName">Opcional nombre de la entidad, si no existe toma el atributo</param>
+        /// <returns>Mismo objeto</returns>
+        public EntityPersist UpdateValueRel(string key, object value, Dictionary<string, object> source, string? _entityName = null)
+        {
+            _entityName = _entityName ?? entityName;
+            string _IdKey = "_Id";
+            if (key.Contains(db.config.idAttrSeparatorString))
+            {
+                int indexSeparator = key.IndexOf(db.config.idAttrSeparatorString);
+                string fieldId = key.Substring(0, indexSeparator);
+                _entityName = db.Entity(_entityName!).relations[fieldId].refEntityName;
+                _IdKey = fieldId + db.config.idAttrSeparatorString +"_Id";
+                key = key.Substring(indexSeparator+2); //se suma la cantidad de caracteres del separador
+            }
+
+            string _Id = (string)source[_IdKey];
+            return UpdateValue(key, value, _Id, _entityName);
+        }
+
 
 
         public EntityPersist Insert(Dictionary<string, object> row, string? _entityName = null)
