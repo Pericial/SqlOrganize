@@ -35,7 +35,7 @@ namespace WinFormsAppSs
             return db;
         }
 
-        public DbCache QueryCache()
+        public DbCache DbCache()
         {
             return queryCache;
         }

@@ -74,7 +74,7 @@ public class Personal
 }
 /*W
 
-QueryCache qc = new(query);
+DbCache qc = new(query);
 var data = qc.Execute();
 data = qc.Execute();
 System.Console.WriteLine(data);
@@ -87,7 +87,7 @@ Page(1).
 Size(1).
 Fetch("All");
 
-QueryCache qc2 = new(query);
+DbCache qc2 = new(query);
 data = qc2.ExecuteR();
 
 

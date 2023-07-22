@@ -151,16 +151,6 @@ namespace Utils
             return results;
         }
 
-        public static ObservableCollection<T> ConvertToObservableCollectionOfObject<T>(this List<Dictionary<string, object>> rows) where T : class, new()
-        {
-            var results = new ObservableCollection<T>();
-
-            foreach (var row in rows)
-                results.Add(row.ConvertToObject<T>());
-
-            return results;
-        }
-
         public static T ConvertToObject<T>(this IDictionary<string, object> source) where T : class, new()
         {
             var someObject = new T();

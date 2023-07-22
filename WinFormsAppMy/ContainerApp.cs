@@ -35,7 +35,7 @@ namespace WinFormsAppMy
             return db;
         }
 
-        public static DbCache QueryCache()
+        public static DbCache DbCache()
         {
             return queryCache;
         }
