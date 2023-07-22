@@ -758,7 +758,7 @@
   "sede": {
     "name": "sede",
     "alias": "sede",
-    "fields": ["id", "numero", "nombre", "observaciones", "alta", "baja", "domicilio", "tipo_sede", "centro_educativo", "fecha_traspaso", "organizacion"],
+    "fields": ["id", "numero", "nombre", "observaciones", "alta", "baja", "domicilio", "tipo_sede", "centro_educativo", "fecha_traspaso", "organizacion", "pfid"],
     "pk": ["id"],
     "fk": ["domicilio", "tipo_sede", "centro_educativo", "organizacion"],
     "notNull": ["id", "numero", "nombre", "alta"],

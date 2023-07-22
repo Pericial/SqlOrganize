@@ -1,11 +1,12 @@
 ﻿
 using SchemaJsonMy;
+using System.Configuration;
 
 var c = new ConfigMy()
 {
-    connection_string = "server=localhost;database=planfi10_20203;uid=root",
-    db_name = "planfi10_20203",
-    path = @"C:\projects\SqlOrganize\ConsoleBuildSchemaMy\model\"
+    connection_string = ConfigurationManager.AppSettings.Get("connectionString"),
+    path = ConfigurationManager.AppSettings.Get("modelPath"),
+    db_name = ConfigurationManager.AppSettings.Get("dbName"),
 };
 
 BuildSchemaMy t = new(c);
