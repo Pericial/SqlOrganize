@@ -22,7 +22,7 @@ namespace WpfAppMy.Forms.ListaComisiones.DAO
                 .Parameters("%" + search + "%", "%" + search + "%")
                 .Order("$nombre ASC");
                 
-            return ContainerApp.QueryCache().ListDict(q);
+            return ContainerApp.DbCache().ListDict(q);
         }
 
     }

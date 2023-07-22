@@ -33,7 +33,7 @@ namespace WpfAppMy
             return db;
         }
 
-        public static DbCache QueryCache()
+        public static DbCache DbCache()
         {
             return queryCache;
         }

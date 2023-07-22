@@ -17,20 +17,20 @@ namespace WpfAppMy.DAO
                 Select("COUNT(*)").
                 Size(0);
 
-            return (int)ContainerApp.QueryCache().Value<long>(q);
+            return (int)ContainerApp.DbCache().Value<long>(q);
         }
 
 
         public List<Dictionary<string, object>> FiltroPaginacion(int page, int size)
         {
             var q = ContainerApp.Db().Query("sede").Size(size).Page(page);
-            return ContainerApp.QueryCache().ListDict(q);
+            return ContainerApp.DbCache().ListDict(q);
         }
 
         public void UpdateValue(string key, object value, string _Id)
         {
             EntityPersist p = ContainerApp.Db().Persist("sede").UpdateValue(key, value, _Id).Exec();
-            ContainerApp.QueryCache().Remove(p.detail);
+            ContainerApp.DbCache().Remove(p.detail);
         }
 
     }

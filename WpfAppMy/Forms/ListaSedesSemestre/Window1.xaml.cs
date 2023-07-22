@@ -61,24 +61,10 @@ namespace WpfAppMy.Forms.ListaSedesSemestre
                 var column = e.Column as DataGridBoundColumn;
                 if (column != null)
                 {
-                    string entityName = "comision";
-                    string key = (column.Binding as Binding).Path.Path; //column's binding
-                    string _IdKey = "_Id";
-
-                    Sede source = (Sede)e.Row.DataContext;
-                    if (key.Contains("__"))
-                    {
-                        int indexSeparator = key.IndexOf("__");
-                        string fieldId = key.Substring(0, indexSeparator);
-                        entityName = ContainerApp.Db().Entity("comision").relations[fieldId].refEntityName;
-                        _IdKey = entityName + "___Id";
-                        key = key.Substring(indexSeparator+2); //se suma la cantidad de caracteres del separador
-                    }
-
+                    string key = ((Binding)column.Binding).Path.Path; //column's binding
+                    Dictionary<string, object> source = (Dictionary<string, object>)((Sede)e.Row.DataContext).ConvertToDict();
                     string value = (e.EditingElement as TextBox)!.Text;
-                    string _Id = (string)source.GetType().GetProperty(_IdKey)!.GetValue(source, null)!;
-                    EntityPersist p = ContainerApp.Db().Persist(entityName).UpdateValue(key, value, _Id).Exec();
-                    ContainerApp.QueryCache().Remove(p.detail);
+                    comisionDAO.UpdateValueRel(key, value, source);
                 }
             }
         }

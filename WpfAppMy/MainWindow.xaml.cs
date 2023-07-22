@@ -68,7 +68,7 @@ namespace WpfAppMy
         {
             List<Dictionary<string, object>> sedeList = sedeDAO.FiltroPaginacion(sedePage, (int)sedeSizeCombo.SelectedItem);
             sedeData.Clear();
-            sedeData.AddRange(sedeList.ConvertToObservableCollectionOfObject<Sede>());
+            sedeData.AddRange(sedeList.ConvertToListOfObject<Sede>());
         }
 
         private void OnSedePaginationChanged()

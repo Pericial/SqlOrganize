@@ -34,7 +34,7 @@ namespace WpfAppMy.Forms.ListaComisiones.DAO
                 q.Parameters(search.sede!);
             }
 
-            return ContainerApp.QueryCache().ListDict(q);
+            return ContainerApp.DbCache().ListDict(q);
         }
 
     }

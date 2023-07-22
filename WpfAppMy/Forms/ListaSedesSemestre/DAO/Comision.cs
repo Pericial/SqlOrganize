@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Google.Protobuf.WellKnownTypes;
+using SqlOrganize;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Utils;
 
 namespace WpfAppMy.Forms.ListaSedesSemestre.DAO
@@ -29,7 +32,13 @@ namespace WpfAppMy.Forms.ListaSedesSemestre.DAO
             }
     
 
-            return ContainerApp.QueryCache().ListDict(q);
+            return ContainerApp.DbCache().ListDict(q);
+        }
+
+        public void UpdateValueRel(string key, object value, Dictionary<string, object> source)
+        {
+            EntityPersist p = ContainerApp.Db().Persist("comision").UpdateValueRel(key, value, source).Exec();
+            ContainerApp.DbCache().Remove(p.detail);
         }
 
     }
