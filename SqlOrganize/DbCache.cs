@@ -93,7 +93,6 @@ namespace SqlOrganize
             {
                 result = query.Dict();
                 Cache.Set(queryKey, result);
-                queries!.Add(queryKey);
                 Cache.Set("queries", queries);
             }
             return result!;
@@ -111,18 +110,24 @@ namespace SqlOrganize
         /// <returns></returns>
         public List<Dictionary<string, object>> ListDict(EntityQuery query)
         {
-            if (!query.select.IsNullOrEmpty() || !query.group.IsNullOrEmpty())
+            if (!query.select.IsNullOrEmpty() || !query.group.IsNullOrEmpty()) 
                 return _ListDict(query);
 
             if (query.fields.IsNullOrEmpty())
                 query.Fields();
-            
+
+            List<string> fields = query.fields!.Replace("$", "").Split(',').ToList().Select(s => s.Trim()).ToList();
+
+            //si no se encuentra el _Id, no se realiza cache.
+            //Si por ejemplo se consultan solo campos de relacoines, no se aplicaria correctamente el distinct
+            if(!fields.Contains("_Id"))
+                return _ListDict(query);
+
             EntityQuery queryAux = (EntityQuery)query.Clone();
             queryAux.fields = "_Id";
 
             List<string> ids = queryAux.Column<string>();
 
-            List<string> fields = query.fields!.Replace("$", "").Split(',').ToList().Select(s => s.Trim()).ToList();
 
             return PreListDictRecursive(query.entityName, fields, ids.ToArray());
         }
