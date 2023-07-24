@@ -94,7 +94,7 @@
             </StackPanel>
         </Grid>
 
-        <DataGrid Name="ComisionDataGrid" />
+        <DataGrid Name="comisionGrid" />
 
        
 

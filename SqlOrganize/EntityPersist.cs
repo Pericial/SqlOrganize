@@ -90,7 +90,7 @@ WHERE " + _Id + " = @" + count + @";
                 string fieldId = key.Substring(0, indexSeparator);
                 _entityName = db.Entity(_entityName!).relations[fieldId].refEntityName;
                 _IdKey = fieldId + db.config.idAttrSeparatorString +"_Id";
-                key = key.Substring(indexSeparator+2); //se suma la cantidad de caracteres del separador
+                key = key.Substring(indexSeparator+db.config.idAttrSeparatorString.Length); //se suma la cantidad de caracteres del separador
             }
 
             string _Id = (string)source[_IdKey];

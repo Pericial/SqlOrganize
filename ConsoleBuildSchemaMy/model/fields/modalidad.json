@@ -7,6 +7,12 @@
     "nombre": {
         "alias": "nom",
         "dataType": "string"
+    },
+
+    "pfid": {
+        "alias": "pfi",
+        "dataType": "string",
+        "defaultValue": "NULL"
     }
 
 }

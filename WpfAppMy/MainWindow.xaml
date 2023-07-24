@@ -12,6 +12,9 @@
             <MenuItem Header="_Comisiones">
                 <MenuItem Header="Lista de Comisiones" Click="listaComisiones_Click"/>
                 <MenuItem Header="Lista de Sedes del Semestre" Click="listaSedesSemestre_Click"/>
+                <MenuItem Header="Lista de Planificaciones" Click="listaPlanificaciones_Click"/>
+                <MenuItem Header="Lista de Modalidades" Click="listaModalidades_Click"/>
+
 
             </MenuItem>
             <MenuItem Header="_Informes">
@@ -19,65 +22,6 @@
             </MenuItem>
         </Menu>
 
-        <StackPanel DockPanel.Dock="Bottom"
-            Orientation="Horizontal" 
-            HorizontalAlignment="Center" >
-                    
-            <Button 
-                Name="sedeFirstButton" 
-                Click="sedeFirstButton_Click"
-                Content="&lt;&lt;"
-                Height="23" 
-                HorizontalAlignment="Left"  
-                VerticalAlignment="Bottom" 
-                Width="40" />
-                    
-            <Button 
-                Name="sedePreviousButton" 
-                Click="sedePreviousButton_Click" 
-                Content="&lt;"
-                Height="23"
-                VerticalAlignment="Bottom" 
-                Width="40" />
-                    
-            <Label 
-                x:Name="sedePageInformationLabel" 
-                HorizontalContentAlignment="Center" 
-                HorizontalAlignment="Left" 
-                Height="30" 
-                Width="100" 
-                VerticalContentAlignment="Center" 
-                VerticalAlignment="Bottom" />
-                    
-            <Button 
-                Name="sedeNextButton" 
-                Click="sedeNextButton_Click" 
-                Content="&gt;" 
-                Height="23" 
-                HorizontalAlignment="Right" 
-                VerticalAlignment="Bottom" 
-                Width="40" />
-                    
-            <Button 
-                Name="sedeLastButton" 
-                Click="sedeLastButton_Click" 
-                Content="&gt;&gt;"
-                Height="23"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Bottom"
-                Width="40" />
-                    
-            <ComboBox 
-                x:Name="sedeSizeCombo"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Bottom"
-                Width="120"
-                SelectedIndex="0" 
-                SelectionChanged="sedeSizeCombo_SelectionChanged" />
-                    
-        </StackPanel>
-        
-        <DataGrid Name="sedeGrid"/>
 
     </DockPanel>
 

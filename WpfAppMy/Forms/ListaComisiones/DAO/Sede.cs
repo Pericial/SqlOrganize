@@ -7,7 +7,7 @@ using Utils;
 
 namespace WpfAppMy.Forms.ListaComisiones.DAO
 {
-    class Sede
+    internal class Sede
     {
 
         public List<Dictionary<string, object>> Search(string search)

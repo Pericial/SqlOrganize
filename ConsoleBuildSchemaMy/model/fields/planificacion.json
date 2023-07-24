@@ -18,6 +18,12 @@
         "alias": "pla",
         "dataType": "string",
         "refEntityName": "id"
+    },
+
+    "pfid": {
+        "alias": "pfi",
+        "dataType": "string",
+        "defaultValue": "NULL"
     }
 
 }

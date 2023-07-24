@@ -34,6 +34,7 @@ namespace WpfAppMy.Forms.ListaComisiones
         {
             InitializeComponent();
             this.sedeList.Visibility = Visibility.Collapsed; //al iniciar que no se vea la lista de opciones (estara vacia)
+            comisionGrid.CellEditEnding += ComisionGrid_CellEditEnding!;
 
             DataContext = comisionSearch;
 
@@ -49,7 +50,7 @@ namespace WpfAppMy.Forms.ListaComisiones
         private void ComisionSearch()
         {
             List<Dictionary<string, object>> list = comisionDAO.Search(comisionSearch);
-            ComisionDataGrid.ItemsSource = list.ConvertToListOfObject<Comision>();
+            comisionGrid.ItemsSource = list.ConvertToListOfObject<Comision>();
         }
 
 
@@ -93,6 +94,22 @@ namespace WpfAppMy.Forms.ListaComisiones
                 this.comisionSearch.sede = ((SedeItem)this.sedeList.SelectedItem).id;
             }
         }
+
+
+        private void ComisionGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            if (e.EditAction == DataGridEditAction.Commit)
+            {
+                var column = e.Column as DataGridBoundColumn;
+                if (column != null)
+                {
+                    string key = ((Binding)column.Binding).Path.Path; //column's binding
+                    Dictionary<string, object> source = (Dictionary<string, object>)((Comision)e.Row.DataContext).ConvertToDict();
+                    string value = (e.EditingElement as TextBox)!.Text;
+                    comisionDAO.UpdateValueRel(key, value, source);
+                }
+            }
+        }
     }
 
     internal class ComisionSearch
@@ -112,9 +129,22 @@ namespace WpfAppMy.Forms.ListaComisiones
 
     internal class Comision
     {
-        public string id { get; set; }
+        public string _Id { get; set; }
 
         public string numero { get; set; }
+
+        public string sede__nombre { get; set; }
+
+        public string sede__pfid { get; set; }
+
+        public string identificacion { get; set; }
+
+        public string pfid { get; set; }
+
+        public string planificacion__anio { get; set; }
+        public string planificacion__semestre { get; set; }
+        public string planificacion__orientacion { get; set; }
+        public string planificacion__pfid { get; set; }
 
 
 

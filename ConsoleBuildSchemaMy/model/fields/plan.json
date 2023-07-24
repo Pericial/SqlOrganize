@@ -19,6 +19,12 @@
         "alias": "dis",
         "dataType": "string",
         "defaultValue": "NULL"
+    },
+
+    "pfid": {
+        "alias": "pfi",
+        "dataType": "string",
+        "defaultValue": "NULL"
     }
 
 }

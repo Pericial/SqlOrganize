@@ -24,7 +24,7 @@ namespace WpfAppMy.Forms.ListaSedesSemestre
 
         ComisionSearch comisionSearch = new();
 
-        private DAO.Comision comisionDAO = new();
+        private WpfAppMy.Forms.ListaSedesSemestre.DAO.Comision comisionDAO = new();
 
         public Window1()
         {

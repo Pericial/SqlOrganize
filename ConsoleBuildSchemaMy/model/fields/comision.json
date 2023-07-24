@@ -96,6 +96,12 @@
         "alias": "con",
         "dataType": "string",
         "defaultValue": "'Histórica'"
+    },
+
+    "pfid": {
+        "alias": "pfi",
+        "dataType": "string",
+        "defaultValue": "NULL"
     }
 
 }

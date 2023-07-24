@@ -275,7 +275,7 @@
   "comision": {
     "name": "comision",
     "alias": "comi",
-    "fields": ["id", "turno", "division", "comentario", "autorizada", "apertura", "publicada", "observaciones", "alta", "sede", "modalidad", "planificacion", "comision_siguiente", "calendario", "identificacion", "estado", "configuracion"],
+    "fields": ["id", "turno", "division", "comentario", "autorizada", "apertura", "publicada", "observaciones", "alta", "sede", "modalidad", "planificacion", "comision_siguiente", "calendario", "identificacion", "estado", "configuracion", "pfid"],
     "pk": ["id"],
     "fk": ["sede", "modalidad", "planificacion", "comision_siguiente", "calendario"],
     "notNull": ["id", "division", "autorizada", "apertura", "publicada", "alta", "sede", "modalidad", "calendario"],
@@ -692,7 +692,7 @@
   "modalidad": {
     "name": "modalidad",
     "alias": "moda",
-    "fields": ["id", "nombre"],
+    "fields": ["id", "nombre", "pfid"],
     "pk": ["id"],
     "unique": ["nombre"],
     "notNull": ["id", "nombre"]
@@ -718,7 +718,7 @@
   "plan": {
     "name": "plan",
     "alias": "plan",
-    "fields": ["id", "orientacion", "resolucion", "distribucion_horaria"],
+    "fields": ["id", "orientacion", "resolucion", "distribucion_horaria", "pfid"],
     "pk": ["id"],
     "notNull": ["id", "orientacion"]
   },
@@ -726,7 +726,7 @@
   "planificacion": {
     "name": "planificacion",
     "alias": "pla1",
-    "fields": ["id", "anio", "semestre", "plan"],
+    "fields": ["id", "anio", "semestre", "plan", "pfid"],
     "pk": ["id"],
     "fk": ["plan"],
     "notNull": ["id", "anio", "semestre", "plan"],
