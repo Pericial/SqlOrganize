@@ -78,14 +78,13 @@ namespace WpfAppMy.Forms.ListaReferentesSemestre
 
     internal class Designacion
     {
-
+        public string _Id { get; set; }
         public string pfid { get; set; }
 
-        public string sede___Id { get; set; }
+        public string sede__pfid_organizacion { get; set; }
+
         public string sede__numero { get; set; }
         public string sede__nombre { get; set; }
-
-        public string persona___Id { get; set; }
 
         public string persona__nombres { get; set; }
         public string persona__apellidos { get; set; }

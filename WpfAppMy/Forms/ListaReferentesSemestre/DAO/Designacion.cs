@@ -22,7 +22,7 @@ namespace WpfAppMy.Forms.ListaReferentesSemestre.DAO
 
         public void UpdateValueRel(string key, object value, Dictionary<string, object> source)
         {
-            EntityPersist p = ContainerApp.Db().Persist("comision").UpdateValueRel(key, value, source).Exec();
+            EntityPersist p = ContainerApp.Db().Persist("designacion").UpdateValueRel(key, value, source).Exec();
             ContainerApp.DbCache().Remove(p.detail);
         }
     }
