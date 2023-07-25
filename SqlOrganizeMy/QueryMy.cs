@@ -21,6 +21,7 @@ namespace SqlOrganizeMy
             {
                 if (parameters[i].IsList())
                 {
+                    //cuidado con el tipo de entrada, no se puede hacer cast de List<string> a List<object> por ejemplo
                     var _parameters = (parameters[i] as List<object>).Select((x, j) => Tuple.Create($"@{i}_{j}", x));
                     sql = sql.ReplaceFirst("@" + i.ToString(), string.Join(",", _parameters.Select(x => x.Item1)));
                     foreach (var parameter in _parameters)

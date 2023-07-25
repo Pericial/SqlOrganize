@@ -144,8 +144,35 @@ namespace SqlOrganize
                 return "";
 
             List<string> fields = _sql!.Replace("$", "").Split(',').ToList().Select(s => s.Trim()).ToList();
+
+            #region procesar *
+            List<string> fieldNamesToDelete = new();
+            for (int i = 0; i < fields.Count; i++)
+            {
+                if (fields[i].Contains("*"))
+                {
+                    fieldNamesToDelete.Add(fields[i]);
+                    var en = entityName;
+                    var fid = "";
+                    if (fields[i].Contains(db.config.idNameSeparatorString))
+                    {
+                        List<string> ff = fields[i].Split(db.config.idNameSeparatorString).ToList();
+                        en = db.Entity(entityName).relations[ff[0]].refEntityName;
+                        fid = ff[0] + db.config.idNameSeparatorString;
+                    }
+
+                    List<string> fns = db.FieldNames(en).AddPrefix(fid);
+                    fields.AddRange(fns);
+                }
+            }
+
+            foreach (var fntd in fieldNamesToDelete)
+                fields.Remove(fntd);
+            #endregion
+
+            #region definir sql
             string sql = "";
-            
+
             foreach (var fieldName in fields)
             {
                 if (fieldName.Contains(db.config.idNameSeparatorString))
@@ -156,6 +183,8 @@ namespace SqlOrganize
                     sql += db.Mapping(entityName).Map(fieldName) + " AS '" + fieldName + "', ";
             }
             sql = sql.RemoveLastIndex(',');
+            #endregion
+
             return sql;
         }
 

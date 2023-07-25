@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Utils;
 
-namespace WpfAppMy.Forms.ListaSedesSemestre.DAO
+namespace WpfAppMy.Forms.ListaReferentesSemestre.DAO
 {
     class Comision
     {
 
-        public List<Dictionary<string, object>> Search(ComisionSearch search)
+        public List<object> IdSedesSemestre(Search search)
         {
             var q = ContainerApp.Db().Query("comision")
-                .Fields("sede-*, domicilio-*")
+                .Fields("sede-_Id")
                 .Size(0)
                 .Where(@"
                     $calendario-anio = @0 
@@ -32,14 +32,10 @@ namespace WpfAppMy.Forms.ListaSedesSemestre.DAO
             }
     
 
-            return ContainerApp.DbCache().ListDict(q);
+            return ContainerApp.DbCache().Column<object>(q);
         }
 
-        public void UpdateValueRel(string key, object value, Dictionary<string, object> source)
-        {
-            EntityPersist p = ContainerApp.Db().Persist("comision").UpdateValueRel(key, value, source).Exec();
-            ContainerApp.DbCache().Remove(p.detail);
-        }
+        
 
     }
 }

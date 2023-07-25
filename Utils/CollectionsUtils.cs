@@ -127,9 +127,13 @@ namespace Utils
             return clonedList;
         }
 
-        /*
-        TODO Optimizar
-        */
+        /// <summary>
+        /// Lista de valores de una entrada del diccionario
+        /// </summary>
+        /// <typeparam name="T">Tipo de retorno</typeparam>
+        /// <param name="rows">Lista de diccionarios</param>
+        /// <param name="key">Llave del diccionario</param>
+        /// <returns>Lista de valores de una entrada del diccionario</returns>
         public static List<T> Column<T>(this List<Dictionary<string, object>> rows, string key)
         {
             List<T> response = new();
@@ -236,6 +240,19 @@ namespace Utils
             return response;
         }
 
+        /// <summary>
+        /// Add prefix to each element of list of strings
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="prefix"></param>
+        /// <returns></returns>
+        public static List<string> AddPrefix(this List<string> source, string prefix)
+        {
+            List<string> response = new();
+            foreach (string e in source)
+                response.Add(prefix + e);
+            return response;
+        }
 
         public static void AddRange<T>(this ObservableCollection<T> oc, IEnumerable<T> items)
         {

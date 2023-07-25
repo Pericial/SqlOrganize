@@ -286,6 +286,17 @@ namespace SqlOrganize
             return (T)response[k];
         }
 
+        public List<T> Column<T>(EntityQuery query, int columnNumber = 0)
+        {
+            List<Dictionary<string, object>>? response = ListDict(query);
+            if (response.IsNullOrEmpty())
+                return new();
+
+            string k = response[0].Keys.ElementAt(columnNumber).ToString();
+
+            return (List<T>)response.Column<T>(k);
+        }
+
         public void RemoveQueries()
         {
             List<string> queries;

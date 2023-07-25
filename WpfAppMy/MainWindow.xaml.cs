@@ -66,6 +66,15 @@ namespace WpfAppMy
             win.Show();
 
         }
+
+        private void ListaReferentes_Click(object sender, RoutedEventArgs e)
+        {
+            Forms.ListaReferentesSemestre.Window1 win = new();
+            win.Show();
+
+        }
+
+        
     }
 }
 

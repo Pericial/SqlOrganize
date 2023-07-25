@@ -70,6 +70,12 @@
         "alias": "pfi",
         "dataType": "string",
         "defaultValue": "NULL"
+    },
+
+    "pfid_organizacion": {
+        "alias": "pf1",
+        "dataType": "string",
+        "defaultValue": "NULL"
     }
 
 }

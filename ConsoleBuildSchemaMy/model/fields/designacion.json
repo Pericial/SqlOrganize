@@ -38,6 +38,12 @@
         "alias": "alt",
         "dataType": "timestamp",
         "defaultValue": "current_timestamp()"
+    },
+
+    "pfid": {
+        "alias": "pfi",
+        "dataType": "string",
+        "defaultValue": "NULL"
     }
 
 }

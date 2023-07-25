@@ -13,5 +13,10 @@
         Habitualmente se definen las palabras reservadas del motor de base de datos
         */
         public List<string> reserved_alias { get; set; } = new List<string>();
+
+        Dictionary<string, Table> entities = new();
+
+        Dictionary<string, Field> fields = new();
+
     }
 }

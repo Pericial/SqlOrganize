@@ -1,29 +1,8 @@
 {
   "alumno": {
-    "name": "alumno",
-    "alias": "alum",
-    "fields": ["id", "anio_ingreso", "observaciones", "persona", "estado_inscripcion", "fecha_titulacion", "plan", "resolucion_inscripcion", "anio_inscripcion", "semestre_inscripcion", "semestre_ingreso", "adeuda_legajo", "adeuda_deudores", "documentacion_inscripcion", "anio_inscripcion_completo", "establecimiento_inscripcion", "libro_folio", "libro", "folio", "comentarios", "tiene_dni", "tiene_constancia", "tiene_certificado", "previas_completas", "tiene_partida", "creado", "confirmado_direccion"],
-    "pk": ["id"],
-    "fk": ["persona", "plan", "resolucion_inscripcion"],
-    "unique": ["persona", "libro_folio"],
-    "notNull": ["id", "persona", "tiene_dni", "tiene_constancia", "tiene_certificado", "previas_completas", "tiene_partida", "creado", "confirmado_direccion"],
-    "tree": {
-      "persona": { "fieldName": "persona", "refEntityName": "persona", "refFieldName": "id", "children": {
-          "domicilio": { "fieldName": "domicilio", "refEntityName": "domicilio", "refFieldName": "id", "children": {
-          }}
-      }},
-      "plan": { "fieldName": "plan", "refEntityName": "plan", "refFieldName": "id", "children": {
-      }},
-      "resolucion_inscripcion": { "fieldName": "resolucion_inscripcion", "refEntityName": "resolucion", "refFieldName": "id", "children": {
-      }}
-    },
-    "relations": {
-      "persona": { "fieldName": "persona", "refEntityName": "persona", "refFieldName": "id", "parentId": null},
-          "domicilio": { "fieldName": "domicilio", "refEntityName": "domicilio", "refFieldName": "id", "parentId": "persona"},
-      "plan": { "fieldName": "plan", "refEntityName": "plan", "refFieldName": "id", "parentId": null},
-      "resolucion_inscripcion": { "fieldName": "resolucion_inscripcion", "refEntityName": "resolucion", "refFieldName": "id", "parentId": null}
-    }
+    "fields-": [ "creado" ]
   },
+ 
 
   "alumno_comision": {
     "name": "alumno_comision",
@@ -450,7 +429,7 @@
   "designacion": {
     "name": "designacion",
     "alias": "desi",
-    "fields": ["id", "desde", "hasta", "cargo", "sede", "persona", "alta", "pfid"],
+    "fields": ["id", "desde", "hasta", "cargo", "sede", "persona", "alta"],
     "pk": ["id"],
     "fk": ["cargo", "sede", "persona"],
     "notNull": ["id", "cargo", "sede", "persona", "alta"],
@@ -758,7 +737,7 @@
   "sede": {
     "name": "sede",
     "alias": "sede",
-    "fields": ["id", "numero", "nombre", "observaciones", "alta", "baja", "domicilio", "tipo_sede", "centro_educativo", "fecha_traspaso", "organizacion", "pfid", "pfid_organizacion"],
+    "fields": ["id", "numero", "nombre", "observaciones", "alta", "baja", "domicilio", "tipo_sede", "centro_educativo", "fecha_traspaso", "organizacion", "pfid"],
     "pk": ["id"],
     "fk": ["domicilio", "tipo_sede", "centro_educativo", "organizacion"],
     "notNull": ["id", "numero", "nombre", "alta"],

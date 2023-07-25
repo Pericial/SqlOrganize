@@ -1,0 +1,12 @@
+{
+  "field_name": {
+    "reset+": {
+      "trim": " "
+    },
+    "check+": {
+      "numeric": true
+    },
+    "check-": ["type"]
+  }
+
+}

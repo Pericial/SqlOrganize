@@ -1,5 +1,4 @@
-﻿using SqlOrganize;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,23 +13,22 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Utils;
 
-namespace WpfAppMy.Forms.ListaSedesSemestre
+namespace WpfAppMy.Forms.ListaReferentesSemestre
 {
     /// <summary>
     /// Lógica de interacción para Window1.xaml
     /// </summary>
     public partial class Window1 : Window
     {
+        Search search = new();
 
-        ComisionSearch comisionSearch = new();
-
-        private WpfAppMy.Forms.ListaSedesSemestre.DAO.Comision comisionDAO = new();
+        private WpfAppMy.Forms.ListaReferentesSemestre.DAO.Designacion designacionDAO = new();
 
         public Window1()
         {
             InitializeComponent();
 
-            DataContext = comisionSearch;
+            DataContext = search;
 
             this.autorizadaCombo.SelectedValuePath = "Key";
             this.autorizadaCombo.DisplayMemberPath = "Value";
@@ -38,23 +36,23 @@ namespace WpfAppMy.Forms.ListaSedesSemestre
             this.autorizadaCombo.Items.Add(new KeyValuePair<bool, string>(true, "Sí"));
             this.autorizadaCombo.Items.Add(new KeyValuePair<bool, string>(false, "No"));
 
-            sedeGrid.CellEditEnding += SedeGrid_CellEditEnding;
+            referenteGrid.CellEditEnding += ReferenteGrid_CellEditEnding;
 
-            ComisionSearch();
+            Search();
         }
 
-        private void ComisionSearch()
+        private void Search()
         {
-            List<Dictionary<string, object>> list = comisionDAO.Search(comisionSearch);
-            sedeGrid.ItemsSource = list.ConvertToListOfObject<Sede>();
+            List<Dictionary<string, object>> list = designacionDAO.referentesSemestre(search);
+            referenteGrid.ItemsSource = list.ConvertToListOfObject<Designacion>();
         }
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-            ComisionSearch();
+            Search();
         }
 
-        private void SedeGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        private void ReferenteGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
             if (e.EditAction == DataGridEditAction.Commit)
             {
@@ -62,15 +60,15 @@ namespace WpfAppMy.Forms.ListaSedesSemestre
                 if (column != null)
                 {
                     string key = ((Binding)column.Binding).Path.Path; //column's binding
-                    Dictionary<string, object> source = (Dictionary<string, object>)((Sede)e.Row.DataContext).ConvertToDict();
+                    Dictionary<string, object> source = (Dictionary<string, object>)((Designacion)e.Row.DataContext).ConvertToDict();
                     string value = (e.EditingElement as TextBox)!.Text;
-                    comisionDAO.UpdateValueRel(key, value, source);
+                    designacionDAO.UpdateValueRel(key, value, source);
                 }
             }
         }
     }
 
-    internal class ComisionSearch
+    internal class Search
     {
         public string calendario__anio { get; set; } = DateTime.Now.Year.ToString();
         public int calendario__semestre { get; set; } = DateTime.Now.ToSemester();
@@ -78,21 +76,24 @@ namespace WpfAppMy.Forms.ListaSedesSemestre
     }
 
 
-    internal class Sede
+    internal class Designacion
     {
+
+        public string pfid { get; set; }
 
         public string sede___Id { get; set; }
         public string sede__numero { get; set; }
         public string sede__nombre { get; set; }
-        public string sede__pfid { get; set; }
-        public string sede__pfid_organizacion { get; set; }
 
-        public string domicilio___Id { get; set; }
-        public string domicilio__calle { get; set; }
-        public string domicilio__numero { get; set; }
-        public string domicilio__entre { get; set; }
-        public string domicilio__localidad { get; set; }
-        public string domicilio__barrio { get; set; }
+        public string persona___Id { get; set; }
+
+        public string persona__nombres { get; set; }
+        public string persona__apellidos { get; set; }
+        public string persona__telefono { get; set; }
+        public string persona__email { get; set; }
+
+
+       
 
     }
 }

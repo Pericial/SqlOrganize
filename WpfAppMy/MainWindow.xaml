@@ -14,6 +14,7 @@
                 <MenuItem Header="Lista de Sedes del Semestre" Click="listaSedesSemestre_Click"/>
                 <MenuItem Header="Lista de Planificaciones" Click="listaPlanificaciones_Click"/>
                 <MenuItem Header="Lista de Modalidades" Click="listaModalidades_Click"/>
+                <MenuItem Header="Lista de Referentes" Click="ListaReferentes_Click"/>
 
 
             </MenuItem>
