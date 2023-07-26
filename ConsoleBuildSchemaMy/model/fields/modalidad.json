@@ -1,18 +1,29 @@
 {
-    "id": {
-        "alias": "id",
-        "dataType": "string"
-    },
-
-    "nombre": {
-        "alias": "nom",
-        "dataType": "string"
-    },
-
-    "pfid": {
-        "alias": "pfi",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    }
-
+  "id": {
+    "name": "id",
+    "alias": "id",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "nombre": {
+    "name": "nombre",
+    "alias": "nom",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "pfid": {
+    "name": "pfid",
+    "alias": "pfi",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  }
 }

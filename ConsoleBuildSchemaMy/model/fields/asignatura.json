@@ -1,36 +1,56 @@
 {
-    "id": {
-        "alias": "id",
-        "dataType": "string"
-    },
-
-    "nombre": {
-        "alias": "nom",
-        "dataType": "string"
-    },
-
-    "formacion": {
-        "alias": "for",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "clasificacion": {
-        "alias": "cla",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "codigo": {
-        "alias": "cod",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "perfil": {
-        "alias": "per",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    }
-
+  "id": {
+    "name": "id",
+    "alias": "id",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "nombre": {
+    "name": "nombre",
+    "alias": "nom",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "formacion": {
+    "name": "formacion",
+    "alias": "for",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "clasificacion": {
+    "name": "clasificacion",
+    "alias": "cla",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "codigo": {
+    "name": "codigo",
+    "alias": "cod",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "perfil": {
+    "name": "perfil",
+    "alias": "per",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  }
 }

@@ -1,102 +1,155 @@
 {
-    "id": {
-        "alias": "id",
-        "dataType": "string"
-    },
-
-    "nombres": {
-        "alias": "nom",
-        "dataType": "string"
-    },
-
-    "apellidos": {
-        "alias": "ape",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "fecha_nacimiento": {
-        "alias": "fec",
-        "dataType": "date",
-        "defaultValue": "NULL"
-    },
-
-    "numero_documento": {
-        "alias": "num",
-        "dataType": "string"
-    },
-
-    "cuil": {
-        "alias": "cui",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "genero": {
-        "alias": "gen",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "apodo": {
-        "alias": "apo",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "telefono": {
-        "alias": "tel",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "email": {
-        "alias": "ema",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "email_abc": {
-        "alias": "em1",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "alta": {
-        "alias": "alt",
-        "dataType": "timestamp",
-        "defaultValue": "current_timestamp()"
-    },
-
-    "domicilio": {
-        "alias": "dom",
-        "dataType": "string",
-        "defaultValue": "NULL",
-        "refEntityName": "id"
-    },
-
-    "lugar_nacimiento": {
-        "alias": "lug",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "telefono_verificado": {
-        "alias": "te1",
-        "dataType": "tinyint",
-        "defaultValue": "0"
-    },
-
-    "email_verificado": {
-        "alias": "em2",
-        "dataType": "tinyint",
-        "defaultValue": "0"
-    },
-
-    "info_verificada": {
-        "alias": "inf",
-        "dataType": "tinyint",
-        "defaultValue": "0"
-    }
-
+  "id": {
+    "name": "id",
+    "alias": "id",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "nombres": {
+    "name": "nombres",
+    "alias": "nom",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "apellidos": {
+    "name": "apellidos",
+    "alias": "ape",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "fecha_nacimiento": {
+    "name": "fecha_nacimiento",
+    "alias": "fec",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "date",
+    "defaultValue": "NULL"
+  },
+  "numero_documento": {
+    "name": "numero_documento",
+    "alias": "num",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "cuil": {
+    "name": "cuil",
+    "alias": "cui",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "genero": {
+    "name": "genero",
+    "alias": "gen",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "apodo": {
+    "name": "apodo",
+    "alias": "apo",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "telefono": {
+    "name": "telefono",
+    "alias": "tel",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "email": {
+    "name": "email",
+    "alias": "ema",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "email_abc": {
+    "name": "email_abc",
+    "alias": "em1",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "alta": {
+    "name": "alta",
+    "alias": "alt",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "timestamp",
+    "defaultValue": "current_timestamp()"
+  },
+  "domicilio": {
+    "name": "domicilio",
+    "alias": "dom",
+    "entityName": null,
+    "refEntityName": "domicilio",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "lugar_nacimiento": {
+    "name": "lugar_nacimiento",
+    "alias": "lug",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "telefono_verificado": {
+    "name": "telefono_verificado",
+    "alias": "te1",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "bool",
+    "defaultValue": "0"
+  },
+  "email_verificado": {
+    "name": "email_verificado",
+    "alias": "em2",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "bool",
+    "defaultValue": "0"
+  },
+  "info_verificada": {
+    "name": "info_verificada",
+    "alias": "inf",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "bool",
+    "defaultValue": "0"
+  }
 }

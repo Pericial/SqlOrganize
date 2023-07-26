@@ -1,37 +1,56 @@
 {
-    "id": {
-        "alias": "id",
-        "dataType": "string"
-    },
-
-    "planilla_docente": {
-        "alias": "pla",
-        "dataType": "string",
-        "refEntityName": "id"
-    },
-
-    "toma": {
-        "alias": "tom",
-        "dataType": "string",
-        "refEntityName": "id"
-    },
-
-    "insertado": {
-        "alias": "ins",
-        "dataType": "timestamp",
-        "defaultValue": "current_timestamp()"
-    },
-
-    "comentario": {
-        "alias": "com",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "reclamo": {
-        "alias": "rec",
-        "dataType": "tinyint",
-        "defaultValue": "0"
-    }
-
+  "id": {
+    "name": "id",
+    "alias": "id",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "planilla_docente": {
+    "name": "planilla_docente",
+    "alias": "pla",
+    "entityName": null,
+    "refEntityName": "planilla_docente",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "toma": {
+    "name": "toma",
+    "alias": "tom",
+    "entityName": null,
+    "refEntityName": "toma",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "insertado": {
+    "name": "insertado",
+    "alias": "ins",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "timestamp",
+    "defaultValue": "current_timestamp()"
+  },
+  "comentario": {
+    "name": "comentario",
+    "alias": "com",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "reclamo": {
+    "name": "reclamo",
+    "alias": "rec",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "bool",
+    "defaultValue": "0"
+  }
 }

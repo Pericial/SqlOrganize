@@ -7,7 +7,7 @@ namespace SchemaJsonSs
         /*
         Se definen las palabras reservadas de SQL SERVER
         */
-        public List<string> reserved_alias { get; set; } = new List<string>() {
+        public List<string> reservedAlias { get; set; } = new List<string>() {
         "ADD",
         "EXTERNAL",
         "PROCEDURE",

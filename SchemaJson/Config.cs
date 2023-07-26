@@ -2,8 +2,8 @@
 {
     public class Config
     {
-        public string connection_string { get; set; }
-        public string db_name { get; set; }
+        public string connectionString { get; set; }
+        public string dbName { get; set; }
         /*
         Path to model
         */
@@ -12,11 +12,17 @@
         Alias reservados
         Habitualmente se definen las palabras reservadas del motor de base de datos
         */
-        public List<string> reserved_alias { get; set; } = new List<string>();
+        public List<string> reservedAlias { get; set; } = new List<string>();
 
-        Dictionary<string, Table> entities = new();
+        /// <summary>
+        /// Entidades reservadas
+        /// </summary>
+        /// <remarks>Las entidades indicadas en la lista no se incluiran en el modelo</remarks>
+        public List<string> reservedEntities { get; set; } = new List<string>();
 
-        Dictionary<string, Field> fields = new();
+        public string modelPath { get; set; } = "./model";
+
+      
 
     }
 }

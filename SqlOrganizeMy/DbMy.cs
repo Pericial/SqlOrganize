@@ -17,7 +17,7 @@ namespace SqlOrganizeMy
         /// <param name="config">
         /// </param>
         /// <example>
-        ///   connection_string = "server=127.0.0.1;uid=root;pwd=12345;database=test"
+        ///   connectionString = "server=127.0.0.1;uid=root;pwd=12345;database=test"
         /// </example>
         public DbMy(Config config): base(config)
         {            

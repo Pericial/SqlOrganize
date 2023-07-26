@@ -39,7 +39,7 @@ namespace WinFormsAppSs
                     Where("$DTOJUD = @0").
                     Parameters(departamento.DTOJUD).
                     Size(0).
-                    ListObject<Form1_PERSONAL>();
+                    ListObj<Form1_PERSONAL>();
             personalBindingSource.DataSource = departamento.Personal;
 
         }

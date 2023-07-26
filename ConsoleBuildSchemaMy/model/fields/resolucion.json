@@ -1,24 +1,38 @@
 {
-    "id": {
-        "alias": "id",
-        "dataType": "string"
-    },
-
-    "numero": {
-        "alias": "num",
-        "dataType": "string"
-    },
-
-    "anio": {
-        "alias": "ani",
-        "dataType": "year",
-        "defaultValue": "NULL"
-    },
-
-    "tipo": {
-        "alias": "tip",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    }
-
+  "id": {
+    "name": "id",
+    "alias": "id",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "numero": {
+    "name": "numero",
+    "alias": "num",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "anio": {
+    "name": "anio",
+    "alias": "ani",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "year",
+    "defaultValue": "NULL"
+  },
+  "tipo": {
+    "name": "tipo",
+    "alias": "tip",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  }
 }

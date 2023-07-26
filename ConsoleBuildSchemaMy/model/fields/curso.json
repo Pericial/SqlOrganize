@@ -1,36 +1,56 @@
 {
-    "id": {
-        "alias": "id",
-        "dataType": "string"
-    },
-
-    "horas_catedra": {
-        "alias": "hor",
-        "dataType": "int"
-    },
-
-    "ige": {
-        "alias": "ige",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "comision": {
-        "alias": "com",
-        "dataType": "string",
-        "refEntityName": "id"
-    },
-
-    "asignatura": {
-        "alias": "asi",
-        "dataType": "string",
-        "refEntityName": "id"
-    },
-
-    "alta": {
-        "alias": "alt",
-        "dataType": "timestamp",
-        "defaultValue": "current_timestamp()"
-    }
-
+  "id": {
+    "name": "id",
+    "alias": "id",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "horas_catedra": {
+    "name": "horas_catedra",
+    "alias": "hor",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "int",
+    "defaultValue": null
+  },
+  "ige": {
+    "name": "ige",
+    "alias": "ige",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "comision": {
+    "name": "comision",
+    "alias": "com",
+    "entityName": null,
+    "refEntityName": "comision",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "asignatura": {
+    "name": "asignatura",
+    "alias": "asi",
+    "entityName": null,
+    "refEntityName": "asignatura",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "alta": {
+    "name": "alta",
+    "alias": "alt",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "timestamp",
+    "defaultValue": "current_timestamp()"
+  }
 }

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<configuration>
+	<appSettings>
+		<add key="modelPath" value="C:\projects\SqlOrganize\ConsoleBuildSchemaMy\model\" />
+		<add key="connectionString" value="server=localhost;database=planfi10_20203;uid=root;" />
+		<add key="dbName" value="planfi10_20203" />
+	</appSettings>
+</configuration>
+

@@ -1,81 +1,119 @@
 {
-    "id": {
-        "alias": "id",
-        "dataType": "string"
-    },
-
-    "numero": {
-        "alias": "num",
-        "dataType": "string"
-    },
-
-    "nombre": {
-        "alias": "nom",
-        "dataType": "string"
-    },
-
-    "observaciones": {
-        "alias": "obs",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "alta": {
-        "alias": "alt",
-        "dataType": "timestamp",
-        "defaultValue": "current_timestamp()"
-    },
-
-    "baja": {
-        "alias": "baj",
-        "dataType": "timestamp",
-        "defaultValue": "NULL"
-    },
-
-    "domicilio": {
-        "alias": "dom",
-        "dataType": "string",
-        "defaultValue": "NULL",
-        "refEntityName": "id"
-    },
-
-    "tipo_sede": {
-        "alias": "tip",
-        "dataType": "string",
-        "defaultValue": "NULL",
-        "refEntityName": "id"
-    },
-
-    "centro_educativo": {
-        "alias": "cen",
-        "dataType": "string",
-        "defaultValue": "NULL",
-        "refEntityName": "id"
-    },
-
-    "fecha_traspaso": {
-        "alias": "fec",
-        "dataType": "date",
-        "defaultValue": "NULL"
-    },
-
-    "organizacion": {
-        "alias": "org",
-        "dataType": "string",
-        "defaultValue": "NULL",
-        "refEntityName": "id"
-    },
-
-    "pfid": {
-        "alias": "pfi",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "pfid_organizacion": {
-        "alias": "pf1",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    }
-
+  "id": {
+    "name": "id",
+    "alias": "id",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "numero": {
+    "name": "numero",
+    "alias": "num",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "nombre": {
+    "name": "nombre",
+    "alias": "nom",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "observaciones": {
+    "name": "observaciones",
+    "alias": "obs",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "alta": {
+    "name": "alta",
+    "alias": "alt",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "timestamp",
+    "defaultValue": "current_timestamp()"
+  },
+  "baja": {
+    "name": "baja",
+    "alias": "baj",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "timestamp",
+    "defaultValue": "NULL"
+  },
+  "domicilio": {
+    "name": "domicilio",
+    "alias": "dom",
+    "entityName": null,
+    "refEntityName": "domicilio",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "tipo_sede": {
+    "name": "tipo_sede",
+    "alias": "tip",
+    "entityName": null,
+    "refEntityName": "tipo_sede",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "centro_educativo": {
+    "name": "centro_educativo",
+    "alias": "cen",
+    "entityName": null,
+    "refEntityName": "centro_educativo",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "fecha_traspaso": {
+    "name": "fecha_traspaso",
+    "alias": "fec",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "date",
+    "defaultValue": "NULL"
+  },
+  "organizacion": {
+    "name": "organizacion",
+    "alias": "org",
+    "entityName": null,
+    "refEntityName": "sede",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "pfid": {
+    "name": "pfid",
+    "alias": "pfi",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "pfid_organizacion": {
+    "name": "pfid_organizacion",
+    "alias": "pf1",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  }
 }

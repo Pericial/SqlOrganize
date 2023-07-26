@@ -1,12 +1,20 @@
 {
-    "id": {
-        "alias": "id",
-        "dataType": "string"
-    },
-
-    "descripcion": {
-        "alias": "des",
-        "dataType": "string"
-    }
-
+  "id": {
+    "name": "id",
+    "alias": "id",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "descripcion": {
+    "name": "descripcion",
+    "alias": "des",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  }
 }

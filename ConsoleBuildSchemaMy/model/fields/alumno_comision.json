@@ -1,44 +1,65 @@
 {
-    "id": {
-        "alias": "id",
-        "dataType": "string"
-    },
-
-    "creado": {
-        "alias": "cre",
-        "dataType": "timestamp",
-        "defaultValue": "current_timestamp()"
-    },
-
-    "activo": {
-        "alias": "act",
-        "dataType": "tinyint",
-        "defaultValue": "0"
-    },
-
-    "observaciones": {
-        "alias": "obs",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "comision": {
-        "alias": "com",
-        "dataType": "string",
-        "defaultValue": "NULL",
-        "refEntityName": "id"
-    },
-
-    "alumno": {
-        "alias": "alu",
-        "dataType": "string",
-        "refEntityName": "id"
-    },
-
-    "estado": {
-        "alias": "est",
-        "dataType": "string",
-        "defaultValue": "'Activo'"
-    }
-
+  "id": {
+    "name": "id",
+    "alias": "id",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "creado": {
+    "name": "creado",
+    "alias": "cre",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "timestamp",
+    "defaultValue": "current_timestamp()"
+  },
+  "activo": {
+    "name": "activo",
+    "alias": "act",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "bool",
+    "defaultValue": "0"
+  },
+  "observaciones": {
+    "name": "observaciones",
+    "alias": "obs",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "comision": {
+    "name": "comision",
+    "alias": "com",
+    "entityName": null,
+    "refEntityName": "comision",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "alumno": {
+    "name": "alumno",
+    "alias": "alu",
+    "entityName": null,
+    "refEntityName": "alumno",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "estado": {
+    "name": "estado",
+    "alias": "est",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "'Activo'"
+  }
 }

@@ -1,36 +1,56 @@
 {
-    "id": {
-        "alias": "id",
-        "dataType": "string"
-    },
-
-    "email": {
-        "alias": "ema",
-        "dataType": "string"
-    },
-
-    "verificado": {
-        "alias": "ver",
-        "dataType": "tinyint",
-        "defaultValue": "0"
-    },
-
-    "insertado": {
-        "alias": "ins",
-        "dataType": "timestamp",
-        "defaultValue": "current_timestamp()"
-    },
-
-    "eliminado": {
-        "alias": "eli",
-        "dataType": "timestamp",
-        "defaultValue": "NULL"
-    },
-
-    "persona": {
-        "alias": "per",
-        "dataType": "string",
-        "refEntityName": "id"
-    }
-
+  "id": {
+    "name": "id",
+    "alias": "id",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "email": {
+    "name": "email",
+    "alias": "ema",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "verificado": {
+    "name": "verificado",
+    "alias": "ver",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "bool",
+    "defaultValue": "0"
+  },
+  "insertado": {
+    "name": "insertado",
+    "alias": "ins",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "timestamp",
+    "defaultValue": "current_timestamp()"
+  },
+  "eliminado": {
+    "name": "eliminado",
+    "alias": "eli",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "timestamp",
+    "defaultValue": "NULL"
+  },
+  "persona": {
+    "name": "persona",
+    "alias": "per",
+    "entityName": null,
+    "refEntityName": "persona",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  }
 }

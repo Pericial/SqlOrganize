@@ -14,24 +14,24 @@ namespace SchemaJsonSs
 
         protected override List<String> GetTableNames()
         {
-            using SqlConnection connection = new SqlConnection(Config.connection_string);
+            using SqlConnection connection = new SqlConnection(Config.connectionString);
             connection.Open();
             using SqlCommand command = new SqlCommand();
             command.CommandText = @"
                 SELECT TABLE_NAME
                 FROM INFORMATION_SCHEMA.TABLES
-                WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_CATALOG=@db_name
+                WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_CATALOG=@dbName
 				ORDER BY TABLE_NAME ASC;";
             command.Connection = connection;
-            command.Parameters.AddWithValue("db_name", Config.db_name);
+            command.Parameters.AddWithValue("dbName", Config.dbName);
             command.ExecuteNonQuery();
             using SqlDataReader reader = command.ExecuteReader();
             return SqlUtils.ColumnValues<string>(reader, "TABLE_NAME");
         }
 
-        protected override List<Field> GetFields(string tableName)
+        protected override List<Column> GetColumns(string tableName)
         {
-            using SqlConnection connection = new SqlConnection(Config.connection_string);
+            using SqlConnection connection = new SqlConnection(Config.connectionString);
             connection.Open();
             using SqlCommand command = new SqlCommand();
             command.CommandText = @"
@@ -109,16 +109,16 @@ LEFT JOIN (
 	)
 	WHERE CONSTRAINT_TYPE = 'FOREIGN KEY'
 ) AS INFO_FK2 ON (INFO_FK2.TABLE_NAME = Col.TABLE_NAME AND Col.COLUMN_NAME = INFO_FK2.COLUMN_NAME)
-WHERE tbl.table_type = 'base table' AND tbl.TABLE_CATALOG=@db_name AND tbl.TABLE_NAME = @table_name
+WHERE tbl.table_type = 'base table' AND tbl.TABLE_CATALOG=@dbName AND tbl.TABLE_NAME = @table_name
 ORDER BY col.TABLE_NAME ASC, col.COLUMN_NAME ASC;
 ";
             command.Connection = connection;
-            command.Parameters.AddWithValue("db_name", Config.db_name);
+            command.Parameters.AddWithValue("dbName", Config.dbName);
             command.Parameters.AddWithValue("table_name", tableName);
 
             command.ExecuteNonQuery();
             using SqlDataReader reader = command.ExecuteReader();
-            return reader.ConvertToListOfObject<Field>();
+            return reader.ConvertToListOfObject<Column>();
 
         }
 

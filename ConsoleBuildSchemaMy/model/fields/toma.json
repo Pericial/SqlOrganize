@@ -1,99 +1,146 @@
 {
-    "id": {
-        "alias": "id",
-        "dataType": "string"
-    },
-
-    "fecha_toma": {
-        "alias": "fec",
-        "dataType": "date",
-        "defaultValue": "NULL"
-    },
-
-    "estado": {
-        "alias": "est",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "observaciones": {
-        "alias": "obs",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "comentario": {
-        "alias": "com",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "tipo_movimiento": {
-        "alias": "tip",
-        "dataType": "string"
-    },
-
-    "estado_contralor": {
-        "alias": "es1",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "alta": {
-        "alias": "alt",
-        "dataType": "timestamp",
-        "defaultValue": "current_timestamp()"
-    },
-
-    "curso": {
-        "alias": "cur",
-        "dataType": "string",
-        "refEntityName": "id"
-    },
-
-    "docente": {
-        "alias": "doc",
-        "dataType": "string",
-        "defaultValue": "NULL",
-        "refEntityName": "id"
-    },
-
-    "reemplazo": {
-        "alias": "ree",
-        "dataType": "string",
-        "defaultValue": "NULL",
-        "refEntityName": "id"
-    },
-
-    "planilla_docente": {
-        "alias": "pla",
-        "dataType": "string",
-        "defaultValue": "NULL",
-        "refEntityName": "id"
-    },
-
-    "calificacion": {
-        "alias": "cal",
-        "dataType": "tinyint",
-        "defaultValue": "0"
-    },
-
-    "temas_tratados": {
-        "alias": "tem",
-        "dataType": "tinyint",
-        "defaultValue": "0"
-    },
-
-    "asistencia": {
-        "alias": "asi",
-        "dataType": "tinyint",
-        "defaultValue": "0"
-    },
-
-    "sin_planillas": {
-        "alias": "sin",
-        "dataType": "tinyint",
-        "defaultValue": "0"
-    }
-
+  "id": {
+    "name": "id",
+    "alias": "id",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "fecha_toma": {
+    "name": "fecha_toma",
+    "alias": "fec",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "date",
+    "defaultValue": "NULL"
+  },
+  "estado": {
+    "name": "estado",
+    "alias": "est",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "observaciones": {
+    "name": "observaciones",
+    "alias": "obs",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "comentario": {
+    "name": "comentario",
+    "alias": "com",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "tipo_movimiento": {
+    "name": "tipo_movimiento",
+    "alias": "tip",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "estado_contralor": {
+    "name": "estado_contralor",
+    "alias": "es1",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "alta": {
+    "name": "alta",
+    "alias": "alt",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "timestamp",
+    "defaultValue": "current_timestamp()"
+  },
+  "curso": {
+    "name": "curso",
+    "alias": "cur",
+    "entityName": null,
+    "refEntityName": "curso",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "docente": {
+    "name": "docente",
+    "alias": "doc",
+    "entityName": null,
+    "refEntityName": "persona",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "reemplazo": {
+    "name": "reemplazo",
+    "alias": "ree",
+    "entityName": null,
+    "refEntityName": "persona",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "planilla_docente": {
+    "name": "planilla_docente",
+    "alias": "pla",
+    "entityName": null,
+    "refEntityName": "planilla_docente",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "calificacion": {
+    "name": "calificacion",
+    "alias": "cal",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "bool",
+    "defaultValue": "0"
+  },
+  "temas_tratados": {
+    "name": "temas_tratados",
+    "alias": "tem",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "bool",
+    "defaultValue": "0"
+  },
+  "asistencia": {
+    "name": "asistencia",
+    "alias": "asi",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "bool",
+    "defaultValue": "0"
+  },
+  "sin_planillas": {
+    "name": "sin_planillas",
+    "alias": "sin",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "bool",
+    "defaultValue": "0"
+  }
 }

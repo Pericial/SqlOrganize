@@ -19,9 +19,9 @@ namespace SchemaJsonMy
         {
         }
 
-        protected override List<Field> GetFields(string tableName)
+        protected override List<Column> GetColumns(string tableName)
         {
-            using MySqlConnection connection = new MySqlConnection(Config.connection_string);
+            using MySqlConnection connection = new MySqlConnection(Config.connectionString);
             connection.Open();
             using MySqlCommand command = new MySqlCommand();
             command.CommandText = @"
@@ -68,26 +68,26 @@ left join (
 	where COLUMN_KEY = 'UNI'
 ) as INFO_U on (INFO_U.TABLE_NAME = COL.TABLE_NAME and INFO_U.COLUMN_NAME = COL.COLUMN_NAME)
 
-WHERE (COL.TABLE_SCHEMA = @db_name) AND (COL.TABLE_NAME = @table_name)
+WHERE (COL.TABLE_SCHEMA = @dbName) AND (COL.TABLE_NAME = @table_name)
 order by COL.TABLE_NAME, COL.ORDINAL_POSITION;
 ";
             command.Connection = connection;
-            command.Parameters.AddWithValue("db_name", Config.db_name);
+            command.Parameters.AddWithValue("dbName", Config.dbName);
             command.Parameters.AddWithValue("table_name", tableName);
 
             command.ExecuteNonQuery();
             using MySqlDataReader reader = command.ExecuteReader();
-            return reader.ConvertToListOfObject<Field>();
+            return reader.ConvertToListOfObject<Column>();
 
         }
 
 
         protected override List<String> GetTableNames()
         {
-            using MySqlConnection connection = new MySqlConnection(Config.connection_string);
+            using MySqlConnection connection = new MySqlConnection(Config.connectionString);
             connection.Open();
             using MySqlCommand command = new();
-            command.CommandText = @"SHOW TABLES FROM " + Config.db_name;
+            command.CommandText = @"SHOW TABLES FROM " + Config.dbName;
             command.Connection = connection;
             command.ExecuteNonQuery();
             using MySqlDataReader reader = command.ExecuteReader();

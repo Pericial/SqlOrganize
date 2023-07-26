@@ -1,42 +1,65 @@
 {
-    "id": {
-        "alias": "id",
-        "dataType": "string"
-    },
-
-    "tipo": {
-        "alias": "tip",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "prefijo": {
-        "alias": "pre",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "numero": {
-        "alias": "num",
-        "dataType": "string"
-    },
-
-    "insertado": {
-        "alias": "ins",
-        "dataType": "timestamp",
-        "defaultValue": "current_timestamp()"
-    },
-
-    "eliminado": {
-        "alias": "eli",
-        "dataType": "timestamp",
-        "defaultValue": "NULL"
-    },
-
-    "persona": {
-        "alias": "per",
-        "dataType": "string",
-        "refEntityName": "id"
-    }
-
+  "id": {
+    "name": "id",
+    "alias": "id",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "tipo": {
+    "name": "tipo",
+    "alias": "tip",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "prefijo": {
+    "name": "prefijo",
+    "alias": "pre",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "numero": {
+    "name": "numero",
+    "alias": "num",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "insertado": {
+    "name": "insertado",
+    "alias": "ins",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "timestamp",
+    "defaultValue": "current_timestamp()"
+  },
+  "eliminado": {
+    "name": "eliminado",
+    "alias": "eli",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "timestamp",
+    "defaultValue": "NULL"
+  },
+  "persona": {
+    "name": "persona",
+    "alias": "per",
+    "entityName": null,
+    "refEntityName": "persona",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  }
 }

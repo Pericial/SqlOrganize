@@ -1,25 +1,38 @@
 {
-    "id": {
-        "alias": "id",
-        "dataType": "string"
-    },
-
-    "disposicion": {
-        "alias": "dis",
-        "dataType": "string",
-        "refEntityName": "id"
-    },
-
-    "alumno": {
-        "alias": "alu",
-        "dataType": "string",
-        "refEntityName": "id"
-    },
-
-    "modo": {
-        "alias": "mod",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    }
-
+  "id": {
+    "name": "id",
+    "alias": "id",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "disposicion": {
+    "name": "disposicion",
+    "alias": "dis",
+    "entityName": null,
+    "refEntityName": "disposicion",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "alumno": {
+    "name": "alumno",
+    "alias": "alu",
+    "entityName": null,
+    "refEntityName": "alumno",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "modo": {
+    "name": "modo",
+    "alias": "mod",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  }
 }

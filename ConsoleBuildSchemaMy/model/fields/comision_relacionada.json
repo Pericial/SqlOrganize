@@ -1,19 +1,29 @@
 {
-    "id": {
-        "alias": "id",
-        "dataType": "string"
-    },
-
-    "comision": {
-        "alias": "com",
-        "dataType": "string",
-        "refEntityName": "id"
-    },
-
-    "relacion": {
-        "alias": "rel",
-        "dataType": "string",
-        "refEntityName": "id"
-    }
-
+  "id": {
+    "name": "id",
+    "alias": "id",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "comision": {
+    "name": "comision",
+    "alias": "com",
+    "entityName": null,
+    "refEntityName": "comision",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "relacion": {
+    "name": "relacion",
+    "alias": "rel",
+    "entityName": null,
+    "refEntityName": "comision",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  }
 }

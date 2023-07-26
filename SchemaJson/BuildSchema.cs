@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
@@ -12,30 +13,38 @@ namespace SchemaJson
 
         public List<Table> Tables { get; } = new();
 
+        public Dictionary<string, Entity> entities { get; } = new();
+
+        public Dictionary<string, Dictionary<string, Field>> fields { get; set; } = new();
+
+
+
+
         /// <summary>
         /// Definir datos del esquema y arbol de relaciones
         /// </summary>
         /// <param name="config">Configuracion</param>
-        public BuildSchema(Config config) 
+        public BuildSchema(Config config)
         {
             Config = config;
 
-            List<string> tableAlias = new List<string>(Config.reserved_alias);
+            #region Definicion de tables y columns
+            List<string> tableAlias = new List<string>(Config.reservedAlias);
 
-            foreach ( string tableName in GetTableNames())
+            foreach (string tableName in GetTableNames())
             {
                 Table table = new();
                 table.Name = tableName;
                 table.Alias = GetAlias(tableName, tableAlias, 4);
                 tableAlias.Add(table.Alias);
-                table.FieldsData = GetFields(table.Name);
+                table.Columns = GetColumns(table.Name);
 
-                List<string> fieldAlias = new List<string>(Config.reserved_alias);
-                foreach (Field field in table.FieldsData)
+                List<string> fieldAlias = new List<string>(Config.reservedAlias);
+                foreach (Column field in table.Columns)
                 {
                     field.Alias = GetAlias(field.COLUMN_NAME, fieldAlias, 3);
                     fieldAlias.Add(field.Alias);
-                    table.Fields.Add(field.COLUMN_NAME);
+                    table.ColumnNames.Add(field.COLUMN_NAME);
 
 
                     if (field.IS_FOREIGN_KEY == 1)
@@ -60,6 +69,7 @@ namespace SchemaJson
                             field.DataType = "float";
                             break;
                         case "bit":
+                        case "tinyint":
                             field.DataType = "bool";
                             break;
                         case "datetime":
@@ -73,15 +83,145 @@ namespace SchemaJson
                             break;
                     }
                 }
-                
+
                 Tables.Add(table);
             }
+            #endregion
 
+            #region Definicion de entities
             foreach (Table t in Tables)
             {
-                var bt = new BuildTree(Tables, t.Name!);
-                t.Tree = bt.Build();
+                if (Config.reservedEntities.Contains(t.Name!))
+                    continue;
+
+                List<string> fieldIds = new(); //lista de fieldIds de la tabla para no repetir
+
+                var e = new Entity();
+                e.name = t.Name!;
+                e.alias = t.Alias!;
+                e.fields = t.ColumnNames;
+                e.pk = t.Pk;
+                e.fk = t.Fk;
+                e.unique = t.Unique;
+                e.notNull = t.NotNull;
+                entities[e.name!] = e;
             }
+            #endregion
+
+            #region Definir id de entities
+            foreach (var (name, e) in entities)
+                e.id = DefineId(e);
+            #endregion
+
+            #region Redefinicion de entities en base a configuracion
+            if (File.Exists(config.modelPath + "entities.json"))
+            {
+                using (StreamReader r = new StreamReader(config.modelPath + "entities.json"))
+                {
+                    Dictionary<string, EntityAux> entitiesAux = JsonConvert.DeserializeObject<Dictionary<string, EntityAux>>(r.ReadToEnd())!;
+                    foreach (KeyValuePair<string, EntityAux> e in entitiesAux)
+                    {
+                        if (!entities.ContainsKey(e.Key))
+                            continue;
+
+                        CollectionUtils.CopyValues(entities[e.Key], e.Value);
+
+                        var f = new List<string>();
+                        f.AddRange(entities[e.Key].fields);
+                        f.AddRange(e.Value.fieldsAdd);
+                        f = f.Except(e.Value.fieldsSub).ToList();
+                        entities[e.Key].fields = f;
+
+                        f = new List<string>();
+                        f.AddRange(entities[e.Key].fk);
+                        f.AddRange(e.Value.fkAdd);
+                        f = f.Except(e.Value.fkSub).ToList();
+                        entities[e.Key].fk = f;
+
+                        f = new List<string>();
+                        f.AddRange(entities[e.Key].unique);
+                        f.AddRange(e.Value.uniqueAdd);
+                        f = f.Except(e.Value.uniqueSub).ToList();
+                        entities[e.Key].unique = f;
+
+                        f = new List<string>();
+                        f.AddRange(entities[e.Key].notNull);
+                        f.AddRange(e.Value.notNullAdd);
+                        f = f.Except(e.Value.notNullSub).ToList();
+                        entities[e.Key].notNull = f;
+
+                        f = new List<string>();
+                        f.AddRange(entities[e.Key].uniqueMultiple);
+                        f.AddRange(e.Value.uniqueMultipleAdd);
+                        f = f.Except(e.Value.uniqueMultipleSub).ToList();
+                        entities[e.Key].uniqueMultiple = f;
+                    }
+                }
+            }
+            #endregion
+
+            #region Definicion de fields
+            foreach (Table t in Tables)
+            {
+                if (Config.reservedEntities.Contains(t.Name!))
+                    continue;
+
+                foreach (Column c in t.Columns)
+                {
+                    if (!entities[t.Name!]!.fields.Contains(c.COLUMN_NAME))
+                        continue;
+
+                    var f = new Field();
+                    f.name = c.COLUMN_NAME;
+                    f.alias = c.Alias;
+                    f.dataType = c.DataType;
+                    if (!c.COLUMN_DEFAULT.IsNullOrEmpty())
+                        f.defaultValue = c.COLUMN_DEFAULT;
+
+                    if (!c.REFERENCED_TABLE_NAME.IsNullOrEmpty())
+                        f.refEntityName = c.REFERENCED_TABLE_NAME;
+
+                    if (!c.REFERENCED_COLUMN_NAME.IsNullOrEmpty())
+                        f.refFieldName = c.REFERENCED_COLUMN_NAME;
+
+                    if (!fields.ContainsKey(t.Name!))
+                        fields[t.Name!] = new();
+
+                    fields[t.Name!][f.name] = f;
+                }
+
+            }
+            #endregion
+
+            #region Definicion de tree y relations de entities
+            foreach (var (name, e) in entities)
+            {
+                var bet = new BuildEntityTree(entities, fields, e.name!);
+                e.tree = bet.Build();
+                RelationsRecursive(e.relations, e.tree);
+
+            }
+            #endregion
+
+            #region Redefinicion de fields en base a configuracion
+            foreach (string entityName in entities.Keys)
+                if (!fields.ContainsKey(entityName))
+                    if (File.Exists(config.modelPath + "fields/" + entityName + ".json"))
+                        using (StreamReader r = new StreamReader(config.modelPath + "fields/" + entityName + ".json"))
+                        {
+                            Dictionary<string, Field> fieldsAux = JsonConvert.DeserializeObject<Dictionary<string, Field>>(r.ReadToEnd())!;
+                            foreach (KeyValuePair<string, Field> e in fieldsAux)
+                            {
+                                if (fields[entityName].ContainsKey(e.Key))
+                                {
+                                    CollectionUtils.CopyValues(fields[entityName][e.Key], e.Value);
+                                }
+                            }
+                        }
+            #endregion
+
+
+
         }
 
         /// <summary>
@@ -99,7 +239,7 @@ namespace SchemaJson
 
             string nameAux = "";
 
-            if (n.Length < length) 
+            if (n.Length < length)
                 length = n.Length;
 
             if (words.Length > 1)
@@ -122,221 +262,92 @@ namespace SchemaJson
 
         protected abstract List<String> GetTableNames();
 
-        protected abstract List<Field> GetFields(string tableName);
+        protected abstract List<Column> GetColumns(string tableName);
 
-        /*
-        Generar _entities.json
-        */
-        public void FileEntities()
+
+        protected void RelationsRecursive(Dictionary<string, EntityRelation> rel, Dictionary<string, EntityTree> tree, string? parentId = null)
         {
-            string file = @"{
-";
-            foreach(Table t in Tables)
-
+            foreach (var (fieldId, t) in tree)
             {
-                file += @"  """ + t.Name + @""": {
-    ""name"": """ + t.Name + @""",
-    ""alias"": """ + t.Alias + @""",
-    ""fields"": [""" + String.Join("\", \"", t.Fields) + @"""],
-";
-                if(t.Pk is not null) 
-                    file += @"    ""pk"": [""" + String.Join("\", \"", t.Pk) + @"""],
-";
-                if (t.Fk.Count >  0)
-                    file += @"    ""fk"": [""" + String.Join("\", \"", t.Fk) + @"""],
-";
-                if (t.Unique.Count > 0)
-                    file += @"    ""unique"": [""" + String.Join("\", \"", t.Unique) + @"""],
-";
-   
-                if (t.NotNull.Count > 0)
-                    file += @"    ""notNull"": [""" + String.Join("\", \"", t.NotNull) + @"""],
-";
-
-                var contentAux = ContentTree(t);
-                if (!contentAux.IsNullOrEmpty())
-                    file += contentAux;
-
-                contentAux = ContentRelations(t);
-                if (!contentAux.IsNullOrEmpty())
-                    file += contentAux;
-
-                file = file.RemoveLastIndex(',');
-                file += @"  },
-
-";
-
+                EntityRelation r = new()
+                {
+                    fieldName = t.fieldName,
+                    refEntityName = t.refEntityName,
+                    refFieldName = t.refFieldName,
+                    parentId = parentId
+                };
+                rel[fieldId] = r;
+                RelationsRecursive(rel, t.children, fieldId);
             }
+        }
 
-            file = file.RemoveLastIndex(',');
-            file += "}";
 
-            if(!Directory.Exists(Config.path))
+        public void CreateFileEntitites()
+        {
+            if (!Directory.Exists(Config.path))
                 Directory.CreateDirectory(Config.path);
 
             if (File.Exists(Config.path + "entities.json"))
                 File.Delete(Config.path + "entities.json");
 
+            var file = JsonConvert.SerializeObject(entities, Newtonsoft.Json.Formatting.Indented);
             File.WriteAllText(Config.path + "entities.json", file);
-
         }
 
-        public void FileFields()
+        public void CreateFileFields()
         {
             if (!Directory.Exists(Config.path + "fields/"))
                 Directory.CreateDirectory(Config.path + "fields/");
-            foreach (Table t in Tables)
+
+            foreach(var (entityName, field) in fields)
             {
+                if (File.Exists(Config.path + entityName + ".json"))
+                    File.Delete(Config.path + entityName + ".json");
 
-                string file = @"{
-";
-                foreach (Field f in t.FieldsData) {
-
-                    file += @"    """ + f.COLUMN_NAME + @""": {
-        ""alias"": """ + f.Alias + @""",
-        ""dataType"": """ + f.DataType + @""",
-";
-                if (!f.COLUMN_DEFAULT.IsNullOrEmpty())
-                    file += @"        ""defaultValue"": """ + f.COLUMN_DEFAULT + @""",
-";
-            
-                 if (!f.REFERENCED_COLUMN_NAME.IsNullOrEmpty())
-                    file += @"        ""refEntityName"": """ + f.REFERENCED_COLUMN_NAME + @""",
-";
-
-                    file = file.RemoveLastIndex(',');
-                file += @"    },
-
-";
-                }
-
-                file = file.RemoveLastIndex(',');
-                file += "}";
-
-
-
-
-                if (File.Exists(Config.path + "fields/"+ t.Name + ".json"))
-                    File.Delete(Config.path + "fields/" + t.Name + ".json");
-
-                File.WriteAllText(Config.path + "fields/" + t.Name + ".json", file);
+                var file = JsonConvert.SerializeObject(fields[entityName], Newtonsoft.Json.Formatting.Indented);
+                File.WriteAllText(Config.path + "fields/" + entityName + ".json", file);
             }
 
         }
 
 
-        public string ContentTree(Table t)
+        protected List<string> DefineId(Entity entity)
         {
-            if (t.Tree.IsNullOrEmpty()) return "";
-            string content = @"    ""tree"": {
-" + FileTreeRecursive(t.Tree, "      ");
-            content += @"    },
-";
-            //content = content.RemoveLastIndex(',');
-            return content;
-        }
+            if (entity.pk.Count == 1)
+                return entity.pk;
 
-        public string ContentRelations(Table t)
-        {
-            if (t.Tree.IsNullOrEmpty()) return "";
-            string content = @"    ""relations"": {
-" + FileRelationsRecursive(t.Tree, "      ");
-            content = content.RemoveLastIndex(',');
-
-            content += @"    },
-";
-            return content;
-        }
+            foreach (string f in entity.unique)
+                if (entity.notNull.Contains(f))
+                    return new List<string> { f };
 
 
-        public void FileTree()
-        {
-            string content = @"{
-";
-            foreach (Table t in Tables)
+            if (entity.uniqueMultiple.Count > 1)
             {
-                if (t.Tree.IsNullOrEmpty()) continue;
-                content += @"    """ + t.Name + @""": {
-" + FileTreeRecursive(t.Tree, "        ");
-                content += @"    },
-";
-
-            }
-
-            content = content.RemoveLastIndex(',');
-            content += "}";
-
-            if (!Directory.Exists(Config.path))
-                Directory.CreateDirectory(Config.path);
-
-            if (File.Exists(Config.path + "tree.json"))
-                File.Delete(Config.path + "tree.json");
-
-            File.WriteAllText(Config.path + "tree.json", content);
-        }
-
-        protected string FileTreeRecursive(List<Tree> tree, string blankSpaces = "")
-        {
-            string content = "";
-            foreach ( Tree t in tree)
-            {
-                content += blankSpaces + "\"" + t.FieldId + "\": { \"fieldName\": \"" + t.FieldName + "\", \"refEntityName\": \"" + t.RefEntityName + "\", \"refFieldName\": \"" + t.RefFieldName + @""", ""children"": {
-";
-                if (!t.Children.IsNullOrEmpty())
-                     content += FileTreeRecursive(t.Children, blankSpaces + "    ");
-
-                content += blankSpaces + @"}},
-";
-            }
-            content = content.RemoveLastIndex(',');
-            return content;
-        }
-
-        public void FileRelations()
-        {
-            string content = @"{
-";
-            foreach (Table t in Tables)
-            {
+                bool uniqueMultipleFlag = true;
+                foreach (string f in entity.uniqueMultiple)
                 {
-                    if (t.Tree.IsNullOrEmpty()) continue;
-                    content += @"    """ + t.Name + @""": {
-" + FileRelationsRecursive(t.Tree, "        ");
-                    content = content.RemoveLastIndex(',');
-                    content += @"    },
-";
-                    
+
+                    if (!entity.uniqueMultiple.Contains(f))
+                    {
+                        uniqueMultipleFlag = false;
+                        break;
+                    }
+                }
+
+                if (uniqueMultipleFlag)
+                {
+                    return entity.uniqueMultiple;
                 }
             }
 
-            content = content.RemoveLastIndex(',');
-            content += "}";
-
-            if (!Directory.Exists(Config.path))
-                Directory.CreateDirectory(Config.path);
-
-            if (File.Exists(Config.path + "relations.json"))
-                File.Delete(Config.path + "relations.json");
-
-            File.WriteAllText(Config.path + "relations.json", content);
-        }
-
-
-        protected string FileRelationsRecursive(List<Tree> tree, string blankSpaces = "", string? parentId = null)
-        {
-            string content = "";
-            string p = parentId.IsNullOrEmpty() ? "null" : "\""+parentId+"\"";
-            foreach (Tree t in tree)
+            if (entity.notNull.Count > 1)
             {
-
-                content += blankSpaces + "\"" + t.FieldId + "\": { \"fieldName\": \"" + t.FieldName + "\", \"refEntityName\": \"" + t.RefEntityName + "\", \"refFieldName\": \"" + t.RefFieldName + "\", \"parentId\": " + p + @"},
-";
-                if (!t.Children.IsNullOrEmpty())
-                    content += FileRelationsRecursive(t.Children, blankSpaces + "    ", t.FieldId);
+                return entity.notNull;
             }
 
-            return content;
+            return entity.fields;
         }
+
     }
 }
 

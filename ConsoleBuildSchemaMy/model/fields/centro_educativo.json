@@ -1,31 +1,47 @@
 {
-    "id": {
-        "alias": "id",
-        "dataType": "string"
-    },
-
-    "nombre": {
-        "alias": "nom",
-        "dataType": "string"
-    },
-
-    "cue": {
-        "alias": "cue",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "domicilio": {
-        "alias": "dom",
-        "dataType": "string",
-        "defaultValue": "NULL",
-        "refEntityName": "id"
-    },
-
-    "observaciones": {
-        "alias": "obs",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    }
-
+  "id": {
+    "name": "id",
+    "alias": "id",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "nombre": {
+    "name": "nombre",
+    "alias": "nom",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "cue": {
+    "name": "cue",
+    "alias": "cue",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "domicilio": {
+    "name": "domicilio",
+    "alias": "dom",
+    "entityName": null,
+    "refEntityName": "domicilio",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "observaciones": {
+    "name": "observaciones",
+    "alias": "obs",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  }
 }

@@ -1,17 +1,29 @@
 {
-    "id": {
-        "alias": "id",
-        "dataType": "string"
-    },
-
-    "numero": {
-        "alias": "num",
-        "dataType": "int"
-    },
-
-    "dia": {
-        "alias": "dia",
-        "dataType": "string"
-    }
-
+  "id": {
+    "name": "id",
+    "alias": "id",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "numero": {
+    "name": "numero",
+    "alias": "num",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "int",
+    "defaultValue": null
+  },
+  "dia": {
+    "name": "dia",
+    "alias": "dia",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  }
 }

@@ -1,80 +1,119 @@
 {
-    "id": {
-        "alias": "id",
-        "dataType": "string"
-    },
-
-    "nota1": {
-        "alias": "not",
-        "dataType": "decimal",
-        "defaultValue": "NULL"
-    },
-
-    "nota2": {
-        "alias": "no1",
-        "dataType": "decimal",
-        "defaultValue": "NULL"
-    },
-
-    "nota3": {
-        "alias": "no2",
-        "dataType": "decimal",
-        "defaultValue": "NULL"
-    },
-
-    "nota_final": {
-        "alias": "no3",
-        "dataType": "decimal",
-        "defaultValue": "NULL"
-    },
-
-    "crec": {
-        "alias": "cre",
-        "dataType": "decimal",
-        "defaultValue": "NULL"
-    },
-
-    "curso": {
-        "alias": "cur",
-        "dataType": "string",
-        "defaultValue": "NULL",
-        "refEntityName": "id"
-    },
-
-    "porcentaje_asistencia": {
-        "alias": "por",
-        "dataType": "int",
-        "defaultValue": "NULL"
-    },
-
-    "observaciones": {
-        "alias": "obs",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "division": {
-        "alias": "div",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "alumno": {
-        "alias": "alu",
-        "dataType": "string",
-        "refEntityName": "id"
-    },
-
-    "disposicion": {
-        "alias": "dis",
-        "dataType": "string",
-        "refEntityName": "id"
-    },
-
-    "fecha": {
-        "alias": "fec",
-        "dataType": "date",
-        "defaultValue": "NULL"
-    }
-
+  "id": {
+    "name": "id",
+    "alias": "id",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "nota1": {
+    "name": "nota1",
+    "alias": "not",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "decimal",
+    "defaultValue": "NULL"
+  },
+  "nota2": {
+    "name": "nota2",
+    "alias": "no1",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "decimal",
+    "defaultValue": "NULL"
+  },
+  "nota3": {
+    "name": "nota3",
+    "alias": "no2",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "decimal",
+    "defaultValue": "NULL"
+  },
+  "nota_final": {
+    "name": "nota_final",
+    "alias": "no3",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "decimal",
+    "defaultValue": "NULL"
+  },
+  "crec": {
+    "name": "crec",
+    "alias": "cre",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "decimal",
+    "defaultValue": "NULL"
+  },
+  "curso": {
+    "name": "curso",
+    "alias": "cur",
+    "entityName": null,
+    "refEntityName": "curso",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "porcentaje_asistencia": {
+    "name": "porcentaje_asistencia",
+    "alias": "por",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "int",
+    "defaultValue": "NULL"
+  },
+  "observaciones": {
+    "name": "observaciones",
+    "alias": "obs",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "division": {
+    "name": "division",
+    "alias": "div",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "alumno": {
+    "name": "alumno",
+    "alias": "alu",
+    "entityName": null,
+    "refEntityName": "alumno",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "disposicion": {
+    "name": "disposicion",
+    "alias": "dis",
+    "entityName": null,
+    "refEntityName": "disposicion",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "fecha": {
+    "name": "fecha",
+    "alias": "fec",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "date",
+    "defaultValue": "NULL"
+  }
 }

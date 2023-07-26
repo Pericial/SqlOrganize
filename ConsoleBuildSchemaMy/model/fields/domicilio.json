@@ -1,46 +1,74 @@
 {
-    "id": {
-        "alias": "id",
-        "dataType": "string"
-    },
-
-    "calle": {
-        "alias": "cal",
-        "dataType": "string"
-    },
-
-    "entre": {
-        "alias": "ent",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "numero": {
-        "alias": "num",
-        "dataType": "string"
-    },
-
-    "piso": {
-        "alias": "pis",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "departamento": {
-        "alias": "dep",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "barrio": {
-        "alias": "bar",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "localidad": {
-        "alias": "loc",
-        "dataType": "string"
-    }
-
+  "id": {
+    "name": "id",
+    "alias": "id",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "calle": {
+    "name": "calle",
+    "alias": "cal",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "entre": {
+    "name": "entre",
+    "alias": "ent",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "numero": {
+    "name": "numero",
+    "alias": "num",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "piso": {
+    "name": "piso",
+    "alias": "pis",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "departamento": {
+    "name": "departamento",
+    "alias": "dep",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "barrio": {
+    "name": "barrio",
+    "alias": "bar",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "localidad": {
+    "name": "localidad",
+    "alias": "loc",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  }
 }

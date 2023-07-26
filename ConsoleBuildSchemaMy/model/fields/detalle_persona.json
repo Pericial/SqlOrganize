@@ -1,49 +1,74 @@
 {
-    "id": {
-        "alias": "id",
-        "dataType": "string"
-    },
-
-    "descripcion": {
-        "alias": "des",
-        "dataType": "string"
-    },
-
-    "archivo": {
-        "alias": "arc",
-        "dataType": "string",
-        "defaultValue": "NULL",
-        "refEntityName": "id"
-    },
-
-    "creado": {
-        "alias": "cre",
-        "dataType": "timestamp",
-        "defaultValue": "current_timestamp()"
-    },
-
-    "persona": {
-        "alias": "per",
-        "dataType": "string",
-        "refEntityName": "id"
-    },
-
-    "fecha": {
-        "alias": "fec",
-        "dataType": "date",
-        "defaultValue": "curdate()"
-    },
-
-    "tipo": {
-        "alias": "tip",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "asunto": {
-        "alias": "asu",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    }
-
+  "id": {
+    "name": "id",
+    "alias": "id",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "descripcion": {
+    "name": "descripcion",
+    "alias": "des",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "archivo": {
+    "name": "archivo",
+    "alias": "arc",
+    "entityName": null,
+    "refEntityName": "file",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "creado": {
+    "name": "creado",
+    "alias": "cre",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "timestamp",
+    "defaultValue": "current_timestamp()"
+  },
+  "persona": {
+    "name": "persona",
+    "alias": "per",
+    "entityName": null,
+    "refEntityName": "persona",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "fecha": {
+    "name": "fecha",
+    "alias": "fec",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "date",
+    "defaultValue": "curdate()"
+  },
+  "tipo": {
+    "name": "tipo",
+    "alias": "tip",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "asunto": {
+    "name": "asunto",
+    "alias": "asu",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  }
 }

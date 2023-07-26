@@ -20,7 +20,7 @@ namespace SqlOrganizeSs
         /// Configuracion
         /// </param>
         /// <example>
-        ///   connection_string = "server=127.0.0.1;uid=root;pwd=12345;database=test"
+        ///   connectionString = "server=127.0.0.1;uid=root;pwd=12345;database=test"
         /// </example>
         public DbSs(Config config) : base(config)
         {

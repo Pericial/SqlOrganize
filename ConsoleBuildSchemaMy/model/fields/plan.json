@@ -1,30 +1,47 @@
 {
-    "id": {
-        "alias": "id",
-        "dataType": "string"
-    },
-
-    "orientacion": {
-        "alias": "ori",
-        "dataType": "string"
-    },
-
-    "resolucion": {
-        "alias": "res",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "distribucion_horaria": {
-        "alias": "dis",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "pfid": {
-        "alias": "pfi",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    }
-
+  "id": {
+    "name": "id",
+    "alias": "id",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "orientacion": {
+    "name": "orientacion",
+    "alias": "ori",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "resolucion": {
+    "name": "resolucion",
+    "alias": "res",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "distribucion_horaria": {
+    "name": "distribucion_horaria",
+    "alias": "dis",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "pfid": {
+    "name": "pfid",
+    "alias": "pfi",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  }
 }

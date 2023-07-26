@@ -1,107 +1,164 @@
 {
-    "id": {
-        "alias": "id",
-        "dataType": "string"
-    },
-
-    "turno": {
-        "alias": "tur",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "division": {
-        "alias": "div",
-        "dataType": "string"
-    },
-
-    "comentario": {
-        "alias": "com",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "autorizada": {
-        "alias": "aut",
-        "dataType": "tinyint"
-    },
-
-    "apertura": {
-        "alias": "ape",
-        "dataType": "tinyint"
-    },
-
-    "publicada": {
-        "alias": "pub",
-        "dataType": "tinyint"
-    },
-
-    "observaciones": {
-        "alias": "obs",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "alta": {
-        "alias": "alt",
-        "dataType": "timestamp",
-        "defaultValue": "current_timestamp()"
-    },
-
-    "sede": {
-        "alias": "sed",
-        "dataType": "string",
-        "refEntityName": "id"
-    },
-
-    "modalidad": {
-        "alias": "mod",
-        "dataType": "string",
-        "refEntityName": "id"
-    },
-
-    "planificacion": {
-        "alias": "pla",
-        "dataType": "string",
-        "defaultValue": "NULL",
-        "refEntityName": "id"
-    },
-
-    "comision_siguiente": {
-        "alias": "co1",
-        "dataType": "string",
-        "defaultValue": "NULL",
-        "refEntityName": "id"
-    },
-
-    "calendario": {
-        "alias": "cal",
-        "dataType": "string",
-        "refEntityName": "id"
-    },
-
-    "identificacion": {
-        "alias": "ide",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    },
-
-    "estado": {
-        "alias": "est",
-        "dataType": "string",
-        "defaultValue": "'Confirma'"
-    },
-
-    "configuracion": {
-        "alias": "con",
-        "dataType": "string",
-        "defaultValue": "'Histórica'"
-    },
-
-    "pfid": {
-        "alias": "pfi",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    }
-
+  "id": {
+    "name": "id",
+    "alias": "id",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "turno": {
+    "name": "turno",
+    "alias": "tur",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "division": {
+    "name": "division",
+    "alias": "div",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "comentario": {
+    "name": "comentario",
+    "alias": "com",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "autorizada": {
+    "name": "autorizada",
+    "alias": "aut",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "bool",
+    "defaultValue": null
+  },
+  "apertura": {
+    "name": "apertura",
+    "alias": "ape",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "bool",
+    "defaultValue": null
+  },
+  "publicada": {
+    "name": "publicada",
+    "alias": "pub",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "bool",
+    "defaultValue": null
+  },
+  "observaciones": {
+    "name": "observaciones",
+    "alias": "obs",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "alta": {
+    "name": "alta",
+    "alias": "alt",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "timestamp",
+    "defaultValue": "current_timestamp()"
+  },
+  "sede": {
+    "name": "sede",
+    "alias": "sed",
+    "entityName": null,
+    "refEntityName": "sede",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "modalidad": {
+    "name": "modalidad",
+    "alias": "mod",
+    "entityName": null,
+    "refEntityName": "modalidad",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "planificacion": {
+    "name": "planificacion",
+    "alias": "pla",
+    "entityName": null,
+    "refEntityName": "planificacion",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "comision_siguiente": {
+    "name": "comision_siguiente",
+    "alias": "co1",
+    "entityName": null,
+    "refEntityName": "comision",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "calendario": {
+    "name": "calendario",
+    "alias": "cal",
+    "entityName": null,
+    "refEntityName": "calendario",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "identificacion": {
+    "name": "identificacion",
+    "alias": "ide",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  },
+  "estado": {
+    "name": "estado",
+    "alias": "est",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "'Confirma'"
+  },
+  "configuracion": {
+    "name": "configuracion",
+    "alias": "con",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "'Histórica'"
+  },
+  "pfid": {
+    "name": "pfid",
+    "alias": "pfi",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  }
 }

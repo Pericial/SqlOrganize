@@ -1,0 +1,10 @@
+{
+  "some_entity": {
+    "fields-": [ "some_field" ]
+  },
+ 
+  "some_entity2": {
+    "noAdmin": ["some_field"]
+  }
+
+}

@@ -1,31 +1,47 @@
 {
-    "id": {
-        "alias": "id",
-        "dataType": "string"
-    },
-
-    "fecha_contralor": {
-        "alias": "fec",
-        "dataType": "date",
-        "defaultValue": "NULL"
-    },
-
-    "fecha_consejo": {
-        "alias": "fe1",
-        "dataType": "date",
-        "defaultValue": "NULL"
-    },
-
-    "insertado": {
-        "alias": "ins",
-        "dataType": "timestamp",
-        "defaultValue": "current_timestamp()"
-    },
-
-    "planilla_docente": {
-        "alias": "pla",
-        "dataType": "string",
-        "refEntityName": "id"
-    }
-
+  "id": {
+    "name": "id",
+    "alias": "id",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "fecha_contralor": {
+    "name": "fecha_contralor",
+    "alias": "fec",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "date",
+    "defaultValue": "NULL"
+  },
+  "fecha_consejo": {
+    "name": "fecha_consejo",
+    "alias": "fe1",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "date",
+    "defaultValue": "NULL"
+  },
+  "insertado": {
+    "name": "insertado",
+    "alias": "ins",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "timestamp",
+    "defaultValue": "current_timestamp()"
+  },
+  "planilla_docente": {
+    "name": "planilla_docente",
+    "alias": "pla",
+    "entityName": null,
+    "refEntityName": "planilla_docente",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  }
 }

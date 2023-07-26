@@ -1,29 +1,47 @@
 {
-    "id": {
-        "alias": "id",
-        "dataType": "string"
-    },
-
-    "anio": {
-        "alias": "ani",
-        "dataType": "string"
-    },
-
-    "semestre": {
-        "alias": "sem",
-        "dataType": "string"
-    },
-
-    "plan": {
-        "alias": "pla",
-        "dataType": "string",
-        "refEntityName": "id"
-    },
-
-    "pfid": {
-        "alias": "pfi",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    }
-
+  "id": {
+    "name": "id",
+    "alias": "id",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "anio": {
+    "name": "anio",
+    "alias": "ani",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "semestre": {
+    "name": "semestre",
+    "alias": "sem",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "plan": {
+    "name": "plan",
+    "alias": "pla",
+    "entityName": null,
+    "refEntityName": "plan",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "pfid": {
+    "name": "pfid",
+    "alias": "pfi",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  }
 }

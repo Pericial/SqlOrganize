@@ -1,49 +1,74 @@
 {
-    "id": {
-        "alias": "id",
-        "dataType": "string"
-    },
-
-    "desde": {
-        "alias": "des",
-        "dataType": "date",
-        "defaultValue": "NULL"
-    },
-
-    "hasta": {
-        "alias": "has",
-        "dataType": "date",
-        "defaultValue": "NULL"
-    },
-
-    "cargo": {
-        "alias": "car",
-        "dataType": "string",
-        "refEntityName": "id"
-    },
-
-    "sede": {
-        "alias": "sed",
-        "dataType": "string",
-        "refEntityName": "id"
-    },
-
-    "persona": {
-        "alias": "per",
-        "dataType": "string",
-        "refEntityName": "id"
-    },
-
-    "alta": {
-        "alias": "alt",
-        "dataType": "timestamp",
-        "defaultValue": "current_timestamp()"
-    },
-
-    "pfid": {
-        "alias": "pfi",
-        "dataType": "string",
-        "defaultValue": "NULL"
-    }
-
+  "id": {
+    "name": "id",
+    "alias": "id",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "desde": {
+    "name": "desde",
+    "alias": "des",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "date",
+    "defaultValue": "NULL"
+  },
+  "hasta": {
+    "name": "hasta",
+    "alias": "has",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "date",
+    "defaultValue": "NULL"
+  },
+  "cargo": {
+    "name": "cargo",
+    "alias": "car",
+    "entityName": null,
+    "refEntityName": "cargo",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "sede": {
+    "name": "sede",
+    "alias": "sed",
+    "entityName": null,
+    "refEntityName": "sede",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "persona": {
+    "name": "persona",
+    "alias": "per",
+    "entityName": null,
+    "refEntityName": "persona",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "alta": {
+    "name": "alta",
+    "alias": "alt",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "timestamp",
+    "defaultValue": "current_timestamp()"
+  },
+  "pfid": {
+    "name": "pfid",
+    "alias": "pfi",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": "NULL"
+  }
 }

@@ -1,33 +1,56 @@
 {
-    "id": {
-        "alias": "id",
-        "dataType": "string"
-    },
-
-    "name": {
-        "alias": "nam",
-        "dataType": "string"
-    },
-
-    "type": {
-        "alias": "typ",
-        "dataType": "string"
-    },
-
-    "content": {
-        "alias": "con",
-        "dataType": "string"
-    },
-
-    "size": {
-        "alias": "siz",
-        "dataType": "int"
-    },
-
-    "created": {
-        "alias": "cre",
-        "dataType": "timestamp",
-        "defaultValue": "current_timestamp()"
-    }
-
+  "id": {
+    "name": "id",
+    "alias": "id",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "name": {
+    "name": "name",
+    "alias": "nam",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "type": {
+    "name": "type",
+    "alias": "typ",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "content": {
+    "name": "content",
+    "alias": "con",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "size": {
+    "name": "size",
+    "alias": "siz",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "int",
+    "defaultValue": null
+  },
+  "created": {
+    "name": "created",
+    "alias": "cre",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "timestamp",
+    "defaultValue": "current_timestamp()"
+  }
 }

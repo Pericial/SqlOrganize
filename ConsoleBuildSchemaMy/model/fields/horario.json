@@ -1,29 +1,47 @@
 {
-    "id": {
-        "alias": "id",
-        "dataType": "string"
-    },
-
-    "hora_inicio": {
-        "alias": "hor",
-        "dataType": "time"
-    },
-
-    "hora_fin": {
-        "alias": "ho1",
-        "dataType": "time"
-    },
-
-    "curso": {
-        "alias": "cur",
-        "dataType": "string",
-        "refEntityName": "id"
-    },
-
-    "dia": {
-        "alias": "dia",
-        "dataType": "string",
-        "refEntityName": "id"
-    }
-
+  "id": {
+    "name": "id",
+    "alias": "id",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "hora_inicio": {
+    "name": "hora_inicio",
+    "alias": "hor",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "time",
+    "defaultValue": null
+  },
+  "hora_fin": {
+    "name": "hora_fin",
+    "alias": "ho1",
+    "entityName": null,
+    "refEntityName": null,
+    "refFieldName": "id",
+    "dataType": "time",
+    "defaultValue": null
+  },
+  "curso": {
+    "name": "curso",
+    "alias": "cur",
+    "entityName": null,
+    "refEntityName": "curso",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  },
+  "dia": {
+    "name": "dia",
+    "alias": "dia",
+    "entityName": null,
+    "refEntityName": "dia",
+    "refFieldName": "id",
+    "dataType": "string",
+    "defaultValue": null
+  }
 }
