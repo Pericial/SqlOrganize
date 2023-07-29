@@ -10,7 +10,7 @@ namespace SqlOrganize
 
         public string? fieldId { get; }
 
-        public EntityOptions(Db _db, string _entityName, string? _fieldId)
+        public EntityOptions(Db _db, string _entityName, string? _fieldId = null)
         {
             db = _db;
             entityName = _entityName;

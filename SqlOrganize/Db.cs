@@ -9,6 +9,15 @@ namespace SqlOrganize
 
     - La fk solo puede referenciar a una y solo una tabla
     */
+    /// <summary>
+    /// Contenedor principal de SqlOrganize
+    /// </summary>
+    /// <remarks>
+    /// Db utiliza y es utilizado como herramienta en varios patrones de diseño: AbstractFactory, AbstractCreator, AbstractBuilder, Singleton.<br/>
+    /// Una implementación de Db para un determinado motor de base de datos, sera el ConcreteFactory (Ej DbMy extends Db).<br/>
+    /// Una implementación de Db para una determinada App sera el ConcreteCreator (Ej DbApp extends DbMy).<br/>
+    /// En una determinada App existira una clase Container que sera el director (Builder) y utilizara clases estaticas de Db (Singleton).
+    /// </remarks>
     public abstract class Db
     {
         public Config config { get; }

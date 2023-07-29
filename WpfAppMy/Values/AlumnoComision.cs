@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SqlOrganize;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,8 +8,12 @@ using Utils;
 
 namespace WpfAppMy.Values
 {
-    class AlumnoComision
+    class AlumnoComision : EntityValues
     {
+        public AlumnoComision(Db _db, string _entity_name, string? _field_id) : base(_db, _entity_name, _field_id)
+        {
+        }
+
         public static string estado_ingreso(string estado, DateTime alta)
         {
             if (estado.ToLower() == "no activo")

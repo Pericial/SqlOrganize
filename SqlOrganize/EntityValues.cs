@@ -29,7 +29,7 @@ namespace SqlOrganize
 
         public Dictionary<string, object> values = new Dictionary<string, object>();
 
-        public EntityValues(Db _db, string _entity_name, string _field_id) : base(_db, _entity_name, _field_id)
+        public EntityValues(Db _db, string _entity_name, string? _field_id) : base(_db, _entity_name, _field_id)
         {
 
         }
