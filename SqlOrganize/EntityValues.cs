@@ -57,7 +57,7 @@ namespace SqlOrganize
             switch (field.dataType)
             {
                 case "string":
-                    values[fieldName] = Regex.Replace((string)value, @"\s+", " ").Trim();
+                    values[fieldName] = (string)value;
                     break;
                 case "int":
                     values[fieldName] = (int)value;
@@ -115,9 +115,11 @@ namespace SqlOrganize
             return this;
         }
 
-        /*
-        Validacion
-        */
+        /// <summary>
+        /// Validar valor del field
+        /// </summary>
+        /// <param name="fieldName">Nombre del field a validar</param>
+        /// <returns>Resultado de la validacion</returns>
         public bool Check(string fieldName)
         {
             logging.ResetLogs(fieldName);
