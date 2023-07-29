@@ -1,5 +1,5 @@
 ﻿
-namespace SchemaJson
+namespace ModelOrganize
 {
     /*
     Varios campos que podrian ser considerados como int, se definen como object 

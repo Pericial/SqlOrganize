@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchemaJson
+namespace ModelOrganize
 {
     /*
     Clase Entity Auxiliar utilizada unicamente para mapear valores json 

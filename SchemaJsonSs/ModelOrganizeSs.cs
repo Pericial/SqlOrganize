@@ -2,13 +2,13 @@
 using System.Reflection.Metadata;
 using System.Text;
 using Utils;
-using SchemaJson;
+using ModelOrganize;
 
-namespace SchemaJsonSs
+namespace ModelOrganizeSs
 {
-    public class BuildSchemaSs : BuildSchema
+    public class ModelOrganizeSs : BuildModel
     {
-        public BuildSchemaSs(Config config) : base(config)
+        public ModelOrganizeSs(Config config) : base(config)
         {
         }
 

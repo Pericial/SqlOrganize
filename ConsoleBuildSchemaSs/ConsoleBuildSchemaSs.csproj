@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SchemaJsonSs\SchemaJsonSs.csproj" />
+    <ProjectReference Include="..\SchemaJsonSs\ModelOrganizeSs.csproj" />
   </ItemGroup>
 
   <ItemGroup>

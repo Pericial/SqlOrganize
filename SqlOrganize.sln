@@ -11,11 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlOrganizeMy", "SqlOrganiz
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utils", "Utils\Utils.csproj", "{F4FCBA51-1E96-4341-BE2D-6144E373E28A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchemaJsonMy", "SchemaJsonMy\SchemaJsonMy.csproj", "{7AF1D068-38E4-4390-A1B7-A19531E9C43D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModelOrganizeMy", "SchemaJsonMy\ModelOrganizeMy.csproj", "{7AF1D068-38E4-4390-A1B7-A19531E9C43D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchemaJson", "SchemaJson\SchemaJson.csproj", "{AB18FB95-C8A9-456F-806A-6691622523C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModelOrganize", "SchemaJson\ModelOrganize.csproj", "{AB18FB95-C8A9-456F-806A-6691622523C5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchemaJsonSs", "SchemaJsonSs\SchemaJsonSs.csproj", "{DD32FFA9-AAF7-4F6C-BEFF-752F40A4308D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModelOrganizeSs", "SchemaJsonSs\ModelOrganizeSs.csproj", "{DD32FFA9-AAF7-4F6C-BEFF-752F40A4308D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleBuildSchemaMy", "ConsoleBuildSchemaMy\ConsoleBuildSchemaMy.csproj", "{4496119D-FC51-4D28-A95B-BFFD316F067A}"
 EndProject

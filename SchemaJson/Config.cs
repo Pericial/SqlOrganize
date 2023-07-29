@@ -1,4 +1,4 @@
-﻿namespace SchemaJson
+﻿namespace ModelOrganize
 {
     public class Config
     {

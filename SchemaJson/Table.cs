@@ -1,7 +1,7 @@
 ﻿
 using System.Data.Common;
 
-namespace SchemaJson
+namespace ModelOrganize
 {
     public class Table
     {

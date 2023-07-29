@@ -1,5 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
-using SchemaJson;
+using ModelOrganize;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,15 +7,15 @@ using System.Text;
 using System.Threading.Tasks;
 using Utils;
 
-namespace SchemaJsonMy
+namespace ModelOrganizeMy
 {
     /*
     mysql mappings (similar to sql server): 
     https://learn.microsoft.com/en-us/dotnet/framework/data/adonet/sql-server-data-type-mappings
     */
-    public class BuildSchemaMy: BuildSchema
+    public class ModelOrganizeMy: BuildModel
     {
-        public BuildSchemaMy(ConfigMy config) : base(config)
+        public ModelOrganizeMy(ConfigMy config) : base(config)
         {
         }
 

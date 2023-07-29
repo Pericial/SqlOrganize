@@ -1,5 +1,5 @@
 ﻿
-using SchemaJsonMy;
+using ModelOrganizeMy;
 using System.Configuration;
 
 var c = new ConfigMy()
@@ -9,7 +9,7 @@ var c = new ConfigMy()
     dbName = ConfigurationManager.AppSettings.Get("dbName"),
 };
 
-BuildSchemaMy t = new(c);
+ModelOrganizeMy t = new(c);
 t.CreateFileEntitites();
 t.CreateFileFields();
 

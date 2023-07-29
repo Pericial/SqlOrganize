@@ -1,6 +1,6 @@
-﻿using SchemaJson;
+﻿using ModelOrganize;
 
-namespace SchemaJsonMy
+namespace ModelOrganizeMy
 {
     public class ConfigMy : Config
     {

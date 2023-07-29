@@ -1,5 +1,5 @@
 ﻿
-namespace SchemaJson
+namespace ModelOrganize
 {
     /*
     Lectura de json

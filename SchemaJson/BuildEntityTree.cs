@@ -2,7 +2,7 @@
 using System.Text.RegularExpressions;
 using Utils;
 
-namespace SchemaJson
+namespace ModelOrganize
 {
     internal class BuildEntityTree
     {

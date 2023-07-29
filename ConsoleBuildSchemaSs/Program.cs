@@ -1,5 +1,5 @@
 ﻿
-using SchemaJsonSs;
+using ModelOrganizeSs;
 
 var c = new ConfigSs()
 {
@@ -8,7 +8,7 @@ var c = new ConfigSs()
     path = @"C:\projects\SqlOrganize\ConsoleBuildSchemaSs\model\"
 };
 
-BuildSchemaSs t = new(c);
+ModelOrganizeSs t = new(c);
 t.FileEntities();
 t.FileFields();
 

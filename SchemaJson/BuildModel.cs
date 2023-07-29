@@ -5,9 +5,9 @@ using System.Text.RegularExpressions;
 using System.Xml;
 using Utils;
 
-namespace SchemaJson
+namespace ModelOrganize
 {
-    public abstract class BuildSchema
+    public abstract class BuildModel
     {
         public Config Config { get; }
 
@@ -24,7 +24,7 @@ namespace SchemaJson
         /// Definir datos del esquema y arbol de relaciones
         /// </summary>
         /// <param name="config">Configuracion</param>
-        public BuildSchema(Config config)
+        public BuildModel(Config config)
         {
             Config = config;
 

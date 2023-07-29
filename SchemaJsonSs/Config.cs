@@ -1,6 +1,6 @@
-﻿using SchemaJson;
+﻿using ModelOrganize;
 
-namespace SchemaJsonSs
+namespace ModelOrganizeSs
 {
     public class ConfigSs: Config
     {
