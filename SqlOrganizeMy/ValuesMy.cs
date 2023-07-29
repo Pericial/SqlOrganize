@@ -20,7 +20,7 @@ namespace SqlOrganizeMy
     */
     public class ValuesMy : EntityValues
     {
-        public ValuesMy(Db db, string entityName, string fieldId) : base(db, entityName, fieldId)
+        public ValuesMy(Db db, string entityName, string? fieldId = null) : base(db, entityName, fieldId)
         {
         }
 
