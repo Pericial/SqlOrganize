@@ -149,20 +149,20 @@ VALUES (";
         {
             _entityName = _entityName ?? entityName;
 
-            EntityValues v = (EntityValues)db.Values(_entityName!).From(row, "Set");
+            EntityValues v = (EntityValues)db.Values(_entityName!).Set(row);
             var rows = db.Query(_entityName!).Unique(row).ListDict();
             if (rows.Count > 1)
                 throw new Exception("La consulta por campos unicos retorno mas de un resultado");
 
             if (rows.Count == 1) //actualizar
             {
-                v.Set("_Id", row["_Id"]).Call("Reset").Call("Check");
+                v.Set("_Id", row["_Id"]).Reset().Check();
                 if (v.logging.Error())
                     throw new Exception("Los campos a actualizar poseen errores: " + v.logging.ToString());
                 return Update(v.values, _entityName);
             }
 
-            v.Call("Default").Call("Reset").Call("Check");
+            v.Default().Reset().Check();
             if (v.logging.Error())
                 throw new Exception("Los campos a insertar poseen errores: " + v.logging.ToString());
             return Insert(v.values, _entityName);

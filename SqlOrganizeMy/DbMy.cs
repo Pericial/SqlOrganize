@@ -48,11 +48,6 @@ namespace SqlOrganizeMy
         {
             return new QueryMy(this);
         }
-
-        public override EntityValues Values(string entityName, string? fieldId = null)
-        {
-            return new ValuesMy(this, entityName, fieldId);
-        }
     }
 
 }

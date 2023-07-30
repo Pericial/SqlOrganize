@@ -41,9 +41,6 @@ namespace SqlOrganizeSs
             throw new NotImplementedException();
         }
 
-        public override EntityValues Values(string entity_name, string field_id)
-        {
-            return new ValuesSs(this, entity_name, field_id);
-        }
+      
     }
 }

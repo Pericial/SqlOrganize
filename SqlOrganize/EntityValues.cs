@@ -22,7 +22,7 @@ namespace SqlOrganize
     -json: Transformar a json
     -sql: Transformar a sql
     */
-    public abstract class EntityValues : EntityOptions
+    public class EntityValues : EntityFieldId
     {
 
         public Logging logging { get; set; } = new Logging();
@@ -32,6 +32,15 @@ namespace SqlOrganize
         public EntityValues(Db _db, string _entity_name, string? _field_id) : base(_db, _entity_name, _field_id)
         {
 
+        }
+
+        public EntityValues Set(Dictionary<string, object> row)
+        {
+            foreach (var fieldName in db.FieldNames(entityName))
+                if(row.ContainsKey(Pf()+fieldName))
+                    Set(fieldName, row[fieldName]);
+
+            return this;
         }
 
         public EntityValues Set(string fieldName, object value)
@@ -67,6 +76,16 @@ namespace SqlOrganize
             return this;
         }
 
+        public EntityValues Reset()
+        {
+            foreach (var fieldName in db.FieldNames(entityName))
+                if (values.ContainsKey(fieldName))
+                    Reset(fieldName, values[fieldName]);
+
+            return this;
+        }
+
+
         public EntityValues Reset(string fieldName, object value)
         {
             var method = "Reset_" + fieldName;
@@ -86,7 +105,15 @@ namespace SqlOrganize
             return this;
         }
 
-        public EntityValues Default(string fieldName, object value)
+        public EntityValues Default()
+        {
+            foreach (var fieldName in db.FieldNames(entityName))
+                if (!values.ContainsKey(fieldName))
+                    Default(fieldName);
+
+            return this;
+        }
+        public EntityValues Default(string fieldName)
         {
             if (values.ContainsKey(fieldName))
                 return this;
@@ -95,7 +122,7 @@ namespace SqlOrganize
             Type thisType = this.GetType();
             MethodInfo m = thisType.GetMethod(method);
             if (!m.IsNullOrEmpty())
-                m!.Invoke(this, new object[] { value });
+                m!.Invoke(this, new object[] { });
 
             Field field = db.Field(entityName, fieldName);
             switch (field.dataType)
@@ -111,6 +138,16 @@ namespace SqlOrganize
                     values[fieldName] = field.defaultValue;
                     break;
             }
+
+            return this;
+        }
+
+
+        public EntityValues Check()
+        {
+            foreach (var fieldName in db.FieldNames(entityName))
+                if (values.ContainsKey(fieldName))
+                    Check(fieldName);
 
             return this;
         }

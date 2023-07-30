@@ -111,7 +111,10 @@ namespace SqlOrganize
             return new(this, entityName, fieldId);
         }
 
-        public abstract EntityValues Values(string entityName, string? fieldId = null);
+        public EntityValues Values(string entityName, string? fieldId = null)
+        {
+            return new(this, entityName, fieldId);
+        }
     }
 
 }

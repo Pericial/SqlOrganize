@@ -13,11 +13,6 @@ namespace SqlOrganizeMy
         {
         }
 
-        public override List<Dictionary<string, T>> Tree<T>()
-        {
-            throw new NotImplementedException();
-        }
-
         protected override string SqlLimit()
         {
             if (size == 0) return "";

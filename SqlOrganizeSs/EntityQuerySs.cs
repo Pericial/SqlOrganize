@@ -12,11 +12,6 @@ namespace SqlOrganizeSs
         {
         }
 
-        public override List<Dictionary<string, T>> Tree<T>()
-        {
-            throw new NotImplementedException();
-        }
-
         protected override string SqlLimit()
         {
             if (size.IsNullOrEmpty() || size == 0) return "";

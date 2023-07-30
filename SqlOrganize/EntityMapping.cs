@@ -21,7 +21,7 @@ namespace SqlOrganize
 
     Las subclases deben soportar la sintaxis del motor que se encuentran utilizando.
     */
-    public class EntityMapping : EntityOptions
+    public class EntityMapping : EntityFieldId
     {
         public EntityMapping(Db db, string entityName, string? fieldId) : base(db, entityName, fieldId)
         {

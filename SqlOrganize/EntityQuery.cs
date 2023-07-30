@@ -381,14 +381,11 @@ namespace SqlOrganize
         }
 
 
-
-        /*
-        Obtener arbol
-
-        Convert the result to json with "JsonConvert.SerializeObject(data, Formatting.Indented)"
-        */
-        public abstract List<Dictionary<string, T>> Tree<T>();
-
+        /// <summary>
+        /// Obtener lista
+        /// </summary>
+        /// <remarks>Convert the result to json with "JsonConvert.SerializeObject(data, Formatting.Indented)</remarks>
+        /// <returns></returns>
         public List<Dictionary<string, object>> ListDict()
         {
             var q = db.Query();
