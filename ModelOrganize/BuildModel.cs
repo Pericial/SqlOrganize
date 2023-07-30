@@ -184,10 +184,28 @@ namespace ModelOrganize
                     if (!c.REFERENCED_COLUMN_NAME.IsNullOrEmpty())
                         f.refFieldName = c.REFERENCED_COLUMN_NAME;
 
+                    f.notNull = (c.IS_NULLABLE == 0) ? false : true;
+
+                    f.checks = new()
+                    {
+                        { "type", f.dataType },
+                        { "required", f.notNull },
+                    };
+
+                    if(f.dataType == "string")
+                    {
+                        f.resets = new()
+                        {
+                            { "trim", " " },
+                            { "removeMultipleSpaces", true },
+                        };
+                    }
                     if (!fields.ContainsKey(t.Name!))
                         fields[t.Name!] = new();
 
                     fields[t.Name!][f.name] = f;
+
+                    
                 }
 
             }

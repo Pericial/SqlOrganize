@@ -1,38 +1,71 @@
 {
   "id": {
+    "checks": {
+      "type": "string",
+      "required": false
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "id",
     "alias": "id",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": false,
     "defaultValue": null
   },
   "asignatura": {
+    "checks": {
+      "type": "string",
+      "required": false
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "asignatura",
     "alias": "asi",
     "entityName": null,
     "refEntityName": "asignatura",
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": false,
     "defaultValue": null
   },
   "planificacion": {
+    "checks": {
+      "type": "string",
+      "required": false
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "planificacion",
     "alias": "pla",
     "entityName": null,
     "refEntityName": "planificacion",
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": false,
     "defaultValue": null
   },
   "orden_informe_coordinacion_distrital": {
+    "checks": {
+      "type": "int",
+      "required": true
+    },
+    "resets": {},
     "name": "orden_informe_coordinacion_distrital",
     "alias": "ord",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "int",
+    "notNull": true,
     "defaultValue": "NULL"
   }
 }

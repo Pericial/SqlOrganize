@@ -1,74 +1,140 @@
 {
   "id": {
+    "checks": {
+      "type": "string",
+      "required": false
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "id",
     "alias": "id",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": false,
     "defaultValue": null
   },
   "descripcion": {
+    "checks": {
+      "type": "string",
+      "required": false
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "descripcion",
     "alias": "des",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": false,
     "defaultValue": null
   },
   "archivo": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "archivo",
     "alias": "arc",
     "entityName": null,
     "refEntityName": "file",
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "creado": {
+    "checks": {
+      "type": "timestamp",
+      "required": false
+    },
+    "resets": {},
     "name": "creado",
     "alias": "cre",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "timestamp",
+    "notNull": false,
     "defaultValue": "current_timestamp()"
   },
   "persona": {
+    "checks": {
+      "type": "string",
+      "required": false
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "persona",
     "alias": "per",
     "entityName": null,
     "refEntityName": "persona",
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": false,
     "defaultValue": null
   },
   "fecha": {
+    "checks": {
+      "type": "date",
+      "required": true
+    },
+    "resets": {},
     "name": "fecha",
     "alias": "fec",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "date",
+    "notNull": true,
     "defaultValue": "curdate()"
   },
   "tipo": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "tipo",
     "alias": "tip",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "asunto": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "asunto",
     "alias": "asu",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   }
 }

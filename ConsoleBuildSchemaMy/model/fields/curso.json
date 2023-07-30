@@ -1,56 +1,104 @@
 {
   "id": {
+    "checks": {
+      "type": "string",
+      "required": false
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "id",
     "alias": "id",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": false,
     "defaultValue": null
   },
   "horas_catedra": {
+    "checks": {
+      "type": "int",
+      "required": false
+    },
+    "resets": {},
     "name": "horas_catedra",
     "alias": "hor",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "int",
+    "notNull": false,
     "defaultValue": null
   },
   "ige": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "ige",
     "alias": "ige",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "comision": {
+    "checks": {
+      "type": "string",
+      "required": false
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "comision",
     "alias": "com",
     "entityName": null,
     "refEntityName": "comision",
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": false,
     "defaultValue": null
   },
   "asignatura": {
+    "checks": {
+      "type": "string",
+      "required": false
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "asignatura",
     "alias": "asi",
     "entityName": null,
     "refEntityName": "asignatura",
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": false,
     "defaultValue": null
   },
   "alta": {
+    "checks": {
+      "type": "timestamp",
+      "required": false
+    },
+    "resets": {},
     "name": "alta",
     "alias": "alt",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "timestamp",
+    "notNull": false,
     "defaultValue": "current_timestamp()"
   }
 }

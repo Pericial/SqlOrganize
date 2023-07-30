@@ -9,7 +9,7 @@ var c = new ConfigMy()
     dbName = ConfigurationManager.AppSettings.Get("dbName"),
 };
 
-ModelOrganizeMy t = new(c);
+BuildModelMy t = new(c);
 t.CreateFileEntitites();
 t.CreateFileFields();
 

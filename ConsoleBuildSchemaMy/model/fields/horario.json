@@ -1,47 +1,86 @@
 {
   "id": {
+    "checks": {
+      "type": "string",
+      "required": false
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "id",
     "alias": "id",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": false,
     "defaultValue": null
   },
   "hora_inicio": {
+    "checks": {
+      "type": "time",
+      "required": false
+    },
+    "resets": {},
     "name": "hora_inicio",
     "alias": "hor",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "time",
+    "notNull": false,
     "defaultValue": null
   },
   "hora_fin": {
+    "checks": {
+      "type": "time",
+      "required": false
+    },
+    "resets": {},
     "name": "hora_fin",
     "alias": "ho1",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "time",
+    "notNull": false,
     "defaultValue": null
   },
   "curso": {
+    "checks": {
+      "type": "string",
+      "required": false
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "curso",
     "alias": "cur",
     "entityName": null,
     "refEntityName": "curso",
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": false,
     "defaultValue": null
   },
   "dia": {
+    "checks": {
+      "type": "string",
+      "required": false
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "dia",
     "alias": "dia",
     "entityName": null,
     "refEntityName": "dia",
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": false,
     "defaultValue": null
   }
 }

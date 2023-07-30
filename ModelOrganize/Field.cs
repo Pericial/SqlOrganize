@@ -49,9 +49,38 @@ namespace ModelOrganize
             "oo": Clave foranea uno a uno
         */
 
+        /// <summary>
+        /// es not null?
+        /// </summary>
+        public bool notNull { get; set; }
+
         /* valor por defecto */
-        public object defaultValue { get; set; }
+        public object? defaultValue { get; set; }
 
+        /// <summary>
+        /// Lista de chequeos
+        /// </summary>
+        /// <example>
+        /// [
+        ///     field_name:true, //metodo exclusivo definido por el usuario
+        ///     Type:"string",
+        ///     Required:true,
+        /// ]
+        /// </example>
+        public Dictionary<string, object> checks = new();
 
+        /// <summary>
+        /// Lista de reasignaciones
+        /// </summary>
+        /// <example>
+        /// [
+        ///     field_name:true, //metodo exclusivo definido por el usuario
+        ///     Trim:" ",
+        ///     Ltrim:" ", //no implementado
+        ///     Rtrim:" ", //no implementado
+        ///     RemoveMultipleSpaces:true, //no implementado (se puede definir un mejor nombre?)
+        /// ]
+        /// </example>
+        public Dictionary<string, object> resets = new();
     }
 }

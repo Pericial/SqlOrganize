@@ -1,56 +1,101 @@
 {
   "id": {
+    "checks": {
+      "type": "string",
+      "required": false
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "id",
     "alias": "id",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": false,
     "defaultValue": null
   },
   "numero": {
+    "checks": {
+      "type": "string",
+      "required": false
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "numero",
     "alias": "num",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": false,
     "defaultValue": null
   },
   "insertado": {
+    "checks": {
+      "type": "timestamp",
+      "required": false
+    },
+    "resets": {},
     "name": "insertado",
     "alias": "ins",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "timestamp",
+    "notNull": false,
     "defaultValue": "current_timestamp()"
   },
   "fecha_contralor": {
+    "checks": {
+      "type": "date",
+      "required": true
+    },
+    "resets": {},
     "name": "fecha_contralor",
     "alias": "fec",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "date",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "fecha_consejo": {
+    "checks": {
+      "type": "date",
+      "required": true
+    },
+    "resets": {},
     "name": "fecha_consejo",
     "alias": "fe1",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "date",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "observaciones": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "observaciones",
     "alias": "obs",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   }
 }

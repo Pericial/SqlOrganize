@@ -1,29 +1,53 @@
 {
   "id": {
+    "checks": {
+      "type": "string",
+      "required": false
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "id",
     "alias": "id",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": false,
     "defaultValue": null
   },
   "numero": {
+    "checks": {
+      "type": "int",
+      "required": false
+    },
+    "resets": {},
     "name": "numero",
     "alias": "num",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "int",
+    "notNull": false,
     "defaultValue": null
   },
   "dia": {
+    "checks": {
+      "type": "string",
+      "required": false
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "dia",
     "alias": "dia",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": false,
     "defaultValue": null
   }
 }

@@ -1,245 +1,452 @@
 {
   "id": {
+    "checks": {
+      "type": "string",
+      "required": false,
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "id",
     "alias": "id",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": false,
     "defaultValue": null
   },
   "anio_ingreso": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "anio_ingreso",
     "alias": "ani",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "observaciones": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "observaciones",
     "alias": "obs",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "persona": {
+    "checks": {
+      "type": "string",
+      "required": false
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "persona",
     "alias": "per",
     "entityName": null,
     "refEntityName": "persona",
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": false,
     "defaultValue": null
   },
   "estado_inscripcion": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "estado_inscripcion",
     "alias": "est",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "fecha_titulacion": {
+    "checks": {
+      "type": "date",
+      "required": true
+    },
+    "resets": {},
     "name": "fecha_titulacion",
     "alias": "fec",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "date",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "plan": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "plan",
     "alias": "pla",
     "entityName": null,
     "refEntityName": "plan",
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "resolucion_inscripcion": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "resolucion_inscripcion",
     "alias": "res",
     "entityName": null,
     "refEntityName": "resolucion",
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "anio_inscripcion": {
+    "checks": {
+      "type": "int",
+      "required": true
+    },
+    "resets": {},
     "name": "anio_inscripcion",
     "alias": "an1",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "int",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "semestre_inscripcion": {
+    "checks": {
+      "type": "int",
+      "required": true
+    },
+    "resets": {},
     "name": "semestre_inscripcion",
     "alias": "sem",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "int",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "semestre_ingreso": {
+    "checks": {
+      "type": "int",
+      "required": true
+    },
+    "resets": {},
     "name": "semestre_ingreso",
     "alias": "se1",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "int",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "adeuda_legajo": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "adeuda_legajo",
     "alias": "ade",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "adeuda_deudores": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "adeuda_deudores",
     "alias": "ad1",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "documentacion_inscripcion": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "documentacion_inscripcion",
     "alias": "doc",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "anio_inscripcion_completo": {
+    "checks": {
+      "type": "bool",
+      "required": true
+    },
+    "resets": {},
     "name": "anio_inscripcion_completo",
     "alias": "an2",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "bool",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "establecimiento_inscripcion": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "establecimiento_inscripcion",
     "alias": "es1",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "libro_folio": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "libro_folio",
     "alias": "lib",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "libro": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "libro",
     "alias": "li1",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "folio": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "folio",
     "alias": "fol",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "comentarios": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "comentarios",
     "alias": "com",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "tiene_dni": {
+    "checks": {
+      "type": "bool",
+      "required": false
+    },
+    "resets": {},
     "name": "tiene_dni",
     "alias": "tie",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "bool",
+    "notNull": false,
     "defaultValue": "0"
   },
   "tiene_constancia": {
+    "checks": {
+      "type": "bool",
+      "required": false
+    },
+    "resets": {},
     "name": "tiene_constancia",
     "alias": "ti1",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "bool",
+    "notNull": false,
     "defaultValue": "0"
   },
   "tiene_certificado": {
+    "checks": {
+      "type": "bool",
+      "required": false
+    },
+    "resets": {},
     "name": "tiene_certificado",
     "alias": "ti2",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "bool",
+    "notNull": false,
     "defaultValue": "0"
   },
   "previas_completas": {
+    "checks": {
+      "type": "bool",
+      "required": false
+    },
+    "resets": {},
     "name": "previas_completas",
     "alias": "pre",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "bool",
+    "notNull": false,
     "defaultValue": "0"
   },
   "tiene_partida": {
+    "checks": {
+      "type": "bool",
+      "required": false
+    },
+    "resets": {},
     "name": "tiene_partida",
     "alias": "ti3",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "bool",
+    "notNull": false,
     "defaultValue": "0"
   },
   "creado": {
+    "checks": {
+      "type": "timestamp",
+      "required": false
+    },
+    "resets": {},
     "name": "creado",
     "alias": "cre",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "timestamp",
+    "notNull": false,
     "defaultValue": "current_timestamp()"
   },
   "confirmado_direccion": {
+    "checks": {
+      "type": "bool",
+      "required": false
+    },
+    "resets": {},
     "name": "confirmado_direccion",
     "alias": "con",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "bool",
+    "notNull": false,
     "defaultValue": "0"
   }
 }

@@ -1,155 +1,293 @@
 {
   "id": {
+    "checks": {
+      "type": "string",
+      "required": false
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "id",
     "alias": "id",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": false,
     "defaultValue": null
   },
   "nombres": {
+    "checks": {
+      "type": "string",
+      "required": false
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "nombres",
     "alias": "nom",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": false,
     "defaultValue": null
   },
   "apellidos": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "apellidos",
     "alias": "ape",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "fecha_nacimiento": {
+    "checks": {
+      "type": "date",
+      "required": true
+    },
+    "resets": {},
     "name": "fecha_nacimiento",
     "alias": "fec",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "date",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "numero_documento": {
+    "checks": {
+      "type": "string",
+      "required": false
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "numero_documento",
     "alias": "num",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": false,
     "defaultValue": null
   },
   "cuil": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "cuil",
     "alias": "cui",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "genero": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "genero",
     "alias": "gen",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "apodo": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "apodo",
     "alias": "apo",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "telefono": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "telefono",
     "alias": "tel",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "email": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "email",
     "alias": "ema",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "email_abc": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "email_abc",
     "alias": "em1",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "alta": {
+    "checks": {
+      "type": "timestamp",
+      "required": false
+    },
+    "resets": {},
     "name": "alta",
     "alias": "alt",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "timestamp",
+    "notNull": false,
     "defaultValue": "current_timestamp()"
   },
   "domicilio": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "domicilio",
     "alias": "dom",
     "entityName": null,
     "refEntityName": "domicilio",
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "lugar_nacimiento": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "lugar_nacimiento",
     "alias": "lug",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "telefono_verificado": {
+    "checks": {
+      "type": "bool",
+      "required": false
+    },
+    "resets": {},
     "name": "telefono_verificado",
     "alias": "te1",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "bool",
+    "notNull": false,
     "defaultValue": "0"
   },
   "email_verificado": {
+    "checks": {
+      "type": "bool",
+      "required": false
+    },
+    "resets": {},
     "name": "email_verificado",
     "alias": "em2",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "bool",
+    "notNull": false,
     "defaultValue": "0"
   },
   "info_verificada": {
+    "checks": {
+      "type": "bool",
+      "required": false
+    },
+    "resets": {},
     "name": "info_verificada",
     "alias": "inf",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "bool",
+    "notNull": false,
     "defaultValue": "0"
   }
 }

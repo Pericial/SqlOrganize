@@ -6,9 +6,9 @@ using ModelOrganize;
 
 namespace ModelOrganizeSs
 {
-    public class ModelOrganizeSs : BuildModel
+    public class BuildModelSs : BuildModel
     {
-        public ModelOrganizeSs(Config config) : base(config)
+        public BuildModelSs(Config config) : base(config)
         {
         }
 

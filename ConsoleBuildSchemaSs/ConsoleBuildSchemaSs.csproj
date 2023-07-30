@@ -8,15 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SchemaJsonSs\ModelOrganizeSs.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="model\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ModelOrganizeSs\ModelOrganizeSs.csproj" />
   </ItemGroup>
 
 </Project>

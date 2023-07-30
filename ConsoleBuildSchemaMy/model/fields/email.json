@@ -1,56 +1,101 @@
 {
   "id": {
+    "checks": {
+      "type": "string",
+      "required": false
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "id",
     "alias": "id",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": false,
     "defaultValue": null
   },
   "email": {
+    "checks": {
+      "type": "string",
+      "required": false
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "email",
     "alias": "ema",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": false,
     "defaultValue": null
   },
   "verificado": {
+    "checks": {
+      "type": "bool",
+      "required": false
+    },
+    "resets": {},
     "name": "verificado",
     "alias": "ver",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "bool",
+    "notNull": false,
     "defaultValue": "0"
   },
   "insertado": {
+    "checks": {
+      "type": "timestamp",
+      "required": false
+    },
+    "resets": {},
     "name": "insertado",
     "alias": "ins",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "timestamp",
+    "notNull": false,
     "defaultValue": "current_timestamp()"
   },
   "eliminado": {
+    "checks": {
+      "type": "timestamp",
+      "required": true
+    },
+    "resets": {},
     "name": "eliminado",
     "alias": "eli",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "timestamp",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "persona": {
+    "checks": {
+      "type": "string",
+      "required": false
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "persona",
     "alias": "per",
     "entityName": null,
     "refEntityName": "persona",
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": false,
     "defaultValue": null
   }
 }

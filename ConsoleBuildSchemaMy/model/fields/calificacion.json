@@ -1,119 +1,215 @@
 {
   "id": {
+    "checks": {
+      "type": "string",
+      "required": false
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "id",
     "alias": "id",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": false,
     "defaultValue": null
   },
   "nota1": {
+    "checks": {
+      "type": "decimal",
+      "required": true
+    },
+    "resets": {},
     "name": "nota1",
     "alias": "not",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "decimal",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "nota2": {
+    "checks": {
+      "type": "decimal",
+      "required": true
+    },
+    "resets": {},
     "name": "nota2",
     "alias": "no1",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "decimal",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "nota3": {
+    "checks": {
+      "type": "decimal",
+      "required": true
+    },
+    "resets": {},
     "name": "nota3",
     "alias": "no2",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "decimal",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "nota_final": {
+    "checks": {
+      "type": "decimal",
+      "required": true
+    },
+    "resets": {},
     "name": "nota_final",
     "alias": "no3",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "decimal",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "crec": {
+    "checks": {
+      "type": "decimal",
+      "required": true
+    },
+    "resets": {},
     "name": "crec",
     "alias": "cre",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "decimal",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "curso": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "curso",
     "alias": "cur",
     "entityName": null,
     "refEntityName": "curso",
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "porcentaje_asistencia": {
+    "checks": {
+      "type": "int",
+      "required": true
+    },
+    "resets": {},
     "name": "porcentaje_asistencia",
     "alias": "por",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "int",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "observaciones": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "observaciones",
     "alias": "obs",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "division": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "division",
     "alias": "div",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "alumno": {
+    "checks": {
+      "type": "string",
+      "required": false
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "alumno",
     "alias": "alu",
     "entityName": null,
     "refEntityName": "alumno",
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": false,
     "defaultValue": null
   },
   "disposicion": {
+    "checks": {
+      "type": "string",
+      "required": false
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "disposicion",
     "alias": "dis",
     "entityName": null,
     "refEntityName": "disposicion",
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": false,
     "defaultValue": null
   },
   "fecha": {
+    "checks": {
+      "type": "date",
+      "required": true
+    },
+    "resets": {},
     "name": "fecha",
     "alias": "fec",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "date",
+    "notNull": true,
     "defaultValue": "NULL"
   }
 }

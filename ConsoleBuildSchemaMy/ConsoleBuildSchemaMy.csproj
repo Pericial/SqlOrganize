@@ -8,11 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ModelOrganizeMy\ModelOrganizeMy.csproj" />
+    <Folder Include="model\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="model\" />
+    <ProjectReference Include="..\ModelOrganizeMy\ModelOrganizeMy.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,146 +1,272 @@
 {
   "id": {
+    "checks": {
+      "type": "string",
+      "required": false
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "id",
     "alias": "id",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": false,
     "defaultValue": null
   },
   "fecha_toma": {
+    "checks": {
+      "type": "date",
+      "required": true
+    },
+    "resets": {},
     "name": "fecha_toma",
     "alias": "fec",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "date",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "estado": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "estado",
     "alias": "est",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "observaciones": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "observaciones",
     "alias": "obs",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "comentario": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "comentario",
     "alias": "com",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "tipo_movimiento": {
+    "checks": {
+      "type": "string",
+      "required": false
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "tipo_movimiento",
     "alias": "tip",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": false,
     "defaultValue": null
   },
   "estado_contralor": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "estado_contralor",
     "alias": "es1",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "alta": {
+    "checks": {
+      "type": "timestamp",
+      "required": false
+    },
+    "resets": {},
     "name": "alta",
     "alias": "alt",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "timestamp",
+    "notNull": false,
     "defaultValue": "current_timestamp()"
   },
   "curso": {
+    "checks": {
+      "type": "string",
+      "required": false
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "curso",
     "alias": "cur",
     "entityName": null,
     "refEntityName": "curso",
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": false,
     "defaultValue": null
   },
   "docente": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "docente",
     "alias": "doc",
     "entityName": null,
     "refEntityName": "persona",
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "reemplazo": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "reemplazo",
     "alias": "ree",
     "entityName": null,
     "refEntityName": "persona",
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "planilla_docente": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
     "name": "planilla_docente",
     "alias": "pla",
     "entityName": null,
     "refEntityName": "planilla_docente",
     "refFieldName": "id",
     "dataType": "string",
+    "notNull": true,
     "defaultValue": "NULL"
   },
   "calificacion": {
+    "checks": {
+      "type": "bool",
+      "required": false
+    },
+    "resets": {},
     "name": "calificacion",
     "alias": "cal",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "bool",
+    "notNull": false,
     "defaultValue": "0"
   },
   "temas_tratados": {
+    "checks": {
+      "type": "bool",
+      "required": false
+    },
+    "resets": {},
     "name": "temas_tratados",
     "alias": "tem",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "bool",
+    "notNull": false,
     "defaultValue": "0"
   },
   "asistencia": {
+    "checks": {
+      "type": "bool",
+      "required": false
+    },
+    "resets": {},
     "name": "asistencia",
     "alias": "asi",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "bool",
+    "notNull": false,
     "defaultValue": "0"
   },
   "sin_planillas": {
+    "checks": {
+      "type": "bool",
+      "required": false
+    },
+    "resets": {},
     "name": "sin_planillas",
     "alias": "sin",
     "entityName": null,
     "refEntityName": null,
     "refFieldName": "id",
     "dataType": "bool",
+    "notNull": false,
     "defaultValue": "0"
   }
 }

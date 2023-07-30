@@ -13,9 +13,9 @@ namespace ModelOrganizeMy
     mysql mappings (similar to sql server): 
     https://learn.microsoft.com/en-us/dotnet/framework/data/adonet/sql-server-data-type-mappings
     */
-    public class ModelOrganizeMy: BuildModel
+    public class BuildModelMy: BuildModel
     {
-        public ModelOrganizeMy(ConfigMy config) : base(config)
+        public BuildModelMy(ConfigMy config) : base(config)
         {
         }
 
