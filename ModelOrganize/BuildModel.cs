@@ -172,6 +172,7 @@ namespace ModelOrganize
                         continue;
 
                     var f = new Field();
+                    f.entityName = t.Name!;
                     f.name = c.COLUMN_NAME;
                     f.alias = c.Alias;
                     f.dataType = c.DataType;
@@ -181,7 +182,7 @@ namespace ModelOrganize
                     if (!c.REFERENCED_TABLE_NAME.IsNullOrEmpty())
                         f.refEntityName = c.REFERENCED_TABLE_NAME;
 
-                    if (!c.REFERENCED_COLUMN_NAME.IsNullOrEmpty())
+                    if (!c.REFERENCED_COLUMN_NAME.IsNullOrEmpty()) //se compara por REFERENCED_TABLE_NAME para REFERENCED_COLUMN_NAME
                         f.refFieldName = c.REFERENCED_COLUMN_NAME;
 
                     f.notNull = (c.IS_NULLABLE == 0) ? false : true;

@@ -45,9 +45,10 @@ namespace SqlOrganize
 
         public EntityValues Set(string fieldName, object value)
         {
-            foreach (var fn in db.FieldNames(entityName))
-                if (fieldName.Equals(Pf()+fn))
-                    values[fn] = value;
+            string fn = fieldName;
+            if (!fieldId.IsNullOrEmpty() && fieldName.Contains(Pf()))
+                fn = fieldName.Replace(Pf(), "");
+            values[fn] = value;
             return this;
         }
 
@@ -88,26 +89,34 @@ namespace SqlOrganize
         {
             foreach (var fieldName in db.FieldNames(entityName))
                 if (values.ContainsKey(fieldName))
-                    Reset(fieldName, values[fieldName]);
+                    Reset(fieldName);
 
             return this;
         }
 
-
-        public EntityValues Reset(string fieldName, object value)
+        public EntityValues Reset(string fieldName)
         {
             var method = "Reset_" + fieldName;
             Type thisType = this.GetType();
             MethodInfo m = thisType.GetMethod(method);
             if (!m.IsNullOrEmpty())
-                m!.Invoke(this, new object[] { value });
+                m!.Invoke(this, new object[] { });
 
             Field field = db.Field(entityName, fieldName);
-            switch (field.dataType)
+            foreach (var (resetKey, resetValue) in field.resets)
             {
-                case "string":
-                    values[fieldName] = Regex.Replace((string)value, @"\s+", " ").Trim();
-                break;
+                switch (resetKey)
+                {
+                    case "trim":
+                        if (!values[fieldName].IsNullOrEmpty())
+                            values[fieldName] = ((string)values[fieldName]).Trim((char)resetValue);
+                        break;
+                    case "removeMultipleSpaces":
+                        if (!values[fieldName].IsNullOrEmpty())
+                            values[fieldName] = Regex.Replace((string)values[fieldName], @"\s+", " ");
+                        break;
+
+                }
             }
 
             return this;

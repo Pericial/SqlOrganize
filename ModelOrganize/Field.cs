@@ -26,7 +26,7 @@ namespace ModelOrganize
         /* 
         si es clave foranea: Nombre del field al que hace referencia de la entidad referenciada
         */
-        public string? refFieldName { get; set; } = "id";
+        public string? refFieldName { get; set; }
 
         /* 
         tipo de datos generico 
