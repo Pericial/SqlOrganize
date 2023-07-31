@@ -22,12 +22,6 @@ namespace WpfAppMy.Forms.ListaModalidad
             ContainerApp.DbCache().Remove(p.detail);
         }
 
-        public void PersistValueRel(string key, object value, Dictionary<string, object> source)
-        {
-            EntityPersist p = ContainerApp.Db().Persist("modalidad").UpdateValueRel(key, value, source).Exec();
-            ContainerApp.DbCache().Remove(p.detail);
-        }
-
 
 
     }

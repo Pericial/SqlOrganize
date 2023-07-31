@@ -68,7 +68,7 @@ namespace SqlOrganize
         public Field Field(string entityName, string fieldName)
         {
             Dictionary<string, Field> fe = FieldsEntity(entityName);
-            return (fe.ContainsKey(fieldName)) ? fe[entityName] : new Field();
+            return (fe.ContainsKey(fieldName)) ? fe[fieldName] : new Field();
         }
 
         public List<string> EntityNames() => entities.Select(o => o.Key).ToList();

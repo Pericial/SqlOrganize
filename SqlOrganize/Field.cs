@@ -66,6 +66,10 @@ namespace SqlOrganize
         /* lista de valores permitidos */
         //List<object> _values;
 
+        public Dictionary<string, object> checks;
+
+        public Dictionary<string, object> resets;
+
         public Entity Entity() => this.db.Entity(entityName);
 
         public Entity RefEntity() => this.db.Entity(refEntityName!);

@@ -22,8 +22,8 @@ namespace SqlOrganize
 
         public Validation Required()
         {
-            if (value is null) {
-                errors.Add(("Value is null", "required"));
+            if (value.IsNullOrEmpty()) {
+                errors.Add(("Value is null or empty", "required"));
             }
             return this;
         }
@@ -36,7 +36,9 @@ namespace SqlOrganize
                     if(value is not String)
                         errors.Add(("Value is not string", "type"));
                 break;
+
                 case "integer":
+                case "int":
                     if (value is int)
                         errors.Add(("Value is not string", "type"));
 
@@ -45,10 +47,15 @@ namespace SqlOrganize
             return this;
         }
 
-        public bool IsSuccess() {
-            return (errors.IsNullOrEmpty()) ? true : false;
+        public bool HasErrors() {
+            return (errors.IsNullOrEmpty()) ? false : true;
         }
 
+        public Validation Clear()
+        {
+            errors.Clear();
+            return this;
+        }
 
     }
 }

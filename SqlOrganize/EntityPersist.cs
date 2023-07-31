@@ -97,8 +97,6 @@ WHERE " + _Id + " = @" + count + @";
             return UpdateValue(key, value, _Id, _entityName);
         }
 
-
-
         public EntityPersist Insert(Dictionary<string, object> row, string? _entityName = null)
         {
             _entityName = _entityName ?? entityName;
@@ -157,13 +155,13 @@ VALUES (";
             if (rows.Count == 1) //actualizar
             {
                 v.Set("_Id", row["_Id"]).Reset().Check();
-                if (v.logging.Error())
+                if (v.logging.HasErrors())
                     throw new Exception("Los campos a actualizar poseen errores: " + v.logging.ToString());
                 return Update(v.values, _entityName);
             }
 
             v.Default().Reset().Check();
-            if (v.logging.Error())
+            if (v.logging.HasErrors())
                 throw new Exception("Los campos a insertar poseen errores: " + v.logging.ToString());
             return Insert(v.values, _entityName);
         }

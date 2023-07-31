@@ -45,7 +45,9 @@ namespace SqlOrganize
 
         public EntityValues Set(string fieldName, object value)
         {
-            values[fieldName] = value;
+            foreach (var fn in db.FieldNames(entityName))
+                if (fieldName.Equals(Pf()+fn))
+                    values[fn] = value;
             return this;
         }
 
@@ -119,6 +121,7 @@ namespace SqlOrganize
 
             return this;
         }
+
         public EntityValues Default(string fieldName)
         {
             if (values.ContainsKey(fieldName))
@@ -156,7 +159,7 @@ namespace SqlOrganize
                 if (values.ContainsKey(fieldName))
                     Check(fieldName);
 
-            return logging.IsError();
+            return !logging.HasErrors();
         }
 
         /// <summary>
@@ -166,35 +169,34 @@ namespace SqlOrganize
         /// <returns>Resultado de la validacion</returns>
         public bool Check(string fieldName)
         {
-            logging.ResetLogs(fieldName);
-            var method = "check_" + fieldName;
+            logging.ClearByKey(fieldName);
+            var method = "Check_" + fieldName;
             Type thisType = this.GetType();
             MethodInfo? m = thisType.GetMethod(method);
             if (!m.IsNullOrEmpty())
                 return (bool)m!.Invoke(this, null);
 
             Field field = db.Field(entityName, fieldName);
-            Dictionary<string, object> checkMethods = new();
-            checkMethods["type"] = field.dataType;
-            if (field.IsRequired()) 
-                checkMethods["required"] = true;
-
-            Validation v = new(values[fieldName]);
-
-            foreach (var (checkMethod, param) in checkMethods)
+            Validation v = new(Get(fieldName));
+            v.Clear();
+            foreach (var (checkMethod, param) in field.checks)
             {
-                Type validationType = v.GetType();
-                m = validationType.GetMethod(checkMethod);
-                if (!m.IsNullOrEmpty())
-                    m!.Invoke(v, new object[] { param });
-                else
-                    logging.AddLog(key: fieldName, msg: "No existe el metodo de validacion:  " + checkMethod, type: "check");
+                switch (checkMethod)
+                {
+                    case "type":
+                        v.Type((string)param);                
+                    break;
+                    case "required":
+                        v.Required();
+                    break;
+
+                }
             }
 
             foreach (var error in v.errors)
-                logging.AddError(key: fieldName, type: error.type, msg: error.msg);
+                logging.AddErrorLog(key: fieldName, type: error.type, msg: error.msg);
 
-            return v.IsSuccess();
+            return !v.HasErrors();
         }
     }
 

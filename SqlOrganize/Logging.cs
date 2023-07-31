@@ -49,7 +49,7 @@ namespace SqlOrganize
             Error,
         }
 
-        public List<(Level level, string msg, string? type)> LogsKey(string key)
+        public List<(Level level, string msg, string? type)> LogsByKey(string key)
         {
             return logs.ContainsKey(key) ? logs[key] : null;
         }
@@ -59,7 +59,7 @@ namespace SqlOrganize
 
         Reasignar level
         */
-        public void ResetLogs(string key)
+        public void ClearByKey(string key)
         {
             if (logs.ContainsKey(key))
             {
@@ -83,12 +83,12 @@ namespace SqlOrganize
             });
         }
 
-        public void AddError(string key, string msg, string type = null)
+        public void AddErrorLog(string key, string msg, string type = null)
         {
             AddLog(key, msg, type, Level.Error);
         }
 
-        public Level? LevelKey(string key)
+        public Level? LevelFromKey(string key)
         {
             if (!logs.ContainsKey(key))
                 return null;
@@ -105,31 +105,31 @@ namespace SqlOrganize
             return level;
         }
 
-        public bool IsError()
+        public bool HasErrors()
         {
             foreach(var (key, logsEntity) in logs)
-            {
                 foreach(var log in logsEntity)
-                {
                     if (log.level == Level.Error) return true;
-                }
-            }
+
             return false;
         }
 
-        public Dictionary<string, List<(Level level, string msg, string? type)>> Logs(Level level)
+        public Dictionary<string, List<(Level level, string msg, string? type)>> LogsByLevel(Level level)
         {
-            Dictionary<string, List<(Level level, string msg, string? type)>> response = new()
+            Dictionary<string, List<(Level level, string msg, string? type)>> response = new();
+
             foreach (var (key, logskey) in logs)
             {
-                foreach(var log in logskey)
-                {
-                    if(log.level == Level.Error)
-                    {
-                        response.
-                    }
-                }    
+                List < (Level level, string msg, string? type)> logsResponse = new();
+
+                foreach (var log in logskey)
+                    if (log.level == Level.Error)
+                        logsResponse.Add(log);
+
+                if (logsResponse.Count > 0)
+                    response[key] = logsResponse;
             }
+
             return new();
         }
 

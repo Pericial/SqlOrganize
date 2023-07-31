@@ -2,7 +2,7 @@
   "id": {
     "checks": {
       "type": "string",
-      "required": false,
+      "required": false
     },
     "resets": {
       "trim": " ",

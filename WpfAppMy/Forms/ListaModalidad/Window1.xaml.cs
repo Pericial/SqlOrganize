@@ -32,21 +32,6 @@ namespace WpfAppMy.Forms.ListaModalidad
             modalidadGrid.ItemsSource = list.ConvertToListOfObject<Modalidad>();
         }
 
-        private void ModalidadGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
-        {
-            if (e.EditAction == DataGridEditAction.Commit)
-            {
-                var column = e.Column as DataGridBoundColumn;
-                if (column != null)
-                {
-                    string key = ((Binding)column.Binding).Path.Path; //column's binding
-                    Dictionary<string, object> source = (Dictionary<string, object>)((Modalidad)e.Row.DataContext).ConvertToDict();
-                    string value = (e.EditingElement as TextBox)!.Text;
-                    dao.UpdateValueRelModalidad(key, value, source);
-                }
-            }
-        }
-
         private void ModalidadGrid_CellEditEnding2(object sender, DataGridCellEditEndingEventArgs e)
         {
             if (e.EditAction == DataGridEditAction.Commit)
@@ -56,29 +41,44 @@ namespace WpfAppMy.Forms.ListaModalidad
                 {
                     string key = ((Binding)column.Binding).Path.Path; //column's binding
                     Dictionary<string, object> source = (Dictionary<string, object>)((Modalidad)e.Row.DataContext).ConvertToDict();
-                    string? fieldId = null;
-                    if (key.Contains(ContainerApp.db.config.idAttrSeparatorString))
-                    {
-                        int indexSeparator = key.IndexOf(ContainerApp.db.config.idAttrSeparatorString);
-                        fieldId = key.Substring(0, indexSeparator);
-                    }
-                    EntityValues v = ContainerApp.db.Values("modalidad", fieldId).Set(source);
-                    if (v.Get("_Id").IsNullOrEmpty())
-                    {
-                        if (!v.Remove("_Id").Check())
-                        {
-
-                        }
-                    }
-
-
                     string value = (e.EditingElement as TextBox)!.Text;
                     dao.UpdateValueRelModalidad(key, value, source);
                 }
             }
-           
         }
 
+        private void ModalidadGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            if (e.EditAction == DataGridEditAction.Commit)
+            {
+                var column = e.Column as DataGridBoundColumn;
+                if (column != null)
+                {
+                    string key = ((Binding)column.Binding).Path.Path; //column's binding
+                    string value = (e.EditingElement as TextBox)!.Text;
+                    Dictionary<string, object> source = (Dictionary<string, object>)((Modalidad)e.Row.DataContext).ConvertToDict();
+                    string? fieldId = null;
+                    string entityName = "modalidad";
+                    if (key.Contains(ContainerApp.db.config.idAttrSeparatorString))
+                    {
+                        int indexSeparator = key.IndexOf(ContainerApp.db.config.idAttrSeparatorString);
+                        fieldId = key.Substring(0, indexSeparator);
+                        entityName = ContainerApp.db.Entity(entityName!).relations[fieldId].refEntityName;
+                    }
+
+                    EntityValues v = ContainerApp.db.Values(entityName, fieldId).Set(source).Set(key, value);
+                    if (v.Get("_Id").IsNullOrEmpty()) { 
+                        if (v.Remove("_Id").Check())
+                        {
+                            v.Default().Reset();
+                            ContainerApp.db.Persist(entityName).Insert(v.values).Exec();
+                        }
+                    }
+                    else
+                        ContainerApp.db.Persist(entityName).Update(v.values).Exec();
+                }
+            }
+        }
     }
 
     internal class Modalidad
