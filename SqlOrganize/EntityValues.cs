@@ -49,6 +49,12 @@ namespace SqlOrganize
             return this;
         }
 
+        public EntityValues Remove(string fieldName)
+        {
+            values.Remove(fieldName);
+            return this;
+        }
+
         public object Get(string fieldName)
         {
             return values[fieldName];
@@ -143,13 +149,14 @@ namespace SqlOrganize
         }
 
 
-        public EntityValues Check()
+        public bool Check()
         {
+            logging.Clear();
             foreach (var fieldName in db.FieldNames(entityName))
                 if (values.ContainsKey(fieldName))
                     Check(fieldName);
 
-            return this;
+            return logging.IsError();
         }
 
         /// <summary>

@@ -15,7 +15,7 @@ namespace WpfAppMy
         {
         }
 
-        public override EntityValues Values(string entityName, string? fieldId = null)
+        public EntityValues Values(string entityName, string? fieldId = null)
         {
             switch (entityName)
             {
@@ -23,7 +23,7 @@ namespace WpfAppMy
                     return new AlumnoComision(this, entityName, fieldId);
             }
 
-            return new ValuesMy(this, entityName, fieldId);
+            return new EntityValues(this, entityName, fieldId);
 
         }
     }

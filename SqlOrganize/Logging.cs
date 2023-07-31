@@ -49,7 +49,7 @@ namespace SqlOrganize
             Error,
         }
 
-        public List<(Level level, string msg, string? type)> logs_key(string key)
+        public List<(Level level, string msg, string? type)> LogsKey(string key)
         {
             return logs.ContainsKey(key) ? logs[key] : null;
         }
@@ -65,6 +65,11 @@ namespace SqlOrganize
             {
                 logs.Remove(key);
             }
+        }
+
+        public void Clear()
+        {
+            logs.Clear();
         }
             
         public void AddLog(string key, string msg, string type = null, Level level = 0)
@@ -83,7 +88,7 @@ namespace SqlOrganize
             AddLog(key, msg, type, Level.Error);
         }
 
-        public Level? level_key(string key)
+        public Level? LevelKey(string key)
         {
             if (!logs.ContainsKey(key))
                 return null;
@@ -100,7 +105,7 @@ namespace SqlOrganize
             return level;
         }
 
-        public bool Error()
+        public bool IsError()
         {
             foreach(var (key, logsEntity) in logs)
             {
@@ -111,6 +116,23 @@ namespace SqlOrganize
             }
             return false;
         }
+
+        public Dictionary<string, List<(Level level, string msg, string? type)>> Logs(Level level)
+        {
+            Dictionary<string, List<(Level level, string msg, string? type)>> response = new()
+            foreach (var (key, logskey) in logs)
+            {
+                foreach(var log in logskey)
+                {
+                    if(log.level == Level.Error)
+                    {
+                        response.
+                    }
+                }    
+            }
+            return new();
+        }
+
 
     }
 }
