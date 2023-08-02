@@ -182,7 +182,7 @@ namespace SqlOrganize
                 } else
                     sql += db.Mapping(entityName).Map(fieldName) + " AS '" + fieldName + "', ";
             }
-            sql = sql.RemoveLastIndex(',');
+            sql = sql.RemoveLastChar(',');
             #endregion
 
             return sql;

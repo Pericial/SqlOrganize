@@ -1,6 +1,7 @@
 ﻿using SqlOrganize;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,8 @@ namespace WpfAppMy.Forms.ListaModalidad
     {
 
         private DAO dao = new();
+        private ObservableCollection<Modalidad> modalidadData = new();
+
 
         public Window1()
         {
@@ -68,16 +71,25 @@ namespace WpfAppMy.Forms.ListaModalidad
 
                     EntityValues v = ContainerApp.db.Values(entityName, fieldId).Set(source).Set(key, value);
                     if (v.Get("_Id").IsNullOrEmpty()) { 
-                        if (v.Remove("_Id").Check())
+                        if (v.Check())
                         {
                             v.Default().Reset();
-                            ContainerApp.db.Persist(entityName).Insert(v.values).Exec();
+                            EntityPersist p = ContainerApp.db.Persist(entityName).Insert(v.values).Exec();
+
+                            //modalidadGrid.CurrentItem = ((Modalidad)e.Row.Item);
+                            //List<Dictionary<string, object>> list = dao.AllModalidad();
+                            //modalidadGrid.ItemsSource = null;
+                            //modalidadGrid.ItemsSource = list.ConvertToListOfObject<Modalidad>();
                         }
                     }
                     else
                         ContainerApp.db.Persist(entityName).Update(v.values).Exec();
                 }
+
+
             }
+        
+
         }
     }
 

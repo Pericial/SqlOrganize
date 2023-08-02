@@ -2,7 +2,7 @@
   "id": {
     "checks": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "resets": {
       "trim": " ",
@@ -14,13 +14,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": false,
-    "defaultValue": null
+    "notNull": true,
+    "defaultValue": "guid"
   },
   "numero": {
     "checks": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "resets": {
       "trim": " ",
@@ -32,13 +32,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": null
   },
   "nombre": {
     "checks": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "resets": {
       "trim": " ",
@@ -50,13 +50,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": null
   },
   "observaciones": {
     "checks": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "resets": {
       "trim": " ",
@@ -68,13 +67,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "alta": {
     "checks": {
       "type": "timestamp",
-      "required": false
+      "required": true
     },
     "resets": {},
     "name": "alta",
@@ -83,13 +82,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "timestamp",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": "current_timestamp()"
   },
   "baja": {
     "checks": {
-      "type": "timestamp",
-      "required": true
+      "type": "timestamp"
     },
     "resets": {},
     "name": "baja",
@@ -98,13 +96,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "timestamp",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "domicilio": {
     "checks": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "resets": {
       "trim": " ",
@@ -116,13 +113,12 @@
     "refEntityName": "domicilio",
     "refFieldName": "id",
     "dataType": "string",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "tipo_sede": {
     "checks": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "resets": {
       "trim": " ",
@@ -134,13 +130,12 @@
     "refEntityName": "tipo_sede",
     "refFieldName": "id",
     "dataType": "string",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "centro_educativo": {
     "checks": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "resets": {
       "trim": " ",
@@ -152,13 +147,12 @@
     "refEntityName": "centro_educativo",
     "refFieldName": "id",
     "dataType": "string",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "fecha_traspaso": {
     "checks": {
-      "type": "date",
-      "required": true
+      "type": "date"
     },
     "resets": {},
     "name": "fecha_traspaso",
@@ -167,13 +161,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "date",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "organizacion": {
     "checks": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "resets": {
       "trim": " ",
@@ -185,13 +178,12 @@
     "refEntityName": "sede",
     "refFieldName": "id",
     "dataType": "string",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "pfid": {
     "checks": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "resets": {
       "trim": " ",
@@ -203,7 +195,24 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
+  },
+  "pfid_organizacion": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "pfid_organizacion",
+    "alias": "pf1",
+    "entityName": "sede",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
   }
 }

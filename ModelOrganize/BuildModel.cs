@@ -176,7 +176,7 @@ namespace ModelOrganize
                     f.name = c.COLUMN_NAME;
                     f.alias = c.Alias;
                     f.dataType = c.DataType;
-                    if (!c.COLUMN_DEFAULT.IsNullOrEmpty())
+                    if (!c.COLUMN_DEFAULT.IsNullOrEmpty() && !c.COLUMN_DEFAULT.IsDbNull() && (c.COLUMN_DEFAULT as string) != "NULL")
                         f.defaultValue = c.COLUMN_DEFAULT;
 
                     if (!c.REFERENCED_TABLE_NAME.IsNullOrEmpty())
@@ -185,30 +185,31 @@ namespace ModelOrganize
                     if (!c.REFERENCED_COLUMN_NAME.IsNullOrEmpty()) //se compara por REFERENCED_TABLE_NAME para REFERENCED_COLUMN_NAME
                         f.refFieldName = c.REFERENCED_COLUMN_NAME;
 
-                    f.notNull = (c.IS_NULLABLE == 0) ? false : true;
+                    f.notNull = (c.IS_NULLABLE == 1) ? false : true;
 
                     f.checks = new()
                     {
                         { "type", f.dataType },
-                        { "required", f.notNull },
                     };
 
+                    if(f.notNull)
+                        f.checks["required"] = true;
+
                     if(f.dataType == "string")
-                    {
                         f.resets = new()
                         {
-                            { "trim", " " },
+                            { "trim", ' '},
                             { "removeMultipleSpaces", true },
                         };
-                    }
+
+                    if (f.dataType == "bool" && f.defaultValue is not null)
+                        f.defaultValue = ((string)f.defaultValue).ToBool();
+
                     if (!fields.ContainsKey(t.Name!))
                         fields[t.Name!] = new();
 
                     fields[t.Name!][f.name] = f;
-
-                    
                 }
-
             }
             #endregion
 

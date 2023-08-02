@@ -101,16 +101,19 @@ namespace SqlOrganizeMy
             throw new NotImplementedException();
         }
 
+        public override void Exec()
+        {
+            using MySqlConnection connection = new MySqlConnection((string)db.config.connectionString);
+            using MySqlCommand command = new MySqlCommand();
+            SqlExecute(connection, command);
+        }
+
         public override void Transaction()
         {
             sql = @"BEGIN;
 " + sql + @"
 COMMIT;";
-            using MySqlConnection connection = new MySqlConnection((string)db.config.connectionString);
-            using MySqlCommand command = new MySqlCommand();
-            SqlExecute(connection, command);
-            using MySqlDataReader reader = command.ExecuteReader();
-
+            Exec();
         }
     }
 

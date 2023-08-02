@@ -2,7 +2,7 @@
   "id": {
     "checks": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "resets": {
       "trim": " ",
@@ -14,13 +14,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": false,
-    "defaultValue": null
+    "notNull": true,
+    "defaultValue": "guid"
   },
   "nota1": {
     "checks": {
-      "type": "decimal",
-      "required": true
+      "type": "decimal"
     },
     "resets": {},
     "name": "nota1",
@@ -29,13 +28,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "decimal",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "nota2": {
     "checks": {
-      "type": "decimal",
-      "required": true
+      "type": "decimal"
     },
     "resets": {},
     "name": "nota2",
@@ -44,13 +42,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "decimal",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "nota3": {
     "checks": {
-      "type": "decimal",
-      "required": true
+      "type": "decimal"
     },
     "resets": {},
     "name": "nota3",
@@ -59,13 +56,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "decimal",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "nota_final": {
     "checks": {
-      "type": "decimal",
-      "required": true
+      "type": "decimal"
     },
     "resets": {},
     "name": "nota_final",
@@ -74,13 +70,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "decimal",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "crec": {
     "checks": {
-      "type": "decimal",
-      "required": true
+      "type": "decimal"
     },
     "resets": {},
     "name": "crec",
@@ -89,13 +84,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "decimal",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "curso": {
     "checks": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "resets": {
       "trim": " ",
@@ -107,13 +101,12 @@
     "refEntityName": "curso",
     "refFieldName": "id",
     "dataType": "string",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "porcentaje_asistencia": {
     "checks": {
-      "type": "int",
-      "required": true
+      "type": "int"
     },
     "resets": {},
     "name": "porcentaje_asistencia",
@@ -122,13 +115,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "int",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "observaciones": {
     "checks": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "resets": {
       "trim": " ",
@@ -140,13 +132,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "division": {
     "checks": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "resets": {
       "trim": " ",
@@ -158,13 +149,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "alumno": {
     "checks": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "resets": {
       "trim": " ",
@@ -176,13 +167,13 @@
     "refEntityName": "alumno",
     "refFieldName": "id",
     "dataType": "string",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": null
   },
   "disposicion": {
     "checks": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "resets": {
       "trim": " ",
@@ -194,13 +185,12 @@
     "refEntityName": "disposicion",
     "refFieldName": "id",
     "dataType": "string",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": null
   },
   "fecha": {
     "checks": {
-      "type": "date",
-      "required": true
+      "type": "date"
     },
     "resets": {},
     "name": "fecha",
@@ -209,7 +199,7 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "date",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   }
 }

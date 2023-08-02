@@ -2,7 +2,7 @@
   "id": {
     "checks": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "resets": {
       "trim": " ",
@@ -14,13 +14,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": false,
-    "defaultValue": null
+    "notNull": true,
+    "defaultValue": "guid"
   },
   "desde": {
     "checks": {
-      "type": "date",
-      "required": true
+      "type": "date"
     },
     "resets": {},
     "name": "desde",
@@ -29,13 +28,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "date",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "hasta": {
     "checks": {
-      "type": "date",
-      "required": true
+      "type": "date"
     },
     "resets": {},
     "name": "hasta",
@@ -44,13 +42,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "date",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "cargo": {
     "checks": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "resets": {
       "trim": " ",
@@ -62,13 +60,13 @@
     "refEntityName": "cargo",
     "refFieldName": "id",
     "dataType": "string",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": null
   },
   "sede": {
     "checks": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "resets": {
       "trim": " ",
@@ -80,13 +78,13 @@
     "refEntityName": "sede",
     "refFieldName": "id",
     "dataType": "string",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": null
   },
   "persona": {
     "checks": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "resets": {
       "trim": " ",
@@ -98,13 +96,13 @@
     "refEntityName": "persona",
     "refFieldName": "id",
     "dataType": "string",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": null
   },
   "alta": {
     "checks": {
       "type": "timestamp",
-      "required": false
+      "required": true
     },
     "resets": {},
     "name": "alta",
@@ -113,7 +111,24 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "timestamp",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": "current_timestamp()"
+  },
+  "pfid": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "pfid",
+    "alias": "pfi",
+    "entityName": "designacion",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
   }
 }

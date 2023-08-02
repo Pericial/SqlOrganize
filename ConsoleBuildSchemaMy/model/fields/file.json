@@ -2,7 +2,7 @@
   "id": {
     "checks": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "resets": {
       "trim": " ",
@@ -14,13 +14,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": false,
-    "defaultValue": null
+    "notNull": true,
+    "defaultValue": "guid"
   },
   "name": {
     "checks": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "resets": {
       "trim": " ",
@@ -32,13 +32,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": null
   },
   "type": {
     "checks": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "resets": {
       "trim": " ",
@@ -50,13 +50,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": null
   },
   "content": {
     "checks": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "resets": {
       "trim": " ",
@@ -68,13 +68,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": null
   },
   "size": {
     "checks": {
       "type": "int",
-      "required": false
+      "required": true
     },
     "resets": {},
     "name": "size",
@@ -83,13 +83,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "int",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": null
   },
   "created": {
     "checks": {
       "type": "timestamp",
-      "required": false
+      "required": true
     },
     "resets": {},
     "name": "created",
@@ -98,7 +98,7 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "timestamp",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": "current_timestamp()"
   }
 }

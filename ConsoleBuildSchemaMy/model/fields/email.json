@@ -2,7 +2,7 @@
   "id": {
     "checks": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "resets": {
       "trim": " ",
@@ -14,13 +14,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": false,
-    "defaultValue": null
+    "notNull": true,
+    "defaultValue": "guid"
   },
   "email": {
     "checks": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "resets": {
       "trim": " ",
@@ -32,13 +32,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": null
   },
   "verificado": {
     "checks": {
       "type": "bool",
-      "required": false
+      "required": true
     },
     "resets": {},
     "name": "verificado",
@@ -47,13 +47,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "bool",
-    "notNull": false,
-    "defaultValue": "0"
+    "notNull": true,
+    "defaultValue": false
   },
   "insertado": {
     "checks": {
       "type": "timestamp",
-      "required": false
+      "required": true
     },
     "resets": {},
     "name": "insertado",
@@ -62,13 +62,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "timestamp",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": "current_timestamp()"
   },
   "eliminado": {
     "checks": {
-      "type": "timestamp",
-      "required": true
+      "type": "timestamp"
     },
     "resets": {},
     "name": "eliminado",
@@ -77,13 +76,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "timestamp",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "persona": {
     "checks": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "resets": {
       "trim": " ",
@@ -95,7 +94,7 @@
     "refEntityName": "persona",
     "refFieldName": "id",
     "dataType": "string",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": null
   }
 }

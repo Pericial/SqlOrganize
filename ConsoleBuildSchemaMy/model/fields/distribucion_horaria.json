@@ -2,7 +2,7 @@
   "id": {
     "checks": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "resets": {
       "trim": " ",
@@ -14,13 +14,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": false,
-    "defaultValue": null
+    "notNull": true,
+    "defaultValue": "guid"
   },
   "horas_catedra": {
     "checks": {
       "type": "int",
-      "required": false
+      "required": true
     },
     "resets": {},
     "name": "horas_catedra",
@@ -29,13 +29,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "int",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": null
   },
   "dia": {
     "checks": {
       "type": "int",
-      "required": false
+      "required": true
     },
     "resets": {},
     "name": "dia",
@@ -44,13 +44,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "int",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": null
   },
   "disposicion": {
     "checks": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "resets": {
       "trim": " ",
@@ -62,7 +61,7 @@
     "refEntityName": "disposicion",
     "refFieldName": "id",
     "dataType": "string",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   }
 }

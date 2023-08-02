@@ -2,7 +2,7 @@
   "id": {
     "checks": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "resets": {
       "trim": " ",
@@ -14,13 +14,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": false,
-    "defaultValue": null
+    "notNull": true,
+    "defaultValue": "guid"
   },
   "nombre": {
     "checks": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "resets": {
       "trim": " ",
@@ -32,13 +32,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": null
   },
   "cue": {
     "checks": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "resets": {
       "trim": " ",
@@ -50,13 +49,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "domicilio": {
     "checks": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "resets": {
       "trim": " ",
@@ -68,13 +66,12 @@
     "refEntityName": "domicilio",
     "refFieldName": "id",
     "dataType": "string",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "observaciones": {
     "checks": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "resets": {
       "trim": " ",
@@ -86,7 +83,7 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   }
 }

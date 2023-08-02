@@ -2,7 +2,7 @@
   "id": {
     "checks": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "resets": {
       "trim": " ",
@@ -14,13 +14,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": false,
-    "defaultValue": null
+    "notNull": true,
+    "defaultValue": "guid"
   },
   "numero": {
     "checks": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "resets": {
       "trim": " ",
@@ -32,13 +32,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": null
   },
   "insertado": {
     "checks": {
       "type": "timestamp",
-      "required": false
+      "required": true
     },
     "resets": {},
     "name": "insertado",
@@ -47,13 +47,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "timestamp",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": "current_timestamp()"
   },
   "fecha_contralor": {
     "checks": {
-      "type": "date",
-      "required": true
+      "type": "date"
     },
     "resets": {},
     "name": "fecha_contralor",
@@ -62,13 +61,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "date",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "fecha_consejo": {
     "checks": {
-      "type": "date",
-      "required": true
+      "type": "date"
     },
     "resets": {},
     "name": "fecha_consejo",
@@ -77,13 +75,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "date",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "observaciones": {
     "checks": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "resets": {
       "trim": " ",
@@ -95,7 +92,7 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   }
 }

@@ -2,7 +2,7 @@
   "id": {
     "checks": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "resets": {
       "trim": " ",
@@ -14,13 +14,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": false,
-    "defaultValue": null
+    "notNull": true,
+    "defaultValue": "guid"
   },
   "numero": {
     "checks": {
       "type": "int",
-      "required": false
+      "required": true
     },
     "resets": {},
     "name": "numero",
@@ -29,13 +29,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "int",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": null
   },
   "dia": {
     "checks": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "resets": {
       "trim": " ",
@@ -47,7 +47,7 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": null
   }
 }

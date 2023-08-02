@@ -2,7 +2,7 @@
   "id": {
     "checks": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "resets": {
       "trim": " ",
@@ -14,13 +14,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": false,
-    "defaultValue": null
+    "notNull": true,
+    "defaultValue": "guid"
   },
   "hora_inicio": {
     "checks": {
       "type": "time",
-      "required": false
+      "required": true
     },
     "resets": {},
     "name": "hora_inicio",
@@ -29,13 +29,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "time",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": null
   },
   "hora_fin": {
     "checks": {
       "type": "time",
-      "required": false
+      "required": true
     },
     "resets": {},
     "name": "hora_fin",
@@ -44,13 +44,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "time",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": null
   },
   "curso": {
     "checks": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "resets": {
       "trim": " ",
@@ -62,13 +62,13 @@
     "refEntityName": "curso",
     "refFieldName": "id",
     "dataType": "string",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": null
   },
   "dia": {
     "checks": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "resets": {
       "trim": " ",
@@ -80,7 +80,7 @@
     "refEntityName": "dia",
     "refFieldName": "id",
     "dataType": "string",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": null
   }
 }

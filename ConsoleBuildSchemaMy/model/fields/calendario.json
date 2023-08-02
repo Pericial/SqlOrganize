@@ -2,7 +2,7 @@
   "id": {
     "checks": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "resets": {
       "trim": " ",
@@ -14,13 +14,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": false,
-    "defaultValue": null
+    "notNull": true,
+    "defaultValue": "guid"
   },
   "inicio": {
     "checks": {
-      "type": "date",
-      "required": true
+      "type": "date"
     },
     "resets": {},
     "name": "inicio",
@@ -29,13 +28,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "date",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "fin": {
     "checks": {
-      "type": "date",
-      "required": true
+      "type": "date"
     },
     "resets": {},
     "name": "fin",
@@ -44,13 +42,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "date",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "anio": {
     "checks": {
       "type": "year",
-      "required": false
+      "required": true
     },
     "resets": {},
     "name": "anio",
@@ -59,13 +57,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "year",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": null
   },
   "semestre": {
     "checks": {
       "type": "int",
-      "required": false
+      "required": true
     },
     "resets": {},
     "name": "semestre",
@@ -74,13 +72,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "int",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": null
   },
   "insertado": {
     "checks": {
       "type": "timestamp",
-      "required": false
+      "required": true
     },
     "resets": {},
     "name": "insertado",
@@ -89,13 +87,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "timestamp",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": "current_timestamp()"
   },
   "descripcion": {
     "checks": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "resets": {
       "trim": " ",
@@ -107,7 +104,7 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   }
 }

@@ -2,7 +2,7 @@
   "id": {
     "checks": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "resets": {
       "trim": " ",
@@ -14,13 +14,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": false,
-    "defaultValue": null
+    "notNull": true,
+    "defaultValue": "guid"
   },
   "anio_ingreso": {
     "checks": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "resets": {
       "trim": " ",
@@ -32,13 +31,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "observaciones": {
     "checks": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "resets": {
       "trim": " ",
@@ -50,13 +48,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "persona": {
     "checks": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "resets": {
       "trim": " ",
@@ -68,13 +66,12 @@
     "refEntityName": "persona",
     "refFieldName": "id",
     "dataType": "string",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": null
   },
   "estado_inscripcion": {
     "checks": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "resets": {
       "trim": " ",
@@ -86,13 +83,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "fecha_titulacion": {
     "checks": {
-      "type": "date",
-      "required": true
+      "type": "date"
     },
     "resets": {},
     "name": "fecha_titulacion",
@@ -101,13 +97,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "date",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "plan": {
     "checks": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "resets": {
       "trim": " ",
@@ -119,13 +114,12 @@
     "refEntityName": "plan",
     "refFieldName": "id",
     "dataType": "string",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "resolucion_inscripcion": {
     "checks": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "resets": {
       "trim": " ",
@@ -137,13 +131,12 @@
     "refEntityName": "resolucion",
     "refFieldName": "id",
     "dataType": "string",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "anio_inscripcion": {
     "checks": {
-      "type": "int",
-      "required": true
+      "type": "int"
     },
     "resets": {},
     "name": "anio_inscripcion",
@@ -152,13 +145,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "int",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "semestre_inscripcion": {
     "checks": {
-      "type": "int",
-      "required": true
+      "type": "int"
     },
     "resets": {},
     "name": "semestre_inscripcion",
@@ -167,13 +159,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "int",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "semestre_ingreso": {
     "checks": {
-      "type": "int",
-      "required": true
+      "type": "int"
     },
     "resets": {},
     "name": "semestre_ingreso",
@@ -182,13 +173,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "int",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "adeuda_legajo": {
     "checks": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "resets": {
       "trim": " ",
@@ -200,13 +190,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "adeuda_deudores": {
     "checks": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "resets": {
       "trim": " ",
@@ -218,13 +207,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "documentacion_inscripcion": {
     "checks": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "resets": {
       "trim": " ",
@@ -236,13 +224,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "anio_inscripcion_completo": {
     "checks": {
-      "type": "bool",
-      "required": true
+      "type": "bool"
     },
     "resets": {},
     "name": "anio_inscripcion_completo",
@@ -251,13 +238,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "bool",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "establecimiento_inscripcion": {
     "checks": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "resets": {
       "trim": " ",
@@ -269,13 +255,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "libro_folio": {
     "checks": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "resets": {
       "trim": " ",
@@ -287,13 +272,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "libro": {
     "checks": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "resets": {
       "trim": " ",
@@ -305,13 +289,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "folio": {
     "checks": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "resets": {
       "trim": " ",
@@ -323,13 +306,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "comentarios": {
     "checks": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "resets": {
       "trim": " ",
@@ -341,13 +323,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "tiene_dni": {
     "checks": {
       "type": "bool",
-      "required": false
+      "required": true
     },
     "resets": {},
     "name": "tiene_dni",
@@ -356,13 +338,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "bool",
-    "notNull": false,
-    "defaultValue": "0"
+    "notNull": true,
+    "defaultValue": false
   },
   "tiene_constancia": {
     "checks": {
       "type": "bool",
-      "required": false
+      "required": true
     },
     "resets": {},
     "name": "tiene_constancia",
@@ -371,13 +353,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "bool",
-    "notNull": false,
-    "defaultValue": "0"
+    "notNull": true,
+    "defaultValue": false
   },
   "tiene_certificado": {
     "checks": {
       "type": "bool",
-      "required": false
+      "required": true
     },
     "resets": {},
     "name": "tiene_certificado",
@@ -386,13 +368,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "bool",
-    "notNull": false,
-    "defaultValue": "0"
+    "notNull": true,
+    "defaultValue": false
   },
   "previas_completas": {
     "checks": {
       "type": "bool",
-      "required": false
+      "required": true
     },
     "resets": {},
     "name": "previas_completas",
@@ -401,13 +383,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "bool",
-    "notNull": false,
-    "defaultValue": "0"
+    "notNull": true,
+    "defaultValue": false
   },
   "tiene_partida": {
     "checks": {
       "type": "bool",
-      "required": false
+      "required": true
     },
     "resets": {},
     "name": "tiene_partida",
@@ -416,13 +398,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "bool",
-    "notNull": false,
-    "defaultValue": "0"
+    "notNull": true,
+    "defaultValue": false
   },
   "creado": {
     "checks": {
       "type": "timestamp",
-      "required": false
+      "required": true
     },
     "resets": {},
     "name": "creado",
@@ -431,13 +413,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "timestamp",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": "current_timestamp()"
   },
   "confirmado_direccion": {
     "checks": {
       "type": "bool",
-      "required": false
+      "required": true
     },
     "resets": {},
     "name": "confirmado_direccion",
@@ -446,7 +428,7 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "bool",
-    "notNull": false,
-    "defaultValue": "0"
+    "notNull": true,
+    "defaultValue": false
   }
 }

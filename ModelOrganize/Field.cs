@@ -55,7 +55,7 @@ namespace ModelOrganize
         public bool notNull { get; set; }
 
         /* valor por defecto */
-        public object? defaultValue { get; set; }
+        public object? defaultValue { get; set; } = null;
 
         /// <summary>
         /// Lista de chequeos

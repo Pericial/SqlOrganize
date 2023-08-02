@@ -2,7 +2,7 @@
   "id": {
     "checks": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "resets": {
       "trim": " ",
@@ -14,13 +14,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": false,
-    "defaultValue": null
+    "notNull": true,
+    "defaultValue": "guid"
   },
   "fecha_toma": {
     "checks": {
-      "type": "date",
-      "required": true
+      "type": "date"
     },
     "resets": {},
     "name": "fecha_toma",
@@ -29,13 +28,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "date",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "estado": {
     "checks": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "resets": {
       "trim": " ",
@@ -47,13 +45,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "observaciones": {
     "checks": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "resets": {
       "trim": " ",
@@ -65,13 +62,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "comentario": {
     "checks": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "resets": {
       "trim": " ",
@@ -83,13 +79,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "tipo_movimiento": {
     "checks": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "resets": {
       "trim": " ",
@@ -101,13 +97,12 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": null
   },
   "estado_contralor": {
     "checks": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "resets": {
       "trim": " ",
@@ -119,13 +114,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "string",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "alta": {
     "checks": {
       "type": "timestamp",
-      "required": false
+      "required": true
     },
     "resets": {},
     "name": "alta",
@@ -134,13 +129,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "timestamp",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": "current_timestamp()"
   },
   "curso": {
     "checks": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "resets": {
       "trim": " ",
@@ -152,13 +147,12 @@
     "refEntityName": "curso",
     "refFieldName": "id",
     "dataType": "string",
-    "notNull": false,
+    "notNull": true,
     "defaultValue": null
   },
   "docente": {
     "checks": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "resets": {
       "trim": " ",
@@ -170,13 +164,12 @@
     "refEntityName": "persona",
     "refFieldName": "id",
     "dataType": "string",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "reemplazo": {
     "checks": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "resets": {
       "trim": " ",
@@ -188,13 +181,12 @@
     "refEntityName": "persona",
     "refFieldName": "id",
     "dataType": "string",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "planilla_docente": {
     "checks": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "resets": {
       "trim": " ",
@@ -206,13 +198,13 @@
     "refEntityName": "planilla_docente",
     "refFieldName": "id",
     "dataType": "string",
-    "notNull": true,
-    "defaultValue": "NULL"
+    "notNull": false,
+    "defaultValue": null
   },
   "calificacion": {
     "checks": {
       "type": "bool",
-      "required": false
+      "required": true
     },
     "resets": {},
     "name": "calificacion",
@@ -221,13 +213,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "bool",
-    "notNull": false,
-    "defaultValue": "0"
+    "notNull": true,
+    "defaultValue": false
   },
   "temas_tratados": {
     "checks": {
       "type": "bool",
-      "required": false
+      "required": true
     },
     "resets": {},
     "name": "temas_tratados",
@@ -236,13 +228,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "bool",
-    "notNull": false,
-    "defaultValue": "0"
+    "notNull": true,
+    "defaultValue": false
   },
   "asistencia": {
     "checks": {
       "type": "bool",
-      "required": false
+      "required": true
     },
     "resets": {},
     "name": "asistencia",
@@ -251,13 +243,13 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "bool",
-    "notNull": false,
-    "defaultValue": "0"
+    "notNull": true,
+    "defaultValue": false
   },
   "sin_planillas": {
     "checks": {
       "type": "bool",
-      "required": false
+      "required": true
     },
     "resets": {},
     "name": "sin_planillas",
@@ -266,7 +258,7 @@
     "refEntityName": null,
     "refFieldName": null,
     "dataType": "bool",
-    "notNull": false,
-    "defaultValue": "0"
+    "notNull": true,
+    "defaultValue": false
   }
 }

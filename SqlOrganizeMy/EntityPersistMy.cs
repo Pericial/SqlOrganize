@@ -35,7 +35,7 @@ UPDATE " + sna + @" SET
                     count++;
                     parameters.Add(row[fieldName]);
                 }
-            sql = sql.RemoveLastIndex(',');
+            sql = sql.RemoveLastChar(',');
             return this;
         }
 

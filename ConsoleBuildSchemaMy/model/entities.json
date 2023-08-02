@@ -1082,7 +1082,8 @@
       "calendario",
       "identificacion",
       "estado",
-      "configuracion"
+      "configuracion",
+      "pfid"
     ],
     "fk": [
       "sede",
@@ -1740,7 +1741,8 @@
       "cargo",
       "sede",
       "persona",
-      "alta"
+      "alta",
+      "pfid"
     ],
     "fk": [
       "cargo",
@@ -2609,7 +2611,8 @@
     ],
     "fields": [
       "id",
-      "nombre"
+      "nombre",
+      "pfid"
     ],
     "fk": [],
     "orderDefault": {},
@@ -2705,7 +2708,8 @@
       "id",
       "orientacion",
       "resolucion",
-      "distribucion_horaria"
+      "distribucion_horaria",
+      "pfid"
     ],
     "fk": [],
     "orderDefault": {},
@@ -2733,7 +2737,8 @@
       "id",
       "anio",
       "semestre",
-      "plan"
+      "plan",
+      "pfid"
     ],
     "fk": [
       "plan"
@@ -2846,7 +2851,8 @@
       "centro_educativo",
       "fecha_traspaso",
       "organizacion",
-      "pfid"
+      "pfid",
+      "pfid_organizacion"
     ],
     "fk": [
       "domicilio",

@@ -33,14 +33,14 @@ namespace SqlOrganize
             switch (type)
             {
                 case "string":
-                    if(value is not String)
+                    if(!value.IsNullOrEmpty() && value is not String)
                         errors.Add(("Value is not string", "type"));
                 break;
 
                 case "integer":
                 case "int":
-                    if (value is int)
-                        errors.Add(("Value is not string", "type"));
+                    if (value is not null && value is not int)
+                        errors.Add(("Value is not int", "type"));
 
                 break;
             }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Utils
 {
-    public static class StringUtils
+    public static class ValueTypesUtils
     {
         public static char GetNextChar(this char c)
         {
@@ -21,7 +21,7 @@ namespace Utils
             return nextChar;
         }
 
-        public static string RemoveLastIndex(this string s, char c)
+        public static string RemoveLastChar(this string s, char c)
         {
             int index = s.LastIndexOf(c); //remover ultima coma
             if (index > -1)
@@ -45,5 +45,21 @@ namespace Utils
             return @this.Remove(startindex, oldValue.Length).Insert(startindex, newValue);
         }
 
+        public static bool ToBool(this string @this)
+        {
+            string s = @this.Substring(0, 1).ToLower();
+            if (s == "t" || s == "1" || s == "s" || s == "y" || s == "o") return true;
+            return false;
+        }
+
+        public static bool ToBool(this int @this)
+        {
+            return @this.ToString().ToBool();
+        }
+
+        public static char ToChar(this string @this)
+        {
+            return @this.ToCharArray()[0];
+        }
     }
 }

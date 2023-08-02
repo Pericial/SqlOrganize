@@ -109,7 +109,7 @@ namespace SqlOrganize
                 {
                     case "trim":
                         if (!values[fieldName].IsNullOrEmpty())
-                            values[fieldName] = ((string)values[fieldName]).Trim((char)resetValue);
+                            values[fieldName] = ((string)values[fieldName]).Trim(((string)resetValue).ToChar());
                         break;
                     case "removeMultipleSpaces":
                         if (!values[fieldName].IsNullOrEmpty())
@@ -124,15 +124,51 @@ namespace SqlOrganize
 
         public EntityValues Default()
         {
-            foreach (var fieldName in db.FieldNames(entityName))
+            List<string> fieldNames = new List<string>(db.FieldNames(entityName));
+            fieldNames.Remove("_Id"); //id debe dejarse para el final porque depende de otros valores
+
+            foreach (var fieldName in fieldNames)
                 if (!values.ContainsKey(fieldName))
                     Default(fieldName);
+
+            Default("_Id");
 
             return this;
         }
 
-        public EntityValues Default(string fieldName)
+        /// <summary>
+        /// Reset id
+        /// </summary>
+        /// <returns></returns>
+        public EntityValues Reset__Id()
         {
+             List<string> fieldsId = db.Entity(entityName).id;
+             foreach(string fieldName in fieldsId)
+                if (!values.ContainsKey(fieldName) || values[fieldName] is null)
+                    return this; //si no es posible definir valor por defecto de _Id, no se define
+
+            if (fieldsId.Count == 1)
+            {
+                values["_Id"] = values[fieldsId[0]];
+                return this;
+            }
+
+            List<string> valuesId = new();
+            foreach (string fieldName in fieldsId)
+                valuesId.Add(values[fieldName].ToString()!);
+
+            values["_Id"] = String.Join(db.config.concatString, valuesId);
+            return this;
+        }
+
+        /// <summary>
+        /// Definir valor por defecto
+        /// </summary>
+        /// <param name="fieldName">Nombre del field al cual se va a definir valor por defecto</param>
+        /// <remarks>Solo se define valor por defecto si el field no se encuentra en atributo values</remarks>
+        /// <returns>Mismo objeto</returns>
+        public EntityValues Default(string fieldName)
+        {            
             if (values.ContainsKey(fieldName))
                 return this;
 
@@ -143,15 +179,29 @@ namespace SqlOrganize
                 m!.Invoke(this, new object[] { });
 
             Field field = db.Field(entityName, fieldName);
+
+            if (field.defaultValue is null) { 
+                values[fieldName] = null;
+                return this;
+            }
+
             switch (field.dataType)
             {
+                case "string":
+                    if (field.defaultValue.ToString().ToLower().Contains("guid"))
+                        values[fieldName] = (Guid.NewGuid()).ToString();
+                    else
+                        values[fieldName] = field.defaultValue;
+                    break;
                 case "date":
                 case "datetime":
                 case "year":
                 case "time":
-                    if (field.defaultValue.ToString().ToLower().Contains("cur"))
+                    if (!field.defaultValue.ToString().ToLower().Contains("cur")) 
                         values[fieldName] = DateTime.Now;
-                    break;
+                    else
+                        values[fieldName] = field.defaultValue;
+                break;
                 default:
                     values[fieldName] = field.defaultValue;
                     break;
@@ -196,7 +246,8 @@ namespace SqlOrganize
                         v.Type((string)param);                
                     break;
                     case "required":
-                        v.Required();
+                        if((bool)param)
+                            v.Required();
                     break;
 
                 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Net;
@@ -66,6 +67,9 @@ namespace SqlOrganize
         /// Incorpora las sentencias BEGIN y COMMIT (O ROLLBACK en caso de falla)
         /// </remarks>
         public abstract void Transaction();
+
+        public abstract void Exec();
+
 
     }
 

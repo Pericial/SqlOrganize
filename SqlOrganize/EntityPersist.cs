@@ -107,7 +107,6 @@ WHERE " + _Id + " = @" + count + @";
                 if (fieldNames.Contains(key))
                     row_.Add(key, row[key]);
 
-            var keys = row.Keys.Select(x => "@" + x + count).ToList();
             string sn = db.Entity(_entityName!).schemaName;
             sql = "INSERT INTO " + sn + @" (" + String.Join(", ", row_.Keys) + @") 
 VALUES (";
@@ -120,8 +119,11 @@ VALUES (";
                 count++;
             }
 
-            sql = @");
+            sql = sql.RemoveLastChar(',');
+            sql += @");
 ";
+            EntityValues v = db.Values(_entityName).Set(row_).Reset("_Id");
+            row["_Id"] = v.Get("_Id");
             detail.Add((_entityName!, (string)row["_Id"]));
 
             return this;
