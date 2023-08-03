@@ -1,7 +1,9 @@
-﻿using SqlOrganize;
+﻿using MySqlX.XDevAPI.Relational;
+using SqlOrganize;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,30 +28,26 @@ namespace WpfAppMy.Forms.ListaModalidad
         private DAO dao = new();
         private ObservableCollection<Modalidad> modalidadData = new();
 
-
         public Window1()
         {
             InitializeComponent();
+            modalidadGrid.ItemsSource = modalidadData;
+            this.Loaded += MainWindow_Loaded;
             modalidadGrid.CellEditEnding += ModalidadGrid_CellEditEnding;
-            List<Dictionary<string, object>> list = dao.AllModalidad();
-            modalidadGrid.ItemsSource = list.ConvertToListOfObject<Modalidad>();
+
         }
 
-        private void ModalidadGrid_CellEditEnding2(object sender, DataGridCellEditEndingEventArgs e)
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            if (e.EditAction == DataGridEditAction.Commit)
-            {
-                var column = e.Column as DataGridBoundColumn;
-                if (column != null)
-                {
-                    string key = ((Binding)column.Binding).Path.Path; //column's binding
-                    Dictionary<string, object> source = (Dictionary<string, object>)((Modalidad)e.Row.DataContext).ConvertToDict();
-                    string value = (e.EditingElement as TextBox)!.Text;
-                    dao.UpdateValueRelModalidad(key, value, source);
-                }
-            }
+            ModalidadGridData();
         }
 
+        private void ModalidadGridData()
+        {
+            List<Dictionary<string, object>> list = dao.AllModalidad();
+            modalidadData.Clear();
+            modalidadData.AddRange(list.ConvertToListOfObject<Modalidad>());
+        }
         private void ModalidadGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
             if (e.EditAction == DataGridEditAction.Commit)
@@ -75,11 +73,7 @@ namespace WpfAppMy.Forms.ListaModalidad
                         {
                             v.Default().Reset();
                             EntityPersist p = ContainerApp.db.Persist(entityName).Insert(v.values).Exec();
-
-                            //modalidadGrid.CurrentItem = ((Modalidad)e.Row.Item);
-                            //List<Dictionary<string, object>> list = dao.AllModalidad();
-                            //modalidadGrid.ItemsSource = null;
-                            //modalidadGrid.ItemsSource = list.ConvertToListOfObject<Modalidad>();
+                            ((Modalidad)e.Row.Item)._Id = (string)v.values["_Id"];
                         }
                     }
                     else
@@ -93,14 +87,35 @@ namespace WpfAppMy.Forms.ListaModalidad
         }
     }
 
-    internal class Modalidad
+    internal class Modalidad : INotifyPropertyChanged
     {
-        public string _Id { get; set; }
+        private string __Id;
+        public string _Id
+        {
+            get { return __Id; }
+            set { __Id = value; NotifyPropertyChanged(); }
+        }
 
-        public string nombre { get; set; }
+        private string _nombre;
+        public string nombre
+        {
+            get { return _nombre; }
+            set { _nombre = value; NotifyPropertyChanged(); }
+        }
 
-        public string pfid { get; set; }
+        private string _pfid;
 
+        public string pfid
+        {
+            get { return _pfid; }
+            set { _pfid = value; NotifyPropertyChanged(); }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged([System.Runtime.CompilerServices.CallerMemberName] String propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
 
 

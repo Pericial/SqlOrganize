@@ -7,8 +7,9 @@
         mc:Ignorable="d"
         Title="Window1" Height="450" Width="800">
     <Grid>
-        <DataGrid Name="modalidadGrid"
-                  ItemsSource="{Binding modalidadGridData, Mode="TwoWay"}" />
+        <DataGrid
+            Name="modalidadGrid"
+        />
 
     </Grid>
 </Window>
