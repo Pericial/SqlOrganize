@@ -38,7 +38,7 @@ namespace SqlOrganizeSs
 
         public override Query Query()
         {
-            throw new NotImplementedException();
+            return new QuerySs(this);
         }
 
       

@@ -28,7 +28,7 @@ FETCH FIRST " + size + " ROWS ONLY";
                 order = o.IsNullOrEmpty() ? "" : string.Join(", ", o.Select(x => "$" + x));
             }
 
-            return ((order.IsNullOrEmpty()) ? "ORDER BY (SELECT NULL)" : "ORDER BY " + Traduce(order!)) + @"
+            return ((order.IsNullOrEmpty()) ? "ORDER BY 1" : "ORDER BY " + Traduce(order!)) + @"
 ";
         }
 

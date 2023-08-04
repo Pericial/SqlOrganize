@@ -114,9 +114,9 @@ namespace ModelOrganize
             #endregion
 
             #region Redefinicion de entities en base a configuracion
-            if (File.Exists(config.modelPath + "entities.json"))
+            if (File.Exists(config.configPath + "entities.json"))
             {
-                using (StreamReader r = new StreamReader(config.modelPath + "entities.json"))
+                using (StreamReader r = new StreamReader(config.configPath + "entities.json"))
                 {
                     Dictionary<string, EntityAux> entitiesAux = JsonConvert.DeserializeObject<Dictionary<string, EntityAux>>(r.ReadToEnd())!;
                     foreach (KeyValuePair<string, EntityAux> e in entitiesAux)
@@ -128,32 +128,48 @@ namespace ModelOrganize
 
                         var f = new List<string>();
                         f.AddRange(entities[e.Key].fields);
-                        f.AddRange(e.Value.fieldsAdd);
-                        f = f.Except(e.Value.fieldsSub).ToList();
+                        if(!e.Value.fieldsAdd.IsNullOrEmpty())
+                            f.AddRange(e.Value.fieldsAdd);
+                        if (!e.Value.fieldsSub.IsNullOrEmpty())
+                            f = f.Except(e.Value.fieldsSub).ToList();
                         entities[e.Key].fields = f;
 
                         f = new List<string>();
                         f.AddRange(entities[e.Key].fk);
-                        f.AddRange(e.Value.fkAdd);
-                        f = f.Except(e.Value.fkSub).ToList();
+                        if (!e.Value.fkAdd.IsNullOrEmpty())
+                            f.AddRange(e.Value.fkAdd);
+                        if (!e.Value.fkSub.IsNullOrEmpty())
+                            f = f.Except(e.Value.fkSub).ToList();
                         entities[e.Key].fk = f;
 
                         f = new List<string>();
                         f.AddRange(entities[e.Key].unique);
-                        f.AddRange(e.Value.uniqueAdd);
-                        f = f.Except(e.Value.uniqueSub).ToList();
+                        if (!e.Value.uniqueAdd.IsNullOrEmpty())
+                            f.AddRange(e.Value.uniqueAdd);
+                        if (!e.Value.uniqueSub.IsNullOrEmpty())
+                            f = f.Except(e.Value.uniqueSub).ToList();
                         entities[e.Key].unique = f;
 
                         f = new List<string>();
                         f.AddRange(entities[e.Key].notNull);
-                        f.AddRange(e.Value.notNullAdd);
-                        f = f.Except(e.Value.notNullSub).ToList();
+
+                        if (!e.Value.notNullAdd.IsNullOrEmpty())
+                            f.AddRange(e.Value.notNullAdd);
+
+                        if (!e.Value.notNullSub.IsNullOrEmpty())
+                            f = f.Except(e.Value.notNullSub).ToList();
+
                         entities[e.Key].notNull = f;
 
                         f = new List<string>();
                         f.AddRange(entities[e.Key].uniqueMultiple);
-                        f.AddRange(e.Value.uniqueMultipleAdd);
-                        f = f.Except(e.Value.uniqueMultipleSub).ToList();
+
+                        if (!e.Value.uniqueMultipleAdd.IsNullOrEmpty())
+                            f.AddRange(e.Value.uniqueMultipleAdd);
+
+                        if (!e.Value.uniqueMultipleSub.IsNullOrEmpty())
+                            f = f.Except(e.Value.uniqueMultipleSub).ToList();
+
                         entities[e.Key].uniqueMultiple = f;
                     }
                 }
@@ -226,8 +242,8 @@ namespace ModelOrganize
             #region Redefinicion de fields en base a configuracion
             foreach (string entityName in entities.Keys)
                 if (!fields.ContainsKey(entityName))
-                    if (File.Exists(config.modelPath + "fields/" + entityName + ".json"))
-                        using (StreamReader r = new StreamReader(config.modelPath + "fields/" + entityName + ".json"))
+                    if (File.Exists(config.configPath + "fields/" + entityName + ".json"))
+                        using (StreamReader r = new StreamReader(config.configPath + "fields/" + entityName + ".json"))
                         {
                             Dictionary<string, Field> fieldsAux = JsonConvert.DeserializeObject<Dictionary<string, Field>>(r.ReadToEnd())!;
                             foreach (KeyValuePair<string, Field> e in fieldsAux)
@@ -304,28 +320,28 @@ namespace ModelOrganize
 
         public void CreateFileEntitites()
         {
-            if (!Directory.Exists(Config.path))
-                Directory.CreateDirectory(Config.path);
+            if (!Directory.Exists(Config.modelPath))
+                Directory.CreateDirectory(Config.modelPath);
 
-            if (File.Exists(Config.path + "entities.json"))
-                File.Delete(Config.path + "entities.json");
+            if (File.Exists(Config.modelPath + "entities.json"))
+                File.Delete(Config.modelPath + "entities.json");
 
             var file = JsonConvert.SerializeObject(entities, Newtonsoft.Json.Formatting.Indented);
-            File.WriteAllText(Config.path + "entities.json", file);
+            File.WriteAllText(Config.modelPath + "entities.json", file);
         }
 
         public void CreateFileFields()
         {
-            if (!Directory.Exists(Config.path + "fields/"))
-                Directory.CreateDirectory(Config.path + "fields/");
+            if (!Directory.Exists(Config.modelPath + "fields/"))
+                Directory.CreateDirectory(Config.modelPath + "fields/");
 
             foreach(var (entityName, field) in fields)
             {
-                if (File.Exists(Config.path + entityName + ".json"))
-                    File.Delete(Config.path + entityName + ".json");
+                if (File.Exists(Config.modelPath + entityName + ".json"))
+                    File.Delete(Config.modelPath + entityName + ".json");
 
                 var file = JsonConvert.SerializeObject(fields[entityName], Newtonsoft.Json.Formatting.Indented);
-                File.WriteAllText(Config.path + "fields/" + entityName + ".json", file);
+                File.WriteAllText(Config.modelPath + "fields/" + entityName + ".json", file);
             }
 
         }

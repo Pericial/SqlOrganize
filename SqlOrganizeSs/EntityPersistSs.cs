@@ -64,7 +64,7 @@ UPDATE " + e.alias + @" SET
                     count++;
                     parameters.Add(row[fieldName]);
                 }
-            sql = sql.RemoveLastIndex(',');
+            sql = sql.RemoveLastChar(',');
             sql += " FROM " + e.schemaNameAlias + @"
 ";
             return this;

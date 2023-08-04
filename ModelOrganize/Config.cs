@@ -7,7 +7,7 @@
         /*
         Path to model
         */
-        public string path { get; set; } = "./model/";
+        public string modelPath { get; set; } = "./model/";
         /*
         Alias reservados
         Habitualmente se definen las palabras reservadas del motor de base de datos
@@ -20,7 +20,7 @@
         /// <remarks>Las entidades indicadas en la lista no se incluiran en el modelo</remarks>
         public List<string> reservedEntities { get; set; } = new List<string>();
 
-        public string modelPath { get; set; } = "./model";
+        public string configPath { get; set; } = "./model";
 
       
 
