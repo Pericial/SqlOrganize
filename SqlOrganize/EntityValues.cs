@@ -1,10 +1,6 @@
 ﻿
-using Newtonsoft.Json.Linq;
-using System.Linq;
-using System;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using System.Collections.Generic;
 using Utils;
 
 namespace SqlOrganize
@@ -22,23 +18,36 @@ namespace SqlOrganize
     -json: Transformar a json
     -sql: Transformar a sql
     */
-    public class EntityValues : EntityFieldId
+    public class EntityValues
     {
+        public Db db { get; }
+
+        public string entityName { get; }
+
+        /// <summary>
+        /// field_id + string de separacion
+        /// </summary>
+        /// <remarks>
+        /// Dependiendo del source, puede ser db.config.idAttrSeparatorString o db.config.idNameSeparatorString
+        /// </remarks>
+        public string? prefix { get; }
 
         public Logging logging { get; set; } = new Logging();
 
         public Dictionary<string, object> values = new Dictionary<string, object>();
 
-        public EntityValues(Db _db, string _entity_name, string? _field_id) : base(_db, _entity_name, _field_id)
+        public EntityValues(Db _db, string _entityName, string? _prefix = "")
         {
-
+            db = _db;
+            entityName = _entityName;
+            prefix = _prefix;
         }
 
         public EntityValues Set(Dictionary<string, object> row)
         {
             foreach (var fieldName in db.FieldNames(entityName))
-                if(row.ContainsKey(Pf()+fieldName))
-                    Set(fieldName, row[fieldName]);
+                if(row.ContainsKey(prefix + fieldName))
+                    Set(fieldName, row[prefix + fieldName]);
 
             return this;
         }
@@ -46,8 +55,8 @@ namespace SqlOrganize
         public EntityValues Set(string fieldName, object value)
         {
             string fn = fieldName;
-            if (!fieldId.IsNullOrEmpty() && fieldName.Contains(Pf()))
-                fn = fieldName.Replace(Pf(), "");
+            if (!prefix.IsNullOrEmpty() && fieldName.Contains(prefix))
+                fn = fieldName.Replace(prefix, "");
             values[fn] = value;
             return this;
         }

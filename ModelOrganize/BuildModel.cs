@@ -114,7 +114,7 @@ namespace ModelOrganize
             #endregion
 
             #region Redefinicion de entities en base a configuracion
-            if (File.Exists(config.configPath + "entities.json"))
+           if (File.Exists(config.configPath + "entities.json"))
             {
                 using (StreamReader r = new StreamReader(config.configPath + "entities.json"))
                 {
@@ -229,7 +229,49 @@ namespace ModelOrganize
             }
             #endregion
 
-            #region Definicion de tree y relations de entities
+            #region Redefinicion de fields en base a configuracion
+            foreach (string entityName in entities.Keys)
+                if (fields.ContainsKey(entityName))
+                    if (File.Exists(config.configPath + "fields/" + entityName + ".json"))
+                        using (StreamReader r = new StreamReader(config.configPath + "fields/" + entityName + ".json"))
+                        {
+                            Dictionary<string, FieldAux> fieldsAux = JsonConvert.DeserializeObject<Dictionary<string, FieldAux>>(r.ReadToEnd())!;
+                            foreach (KeyValuePair<string, FieldAux> e in fieldsAux)
+                            {
+                                if (fields[entityName].ContainsKey(e.Key))
+                                {
+                                    CollectionUtils.CopyValues(fields[entityName][e.Key], e.Value);
+
+                                    Dictionary<string, object> f = fields[entityName][e.Key].checks;
+                                    if (!e.Value.checks.IsNullOrEmpty())
+                                        f = e.Value.checks;
+                                    if (!e.Value.checksAdd.IsNullOrEmpty())
+                                        f.Merge(e.Value.checks);
+                                    if (!e.Value.checksSub.IsNullOrEmpty())
+                                        foreach (string k in e.Value.checksSub)
+                                            f.Remove(k);
+                                    fields[entityName][e.Key].checks = f;
+
+                                    f = fields[entityName][e.Key].resets;
+                                    if (!e.Value.resets.IsNullOrEmpty())
+                                        f = e.Value.resets;
+                                    if (!e.Value.resetsAdd.IsNullOrEmpty())
+                                        f.Merge(e.Value.checks);
+                                    if (!e.Value.resetsSub.IsNullOrEmpty())
+                                        foreach (string k in e.Value.resetsSub)
+                                            f.Remove(k);
+                                    fields[entityName][e.Key].resets = f;
+                                }
+                            }
+                        }
+            #endregion
+
+            #region Definicion de tree y relations de entities            
+            /*
+             * La definicion de tree y relations no se debe modificar 
+             * en la configuracion, ya que se basa en otras llaves 
+             * (entity.fk y field.ref*)
+             */
             foreach (var (name, e) in entities)
             {
                 var bet = new BuildEntityTree(entities, fields, e.name!);
@@ -237,23 +279,6 @@ namespace ModelOrganize
                 RelationsRecursive(e.relations, e.tree);
 
             }
-            #endregion
-
-            #region Redefinicion de fields en base a configuracion
-            foreach (string entityName in entities.Keys)
-                if (!fields.ContainsKey(entityName))
-                    if (File.Exists(config.configPath + "fields/" + entityName + ".json"))
-                        using (StreamReader r = new StreamReader(config.configPath + "fields/" + entityName + ".json"))
-                        {
-                            Dictionary<string, Field> fieldsAux = JsonConvert.DeserializeObject<Dictionary<string, Field>>(r.ReadToEnd())!;
-                            foreach (KeyValuePair<string, Field> e in fieldsAux)
-                            {
-                                if (fields[entityName].ContainsKey(e.Key))
-                                {
-                                    CollectionUtils.CopyValues(fields[entityName][e.Key], e.Value);
-                                }
-                            }
-                        }
             #endregion
 
 
