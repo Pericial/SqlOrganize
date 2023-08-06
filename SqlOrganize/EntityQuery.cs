@@ -116,7 +116,7 @@ namespace SqlOrganize
 
         public EntityQuery Fields()
         {
-            fields += string.Join(", ", db.Tools(entityName).FieldNames());
+            fields += string.Join(", ", db.FieldNamesRel(entityName));
             return this;
         }
 
