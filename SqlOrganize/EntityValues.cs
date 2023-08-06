@@ -74,16 +74,29 @@ namespace SqlOrganize
                 case "int":
                     values[fieldName] = (int)value;
                     break;
+                case "bool":
+                    values[fieldName] = (value as string).ToBool();
+                    break;
+
             }
 
             return this;
         }
 
+        /// <summary>
+        /// Resetear valores definidos
+        /// </summary>
+        /// <returns></returns>
         public EntityValues Reset()
         {
-            foreach (var fieldName in db.FieldNames(entityName))
-                if (values.ContainsKey(fieldName))
+            List<string> fieldNames = new List<string>(db.FieldNames(entityName));
+            fieldNames.Remove("_Id"); //id debe dejarse para el final porque depende de otros valores
+
+            foreach (var fieldName in fieldNames)
+                if (!values.ContainsKey(fieldName))
                     Reset(fieldName);
+
+            Reset("_Id");
 
             return this;
         }
@@ -116,23 +129,25 @@ namespace SqlOrganize
             return this;
         }
 
+        /// <summary>
+        /// Asignar valor por defecto para aquellos valores no definidos
+        /// </summary>
+        /// <returns></returns>
         public EntityValues Default()
         {
-            List<string> fieldNames = new List<string>(db.FieldNames(entityName));
-            fieldNames.Remove("_Id"); //id debe dejarse para el final porque depende de otros valores
-
-            foreach (var fieldName in fieldNames)
+            foreach (var fieldName in db.FieldNames(entityName))
                 if (!values.ContainsKey(fieldName))
                     Default(fieldName);
-
-            Default("_Id");
 
             return this;
         }
 
         /// <summary>
-        /// Reset id
+        /// Reset _Id
         /// </summary>
+        /// <remarks>_Id depende de otros valores de la misma entidad, se reasigna luego de definir el resto de los valores</remarks>
+        /// <example>db.Values("entityName").Set(source).Set("_Id", null).Reset("_Id"); //inicializa y reasigna _Id individualmente //<br/>
+        /// db.Values("entityName").Set(source).Default().Reset() //inicializa y reasigna _Id conjuntamente</example>
         /// <returns></returns>
         public EntityValues Reset__Id()
         {
