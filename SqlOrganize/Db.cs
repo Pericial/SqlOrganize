@@ -73,11 +73,29 @@ namespace SqlOrganize
 
         public List<string> EntityNames() => entities.Select(o => o.Key).ToList();
 
-
+        /// <summary>
+        /// Nombres de campos de la entidad
+        /// </summary>
+        /// <remarks>Importante, por cada entidad y por cada relacion, debe incluirse el campo derivado _Id. Varios metodos definidos asumen que el valor de _Id esta incluido (EntityValues, DbCache, EntityQuery, etc)<br/>
+        /// Utilizar FieldNamesRel, para devolver los nombres de campos junto el nombre de campos de relaciones</remarks>
+        /// <param name="entityName"></param>
+        /// <returns>Nombres de campos de la entidad</returns>
         public List<string> FieldNames(string entityName) {
             var l = FieldsEntity(entityName).Keys.ToList();
-                l.Insert(0, "_Id");
+                l.Insert(0, "_Id"); //Importante!! _Id debe ser incluido,
             return l;
+        }
+
+        public List<string> FieldNamesRel(string entityName)
+        {
+            List<string> fieldNamesR = new();
+
+            if (!Entity(entityName).relations.IsNullOrEmpty())
+                foreach ((string fieldId, EntityRelation er) in Entity(entityName).relations)
+                    foreach (string fieldName in FieldNames(er.refEntityName))
+                        fieldNamesR.Add(fieldId + "-" + fieldName);
+
+            return FieldNames(entityName).Concat(fieldNamesR).ToList();
         }
 
         public List<string> FieldNamesAdmin(string entityName)
@@ -89,11 +107,6 @@ namespace SqlOrganize
         public Entity Entity(string entity_name)
         {
             return entities[entity_name];
-        }
-
-        public EntityTools Tools(string entity_name)
-        {
-            return new (this, entity_name);
         }
 
         /// <summary>
