@@ -182,7 +182,7 @@ namespace Utils
         {
             return source.GetType().GetProperties(bindingAttr).ToDictionary
             (
-                propInfo => propInfo.Name,
+                propInfo => propInfo.Name.Replace("__", "-"),
                 propInfo => propInfo.GetValue(source, null)
             );
 
