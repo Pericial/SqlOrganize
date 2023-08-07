@@ -153,8 +153,8 @@ namespace SqlOrganize
         {
              List<string> fieldsId = db.Entity(entityName).id;
              foreach(string fieldName in fieldsId)
-                if (!values.ContainsKey(fieldName) || values[fieldName] is null)
-                    return this; //si no es posible definir valor por defecto de _Id, no se define
+                if (!values.ContainsKey(fieldName) || values[fieldName] is not null)
+                    return this; //no se reasigna si no esta definido o si es distinto de null
 
             if (fieldsId.Count == 1)
             {
