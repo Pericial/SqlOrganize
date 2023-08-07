@@ -16,13 +16,13 @@ namespace SqlOrganize
 
         public string? entityName { get; }
 
-        public List<object> parameters { get; set; }  = new List<object> { };
+        public List<object> parameters { get; set; } = new List<object> { };
 
         public int count = 0;
 
         public string sql { get; set; } = "";
 
-        public List<(string entityName, string _Id)> detail = new ();
+        public List<(string entityName, string _Id)> detail = new();
 
         public EntityPersist(Db _db, string? _entityName = null)
         {
@@ -89,8 +89,8 @@ WHERE " + _Id + " = @" + count + @";
                 int indexSeparator = key.IndexOf(db.config.idAttrSeparatorString);
                 string fieldId = key.Substring(0, indexSeparator);
                 _entityName = db.Entity(_entityName!).relations[fieldId].refEntityName;
-                _IdKey = fieldId + db.config.idAttrSeparatorString +"_Id";
-                key = key.Substring(indexSeparator+db.config.idAttrSeparatorString.Length); //se suma la cantidad de caracteres del separador
+                _IdKey = fieldId + db.config.idAttrSeparatorString + "_Id";
+                key = key.Substring(indexSeparator + db.config.idAttrSeparatorString.Length); //se suma la cantidad de caracteres del separador
             }
 
             string _Id = (string)source[_IdKey];
@@ -149,28 +149,45 @@ VALUES (";
         {
             _entityName = _entityName ?? entityName;
 
-            EntityValues v = (EntityValues)db.Values(_entityName!).Set(row);
-            var rows = db.Query(_entityName!).Unique(row).ListDict();
+            EntityValues v = db.Values(_entityName!).Set(row);
+            return PersistValues(v);
+        }
+    
+        /// <summary>
+        /// Persistencia de una instancia de EntityValues
+        /// </summary>
+        /// <remarks>Se define el comportamiento básico de persistencia</remarks>
+        /// <param name="v"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public EntityPersist PersistValues(EntityValues v)
+        {
+            var rows = db.Query(v.entityName!).Unique(v.values).ListDict();
+
             if (rows.Count > 1)
                 throw new Exception("La consulta por campos unicos retorno mas de un resultado");
 
-            if (rows.Count == 1) //actualizar
+            if (rows.Count == 1)
             {
-                v.Set("_Id", row["_Id"]).Reset().Check();
+                if(v.values.ContainsKey("_Id") && v.Get("_Id") != rows[0]["_Id"])
+                    throw new Exception("Los _Id son diferentes");
+
+                v.Set("_Id", rows[0]["_Id"]).Reset().Check();
                 if (v.logging.HasErrors())
                     throw new Exception("Los campos a actualizar poseen errores: " + v.logging.ToString());
-                return Update(v.values, _entityName);
+
+                return Update(v.values, v.entityName);
             }
 
             v.Default().Reset().Check();
+
             if (v.logging.HasErrors())
                 throw new Exception("Los campos a insertar poseen errores: " + v.logging.ToString());
-            return Insert(v.values, _entityName);
+
+            return Insert(v.values, v.entityName);
         }
 
-
         public abstract EntityPersist Exec();
-
     }
 
 }
