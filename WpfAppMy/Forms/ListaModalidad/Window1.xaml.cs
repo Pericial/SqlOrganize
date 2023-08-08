@@ -68,12 +68,12 @@ namespace WpfAppMy.Forms.ListaModalidad
                         int indexSeparator = key.IndexOf(ContainerApp.db.config.idAttrSeparatorString);
                         fieldId = key.Substring(0, indexSeparator);
                         entityName = ContainerApp.db.Entity(entityName!).relations[fieldId].refEntityName;
-                        fieldName = key.Substring(indexSeparator + 1);
+                        fieldName = key.Substring(indexSeparator + ContainerApp.db.config.idAttrSeparatorString.Length);
                     }
 
                     do
                     {
-                        EntityValues v = ContainerApp.db.Values(entityName, fieldId).Set(source).Set(key, value);
+                        EntityValues v = ContainerApp.db.Values(entityName, fieldId).Set(source).Set(fieldName, value);
                         Dictionary<string, object>? row = new();
 
                         //en caso de que el campo editado sea unico, se consultan sus valores
