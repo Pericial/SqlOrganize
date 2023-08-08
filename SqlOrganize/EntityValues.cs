@@ -57,6 +57,17 @@ namespace SqlOrganize
             return values[fieldName];
         }
 
+        public Dictionary<string, object> Get()
+        {
+            Dictionary<string, object> response = new();
+            foreach (var fieldName in db.FieldNames(entityName))
+                if (values.ContainsKey(fieldName))
+                    response[Pf()+fieldName] = values[fieldName];
+
+            return response;
+        }
+
+
         public EntityValues Sset(string fieldName, object value)
         {
             var method = "Sset_" + fieldName;

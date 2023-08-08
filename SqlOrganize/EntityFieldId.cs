@@ -8,7 +8,7 @@ namespace SqlOrganize
         public Db db { get; }
         public string entityName { get; }
 
-        public string? fieldId { get; }
+        public string? fieldId { get; set; }
 
         public EntityFieldId(Db _db, string _entityName, string? _fieldId = null)
         {

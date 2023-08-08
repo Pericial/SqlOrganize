@@ -60,30 +60,67 @@ namespace WpfAppMy.Forms.ListaModalidad
                     Dictionary<string, object> source = (Dictionary<string, object>)((Modalidad)e.Row.DataContext).ConvertToDict();
                     string? fieldId = null;
                     string entityName = "modalidad";
+                    string fieldName = key;
+                    string? parentId = null;
+
                     if (key.Contains(ContainerApp.db.config.idAttrSeparatorString))
                     {
                         int indexSeparator = key.IndexOf(ContainerApp.db.config.idAttrSeparatorString);
                         fieldId = key.Substring(0, indexSeparator);
                         entityName = ContainerApp.db.Entity(entityName!).relations[fieldId].refEntityName;
+                        fieldName = key.Substring(indexSeparator + 1);
                     }
 
-                    EntityValues v = ContainerApp.db.Values(entityName, fieldId).Set(source).Set(key, value);
-                    if (v.Get("_Id").IsNullOrEmpty()) { 
-                        if (v.Check())
+                    do
+                    {
+                        EntityValues v = ContainerApp.db.Values(entityName, fieldId).Set(source).Set(key, value);
+                        Dictionary<string, object>? row = new();
+
+                        //en caso de que el campo editado sea unico, se consultan sus valores
+                        if (ContainerApp.db.Entity(entityName).unique.Contains(fieldName))
+                            row = dao.RowByEntityFieldValue(entityName, fieldName, value);
+                        else
+                            row = dao.RowByEntityUnique(entityName, v.values);
+
+                        if (!row.IsNullOrEmpty())
                         {
-                            v.Default().Reset();
-                            EntityPersist p = ContainerApp.db.Persist(entityName).Insert(v.values).Exec();
-                            ((Modalidad)e.Row.Item)._Id = (string)v.values["_Id"];
+                            v = ContainerApp.db.Values(entityName).Set(row!);
+                            v.fieldId = fieldId;
                         }
+                        else
+                        {
+                            if (v.Get("_Id").IsNullOrEmpty() && v.Check())
+                            {
+                                v.Default().Reset();
+                                EntityPersist p = ContainerApp.db.Persist(entityName).Insert(v.values).Exec();
+                                ((Modalidad)e.Row.Item)._Id = (string)v.values["_Id"];
+                            }
+                            else
+                            {
+                                ContainerApp.db.Persist(entityName).Update(v.values).Exec();
+                            }
+                        }
+
+                        Dictionary<string, object> r = v.Get();
+
+                        if (fieldId != null) { 
+                            parentId = ContainerApp.db.Entity(entityName).relations[fieldId].parentId;
+                            if (parentId != null) { 
+                                var parentFieldName = ContainerApp.db.Entity(entityName).relations[parentId].fieldName;
+                                r[parentId + ContainerApp.db.config.idNameSeparatorString + parentFieldName] = r[fieldId + ContainerApp.db.config.idNameSeparatorString + fieldName];
+                                fieldId = parentId;
+                                fieldName = parentFieldName;
+                            }
+                        } else
+                        {
+                            fieldId = null;
+                        }
+
+                        (e.Row.Item as Modalidad).CopyNotNullValues(v.Get().ConvertToObject<Modalidad>());
                     }
-                    else
-                        ContainerApp.db.Persist(entityName).Update(v.values).Exec();
+                    while ((fieldId != null) && (parentId != null));
                 }
-
-
             }
-        
-
         }
     }
 

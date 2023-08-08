@@ -1,4 +1,5 @@
-﻿using SqlOrganize;
+﻿using Google.Protobuf.WellKnownTypes;
+using SqlOrganize;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,21 @@ namespace WpfAppMy.Forms.ListaModalidad
             var q = ContainerApp.Db().Query("modalidad");
             return ContainerApp.DbCache().ListDict(q);
         }
+
+        public Dictionary<string, object>? RowByEntityFieldValue(string entityName, string fieldName, object value)
+        {
+            var q =  ContainerApp.db.Query(entityName).Where("$"+fieldName+" = @0").Parameters(value);
+            return ContainerApp.DbCache().Dict(q);
+        }
+
+        public Dictionary<string, object>? RowByEntityUnique(string entityName, Dictionary<string, object> source)
+        {
+            var q = ContainerApp.db.Query(entityName).Unique(source);
+            if (!q.IsUnique())
+                return null;
+            return ContainerApp.DbCache().Dict(q);
+        }
+
 
         public void UpdateValueRelModalidad(string key, object value, Dictionary<string, object> source)
         {

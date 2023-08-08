@@ -27,6 +27,20 @@ namespace Utils
             }
         }
 
+        public static void CopyNotNullValues<T>(this T source, T target)
+        {
+            Type t = typeof(T);
+
+            var properties = t.GetProperties().Where(prop => prop.CanRead && prop.CanWrite);
+
+            foreach (var prop in properties)
+            {
+                var value = prop.GetValue(source, null);
+                if (!value.IsNullOrEmpty())
+                    prop.SetValue(target, value, null);
+            }
+        }
+
         public static Dictionary<K, V> MergeManyDicts<K, V>(IEnumerable<Dictionary<K, V>> dictionaries) where K : notnull
         {
             Dictionary<K, V> result = new Dictionary<K, V>();

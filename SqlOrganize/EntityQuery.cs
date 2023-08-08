@@ -26,6 +26,8 @@ namespace SqlOrganize
         public string entityName { get; }
 
         public string? where { get; set; } = "";
+        
+
 
         public string? having { get; set; }
 
@@ -43,6 +45,10 @@ namespace SqlOrganize
 
         public List<object> parameters = new List<object> { };
 
+        /// <summary>
+        /// Diccionario utilizado para definir la busquedaa traves de campos unicos
+        /// </summary>
+        protected Dictionary<string, object> whereUnique { get;  } = new();
 
         public EntityQuery(Db _db, string _entityName)
         {
@@ -58,37 +64,55 @@ namespace SqlOrganize
         
         public EntityQuery Unique(Dictionary<string, object> row)
         {
-            List<string> pk = db.Entity(entityName).pk;
+            whereUnique.Merge(row);
+            return this;
+        }
 
-            List<string> whereUnique = new();
+        protected string SqlWhereUnique()
+        {
+            int count = parameters.Count;
+            List<string> whereUniqueList = new();
             foreach (string fieldName in db.Entity(entityName).unique)
             {
-                foreach (var (key, value) in row)
+                foreach (var (key, value) in whereUnique)
                 {
                     if (key == fieldName)
                     {
-                        whereUnique.Add(key + " = " + value);
+                        whereUniqueList.Add(key + " = @" + count);
+                        parameters.Add(value);
+                        count++;
                         break;
                     }
                 }
             }
 
-            if (whereUnique.Count > 0)
-            {
-                string w = "(" + String.Join(") OR (", whereUnique) + ")";
-                where += (where.IsNullOrEmpty()) ? w : " OR " + w;
-            }
+            string w = "";
+            if (whereUniqueList.Count > 0)
+                w = "(" + String.Join(") OR (", whereUniqueList) + ")";
 
-            UniqueMultiple(row, db.Entity(entityName).uniqueMultiple);
-            UniqueMultiple(row, db.Entity(entityName).pk);
+            string ww = UniqueMultiple(db.Entity(entityName).uniqueMultiple);
+            w += (w.IsNullOrEmpty()) ? ww : " OR " + ww;
 
-            return this;
+            ww = UniqueMultiple(db.Entity(entityName).pk);
+            w += (w.IsNullOrEmpty()) ? ww : " OR " + ww;
+
+            return w;
         }
 
-        protected EntityQuery UniqueMultiple(Dictionary<string, object> row, List<string> fields)
+        /// <summary>
+        /// Verificar si se encuentra correctamente definida condicion de campo unico
+        /// </summary>
+        /// <returns>true si existe condicion de campo unico</returns>
+        public bool IsUnique()
         {
+            return !SqlWhereUnique().IsNullOrEmpty();
+        }
+
+        protected string UniqueMultiple(List<string> fields)
+        {
+            int count = parameters.Count;
             bool existsUniqueMultiple = true;
-            List<string> whereMultiple = new();
+            List<string> whereMultipleList = new();
             foreach(string field in fields)
             {
                 if (!existsUniqueMultiple) 
@@ -96,22 +120,22 @@ namespace SqlOrganize
 
                 existsUniqueMultiple = false;
 
-                foreach(var (key, value) in row)
+                foreach(var (key, value) in whereUnique)
                 {
                     if(key == field)
                     {
+                        count++;
                         existsUniqueMultiple = true;
-                        whereMultiple.Add(key + " = " + value);
+                        whereMultipleList.Add(key + " = @" + count);
+                        parameters.Add(value);
                         break;
                     }
                 }
             }
-            if(existsUniqueMultiple && whereMultiple.Count > 0)
-            {
-                string w = "(" + String.Join(") AND (", whereMultiple) + ")";
-                where += (where.IsNullOrEmpty()) ? w : " OR " + w;
-            }
-            return this;
+            if(existsUniqueMultiple && whereMultipleList.Count > 0)
+                return "(" + String.Join(") AND (", whereMultipleList) + ")";                
+
+            return "";
         }
 
         public EntityQuery Fields()
@@ -319,6 +343,9 @@ namespace SqlOrganize
 
         protected string SqlWhere()
         {
+            string whereUnique = SqlWhereUnique();
+            if(!whereUnique.IsNullOrEmpty())
+                where += (where.IsNullOrEmpty()) ? whereUnique : " OR " + whereUnique;
             return (where.IsNullOrEmpty()) ? "" : "WHERE " + Traduce(where!) + @"
 ";
         }
