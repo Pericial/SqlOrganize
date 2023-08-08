@@ -61,7 +61,6 @@ namespace SqlOrganizeMy
             using MySqlCommand command = new();
             SqlExecute(connection, command);
             using MySqlDataReader reader = command.ExecuteReader(System.Data.CommandBehavior.SingleResult);
-            List<string> columnNames = reader.ColumnNames();
             return reader.SerializeRow();
         }
 

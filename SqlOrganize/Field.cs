@@ -80,5 +80,18 @@ namespace SqlOrganize
             return (entity.notNull.Contains(this.name));
         }
 
+        /// <summary>
+        /// Permite el Field identificar univocamente a la entidad por sí solo?
+        /// </summary>
+        /// <returns>true si el field permite identificar univocamente a la entidad por sí solo</returns>
+        public bool IsUnique()
+        {
+            var entity = this.db.Entity(entityName);
+            if (entity.unique.Contains(this.name)) return true;
+            if (entity.pk.Contains(this.name) && entity.pk.Count == 1) return true;
+            return false;
+        }
+
+
     }
 }

@@ -61,7 +61,7 @@ namespace SqlOrganizeSs
             using SqlCommand command = new();
             SqlExecute(connection, command);
             using SqlDataReader reader = command.ExecuteReader(System.Data.CommandBehavior.SingleResult);
-            return reader.SerializeRowCols(reader.ColumnNames());
+            return reader.SerializeRow();
         }
 
         public override T Obj<T>()
@@ -82,22 +82,32 @@ namespace SqlOrganizeSs
             return reader.ColumnValues<T>(columnName);
         }
 
-        public override List<T> Column<T>(int columnValue = 0)
+        public override List<T> Column<T>(int columnNumber = 0)
         {
             using SqlConnection connection = new(db.config.connectionString);
             using SqlCommand command = new();
             SqlExecute(connection, command);
             using SqlDataReader reader = command.ExecuteReader();
-            return reader.ColumnValues<T>(columnValue);
+            return reader.ColumnValues<T>(columnNumber);
         }
         public override T Value<T>(string columnName)
         {
-            throw new NotImplementedException();
+            using SqlConnection connection = new(db.config.connectionString);
+            using SqlCommand command = new();
+            SqlExecute(connection, command);
+            using SqlDataReader reader = command.ExecuteReader(System.Data.CommandBehavior.SingleResult);
+            reader.Read();
+            return (T)reader[columnName];
         }
 
-        public override T Value<T>(int columnValue = 0)
+        public override T Value<T>(int columnNumber = 0)
         {
-            throw new NotImplementedException();
+            using SqlConnection connection = new(db.config.connectionString);
+            using SqlCommand command = new();
+            SqlExecute(connection, command);
+            using SqlDataReader reader = command.ExecuteReader(System.Data.CommandBehavior.SingleResult);
+            reader.Read();
+            return (T)reader.GetValue(columnNumber);
         }
 
         public override void Exec()
