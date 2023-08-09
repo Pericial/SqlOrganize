@@ -122,7 +122,7 @@ VALUES (";
             sql = sql.RemoveLastChar(',');
             sql += @");
 ";
-            EntityValues v = db.Values(_entityName).Set(row_).Reset("_Id");
+            EntityValues v = db.Values(_entityName).Set(row_).Set("_Id",null).Reset("_Id");
             row["_Id"] = v.Get("_Id");
             detail.Add((_entityName!, (string)row["_Id"]));
 
@@ -188,6 +188,8 @@ VALUES (";
         }
 
         public abstract EntityPersist Exec();
+
+        public abstract EntityPersist Transaction();
     }
 
 }

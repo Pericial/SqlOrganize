@@ -29,7 +29,8 @@ namespace SqlOrganizeSs
                 }
                 else
                 {
-                    command.Parameters.AddWithValue(i.ToString(), parameters[i]);
+                    var p = (parameters[i] == null) ? DBNull.Value : parameters[i];
+                    command.Parameters.AddWithValue(i.ToString(), p);
                 }
             }
 
@@ -96,8 +97,7 @@ namespace SqlOrganizeSs
             using SqlCommand command = new();
             SqlExecute(connection, command);
             using SqlDataReader reader = command.ExecuteReader(System.Data.CommandBehavior.SingleResult);
-            reader.Read();
-            return (T)reader[columnName];
+            return reader.Read() ? (T)reader[columnName] : default(T);
         }
 
         public override T Value<T>(int columnNumber = 0)
@@ -106,8 +106,7 @@ namespace SqlOrganizeSs
             using SqlCommand command = new();
             SqlExecute(connection, command);
             using SqlDataReader reader = command.ExecuteReader(System.Data.CommandBehavior.SingleResult);
-            reader.Read();
-            return (T)reader.GetValue(columnNumber);
+            return (reader.Read()) ? (T)reader.GetValue(columnNumber) : default(T);
         }
 
         public override void Exec()

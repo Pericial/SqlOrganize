@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
-using System.Collections.Generic;
 using Utils;
 
 namespace SqlOrganize
@@ -28,7 +27,7 @@ namespace SqlOrganize
         Si no encuentra valores en el Cache, realiza una consulta a la base de datos
         y lo almacena en Cache.
         */
-        public List<Dictionary<string, object>> ListDict(string entityName, params object[] ids)
+        public List<Dictionary<string, object>> ListDict(string entityName, params string[] ids)
         {
             ids = ids.Distinct().ToArray();
 
@@ -123,7 +122,7 @@ namespace SqlOrganize
             if(!fields.Contains("_Id"))
                 return _ListDict(query);
 
-            EntityQuery queryAux = (EntityQuery)query.Clone();
+            EntityQuery queryAux = query.Clone();
             queryAux.fields = "_Id";
 
             List<string> ids = queryAux.Column<string>();
@@ -146,7 +145,7 @@ namespace SqlOrganize
             if (query.fields.IsNullOrEmpty())
                 query.Fields();
 
-            EntityQuery queryAux = (EntityQuery)query.Clone();
+            EntityQuery queryAux = query.Clone();
             queryAux.fields = "_Id";
 
             string id = queryAux.Value<string>();
@@ -196,15 +195,28 @@ namespace SqlOrganize
                 string fkName = (!parentId.IsNullOrEmpty()) ? parentId + Db.config.idNameSeparatorString + fieldName : fieldName;
 
                 List<object> ids = response.Column<object>(fkName).Distinct().ToList();
-                ids.RemoveAll(item => item == null);
+                ids.RemoveAll(item => item == null || item == System.DBNull.Value);
                 List<Dictionary<string, object>> data;
                 if (ids.Count == 1 && ids[0] == System.DBNull.Value)
                     data = new();
-                else 
-                    data = ListDict(refEntityName, ids.ToArray());
-
-                for(var i = 0; i < response.Count; i++)
+                else
                 {
+                    //Si las fk estan asociadas a una unica pk, debe indicarse para mayor eficiencia
+                    if (Db.config.fkId)
+                    {
+                        data = ListDict(refEntityName, ids.OfType<string>().ToArray());
+                    } else
+                    {
+                        var q = Db.Query(refEntityName).Size(0).Where("$" + refFieldName + " IN (@0)").Parameters(ids);
+                        data = ListDict(q); 
+                    }
+                }
+
+                for (var i = 0; i < response.Count; i++)
+                {
+                    if (response[i][fkName].IsNullOrEmpty())
+                        continue;
+
                     for (var j = 0; j < data.Count; j++)
                     {
                         if (response[i][fkName].Equals(data[j][refFieldName]))

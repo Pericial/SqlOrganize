@@ -77,13 +77,19 @@ namespace SqlOrganize
                 m!.Invoke(this, new object[] { value });
 
             Field field = db.Field(entityName, fieldName);
+            if (value == null)
+            {
+                values[fieldName] = null;
+                return this;
+            }
+
             switch (field.dataType)
             {
                 case "string":
                     values[fieldName] = (string)value;
                     break;
                 case "int":
-                    values[fieldName] = (int)value;
+                    values[fieldName] = Int32.Parse(value.ToString());
                     break;
                 case "bool":
                     values[fieldName] = (value as string).ToBool();
@@ -104,7 +110,7 @@ namespace SqlOrganize
             fieldNames.Remove("_Id"); //id debe dejarse para el final porque depende de otros valores
 
             foreach (var fieldName in fieldNames)
-                if (!values.ContainsKey(fieldName))
+                if (values.ContainsKey(fieldName))
                     Reset(fieldName);
 
             Reset("_Id");
@@ -164,12 +170,12 @@ namespace SqlOrganize
         {
              List<string> fieldsId = db.Entity(entityName).id;
              foreach(string fieldName in fieldsId)
-                if (!values.ContainsKey(fieldName) || values[fieldName] is not null)
+                if (!values.ContainsKey(fieldName) || values[fieldName].IsNullOrEmpty())
                     return this; //no se reasigna si no esta definido o si es distinto de null
 
             if (fieldsId.Count == 1)
             {
-                values["_Id"] = values[fieldsId[0]];
+                values["_Id"] = values[fieldsId[0]].ToString();
                 return this;
             }
 

@@ -14,12 +14,20 @@ namespace SqlOrganizeSs
 
         public override EntityPersist Exec()
         {
-            using SqlConnection connection = new SqlConnection((string)db.config.connectionString);
-            using SqlCommand command = new SqlCommand();
-            SqlExecute(connection, command);
-            using SqlDataReader reader = command.ExecuteReader();
+            var q = db.Query();
+            q.sql = sql;
+            q.parameters = parameters;
+            q.Exec();
             return this;
+        }
 
+        public override EntityPersist Transaction()
+        {
+            var q = db.Query();
+            q.sql = sql;
+            q.parameters = parameters;
+            q.Transaction();
+            return this;
         }
 
         protected void SqlExecute(SqlConnection connection, SqlCommand command)

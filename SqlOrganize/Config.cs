@@ -30,6 +30,16 @@
         public string idAttrSeparatorString { get; set; } = "__";
 
 
+        /// <summary>
+        /// fk asociada a id
+        /// </summary>
+        /// <remarks>
+        /// Para algunas base de datos las fk estan directamente asociadas a las Id.<br/>
+        /// Se debe indicar para que las operaciones sean mas eficientes
+        /// </remarks>
+        public bool fkId = false;
+
+
     }
 
 }
