@@ -96,8 +96,7 @@ namespace SqlOrganizeMy
             using MySqlCommand command = new();
             SqlExecute(connection, command);
             using MySqlDataReader reader = command.ExecuteReader(System.Data.CommandBehavior.SingleResult);
-            reader.Read();
-            return (T)reader[columnName];
+            return reader.Read() ? (T)reader[columnName] : default(T);
         }
 
         public override T Value<T>(int columnNumber = 0)
@@ -106,8 +105,7 @@ namespace SqlOrganizeMy
             using MySqlCommand command = new();
             SqlExecute(connection, command);
             using MySqlDataReader reader = command.ExecuteReader(System.Data.CommandBehavior.SingleResult);
-            reader.Read();
-            return (T)reader.GetValue(columnNumber);
+            return (reader.Read()) ? (T)reader.GetValue(columnNumber) : default(T);
         }
 
         public override void Exec()
