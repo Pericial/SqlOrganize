@@ -77,7 +77,7 @@ namespace WpfAppMy.Forms.ListaModalidad
                         Dictionary<string, object>? row = new();
 
                         //en caso de que el campo editado sea unico, se consultan sus valores
-                        if (ContainerApp.db.Entity(entityName).unique.Contains(fieldName))
+                        if (ContainerApp.db.Field(entityName, fieldName).IsUnique())
                             row = dao.RowByEntityFieldValue(entityName, fieldName, value);
                         else
                             row = dao.RowByEntityUnique(entityName, v.values);
