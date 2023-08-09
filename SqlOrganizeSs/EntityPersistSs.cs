@@ -12,51 +12,6 @@ namespace SqlOrganizeSs
         {
         }
 
-        public override EntityPersist Exec()
-        {
-            var q = db.Query();
-            q.sql = sql;
-            q.parameters = parameters;
-            q.Exec();
-            return this;
-        }
-
-        public override EntityPersist Transaction()
-        {
-            var q = db.Query();
-            q.sql = sql;
-            q.parameters = parameters;
-            q.Transaction();
-            return this;
-        }
-
-        protected void SqlExecute(SqlConnection connection, SqlCommand command)
-        {
-            connection.Open();
-            string sql = @"BEGIN TRAN; 
-" + Sql() + @"
-COMMIT TRAN;";
-            command.Connection = connection;
-            for (var i = 0; i < parameters.Count; i++)
-            {
-                if (parameters[i].IsList())
-                {
-                    var _parameters = (parameters[i] as List<object>).Select((x, j) => Tuple.Create($"@{i}_{j}", x));
-                    sql = sql.ReplaceFirst("@" + i.ToString(), string.Join(",", _parameters.Select(x => x.Item1)));
-                    foreach (var parameter in _parameters)
-                        command.Parameters.AddWithValue(parameter.Item1, parameter.Item2);
-                }
-                else
-                {
-                    command.Parameters.AddWithValue(i.ToString(), parameters[i]);
-                }
-            }
-
-            command.CommandText = sql;
-            command.ExecuteNonQuery();
-        }
-
-
         protected override EntityPersist _Update(Dictionary<string, object> row, string? _entityName = null)
         {
             _entityName = _entityName ?? entityName;

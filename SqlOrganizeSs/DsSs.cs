@@ -40,7 +40,5 @@ namespace SqlOrganizeSs
         {
             return new QuerySs(this);
         }
-
-      
     }
 }

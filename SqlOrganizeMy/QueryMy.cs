@@ -29,7 +29,8 @@ namespace SqlOrganizeMy
                 }
                 else
                 {
-                    command.Parameters.AddWithValue(i.ToString(), parameters[i]);
+                    var p = (parameters[i] == null) ? DBNull.Value : parameters[i];
+                    command.Parameters.AddWithValue(i.ToString(), p);
                 }
             }
 

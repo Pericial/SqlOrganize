@@ -11,15 +11,6 @@ namespace SqlOrganizeMy
         {
         }
 
-        public override EntityPersist Exec()
-        {
-            var q = db.Query();
-            q.sql = sql;
-            q.parameters = parameters;
-            q.Transaction();
-            return this;
-        }
-
         protected override EntityPersist _Update(Dictionary<string, object> row, string? _entityName = null)
         {
             _entityName = _entityName ?? entityName;

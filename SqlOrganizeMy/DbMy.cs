@@ -10,7 +10,6 @@ namespace SqlOrganizeMy
     public class DbMy : Db
     {
 
-
         /// <summary>
         /// Constructor
         /// </summary>
@@ -50,5 +49,4 @@ namespace SqlOrganizeMy
             return new QueryMy(this);
         }
     }
-
 }

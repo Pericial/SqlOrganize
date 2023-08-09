@@ -187,9 +187,23 @@ VALUES (";
             return Insert(v.values, v.entityName);
         }
 
-        public abstract EntityPersist Exec();
+        public EntityPersist Exec()
+        {
+            var q = db.Query();
+            q.sql = sql;
+            q.parameters = parameters;
+            q.Exec();
+            return this;
+        }
 
-        public abstract EntityPersist Transaction();
+        public EntityPersist Transaction()
+        {
+            var q = db.Query();
+            q.sql = sql;
+            q.parameters = parameters;
+            q.Transaction();
+            return this;
+        }
     }
 
 }
