@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualBasic;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -44,6 +45,7 @@ namespace SqlOrganize
 
         public enum Level
         {
+            Success,
             Info,
             Warning,
             Error,
@@ -129,9 +131,22 @@ namespace SqlOrganize
                 if (logsResponse.Count > 0)
                     response[key] = logsResponse;
             }
-
             return new();
         }
+
+        public override string ToString() {
+            List<string> r = new();
+            foreach (var (key, log) in logs)
+            {
+                foreach (var l in log)
+                {
+                    r.Add(key + ": "+l.msg);
+                }
+
+            }
+            return JsonConvert.SerializeObject(r, Formatting.Indented);
+        }
+
 
 
     }
