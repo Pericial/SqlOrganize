@@ -78,10 +78,11 @@ namespace SqlOrganize
             {
                 foreach (var (key, value) in whereUnique)
                 {
-                    if (key == fieldName && !value.IsNullOrEmpty())
+                    if (key == fieldName)
                     {
+                        var v = (value == null) ? DBNull.Value : value;
                         whereUniqueList.Add(key + " = @" + parameters.Count);
-                        parameters.Add(value);
+                        parameters.Add(v);
                         break;
                     }
                 }
@@ -109,18 +110,13 @@ namespace SqlOrganize
             if (whereUnique.IsNullOrEmpty())
                 return false;
 
-            List<string> whereUniqueList = new();
             foreach (string fieldName in db.Entity(entityName).unique)
-            {
                 foreach (var (key, value) in whereUnique)
-                {
-                    if (key == fieldName && !value.IsNullOrEmpty())
-                    {
+                    if (key == fieldName)              
                         return true;
-                    }
-                }
-            }
-
+                   
+                
+            
             bool e = IsUniqueMultiple(db.Entity(entityName).uniqueMultiple);
             if (e) 
                 return true;
@@ -143,14 +139,13 @@ namespace SqlOrganize
                 existsUniqueMultiple = false;
 
                 foreach (var (key, value) in whereUnique)
-                {
-                    if (key == field  && !value.IsNullOrEmpty())
+                    if (key == field)
                     {
                         whereMultipleList.Add(key);
                         existsUniqueMultiple = true;
                         break;
                     }
-                }
+                
             }
             if (existsUniqueMultiple && whereMultipleList.Count > 0)
                 return true;
@@ -173,15 +168,15 @@ namespace SqlOrganize
                 existsUniqueMultiple = false;
 
                 foreach(var (key, value) in whereUnique)
-                {
-                    if (key == field && !value.IsNullOrEmpty())
+                    if (key == field)
                     {
+                        var v = (value == null) ? DBNull.Value : value;
                         existsUniqueMultiple = true;
                         whereMultipleList.Add(key + " = @" + parameters.Count);
-                        parameters.Add(value);
+                        parameters.Add(v);
                         break;
                     }
-                }
+                
             }
             if(existsUniqueMultiple && whereMultipleList.Count > 0)
                 return "(" + String.Join(") AND (", whereMultipleList) + ")";                
