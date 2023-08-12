@@ -223,11 +223,26 @@ namespace SqlOrganize
                 case "datetime":
                 case "year":
                 case "time":
-                    if (!field.defaultValue.ToString().ToLower().Contains("cur")) 
+                    if (!field.defaultValue.ToString().ToLower().Contains("cur"))
                         values[fieldName] = DateTime.Now;
                     else
                         values[fieldName] = field.defaultValue;
-                break;
+                    break;
+                case "int":
+                    if (field.defaultValue.ToString().ToLower().Contains("max")) { 
+                        int max = db.Query(entityName).Select("MAX($"+fieldName+")").Value <int> ();
+                        values[fieldName] = max+1;
+                    }
+                    else if (field.defaultValue.ToString().ToLower().Contains("next"))
+                    {
+                        throw new Exception("Not implemented"); //siguiente valor de la secuencia, cada motor debe tener su propia implementacion, definir subclase
+                    }
+                    else
+                    {
+                        values[fieldName] = field.defaultValue;
+                    }
+                    break;
+
                 default:
                     values[fieldName] = field.defaultValue;
                     break;
