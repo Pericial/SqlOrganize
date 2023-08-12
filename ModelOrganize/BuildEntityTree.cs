@@ -6,6 +6,8 @@ namespace ModelOrganize
 {
     internal class BuildEntityTree
     {
+        public Config Config;
+
         public Dictionary<string, Entity> Entities;
 
         public Dictionary<string, Dictionary<string, Field>> Fields;
@@ -13,7 +15,8 @@ namespace ModelOrganize
         public string EntityName { get; set; }
         protected List<string> FieldIds = new();
 
-        public BuildEntityTree(Dictionary<string, Entity> entities, Dictionary<string, Dictionary<string, Field>> fields, string entityName) {
+        public BuildEntityTree(Config config, Dictionary<string, Entity> entities, Dictionary<string, Dictionary<string, Field>> fields, string entityName) {
+            Config = config;
             Entities = entities;
             EntityName = entityName;
             Fields = fields;
@@ -62,7 +65,8 @@ namespace ModelOrganize
             Dictionary<string, EntityTree> dict = new();
             foreach (Field field in fk)
             {
-                string fieldId = GetFieldId(field.name, alias);
+                string aliasSource = (Config.aliasSource == "field_name") ? field.name : field.refEntityName;
+                string fieldId = GetFieldId(aliasSource, alias);
 
                 EntityTree tree = new()
                 {                    

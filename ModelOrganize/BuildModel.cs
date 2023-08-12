@@ -40,46 +40,48 @@ namespace ModelOrganize
                 table.Columns = GetColumns(table.Name);
 
                 List<string> fieldAlias = new List<string>(Config.reservedAlias);
-                foreach (Column field in table.Columns)
+                foreach (Column col in table.Columns)
                 {
-                    field.Alias = GetAlias(field.COLUMN_NAME, fieldAlias, 3);
-                    fieldAlias.Add(field.Alias);
-                    table.ColumnNames.Add(field.COLUMN_NAME);
+                    if (col.IS_FOREIGN_KEY == 1) {
+                        string aliasSource = (Config.aliasSource == "field_name") ? col.COLUMN_NAME : col.REFERENCED_TABLE_NAME;
+                        col.Alias = GetAlias(aliasSource, fieldAlias, 3);
+                        fieldAlias.Add(col.Alias);
+                    }
+                    table.ColumnNames.Add(col.COLUMN_NAME);
 
+                    if (col.IS_FOREIGN_KEY == 1)
+                        table.Fk.Add(col.COLUMN_NAME);
+                    if (col.IS_PRIMARY_KEY == 1)
+                        table.Pk.Add(col.COLUMN_NAME);
+                    if (col.IS_UNIQUE_KEY == 1)
+                        table.Unique.Add(col.COLUMN_NAME);
+                    if (col.IS_NULLABLE == 0)
+                        table.NotNull.Add(col.COLUMN_NAME);
 
-                    if (field.IS_FOREIGN_KEY == 1)
-                        table.Fk.Add(field.COLUMN_NAME);
-                    if (field.IS_PRIMARY_KEY == 1)
-                        table.Pk.Add(field.COLUMN_NAME);
-                    if (field.IS_UNIQUE_KEY == 1)
-                        table.Unique.Add(field.COLUMN_NAME);
-                    if (field.IS_NULLABLE == 0)
-                        table.NotNull.Add(field.COLUMN_NAME);
-
-                    switch (field.DATA_TYPE)
+                    switch (col.DATA_TYPE)
                     {
                         case "varchar":
                         case "char":
                         case "nchar":
                         case "nvarchar":
                         case "text":
-                            field.DataType = "string";
+                            col.DataType = "string";
                             break;
                         case "real":
-                            field.DataType = "float";
+                            col.DataType = "float";
                             break;
                         case "bit":
                         case "tinyint":
-                            field.DataType = "bool";
+                            col.DataType = "bool";
                             break;
                         case "datetime":
-                            field.DataType = "DateTime";
+                            col.DataType = "DateTime";
                             break;
                         case "smallint":
-                            field.DataType = "int";
+                            col.DataType = "int";
                             break;
                         default:
-                            field.DataType = field.DATA_TYPE!;
+                            col.DataType = col.DATA_TYPE!;
                             break;
                     }
                 }
@@ -93,8 +95,6 @@ namespace ModelOrganize
             {
                 if (Config.reservedEntities.Contains(t.Name!))
                     continue;
-
-                List<string> fieldIds = new(); //lista de fieldIds de la tabla para no repetir
 
                 var e = new Entity();
                 e.name = t.Name!;
@@ -274,7 +274,7 @@ namespace ModelOrganize
              */
             foreach (var (name, e) in entities)
             {
-                var bet = new BuildEntityTree(entities, fields, e.name!);
+                var bet = new BuildEntityTree(config, entities, fields, e.name!);
                 e.tree = bet.Build();
                 RelationsRecursive(e.relations, e.tree);
 
