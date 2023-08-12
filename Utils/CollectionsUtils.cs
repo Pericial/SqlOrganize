@@ -27,7 +27,7 @@ namespace Utils
             }
         }
 
-        public static void CopyNotNullValues<T>(this T source, T target)
+        public static void CopyNotNullValues<T>(this T target, T source)
         {
             Type t = typeof(T);
 
