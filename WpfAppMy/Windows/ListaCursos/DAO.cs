@@ -1,0 +1,32 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Utils;
+
+namespace WpfAppMy.Windows.ListaCursos
+{
+    internal class DAO
+    {
+        public List<Dictionary<string, object>> CursoAll(Search search)
+        {
+            var q = ContainerApp.Db().Query("curso")
+                .Fields()
+                .Select("CONCAT($sede-numero, $comision-division, '/', $planificacion-anio, $planificacion-semestre) AS numero")
+                .Size(0)
+                .Where(@"
+                    $calendario-anio = @0 
+                    AND $calendario-semestre = @1 
+                ")
+                .Parameters(search.calendario__anio, search.calendario__semestre);
+            if (!search.comision__sede.IsNullOrEmpty())
+            {
+                q.Where("AND $comision-sede = @2");
+                q.Parameters(search.comision__sede!);
+            }
+
+            return ContainerApp.DbCache().ListDict(q);
+        }
+    }
+}
