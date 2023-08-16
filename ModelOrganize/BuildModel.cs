@@ -134,6 +134,11 @@ namespace ModelOrganize
                             f = f.Except(e.Value.fieldsSub).ToList();
                         entities[e.Key].fields = f;
 
+                        entities[e.Key].fk = entities[e.Key].fk.Intersect(f).ToList();
+                        entities[e.Key].unique = entities[e.Key].unique.Intersect(f).ToList();
+                        entities[e.Key].notNull = entities[e.Key].notNull.Intersect(f).ToList();
+                        entities[e.Key].uniqueMultiple = entities[e.Key].uniqueMultiple.Intersect(f).ToList();
+
                         f = new List<string>();
                         f.AddRange(entities[e.Key].fk);
                         if (!e.Value.fkAdd.IsNullOrEmpty())
@@ -357,8 +362,8 @@ namespace ModelOrganize
 
         public void CreateFileFields()
         {
-            if (!Directory.Exists(Config.modelPath + "fields/"))
-                Directory.CreateDirectory(Config.modelPath + "fields/");
+            if (!Directory.Exists(Config.modelPath + "Fields/"))
+                Directory.CreateDirectory(Config.modelPath + "Fields/");
 
             foreach(var (entityName, field) in fields)
             {
@@ -366,7 +371,7 @@ namespace ModelOrganize
                     File.Delete(Config.modelPath + entityName + ".json");
 
                 var file = JsonConvert.SerializeObject(fields[entityName], Newtonsoft.Json.Formatting.Indented);
-                File.WriteAllText(Config.modelPath + "fields/" + entityName + ".json", file);
+                File.WriteAllText(Config.modelPath + "Fields/" + entityName + ".json", file);
             }
 
         }
