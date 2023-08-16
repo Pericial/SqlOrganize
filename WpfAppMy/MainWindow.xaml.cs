@@ -74,7 +74,15 @@ namespace WpfAppMy
 
         }
 
+        private void ListaCursos_Click(object sender, RoutedEventArgs e)
+        {
+            Windows.ListaCursos.Window1 win = new();
+            win.Show();
+
+        }
         
+
+
     }
 }
 

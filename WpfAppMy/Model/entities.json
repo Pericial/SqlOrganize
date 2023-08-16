@@ -1,0 +1,3284 @@
+{
+  "alumno": {
+    "name": "alumno",
+    "alias": "alum",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "anio_ingreso",
+      "observaciones",
+      "persona",
+      "estado_inscripcion",
+      "fecha_titulacion",
+      "plan",
+      "resolucion_inscripcion",
+      "anio_inscripcion",
+      "semestre_inscripcion",
+      "semestre_ingreso",
+      "adeuda_legajo",
+      "adeuda_deudores",
+      "documentacion_inscripcion",
+      "anio_inscripcion_completo",
+      "establecimiento_inscripcion",
+      "libro_folio",
+      "libro",
+      "folio",
+      "comentarios",
+      "tiene_dni",
+      "tiene_constancia",
+      "tiene_certificado",
+      "previas_completas",
+      "tiene_partida",
+      "creado",
+      "confirmado_direccion"
+    ],
+    "fk": [
+      "persona",
+      "plan",
+      "resolucion_inscripcion"
+    ],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [
+      "persona",
+      "libro_folio"
+    ],
+    "notNull": [
+      "id",
+      "persona",
+      "tiene_dni",
+      "tiene_constancia",
+      "tiene_certificado",
+      "previas_completas",
+      "tiene_partida",
+      "creado",
+      "confirmado_direccion"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {
+      "persona": {
+        "fieldName": "persona",
+        "refEntityName": "persona",
+        "refFieldName": "id",
+        "children": {
+          "domicilio": {
+            "fieldName": "domicilio",
+            "refEntityName": "domicilio",
+            "refFieldName": "id",
+            "children": {}
+          }
+        }
+      },
+      "plan": {
+        "fieldName": "plan",
+        "refEntityName": "plan",
+        "refFieldName": "id",
+        "children": {}
+      },
+      "resolucion": {
+        "fieldName": "resolucion_inscripcion",
+        "refEntityName": "resolucion",
+        "refFieldName": "id",
+        "children": {}
+      }
+    },
+    "relations": {
+      "persona": {
+        "fieldName": "persona",
+        "refEntityName": "persona",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "domicilio": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "persona"
+      },
+      "plan": {
+        "fieldName": "plan",
+        "refEntityName": "plan",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "resolucion": {
+        "fieldName": "resolucion_inscripcion",
+        "refEntityName": "resolucion",
+        "refFieldName": "id",
+        "parentId": null
+      }
+    }
+  },
+  "alumno_comision": {
+    "name": "alumno_comision",
+    "alias": "alu1",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "creado",
+      "activo",
+      "observaciones",
+      "comision",
+      "alumno",
+      "estado"
+    ],
+    "fk": [
+      "comision",
+      "alumno"
+    ],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "creado",
+      "alumno"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {
+      "comision": {
+        "fieldName": "comision",
+        "refEntityName": "comision",
+        "refFieldName": "id",
+        "children": {
+          "sede": {
+            "fieldName": "sede",
+            "refEntityName": "sede",
+            "refFieldName": "id",
+            "children": {
+              "domicilio": {
+                "fieldName": "domicilio",
+                "refEntityName": "domicilio",
+                "refFieldName": "id",
+                "children": {}
+              },
+              "tipo_sede": {
+                "fieldName": "tipo_sede",
+                "refEntityName": "tipo_sede",
+                "refFieldName": "id",
+                "children": {}
+              },
+              "centro_educativo": {
+                "fieldName": "centro_educativo",
+                "refEntityName": "centro_educativo",
+                "refFieldName": "id",
+                "children": {
+                  "domicilio_cen": {
+                    "fieldName": "domicilio",
+                    "refEntityName": "domicilio",
+                    "refFieldName": "id",
+                    "children": {}
+                  }
+                }
+              }
+            }
+          },
+          "modalidad": {
+            "fieldName": "modalidad",
+            "refEntityName": "modalidad",
+            "refFieldName": "id",
+            "children": {}
+          },
+          "planificacion": {
+            "fieldName": "planificacion",
+            "refEntityName": "planificacion",
+            "refFieldName": "id",
+            "children": {
+              "plan": {
+                "fieldName": "plan",
+                "refEntityName": "plan",
+                "refFieldName": "id",
+                "children": {}
+              }
+            }
+          },
+          "calendario": {
+            "fieldName": "calendario",
+            "refEntityName": "calendario",
+            "refFieldName": "id",
+            "children": {}
+          }
+        }
+      },
+      "alumno": {
+        "fieldName": "alumno",
+        "refEntityName": "alumno",
+        "refFieldName": "id",
+        "children": {
+          "persona": {
+            "fieldName": "persona",
+            "refEntityName": "persona",
+            "refFieldName": "id",
+            "children": {
+              "domicilio_per": {
+                "fieldName": "domicilio",
+                "refEntityName": "domicilio",
+                "refFieldName": "id",
+                "children": {}
+              }
+            }
+          },
+          "plan_alu": {
+            "fieldName": "plan",
+            "refEntityName": "plan",
+            "refFieldName": "id",
+            "children": {}
+          },
+          "resolucion": {
+            "fieldName": "resolucion_inscripcion",
+            "refEntityName": "resolucion",
+            "refFieldName": "id",
+            "children": {}
+          }
+        }
+      }
+    },
+    "relations": {
+      "comision": {
+        "fieldName": "comision",
+        "refEntityName": "comision",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "sede": {
+        "fieldName": "sede",
+        "refEntityName": "sede",
+        "refFieldName": "id",
+        "parentId": "comision"
+      },
+      "domicilio": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
+      "tipo_sede": {
+        "fieldName": "tipo_sede",
+        "refEntityName": "tipo_sede",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
+      "centro_educativo": {
+        "fieldName": "centro_educativo",
+        "refEntityName": "centro_educativo",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
+      "domicilio_cen": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "centro_educativo"
+      },
+      "modalidad": {
+        "fieldName": "modalidad",
+        "refEntityName": "modalidad",
+        "refFieldName": "id",
+        "parentId": "comision"
+      },
+      "planificacion": {
+        "fieldName": "planificacion",
+        "refEntityName": "planificacion",
+        "refFieldName": "id",
+        "parentId": "comision"
+      },
+      "plan": {
+        "fieldName": "plan",
+        "refEntityName": "plan",
+        "refFieldName": "id",
+        "parentId": "planificacion"
+      },
+      "calendario": {
+        "fieldName": "calendario",
+        "refEntityName": "calendario",
+        "refFieldName": "id",
+        "parentId": "comision"
+      },
+      "alumno": {
+        "fieldName": "alumno",
+        "refEntityName": "alumno",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "persona": {
+        "fieldName": "persona",
+        "refEntityName": "persona",
+        "refFieldName": "id",
+        "parentId": "alumno"
+      },
+      "domicilio_per": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "persona"
+      },
+      "plan_alu": {
+        "fieldName": "plan",
+        "refEntityName": "plan",
+        "refFieldName": "id",
+        "parentId": "alumno"
+      },
+      "resolucion": {
+        "fieldName": "resolucion_inscripcion",
+        "refEntityName": "resolucion",
+        "refFieldName": "id",
+        "parentId": "alumno"
+      }
+    }
+  },
+  "asignacion_planilla_docente": {
+    "name": "asignacion_planilla_docente",
+    "alias": "asig",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "planilla_docente",
+      "toma",
+      "insertado",
+      "comentario",
+      "reclamo"
+    ],
+    "fk": [
+      "planilla_docente",
+      "toma"
+    ],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "planilla_docente",
+      "toma",
+      "insertado",
+      "reclamo"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {
+      "planilla_docente": {
+        "fieldName": "planilla_docente",
+        "refEntityName": "planilla_docente",
+        "refFieldName": "id",
+        "children": {}
+      },
+      "toma": {
+        "fieldName": "toma",
+        "refEntityName": "toma",
+        "refFieldName": "id",
+        "children": {
+          "curso": {
+            "fieldName": "curso",
+            "refEntityName": "curso",
+            "refFieldName": "id",
+            "children": {
+              "comision": {
+                "fieldName": "comision",
+                "refEntityName": "comision",
+                "refFieldName": "id",
+                "children": {
+                  "sede": {
+                    "fieldName": "sede",
+                    "refEntityName": "sede",
+                    "refFieldName": "id",
+                    "children": {
+                      "domicilio": {
+                        "fieldName": "domicilio",
+                        "refEntityName": "domicilio",
+                        "refFieldName": "id",
+                        "children": {}
+                      },
+                      "tipo_sede": {
+                        "fieldName": "tipo_sede",
+                        "refEntityName": "tipo_sede",
+                        "refFieldName": "id",
+                        "children": {}
+                      },
+                      "centro_educativo": {
+                        "fieldName": "centro_educativo",
+                        "refEntityName": "centro_educativo",
+                        "refFieldName": "id",
+                        "children": {
+                          "domicilio_cen": {
+                            "fieldName": "domicilio",
+                            "refEntityName": "domicilio",
+                            "refFieldName": "id",
+                            "children": {}
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "modalidad": {
+                    "fieldName": "modalidad",
+                    "refEntityName": "modalidad",
+                    "refFieldName": "id",
+                    "children": {}
+                  },
+                  "planificacion": {
+                    "fieldName": "planificacion",
+                    "refEntityName": "planificacion",
+                    "refFieldName": "id",
+                    "children": {
+                      "plan": {
+                        "fieldName": "plan",
+                        "refEntityName": "plan",
+                        "refFieldName": "id",
+                        "children": {}
+                      }
+                    }
+                  },
+                  "calendario": {
+                    "fieldName": "calendario",
+                    "refEntityName": "calendario",
+                    "refFieldName": "id",
+                    "children": {}
+                  }
+                }
+              },
+              "asignatura": {
+                "fieldName": "asignatura",
+                "refEntityName": "asignatura",
+                "refFieldName": "id",
+                "children": {}
+              }
+            }
+          },
+          "persona": {
+            "fieldName": "docente",
+            "refEntityName": "persona",
+            "refFieldName": "id",
+            "children": {
+              "domicilio_per": {
+                "fieldName": "domicilio",
+                "refEntityName": "domicilio",
+                "refFieldName": "id",
+                "children": {}
+              }
+            }
+          },
+          "persona_tom": {
+            "fieldName": "reemplazo",
+            "refEntityName": "persona",
+            "refFieldName": "id",
+            "children": {
+              "domicilio_pe1": {
+                "fieldName": "domicilio",
+                "refEntityName": "domicilio",
+                "refFieldName": "id",
+                "children": {}
+              }
+            }
+          },
+          "planilla_docente_tom": {
+            "fieldName": "planilla_docente",
+            "refEntityName": "planilla_docente",
+            "refFieldName": "id",
+            "children": {}
+          }
+        }
+      }
+    },
+    "relations": {
+      "planilla_docente": {
+        "fieldName": "planilla_docente",
+        "refEntityName": "planilla_docente",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "toma": {
+        "fieldName": "toma",
+        "refEntityName": "toma",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "curso": {
+        "fieldName": "curso",
+        "refEntityName": "curso",
+        "refFieldName": "id",
+        "parentId": "toma"
+      },
+      "comision": {
+        "fieldName": "comision",
+        "refEntityName": "comision",
+        "refFieldName": "id",
+        "parentId": "curso"
+      },
+      "sede": {
+        "fieldName": "sede",
+        "refEntityName": "sede",
+        "refFieldName": "id",
+        "parentId": "comision"
+      },
+      "domicilio": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
+      "tipo_sede": {
+        "fieldName": "tipo_sede",
+        "refEntityName": "tipo_sede",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
+      "centro_educativo": {
+        "fieldName": "centro_educativo",
+        "refEntityName": "centro_educativo",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
+      "domicilio_cen": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "centro_educativo"
+      },
+      "modalidad": {
+        "fieldName": "modalidad",
+        "refEntityName": "modalidad",
+        "refFieldName": "id",
+        "parentId": "comision"
+      },
+      "planificacion": {
+        "fieldName": "planificacion",
+        "refEntityName": "planificacion",
+        "refFieldName": "id",
+        "parentId": "comision"
+      },
+      "plan": {
+        "fieldName": "plan",
+        "refEntityName": "plan",
+        "refFieldName": "id",
+        "parentId": "planificacion"
+      },
+      "calendario": {
+        "fieldName": "calendario",
+        "refEntityName": "calendario",
+        "refFieldName": "id",
+        "parentId": "comision"
+      },
+      "asignatura": {
+        "fieldName": "asignatura",
+        "refEntityName": "asignatura",
+        "refFieldName": "id",
+        "parentId": "curso"
+      },
+      "persona": {
+        "fieldName": "docente",
+        "refEntityName": "persona",
+        "refFieldName": "id",
+        "parentId": "toma"
+      },
+      "domicilio_per": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "persona"
+      },
+      "persona_tom": {
+        "fieldName": "reemplazo",
+        "refEntityName": "persona",
+        "refFieldName": "id",
+        "parentId": "toma"
+      },
+      "domicilio_pe1": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "persona_tom"
+      },
+      "planilla_docente_tom": {
+        "fieldName": "planilla_docente",
+        "refEntityName": "planilla_docente",
+        "refFieldName": "id",
+        "parentId": "toma"
+      }
+    }
+  },
+  "asignatura": {
+    "name": "asignatura",
+    "alias": "asi1",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "nombre",
+      "formacion",
+      "clasificacion",
+      "codigo",
+      "perfil"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [
+      "nombre",
+      "codigo"
+    ],
+    "notNull": [
+      "id",
+      "nombre"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "calendario": {
+    "name": "calendario",
+    "alias": "cale",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "inicio",
+      "fin",
+      "anio",
+      "semestre",
+      "insertado",
+      "descripcion"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "anio",
+      "semestre",
+      "insertado"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "calificacion": {
+    "name": "calificacion",
+    "alias": "cali",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "nota1",
+      "nota2",
+      "nota3",
+      "nota_final",
+      "crec",
+      "curso",
+      "porcentaje_asistencia",
+      "observaciones",
+      "division",
+      "alumno",
+      "disposicion",
+      "fecha"
+    ],
+    "fk": [
+      "curso",
+      "alumno",
+      "disposicion"
+    ],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "alumno",
+      "disposicion"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {
+      "curso": {
+        "fieldName": "curso",
+        "refEntityName": "curso",
+        "refFieldName": "id",
+        "children": {
+          "comision": {
+            "fieldName": "comision",
+            "refEntityName": "comision",
+            "refFieldName": "id",
+            "children": {
+              "sede": {
+                "fieldName": "sede",
+                "refEntityName": "sede",
+                "refFieldName": "id",
+                "children": {
+                  "domicilio": {
+                    "fieldName": "domicilio",
+                    "refEntityName": "domicilio",
+                    "refFieldName": "id",
+                    "children": {}
+                  },
+                  "tipo_sede": {
+                    "fieldName": "tipo_sede",
+                    "refEntityName": "tipo_sede",
+                    "refFieldName": "id",
+                    "children": {}
+                  },
+                  "centro_educativo": {
+                    "fieldName": "centro_educativo",
+                    "refEntityName": "centro_educativo",
+                    "refFieldName": "id",
+                    "children": {
+                      "domicilio_cen": {
+                        "fieldName": "domicilio",
+                        "refEntityName": "domicilio",
+                        "refFieldName": "id",
+                        "children": {}
+                      }
+                    }
+                  }
+                }
+              },
+              "modalidad": {
+                "fieldName": "modalidad",
+                "refEntityName": "modalidad",
+                "refFieldName": "id",
+                "children": {}
+              },
+              "planificacion": {
+                "fieldName": "planificacion",
+                "refEntityName": "planificacion",
+                "refFieldName": "id",
+                "children": {
+                  "plan": {
+                    "fieldName": "plan",
+                    "refEntityName": "plan",
+                    "refFieldName": "id",
+                    "children": {}
+                  }
+                }
+              },
+              "calendario": {
+                "fieldName": "calendario",
+                "refEntityName": "calendario",
+                "refFieldName": "id",
+                "children": {}
+              }
+            }
+          },
+          "asignatura": {
+            "fieldName": "asignatura",
+            "refEntityName": "asignatura",
+            "refFieldName": "id",
+            "children": {}
+          }
+        }
+      },
+      "alumno": {
+        "fieldName": "alumno",
+        "refEntityName": "alumno",
+        "refFieldName": "id",
+        "children": {
+          "persona": {
+            "fieldName": "persona",
+            "refEntityName": "persona",
+            "refFieldName": "id",
+            "children": {
+              "domicilio_per": {
+                "fieldName": "domicilio",
+                "refEntityName": "domicilio",
+                "refFieldName": "id",
+                "children": {}
+              }
+            }
+          },
+          "plan_alu": {
+            "fieldName": "plan",
+            "refEntityName": "plan",
+            "refFieldName": "id",
+            "children": {}
+          },
+          "resolucion": {
+            "fieldName": "resolucion_inscripcion",
+            "refEntityName": "resolucion",
+            "refFieldName": "id",
+            "children": {}
+          }
+        }
+      },
+      "disposicion": {
+        "fieldName": "disposicion",
+        "refEntityName": "disposicion",
+        "refFieldName": "id",
+        "children": {
+          "asignatura_dis": {
+            "fieldName": "asignatura",
+            "refEntityName": "asignatura",
+            "refFieldName": "id",
+            "children": {}
+          },
+          "planificacion_dis": {
+            "fieldName": "planificacion",
+            "refEntityName": "planificacion",
+            "refFieldName": "id",
+            "children": {
+              "plan_pla": {
+                "fieldName": "plan",
+                "refEntityName": "plan",
+                "refFieldName": "id",
+                "children": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "relations": {
+      "curso": {
+        "fieldName": "curso",
+        "refEntityName": "curso",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "comision": {
+        "fieldName": "comision",
+        "refEntityName": "comision",
+        "refFieldName": "id",
+        "parentId": "curso"
+      },
+      "sede": {
+        "fieldName": "sede",
+        "refEntityName": "sede",
+        "refFieldName": "id",
+        "parentId": "comision"
+      },
+      "domicilio": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
+      "tipo_sede": {
+        "fieldName": "tipo_sede",
+        "refEntityName": "tipo_sede",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
+      "centro_educativo": {
+        "fieldName": "centro_educativo",
+        "refEntityName": "centro_educativo",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
+      "domicilio_cen": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "centro_educativo"
+      },
+      "modalidad": {
+        "fieldName": "modalidad",
+        "refEntityName": "modalidad",
+        "refFieldName": "id",
+        "parentId": "comision"
+      },
+      "planificacion": {
+        "fieldName": "planificacion",
+        "refEntityName": "planificacion",
+        "refFieldName": "id",
+        "parentId": "comision"
+      },
+      "plan": {
+        "fieldName": "plan",
+        "refEntityName": "plan",
+        "refFieldName": "id",
+        "parentId": "planificacion"
+      },
+      "calendario": {
+        "fieldName": "calendario",
+        "refEntityName": "calendario",
+        "refFieldName": "id",
+        "parentId": "comision"
+      },
+      "asignatura": {
+        "fieldName": "asignatura",
+        "refEntityName": "asignatura",
+        "refFieldName": "id",
+        "parentId": "curso"
+      },
+      "alumno": {
+        "fieldName": "alumno",
+        "refEntityName": "alumno",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "persona": {
+        "fieldName": "persona",
+        "refEntityName": "persona",
+        "refFieldName": "id",
+        "parentId": "alumno"
+      },
+      "domicilio_per": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "persona"
+      },
+      "plan_alu": {
+        "fieldName": "plan",
+        "refEntityName": "plan",
+        "refFieldName": "id",
+        "parentId": "alumno"
+      },
+      "resolucion": {
+        "fieldName": "resolucion_inscripcion",
+        "refEntityName": "resolucion",
+        "refFieldName": "id",
+        "parentId": "alumno"
+      },
+      "disposicion": {
+        "fieldName": "disposicion",
+        "refEntityName": "disposicion",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "asignatura_dis": {
+        "fieldName": "asignatura",
+        "refEntityName": "asignatura",
+        "refFieldName": "id",
+        "parentId": "disposicion"
+      },
+      "planificacion_dis": {
+        "fieldName": "planificacion",
+        "refEntityName": "planificacion",
+        "refFieldName": "id",
+        "parentId": "disposicion"
+      },
+      "plan_pla": {
+        "fieldName": "plan",
+        "refEntityName": "plan",
+        "refFieldName": "id",
+        "parentId": "planificacion_dis"
+      }
+    }
+  },
+  "cargo": {
+    "name": "cargo",
+    "alias": "carg",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "descripcion"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [
+      "descripcion"
+    ],
+    "notNull": [
+      "id",
+      "descripcion"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "centro_educativo": {
+    "name": "centro_educativo",
+    "alias": "cent",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "nombre",
+      "cue",
+      "domicilio",
+      "observaciones"
+    ],
+    "fk": [
+      "domicilio"
+    ],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [
+      "cue"
+    ],
+    "notNull": [
+      "id",
+      "nombre"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {
+      "domicilio": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "children": {}
+      }
+    },
+    "relations": {
+      "domicilio": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": null
+      }
+    }
+  },
+  "comision": {
+    "name": "comision",
+    "alias": "comi",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "turno",
+      "division",
+      "comentario",
+      "autorizada",
+      "apertura",
+      "publicada",
+      "observaciones",
+      "alta",
+      "sede",
+      "modalidad",
+      "planificacion",
+      "comision_siguiente",
+      "calendario",
+      "identificacion",
+      "estado",
+      "configuracion",
+      "pfid"
+    ],
+    "fk": [
+      "sede",
+      "modalidad",
+      "planificacion",
+      "comision_siguiente",
+      "calendario"
+    ],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "division",
+      "autorizada",
+      "apertura",
+      "publicada",
+      "alta",
+      "sede",
+      "modalidad",
+      "calendario"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {
+      "sede": {
+        "fieldName": "sede",
+        "refEntityName": "sede",
+        "refFieldName": "id",
+        "children": {
+          "domicilio": {
+            "fieldName": "domicilio",
+            "refEntityName": "domicilio",
+            "refFieldName": "id",
+            "children": {}
+          },
+          "tipo_sede": {
+            "fieldName": "tipo_sede",
+            "refEntityName": "tipo_sede",
+            "refFieldName": "id",
+            "children": {}
+          },
+          "centro_educativo": {
+            "fieldName": "centro_educativo",
+            "refEntityName": "centro_educativo",
+            "refFieldName": "id",
+            "children": {
+              "domicilio_cen": {
+                "fieldName": "domicilio",
+                "refEntityName": "domicilio",
+                "refFieldName": "id",
+                "children": {}
+              }
+            }
+          }
+        }
+      },
+      "modalidad": {
+        "fieldName": "modalidad",
+        "refEntityName": "modalidad",
+        "refFieldName": "id",
+        "children": {}
+      },
+      "planificacion": {
+        "fieldName": "planificacion",
+        "refEntityName": "planificacion",
+        "refFieldName": "id",
+        "children": {
+          "plan": {
+            "fieldName": "plan",
+            "refEntityName": "plan",
+            "refFieldName": "id",
+            "children": {}
+          }
+        }
+      },
+      "calendario": {
+        "fieldName": "calendario",
+        "refEntityName": "calendario",
+        "refFieldName": "id",
+        "children": {}
+      }
+    },
+    "relations": {
+      "sede": {
+        "fieldName": "sede",
+        "refEntityName": "sede",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "domicilio": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
+      "tipo_sede": {
+        "fieldName": "tipo_sede",
+        "refEntityName": "tipo_sede",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
+      "centro_educativo": {
+        "fieldName": "centro_educativo",
+        "refEntityName": "centro_educativo",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
+      "domicilio_cen": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "centro_educativo"
+      },
+      "modalidad": {
+        "fieldName": "modalidad",
+        "refEntityName": "modalidad",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "planificacion": {
+        "fieldName": "planificacion",
+        "refEntityName": "planificacion",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "plan": {
+        "fieldName": "plan",
+        "refEntityName": "plan",
+        "refFieldName": "id",
+        "parentId": "planificacion"
+      },
+      "calendario": {
+        "fieldName": "calendario",
+        "refEntityName": "calendario",
+        "refFieldName": "id",
+        "parentId": null
+      }
+    }
+  },
+  "comision_relacionada": {
+    "name": "comision_relacionada",
+    "alias": "com1",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "comision",
+      "relacion"
+    ],
+    "fk": [
+      "comision",
+      "relacion"
+    ],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "comision",
+      "relacion"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {
+      "comision": {
+        "fieldName": "comision",
+        "refEntityName": "comision",
+        "refFieldName": "id",
+        "children": {
+          "sede": {
+            "fieldName": "sede",
+            "refEntityName": "sede",
+            "refFieldName": "id",
+            "children": {
+              "domicilio": {
+                "fieldName": "domicilio",
+                "refEntityName": "domicilio",
+                "refFieldName": "id",
+                "children": {}
+              },
+              "tipo_sede": {
+                "fieldName": "tipo_sede",
+                "refEntityName": "tipo_sede",
+                "refFieldName": "id",
+                "children": {}
+              },
+              "centro_educativo": {
+                "fieldName": "centro_educativo",
+                "refEntityName": "centro_educativo",
+                "refFieldName": "id",
+                "children": {
+                  "domicilio_cen": {
+                    "fieldName": "domicilio",
+                    "refEntityName": "domicilio",
+                    "refFieldName": "id",
+                    "children": {}
+                  }
+                }
+              }
+            }
+          },
+          "modalidad": {
+            "fieldName": "modalidad",
+            "refEntityName": "modalidad",
+            "refFieldName": "id",
+            "children": {}
+          },
+          "planificacion": {
+            "fieldName": "planificacion",
+            "refEntityName": "planificacion",
+            "refFieldName": "id",
+            "children": {
+              "plan": {
+                "fieldName": "plan",
+                "refEntityName": "plan",
+                "refFieldName": "id",
+                "children": {}
+              }
+            }
+          },
+          "calendario": {
+            "fieldName": "calendario",
+            "refEntityName": "calendario",
+            "refFieldName": "id",
+            "children": {}
+          }
+        }
+      },
+      "comision1": {
+        "fieldName": "relacion",
+        "refEntityName": "comision",
+        "refFieldName": "id",
+        "children": {
+          "sede_co1": {
+            "fieldName": "sede",
+            "refEntityName": "sede",
+            "refFieldName": "id",
+            "children": {
+              "domicilio_sed": {
+                "fieldName": "domicilio",
+                "refEntityName": "domicilio",
+                "refFieldName": "id",
+                "children": {}
+              },
+              "tipo_sede_sed": {
+                "fieldName": "tipo_sede",
+                "refEntityName": "tipo_sede",
+                "refFieldName": "id",
+                "children": {}
+              },
+              "centro_educativo_sed": {
+                "fieldName": "centro_educativo",
+                "refEntityName": "centro_educativo",
+                "refFieldName": "id",
+                "children": {
+                  "domicilio_cen1": {
+                    "fieldName": "domicilio",
+                    "refEntityName": "domicilio",
+                    "refFieldName": "id",
+                    "children": {}
+                  }
+                }
+              }
+            }
+          },
+          "modalidad_co1": {
+            "fieldName": "modalidad",
+            "refEntityName": "modalidad",
+            "refFieldName": "id",
+            "children": {}
+          },
+          "planificacion_co1": {
+            "fieldName": "planificacion",
+            "refEntityName": "planificacion",
+            "refFieldName": "id",
+            "children": {
+              "plan_pla": {
+                "fieldName": "plan",
+                "refEntityName": "plan",
+                "refFieldName": "id",
+                "children": {}
+              }
+            }
+          },
+          "calendario_co1": {
+            "fieldName": "calendario",
+            "refEntityName": "calendario",
+            "refFieldName": "id",
+            "children": {}
+          }
+        }
+      }
+    },
+    "relations": {
+      "comision": {
+        "fieldName": "comision",
+        "refEntityName": "comision",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "sede": {
+        "fieldName": "sede",
+        "refEntityName": "sede",
+        "refFieldName": "id",
+        "parentId": "comision"
+      },
+      "domicilio": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
+      "tipo_sede": {
+        "fieldName": "tipo_sede",
+        "refEntityName": "tipo_sede",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
+      "centro_educativo": {
+        "fieldName": "centro_educativo",
+        "refEntityName": "centro_educativo",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
+      "domicilio_cen": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "centro_educativo"
+      },
+      "modalidad": {
+        "fieldName": "modalidad",
+        "refEntityName": "modalidad",
+        "refFieldName": "id",
+        "parentId": "comision"
+      },
+      "planificacion": {
+        "fieldName": "planificacion",
+        "refEntityName": "planificacion",
+        "refFieldName": "id",
+        "parentId": "comision"
+      },
+      "plan": {
+        "fieldName": "plan",
+        "refEntityName": "plan",
+        "refFieldName": "id",
+        "parentId": "planificacion"
+      },
+      "calendario": {
+        "fieldName": "calendario",
+        "refEntityName": "calendario",
+        "refFieldName": "id",
+        "parentId": "comision"
+      },
+      "comision1": {
+        "fieldName": "relacion",
+        "refEntityName": "comision",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "sede_co1": {
+        "fieldName": "sede",
+        "refEntityName": "sede",
+        "refFieldName": "id",
+        "parentId": "comision1"
+      },
+      "domicilio_sed": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "sede_co1"
+      },
+      "tipo_sede_sed": {
+        "fieldName": "tipo_sede",
+        "refEntityName": "tipo_sede",
+        "refFieldName": "id",
+        "parentId": "sede_co1"
+      },
+      "centro_educativo_sed": {
+        "fieldName": "centro_educativo",
+        "refEntityName": "centro_educativo",
+        "refFieldName": "id",
+        "parentId": "sede_co1"
+      },
+      "domicilio_cen1": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "centro_educativo_sed"
+      },
+      "modalidad_co1": {
+        "fieldName": "modalidad",
+        "refEntityName": "modalidad",
+        "refFieldName": "id",
+        "parentId": "comision1"
+      },
+      "planificacion_co1": {
+        "fieldName": "planificacion",
+        "refEntityName": "planificacion",
+        "refFieldName": "id",
+        "parentId": "comision1"
+      },
+      "plan_pla": {
+        "fieldName": "plan",
+        "refEntityName": "plan",
+        "refFieldName": "id",
+        "parentId": "planificacion_co1"
+      },
+      "calendario_co1": {
+        "fieldName": "calendario",
+        "refEntityName": "calendario",
+        "refFieldName": "id",
+        "parentId": "comision1"
+      }
+    }
+  },
+  "contralor": {
+    "name": "contralor",
+    "alias": "cont",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "fecha_contralor",
+      "fecha_consejo",
+      "insertado",
+      "planilla_docente"
+    ],
+    "fk": [
+      "planilla_docente"
+    ],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "insertado",
+      "planilla_docente"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {
+      "planilla_docente": {
+        "fieldName": "planilla_docente",
+        "refEntityName": "planilla_docente",
+        "refFieldName": "id",
+        "children": {}
+      }
+    },
+    "relations": {
+      "planilla_docente": {
+        "fieldName": "planilla_docente",
+        "refEntityName": "planilla_docente",
+        "refFieldName": "id",
+        "parentId": null
+      }
+    }
+  },
+  "curso": {
+    "name": "curso",
+    "alias": "curs",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "horas_catedra",
+      "ige",
+      "comision",
+      "asignatura",
+      "alta"
+    ],
+    "fk": [
+      "comision",
+      "asignatura"
+    ],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "horas_catedra",
+      "comision",
+      "asignatura",
+      "alta"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {
+      "comision": {
+        "fieldName": "comision",
+        "refEntityName": "comision",
+        "refFieldName": "id",
+        "children": {
+          "sede": {
+            "fieldName": "sede",
+            "refEntityName": "sede",
+            "refFieldName": "id",
+            "children": {
+              "domicilio": {
+                "fieldName": "domicilio",
+                "refEntityName": "domicilio",
+                "refFieldName": "id",
+                "children": {}
+              },
+              "tipo_sede": {
+                "fieldName": "tipo_sede",
+                "refEntityName": "tipo_sede",
+                "refFieldName": "id",
+                "children": {}
+              },
+              "centro_educativo": {
+                "fieldName": "centro_educativo",
+                "refEntityName": "centro_educativo",
+                "refFieldName": "id",
+                "children": {
+                  "domicilio_cen": {
+                    "fieldName": "domicilio",
+                    "refEntityName": "domicilio",
+                    "refFieldName": "id",
+                    "children": {}
+                  }
+                }
+              }
+            }
+          },
+          "modalidad": {
+            "fieldName": "modalidad",
+            "refEntityName": "modalidad",
+            "refFieldName": "id",
+            "children": {}
+          },
+          "planificacion": {
+            "fieldName": "planificacion",
+            "refEntityName": "planificacion",
+            "refFieldName": "id",
+            "children": {
+              "plan": {
+                "fieldName": "plan",
+                "refEntityName": "plan",
+                "refFieldName": "id",
+                "children": {}
+              }
+            }
+          },
+          "calendario": {
+            "fieldName": "calendario",
+            "refEntityName": "calendario",
+            "refFieldName": "id",
+            "children": {}
+          }
+        }
+      },
+      "asignatura": {
+        "fieldName": "asignatura",
+        "refEntityName": "asignatura",
+        "refFieldName": "id",
+        "children": {}
+      }
+    },
+    "relations": {
+      "comision": {
+        "fieldName": "comision",
+        "refEntityName": "comision",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "sede": {
+        "fieldName": "sede",
+        "refEntityName": "sede",
+        "refFieldName": "id",
+        "parentId": "comision"
+      },
+      "domicilio": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
+      "tipo_sede": {
+        "fieldName": "tipo_sede",
+        "refEntityName": "tipo_sede",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
+      "centro_educativo": {
+        "fieldName": "centro_educativo",
+        "refEntityName": "centro_educativo",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
+      "domicilio_cen": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "centro_educativo"
+      },
+      "modalidad": {
+        "fieldName": "modalidad",
+        "refEntityName": "modalidad",
+        "refFieldName": "id",
+        "parentId": "comision"
+      },
+      "planificacion": {
+        "fieldName": "planificacion",
+        "refEntityName": "planificacion",
+        "refFieldName": "id",
+        "parentId": "comision"
+      },
+      "plan": {
+        "fieldName": "plan",
+        "refEntityName": "plan",
+        "refFieldName": "id",
+        "parentId": "planificacion"
+      },
+      "calendario": {
+        "fieldName": "calendario",
+        "refEntityName": "calendario",
+        "refFieldName": "id",
+        "parentId": "comision"
+      },
+      "asignatura": {
+        "fieldName": "asignatura",
+        "refEntityName": "asignatura",
+        "refFieldName": "id",
+        "parentId": null
+      }
+    }
+  },
+  "designacion": {
+    "name": "designacion",
+    "alias": "desi",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "desde",
+      "hasta",
+      "cargo",
+      "sede",
+      "persona",
+      "alta",
+      "pfid"
+    ],
+    "fk": [
+      "cargo",
+      "sede",
+      "persona"
+    ],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "cargo",
+      "sede",
+      "persona",
+      "alta"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {
+      "cargo": {
+        "fieldName": "cargo",
+        "refEntityName": "cargo",
+        "refFieldName": "id",
+        "children": {}
+      },
+      "sede": {
+        "fieldName": "sede",
+        "refEntityName": "sede",
+        "refFieldName": "id",
+        "children": {
+          "domicilio": {
+            "fieldName": "domicilio",
+            "refEntityName": "domicilio",
+            "refFieldName": "id",
+            "children": {}
+          },
+          "tipo_sede": {
+            "fieldName": "tipo_sede",
+            "refEntityName": "tipo_sede",
+            "refFieldName": "id",
+            "children": {}
+          },
+          "centro_educativo": {
+            "fieldName": "centro_educativo",
+            "refEntityName": "centro_educativo",
+            "refFieldName": "id",
+            "children": {
+              "domicilio_cen": {
+                "fieldName": "domicilio",
+                "refEntityName": "domicilio",
+                "refFieldName": "id",
+                "children": {}
+              }
+            }
+          }
+        }
+      },
+      "persona": {
+        "fieldName": "persona",
+        "refEntityName": "persona",
+        "refFieldName": "id",
+        "children": {
+          "domicilio_per": {
+            "fieldName": "domicilio",
+            "refEntityName": "domicilio",
+            "refFieldName": "id",
+            "children": {}
+          }
+        }
+      }
+    },
+    "relations": {
+      "cargo": {
+        "fieldName": "cargo",
+        "refEntityName": "cargo",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "sede": {
+        "fieldName": "sede",
+        "refEntityName": "sede",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "domicilio": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
+      "tipo_sede": {
+        "fieldName": "tipo_sede",
+        "refEntityName": "tipo_sede",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
+      "centro_educativo": {
+        "fieldName": "centro_educativo",
+        "refEntityName": "centro_educativo",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
+      "domicilio_cen": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "centro_educativo"
+      },
+      "persona": {
+        "fieldName": "persona",
+        "refEntityName": "persona",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "domicilio_per": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "persona"
+      }
+    }
+  },
+  "detalle_persona": {
+    "name": "detalle_persona",
+    "alias": "deta",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "descripcion",
+      "archivo",
+      "creado",
+      "persona",
+      "fecha",
+      "tipo",
+      "asunto"
+    ],
+    "fk": [
+      "archivo",
+      "persona"
+    ],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "descripcion",
+      "creado",
+      "persona"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {
+      "file": {
+        "fieldName": "archivo",
+        "refEntityName": "file",
+        "refFieldName": "id",
+        "children": {}
+      },
+      "persona": {
+        "fieldName": "persona",
+        "refEntityName": "persona",
+        "refFieldName": "id",
+        "children": {
+          "domicilio": {
+            "fieldName": "domicilio",
+            "refEntityName": "domicilio",
+            "refFieldName": "id",
+            "children": {}
+          }
+        }
+      }
+    },
+    "relations": {
+      "file": {
+        "fieldName": "archivo",
+        "refEntityName": "file",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "persona": {
+        "fieldName": "persona",
+        "refEntityName": "persona",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "domicilio": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "persona"
+      }
+    }
+  },
+  "dia": {
+    "name": "dia",
+    "alias": "dia",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "numero",
+      "dia"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [
+      "numero",
+      "dia"
+    ],
+    "notNull": [
+      "id",
+      "numero",
+      "dia"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "disposicion": {
+    "name": "disposicion",
+    "alias": "disp",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "asignatura",
+      "planificacion",
+      "orden_informe_coordinacion_distrital"
+    ],
+    "fk": [
+      "asignatura",
+      "planificacion"
+    ],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "asignatura",
+      "planificacion"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {
+      "asignatura": {
+        "fieldName": "asignatura",
+        "refEntityName": "asignatura",
+        "refFieldName": "id",
+        "children": {}
+      },
+      "planificacion": {
+        "fieldName": "planificacion",
+        "refEntityName": "planificacion",
+        "refFieldName": "id",
+        "children": {
+          "plan": {
+            "fieldName": "plan",
+            "refEntityName": "plan",
+            "refFieldName": "id",
+            "children": {}
+          }
+        }
+      }
+    },
+    "relations": {
+      "asignatura": {
+        "fieldName": "asignatura",
+        "refEntityName": "asignatura",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "planificacion": {
+        "fieldName": "planificacion",
+        "refEntityName": "planificacion",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "plan": {
+        "fieldName": "plan",
+        "refEntityName": "plan",
+        "refFieldName": "id",
+        "parentId": "planificacion"
+      }
+    }
+  },
+  "disposicion_pendiente": {
+    "name": "disposicion_pendiente",
+    "alias": "dis1",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "disposicion",
+      "alumno",
+      "modo"
+    ],
+    "fk": [
+      "disposicion",
+      "alumno"
+    ],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "disposicion",
+      "alumno"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {
+      "disposicion": {
+        "fieldName": "disposicion",
+        "refEntityName": "disposicion",
+        "refFieldName": "id",
+        "children": {
+          "asignatura": {
+            "fieldName": "asignatura",
+            "refEntityName": "asignatura",
+            "refFieldName": "id",
+            "children": {}
+          },
+          "planificacion": {
+            "fieldName": "planificacion",
+            "refEntityName": "planificacion",
+            "refFieldName": "id",
+            "children": {
+              "plan": {
+                "fieldName": "plan",
+                "refEntityName": "plan",
+                "refFieldName": "id",
+                "children": {}
+              }
+            }
+          }
+        }
+      },
+      "alumno": {
+        "fieldName": "alumno",
+        "refEntityName": "alumno",
+        "refFieldName": "id",
+        "children": {
+          "persona": {
+            "fieldName": "persona",
+            "refEntityName": "persona",
+            "refFieldName": "id",
+            "children": {
+              "domicilio": {
+                "fieldName": "domicilio",
+                "refEntityName": "domicilio",
+                "refFieldName": "id",
+                "children": {}
+              }
+            }
+          },
+          "plan_alu": {
+            "fieldName": "plan",
+            "refEntityName": "plan",
+            "refFieldName": "id",
+            "children": {}
+          },
+          "resolucion": {
+            "fieldName": "resolucion_inscripcion",
+            "refEntityName": "resolucion",
+            "refFieldName": "id",
+            "children": {}
+          }
+        }
+      }
+    },
+    "relations": {
+      "disposicion": {
+        "fieldName": "disposicion",
+        "refEntityName": "disposicion",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "asignatura": {
+        "fieldName": "asignatura",
+        "refEntityName": "asignatura",
+        "refFieldName": "id",
+        "parentId": "disposicion"
+      },
+      "planificacion": {
+        "fieldName": "planificacion",
+        "refEntityName": "planificacion",
+        "refFieldName": "id",
+        "parentId": "disposicion"
+      },
+      "plan": {
+        "fieldName": "plan",
+        "refEntityName": "plan",
+        "refFieldName": "id",
+        "parentId": "planificacion"
+      },
+      "alumno": {
+        "fieldName": "alumno",
+        "refEntityName": "alumno",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "persona": {
+        "fieldName": "persona",
+        "refEntityName": "persona",
+        "refFieldName": "id",
+        "parentId": "alumno"
+      },
+      "domicilio": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "persona"
+      },
+      "plan_alu": {
+        "fieldName": "plan",
+        "refEntityName": "plan",
+        "refFieldName": "id",
+        "parentId": "alumno"
+      },
+      "resolucion": {
+        "fieldName": "resolucion_inscripcion",
+        "refEntityName": "resolucion",
+        "refFieldName": "id",
+        "parentId": "alumno"
+      }
+    }
+  },
+  "distribucion_horaria": {
+    "name": "distribucion_horaria",
+    "alias": "dist",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "horas_catedra",
+      "dia",
+      "disposicion"
+    ],
+    "fk": [
+      "disposicion"
+    ],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "horas_catedra",
+      "dia"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {
+      "disposicion": {
+        "fieldName": "disposicion",
+        "refEntityName": "disposicion",
+        "refFieldName": "id",
+        "children": {
+          "asignatura": {
+            "fieldName": "asignatura",
+            "refEntityName": "asignatura",
+            "refFieldName": "id",
+            "children": {}
+          },
+          "planificacion": {
+            "fieldName": "planificacion",
+            "refEntityName": "planificacion",
+            "refFieldName": "id",
+            "children": {
+              "plan": {
+                "fieldName": "plan",
+                "refEntityName": "plan",
+                "refFieldName": "id",
+                "children": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "relations": {
+      "disposicion": {
+        "fieldName": "disposicion",
+        "refEntityName": "disposicion",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "asignatura": {
+        "fieldName": "asignatura",
+        "refEntityName": "asignatura",
+        "refFieldName": "id",
+        "parentId": "disposicion"
+      },
+      "planificacion": {
+        "fieldName": "planificacion",
+        "refEntityName": "planificacion",
+        "refFieldName": "id",
+        "parentId": "disposicion"
+      },
+      "plan": {
+        "fieldName": "plan",
+        "refEntityName": "plan",
+        "refFieldName": "id",
+        "parentId": "planificacion"
+      }
+    }
+  },
+  "domicilio": {
+    "name": "domicilio",
+    "alias": "domi",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "calle",
+      "entre",
+      "numero",
+      "piso",
+      "departamento",
+      "barrio",
+      "localidad"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "calle",
+      "numero",
+      "localidad"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "email": {
+    "name": "email",
+    "alias": "emai",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "email",
+      "verificado",
+      "insertado",
+      "eliminado",
+      "persona"
+    ],
+    "fk": [
+      "persona"
+    ],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "email",
+      "verificado",
+      "insertado",
+      "persona"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {
+      "persona": {
+        "fieldName": "persona",
+        "refEntityName": "persona",
+        "refFieldName": "id",
+        "children": {
+          "domicilio": {
+            "fieldName": "domicilio",
+            "refEntityName": "domicilio",
+            "refFieldName": "id",
+            "children": {}
+          }
+        }
+      }
+    },
+    "relations": {
+      "persona": {
+        "fieldName": "persona",
+        "refEntityName": "persona",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "domicilio": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "persona"
+      }
+    }
+  },
+  "file": {
+    "name": "file",
+    "alias": "file",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "name",
+      "type",
+      "content",
+      "size",
+      "created"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "name",
+      "type",
+      "content",
+      "size",
+      "created"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "horario": {
+    "name": "horario",
+    "alias": "hora",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "hora_inicio",
+      "hora_fin",
+      "curso",
+      "dia"
+    ],
+    "fk": [
+      "curso",
+      "dia"
+    ],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "hora_inicio",
+      "hora_fin",
+      "curso",
+      "dia"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {
+      "curso": {
+        "fieldName": "curso",
+        "refEntityName": "curso",
+        "refFieldName": "id",
+        "children": {
+          "comision": {
+            "fieldName": "comision",
+            "refEntityName": "comision",
+            "refFieldName": "id",
+            "children": {
+              "sede": {
+                "fieldName": "sede",
+                "refEntityName": "sede",
+                "refFieldName": "id",
+                "children": {
+                  "domicilio": {
+                    "fieldName": "domicilio",
+                    "refEntityName": "domicilio",
+                    "refFieldName": "id",
+                    "children": {}
+                  },
+                  "tipo_sede": {
+                    "fieldName": "tipo_sede",
+                    "refEntityName": "tipo_sede",
+                    "refFieldName": "id",
+                    "children": {}
+                  },
+                  "centro_educativo": {
+                    "fieldName": "centro_educativo",
+                    "refEntityName": "centro_educativo",
+                    "refFieldName": "id",
+                    "children": {
+                      "domicilio_cen": {
+                        "fieldName": "domicilio",
+                        "refEntityName": "domicilio",
+                        "refFieldName": "id",
+                        "children": {}
+                      }
+                    }
+                  }
+                }
+              },
+              "modalidad": {
+                "fieldName": "modalidad",
+                "refEntityName": "modalidad",
+                "refFieldName": "id",
+                "children": {}
+              },
+              "planificacion": {
+                "fieldName": "planificacion",
+                "refEntityName": "planificacion",
+                "refFieldName": "id",
+                "children": {
+                  "plan": {
+                    "fieldName": "plan",
+                    "refEntityName": "plan",
+                    "refFieldName": "id",
+                    "children": {}
+                  }
+                }
+              },
+              "calendario": {
+                "fieldName": "calendario",
+                "refEntityName": "calendario",
+                "refFieldName": "id",
+                "children": {}
+              }
+            }
+          },
+          "asignatura": {
+            "fieldName": "asignatura",
+            "refEntityName": "asignatura",
+            "refFieldName": "id",
+            "children": {}
+          }
+        }
+      },
+      "dia": {
+        "fieldName": "dia",
+        "refEntityName": "dia",
+        "refFieldName": "id",
+        "children": {}
+      }
+    },
+    "relations": {
+      "curso": {
+        "fieldName": "curso",
+        "refEntityName": "curso",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "comision": {
+        "fieldName": "comision",
+        "refEntityName": "comision",
+        "refFieldName": "id",
+        "parentId": "curso"
+      },
+      "sede": {
+        "fieldName": "sede",
+        "refEntityName": "sede",
+        "refFieldName": "id",
+        "parentId": "comision"
+      },
+      "domicilio": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
+      "tipo_sede": {
+        "fieldName": "tipo_sede",
+        "refEntityName": "tipo_sede",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
+      "centro_educativo": {
+        "fieldName": "centro_educativo",
+        "refEntityName": "centro_educativo",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
+      "domicilio_cen": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "centro_educativo"
+      },
+      "modalidad": {
+        "fieldName": "modalidad",
+        "refEntityName": "modalidad",
+        "refFieldName": "id",
+        "parentId": "comision"
+      },
+      "planificacion": {
+        "fieldName": "planificacion",
+        "refEntityName": "planificacion",
+        "refFieldName": "id",
+        "parentId": "comision"
+      },
+      "plan": {
+        "fieldName": "plan",
+        "refEntityName": "plan",
+        "refFieldName": "id",
+        "parentId": "planificacion"
+      },
+      "calendario": {
+        "fieldName": "calendario",
+        "refEntityName": "calendario",
+        "refFieldName": "id",
+        "parentId": "comision"
+      },
+      "asignatura": {
+        "fieldName": "asignatura",
+        "refEntityName": "asignatura",
+        "refFieldName": "id",
+        "parentId": "curso"
+      },
+      "dia": {
+        "fieldName": "dia",
+        "refEntityName": "dia",
+        "refFieldName": "id",
+        "parentId": null
+      }
+    }
+  },
+  "modalidad": {
+    "name": "modalidad",
+    "alias": "moda",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "nombre",
+      "pfid"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [
+      "nombre"
+    ],
+    "notNull": [
+      "id",
+      "nombre"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "persona": {
+    "name": "persona",
+    "alias": "pers",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "nombres",
+      "apellidos",
+      "fecha_nacimiento",
+      "numero_documento",
+      "cuil",
+      "genero",
+      "apodo",
+      "telefono",
+      "email",
+      "email_abc",
+      "alta",
+      "domicilio",
+      "lugar_nacimiento",
+      "telefono_verificado",
+      "email_verificado",
+      "info_verificada"
+    ],
+    "fk": [
+      "domicilio"
+    ],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [
+      "numero_documento",
+      "cuil",
+      "email_abc"
+    ],
+    "notNull": [
+      "id",
+      "nombres",
+      "numero_documento",
+      "alta",
+      "telefono_verificado",
+      "email_verificado",
+      "info_verificada"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {
+      "domicilio": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "children": {}
+      }
+    },
+    "relations": {
+      "domicilio": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": null
+      }
+    }
+  },
+  "plan": {
+    "name": "plan",
+    "alias": "plan",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "orientacion",
+      "resolucion",
+      "distribucion_horaria",
+      "pfid"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "orientacion"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "planificacion": {
+    "name": "planificacion",
+    "alias": "pla1",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "anio",
+      "semestre",
+      "plan",
+      "pfid"
+    ],
+    "fk": [
+      "plan"
+    ],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "anio",
+      "semestre",
+      "plan"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {
+      "plan": {
+        "fieldName": "plan",
+        "refEntityName": "plan",
+        "refFieldName": "id",
+        "children": {}
+      }
+    },
+    "relations": {
+      "plan": {
+        "fieldName": "plan",
+        "refEntityName": "plan",
+        "refFieldName": "id",
+        "parentId": null
+      }
+    }
+  },
+  "planilla_docente": {
+    "name": "planilla_docente",
+    "alias": "pla2",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "numero",
+      "insertado",
+      "fecha_contralor",
+      "fecha_consejo",
+      "observaciones"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "numero",
+      "insertado"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "resolucion": {
+    "name": "resolucion",
+    "alias": "reso",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "numero",
+      "anio",
+      "tipo"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "numero"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "sede": {
+    "name": "sede",
+    "alias": "sede",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "numero",
+      "nombre",
+      "observaciones",
+      "alta",
+      "baja",
+      "domicilio",
+      "tipo_sede",
+      "centro_educativo",
+      "fecha_traspaso",
+      "organizacion",
+      "pfid",
+      "pfid_organizacion"
+    ],
+    "fk": [
+      "domicilio",
+      "tipo_sede",
+      "centro_educativo",
+      "organizacion"
+    ],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "numero",
+      "nombre",
+      "alta"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {
+      "domicilio": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "children": {}
+      },
+      "tipo_sede": {
+        "fieldName": "tipo_sede",
+        "refEntityName": "tipo_sede",
+        "refFieldName": "id",
+        "children": {}
+      },
+      "centro_educativo": {
+        "fieldName": "centro_educativo",
+        "refEntityName": "centro_educativo",
+        "refFieldName": "id",
+        "children": {
+          "domicilio_cen": {
+            "fieldName": "domicilio",
+            "refEntityName": "domicilio",
+            "refFieldName": "id",
+            "children": {}
+          }
+        }
+      }
+    },
+    "relations": {
+      "domicilio": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "tipo_sede": {
+        "fieldName": "tipo_sede",
+        "refEntityName": "tipo_sede",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "centro_educativo": {
+        "fieldName": "centro_educativo",
+        "refEntityName": "centro_educativo",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "domicilio_cen": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "centro_educativo"
+      }
+    }
+  },
+  "telefono": {
+    "name": "telefono",
+    "alias": "tele",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "tipo",
+      "prefijo",
+      "numero",
+      "insertado",
+      "eliminado",
+      "persona"
+    ],
+    "fk": [
+      "persona"
+    ],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "numero",
+      "insertado",
+      "persona"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {
+      "persona": {
+        "fieldName": "persona",
+        "refEntityName": "persona",
+        "refFieldName": "id",
+        "children": {
+          "domicilio": {
+            "fieldName": "domicilio",
+            "refEntityName": "domicilio",
+            "refFieldName": "id",
+            "children": {}
+          }
+        }
+      }
+    },
+    "relations": {
+      "persona": {
+        "fieldName": "persona",
+        "refEntityName": "persona",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "domicilio": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "persona"
+      }
+    }
+  },
+  "tipo_sede": {
+    "name": "tipo_sede",
+    "alias": "tipo",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "descripcion"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [
+      "descripcion"
+    ],
+    "notNull": [
+      "id",
+      "descripcion"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "toma": {
+    "name": "toma",
+    "alias": "toma",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "fecha_toma",
+      "estado",
+      "observaciones",
+      "comentario",
+      "tipo_movimiento",
+      "estado_contralor",
+      "alta",
+      "curso",
+      "docente",
+      "reemplazo",
+      "planilla_docente",
+      "calificacion",
+      "temas_tratados",
+      "asistencia",
+      "sin_planillas"
+    ],
+    "fk": [
+      "curso",
+      "docente",
+      "reemplazo",
+      "planilla_docente"
+    ],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "tipo_movimiento",
+      "alta",
+      "curso",
+      "calificacion",
+      "temas_tratados",
+      "asistencia",
+      "sin_planillas"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {
+      "curso": {
+        "fieldName": "curso",
+        "refEntityName": "curso",
+        "refFieldName": "id",
+        "children": {
+          "comision": {
+            "fieldName": "comision",
+            "refEntityName": "comision",
+            "refFieldName": "id",
+            "children": {
+              "sede": {
+                "fieldName": "sede",
+                "refEntityName": "sede",
+                "refFieldName": "id",
+                "children": {
+                  "domicilio": {
+                    "fieldName": "domicilio",
+                    "refEntityName": "domicilio",
+                    "refFieldName": "id",
+                    "children": {}
+                  },
+                  "tipo_sede": {
+                    "fieldName": "tipo_sede",
+                    "refEntityName": "tipo_sede",
+                    "refFieldName": "id",
+                    "children": {}
+                  },
+                  "centro_educativo": {
+                    "fieldName": "centro_educativo",
+                    "refEntityName": "centro_educativo",
+                    "refFieldName": "id",
+                    "children": {
+                      "domicilio_cen": {
+                        "fieldName": "domicilio",
+                        "refEntityName": "domicilio",
+                        "refFieldName": "id",
+                        "children": {}
+                      }
+                    }
+                  }
+                }
+              },
+              "modalidad": {
+                "fieldName": "modalidad",
+                "refEntityName": "modalidad",
+                "refFieldName": "id",
+                "children": {}
+              },
+              "planificacion": {
+                "fieldName": "planificacion",
+                "refEntityName": "planificacion",
+                "refFieldName": "id",
+                "children": {
+                  "plan": {
+                    "fieldName": "plan",
+                    "refEntityName": "plan",
+                    "refFieldName": "id",
+                    "children": {}
+                  }
+                }
+              },
+              "calendario": {
+                "fieldName": "calendario",
+                "refEntityName": "calendario",
+                "refFieldName": "id",
+                "children": {}
+              }
+            }
+          },
+          "asignatura": {
+            "fieldName": "asignatura",
+            "refEntityName": "asignatura",
+            "refFieldName": "id",
+            "children": {}
+          }
+        }
+      },
+      "persona": {
+        "fieldName": "docente",
+        "refEntityName": "persona",
+        "refFieldName": "id",
+        "children": {
+          "domicilio_per": {
+            "fieldName": "domicilio",
+            "refEntityName": "domicilio",
+            "refFieldName": "id",
+            "children": {}
+          }
+        }
+      },
+      "persona1": {
+        "fieldName": "reemplazo",
+        "refEntityName": "persona",
+        "refFieldName": "id",
+        "children": {
+          "domicilio_pe1": {
+            "fieldName": "domicilio",
+            "refEntityName": "domicilio",
+            "refFieldName": "id",
+            "children": {}
+          }
+        }
+      },
+      "planilla_docente": {
+        "fieldName": "planilla_docente",
+        "refEntityName": "planilla_docente",
+        "refFieldName": "id",
+        "children": {}
+      }
+    },
+    "relations": {
+      "curso": {
+        "fieldName": "curso",
+        "refEntityName": "curso",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "comision": {
+        "fieldName": "comision",
+        "refEntityName": "comision",
+        "refFieldName": "id",
+        "parentId": "curso"
+      },
+      "sede": {
+        "fieldName": "sede",
+        "refEntityName": "sede",
+        "refFieldName": "id",
+        "parentId": "comision"
+      },
+      "domicilio": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
+      "tipo_sede": {
+        "fieldName": "tipo_sede",
+        "refEntityName": "tipo_sede",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
+      "centro_educativo": {
+        "fieldName": "centro_educativo",
+        "refEntityName": "centro_educativo",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
+      "domicilio_cen": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "centro_educativo"
+      },
+      "modalidad": {
+        "fieldName": "modalidad",
+        "refEntityName": "modalidad",
+        "refFieldName": "id",
+        "parentId": "comision"
+      },
+      "planificacion": {
+        "fieldName": "planificacion",
+        "refEntityName": "planificacion",
+        "refFieldName": "id",
+        "parentId": "comision"
+      },
+      "plan": {
+        "fieldName": "plan",
+        "refEntityName": "plan",
+        "refFieldName": "id",
+        "parentId": "planificacion"
+      },
+      "calendario": {
+        "fieldName": "calendario",
+        "refEntityName": "calendario",
+        "refFieldName": "id",
+        "parentId": "comision"
+      },
+      "asignatura": {
+        "fieldName": "asignatura",
+        "refEntityName": "asignatura",
+        "refFieldName": "id",
+        "parentId": "curso"
+      },
+      "persona": {
+        "fieldName": "docente",
+        "refEntityName": "persona",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "domicilio_per": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "persona"
+      },
+      "persona1": {
+        "fieldName": "reemplazo",
+        "refEntityName": "persona",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "domicilio_pe1": {
+        "fieldName": "domicilio",
+        "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "persona1"
+      },
+      "planilla_docente": {
+        "fieldName": "planilla_docente",
+        "refEntityName": "planilla_docente",
+        "refFieldName": "id",
+        "parentId": null
+      }
+    }
+  }
+}

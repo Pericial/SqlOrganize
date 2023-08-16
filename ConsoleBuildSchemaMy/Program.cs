@@ -6,7 +6,8 @@ using System.Configuration;
 var c = new ConfigMy()
 {
     connectionString = ConfigurationManager.AppSettings.Get("connectionString"),
-    path = ConfigurationManager.AppSettings.Get("modelPath"),
+    modelPath = ConfigurationManager.AppSettings.Get("modelPath"),
+    configPath = ConfigurationManager.AppSettings.Get("configPath"),
     dbName = ConfigurationManager.AppSettings.Get("dbName"),
 };
 

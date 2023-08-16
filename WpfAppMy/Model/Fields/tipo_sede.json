@@ -1,0 +1,38 @@
+{
+  "id": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "id",
+    "alias": null,
+    "entityName": "tipo_sede",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": "guid"
+  },
+  "descripcion": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "descripcion",
+    "alias": null,
+    "entityName": "tipo_sede",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": null
+  }
+}

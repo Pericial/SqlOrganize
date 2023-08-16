@@ -1,0 +1,283 @@
+{
+  "id": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "id",
+    "alias": null,
+    "entityName": "persona",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": "guid"
+  },
+  "nombres": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "nombres",
+    "alias": null,
+    "entityName": "persona",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "apellidos": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "apellidos",
+    "alias": null,
+    "entityName": "persona",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "fecha_nacimiento": {
+    "checks": {
+      "type": "date"
+    },
+    "resets": {},
+    "name": "fecha_nacimiento",
+    "alias": null,
+    "entityName": "persona",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "date",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "numero_documento": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "numero_documento",
+    "alias": null,
+    "entityName": "persona",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "cuil": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "cuil",
+    "alias": null,
+    "entityName": "persona",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "genero": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "genero",
+    "alias": null,
+    "entityName": "persona",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "apodo": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "apodo",
+    "alias": null,
+    "entityName": "persona",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "telefono": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "telefono",
+    "alias": null,
+    "entityName": "persona",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "email": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "email",
+    "alias": null,
+    "entityName": "persona",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "email_abc": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "email_abc",
+    "alias": null,
+    "entityName": "persona",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "alta": {
+    "checks": {
+      "type": "timestamp",
+      "required": true
+    },
+    "resets": {},
+    "name": "alta",
+    "alias": null,
+    "entityName": "persona",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "timestamp",
+    "notNull": true,
+    "defaultValue": "current_timestamp()"
+  },
+  "domicilio": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "domicilio",
+    "alias": "dom",
+    "entityName": "persona",
+    "refEntityName": "domicilio",
+    "refFieldName": "id",
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "lugar_nacimiento": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "lugar_nacimiento",
+    "alias": null,
+    "entityName": "persona",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "telefono_verificado": {
+    "checks": {
+      "type": "bool",
+      "required": true
+    },
+    "resets": {},
+    "name": "telefono_verificado",
+    "alias": null,
+    "entityName": "persona",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bool",
+    "notNull": true,
+    "defaultValue": false
+  },
+  "email_verificado": {
+    "checks": {
+      "type": "bool",
+      "required": true
+    },
+    "resets": {},
+    "name": "email_verificado",
+    "alias": null,
+    "entityName": "persona",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bool",
+    "notNull": true,
+    "defaultValue": false
+  },
+  "info_verificada": {
+    "checks": {
+      "type": "bool",
+      "required": true
+    },
+    "resets": {},
+    "name": "info_verificada",
+    "alias": null,
+    "entityName": "persona",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bool",
+    "notNull": true,
+    "defaultValue": false
+  }
+}

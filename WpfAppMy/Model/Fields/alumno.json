@@ -1,0 +1,434 @@
+{
+  "id": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "id",
+    "alias": null,
+    "entityName": "alumno",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": "guid"
+  },
+  "anio_ingreso": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "anio_ingreso",
+    "alias": null,
+    "entityName": "alumno",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "observaciones": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "observaciones",
+    "alias": null,
+    "entityName": "alumno",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "persona": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "persona",
+    "alias": "per",
+    "entityName": "alumno",
+    "refEntityName": "persona",
+    "refFieldName": "id",
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "estado_inscripcion": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "estado_inscripcion",
+    "alias": null,
+    "entityName": "alumno",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "fecha_titulacion": {
+    "checks": {
+      "type": "date"
+    },
+    "resets": {},
+    "name": "fecha_titulacion",
+    "alias": null,
+    "entityName": "alumno",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "date",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "plan": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "plan",
+    "alias": "pla",
+    "entityName": "alumno",
+    "refEntityName": "plan",
+    "refFieldName": "id",
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "resolucion_inscripcion": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "resolucion_inscripcion",
+    "alias": "res",
+    "entityName": "alumno",
+    "refEntityName": "resolucion",
+    "refFieldName": "id",
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "anio_inscripcion": {
+    "checks": {
+      "type": "int"
+    },
+    "resets": {},
+    "name": "anio_inscripcion",
+    "alias": null,
+    "entityName": "alumno",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "semestre_inscripcion": {
+    "checks": {
+      "type": "int"
+    },
+    "resets": {},
+    "name": "semestre_inscripcion",
+    "alias": null,
+    "entityName": "alumno",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "semestre_ingreso": {
+    "checks": {
+      "type": "int"
+    },
+    "resets": {},
+    "name": "semestre_ingreso",
+    "alias": null,
+    "entityName": "alumno",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "adeuda_legajo": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "adeuda_legajo",
+    "alias": null,
+    "entityName": "alumno",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "adeuda_deudores": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "adeuda_deudores",
+    "alias": null,
+    "entityName": "alumno",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "documentacion_inscripcion": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "documentacion_inscripcion",
+    "alias": null,
+    "entityName": "alumno",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "anio_inscripcion_completo": {
+    "checks": {
+      "type": "bool"
+    },
+    "resets": {},
+    "name": "anio_inscripcion_completo",
+    "alias": null,
+    "entityName": "alumno",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bool",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "establecimiento_inscripcion": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "establecimiento_inscripcion",
+    "alias": null,
+    "entityName": "alumno",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "libro_folio": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "libro_folio",
+    "alias": null,
+    "entityName": "alumno",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "libro": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "libro",
+    "alias": null,
+    "entityName": "alumno",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "folio": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "folio",
+    "alias": null,
+    "entityName": "alumno",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "comentarios": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "comentarios",
+    "alias": null,
+    "entityName": "alumno",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "tiene_dni": {
+    "checks": {
+      "type": "bool",
+      "required": true
+    },
+    "resets": {},
+    "name": "tiene_dni",
+    "alias": null,
+    "entityName": "alumno",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bool",
+    "notNull": true,
+    "defaultValue": false
+  },
+  "tiene_constancia": {
+    "checks": {
+      "type": "bool",
+      "required": true
+    },
+    "resets": {},
+    "name": "tiene_constancia",
+    "alias": null,
+    "entityName": "alumno",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bool",
+    "notNull": true,
+    "defaultValue": false
+  },
+  "tiene_certificado": {
+    "checks": {
+      "type": "bool",
+      "required": true
+    },
+    "resets": {},
+    "name": "tiene_certificado",
+    "alias": null,
+    "entityName": "alumno",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bool",
+    "notNull": true,
+    "defaultValue": false
+  },
+  "previas_completas": {
+    "checks": {
+      "type": "bool",
+      "required": true
+    },
+    "resets": {},
+    "name": "previas_completas",
+    "alias": null,
+    "entityName": "alumno",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bool",
+    "notNull": true,
+    "defaultValue": false
+  },
+  "tiene_partida": {
+    "checks": {
+      "type": "bool",
+      "required": true
+    },
+    "resets": {},
+    "name": "tiene_partida",
+    "alias": null,
+    "entityName": "alumno",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bool",
+    "notNull": true,
+    "defaultValue": false
+  },
+  "creado": {
+    "checks": {
+      "type": "timestamp",
+      "required": true
+    },
+    "resets": {},
+    "name": "creado",
+    "alias": null,
+    "entityName": "alumno",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "timestamp",
+    "notNull": true,
+    "defaultValue": "current_timestamp()"
+  },
+  "confirmado_direccion": {
+    "checks": {
+      "type": "bool",
+      "required": true
+    },
+    "resets": {},
+    "name": "confirmado_direccion",
+    "alias": null,
+    "entityName": "alumno",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bool",
+    "notNull": true,
+    "defaultValue": false
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "id": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "id",
+    "alias": null,
+    "entityName": "dia",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": "guid"
+  },
+  "numero": {
+    "checks": {
+      "type": "int",
+      "required": true
+    },
+    "resets": {},
+    "name": "numero",
+    "alias": null,
+    "entityName": "dia",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "dia": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "dia",
+    "alias": null,
+    "entityName": "dia",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": null
+  }
+}

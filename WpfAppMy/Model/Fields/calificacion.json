@@ -1,0 +1,205 @@
+{
+  "id": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "id",
+    "alias": null,
+    "entityName": "calificacion",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": "guid"
+  },
+  "nota1": {
+    "checks": {
+      "type": "decimal"
+    },
+    "resets": {},
+    "name": "nota1",
+    "alias": null,
+    "entityName": "calificacion",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "decimal",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "nota2": {
+    "checks": {
+      "type": "decimal"
+    },
+    "resets": {},
+    "name": "nota2",
+    "alias": null,
+    "entityName": "calificacion",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "decimal",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "nota3": {
+    "checks": {
+      "type": "decimal"
+    },
+    "resets": {},
+    "name": "nota3",
+    "alias": null,
+    "entityName": "calificacion",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "decimal",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "nota_final": {
+    "checks": {
+      "type": "decimal"
+    },
+    "resets": {},
+    "name": "nota_final",
+    "alias": null,
+    "entityName": "calificacion",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "decimal",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "crec": {
+    "checks": {
+      "type": "decimal"
+    },
+    "resets": {},
+    "name": "crec",
+    "alias": null,
+    "entityName": "calificacion",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "decimal",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "curso": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "curso",
+    "alias": "cur",
+    "entityName": "calificacion",
+    "refEntityName": "curso",
+    "refFieldName": "id",
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "porcentaje_asistencia": {
+    "checks": {
+      "type": "int"
+    },
+    "resets": {},
+    "name": "porcentaje_asistencia",
+    "alias": null,
+    "entityName": "calificacion",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "observaciones": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "observaciones",
+    "alias": null,
+    "entityName": "calificacion",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "division": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "division",
+    "alias": null,
+    "entityName": "calificacion",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "alumno": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "alumno",
+    "alias": "alu",
+    "entityName": "calificacion",
+    "refEntityName": "alumno",
+    "refFieldName": "id",
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "disposicion": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "disposicion",
+    "alias": "dis",
+    "entityName": "calificacion",
+    "refEntityName": "disposicion",
+    "refFieldName": "id",
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "fecha": {
+    "checks": {
+      "type": "date"
+    },
+    "resets": {},
+    "name": "fecha",
+    "alias": null,
+    "entityName": "calificacion",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "date",
+    "notNull": false,
+    "defaultValue": null
+  }
+}

@@ -20,11 +20,6 @@ namespace WpfAppMy.Windows.ListaCursos
                     AND $calendario-semestre = @1 
                 ")
                 .Parameters(search.calendario__anio, search.calendario__semestre);
-            if (!search.comision__sede.IsNullOrEmpty())
-            {
-                q.Where("AND $comision-sede = @2");
-                q.Parameters(search.comision__sede!);
-            }
 
             return ContainerApp.DbCache().ListDict(q);
         }

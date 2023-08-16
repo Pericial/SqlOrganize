@@ -1,0 +1,104 @@
+{
+  "id": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "id",
+    "alias": null,
+    "entityName": "file",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": "guid"
+  },
+  "name": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "name",
+    "alias": null,
+    "entityName": "file",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "type": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "type",
+    "alias": null,
+    "entityName": "file",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "content": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "content",
+    "alias": null,
+    "entityName": "file",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "size": {
+    "checks": {
+      "type": "int",
+      "required": true
+    },
+    "resets": {},
+    "name": "size",
+    "alias": null,
+    "entityName": "file",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "created": {
+    "checks": {
+      "type": "timestamp",
+      "required": true
+    },
+    "resets": {},
+    "name": "created",
+    "alias": null,
+    "entityName": "file",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "timestamp",
+    "notNull": true,
+    "defaultValue": "current_timestamp()"
+  }
+}

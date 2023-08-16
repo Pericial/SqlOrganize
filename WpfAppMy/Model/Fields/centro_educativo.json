@@ -1,0 +1,89 @@
+{
+  "id": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "id",
+    "alias": null,
+    "entityName": "centro_educativo",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": "guid"
+  },
+  "nombre": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "nombre",
+    "alias": null,
+    "entityName": "centro_educativo",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "cue": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "cue",
+    "alias": null,
+    "entityName": "centro_educativo",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "domicilio": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "domicilio",
+    "alias": "dom",
+    "entityName": "centro_educativo",
+    "refEntityName": "domicilio",
+    "refFieldName": "id",
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "observaciones": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "observaciones",
+    "alias": null,
+    "entityName": "centro_educativo",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  }
+}

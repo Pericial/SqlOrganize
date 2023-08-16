@@ -1,0 +1,69 @@
+{
+  "id": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "id",
+    "alias": null,
+    "entityName": "resolucion",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": "guid"
+  },
+  "numero": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "numero",
+    "alias": null,
+    "entityName": "resolucion",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "anio": {
+    "checks": {
+      "type": "year"
+    },
+    "resets": {},
+    "name": "anio",
+    "alias": null,
+    "entityName": "resolucion",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "year",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "tipo": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "tipo",
+    "alias": null,
+    "entityName": "resolucion",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "id": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "id",
+    "alias": null,
+    "entityName": "comision_relacionada",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": "guid"
+  },
+  "comision": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "comision",
+    "alias": "com",
+    "entityName": "comision_relacionada",
+    "refEntityName": "comision",
+    "refFieldName": "id",
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "relacion": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "relacion",
+    "alias": "co1",
+    "entityName": "comision_relacionada",
+    "refEntityName": "comision",
+    "refFieldName": "id",
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": null
+  }
+}
