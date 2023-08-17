@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SqlOrganize;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -34,14 +35,15 @@ namespace WpfAppMy.Windows.ListaCursos
             DataContext = search;
             cursoGrid.ItemsSource = cursoData;
             this.Loaded += MainWindow_Loaded;
+            cursoGrid.CellEditEnding += CursoGrid_CellEditEnding!;
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            CursoSearch();
+            LoadData();
         }
 
-        private void CursoSearch()
+        private void LoadData()
         {
             List<Dictionary<string, object>> list = dao.CursoAll(search);
             cursoData.Clear();
@@ -49,10 +51,112 @@ namespace WpfAppMy.Windows.ListaCursos
         }
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-            CursoSearch();
+            LoadData();
         }
 
-       
+        private void CursoGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            if (e.EditAction == DataGridEditAction.Commit)
+            {
+                var column = e.Column as DataGridBoundColumn;
+                if (column != null)
+                {
+
+                    string key = ((Binding)column.Binding).Path.Path; //column's binding
+                    object value = (e.EditingElement as TextBox)!.Text;
+                    Dictionary<string, object> source = (Dictionary<string, object>)((Curso)e.Row.DataContext).ConvertToDict();
+                    string? fieldId = null;
+                    string mainEntityName = "curso";
+                    string entityName = "curso";
+                    string fieldName = key;
+
+                    if (key.Contains(ContainerApp.db.config.idAttrSeparatorString))
+                    {
+                        int i = key.IndexOf(ContainerApp.db.config.idAttrSeparatorString);
+                        fieldId = key.Substring(0, i);
+                        entityName = ContainerApp.db.Entity(entityName!).relations[fieldId].refEntityName;
+                        fieldName = key.Substring(i + ContainerApp.db.config.idAttrSeparatorString.Length);
+                    }
+
+                    bool continueWhile;
+                    bool reload = false;
+                    do
+                    {
+                        continueWhile = (fieldId == null) ? false : true;
+                        EntityValues v = ContainerApp.db.Values(entityName, fieldId).Set(source);
+                        if (!v.values[fieldName].IsNullOrEmpty() && v.values[fieldName].Equals(value))
+                        {
+                            if (reload)
+                                LoadData(); //debe recargarse para visualizar los cambios realizados en otras iteraciones.
+                            break;
+                        }
+
+                        v.Sset(fieldName, value);
+                        Dictionary<string, object>? row = new();
+
+                        //en caso de que el campo editado sea unico, se consultan sus valores
+                        if (ContainerApp.db.Field(entityName, fieldName).IsUnique())
+                            row = dao.RowByEntityFieldValue(entityName, fieldName, value);
+                        else
+                            row = dao.RowByEntityUnique(entityName, v.values);
+
+                        if (!row.IsNullOrEmpty())
+                        {
+                            v = ContainerApp.db.Values(entityName).Set(row!);
+                            v.fieldId = fieldId;
+                        }
+                        else
+                        {
+                            if (!v.Check())
+                            {
+                                (e.Row.Item as Curso).CopyNotNullValues(v.Get().ConvertToObject<Curso>());
+                                break;
+                            }
+
+                            if (v.Get(ContainerApp.config.id).IsNullOrEmpty())
+                            {
+                                v.Default().Reset();
+                                var p = ContainerApp.db.Persist(entityName).Insert(v.values).Exec();
+                                ContainerApp.dbCache.Remove(p.detail);
+                            }
+                            else
+                            {
+                                v.Reset();
+                                var p = ContainerApp.db.Persist(entityName).Update(v.values).Exec();
+                                ContainerApp.dbCache.Remove(p.detail);
+                            }
+                        }
+
+                        (e.Row.Item as Curso).CopyNotNullValues(v.Get().ConvertToObject<Curso>());
+
+                        if (fieldId != null)
+                        {
+                            string? parentId = ContainerApp.db.Entity(mainEntityName).relations[fieldId].parentId;
+                            if (parentId != null)
+                            {
+                                var parentFieldName = ContainerApp.db.Entity(mainEntityName).relations[fieldId].fieldName;
+                                value = v.Get()[fieldId + ContainerApp.db.config.idNameSeparatorString + ContainerApp.db.Entity(mainEntityName).relations[fieldId].refFieldName];
+                                fieldId = parentId;
+                                fieldName = parentFieldName;
+                                entityName = ContainerApp.db.Entity(mainEntityName).relations[parentId].refEntityName;
+
+                            }
+                            else
+                            {
+                                entityName = mainEntityName;
+                                value = v.Get()[fieldId + ContainerApp.db.config.idNameSeparatorString + ContainerApp.db.Entity(mainEntityName).relations[fieldId].refFieldName];
+                                fieldName = ContainerApp.db.Entity(mainEntityName).relations[fieldId].fieldName;
+                                fieldId = null;
+                            }
+                        }
+                        reload = true;
+                    }
+                    while (continueWhile);
+                }
+            }
+        }
+
+
     }
 
     internal class Search
@@ -64,11 +168,11 @@ namespace WpfAppMy.Windows.ListaCursos
 
     internal class Curso : INotifyPropertyChanged
     {
-        private string __Id;
-        public string _Id
+        private string _id;
+        public string id
         {
-            get { return __Id; }
-            set { __Id = value; NotifyPropertyChanged(); }
+            get { return _id; }
+            set { _id = value; NotifyPropertyChanged(); }
         }
 
         private int _horas_catedra;
@@ -84,14 +188,6 @@ namespace WpfAppMy.Windows.ListaCursos
         {
             get { return _asignatura; }
             set { _asignatura = value; NotifyPropertyChanged(); }
-        }
-
-        private string _asignatura___Id;
-
-        public string asignatura___Id
-        {
-            get { return _asignatura___Id; }
-            set { _asignatura___Id = value; NotifyPropertyChanged(); }
         }
 
         private string _asignatura__id;
@@ -118,12 +214,12 @@ namespace WpfAppMy.Windows.ListaCursos
             set { _asignatura__codigo = value; NotifyPropertyChanged(); }
         }
 
-        private string _comision___Id;
+        private string _comision;
 
-        public string comision___Id
+        public string comision
         {
-            get { return _comision___Id; }
-            set { _comision___Id = value; NotifyPropertyChanged(); }
+            get { return _comision; }
+            set { _comision = value; NotifyPropertyChanged(); }
         }
 
         private string _comision__id;
@@ -140,6 +236,14 @@ namespace WpfAppMy.Windows.ListaCursos
         {
             get { return _comision__division; }
             set { _comision__division = value; NotifyPropertyChanged(); }
+        }
+
+        private string _comision__pfid;
+
+        public string comision__pfid
+        {
+            get { return _comision__pfid; }
+            set { _comision__pfid = value; NotifyPropertyChanged(); }
         }
 
         private string _planificacion__anio;

@@ -16,13 +16,15 @@ namespace WpfAppMy
         {
             connectionString = ConfigurationManager.AppSettings.Get("connectionString"),
             modelPath = ConfigurationManager.AppSettings.Get("modelPath"),
+            id = "id",
+            fkId = true
         };
 
         public static Db db = new DbMy(config);
 
         public static MemoryCache cache = new MemoryCache(new MemoryCacheOptions());
 
-        public static DbCache queryCache = new DbCache(db, cache);
+        public static DbCache dbCache = new DbCache(db, cache);
 
         public static Config Config()
         {
@@ -35,7 +37,7 @@ namespace WpfAppMy
 
         public static DbCache DbCache()
         {
-            return queryCache;
+            return dbCache;
         }
     }
 }

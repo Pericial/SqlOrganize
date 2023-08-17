@@ -47,6 +47,19 @@
             </StackPanel>
         </Grid>
 
-        <DataGrid Name="cursoGrid" />
+        <DataGrid Name="cursoGrid" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding sede__nombre}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Número" Binding="{Binding sede__numero}"></DataGridTextColumn>
+                <DataGridTextColumn Header="División" Binding="{Binding comision__division}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Año" Binding="{Binding planificacion__anio}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Semestre" Binding="{Binding planificacion__semestre}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Asignatura" Binding="{Binding asignatura__nombre}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Código" Binding="{Binding asignatura__codigo}"></DataGridTextColumn>
+                <DataGridTextColumn Header="HC" Binding="{Binding horas_catedra}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Comisión PFID" Binding="{Binding comision__pfid}"></DataGridTextColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
     </DockPanel>
 </Window>
