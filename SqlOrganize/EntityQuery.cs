@@ -81,7 +81,7 @@ namespace SqlOrganize
                     if (key == fieldName)
                     {
                         var v = (value == null) ? DBNull.Value : value;
-                        whereUniqueList.Add(key + " = @" + parameters.Count);
+                        whereUniqueList.Add("$" + key + " = @" + parameters.Count);
                         parameters.Add(v);
                         break;
                     }
@@ -172,7 +172,7 @@ namespace SqlOrganize
                     {
                         var v = (value == null) ? DBNull.Value : value;
                         existsUniqueMultiple = true;
-                        whereMultipleList.Add(key + " = @" + parameters.Count);
+                        whereMultipleList.Add("$" + key + " = @" + parameters.Count);
                         parameters.Add(v);
                         break;
                     }

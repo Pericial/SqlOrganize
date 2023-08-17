@@ -33,6 +33,9 @@ namespace ModelOrganize
 
             foreach (string tableName in GetTableNames())
             {
+                if (Config.reservedEntities.Contains(tableName!))
+                    continue;
+
                 Table table = new();
                 table.Name = tableName;
                 table.Alias = GetAlias(tableName, tableAlias, 4);
@@ -42,14 +45,14 @@ namespace ModelOrganize
                 List<string> fieldAlias = new List<string>(Config.reservedAlias);
                 foreach (Column col in table.Columns)
                 {
-                    if (col.IS_FOREIGN_KEY == 1) {
+                    if (col.IS_FOREIGN_KEY == 1 && !Config.reservedEntities.Contains(col.REFERENCED_TABLE_NAME!)) {
                         string aliasSource = (Config.aliasSource == "field_name") ? col.COLUMN_NAME : col.REFERENCED_TABLE_NAME;
                         col.Alias = GetAlias(aliasSource, fieldAlias, 3);
                         fieldAlias.Add(col.Alias);
                     }
                     table.ColumnNames.Add(col.COLUMN_NAME);
 
-                    if (col.IS_FOREIGN_KEY == 1)
+                    if (col.IS_FOREIGN_KEY == 1 && !Config.reservedEntities.Contains(col.REFERENCED_TABLE_NAME!))
                         table.Fk.Add(col.COLUMN_NAME);
                     if (col.IS_PRIMARY_KEY == 1)
                         table.Pk.Add(col.COLUMN_NAME);

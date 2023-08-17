@@ -51,7 +51,7 @@ namespace SqlOrganize
             if (searchIds.Count == 0)
                 return response;
 
-            List<Dictionary<string, object>> rows = Db.Query(entityName).Size(0).Where(Db.config.id+" IN (@0)").Parameters(searchIds).ListDict();
+            List<Dictionary<string, object>> rows = Db.Query(entityName).Size(0).Where("$"+Db.config.id+" IN (@0)").Parameters(searchIds).ListDict();
 
             foreach (Dictionary<string, object> row in rows)
             {
