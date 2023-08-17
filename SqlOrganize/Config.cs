@@ -40,6 +40,11 @@
         public bool fkId = false;
 
 
+        /// <summary>
+        /// Nombre del identificador unico, _Id es un identificador unico calculado
+        /// </summary>
+        public string id = "_Id";
+
     }
 
 }

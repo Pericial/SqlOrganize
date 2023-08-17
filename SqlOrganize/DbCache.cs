@@ -51,11 +51,11 @@ namespace SqlOrganize
             if (searchIds.Count == 0)
                 return response;
 
-            List<Dictionary<string, object>> rows = Db.Query(entityName).Size(0).Where("$_Id IN (@0)").Parameters(searchIds).ListDict();
+            List<Dictionary<string, object>> rows = Db.Query(entityName).Size(0).Where(Db.config.id+" IN (@0)").Parameters(searchIds).ListDict();
 
             foreach (Dictionary<string, object> row in rows)
             {
-                int index = Array.IndexOf(ids, row["_Id"]);
+                int index = Array.IndexOf(ids, row[Db.config.id]);
                 response[index] = EntityCache(entityName, row);
             }
 
@@ -117,13 +117,13 @@ namespace SqlOrganize
 
             List<string> fields = query.fields!.Replace("$", "").Split(',').ToList().Select(s => s.Trim()).ToList();
 
-            //si no se encuentra el _Id, no se realiza cache.
+            //si no se encuentra el Db.config.id, no se realiza cache.
             //Si por ejemplo se consultan solo campos de relacoines, no se aplicaria correctamente el distinct
-            if(!fields.Contains("_Id"))
+            if (!fields.Contains(Db.config.id))
                 return _ListDict(query);
 
             EntityQuery queryAux = query.Clone();
-            queryAux.fields = "_Id";
+            queryAux.fields = Db.config.id;
 
             List<string> ids = queryAux.Column<string>();
 
@@ -146,7 +146,7 @@ namespace SqlOrganize
                 query.Fields();
 
             EntityQuery queryAux = query.Clone();
-            queryAux.fields = "_Id";
+            queryAux.fields = Db.config.id;
 
             string id = queryAux.Value<string>();
 
@@ -240,7 +240,7 @@ namespace SqlOrganize
             if(!Db.Entity(entityName).relations.IsNullOrEmpty()) 
                 EntityCacheRecursive(Db.Entity(entityName).relations!, row);
 
-            Cache.Set(entityName+row["_Id"].ToString(), row);
+            Cache.Set(entityName+row[Db.config.id].ToString(), row);
             return row;
         }
 
@@ -261,7 +261,7 @@ namespace SqlOrganize
                     }
                 }
                 if(rowAux.Count > 0)
-                    Cache.Set(entityName + rowAux["_Id"].ToString(), rowAux);
+                    Cache.Set(entityName + rowAux[Db.config.id].ToString(), rowAux);
 
             }
         }
@@ -327,11 +327,11 @@ namespace SqlOrganize
         /// Remover de la cache todas las consultas y las entidades indicadas en el parametro
         /// </summary>
         /// <param name="detail">Detalle de entidades a remover, la llave estara formada por la concatenacion de los valores de cada tupla</param>
-        public void Remove(List<(string entityName, string _Id)> detail)
+        public void Remove(List<(string entityName, string id)> detail)
         {
             RemoveQueries();
             foreach (var d in detail)
-                Cache.Remove(d.entityName + d._Id);
+                Cache.Remove(d.entityName + d.id);
         }
 
     }

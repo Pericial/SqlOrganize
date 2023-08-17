@@ -71,20 +71,110 @@ namespace WpfAppMy.Windows.ListaCursos
             set { __Id = value; NotifyPropertyChanged(); }
         }
 
-        private string _horas_catedra;
-        public string horas_catedra
+        private int _horas_catedra;
+        public int horas_catedra
         {
             get { return _horas_catedra; }
             set { _horas_catedra = value; NotifyPropertyChanged(); }
         }
 
-        private string _ige;
+        private string _asignatura;
 
-        public string ige
+        public string asignatura
         {
-            get { return _ige; }
-            set { _ige = value; NotifyPropertyChanged(); }
+            get { return _asignatura; }
+            set { _asignatura = value; NotifyPropertyChanged(); }
         }
+
+        private string _asignatura___Id;
+
+        public string asignatura___Id
+        {
+            get { return _asignatura___Id; }
+            set { _asignatura___Id = value; NotifyPropertyChanged(); }
+        }
+
+        private string _asignatura__id;
+
+        public string asignatura__id
+        {
+            get { return _asignatura__id; }
+            set { _asignatura__id = value; NotifyPropertyChanged(); }
+        }
+
+        private string _asignatura__nombre;
+
+        public string asignatura__nombre
+        {
+            get { return _asignatura__nombre; }
+            set { _asignatura__nombre = value; NotifyPropertyChanged(); }
+        }
+
+        private string _asignatura__codigo;
+
+        public string asignatura__codigo
+        {
+            get { return _asignatura__codigo; }
+            set { _asignatura__codigo = value; NotifyPropertyChanged(); }
+        }
+
+        private string _comision___Id;
+
+        public string comision___Id
+        {
+            get { return _comision___Id; }
+            set { _comision___Id = value; NotifyPropertyChanged(); }
+        }
+
+        private string _comision__id;
+
+        public string comision__id
+        {
+            get { return _comision__id; }
+            set { _comision__id = value; NotifyPropertyChanged(); }
+        }
+
+        private string _comision__division;
+
+        public string comision__division
+        {
+            get { return _comision__division; }
+            set { _comision__division = value; NotifyPropertyChanged(); }
+        }
+
+        private string _planificacion__anio;
+
+        public string planificacion__anio
+        {
+            get { return _planificacion__anio; }
+            set { _planificacion__anio = value; NotifyPropertyChanged(); }
+        }
+
+        private string _planificacion__semestre;
+
+        public string planificacion__semestre
+        {
+            get { return _planificacion__semestre; }
+            set { _planificacion__semestre = value; NotifyPropertyChanged(); }
+        }
+
+        private string _sede__numero;
+
+        public string sede__numero
+        {
+            get { return _sede__numero; }
+            set { _sede__numero = value; NotifyPropertyChanged(); }
+        }
+
+        private string _sede__nombre;
+
+        public string sede__nombre
+        {
+            get { return _sede__nombre; }
+            set { _sede__nombre = value; NotifyPropertyChanged(); }
+        }
+
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([System.Runtime.CompilerServices.CallerMemberName] String propertyName = "")

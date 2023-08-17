@@ -107,13 +107,13 @@ namespace SqlOrganize
         public EntityValues Reset()
         {
             List<string> fieldNames = new List<string>(db.FieldNames(entityName));
-            fieldNames.Remove("_Id"); //id debe dejarse para el final porque depende de otros valores
+            fieldNames.Remove(db.config.id); //id debe dejarse para el final porque puede depender de otros valores
 
             foreach (var fieldName in fieldNames)
                 if (values.ContainsKey(fieldName))
                     Reset(fieldName);
 
-            Reset("_Id");
+            Reset(db.config.id);
 
             return this;
         }

@@ -76,13 +76,14 @@ namespace SqlOrganize
         /// <summary>
         /// Nombres de campos de la entidad
         /// </summary>
-        /// <remarks>Importante, por cada entidad y por cada relacion, debe incluirse el campo derivado _Id. Varios metodos definidos asumen que el valor de _Id esta incluido (EntityValues, DbCache, EntityQuery, etc)<br/>
+        /// <remarks>Importante, por cada entidad y por cada relacion, debe incluirse el campo derivado db.config.id. Varios metodos definidos asumen que el valor de _Id esta incluido (EntityValues, DbCache, EntityQuery, etc)<br/>
         /// Utilizar FieldNamesRel, para devolver los nombres de campos junto el nombre de campos de relaciones</remarks>
         /// <param name="entityName"></param>
         /// <returns>Nombres de campos de la entidad</returns>
         public List<string> FieldNames(string entityName) {
             var l = FieldsEntity(entityName).Keys.ToList();
-                l.Insert(0, "_Id"); //Importante!! _Id debe ser incluido,
+            if(!l.Contains(config.id))
+                l.Insert(0, config.id); //Importante!! id debe ser incluido,
             return l;
         }
 

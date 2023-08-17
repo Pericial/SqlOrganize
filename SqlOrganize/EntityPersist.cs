@@ -22,7 +22,7 @@ namespace SqlOrganize
 
         public string sql { get; set; } = "";
 
-        public List<(string entityName, string _Id)> detail = new();
+        public List<(string entityName, string id)> detail = new();
 
         public EntityPersist(Db _db, string? _entityName = null)
         {
@@ -43,13 +43,13 @@ namespace SqlOrganize
             _entityName = _entityName ?? entityName;
 
             _Update(row, _entityName);
-            string _Id = db.Mapping(_entityName!).Map("_Id");
+            string id = db.Mapping(_entityName!).Map(db.config.id);
             sql += @"
-WHERE " + _Id + " = @" + count + @";
+WHERE " + id + " = @" + count + @";
 ";
             count++;
-            parameters.Add(row["_Id"]);
-            detail.Add((_entityName!, (string)row["_Id"]));
+            parameters.Add(row[db.config.id]);
+            detail.Add((_entityName!, (string)row[db.config.id]));
             return this;
         }
 
@@ -59,14 +59,14 @@ WHERE " + _Id + " = @" + count + @";
         /// </summary>
         /// <param name="key">Nombre del campo a actualizar</param>
         /// <param name="value">Valor del campo a actualizar</param>
-        /// <param name="_Id">Identificacion de la fila a actualizar</param>
+        /// <param name="id">Identificacion de la fila a actualizar</param>
         /// <param name="_entityName">Nombre de la entidad, si no se especifica se toma el atributo</param>
         /// <returns>Mismo objeto</returns>
-        public EntityPersist UpdateValue(string key, object value, string _Id, string? _entityName = null)
+        public EntityPersist UpdateValue(string key, object value, string id, string? _entityName = null)
         {
             Dictionary<string, object> row = new Dictionary<string, object>()
             {
-                { "_Id", _Id },
+                { db.config.id, id },
                 { key, value }
             };
             return Update(row, _entityName);
@@ -83,18 +83,18 @@ WHERE " + _Id + " = @" + count + @";
         public EntityPersist UpdateValueRel(string key, object value, Dictionary<string, object> source, string? _entityName = null)
         {
             _entityName = _entityName ?? entityName;
-            string _IdKey = "_Id";
+            string idKey = db.config.id;
             if (key.Contains(db.config.idAttrSeparatorString))
             {
                 int indexSeparator = key.IndexOf(db.config.idAttrSeparatorString);
                 string fieldId = key.Substring(0, indexSeparator);
                 _entityName = db.Entity(_entityName!).relations[fieldId].refEntityName;
-                _IdKey = fieldId + db.config.idAttrSeparatorString + "_Id";
+                idKey = fieldId + db.config.idAttrSeparatorString + db.config.id;
                 key = key.Substring(indexSeparator + db.config.idAttrSeparatorString.Length); //se suma la cantidad de caracteres del separador
             }
 
-            string _Id = (string)source[_IdKey];
-            return UpdateValue(key, value, _Id, _entityName);
+            string id = (string)source[idKey];
+            return UpdateValue(key, value, id, _entityName);
         }
 
         public EntityPersist Insert(Dictionary<string, object> row, string? _entityName = null)
@@ -122,9 +122,9 @@ VALUES (";
             sql = sql.RemoveLastChar(',');
             sql += @");
 ";
-            EntityValues v = db.Values(_entityName).Set(row_).Set("_Id",null).Reset("_Id");
-            row["_Id"] = v.Get("_Id");
-            detail.Add((_entityName!, (string)row["_Id"]));
+            EntityValues v = db.Values(_entityName).Set(row_).Set(db.config.id, null).Reset(db.config.id);
+            row[db.config.id] = v.Get(db.config.id);
+            detail.Add((_entityName!, (string)row[db.config.id]));
 
             return this;
         }
@@ -169,10 +169,10 @@ VALUES (";
 
             if (rows.Count == 1)
             {
-                if(v.values.ContainsKey("_Id") && v.Get("_Id") != rows[0]["_Id"])
-                    throw new Exception("Los _Id son diferentes");
+                if(v.values.ContainsKey(db.config.id) && v.Get(db.config.id) != rows[0][db.config.id])
+                    throw new Exception("Los id son diferentes");
 
-                v.Set("_Id", rows[0]["_Id"]).Reset().Check();
+                v.Set(db.config.id, rows[0][db.config.id]).Reset().Check();
                 if (v.logging.HasErrors())
                     throw new Exception("Los campos a actualizar poseen errores: " + v.logging.ToString());
 

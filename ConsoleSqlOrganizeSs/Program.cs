@@ -41,7 +41,7 @@ string json = JsonConvert.SerializeObject(data, Newtonsoft.Json.Formatting.Inden
 Console.WriteLine(json);
 /*
 var query = db.Query("PERSONAL").
-    Where("$_Id IN (@0)").
+    Where(db.config.id " IN (@0)").
     Parameters(new List<object> {"01-DNI~90", "01-DNI~91"});
 
 var cache = new MemoryCache(new MemoryCacheOptions());
