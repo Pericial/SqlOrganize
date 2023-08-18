@@ -28,7 +28,7 @@ namespace SqlOrganize
         {
         }
 
-        public EntityValues Set(Dictionary<string, object> row)
+        public EntityValues Set(IDictionary<string, object> row)
         {
             foreach (var fieldName in db.FieldNames(entityName))
                 if(row.ContainsKey(Pf() + fieldName))
