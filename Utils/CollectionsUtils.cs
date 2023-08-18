@@ -1,4 +1,5 @@
 ﻿using FastMember;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -27,7 +28,7 @@ namespace Utils
             }
         }
 
-        public static void CopyNotNullValues<T>(this T target, T source)
+        public static T CopyNotNullValues<T>(this T target, T source)
         {
             Type t = typeof(T);
 
@@ -39,6 +40,8 @@ namespace Utils
                 if (!value.IsNullOrEmpty())
                     prop.SetValue(target, value, null);
             }
+
+            return target;
         }
 
         public static Dictionary<K, V> MergeManyDicts<K, V>(IEnumerable<Dictionary<K, V>> dictionaries) where K : notnull
@@ -272,6 +275,13 @@ namespace Utils
         {
             foreach (var item in items)
                 oc.Add(item);
+        }
+
+        public static Dictionary<string, T> ToDictionary<T>(this object obj)
+        {
+            var json = JsonConvert.SerializeObject(obj);
+            var dictionary = JsonConvert.DeserializeObject<Dictionary<string, T>>(json);
+            return dictionary;
         }
 
     }
