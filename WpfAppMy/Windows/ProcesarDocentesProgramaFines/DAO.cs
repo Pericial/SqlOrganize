@@ -9,21 +9,53 @@ namespace WpfAppMy.Windows.ProcesarDocentesProgramaFines
 {
     internal class DAO
     {
-        public List<Dictionary<string, object>> CursosConComisionPfid()
+        public List<Dictionary<string, object>> ComisionesConPfid()
         {
-            var q = ContainerApp.Db().Query("curso")
+            var q = ContainerApp.Db().Query("comisiones")
                 .Fields()
-                .Select("CONCAT($sede-numero, $comision-division, '/', $planificacion-anio, $planificacion-semestre) AS numero")
                 .Size(0)
                 .Where(@"
                     $calendario-anio = @0 
                     AND $calendario-semestre = @1 
-                    AND $comision-pfid IS NOT NULL
+                    AND $pfid IS NOT NULL
                 ")
                 .Parameters("2023", "2");
 
             return ContainerApp.DbCache().ListDict(q);
         }
+
+        public string IdCurso(string pfidComision, string asignaturaCodigo)
+        {
+            var q = ContainerApp.Db().Query("curso")
+                .Fields("id")
+                .Size(0)
+                .Where(@"
+                    $comision-pfid = @0 
+                    AND $asignatura-codigo = @1
+                    AND $calendario-anio = @2
+                    AND $calendario-semestre = @3
+                ")
+                .Parameters(pfidComision, asignaturaCodigo, "2023", "2");
+
+            return ContainerApp.DbCache().Value<string>(q);
+        }
+
+        public string TomaActiva(string idCurso)
+        {
+            var q = ContainerApp.Db().Query("curso")
+                .Fields("id")
+                .Size(0)
+                .Where(@"
+                    $curso = @0 
+                    AND $asignatura-codigo = @1
+                    AND $calendario-anio = @2
+                    AND $calendario-semestre = @3
+                ")
+                .Parameters(idCurso);
+
+            return ContainerApp.DbCache().Value<string>(q);
+        }
+
 
         public Dictionary<string, object>? RowByEntityFieldValue(string entityName, string fieldName, object value)
         {

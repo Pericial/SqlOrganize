@@ -93,10 +93,12 @@ namespace SqlOrganize
                 w = "(" + String.Join(") OR (", whereUniqueList) + ")";
 
             string ww = UniqueMultiple(db.Entity(entityName).uniqueMultiple);
-            w += (w.IsNullOrEmpty()) ? ww : " OR " + ww;
+            if (!ww.IsNullOrEmpty()) 
+                w += " OR " + ww;
 
             ww = UniqueMultiple(db.Entity(entityName).pk);
-            w += (w.IsNullOrEmpty()) ? ww : " OR " + ww;
+            if (!ww.IsNullOrEmpty())
+                w += " OR " + ww;
 
             return w;
         }

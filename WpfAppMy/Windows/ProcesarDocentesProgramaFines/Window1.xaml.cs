@@ -39,8 +39,8 @@ namespace WpfAppMy.Windows.ProcesarDocentesProgramaFines
 
         private void ProcesarDocentes()
         {
-            var cursos = dao.CursosConComisionPfid();
-            var comisiones = cursos.Column<string>("comision-pfid");
+            var comisiones = dao.ComisionesConPfid();
+            var pfidComisiones = comisiones.Column<string>("comision-pfid");
             var docentes = JsonConvert.DeserializeObject<List<Docente>>(data.Text)!;
             info.Text = "Cantidad de docentes a procesar " + docentes.Count.ToString() + @"
 ";
@@ -53,25 +53,31 @@ namespace WpfAppMy.Windows.ProcesarDocentesProgramaFines
                 EntityValues v = ContainerApp.db.Values("persona").Set(d);
                 var row = dao.RowByEntityUnique("persona", v.values);
                 if (row != null) { 
-                    EntityValues v2 = ContainerApp.db.Values("persona").Set(row);
-                    v2.CopyNotNullValues(v).Reset();
-                    //var p = ContainerApp.db.Persist("persona").Update(v2.values).Exec();
-                    //ContainerApp.dbCache.Remove(p.detail);
+                    EntityValues v2 = ContainerApp.db.Values("persona").Set(row).SetNotNull(v.values);
+                    v = v2;
+                    v.Reset();
+                    var p = ContainerApp.db.Persist("persona").Update(v2.values).Exec();
+                    ContainerApp.dbCache.Remove(p.detail);
                 } else
                 {
                     v.Default().Reset();
-                    //var p = ContainerApp.db.Persist("persona").Insert(v.values).Exec();
-                    //ContainerApp.dbCache.Remove(p.detail);
+                    var p = ContainerApp.db.Persist("persona").Insert(v.values).Exec();
+                    ContainerApp.dbCache.Remove(p.detail);
                 }
                 #endregion
 
                 #region insertar o actualizar cargo
                 foreach (var cargo in docente.cargos)
                 {
-                    if (comisiones.Contains(cargo["comision"]))
+                    if (pfidComisiones.Contains(cargo["comision"]))
+                    {
+                        string idCurso = dao.IdCurso(cargo["comision"], cargo["codigo"]);
+                        Dictionary<string, object> rowTomaActiva = dao.TomaActiva(idCurso);
 
-                        info.Text += docente.apellidos + " " + docente.nombres + " esta en la comision" + cargo["comision"] + " en la asignatura " + cargo["codigo"] + @"
-";
+
+                    }
+
+                   
                 }
                 #endregion
             }

@@ -31,7 +31,7 @@ namespace SqlOrganize
         public EntityValues Set(IDictionary<string, object> row)
         {
             foreach (var fieldName in db.FieldNames(entityName))
-                if(row.ContainsKey(Pf() + fieldName))
+                if (row.ContainsKey(Pf() + fieldName))
                     Set(fieldName, row[Pf() + fieldName]);
 
             return this;
@@ -62,7 +62,7 @@ namespace SqlOrganize
             Dictionary<string, object> response = new();
             foreach (var fieldName in db.FieldNames(entityName))
                 if (values.ContainsKey(fieldName))
-                    response[Pf()+fieldName] = values[fieldName];
+                    response[Pf() + fieldName] = values[fieldName];
 
             return response;
         }
@@ -132,11 +132,11 @@ namespace SqlOrganize
                 switch (resetKey)
                 {
                     case "trim":
-                        if (!values[fieldName].IsNullOrEmpty())
+                        if (!values[fieldName].IsNullOrEmpty() && !values[fieldName].IsDbNull())
                             values[fieldName] = ((string)values[fieldName]).Trim(((string)resetValue).ToChar());
                         break;
                     case "removeMultipleSpaces":
-                        if (!values[fieldName].IsNullOrEmpty())
+                        if (!values[fieldName].IsNullOrEmpty() && !values[fieldName].IsDbNull())
                             values[fieldName] = Regex.Replace((string)values[fieldName], @"\s+", " ");
                         break;
 
@@ -168,8 +168,8 @@ namespace SqlOrganize
         /// <returns></returns>
         public EntityValues Reset__Id()
         {
-             List<string> fieldsId = db.Entity(entityName).id;
-             foreach(string fieldName in fieldsId)
+            List<string> fieldsId = db.Entity(entityName).id;
+            foreach (string fieldName in fieldsId)
                 if (!values.ContainsKey(fieldName) || values[fieldName].IsNullOrEmpty())
                     return this; //no se reasigna si no esta definido o si es distinto de null
 
@@ -194,7 +194,7 @@ namespace SqlOrganize
         /// <remarks>Solo se define valor por defecto si el field no se encuentra en atributo values</remarks>
         /// <returns>Mismo objeto</returns>
         public EntityValues Default(string fieldName)
-        {            
+        {
             if (values.ContainsKey(fieldName))
                 return this;
 
@@ -206,7 +206,8 @@ namespace SqlOrganize
 
             Field field = db.Field(entityName, fieldName);
 
-            if (field.defaultValue is null) { 
+            if (field.defaultValue is null)
+            {
                 values[fieldName] = null;
                 return this;
             }
@@ -229,9 +230,10 @@ namespace SqlOrganize
                         values[fieldName] = field.defaultValue;
                     break;
                 case "int":
-                    if (field.defaultValue.ToString().ToLower().Contains("max")) { 
-                        int max = db.Query(entityName).Select("MAX($"+fieldName+")").Value <int> ();
-                        values[fieldName] = max+1;
+                    if (field.defaultValue.ToString().ToLower().Contains("max"))
+                    {
+                        int max = db.Query(entityName).Select("MAX($" + fieldName + ")").Value<int>();
+                        values[fieldName] = max + 1;
                     }
                     else if (field.defaultValue.ToString().ToLower().Contains("next"))
                     {
@@ -284,12 +286,12 @@ namespace SqlOrganize
                 switch (checkMethod)
                 {
                     case "type":
-                        v.Type((string)param);                
-                    break;
+                        v.Type((string)param);
+                        break;
                     case "required":
-                        if((bool)param)
+                        if ((bool)param)
                             v.Required();
-                    break;
+                        break;
 
                 }
             }
@@ -299,6 +301,15 @@ namespace SqlOrganize
 
             return !v.HasErrors();
         }
-    }
 
+        public EntityValues SetNotNull(IDictionary<string, object> row)
+        {
+            foreach (var fieldName in db.FieldNames(entityName))
+                if (row.ContainsKey(Pf() + fieldName))
+                    if(row[Pf() + fieldName] != null && !row[Pf() + fieldName].IsDbNull())
+                        Set(fieldName, row[Pf() + fieldName]);
+
+            return this;
+        }
+    }
 }

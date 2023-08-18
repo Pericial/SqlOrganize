@@ -62,6 +62,13 @@ namespace Utils
             dictionary2.ToList().ForEach(pair => dictionary1[pair.Key] = pair.Value);
         }
 
+        public static void MergeNotNull<K, V>(this Dictionary<K, V> dictionary1, Dictionary<K, V> dictionary2) where K : notnull
+        {
+            dictionary2.ToList().ForEach(pair => {
+                if (pair.Value.IsNullOrEmpty()) { dictionary1[pair.Key] = pair.Value; } 
+            } );
+        }
+
         public static bool IsNullOrEmpty(this IList List)
         {
             return (List == null || List.Count < 1);
