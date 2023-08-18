@@ -279,5 +279,22 @@
     "dataType": "bool",
     "notNull": true,
     "defaultValue": false
+  },
+  "descripcion_domicilio": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "descripcion_domicilio",
+    "alias": null,
+    "entityName": "persona",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
   }
 }

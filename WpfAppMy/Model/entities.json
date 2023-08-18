@@ -2655,7 +2655,8 @@
       "lugar_nacimiento",
       "telefono_verificado",
       "email_verificado",
-      "info_verificada"
+      "info_verificada",
+      "descripcion_domicilio"
     ],
     "fk": [
       "domicilio"
