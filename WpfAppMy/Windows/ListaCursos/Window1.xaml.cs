@@ -246,6 +246,15 @@ namespace WpfAppMy.Windows.ListaCursos
             set { _comision__pfid = value; NotifyPropertyChanged(); }
         }
 
+        private string _comision__identificacion;
+
+        public string comision__identificacion
+        {
+            get { return _comision__identificacion; }
+            set { _comision__identificacion = value; NotifyPropertyChanged(); }
+        }
+
+
         private string _planificacion__anio;
 
         public string planificacion__anio

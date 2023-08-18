@@ -58,6 +58,7 @@
                 <DataGridTextColumn Header="Código" Binding="{Binding asignatura__codigo}"></DataGridTextColumn>
                 <DataGridTextColumn Header="HC" Binding="{Binding horas_catedra}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Comisión PFID" Binding="{Binding comision__pfid}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Comisión Id" Binding="{Binding comision__identificacion}"></DataGridTextColumn>
 
             </DataGrid.Columns>
         </DataGrid>
