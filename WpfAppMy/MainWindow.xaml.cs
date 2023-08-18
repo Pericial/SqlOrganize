@@ -80,7 +80,14 @@ namespace WpfAppMy
             win.Show();
 
         }
-        
+
+        private void ProcesarDocentesProgramaFines_Click(object sender, RoutedEventArgs e)
+        {
+            Windows.ProcesarDocentesProgramaFines.Window1 win = new();
+            win.Show();
+
+        }
+
 
 
     }

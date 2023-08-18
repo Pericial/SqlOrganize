@@ -21,10 +21,10 @@ inputList.forEach((docente) => {
     https://stackoverflow.com/questions/21711768/split-string-in-javascript-and-detect-line-break
     */
     var info_docente_split = info_docente.textContent.split(/\r?\n|\r|\n/g);
-    r["domicilio"] = info_docente_split[0].split(":")[1].trim();
+    r["descripcion_domicilio"] = info_docente_split[0].split(":")[1].trim();
     let matches = info_docente_split[1].split(":")[1].trim().replaceAll(/\s/g, '').match(/(\d+)/);
-    r["movil"] = (matches) ? matches[0] : null;
-    r["email"] = info_docente_split[2].split(":")[1].trim();
+    r["telefono"] = (matches) ? matches[0] : null;
+    r["email_abc"] = info_docente_split[2].split(":")[1].trim();
     r["cargos"] = [];
 
 
@@ -48,6 +48,6 @@ inputList.forEach((docente) => {
         info_cargos = info_cargos.nextElementSibling;
     }
 
-    console.log(r);
     response.push(r);
 });
+console.log(JSON.stringify(response));

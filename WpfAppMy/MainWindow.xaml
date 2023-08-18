@@ -22,7 +22,11 @@
             <MenuItem Header="_Informes">
                 <MenuItem Header="Informe Coordinación Distrital" Click="informeCoordinacionDistrital_Click"/>
             </MenuItem>
+            <MenuItem Header="_Administracion especial">
+                <MenuItem Header="Procesar docentes ProgramaFines" Click="ProcesarDocentesProgramaFines_Click"/>
+            </MenuItem>
         </Menu>
+        
 
 
     </DockPanel>
