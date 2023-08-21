@@ -19,7 +19,7 @@
   },
   "creado": {
     "checks": {
-      "type": "timestamp",
+      "type": "DateTime",
       "required": true
     },
     "resets": {},
@@ -28,7 +28,7 @@
     "entityName": "alumno_comision",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "timestamp",
+    "dataType": "DateTime",
     "notNull": true,
     "defaultValue": "current_timestamp()"
   },
@@ -52,7 +52,8 @@
     },
     "resets": {
       "trim": " ",
-      "removeMultipleSpaces": true
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
     },
     "name": "observaciones",
     "alias": null,
@@ -69,7 +70,8 @@
     },
     "resets": {
       "trim": " ",
-      "removeMultipleSpaces": true
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
     },
     "name": "comision",
     "alias": "com",
@@ -104,7 +106,8 @@
     },
     "resets": {
       "trim": " ",
-      "removeMultipleSpaces": true
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
     },
     "name": "estado",
     "alias": null,

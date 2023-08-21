@@ -9,10 +9,10 @@ namespace WpfAppMy.Windows.ProcesarDocentesProgramaFines
 {
     internal class DAO
     {
-        public List<Dictionary<string, object>> ComisionesConPfid()
+        public List<string> PfidComisiones()
         {
-            var q = ContainerApp.Db().Query("comisiones")
-                .Fields()
+            var q = ContainerApp.Db().Query("comision")
+                .Fields("pfid")
                 .Size(0)
                 .Where(@"
                     $calendario-anio = @0 
@@ -21,7 +21,7 @@ namespace WpfAppMy.Windows.ProcesarDocentesProgramaFines
                 ")
                 .Parameters("2023", "2");
 
-            return ContainerApp.DbCache().ListDict(q);
+            return ContainerApp.DbCache().Column<string>(q);
         }
 
         public string IdCurso(string pfidComision, string asignaturaCodigo)
@@ -40,20 +40,18 @@ namespace WpfAppMy.Windows.ProcesarDocentesProgramaFines
             return ContainerApp.DbCache().Value<string>(q);
         }
 
-        public string TomaActiva(string idCurso)
+        public Dictionary<string, object> TomaActiva(string idCurso)
         {
-            var q = ContainerApp.Db().Query("curso")
-                .Fields("id")
+            var q = ContainerApp.Db().Query("toma")
                 .Size(0)
                 .Where(@"
                     $curso = @0 
-                    AND $asignatura-codigo = @1
-                    AND $calendario-anio = @2
-                    AND $calendario-semestre = @3
+                    AND $estado = 'Aprobada'
+                    AND ($estado_contralor = 'Pasar' OR $estado_contralor = 'Pendiente')
                 ")
                 .Parameters(idCurso);
 
-            return ContainerApp.DbCache().Value<string>(q);
+            return ContainerApp.DbCache().Dict(q);
         }
 
 

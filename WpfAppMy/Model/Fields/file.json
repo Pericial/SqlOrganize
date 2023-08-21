@@ -88,7 +88,7 @@
   },
   "created": {
     "checks": {
-      "type": "timestamp",
+      "type": "DateTime",
       "required": true
     },
     "resets": {},
@@ -97,7 +97,7 @@
     "entityName": "file",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "timestamp",
+    "dataType": "DateTime",
     "notNull": true,
     "defaultValue": "current_timestamp()"
   }

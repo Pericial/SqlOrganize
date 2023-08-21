@@ -55,7 +55,7 @@
   },
   "insertado": {
     "checks": {
-      "type": "timestamp",
+      "type": "DateTime",
       "required": true
     },
     "resets": {},
@@ -64,7 +64,7 @@
     "entityName": "asignacion_planilla_docente",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "timestamp",
+    "dataType": "DateTime",
     "notNull": true,
     "defaultValue": "current_timestamp()"
   },
@@ -74,7 +74,8 @@
     },
     "resets": {
       "trim": " ",
-      "removeMultipleSpaces": true
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
     },
     "name": "comentario",
     "alias": null,

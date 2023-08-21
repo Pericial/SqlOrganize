@@ -38,7 +38,8 @@
     },
     "resets": {
       "trim": " ",
-      "removeMultipleSpaces": true
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
     },
     "name": "ige",
     "alias": null,
@@ -87,7 +88,7 @@
   },
   "alta": {
     "checks": {
-      "type": "timestamp",
+      "type": "DateTime",
       "required": true
     },
     "resets": {},
@@ -96,7 +97,7 @@
     "entityName": "curso",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "timestamp",
+    "dataType": "DateTime",
     "notNull": true,
     "defaultValue": "current_timestamp()"
   }

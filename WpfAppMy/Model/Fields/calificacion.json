@@ -93,7 +93,8 @@
     },
     "resets": {
       "trim": " ",
-      "removeMultipleSpaces": true
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
     },
     "name": "curso",
     "alias": "cur",
@@ -124,7 +125,8 @@
     },
     "resets": {
       "trim": " ",
-      "removeMultipleSpaces": true
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
     },
     "name": "observaciones",
     "alias": null,
@@ -141,7 +143,8 @@
     },
     "resets": {
       "trim": " ",
-      "removeMultipleSpaces": true
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
     },
     "name": "division",
     "alias": null,
@@ -190,7 +193,7 @@
   },
   "fecha": {
     "checks": {
-      "type": "date"
+      "type": "DateTime"
     },
     "resets": {},
     "name": "fecha",
@@ -198,7 +201,7 @@
     "entityName": "calificacion",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "date",
+    "dataType": "DateTime",
     "notNull": false,
     "defaultValue": null
   }

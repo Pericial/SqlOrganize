@@ -19,7 +19,7 @@
   },
   "fecha_toma": {
     "checks": {
-      "type": "date"
+      "type": "DateTime"
     },
     "resets": {},
     "name": "fecha_toma",
@@ -27,7 +27,7 @@
     "entityName": "toma",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "date",
+    "dataType": "DateTime",
     "notNull": false,
     "defaultValue": null
   },
@@ -37,7 +37,8 @@
     },
     "resets": {
       "trim": " ",
-      "removeMultipleSpaces": true
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
     },
     "name": "estado",
     "alias": null,
@@ -54,7 +55,8 @@
     },
     "resets": {
       "trim": " ",
-      "removeMultipleSpaces": true
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
     },
     "name": "observaciones",
     "alias": null,
@@ -71,7 +73,8 @@
     },
     "resets": {
       "trim": " ",
-      "removeMultipleSpaces": true
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
     },
     "name": "comentario",
     "alias": null,
@@ -106,7 +109,8 @@
     },
     "resets": {
       "trim": " ",
-      "removeMultipleSpaces": true
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
     },
     "name": "estado_contralor",
     "alias": null,
@@ -119,7 +123,7 @@
   },
   "alta": {
     "checks": {
-      "type": "timestamp",
+      "type": "DateTime",
       "required": true
     },
     "resets": {},
@@ -128,7 +132,7 @@
     "entityName": "toma",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "timestamp",
+    "dataType": "DateTime",
     "notNull": true,
     "defaultValue": "current_timestamp()"
   },
@@ -156,7 +160,8 @@
     },
     "resets": {
       "trim": " ",
-      "removeMultipleSpaces": true
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
     },
     "name": "docente",
     "alias": "per",
@@ -173,7 +178,8 @@
     },
     "resets": {
       "trim": " ",
-      "removeMultipleSpaces": true
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
     },
     "name": "reemplazo",
     "alias": "pe1",
@@ -190,7 +196,8 @@
     },
     "resets": {
       "trim": " ",
-      "removeMultipleSpaces": true
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
     },
     "name": "planilla_docente",
     "alias": "pla",

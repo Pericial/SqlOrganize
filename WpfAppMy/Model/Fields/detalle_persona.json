@@ -41,7 +41,8 @@
     },
     "resets": {
       "trim": " ",
-      "removeMultipleSpaces": true
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
     },
     "name": "archivo",
     "alias": "fil",
@@ -54,7 +55,7 @@
   },
   "creado": {
     "checks": {
-      "type": "timestamp",
+      "type": "DateTime",
       "required": true
     },
     "resets": {},
@@ -63,7 +64,7 @@
     "entityName": "detalle_persona",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "timestamp",
+    "dataType": "DateTime",
     "notNull": true,
     "defaultValue": "current_timestamp()"
   },
@@ -87,7 +88,7 @@
   },
   "fecha": {
     "checks": {
-      "type": "date"
+      "type": "DateTime"
     },
     "resets": {},
     "name": "fecha",
@@ -95,7 +96,7 @@
     "entityName": "detalle_persona",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "date",
+    "dataType": "DateTime",
     "notNull": false,
     "defaultValue": "curdate()"
   },
@@ -105,7 +106,8 @@
     },
     "resets": {
       "trim": " ",
-      "removeMultipleSpaces": true
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
     },
     "name": "tipo",
     "alias": null,
@@ -122,7 +124,8 @@
     },
     "resets": {
       "trim": " ",
-      "removeMultipleSpaces": true
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
     },
     "name": "asunto",
     "alias": null,

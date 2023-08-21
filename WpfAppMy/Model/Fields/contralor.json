@@ -19,7 +19,7 @@
   },
   "fecha_contralor": {
     "checks": {
-      "type": "date"
+      "type": "DateTime"
     },
     "resets": {},
     "name": "fecha_contralor",
@@ -27,13 +27,13 @@
     "entityName": "contralor",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "date",
+    "dataType": "DateTime",
     "notNull": false,
     "defaultValue": null
   },
   "fecha_consejo": {
     "checks": {
-      "type": "date"
+      "type": "DateTime"
     },
     "resets": {},
     "name": "fecha_consejo",
@@ -41,13 +41,13 @@
     "entityName": "contralor",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "date",
+    "dataType": "DateTime",
     "notNull": false,
     "defaultValue": null
   },
   "insertado": {
     "checks": {
-      "type": "timestamp",
+      "type": "DateTime",
       "required": true
     },
     "resets": {},
@@ -56,7 +56,7 @@
     "entityName": "contralor",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "timestamp",
+    "dataType": "DateTime",
     "notNull": true,
     "defaultValue": "current_timestamp()"
   },

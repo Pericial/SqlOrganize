@@ -122,7 +122,9 @@ VALUES (";
             sql = sql.RemoveLastChar(',');
             sql += @");
 ";
-            EntityValues v = db.Values(_entityName).Set(row_).Set(db.config.id, null).Reset(db.config.id);
+            EntityValues v = db.Values(_entityName).Set(row_);
+            if (!v.values.ContainsKey(db.config.id)) //si el db.config.id es calculado se define y resetea
+                v.Set(db.config.id, null).Reset(db.config.id);
             row[db.config.id] = v.Get(db.config.id);
             detail.Add((_entityName!, (string)row[db.config.id]));
 

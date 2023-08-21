@@ -26,6 +26,7 @@ namespace WpfAppMy.Windows.ProcesarDocentesProgramaFines
     public partial class Window1 : Window
     {
         DAO dao = new ();
+        List<string> logs = new();
 
         public Window1()
         {
@@ -39,29 +40,27 @@ namespace WpfAppMy.Windows.ProcesarDocentesProgramaFines
 
         private void ProcesarDocentes()
         {
-            var comisiones = dao.ComisionesConPfid();
-            var pfidComisiones = comisiones.Column<string>("comision-pfid");
+            var pfidComisiones = dao.PfidComisiones();
             var docentes = JsonConvert.DeserializeObject<List<Docente>>(data.Text)!;
-            info.Text = "Cantidad de docentes a procesar " + docentes.Count.ToString() + @"
-";
+            logs.Add("Cantidad de docentes a procesar" + docentes.Count.ToString());
 
             foreach (Docente docente in docentes)
             {
 
                 #region insertar o actualizar docente (se insertan o actualizan todos)
                 var d = docente.ConvertToDict();
-                EntityValues v = ContainerApp.db.Values("persona").Set(d);
-                var row = dao.RowByEntityUnique("persona", v.values);
+                EntityValues vPersona = ContainerApp.db.Values("persona").Set(d);
+                var row = dao.RowByEntityUnique("persona", vPersona.values);
                 if (row != null) { 
-                    EntityValues v2 = ContainerApp.db.Values("persona").Set(row).SetNotNull(v.values);
-                    v = v2;
-                    v.Reset();
-                    var p = ContainerApp.db.Persist("persona").Update(v2.values).Exec();
+                    EntityValues vPersonaAux = ContainerApp.db.Values("persona").Set(row).SetNotNull(vPersona.values);
+                    vPersona = vPersonaAux;
+                    vPersona.Reset();
+                    var p = ContainerApp.db.Persist("persona").Update(vPersona.values).Exec();
                     ContainerApp.dbCache.Remove(p.detail);
                 } else
                 {
-                    v.Default().Reset();
-                    var p = ContainerApp.db.Persist("persona").Insert(v.values).Exec();
+                    vPersona.Default().Reset();
+                    var p = ContainerApp.db.Persist("persona").Insert(vPersona.values).Exec();
                     ContainerApp.dbCache.Remove(p.detail);
                 }
                 #endregion
@@ -72,8 +71,34 @@ namespace WpfAppMy.Windows.ProcesarDocentesProgramaFines
                     if (pfidComisiones.Contains(cargo["comision"]))
                     {
                         string idCurso = dao.IdCurso(cargo["comision"], cargo["codigo"]);
-                        Dictionary<string, object> rowTomaActiva = dao.TomaActiva(idCurso);
+                        if (idCurso.IsNullOrEmpty())
+                        {
+                            logs.Add("No existe curso " + cargo["comision"] + " " + cargo["codigo"]);
+                            continue;
 
+                        }
+
+                        Dictionary<string, object> rowTomaActiva = dao.TomaActiva(idCurso);
+                        if(rowTomaActiva != null)
+                        {
+                            if (!rowTomaActiva["docente"].Equals(vPersona.Get("id")))
+                                logs.Add("Existe una toma activa con otro docente en " + cargo["comision"] + " " + cargo["codigo"]);
+                            else 
+                                logs.Add("La toma ya se encuentra cargada " + cargo["comision"] + " " + cargo["codigo"]);
+                        }
+                        else
+                        {
+                            EntityValues vToma = ContainerApp.db.Values("toma").
+                                Set("curso", idCurso).
+                                Set("docente", vPersona.Get("id")).
+                                Set("estado", "Aprobada").
+                                Set("estado_contralor", "Pendiente").
+                                Set("tipo_movimiento", "AI").
+                                Set("fecha_toma",new DateTime(2023,08,07));
+                            vToma.Default().Reset();
+                            var p = ContainerApp.db.Persist("toma").Insert(vToma.values).Exec();
+                            ContainerApp.dbCache.Remove(p.detail);
+                        }
 
                     }
 
@@ -81,7 +106,8 @@ namespace WpfAppMy.Windows.ProcesarDocentesProgramaFines
                 }
                 #endregion
             }
-            info.Text += docentes.Count.ToString();
+            info.Text += String.Join(@"
+",logs);
         }
 
 

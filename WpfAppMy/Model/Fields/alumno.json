@@ -23,7 +23,8 @@
     },
     "resets": {
       "trim": " ",
-      "removeMultipleSpaces": true
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
     },
     "name": "anio_ingreso",
     "alias": null,
@@ -40,7 +41,8 @@
     },
     "resets": {
       "trim": " ",
-      "removeMultipleSpaces": true
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
     },
     "name": "observaciones",
     "alias": null,
@@ -75,7 +77,8 @@
     },
     "resets": {
       "trim": " ",
-      "removeMultipleSpaces": true
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
     },
     "name": "estado_inscripcion",
     "alias": null,
@@ -88,7 +91,7 @@
   },
   "fecha_titulacion": {
     "checks": {
-      "type": "date"
+      "type": "DateTime"
     },
     "resets": {},
     "name": "fecha_titulacion",
@@ -96,7 +99,7 @@
     "entityName": "alumno",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "date",
+    "dataType": "DateTime",
     "notNull": false,
     "defaultValue": null
   },
@@ -106,7 +109,8 @@
     },
     "resets": {
       "trim": " ",
-      "removeMultipleSpaces": true
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
     },
     "name": "plan",
     "alias": "pla",
@@ -123,7 +127,8 @@
     },
     "resets": {
       "trim": " ",
-      "removeMultipleSpaces": true
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
     },
     "name": "resolucion_inscripcion",
     "alias": "res",
@@ -182,7 +187,8 @@
     },
     "resets": {
       "trim": " ",
-      "removeMultipleSpaces": true
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
     },
     "name": "adeuda_legajo",
     "alias": null,
@@ -199,7 +205,8 @@
     },
     "resets": {
       "trim": " ",
-      "removeMultipleSpaces": true
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
     },
     "name": "adeuda_deudores",
     "alias": null,
@@ -216,7 +223,8 @@
     },
     "resets": {
       "trim": " ",
-      "removeMultipleSpaces": true
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
     },
     "name": "documentacion_inscripcion",
     "alias": null,
@@ -247,7 +255,8 @@
     },
     "resets": {
       "trim": " ",
-      "removeMultipleSpaces": true
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
     },
     "name": "establecimiento_inscripcion",
     "alias": null,
@@ -264,7 +273,8 @@
     },
     "resets": {
       "trim": " ",
-      "removeMultipleSpaces": true
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
     },
     "name": "libro_folio",
     "alias": null,
@@ -281,7 +291,8 @@
     },
     "resets": {
       "trim": " ",
-      "removeMultipleSpaces": true
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
     },
     "name": "libro",
     "alias": null,
@@ -298,7 +309,8 @@
     },
     "resets": {
       "trim": " ",
-      "removeMultipleSpaces": true
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
     },
     "name": "folio",
     "alias": null,
@@ -315,7 +327,8 @@
     },
     "resets": {
       "trim": " ",
-      "removeMultipleSpaces": true
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
     },
     "name": "comentarios",
     "alias": null,
@@ -403,7 +416,7 @@
   },
   "creado": {
     "checks": {
-      "type": "timestamp",
+      "type": "DateTime",
       "required": true
     },
     "resets": {},
@@ -412,7 +425,7 @@
     "entityName": "alumno",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "timestamp",
+    "dataType": "DateTime",
     "notNull": true,
     "defaultValue": "current_timestamp()"
   },

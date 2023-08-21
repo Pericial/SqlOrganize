@@ -52,7 +52,7 @@
   },
   "insertado": {
     "checks": {
-      "type": "timestamp",
+      "type": "DateTime",
       "required": true
     },
     "resets": {},
@@ -61,13 +61,13 @@
     "entityName": "email",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "timestamp",
+    "dataType": "DateTime",
     "notNull": true,
     "defaultValue": "current_timestamp()"
   },
   "eliminado": {
     "checks": {
-      "type": "timestamp"
+      "type": "DateTime"
     },
     "resets": {},
     "name": "eliminado",
@@ -75,7 +75,7 @@
     "entityName": "email",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "timestamp",
+    "dataType": "DateTime",
     "notNull": false,
     "defaultValue": null
   },

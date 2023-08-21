@@ -94,6 +94,9 @@ namespace SqlOrganize
                 case "bool":
                     values[fieldName] = (value as string).ToBool();
                     break;
+                case "date":
+                    throw new NotImplementedException();
+                    break;
 
             }
 
@@ -127,6 +130,7 @@ namespace SqlOrganize
                 m!.Invoke(this, new object[] { });
 
             Field field = db.Field(entityName, fieldName);
+
             foreach (var (resetKey, resetValue) in field.resets)
             {
                 switch (resetKey)
@@ -139,7 +143,10 @@ namespace SqlOrganize
                         if (!values[fieldName].IsNullOrEmpty() && !values[fieldName].IsDbNull())
                             values[fieldName] = Regex.Replace((string)values[fieldName], @"\s+", " ");
                         break;
-
+                    case "nullIfEmpty":
+                        if (values[fieldName].IsNullOrEmpty())
+                            values[fieldName] = null;
+                        break;
                 }
             }
 
@@ -220,11 +227,8 @@ namespace SqlOrganize
                     else
                         values[fieldName] = field.defaultValue;
                     break;
-                case "date":
-                case "datetime":
-                case "year":
-                case "time":
-                    if (!field.defaultValue.ToString().ToLower().Contains("cur"))
+                case "DateTime":
+                    if (field.defaultValue.ToString().ToLower().Contains("cur"))
                         values[fieldName] = DateTime.Now;
                     else
                         values[fieldName] = field.defaultValue;

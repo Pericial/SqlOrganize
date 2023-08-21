@@ -78,6 +78,8 @@ namespace ModelOrganize
                             col.DataType = "bool";
                             break;
                         case "datetime":
+                        case "timestamp":
+                        case "date":
                             col.DataType = "DateTime";
                             break;
                         case "smallint":
@@ -219,12 +221,16 @@ namespace ModelOrganize
                     if(f.notNull)
                         f.checks["required"] = true;
 
-                    if(f.dataType == "string")
+                    if (f.dataType == "string")
+                    {
                         f.resets = new()
                         {
                             { "trim", ' '},
                             { "removeMultipleSpaces", true },
                         };
+                        if (!f.notNull)
+                            f.resets["nullIfEmpty"] = true;
+                    }
 
                     if (f.dataType == "bool" && f.defaultValue is not null)
                         f.defaultValue = ((string)f.defaultValue).ToBool();

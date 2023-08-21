@@ -1,4 +1,6 @@
-﻿using System;
+﻿using QuestPDF.Fluent;
+using QuestPDF.Infrastructure;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -29,6 +31,7 @@ namespace WpfAppMy
 
         public MainWindow()
         {
+            QuestPDF.Settings.License = LicenseType.Community;
             InitializeComponent();
         }
 
@@ -86,6 +89,12 @@ namespace WpfAppMy
             Windows.ProcesarDocentesProgramaFines.Window1 win = new();
             win.Show();
 
+        }
+
+        private void PruebaPdf_Click(object sender, RoutedEventArgs e)
+        {
+            Pdf.TomaPosesion.TomaPosesionDocument pdf = new();
+            pdf.GeneratePdf("C:\\Users\\ivan\\Downloads\\hello.pdf");
         }
 
 

@@ -24,6 +24,8 @@
             </MenuItem>
             <MenuItem Header="_Administracion especial">
                 <MenuItem Header="Procesar docentes ProgramaFines" Click="ProcesarDocentesProgramaFines_Click"/>
+                <MenuItem Header="Prueba PDF" Click="PruebaPdf_Click"/>
+
             </MenuItem>
         </Menu>
         
