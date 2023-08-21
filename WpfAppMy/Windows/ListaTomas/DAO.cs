@@ -3,17 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Utils;
 
-namespace WpfAppMy.Windows.ListaCursos
+namespace WpfAppMy.Windows.ListaTomas
 {
     internal class DAO : WpfAppMy.DAO
     {
-        public List<Dictionary<string, object>> CursoAll(Search search)
+        public List<Dictionary<string, object>> TomaAll(Search search)
         {
-            var q = ContainerApp.Db().Query("curso")
+            var q = ContainerApp.Db().Query("toma")
                 .Fields()
-                .Select("CONCAT($sede-numero, $comision-division, '/', $planificacion-anio, $planificacion-semestre) AS numero")
                 .Size(0)
                 .Where(@"
                     $calendario-anio = @0 

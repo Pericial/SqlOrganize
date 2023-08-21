@@ -16,6 +16,7 @@
                 <MenuItem Header="Lista de Modalidades" Click="listaModalidades_Click"/>
                 <MenuItem Header="Lista de Referentes" Click="ListaReferentes_Click"/>
                 <MenuItem Header="Lista de Cursos" Click="ListaCursos_Click"/>
+                <MenuItem Header="Lista de Tomas" Click="ListaTomas_Click"/>
 
 
             </MenuItem>

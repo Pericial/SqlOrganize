@@ -86,6 +86,12 @@ namespace WpfAppMy
             win.Show();
 
         }
+        private void ListaTomas_Click(object sender, RoutedEventArgs e)
+        {
+            Windows.ListaTomas.Window1 win = new();
+            win.Show();
+
+        }
 
         private void ProcesarDocentesProgramaFines_Click(object sender, RoutedEventArgs e)
         {
@@ -97,7 +103,7 @@ namespace WpfAppMy
         private void PruebaPdf_Click(object sender, RoutedEventArgs e)
         {
             QRCodeGenerator qrGenerator = new QRCodeGenerator();
-            QRCodeData qrCodeData = qrGenerator.CreateQrCode("The text which should be encoded.", QRCodeGenerator.ECCLevel.Q);
+            QRCodeData qrCodeData = qrGenerator.CreateQrCode("https://planfines2.com.ar/validar-toma?id=something", QRCodeGenerator.ECCLevel.Q);
             QRCode qrCode = new QRCode(qrCodeData);
             Bitmap qrCodeImage = qrCode.GetGraphic(20);
             ImageConverter converter = new ImageConverter();
@@ -106,8 +112,8 @@ namespace WpfAppMy
 
                 qrCode = (byte[])converter.ConvertTo(qrCodeImage, typeof(byte[])),
             };
-            TomaPosesionDocument document = new(tpd);
-            document.GeneratePdf("C:\\Users\\icastaneda\\Downloads\\hello1.pdf");
+            Windows.TomaPosesionPdf.Document document = new(tpd);
+            document.GeneratePdf("C:\\Users\\ivan\\Downloads\\hello1.pdf");
         }
 
 

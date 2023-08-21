@@ -19,4 +19,8 @@
     <ProjectReference Include="..\WpfUtils\WpfUtils.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
+
 </Project>
