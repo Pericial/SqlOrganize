@@ -1,10 +1,12 @@
-﻿using QuestPDF.Fluent;
+﻿using QRCoder;
+using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +21,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Utils;
 using WpfAppMy.Forms;
+using WpfAppMy.Windows.TomaPosesionPdf;
 
 namespace WpfAppMy
 {
@@ -93,8 +96,18 @@ namespace WpfAppMy
 
         private void PruebaPdf_Click(object sender, RoutedEventArgs e)
         {
-            Pdf.TomaPosesion.TomaPosesionDocument pdf = new();
-            pdf.GeneratePdf("C:\\Users\\ivan\\Downloads\\hello.pdf");
+            QRCodeGenerator qrGenerator = new QRCodeGenerator();
+            QRCodeData qrCodeData = qrGenerator.CreateQrCode("The text which should be encoded.", QRCodeGenerator.ECCLevel.Q);
+            QRCode qrCode = new QRCode(qrCodeData);
+            Bitmap qrCodeImage = qrCode.GetGraphic(20);
+            ImageConverter converter = new ImageConverter();
+            TomaPosesionData tpd = new()
+            {
+
+                qrCode = (byte[])converter.ConvertTo(qrCodeImage, typeof(byte[])),
+            };
+            TomaPosesionDocument document = new(tpd);
+            document.GeneratePdf("C:\\Users\\icastaneda\\Downloads\\hello1.pdf");
         }
 
 

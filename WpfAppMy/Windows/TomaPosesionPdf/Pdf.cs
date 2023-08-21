@@ -9,22 +9,22 @@ using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
 
-namespace WpfAppMy.Pdf.TomaPosesion
+namespace WpfAppMy.Windows.TomaPosesionPdf
 {
+
     public class TomaPosesionDocument : IDocument
     {
-
+        public TomaPosesionData Model;
         public DocumentMetadata GetMetadata() => DocumentMetadata.Default;
         public DocumentSettings GetSettings() => DocumentSettings.Default;
 
+        public TomaPosesionDocument(TomaPosesionData model)
+        {
+            Model = model;
+        }
+
         public void Compose(IDocumentContainer container)
         {
-            QRCodeGenerator qrGenerator = new QRCodeGenerator();
-            QRCodeData qrCodeData = qrGenerator.CreateQrCode("The text which should be encoded.", QRCodeGenerator.ECCLevel.Q);
-            QRCode qrCode = new QRCode(qrCodeData);
-            Bitmap qrCodeImage = qrCode.GetGraphic(20);
-            ImageConverter converter = new ImageConverter();
-            Byte[] qrCodeImage_ = (byte[])converter.ConvertTo(qrCodeImage, typeof(byte[]));
 
             container
                 .Page(page =>
@@ -32,26 +32,27 @@ namespace WpfAppMy.Pdf.TomaPosesion
                     page.Margin(50);
 
                     page.Header().Element(ComposeHeader);
-                    page.Content().Image(qrCodeImage_); ;
+                    //page.Content().Image(qrCodeImage_); ;
                 });
         }
 
         void ComposeHeader(IContainer container)
         {
             var titleStyle = TextStyle.Default.FontSize(20).SemiBold().FontColor(Colors.Blue.Medium);
-            
+
 
             container.Row(row =>
             {
                 row.RelativeItem().Column(column =>
                 {
                     column.Item().Text($"Toma de Posesión CENS 462").Style(titleStyle);
+                    column.Item().Image(Model.qrCode);
                 });
 
-                row.ConstantItem(100).Height(50).Placeholder();
+                //row.ConstantItem(100).Height(50).Image(Model.qrCode);
             });
 
-            
+
         }
     }
 }

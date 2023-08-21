@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WpfAppMy.Pdf.TomaPosesion
+namespace WpfAppMy.Windows.TomaPosesionPdf
 {
     public class DAO
     {
