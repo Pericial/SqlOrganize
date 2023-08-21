@@ -65,8 +65,8 @@ namespace ModelOrganize
             Dictionary<string, EntityTree> dict = new();
             foreach (Field field in fk)
             {
-                string aliasSource = (Config.aliasSource == "field_name") ? field.name : field.refEntityName;
-                string fieldId = GetFieldId(aliasSource, alias);
+                string idSource = (Config.idSource == "field_name") ? field.name : field.refEntityName;
+                string fieldId = GetFieldId(idSource, alias);
 
                 EntityTree tree = new()
                 {                    

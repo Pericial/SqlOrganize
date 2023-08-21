@@ -178,7 +178,7 @@
       "nullIfEmpty": true
     },
     "name": "organizacion",
-    "alias": "sed",
+    "alias": "org",
     "entityName": "sede",
     "refEntityName": "sede",
     "refFieldName": "id",

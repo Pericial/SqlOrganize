@@ -81,7 +81,7 @@
         "refFieldName": "id",
         "children": {}
       },
-      "resolucion": {
+      "resolucion_inscripcion": {
         "fieldName": "resolucion_inscripcion",
         "refEntityName": "resolucion",
         "refFieldName": "id",
@@ -107,7 +107,7 @@
         "refFieldName": "id",
         "parentId": null
       },
-      "resolucion": {
+      "resolucion_inscripcion": {
         "fieldName": "resolucion_inscripcion",
         "refEntityName": "resolucion",
         "refFieldName": "id",
@@ -236,7 +236,7 @@
             "refFieldName": "id",
             "children": {}
           },
-          "resolucion": {
+          "resolucion_inscripcion": {
             "fieldName": "resolucion_inscripcion",
             "refEntityName": "resolucion",
             "refFieldName": "id",
@@ -330,7 +330,7 @@
         "refFieldName": "id",
         "parentId": "alumno"
       },
-      "resolucion": {
+      "resolucion_inscripcion": {
         "fieldName": "resolucion_inscripcion",
         "refEntityName": "resolucion",
         "refFieldName": "id",
@@ -460,12 +460,12 @@
               }
             }
           },
-          "persona": {
+          "docente": {
             "fieldName": "docente",
             "refEntityName": "persona",
             "refFieldName": "id",
             "children": {
-              "domicilio_per": {
+              "domicilio_doc": {
                 "fieldName": "domicilio",
                 "refEntityName": "domicilio",
                 "refFieldName": "id",
@@ -473,12 +473,12 @@
               }
             }
           },
-          "persona_tom": {
+          "reemplazo": {
             "fieldName": "reemplazo",
             "refEntityName": "persona",
             "refFieldName": "id",
             "children": {
-              "domicilio_pe1": {
+              "domicilio_ree": {
                 "fieldName": "domicilio",
                 "refEntityName": "domicilio",
                 "refFieldName": "id",
@@ -580,29 +580,29 @@
         "refFieldName": "id",
         "parentId": "curso"
       },
-      "persona": {
+      "docente": {
         "fieldName": "docente",
         "refEntityName": "persona",
         "refFieldName": "id",
         "parentId": "toma"
       },
-      "domicilio_per": {
+      "domicilio_doc": {
         "fieldName": "domicilio",
         "refEntityName": "domicilio",
         "refFieldName": "id",
-        "parentId": "persona"
+        "parentId": "docente"
       },
-      "persona_tom": {
+      "reemplazo": {
         "fieldName": "reemplazo",
         "refEntityName": "persona",
         "refFieldName": "id",
         "parentId": "toma"
       },
-      "domicilio_pe1": {
+      "domicilio_ree": {
         "fieldName": "domicilio",
         "refEntityName": "domicilio",
         "refFieldName": "id",
-        "parentId": "persona_tom"
+        "parentId": "reemplazo"
       },
       "planilla_docente_tom": {
         "fieldName": "planilla_docente",
@@ -819,7 +819,7 @@
             "refFieldName": "id",
             "children": {}
           },
-          "resolucion": {
+          "resolucion_inscripcion": {
             "fieldName": "resolucion_inscripcion",
             "refEntityName": "resolucion",
             "refFieldName": "id",
@@ -951,7 +951,7 @@
         "refFieldName": "id",
         "parentId": "alumno"
       },
-      "resolucion": {
+      "resolucion_inscripcion": {
         "fieldName": "resolucion_inscripcion",
         "refEntityName": "resolucion",
         "refFieldName": "id",
@@ -1319,12 +1319,12 @@
           }
         }
       },
-      "comision1": {
+      "relacion": {
         "fieldName": "relacion",
         "refEntityName": "comision",
         "refFieldName": "id",
         "children": {
-          "sede_co1": {
+          "sede_rel": {
             "fieldName": "sede",
             "refEntityName": "sede",
             "refFieldName": "id",
@@ -1356,13 +1356,13 @@
               }
             }
           },
-          "modalidad_co1": {
+          "modalidad_rel": {
             "fieldName": "modalidad",
             "refEntityName": "modalidad",
             "refFieldName": "id",
             "children": {}
           },
-          "planificacion_co1": {
+          "planificacion_rel": {
             "fieldName": "planificacion",
             "refEntityName": "planificacion",
             "refFieldName": "id",
@@ -1375,7 +1375,7 @@
               }
             }
           },
-          "calendario_co1": {
+          "calendario_rel": {
             "fieldName": "calendario",
             "refEntityName": "calendario",
             "refFieldName": "id",
@@ -1445,35 +1445,35 @@
         "refFieldName": "id",
         "parentId": "comision"
       },
-      "comision1": {
+      "relacion": {
         "fieldName": "relacion",
         "refEntityName": "comision",
         "refFieldName": "id",
         "parentId": null
       },
-      "sede_co1": {
+      "sede_rel": {
         "fieldName": "sede",
         "refEntityName": "sede",
         "refFieldName": "id",
-        "parentId": "comision1"
+        "parentId": "relacion"
       },
       "domicilio_sed": {
         "fieldName": "domicilio",
         "refEntityName": "domicilio",
         "refFieldName": "id",
-        "parentId": "sede_co1"
+        "parentId": "sede_rel"
       },
       "tipo_sede_sed": {
         "fieldName": "tipo_sede",
         "refEntityName": "tipo_sede",
         "refFieldName": "id",
-        "parentId": "sede_co1"
+        "parentId": "sede_rel"
       },
       "centro_educativo_sed": {
         "fieldName": "centro_educativo",
         "refEntityName": "centro_educativo",
         "refFieldName": "id",
-        "parentId": "sede_co1"
+        "parentId": "sede_rel"
       },
       "domicilio_cen1": {
         "fieldName": "domicilio",
@@ -1481,29 +1481,29 @@
         "refFieldName": "id",
         "parentId": "centro_educativo_sed"
       },
-      "modalidad_co1": {
+      "modalidad_rel": {
         "fieldName": "modalidad",
         "refEntityName": "modalidad",
         "refFieldName": "id",
-        "parentId": "comision1"
+        "parentId": "relacion"
       },
-      "planificacion_co1": {
+      "planificacion_rel": {
         "fieldName": "planificacion",
         "refEntityName": "planificacion",
         "refFieldName": "id",
-        "parentId": "comision1"
+        "parentId": "relacion"
       },
       "plan_pla": {
         "fieldName": "plan",
         "refEntityName": "plan",
         "refFieldName": "id",
-        "parentId": "planificacion_co1"
+        "parentId": "planificacion_rel"
       },
-      "calendario_co1": {
+      "calendario_rel": {
         "fieldName": "calendario",
         "refEntityName": "calendario",
         "refFieldName": "id",
-        "parentId": "comision1"
+        "parentId": "relacion"
       }
     }
   },
@@ -1902,7 +1902,7 @@
       "id"
     ],
     "tree": {
-      "file": {
+      "archivo": {
         "fieldName": "archivo",
         "refEntityName": "file",
         "refFieldName": "id",
@@ -1923,7 +1923,7 @@
       }
     },
     "relations": {
-      "file": {
+      "archivo": {
         "fieldName": "archivo",
         "refEntityName": "file",
         "refFieldName": "id",
@@ -2125,7 +2125,7 @@
             "refFieldName": "id",
             "children": {}
           },
-          "resolucion": {
+          "resolucion_inscripcion": {
             "fieldName": "resolucion_inscripcion",
             "refEntityName": "resolucion",
             "refFieldName": "id",
@@ -2183,7 +2183,7 @@
         "refFieldName": "id",
         "parentId": "alumno"
       },
-      "resolucion": {
+      "resolucion_inscripcion": {
         "fieldName": "resolucion_inscripcion",
         "refEntityName": "resolucion",
         "refFieldName": "id",
@@ -3144,12 +3144,12 @@
           }
         }
       },
-      "persona": {
+      "docente": {
         "fieldName": "docente",
         "refEntityName": "persona",
         "refFieldName": "id",
         "children": {
-          "domicilio_per": {
+          "domicilio_doc": {
             "fieldName": "domicilio",
             "refEntityName": "domicilio",
             "refFieldName": "id",
@@ -3157,12 +3157,12 @@
           }
         }
       },
-      "persona1": {
+      "reemplazo": {
         "fieldName": "reemplazo",
         "refEntityName": "persona",
         "refFieldName": "id",
         "children": {
-          "domicilio_pe1": {
+          "domicilio_ree": {
             "fieldName": "domicilio",
             "refEntityName": "domicilio",
             "refFieldName": "id",
@@ -3250,29 +3250,29 @@
         "refFieldName": "id",
         "parentId": "curso"
       },
-      "persona": {
+      "docente": {
         "fieldName": "docente",
         "refEntityName": "persona",
         "refFieldName": "id",
         "parentId": null
       },
-      "domicilio_per": {
+      "domicilio_doc": {
         "fieldName": "domicilio",
         "refEntityName": "domicilio",
         "refFieldName": "id",
-        "parentId": "persona"
+        "parentId": "docente"
       },
-      "persona1": {
+      "reemplazo": {
         "fieldName": "reemplazo",
         "refEntityName": "persona",
         "refFieldName": "id",
         "parentId": null
       },
-      "domicilio_pe1": {
+      "domicilio_ree": {
         "fieldName": "domicilio",
         "refEntityName": "domicilio",
         "refFieldName": "id",
-        "parentId": "persona1"
+        "parentId": "reemplazo"
       },
       "planilla_docente": {
         "fieldName": "planilla_docente",

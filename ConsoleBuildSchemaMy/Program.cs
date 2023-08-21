@@ -9,6 +9,7 @@ var c = new ConfigMy()
     modelPath = ConfigurationManager.AppSettings.Get("modelPath"),
     configPath = ConfigurationManager.AppSettings.Get("configPath"),
     dbName = ConfigurationManager.AppSettings.Get("dbName"),
+    idSource = "field_name",
 };
 
 BuildModelMy t = new(c);

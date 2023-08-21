@@ -45,7 +45,7 @@
       "removeMultipleSpaces": true
     },
     "name": "relacion",
-    "alias": "co1",
+    "alias": "rel",
     "entityName": "comision_relacionada",
     "refEntityName": "comision",
     "refFieldName": "id",

@@ -164,7 +164,7 @@
       "nullIfEmpty": true
     },
     "name": "docente",
-    "alias": "per",
+    "alias": "doc",
     "entityName": "toma",
     "refEntityName": "persona",
     "refFieldName": "id",
@@ -182,7 +182,7 @@
       "nullIfEmpty": true
     },
     "name": "reemplazo",
-    "alias": "pe1",
+    "alias": "ree",
     "entityName": "toma",
     "refEntityName": "persona",
     "refFieldName": "id",

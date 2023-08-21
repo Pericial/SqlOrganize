@@ -23,11 +23,8 @@
         public string configPath { get; set; } = "./model";
 
         /// <summary>
-        /// Referencia para definir los alias de fields
+        /// Referencia para definir los alias e identificadores de fields 
         /// </summary>
-        public string aliasSource { get; set; } = "entity_name"; //field_name or entity_name
-
-
-
+        public string idSource { get; set; } = "entity_name"; //field_name or entity_name
     }
 }

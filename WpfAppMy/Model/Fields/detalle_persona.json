@@ -45,7 +45,7 @@
       "nullIfEmpty": true
     },
     "name": "archivo",
-    "alias": "fil",
+    "alias": "arc",
     "entityName": "detalle_persona",
     "refEntityName": "file",
     "refFieldName": "id",
