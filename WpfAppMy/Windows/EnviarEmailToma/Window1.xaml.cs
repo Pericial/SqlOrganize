@@ -1,10 +1,8 @@
-﻿using QRCoder;
-using QuestPDF.Fluent;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,11 +13,12 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using WpfAppMy.Windows.TomaPosesionPdf;
+using static QRCoder.PayloadGenerator;
+using QRCoder;
+using System.Drawing;
 using Utils;
-using WpfAppMy.Windows.ListaTomas;
 
-namespace WpfAppMy.Windows.TomaPosesionPdf
+namespace WpfAppMy.Windows.EnviarEmailToma
 {
     /// <summary>
     /// Lógica de interacción para Window1.xaml
@@ -27,36 +26,31 @@ namespace WpfAppMy.Windows.TomaPosesionPdf
     public partial class Window1 : Window
     {
 
-        Search search = new();
         DAO dao = new();
-        QRCodeGenerator qrGenerator = new QRCodeGenerator();
-
         public Window1()
         {
             InitializeComponent();
-            List<Dictionary<string, object>> list = dao.TomaAll(search);
-            foreach(Dictionary<string, object> item in list)
+            List<Dictionary<string, object>> list = dao.TomaAll();
+            foreach (Dictionary<string, object> item in list)
             {
                 Toma toma = item.ConvertToObject<Toma>();
-                QRCodeData qrCodeData = qrGenerator.CreateQrCode("https://planfines2.com.ar/validar-toma/" + toma.id, QRCodeGenerator.ECCLevel.Q);
-                QRCode qrCode = new QRCode(qrCodeData);
-                Bitmap qrCodeImage = qrCode.GetGraphic(20);
-                ImageConverter converter = new ImageConverter();
-                toma.qr_code = (byte[])converter.ConvertTo(qrCodeImage, typeof(byte[]));
-                Document document = new(toma);
-                document.GeneratePdf("C:\\Users\\icastaneda\\Downloads\\" + toma.comision__pfid + "_" + toma.asignatura__codigo + "_" + toma.docente__numero_documento + ".pdf");
+                Email email = new Email(toma);
+                info.Text += email.To + @"
+";
+                info.Text += email.Attachment + @"
+";
+                info.Text += email.Subject + @"
+";
+                info.Text += email.Body + @"
+
+
+
+"; 
             }
+
+            
+
         }
-
-
-    }
-
-
-
-    internal class Search
-    {
-        public string calendario__anio { get; set; } = DateTime.Now.Year.ToString();
-        public int calendario__semestre { get; set; } = DateTime.Now.ToSemester();
     }
 
     internal class Toma
@@ -78,7 +72,7 @@ namespace WpfAppMy.Windows.TomaPosesionPdf
         public string docente__descripcion_domicilio { get; set; }
         
         public string sede__nombre { get; set; }
-
+        public string sede__numero { get; set; }
         public string domicilio__calle { get; set; }
         public string domicilio__numero { get; set; }
         public string domicilio__entre { get; set; }
@@ -90,7 +84,9 @@ namespace WpfAppMy.Windows.TomaPosesionPdf
 
 
         public string comision__pfid { get; set; }
+        public string comision__division { get; set; }
+        public string planificacion__anio { get; set; }
+        public string planificacion__semestre { get; set; }
 
-        public Byte[] qr_code { get; set; }
     }
 }

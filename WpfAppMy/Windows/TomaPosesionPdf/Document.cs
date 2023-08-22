@@ -135,7 +135,7 @@ namespace WpfAppMy.Windows.TomaPosesionPdf
                 table.Cell().Row(2).Column(4).Element(BlockContent).Text(Model.docente__fecha_nacimiento.ToString("dd/MM/yyyy"));
                 
                 table.Cell().Row(3).Column(1).Element(BlockHeader).Text("Email").Bold();
-                table.Cell().Row(3).Column(2).ColumnSpan(3).Element(BlockContent).Text(Model.docente__email);
+                table.Cell().Row(3).Column(2).ColumnSpan(3).Element(BlockContent).Text(Model.docente__email_abc);
 
                 table.Cell().Row(4).Column(1).Element(BlockHeader).Text("Domicilio").Bold();
                 table.Cell().Row(4).Column(2).ColumnSpan(3).Element(BlockContent).Text(Model.docente__descripcion_domicilio);

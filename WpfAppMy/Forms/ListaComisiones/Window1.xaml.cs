@@ -146,6 +146,12 @@ namespace WpfAppMy.Forms.ListaComisiones
         public string planificacion__orientacion { get; set; }
         public string planificacion__pfid { get; set; }
 
+        public string domicilio__calle { get; set; }
+        public string domicilio__numero { get; set; }
+        public string domicilio__entre { get; set; }
+        public string domicilio__barrio { get; set; }
+        public string domicilio__localidad { get; set; }
+
 
 
     }

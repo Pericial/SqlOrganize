@@ -12,12 +12,18 @@ namespace WpfAppMy
 {
     class ContainerApp
     {
-        public static Config config = new Config
+        public static WpfAppMy.Config config = new Config
         {
+            id = "id",
+            fkId = true,
             connectionString = ConfigurationManager.AppSettings.Get("connectionString"),
             modelPath = ConfigurationManager.AppSettings.Get("modelPath"),
-            id = "id",
-            fkId = true
+            emailDocenteUser = ConfigurationManager.AppSettings.Get("emailDocenteUser"),
+            emailDocentePassword = ConfigurationManager.AppSettings.Get("emailDocentePassword"),
+            emailDocenteHost = ConfigurationManager.AppSettings.Get("emailDocenteHost"),
+            emailDocenteFromAddress = ConfigurationManager.AppSettings.Get("emailDocenteFromAddress"),
+            emailDocenteFromName = ConfigurationManager.AppSettings.Get("emailDocenteFromName"),
+            emailDocenteBcc = ConfigurationManager.AppSettings.Get("emailDocenteBcc"),
         };
 
         public static Db db = new DbMy(config);

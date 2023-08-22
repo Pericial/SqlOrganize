@@ -110,6 +110,13 @@ namespace WpfAppMy
             win.Show();
         }
 
+        private void EnviarEmailToma_Click(object sender, RoutedEventArgs e)
+        {
+            Windows.EnviarEmailToma.Window1 win = new();
+            win.Show();
+        }
+
+        
 
 
     }
