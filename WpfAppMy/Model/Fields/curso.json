@@ -100,5 +100,23 @@
     "dataType": "DateTime",
     "notNull": true,
     "defaultValue": "current_timestamp()"
+  },
+  "descripcion_horario": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
+    },
+    "name": "descripcion_horario",
+    "alias": null,
+    "entityName": "curso",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
   }
 }

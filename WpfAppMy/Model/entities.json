@@ -1566,7 +1566,8 @@
       "ige",
       "comision",
       "asignatura",
-      "alta"
+      "alta",
+      "descripcion_horario"
     ],
     "fk": [
       "comision",
