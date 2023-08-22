@@ -631,8 +631,7 @@
     "orderDefault": {},
     "noAdmin": [],
     "unique": [
-      "nombre",
-      "codigo"
+      "nombre"
     ],
     "notNull": [
       "id",
