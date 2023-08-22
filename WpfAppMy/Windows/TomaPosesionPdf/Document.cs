@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,13 +16,15 @@ using QuestPDF.Infrastructure;
 namespace WpfAppMy.Windows.TomaPosesionPdf
 {
 
-    public class Document : IDocument
+    internal class Document : IDocument
     {
-        public TomaPosesionData Model;
+        public Toma Model;
         public DocumentMetadata GetMetadata() => DocumentMetadata.Default;
         public DocumentSettings GetSettings() => DocumentSettings.Default;
 
-        public Document(TomaPosesionData model)
+        TextInfo textInfo = new CultureInfo("es-AR", false).TextInfo;
+
+        public Document(Toma model)
         {
             Model = model;
         }
@@ -52,7 +56,7 @@ namespace WpfAppMy.Windows.TomaPosesionPdf
 
                 row.RelativeItem().AlignRight().Column(column =>
                 {
-                    column.Item().Image(Model.qrCode).FitArea();
+                    column.Item().Image(Model.qr_code).FitArea();
                 }); 
             });
         }
@@ -123,10 +127,10 @@ namespace WpfAppMy.Windows.TomaPosesionPdf
                 });
                 // step 2
                 table.Cell().Row(1).Column(1).Element(BlockHeader).Text("Nombre").Bold();
-                table.Cell().Row(1).Column(2).ColumnSpan(3).Element(BlockContent).Text("Nombre del Docente");
+                table.Cell().Row(1).Column(2).ColumnSpan(3).Element(BlockContent).Text(Model.docente__apellidos.ToUpper() + ", " + textInfo.ToTitleCase(Model.docente__nombres));
                 
                 table.Cell().Row(2).Column(1).Element(BlockHeader).Text("CUIL").Bold();
-                table.Cell().Row(2).Column(2).Element(BlockContent).Text("Cuil del Docente");
+                table.Cell().Row(2).Column(2).Element(BlockContent).Text(Model.docente__cuil);
                
                 table.Cell().Row(2).Column(3).Element(BlockHeader).Text("Fecha de Nacimiento:").Bold();
                 table.Cell().Row(2).Column(4).Element(BlockContent).Text("01/01/1900");

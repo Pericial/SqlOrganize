@@ -1,0 +1,43 @@
+﻿<Window x:Class="WpfAppMy.Windows.ProcesarComisionesProgramaFines.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppMy.Windows.ProcesarComisionesProgramaFines"
+        mc:Ignorable="d"
+        Title="Window1" Height="450" Width="800">
+    <DockPanel>
+        <Grid DockPanel.Dock="Top">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height = "Auto" />
+                <RowDefinition Height = "Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width = "Auto" />
+                <ColumnDefinition Width = "200" />
+            </Grid.ColumnDefinitions>
+
+            <Label 
+                Name = "comisionesDataLabel"
+                Margin = "2">Comisiones data</Label>
+
+            <TextBox
+                Name="data" 
+                Grid.Column="1"
+                Height="200"
+                Width="500"
+                AcceptsReturn="True"/>
+
+
+            <StackPanel Grid.Row = "1" Grid.ColumnSpan = "2">
+                <Button Content = "_Procesar..." Click="ProcesarButton_Click" />
+            </StackPanel>
+        </Grid>
+        <Grid DockPanel.Dock="Bottom">
+            <TextBox Name = "info" />
+        </Grid>
+
+    </DockPanel>
+</Window>

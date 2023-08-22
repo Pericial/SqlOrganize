@@ -174,6 +174,13 @@ namespace WpfAppMy.Windows.ListaTomas
             set { _id = value; NotifyPropertyChanged(); }
         }
 
+        private DateTime _fecha_toma;
+        public DateTime fecha_toma
+        {
+            get { return _fecha_toma; }
+            set { _fecha_toma = value; NotifyPropertyChanged(); }
+        }
+
         private string _estado;
         public string estado
         {

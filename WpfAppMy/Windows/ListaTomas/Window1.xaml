@@ -53,9 +53,9 @@
                 <DataGridTextColumn Header="Estado" Binding="{Binding estado}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Estado contralor" Binding="{Binding estado_contralor}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Tipo movimiento" Binding="{Binding tipo_movimiento}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Nombres" Binding="{Binding persona__nombres}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Apellidos" Binding="{Binding persona__apellidos}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Número Documento" Binding="{Binding persona__numero_documento}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Nombres" Binding="{Binding docente__nombres}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Apellidos" Binding="{Binding docente__apellidos}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Número Documento" Binding="{Binding docente__numero_documento}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
     </DockPanel>

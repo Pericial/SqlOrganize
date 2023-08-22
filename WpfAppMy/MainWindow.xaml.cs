@@ -97,23 +97,17 @@ namespace WpfAppMy
         {
             Windows.ProcesarDocentesProgramaFines.Window1 win = new();
             win.Show();
-
+        }
+        private void ProcesarComisionesProgramaFines_Click(object sender, RoutedEventArgs e)
+        {
+            Windows.ProcesarComisionesProgramaFines.Window1 win = new();
+            win.Show();
         }
 
         private void PruebaPdf_Click(object sender, RoutedEventArgs e)
         {
-            QRCodeGenerator qrGenerator = new QRCodeGenerator();
-            QRCodeData qrCodeData = qrGenerator.CreateQrCode("https://planfines2.com.ar/validar-toma?id=something", QRCodeGenerator.ECCLevel.Q);
-            QRCode qrCode = new QRCode(qrCodeData);
-            Bitmap qrCodeImage = qrCode.GetGraphic(20);
-            ImageConverter converter = new ImageConverter();
-            TomaPosesionData tpd = new()
-            {
-
-                qrCode = (byte[])converter.ConvertTo(qrCodeImage, typeof(byte[])),
-            };
-            Windows.TomaPosesionPdf.Document document = new(tpd);
-            document.GeneratePdf("C:\\Users\\ivan\\Downloads\\hello1.pdf");
+            Windows.TomaPosesionPdf.Window1 win = new();
+            win.Show();
         }
 
 
