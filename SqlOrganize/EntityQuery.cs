@@ -94,11 +94,11 @@ namespace SqlOrganize
 
             string ww = UniqueMultiple(db.Entity(entityName).uniqueMultiple);
             if (!ww.IsNullOrEmpty()) 
-                w += " OR " + ww;
+                w += (w.IsNullOrEmpty()) ? ww : " OR " + ww;
 
             ww = UniqueMultiple(db.Entity(entityName).pk);
             if (!ww.IsNullOrEmpty())
-                w += " OR " + ww;
+                w += (w.IsNullOrEmpty()) ? ww : " OR " + ww;
 
             return w;
         }
