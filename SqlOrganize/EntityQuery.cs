@@ -393,7 +393,7 @@ namespace SqlOrganize
         {
             string whereUnique = SqlWhereUnique();
             if(!whereUnique.IsNullOrEmpty())
-                where += (where.IsNullOrEmpty()) ? whereUnique : " AND " + whereUnique;
+                where += (where.IsNullOrEmpty()) ? whereUnique : " AND (" + whereUnique + ")";
             return (where.IsNullOrEmpty()) ? "" : "WHERE " + Traduce(where!) + @"
 ";
         }
