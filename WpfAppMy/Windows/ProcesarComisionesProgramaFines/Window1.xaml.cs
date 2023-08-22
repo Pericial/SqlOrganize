@@ -49,16 +49,19 @@ namespace WpfAppMy.Windows.ProcesarComisionesProgramaFines
             foreach (var line in data.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries))
             {
                 if(procesar_docente) {
-                    procesar_docente = false;
-                    if (line.Contains("*") || !line.Contains("-"))
-                    {
+                    if (line.Contains("*")) {
                         logs.Add("Docente sin designar en curso " + dict["comision__pfid"].ToString() + " " + dict["asignatura__codigo"].ToString());
+                        procesar_docente = false;
+                        continue;
+                    }
+                    else if (!line.Contains("-")){
+                        logs.Add("Salto de línea, en curso " + dict["comision__pfid"].ToString() + " " + dict["asignatura__codigo"].ToString());
                         continue;
                     }
                     else
                     {
                         logs.Add("Procesando docente de curso" + dict["comision__pfid"].ToString() + " " + dict["asignatura__codigo"].ToString());
-
+                        procesar_docente = false;
                         string cuil = line.Substring(line.IndexOf("-") - 2, 13);
                         string[] cuil_ = cuil.Split("-");
                         string id = dao.IdPersona(cuil_[1]);
@@ -69,6 +72,7 @@ namespace WpfAppMy.Windows.ProcesarComisionesProgramaFines
                         }
                         var p = ContainerApp.db.Persist("persona").UpdateValue("cuil", String.Join("",cuil_), id).Exec();
                         ContainerApp.dbCache.Remove(p.detail);
+                        continue;
                     }
 
                 }

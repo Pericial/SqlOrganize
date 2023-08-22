@@ -36,7 +36,6 @@ namespace WpfAppMy.Windows.TomaPosesionPdf
                 .Page(page =>
                 {
                     page.Margin(50);
-                    page.MarginBottom(115);
 
                     page.Header().Height(80).Element(ComposeHeader);
                     page.Content().Element(ComposeContent);
@@ -133,13 +132,13 @@ namespace WpfAppMy.Windows.TomaPosesionPdf
                 table.Cell().Row(2).Column(2).Element(BlockContent).Text(Model.docente__cuil);
                
                 table.Cell().Row(2).Column(3).Element(BlockHeader).Text("Fecha de Nacimiento:").Bold();
-                table.Cell().Row(2).Column(4).Element(BlockContent).Text("01/01/1900");
+                table.Cell().Row(2).Column(4).Element(BlockContent).Text(Model.docente__fecha_nacimiento.ToString("dd/MM/yyyy"));
                 
                 table.Cell().Row(3).Column(1).Element(BlockHeader).Text("Email").Bold();
-                table.Cell().Row(3).Column(2).ColumnSpan(3).Element(BlockContent).Text("Email del Docente");
+                table.Cell().Row(3).Column(2).ColumnSpan(3).Element(BlockContent).Text(Model.docente__email);
 
                 table.Cell().Row(4).Column(1).Element(BlockHeader).Text("Domicilio").Bold();
-                table.Cell().Row(4).Column(2).ColumnSpan(3).Element(BlockContent).Text("Domicilio del Docente");
+                table.Cell().Row(4).Column(2).ColumnSpan(3).Element(BlockContent).Text(Model.docente__descripcion_domicilio);
 
             });
         }
@@ -161,22 +160,28 @@ namespace WpfAppMy.Windows.TomaPosesionPdf
                 });
                 // step 2
                 table.Cell().Row(1).Column(1).Element(BlockHeader).Text("Sede").Bold();
-                table.Cell().Row(1).Column(2).ColumnSpan(3).Element(BlockContent).Text("Nombre de la sede");
+                table.Cell().Row(1).Column(2).ColumnSpan(3).Element(BlockContent).Text(Model.sede__nombre);
 
                 table.Cell().Row(1).Column(5).Element(BlockHeader).Text("Comisión").Bold();
-                table.Cell().Row(1).Column(6).Element(BlockContent).Text("10090");
+                table.Cell().Row(1).Column(6).Element(BlockContent).Text(Model.comision__pfid);
 
-                table.Cell().Row(2).Column(1).Element(BlockHeader).Text("Fecha Toma").Bold();
-                table.Cell().Row(2).Column(2).ColumnSpan(2).Element(BlockContent).Text("01/01/1900");
+                table.Cell().Row(2).Column(1).Element(BlockHeader).Text("Domicilio").Bold();
+                table.Cell().Row(2).Column(2).ColumnSpan(5).Element(BlockContent).Text(Model.domicilio__calle + " e/ " +  Model.domicilio__entre + " N° " + Model.domicilio__numero + " " + Model.domicilio__localidad);
 
-                table.Cell().Row(2).Column(4).Element(BlockHeader).Text("Fecha Fin").Bold();
-                table.Cell().Row(2).Column(5).ColumnSpan(2).Element(BlockContent).Text("01/01/1900");
+                table.Cell().Row(3).Column(1).Element(BlockHeader).Text("Horario").Bold();
+                table.Cell().Row(3).Column(2).ColumnSpan(5).Element(BlockContent).Text(Model.curso__descripcion_horario);
 
-                table.Cell().Row(3).Column(1).Element(BlockHeader).Text("Asignatura").Bold();
-                table.Cell().Row(3).Column(2).ColumnSpan(3).Element(BlockContent).Text("Matemática");
+                table.Cell().Row(4).Column(1).Element(BlockHeader).Text("Fecha Toma").Bold();
+                table.Cell().Row(4).Column(2).ColumnSpan(2).Element(BlockContent).Text("07/08/2023");
 
-                table.Cell().Row(3).Column(5).Element(BlockHeader).Text("Hs Cát").Bold();
-                table.Cell().Row(3).Column(6).Element(BlockContent).Text("6");
+                table.Cell().Row(4).Column(4).Element(BlockHeader).Text("Fecha Fin").Bold();
+                table.Cell().Row(4).Column(5).ColumnSpan(2).Element(BlockContent).Text("08/12/2023");
+
+                table.Cell().Row(5).Column(1).Element(BlockHeader).Text("Asignatura").Bold();
+                table.Cell().Row(5).Column(2).ColumnSpan(3).Element(BlockContent).Text(Model.asignatura__nombre + " " + Model.asignatura__codigo);
+
+                table.Cell().Row(5).Column(5).Element(BlockHeader).Text("Hs Cát").Bold();
+                table.Cell().Row(5).Column(6).Element(BlockContent).Text(Model.curso__horas_catedra.ToString());
 
 
           

@@ -1,0 +1,1 @@
+UPDATE persona SET email_abc = NULL WHERE email_abc = 'gabrielformigo@abc.gob.ar';UPDATE persona SET email_abc = NULL WHERE email_abc = 'gabrielformigo@abc.gob.ar';
