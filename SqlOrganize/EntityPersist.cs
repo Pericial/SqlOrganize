@@ -123,7 +123,7 @@ VALUES (";
             sql += @");
 ";
             EntityValues v = db.Values(_entityName).Set(row_);
-            if (!v.values.ContainsKey(db.config.id)) //si el db.config.id es calculado se define y resetea
+            if (!v.values.ContainsKey(db.config.id))
                 v.Set(db.config.id, null).Reset(db.config.id);
             row[db.config.id] = v.Get(db.config.id);
             detail.Add((_entityName!, (string)row[db.config.id]));
