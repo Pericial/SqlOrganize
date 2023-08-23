@@ -46,8 +46,8 @@ namespace ModelOrganize
                 foreach (Column col in table.Columns)
                 {
                     if (col.IS_FOREIGN_KEY == 1 && !Config.reservedEntities.Contains(col.REFERENCED_TABLE_NAME!)) {
-                        string aliasSource = (Config.idSource == "field_name") ? col.COLUMN_NAME : col.REFERENCED_TABLE_NAME;
-                        col.Alias = GetAlias(aliasSource, fieldAlias, 3);
+                        string idSource = (Config.idSource == "field_name") ? col.COLUMN_NAME : col.REFERENCED_TABLE_NAME;
+                        col.Alias = GetAlias(idSource, fieldAlias, 3);
                         fieldAlias.Add(col.Alias);
                     }
                     table.ColumnNames.Add(col.COLUMN_NAME);
