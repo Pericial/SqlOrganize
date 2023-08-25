@@ -54,6 +54,7 @@ namespace SqlOrganize
 
         /*
         Para sql server se debe aplicar trim porque agrega espacios adicionales
+        cuidado de no generar strings mayores a 255 
         */
         public string _Id()
         {
@@ -63,10 +64,10 @@ namespace SqlOrganize
                 map_.Add(Map(f));
 
             if (map_.Count == 1)
-                return "TRIM(CAST(" + map_[0] + " AS char))";
+                return "TRIM(CAST(" + map_[0] + " AS varchar(255)))";
 
 
-            return "TRIM(CAST(CONCAT_WS('"+ db.config.concatString + "'," + String.Join(",", map_) + ") AS char))";
+            return "TRIM(CAST(CONCAT_WS('"+ db.config.concatString + "'," + String.Join(",", map_) + ") AS varchar(255)))";
         }
 
         protected string _Map(string fieldName)
