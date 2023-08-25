@@ -45,6 +45,9 @@ namespace SqlOrganize
 
         public List<object> parameters = new List<object> { };
 
+        public Dictionary<string, object> parametersDict = new ();
+
+
         /// <summary>
         /// Diccionario utilizado para definir la busquedaa traves de campos unicos
         /// </summary>
@@ -207,6 +210,12 @@ namespace SqlOrganize
         public EntityQuery Parameters(params object[] parameters)
         {
             this.parameters.AddRange(parameters.ToList());
+            return this;
+        }
+
+        public EntityQuery Parameters(Dictionary<string, object> parameters)
+        {
+            this.parametersDict.Merge(parameters);
             return this;
         }
 
@@ -466,6 +475,7 @@ namespace SqlOrganize
             var q = db.Query();
             q.sql = Sql();
             q.parameters.AddRange(parameters);
+            q.parametersDict.Merge(parametersDict);
             return q.ListDict();
         }
 
@@ -474,6 +484,7 @@ namespace SqlOrganize
             var q = db.Query();
             q.sql = Sql();
             q.parameters.AddRange(parameters);
+            q.parametersDict.Merge(parametersDict);
             return q.ListObj<T>();
         }
 
@@ -482,6 +493,7 @@ namespace SqlOrganize
             var q = db.Query();
             q.sql = Sql();
             q.parameters.AddRange(parameters);
+            q.parametersDict.Merge(parametersDict);
             return q.Dict();
         }
 
@@ -490,6 +502,7 @@ namespace SqlOrganize
             var q = db.Query();
             q.sql = Sql();
             q.parameters.AddRange(parameters);
+            q.parametersDict.Merge(parametersDict);
             return q.Obj<T>();
 
         }
@@ -499,6 +512,7 @@ namespace SqlOrganize
             var q = db.Query();
             q.sql = Sql();
             q.parameters.AddRange(parameters);
+            q.parametersDict.Merge(parametersDict);
             return q.Column<T>(columnName);
         }
 
@@ -507,6 +521,7 @@ namespace SqlOrganize
             var q = db.Query();
             q.sql = Sql();
             q.parameters.AddRange(parameters);
+            q.parametersDict.Merge(parametersDict);
             return q.Column<T>(columnValue);
         }
         public T Value<T>(string columnName)
@@ -514,6 +529,7 @@ namespace SqlOrganize
             var q = db.Query();
             q.sql = Sql();
             q.parameters.AddRange(parameters);
+            q.parametersDict.Merge(parametersDict);
             return q.Value<T>(columnName);
         }
 
@@ -522,6 +538,7 @@ namespace SqlOrganize
             var q = db.Query();
             q.sql = Sql();
             q.parameters.AddRange(parameters);
+            q.parametersDict.Merge(parametersDict);
             return q.Value<T>(columnValue);
         }
 
@@ -534,6 +551,7 @@ namespace SqlOrganize
             eq.where = where;
             eq.page = page;
             eq.parameters = parameters;
+            eq.parametersDict = parametersDict;
             eq.group = group;
             eq.having = having;
             eq.fields = fields;
