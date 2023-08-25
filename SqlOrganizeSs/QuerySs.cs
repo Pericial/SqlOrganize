@@ -17,6 +17,16 @@ namespace SqlOrganizeSs
         {
             connection.Open();
             command.Connection = connection;
+
+            var j = parameters.Count;
+            foreach(var (key, value) in parametersDict)
+                while (sql.Contains(@key))
+                {
+                    sql = sql.ReplaceFirst("@" + key, "@"+ j.ToString());
+                    parameters.Add(value);
+                    j++;
+                }
+
             for (var i = 0; i < parameters.Count; i++)
             {
                 if (parameters[i].IsList())
