@@ -24,7 +24,12 @@ namespace SqlOrganize
         /// <summary>
         /// Parametros de las consultas
         /// </summary>
-        public List<object> parameters { get; set; }  = new List<object> { };
+        public List<object> parameters { get; set; }  = new List<object>();
+
+        /// <summary>
+        /// Parametros de las consultas
+        /// </summary>
+        public Dictionary<string, object> parametersDict { get; set; } = new ();
 
         /// <summary>
         /// Consultas en SQL
