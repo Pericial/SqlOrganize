@@ -3041,7 +3041,8 @@
       "calificacion",
       "temas_tratados",
       "asistencia",
-      "sin_planillas"
+      "sin_planillas",
+      "confirmada"
     ],
     "fk": [
       "curso",
@@ -3060,7 +3061,8 @@
       "calificacion",
       "temas_tratados",
       "asistencia",
-      "sin_planillas"
+      "sin_planillas",
+      "confirmada"
     ],
     "uniqueMultiple": [],
     "id": [

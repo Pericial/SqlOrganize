@@ -245,6 +245,28 @@ namespace WpfAppMy.Windows.ListaTomas
             set { _docente = value; NotifyPropertyChanged(); }
         }
 
+        private bool _confirmada;
+
+        public bool confirmada
+        {
+            get { return _confirmada; }
+            set { _confirmada = value; NotifyPropertyChanged(); }
+        }
+
+        public string _observaciones;
+
+        public string observaciones
+        {
+            get { return _observaciones; }
+            set { _observaciones = value; NotifyPropertyChanged(); }
+        }
+
+        public string comision__pfid { get; set; }
+        public string asignatura__nombre { get; set; }
+        public string asignatura__codigo { get; set; }
+
+
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([System.Runtime.CompilerServices.CallerMemberName] String propertyName = "")

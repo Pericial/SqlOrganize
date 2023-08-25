@@ -33,19 +33,30 @@ namespace WpfAppMy.Windows.EnviarEmailToma
             List<Dictionary<string, object>> list = dao.TomaAll();
             foreach (Dictionary<string, object> item in list)
             {
+                List<string> comisiones = new() { "10086"};
                 Toma toma = item.ConvertToObject<Toma>();
-                Email email = new Email(toma);
-                info.Text += email.To + @"
+                if (comisiones.Contains(toma.comision__pfid)) {
+                    if (toma.docente__email_abc.IsNullOrEmpty())
+                    {
+                        info.Text += $@"El email de la docente no esta definido en: {toma.comision__pfid} {toma.asignatura__nombre}
+";
+                        continue;
+                    }
+                    Email email = new Email(toma);
+                    email.Send();
+                    info.Text += email.Subject + @"
+";
+                }
+                /*info.Text += email.To + @"
 ";
                 info.Text += email.Attachment + @"
 ";
-                info.Text += email.Subject + @"
-";
+                
                 info.Text += email.Body + @"
 
 
 
-"; 
+"; */
             }
 
             

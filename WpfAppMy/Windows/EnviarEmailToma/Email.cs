@@ -16,6 +16,7 @@ namespace WpfAppMy.Windows.EnviarEmailToma
         public string? Subject = null;
         public string? Body = null;
         public string? To = null;
+        public string? Bcc = null;
         public string? Attachment = null;
 
         public Email(Toma model) : base() {
@@ -24,8 +25,9 @@ namespace WpfAppMy.Windows.EnviarEmailToma
             Credentials = new NetworkCredential(ContainerApp.config.emailDocenteUser, ContainerApp.config.emailDocentePassword);
             EnableSsl = true;
             Model = model;
-            Attachment = $"C:\\Users\\icastaneda\\Downloads\\{Model.comision__pfid}_{Model.asignatura__codigo}_{Model.docente__numero_documento}.pdf";
+            Attachment = $"C:\\Users\\ivan\\Downloads\\{Model.comision__pfid}_{Model.asignatura__codigo}_{Model.docente__numero_documento}.pdf";
             To = Model.docente__email_abc;
+            Bcc = ContainerApp.config.emailDocenteBcc;
             Subject = $"Toma de posesión: {Model.comision__pfid} {Model.asignatura__nombre}";
             Body = $@"
 <p>Hola {Model.docente__nombres} {Model.docente__apellidos}, usted ha recibido este email porque fue designado/a en la asignatura <strong>{Model.asignatura__nombre}</strong> de sede {Model.sede__nombre}</p>
@@ -57,10 +59,10 @@ Equipo de Coordinadores del Plan Fines 2 CENS 462
                 IsBodyHtml = true,
             };
 
-            var attachment = new Attachment("C:\\Users\\icastaneda\\Downloads\\10066_WIF_19046317.pdf");
+            var attachment = new Attachment(Attachment!);
             mailMessage.Attachments.Add(attachment);
-            mailMessage.To.Add("icastaneda@abc.gob.ar");
-
+            mailMessage.To.Add(To!);
+            mailMessage.Bcc.Add(Bcc!);
 
             Send(mailMessage);
         }

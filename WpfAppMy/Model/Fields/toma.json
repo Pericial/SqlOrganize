@@ -267,5 +267,20 @@
     "dataType": "bool",
     "notNull": true,
     "defaultValue": false
+  },
+  "confirmada": {
+    "checks": {
+      "type": "bool",
+      "required": true
+    },
+    "resets": {},
+    "name": "confirmada",
+    "alias": null,
+    "entityName": "toma",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bool",
+    "notNull": true,
+    "defaultValue": false
   }
 }

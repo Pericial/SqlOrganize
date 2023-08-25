@@ -38,13 +38,15 @@ namespace WpfAppMy.Windows.TomaPosesionPdf
             foreach(Dictionary<string, object> item in list)
             {
                 Toma toma = item.ConvertToObject<Toma>();
+                if (!toma.comision__pfid.Equals("10073") && !toma.comision__pfid.Equals("10074")) continue;
                 QRCodeData qrCodeData = qrGenerator.CreateQrCode("https://planfines2.com.ar/validar-toma/" + toma.id, QRCodeGenerator.ECCLevel.Q);
                 QRCode qrCode = new QRCode(qrCodeData);
                 Bitmap qrCodeImage = qrCode.GetGraphic(20);
                 ImageConverter converter = new ImageConverter();
                 toma.qr_code = (byte[])converter.ConvertTo(qrCodeImage, typeof(byte[]));
                 Document document = new(toma);
-                document.GeneratePdf("C:\\Users\\icastaneda\\Downloads\\" + toma.comision__pfid + "_" + toma.asignatura__codigo + "_" + toma.docente__numero_documento + ".pdf");
+                document.GeneratePdf("C:\\Users\\ivan\\Downloads\\" + toma.comision__pfid + "_" + toma.asignatura__codigo + "_" + toma.docente__numero_documento + ".pdf");
+            
             }
         }
 
