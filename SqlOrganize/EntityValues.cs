@@ -92,7 +92,10 @@ namespace SqlOrganize
                     values[fieldName] = Int32.Parse(value.ToString());
                     break;
                 case "bool":
-                    values[fieldName] = (value as string).ToBool();
+                    if(value is bool)
+                        values[fieldName] = (bool)value;
+                    else 
+                        values[fieldName] = (value as string).ToBool();
                     break;
                 case "date":
                     throw new NotImplementedException();
