@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using System.Windows.Controls.Primitives;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows;
 
-namespace Utils
+namespace WpfUtils
 {
-    public static class WpfUtils
+    public static class Utils
     {
         /// <summary>
         /// GetVisualChild
@@ -92,6 +93,33 @@ namespace Utils
         {
             DataGridRow rowContainer = grid.GetRow(row);
             return grid.GetCell(rowContainer, column);
+        }
+
+
+        /// <summary>
+        /// Find T parent
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="child"></param>
+        /// <remarks>https://stackoverflow.com/questions/30780789/get-column-name-from-object-sender-routedeventargs-e</remarks>
+        /// <example>DataGrid parentGrid = FindParent<DataGrid>(sender as TextBox);<br/>
+        /// DataGrid parentGrid = FindParent<DataGrid>(sender as DataGridColumnHeader );
+        /// </example>
+        /// <returns></returns>
+        public static T FindParent<T>(DependencyObject child) where T : DependencyObject
+        {
+            //get parent item
+            DependencyObject parentObject = VisualTreeHelper.GetParent(child);
+
+            //we've reached the end of the tree
+            if (parentObject == null) return null;
+
+            //check if the parent matches the type we're looking for
+            T parent = parentObject as T;
+            if (parent != null)
+                return parent;
+            else
+                return FindParent<T>(parentObject);
         }
 
 
