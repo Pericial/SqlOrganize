@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Google.Protobuf.WellKnownTypes;
+using MySqlX.XDevAPI.Relational;
+using SqlOrganize;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,6 +31,31 @@ namespace WpfAppMy
                 return null;
 
             return ContainerApp.dbCache.Dict(q);
+        }
+
+        public void Persist(EntityValues v)
+        {
+            if (v.Get(ContainerApp.config.id).IsNullOrEmpty())
+            {
+                v.Default().Reset();
+                var p = ContainerApp.db.Persist(v.entityName).Insert(v.values).Exec();
+                ContainerApp.dbCache.Remove(p.detail);
+            }
+            else
+            {
+                v.Reset();
+                var p = ContainerApp.db.Persist(v.entityName).Update(v.values).Exec();
+                ContainerApp.dbCache.Remove(p.detail);
+            }
+        }
+
+
+        public Dictionary<string, object>? RowByUniqueFieldOrUniqueValues(string fieldName, EntityValues values)
+        {
+            if (ContainerApp.db.Field(values.entityName, fieldName).IsUnique())
+                return RowByEntityFieldValue(values.entityName, fieldName, values.Get(fieldName));
+            else
+                return RowByEntityUnique(values.entityName, values.Get());
         }
     }
 }

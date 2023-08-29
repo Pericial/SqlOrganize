@@ -129,6 +129,22 @@ namespace SqlOrganize
         {
             return new(this, entityName, fieldId);
         }
+
+        /// <summary>
+        /// Extrae los elementos de una key
+        /// </summary>
+        /// <param name="entityName">Nombre de la entidad</param>
+        /// <param name="key">fieldId-fieldName</param>
+        /// <returns>Elementos de la relación</returns>
+        /// <remarks>Asegurar existencia de caracter de separación.<br/>
+        /// Se puede controlar por ej.: if (key.Contains(ContainerApp.db.config.idAttrSeparatorString)) </remarks>
+        public (string fieldId, string fieldName, string refEntityName) KeyDeconstruction(string entityName, string key) {
+            int i = key.IndexOf(config.idAttrSeparatorString);
+            string fieldId = key.Substring(0, i);
+            string refEntityName = Entity(entityName!).relations[fieldId].refEntityName;
+            string fieldName = key.Substring(i + config.idAttrSeparatorString.Length);
+            return (fieldId, fieldName, refEntityName);
+        }
     }
 
 }

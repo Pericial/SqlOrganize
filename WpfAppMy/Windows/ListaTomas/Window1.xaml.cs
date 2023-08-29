@@ -65,17 +65,10 @@ namespace WpfAppMy.Windows.ListaTomas
                     object value = (e.EditingElement as TextBox)!.Text;
                     Dictionary<string, object> source = (Dictionary<string, object>)((Toma)e.Row.DataContext).ConvertToDict();
                     string? fieldId = null;
-                    string mainEntityName = "toma";
-                    string entityName = "toma";
-                    string fieldName = key;
+                    string mainEntityName = "toma", entityName = "toma", fieldName = key;
 
                     if (key.Contains(ContainerApp.db.config.idAttrSeparatorString))
-                    {
-                        int i = key.IndexOf(ContainerApp.db.config.idAttrSeparatorString);
-                        fieldId = key.Substring(0, i);
-                        entityName = ContainerApp.db.Entity(entityName!).relations[fieldId].refEntityName;
-                        fieldName = key.Substring(i + ContainerApp.db.config.idAttrSeparatorString.Length);
-                    }
+                        (fieldId, fieldName, entityName) = ContainerApp.db.KeyDeconstruction(entityName, key);
 
                     bool continueWhile;
                     bool reload = false;
@@ -91,13 +84,9 @@ namespace WpfAppMy.Windows.ListaTomas
                         }
 
                         v.Sset(fieldName, value);
-                        Dictionary<string, object>? row = new();
+                        Dictionary<string, object>? row;
 
-                        //en caso de que el campo editado sea unico, se consultan sus valores
-                        if (ContainerApp.db.Field(entityName, fieldName).IsUnique())
-                            row = dao.RowByEntityFieldValue(entityName, fieldName, value);
-                        else
-                            row = dao.RowByEntityUnique(entityName, v.values);
+                        row = dao.RowByUniqueFieldOrUniqueValues(fieldName, v);
 
                         if (!row.IsNullOrEmpty())
                         {
@@ -112,18 +101,7 @@ namespace WpfAppMy.Windows.ListaTomas
                                 break;
                             }
 
-                            if (v.Get(ContainerApp.config.id).IsNullOrEmpty())
-                            {
-                                v.Default().Reset();
-                                var p = ContainerApp.db.Persist(entityName).Insert(v.values).Exec();
-                                ContainerApp.dbCache.Remove(p.detail);
-                            }
-                            else
-                            {
-                                v.Reset();
-                                var p = ContainerApp.db.Persist(entityName).Update(v.values).Exec();
-                                ContainerApp.dbCache.Remove(p.detail);
-                            }
+                            dao.Persist(v);
                         }
 
                         (e.Row.Item as Toma).CopyNotNullValues(v.Get().ConvertToObject<Toma>());
@@ -155,7 +133,18 @@ namespace WpfAppMy.Windows.ListaTomas
             }
         }
 
+        private void CertificateToCouncilSentCheck_Click(object sender, RoutedEventArgs e)
+        {
+            var row = (CheckBox)sender;
+            
+        }
 
+        private void OnChecked(object sender, RoutedEventArgs e)
+        {
+            var row = (CheckBox)sender;
+
+
+        }
     }
 
     internal class Search
@@ -273,6 +262,7 @@ namespace WpfAppMy.Windows.ListaTomas
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
 
 
 

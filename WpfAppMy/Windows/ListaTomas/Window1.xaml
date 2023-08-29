@@ -59,9 +59,14 @@
                 <DataGridTextColumn Header="Comision" Binding="{Binding comision__pfid}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Asignatura" Binding="{Binding asignatura__nombre}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Codigo" Binding="{Binding asignatura__codigo}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Confirmada" Binding="{Binding confirmada}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Observaciones" Binding="{Binding observaciones}"></DataGridTextColumn>
-
+                <DataGridCheckBoxColumn Binding="{Binding confirmada,UpdateSourceTrigger=PropertyChanged}" Header="Confirmada">
+                    <DataGridCheckBoxColumn.CellStyle>
+                        <Style>
+                            <EventSetter Event="CheckBox.Click" Handler="OnChecked"/>
+                        </Style>
+                    </DataGridCheckBoxColumn.CellStyle>
+                </DataGridCheckBoxColumn>
             </DataGrid.Columns>
         </DataGrid>
     </DockPanel>
