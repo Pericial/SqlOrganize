@@ -60,13 +60,16 @@
                 <DataGridTextColumn Header="Asignatura" Binding="{Binding asignatura__nombre}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Codigo" Binding="{Binding asignatura__codigo}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Observaciones" Binding="{Binding observaciones}"></DataGridTextColumn>
-                <DataGridCheckBoxColumn Binding="{Binding confirmada,UpdateSourceTrigger=PropertyChanged}" Header="Confirmada">
+                <DataGridCheckBoxColumn Binding="{Binding confirmada}" Header="Confirmada">
                     <DataGridCheckBoxColumn.CellStyle>
                         <Style>
-                            <EventSetter Event="CheckBox.Click" Handler="OnChecked"/>
+                            <EventSetter Event="CheckBox.Checked" Handler="TomaGrid_CellCheckBoxClick"/>
+                            <EventSetter Event="CheckBox.Unchecked" Handler="TomaGrid_CellCheckBoxClick"/>
                         </Style>
                     </DataGridCheckBoxColumn.CellStyle>
                 </DataGridCheckBoxColumn>
+
+
             </DataGrid.Columns>
         </DataGrid>
     </DockPanel>

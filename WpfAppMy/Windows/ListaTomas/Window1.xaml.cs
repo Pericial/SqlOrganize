@@ -3,11 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -15,6 +17,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Utils;
+using System.Diagnostics;
+using WpfUtils;
 
 namespace WpfAppMy.Windows.ListaTomas
 {
@@ -60,8 +64,9 @@ namespace WpfAppMy.Windows.ListaTomas
                 var column = e.Column as DataGridBoundColumn;
                 if (column != null)
                 {
-
+                    List<string> ignore = new List<string>() { "confirmada" };
                     string key = ((Binding)column.Binding).Path.Path; //column's binding
+                    if (ignore.Contains(key)) return;
                     object value = (e.EditingElement as TextBox)!.Text;
                     Dictionary<string, object> source = (Dictionary<string, object>)((Toma)e.Row.DataContext).ConvertToDict();
                     string? fieldId = null;
@@ -133,17 +138,41 @@ namespace WpfAppMy.Windows.ListaTomas
             }
         }
 
-        private void CertificateToCouncilSentCheck_Click(object sender, RoutedEventArgs e)
+
+        /// <summary>
+        /// Actualizar checkbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TomaGrid_CellCheckBoxClick(object sender, RoutedEventArgs e)
         {
-            var row = (CheckBox)sender;
-            
-        }
+            var cell = (sender as DataGridCell);
+            var column = cell.Column as DataGridBoundColumn;
+            var value = (cell.Content as CheckBox).IsChecked;
+            if (column != null)
+            {
+                string key = ((Binding)column.Binding).Path.Path; //column's binding.
+                IDictionary<string, object> source = ((sender as DataGridCell).DataContext as Toma).ConvertToDict(); 
+                if((bool)source[key] != value)
+                {
+                    string? fieldId = null;
+                    string entityName = "toma", fieldName = key;
+                    if (key.Contains(ContainerApp.db.config.idAttrSeparatorString))
+                        (fieldId, fieldName, entityName) = ContainerApp.db.KeyDeconstruction(entityName, key);
 
-        private void OnChecked(object sender, RoutedEventArgs e)
-        {
-            var row = (CheckBox)sender;
+                    EntityValues v = ContainerApp.db.Values(entityName, fieldId).Set(source);
+                    v.Sset(fieldName, value);
 
+                    if (v.Check())
+                        dao.Persist(v);
 
+                    DataGridRow row = DataGridRow.GetRowContainingElement(cell);
+                    (row.Item as Toma).CopyNotNullValues(v.Get().ConvertToObject<Toma>());
+
+                    if(!fieldId.IsNullOrEmpty())
+                        LoadData(); //debe recargarse para visualizar los cambios realizados en otras iteraciones
+                }
+            }
         }
     }
 
