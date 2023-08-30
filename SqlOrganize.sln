@@ -31,7 +31,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsAppMy", "WinFormsAp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfAppMy", "WpfAppMy\WpfAppMy.csproj", "{ED0F1F4E-A552-42AA-B18A-9A528EAC4217}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfUtils", "WpfUtils\WpfUtils.csproj", "{80CFB90F-6B5F-4681-8A76-139E2A33382B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfUtils", "WpfUtils\WpfUtils.csproj", "{80CFB90F-6B5F-4681-8A76-139E2A33382B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PedidosModel", "PedidosModel\PedidosModel.csproj", "{FAF1F702-D1A7-4EEA-B12E-5140B9CCA933}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pedidos", "Pedidos\Pedidos.csproj", "{85281012-D814-43AF-B5F1-845D510C5666}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +103,14 @@ Global
 		{80CFB90F-6B5F-4681-8A76-139E2A33382B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80CFB90F-6B5F-4681-8A76-139E2A33382B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80CFB90F-6B5F-4681-8A76-139E2A33382B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAF1F702-D1A7-4EEA-B12E-5140B9CCA933}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAF1F702-D1A7-4EEA-B12E-5140B9CCA933}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAF1F702-D1A7-4EEA-B12E-5140B9CCA933}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAF1F702-D1A7-4EEA-B12E-5140B9CCA933}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85281012-D814-43AF-B5F1-845D510C5666}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85281012-D814-43AF-B5F1-845D510C5666}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85281012-D814-43AF-B5F1-845D510C5666}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85281012-D814-43AF-B5F1-845D510C5666}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
