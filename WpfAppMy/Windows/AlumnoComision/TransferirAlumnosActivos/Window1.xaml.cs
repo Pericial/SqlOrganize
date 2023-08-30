@@ -26,13 +26,9 @@ namespace WpfAppMy.Windows.AlumnoComision.TransferirAlumnosActivos
         public Window1()
         {
             InitializeComponent();
-            var search = new Dictionary<string, object>() {
-                { "calendario-anio", "2023" },
-                { "calendario-semestre", "1" },
-            };
 
-            var alumnos = dao.AlumnoAllByCalendario(search);
-            var comisiones = dao.ComisionConSiguienteAllByCalendario(search);
+            var alumnos = dao.AlumnosPorCalendario("2023", "1");
+            var comisiones = dao.ComisionesConSiguientePorCalendario("2023","1");
 
 
             foreach (var comision in comisiones)

@@ -13,21 +13,21 @@ namespace WpfAppMy.Windows.AlumnoComision
 {
     internal class DAO
     {
-        public List<string> IdAlumnoAllByCalendario(Dictionary<string, object> search)
+        public List<string> IdsAlumnoPorCalendario(object anio, object semestre)
         {
             var q = ContainerApp.Db().Query("alumno_comision")
                 .Fields("alumno")
                 .Size(0)
                 .Where(@"
-                    $calendario-anio = @calendario-anio
-                    AND $calendario-semestre = @calendario-semestre 
+                    $calendario-anio = @0
+                    AND $calendario-semestre = @1 
                 ")
-                .Parameters(search);
+                .Parameters(anio, semestre);
 
             return ContainerApp.DbCache().Column<string>(q);
         }
 
-        public List<Dictionary<string, object>> AlumnoComisionAllByComision(string comision)
+        public List<Dictionary<string, object>> AlumnosComisionesPorComision(object comision)
         {
             var q = ContainerApp.Db().Query("alumno_comision")
                 .Size(0)
@@ -39,29 +39,29 @@ namespace WpfAppMy.Windows.AlumnoComision
             return ContainerApp.DbCache().ListDict(q);
         }
 
-        public List<Dictionary<string, object>> ComisionConSiguienteAllByCalendario(Dictionary<string, object> search)
+        public List<Dictionary<string, object>> ComisionesConSiguientePorCalendario(object anio, object semestre)
         {
             var q = ContainerApp.Db().Query("comision")
                 .Size(0)
                 .Where(@"
-                    $calendario-anio = @calendario-anio
-                    AND $calendario-semestre = @calendario-semestre 
+                    $calendario-anio = @0
+                    AND $calendario-semestre = @1 
                     AND $comision_siguiente IS NOT NULL
                 ")
-                .Parameters(search);
+                .Parameters(anio, semestre);
 
             return ContainerApp.DbCache().ListDict(q);
         }
 
-        public List<Dictionary<string, object>> ComisionAllByCalendario(Dictionary<string, object> search)
+        public List<Dictionary<string, object>> ComisionesPorCalendario(object anio, object semestre)
         {
             var q = ContainerApp.Db().Query("comision")
                 .Size(0)
                 .Where(@"
-                    $calendario-anio = @calendario-anio
-                    AND $calendario-semestre = @calendario-semestre 
+                    $calendario-anio = @0
+                    AND $calendario-semestre = @1 
                 ")
-                .Parameters(search);
+                .Parameters(anio, semestre);
 
             return ContainerApp.DbCache().ListDict(q);
         }
@@ -82,9 +82,9 @@ namespace WpfAppMy.Windows.AlumnoComision
 
 
 
-        public List<Dictionary<string, object>> AlumnoAllByCalendario(Dictionary<string, object> search)
+        public List<Dictionary<string, object>> AlumnosPorCalendario(object anio, object semestre)
         {
-            List<string> ids = IdAlumnoAllByCalendario(search);
+            List<string> ids = IdsAlumnoPorCalendario(anio, semestre);
             return ContainerApp.DbCache().ListDict("alumno", ids.ToArray());
         }
 
@@ -93,9 +93,9 @@ namespace WpfAppMy.Windows.AlumnoComision
         /// </summary>
         /// <param name="comision"></param>
         /// <returns></returns>
-        public List<object> IdAlumnosParaTransferirDeComision(string comision)
+        public List<object> IdAlumnosParaTransferirDeComision(string comision, object anio, object semestre)
         {
-            var alumnoComision_ = AlumnoComisionAllByComision(comision);
+            var alumnoComision_ = AlumnosComisionesPorComision(comision);
             var idAlumnos = alumnoComision_.Column<object>("alumno").Distinct().ToList();
             var idPlan = alumnoComision_[0]["planificacion-plan"];
             var q = ContainerApp.Db().Query("calificacion")
@@ -104,6 +104,7 @@ namespace WpfAppMy.Windows.AlumnoComision
                 .Size(0)
                 .Where(@"
                     $alumno IN (@0)
+                    AND $plan-alu = @1
                     AND $plan-alu = @1
                     AND ($nota_final >= 7 OR $crec >= 4)  
                  ")
