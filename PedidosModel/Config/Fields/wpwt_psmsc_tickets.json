@@ -1,0 +1,5 @@
+{
+  "auth_code": {
+    "defaultValue": "random(8)"
+  }
+}

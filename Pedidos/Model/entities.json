@@ -1,0 +1,1815 @@
+{
+  "wpwt_commentmeta": {
+    "name": "wpwt_commentmeta",
+    "alias": "wpwt",
+    "schema": null,
+    "pk": [
+      "meta_id"
+    ],
+    "fields": [
+      "meta_id",
+      "comment_id",
+      "meta_key",
+      "meta_value"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "meta_id",
+      "comment_id"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "meta_id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_comments": {
+    "name": "wpwt_comments",
+    "alias": "wpw1",
+    "schema": null,
+    "pk": [
+      "comment_ID"
+    ],
+    "fields": [
+      "comment_ID",
+      "comment_post_ID",
+      "comment_author",
+      "comment_author_email",
+      "comment_author_url",
+      "comment_author_IP",
+      "comment_date",
+      "comment_date_gmt",
+      "comment_content",
+      "comment_karma",
+      "comment_approved",
+      "comment_agent",
+      "comment_type",
+      "comment_parent",
+      "user_id"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "comment_ID",
+      "comment_post_ID",
+      "comment_author",
+      "comment_author_email",
+      "comment_author_url",
+      "comment_author_IP",
+      "comment_date",
+      "comment_date_gmt",
+      "comment_content",
+      "comment_karma",
+      "comment_approved",
+      "comment_agent",
+      "comment_type",
+      "comment_parent",
+      "user_id"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "comment_ID"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_e_events": {
+    "name": "wpwt_e_events",
+    "alias": "wpw2",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "event_data",
+      "created_at"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "created_at"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_e_submissions": {
+    "name": "wpwt_e_submissions",
+    "alias": "wpw3",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "type",
+      "hash_id",
+      "main_meta_id",
+      "post_id",
+      "referer",
+      "referer_title",
+      "element_id",
+      "form_name",
+      "campaign_id",
+      "user_id",
+      "user_ip",
+      "user_agent",
+      "actions_count",
+      "actions_succeeded_count",
+      "status",
+      "is_read",
+      "meta",
+      "created_at_gmt",
+      "updated_at_gmt",
+      "created_at",
+      "updated_at"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [
+      "hash_id"
+    ],
+    "notNull": [
+      "id",
+      "hash_id",
+      "main_meta_id",
+      "post_id",
+      "referer",
+      "element_id",
+      "form_name",
+      "campaign_id",
+      "user_ip",
+      "user_agent",
+      "status",
+      "is_read",
+      "created_at_gmt",
+      "updated_at_gmt",
+      "created_at",
+      "updated_at"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_e_submissions_actions_log": {
+    "name": "wpwt_e_submissions_actions_log",
+    "alias": "wpw4",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "submission_id",
+      "action_name",
+      "action_label",
+      "status",
+      "log",
+      "created_at_gmt",
+      "updated_at_gmt",
+      "created_at",
+      "updated_at"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "submission_id",
+      "action_name",
+      "status",
+      "created_at_gmt",
+      "updated_at_gmt",
+      "created_at",
+      "updated_at"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_e_submissions_values": {
+    "name": "wpwt_e_submissions_values",
+    "alias": "wpw5",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "submission_id",
+      "key",
+      "value"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "submission_id"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_frmt_form_entry": {
+    "name": "wpwt_frmt_form_entry",
+    "alias": "wpw6",
+    "schema": null,
+    "pk": [
+      "entry_id"
+    ],
+    "fields": [
+      "entry_id",
+      "entry_type",
+      "draft_id",
+      "form_id",
+      "is_spam",
+      "date_created"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "entry_id",
+      "entry_type",
+      "form_id",
+      "is_spam",
+      "date_created"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "entry_id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_frmt_form_entry_meta": {
+    "name": "wpwt_frmt_form_entry_meta",
+    "alias": "wpw7",
+    "schema": null,
+    "pk": [
+      "meta_id"
+    ],
+    "fields": [
+      "meta_id",
+      "entry_id",
+      "meta_key",
+      "meta_value",
+      "date_created",
+      "date_updated"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "meta_id",
+      "entry_id",
+      "date_created",
+      "date_updated"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "meta_id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_frmt_form_reports": {
+    "name": "wpwt_frmt_form_reports",
+    "alias": "wpw8",
+    "schema": null,
+    "pk": [
+      "report_id"
+    ],
+    "fields": [
+      "report_id",
+      "report_value",
+      "status",
+      "date_created",
+      "date_updated"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "report_id",
+      "report_value",
+      "status",
+      "date_created",
+      "date_updated"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "report_id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_frmt_form_views": {
+    "name": "wpwt_frmt_form_views",
+    "alias": "wpw9",
+    "schema": null,
+    "pk": [
+      "view_id"
+    ],
+    "fields": [
+      "view_id",
+      "form_id",
+      "page_id",
+      "ip",
+      "count",
+      "date_created",
+      "date_updated"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "view_id",
+      "form_id",
+      "page_id",
+      "count",
+      "date_created",
+      "date_updated"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "view_id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_links": {
+    "name": "wpwt_links",
+    "alias": "wpw10",
+    "schema": null,
+    "pk": [
+      "link_id"
+    ],
+    "fields": [
+      "link_id",
+      "link_url",
+      "link_name",
+      "link_image",
+      "link_target",
+      "link_description",
+      "link_visible",
+      "link_owner",
+      "link_rating",
+      "link_updated",
+      "link_rel",
+      "link_notes",
+      "link_rss"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "link_id",
+      "link_url",
+      "link_name",
+      "link_image",
+      "link_target",
+      "link_description",
+      "link_visible",
+      "link_owner",
+      "link_rating",
+      "link_updated",
+      "link_rel",
+      "link_notes",
+      "link_rss"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "link_id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_login_redirects": {
+    "name": "wpwt_login_redirects",
+    "alias": "wpw11",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "rul_type",
+      "rul_value",
+      "rul_url",
+      "rul_url_logout",
+      "rul_order"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "rul_type",
+      "rul_order"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_loginizer_logs": {
+    "name": "wpwt_loginizer_logs",
+    "alias": "wpw12",
+    "schema": null,
+    "pk": [
+      "ip"
+    ],
+    "fields": [
+      "username",
+      "time",
+      "count",
+      "lockout",
+      "ip",
+      "url"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "username",
+      "time",
+      "count",
+      "lockout",
+      "ip",
+      "url"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "ip"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_options": {
+    "name": "wpwt_options",
+    "alias": "wpw13",
+    "schema": null,
+    "pk": [
+      "option_id"
+    ],
+    "fields": [
+      "option_id",
+      "option_name",
+      "option_value",
+      "autoload"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [
+      "option_name"
+    ],
+    "notNull": [
+      "option_id",
+      "option_name",
+      "option_value",
+      "autoload"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "option_id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_postmeta": {
+    "name": "wpwt_postmeta",
+    "alias": "wpw14",
+    "schema": null,
+    "pk": [
+      "meta_id"
+    ],
+    "fields": [
+      "meta_id",
+      "post_id",
+      "meta_key",
+      "meta_value"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "meta_id",
+      "post_id"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "meta_id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_posts": {
+    "name": "wpwt_posts",
+    "alias": "wpw15",
+    "schema": null,
+    "pk": [
+      "ID"
+    ],
+    "fields": [
+      "ID",
+      "post_author",
+      "post_date",
+      "post_date_gmt",
+      "post_content",
+      "post_title",
+      "post_excerpt",
+      "post_status",
+      "comment_status",
+      "ping_status",
+      "post_password",
+      "post_name",
+      "to_ping",
+      "pinged",
+      "post_modified",
+      "post_modified_gmt",
+      "post_content_filtered",
+      "post_parent",
+      "guid",
+      "menu_order",
+      "post_type",
+      "post_mime_type",
+      "comment_count"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "ID",
+      "post_author",
+      "post_date",
+      "post_date_gmt",
+      "post_content",
+      "post_title",
+      "post_excerpt",
+      "post_status",
+      "comment_status",
+      "ping_status",
+      "post_password",
+      "post_name",
+      "to_ping",
+      "pinged",
+      "post_modified",
+      "post_modified_gmt",
+      "post_content_filtered",
+      "post_parent",
+      "guid",
+      "menu_order",
+      "post_type",
+      "post_mime_type",
+      "comment_count"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "ID"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_psmsc_agents": {
+    "name": "wpwt_psmsc_agents",
+    "alias": "wpw16",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "user",
+      "customer",
+      "role",
+      "name",
+      "workload",
+      "unresolved_count",
+      "is_agentgroup",
+      "is_active"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "role",
+      "name",
+      "is_agentgroup",
+      "is_active"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_psmsc_attachments": {
+    "name": "wpwt_psmsc_attachments",
+    "alias": "wpw17",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "name",
+      "file_path",
+      "is_image",
+      "is_active",
+      "is_uploaded",
+      "date_created",
+      "source",
+      "source_id",
+      "ticket_id",
+      "customer_id"
+    ],
+    "fk": [
+      "ticket_id"
+    ],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "name",
+      "file_path",
+      "is_image",
+      "is_active",
+      "is_uploaded",
+      "date_created",
+      "source",
+      "source_id",
+      "ticket_id",
+      "customer_id"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {
+      "ticket_id": {
+        "fieldName": "ticket_id",
+        "refEntityName": "wpwt_psmsc_tickets",
+        "refFieldName": "id",
+        "children": {
+          "customer": {
+            "fieldName": "customer",
+            "refEntityName": "wpwt_psmsc_customers",
+            "refFieldName": "id",
+            "children": {}
+          },
+          "status": {
+            "fieldName": "status",
+            "refEntityName": "wpwt_psmsc_statuses",
+            "refFieldName": "id",
+            "children": {}
+          },
+          "priority": {
+            "fieldName": "priority",
+            "refEntityName": "wpwt_psmsc_priorities",
+            "refFieldName": "id",
+            "children": {}
+          },
+          "category": {
+            "fieldName": "category",
+            "refEntityName": "wpwt_psmsc_categories",
+            "refFieldName": "id",
+            "children": {}
+          }
+        }
+      }
+    },
+    "relations": {
+      "ticket_id": {
+        "fieldName": "ticket_id",
+        "refEntityName": "wpwt_psmsc_tickets",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "customer": {
+        "fieldName": "customer",
+        "refEntityName": "wpwt_psmsc_customers",
+        "refFieldName": "id",
+        "parentId": "ticket_id"
+      },
+      "status": {
+        "fieldName": "status",
+        "refEntityName": "wpwt_psmsc_statuses",
+        "refFieldName": "id",
+        "parentId": "ticket_id"
+      },
+      "priority": {
+        "fieldName": "priority",
+        "refEntityName": "wpwt_psmsc_priorities",
+        "refFieldName": "id",
+        "parentId": "ticket_id"
+      },
+      "category": {
+        "fieldName": "category",
+        "refEntityName": "wpwt_psmsc_categories",
+        "refFieldName": "id",
+        "parentId": "ticket_id"
+      }
+    }
+  },
+  "wpwt_psmsc_categories": {
+    "name": "wpwt_psmsc_categories",
+    "alias": "wpw18",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "name",
+      "load_order"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "name",
+      "load_order"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_psmsc_custom_fields": {
+    "name": "wpwt_psmsc_custom_fields",
+    "alias": "wpw19",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "name",
+      "extra_info",
+      "slug",
+      "field",
+      "type",
+      "default_value",
+      "placeholder_text",
+      "char_limit",
+      "date_display_as",
+      "date_format",
+      "date_range",
+      "start_range",
+      "end_range",
+      "time_format",
+      "is_personal_info",
+      "is_auto_fill",
+      "allow_ticket_form",
+      "allow_my_profile",
+      "tl_width",
+      "load_order"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "name",
+      "extra_info",
+      "is_personal_info",
+      "tl_width",
+      "load_order"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_psmsc_customers": {
+    "name": "wpwt_psmsc_customers",
+    "alias": "wpw20",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "user",
+      "ticket_count",
+      "name",
+      "email"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "user",
+      "ticket_count",
+      "name",
+      "email"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_psmsc_email_notifications": {
+    "name": "wpwt_psmsc_email_notifications",
+    "alias": "wpw21",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "from_name",
+      "from_email",
+      "reply_to",
+      "subject",
+      "body",
+      "to_email",
+      "cc_email",
+      "bcc_email",
+      "attachments",
+      "attempt",
+      "priority"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "priority"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_psmsc_email_otp": {
+    "name": "wpwt_psmsc_email_otp",
+    "alias": "wpw22",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "email",
+      "otp",
+      "date_expiry",
+      "data"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "email",
+      "otp",
+      "date_expiry"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_psmsc_holidays": {
+    "name": "wpwt_psmsc_holidays",
+    "alias": "wpw23",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "agent",
+      "holiday",
+      "is_recurring"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "agent",
+      "holiday",
+      "is_recurring"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_psmsc_logs": {
+    "name": "wpwt_psmsc_logs",
+    "alias": "wpw24",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "type",
+      "ref_id",
+      "modified_by",
+      "body",
+      "date_created"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "type",
+      "ref_id",
+      "modified_by",
+      "body",
+      "date_created"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_psmsc_options": {
+    "name": "wpwt_psmsc_options",
+    "alias": "wpw25",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "name",
+      "custom_field",
+      "date_created",
+      "load_order"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "name",
+      "custom_field",
+      "date_created",
+      "load_order"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_psmsc_priorities": {
+    "name": "wpwt_psmsc_priorities",
+    "alias": "wpw26",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "name",
+      "color",
+      "bg_color",
+      "load_order"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "name",
+      "color",
+      "bg_color",
+      "load_order"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_psmsc_scheduled_tasks": {
+    "name": "wpwt_psmsc_scheduled_tasks",
+    "alias": "wpw27",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "class",
+      "method",
+      "args",
+      "is_manual",
+      "warning_text",
+      "warning_link_text",
+      "progressbar_text",
+      "pages"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "class",
+      "method",
+      "is_manual",
+      "pages"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_psmsc_statuses": {
+    "name": "wpwt_psmsc_statuses",
+    "alias": "wpw28",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "name",
+      "color",
+      "bg_color",
+      "load_order"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "name",
+      "color",
+      "bg_color",
+      "load_order"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_psmsc_threads": {
+    "name": "wpwt_psmsc_threads",
+    "alias": "wpw29",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "ticket",
+      "is_active",
+      "customer",
+      "type",
+      "body",
+      "attachments",
+      "ip_address",
+      "source",
+      "os",
+      "browser",
+      "seen",
+      "date_created",
+      "date_updated"
+    ],
+    "fk": [
+      "ticket"
+    ],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "ticket",
+      "is_active",
+      "type",
+      "body",
+      "date_created",
+      "date_updated"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {
+      "ticket": {
+        "fieldName": "ticket",
+        "refEntityName": "wpwt_psmsc_tickets",
+        "refFieldName": "id",
+        "children": {
+          "customer": {
+            "fieldName": "customer",
+            "refEntityName": "wpwt_psmsc_customers",
+            "refFieldName": "id",
+            "children": {}
+          },
+          "status": {
+            "fieldName": "status",
+            "refEntityName": "wpwt_psmsc_statuses",
+            "refFieldName": "id",
+            "children": {}
+          },
+          "priority": {
+            "fieldName": "priority",
+            "refEntityName": "wpwt_psmsc_priorities",
+            "refFieldName": "id",
+            "children": {}
+          },
+          "category": {
+            "fieldName": "category",
+            "refEntityName": "wpwt_psmsc_categories",
+            "refFieldName": "id",
+            "children": {}
+          }
+        }
+      }
+    },
+    "relations": {
+      "ticket": {
+        "fieldName": "ticket",
+        "refEntityName": "wpwt_psmsc_tickets",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "customer": {
+        "fieldName": "customer",
+        "refEntityName": "wpwt_psmsc_customers",
+        "refFieldName": "id",
+        "parentId": "ticket"
+      },
+      "status": {
+        "fieldName": "status",
+        "refEntityName": "wpwt_psmsc_statuses",
+        "refFieldName": "id",
+        "parentId": "ticket"
+      },
+      "priority": {
+        "fieldName": "priority",
+        "refEntityName": "wpwt_psmsc_priorities",
+        "refFieldName": "id",
+        "parentId": "ticket"
+      },
+      "category": {
+        "fieldName": "category",
+        "refEntityName": "wpwt_psmsc_categories",
+        "refFieldName": "id",
+        "parentId": "ticket"
+      }
+    }
+  },
+  "wpwt_psmsc_tickets": {
+    "name": "wpwt_psmsc_tickets",
+    "alias": "wpw30",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "is_active",
+      "customer",
+      "subject",
+      "status",
+      "priority",
+      "category",
+      "assigned_agent",
+      "date_created",
+      "date_updated",
+      "agent_created",
+      "ip_address",
+      "source",
+      "browser",
+      "os",
+      "add_recipients",
+      "prev_assignee",
+      "date_closed",
+      "user_type",
+      "last_reply_on",
+      "last_reply_by",
+      "auth_code",
+      "cust_24",
+      "cust_25",
+      "cust_26",
+      "cust_27",
+      "cust_28"
+    ],
+    "fk": [
+      "customer",
+      "status",
+      "priority",
+      "category"
+    ],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "is_active",
+      "customer",
+      "subject",
+      "status",
+      "priority",
+      "category",
+      "date_created",
+      "date_updated",
+      "last_reply_by"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {
+      "customer": {
+        "fieldName": "customer",
+        "refEntityName": "wpwt_psmsc_customers",
+        "refFieldName": "id",
+        "children": {}
+      },
+      "status": {
+        "fieldName": "status",
+        "refEntityName": "wpwt_psmsc_statuses",
+        "refFieldName": "id",
+        "children": {}
+      },
+      "priority": {
+        "fieldName": "priority",
+        "refEntityName": "wpwt_psmsc_priorities",
+        "refFieldName": "id",
+        "children": {}
+      },
+      "category": {
+        "fieldName": "category",
+        "refEntityName": "wpwt_psmsc_categories",
+        "refFieldName": "id",
+        "children": {}
+      }
+    },
+    "relations": {
+      "customer": {
+        "fieldName": "customer",
+        "refEntityName": "wpwt_psmsc_customers",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "status": {
+        "fieldName": "status",
+        "refEntityName": "wpwt_psmsc_statuses",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "priority": {
+        "fieldName": "priority",
+        "refEntityName": "wpwt_psmsc_priorities",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "category": {
+        "fieldName": "category",
+        "refEntityName": "wpwt_psmsc_categories",
+        "refFieldName": "id",
+        "parentId": null
+      }
+    }
+  },
+  "wpwt_psmsc_wh_exceptions": {
+    "name": "wpwt_psmsc_wh_exceptions",
+    "alias": "wpw31",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "agent",
+      "title",
+      "exception_date",
+      "start_time",
+      "end_time"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "agent",
+      "title",
+      "exception_date",
+      "start_time",
+      "end_time"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_psmsc_working_hrs": {
+    "name": "wpwt_psmsc_working_hrs",
+    "alias": "wpw32",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "agent",
+      "day",
+      "start_time",
+      "end_time"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "agent",
+      "day",
+      "start_time",
+      "end_time"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_term_relationships": {
+    "name": "wpwt_term_relationships",
+    "alias": "wpw33",
+    "schema": null,
+    "pk": [
+      "object_id",
+      "term_taxonomy_id"
+    ],
+    "fields": [
+      "object_id",
+      "term_taxonomy_id",
+      "term_order"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "object_id",
+      "term_taxonomy_id",
+      "term_order"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "object_id",
+      "term_taxonomy_id",
+      "term_order"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_term_taxonomy": {
+    "name": "wpwt_term_taxonomy",
+    "alias": "wpw34",
+    "schema": null,
+    "pk": [
+      "term_taxonomy_id"
+    ],
+    "fields": [
+      "term_taxonomy_id",
+      "term_id",
+      "taxonomy",
+      "description",
+      "parent",
+      "count"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "term_taxonomy_id",
+      "term_id",
+      "taxonomy",
+      "description",
+      "parent",
+      "count"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "term_taxonomy_id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_termmeta": {
+    "name": "wpwt_termmeta",
+    "alias": "wpw35",
+    "schema": null,
+    "pk": [
+      "meta_id"
+    ],
+    "fields": [
+      "meta_id",
+      "term_id",
+      "meta_key",
+      "meta_value"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "meta_id",
+      "term_id"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "meta_id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_terms": {
+    "name": "wpwt_terms",
+    "alias": "wpw36",
+    "schema": null,
+    "pk": [
+      "term_id"
+    ],
+    "fields": [
+      "term_id",
+      "name",
+      "slug",
+      "term_group"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "term_id",
+      "name",
+      "slug",
+      "term_group"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "term_id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_usermeta": {
+    "name": "wpwt_usermeta",
+    "alias": "wpw37",
+    "schema": null,
+    "pk": [
+      "umeta_id"
+    ],
+    "fields": [
+      "umeta_id",
+      "user_id",
+      "meta_key",
+      "meta_value"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "umeta_id",
+      "user_id"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "umeta_id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_users": {
+    "name": "wpwt_users",
+    "alias": "wpw38",
+    "schema": null,
+    "pk": [
+      "ID"
+    ],
+    "fields": [
+      "ID",
+      "user_login",
+      "user_pass",
+      "user_nicename",
+      "user_email",
+      "user_url",
+      "user_registered",
+      "user_activation_key",
+      "user_status",
+      "display_name"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "ID",
+      "user_login",
+      "user_pass",
+      "user_nicename",
+      "user_email",
+      "user_url",
+      "user_registered",
+      "user_activation_key",
+      "user_status",
+      "display_name"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "ID"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_yoast_indexable": {
+    "name": "wpwt_yoast_indexable",
+    "alias": "wpw39",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "permalink",
+      "permalink_hash",
+      "object_id",
+      "object_type",
+      "object_sub_type",
+      "author_id",
+      "post_parent",
+      "title",
+      "description",
+      "breadcrumb_title",
+      "post_status",
+      "is_public",
+      "is_protected",
+      "has_public_posts",
+      "number_of_pages",
+      "canonical",
+      "primary_focus_keyword",
+      "primary_focus_keyword_score",
+      "readability_score",
+      "is_cornerstone",
+      "is_robots_noindex",
+      "is_robots_nofollow",
+      "is_robots_noarchive",
+      "is_robots_noimageindex",
+      "is_robots_nosnippet",
+      "twitter_title",
+      "twitter_image",
+      "twitter_description",
+      "twitter_image_id",
+      "twitter_image_source",
+      "open_graph_title",
+      "open_graph_description",
+      "open_graph_image",
+      "open_graph_image_id",
+      "open_graph_image_source",
+      "open_graph_image_meta",
+      "link_count",
+      "incoming_link_count",
+      "prominent_words_version",
+      "created_at",
+      "updated_at",
+      "blog_id",
+      "language",
+      "region",
+      "schema_page_type",
+      "schema_article_type",
+      "has_ancestors",
+      "estimated_reading_time_minutes",
+      "version",
+      "object_last_modified",
+      "object_published_at"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "object_type",
+      "updated_at",
+      "blog_id"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_yoast_indexable_hierarchy": {
+    "name": "wpwt_yoast_indexable_hierarchy",
+    "alias": "wpw40",
+    "schema": null,
+    "pk": [
+      "indexable_id",
+      "ancestor_id"
+    ],
+    "fields": [
+      "indexable_id",
+      "ancestor_id",
+      "depth",
+      "blog_id"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "indexable_id",
+      "ancestor_id",
+      "blog_id"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "indexable_id",
+      "ancestor_id",
+      "blog_id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_yoast_migrations": {
+    "name": "wpwt_yoast_migrations",
+    "alias": "wpw41",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "version"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [
+      "version"
+    ],
+    "notNull": [
+      "id"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_yoast_primary_term": {
+    "name": "wpwt_yoast_primary_term",
+    "alias": "wpw42",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "post_id",
+      "term_id",
+      "taxonomy",
+      "created_at",
+      "updated_at",
+      "blog_id"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id",
+      "taxonomy",
+      "updated_at",
+      "blog_id"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {},
+    "relations": {}
+  },
+  "wpwt_yoast_seo_links": {
+    "name": "wpwt_yoast_seo_links",
+    "alias": "wpw43",
+    "schema": null,
+    "pk": [
+      "id"
+    ],
+    "fields": [
+      "id",
+      "url",
+      "post_id",
+      "target_post_id",
+      "type",
+      "indexable_id",
+      "target_indexable_id",
+      "height",
+      "width",
+      "size",
+      "language",
+      "region"
+    ],
+    "fk": [],
+    "orderDefault": {},
+    "noAdmin": [],
+    "unique": [],
+    "notNull": [
+      "id"
+    ],
+    "uniqueMultiple": [],
+    "id": [
+      "id"
+    ],
+    "tree": {},
+    "relations": {}
+  }
+}

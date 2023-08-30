@@ -1,0 +1,83 @@
+{
+  "id": {
+    "checks": {
+      "type": "int",
+      "required": true
+    },
+    "resets": {},
+    "name": "id",
+    "alias": null,
+    "entityName": "wpwt_psmsc_working_hrs",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "agent": {
+    "checks": {
+      "type": "bigint",
+      "required": true
+    },
+    "resets": {},
+    "name": "agent",
+    "alias": null,
+    "entityName": "wpwt_psmsc_working_hrs",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bigint",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "day": {
+    "checks": {
+      "type": "bool",
+      "required": true
+    },
+    "resets": {},
+    "name": "day",
+    "alias": null,
+    "entityName": "wpwt_psmsc_working_hrs",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bool",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "start_time": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "start_time",
+    "alias": null,
+    "entityName": "wpwt_psmsc_working_hrs",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "end_time": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "end_time",
+    "alias": null,
+    "entityName": "wpwt_psmsc_working_hrs",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": null
+  }
+}

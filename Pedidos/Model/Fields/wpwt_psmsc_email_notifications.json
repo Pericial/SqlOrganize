@@ -1,0 +1,204 @@
+{
+  "id": {
+    "checks": {
+      "type": "int",
+      "required": true
+    },
+    "resets": {},
+    "name": "id",
+    "alias": null,
+    "entityName": "wpwt_psmsc_email_notifications",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "from_name": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
+    },
+    "name": "from_name",
+    "alias": null,
+    "entityName": "wpwt_psmsc_email_notifications",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "from_email": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
+    },
+    "name": "from_email",
+    "alias": null,
+    "entityName": "wpwt_psmsc_email_notifications",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "reply_to": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
+    },
+    "name": "reply_to",
+    "alias": null,
+    "entityName": "wpwt_psmsc_email_notifications",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "subject": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
+    },
+    "name": "subject",
+    "alias": null,
+    "entityName": "wpwt_psmsc_email_notifications",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "body": {
+    "checks": {
+      "type": "longtext"
+    },
+    "resets": {},
+    "name": "body",
+    "alias": null,
+    "entityName": "wpwt_psmsc_email_notifications",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "longtext",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "to_email": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
+    },
+    "name": "to_email",
+    "alias": null,
+    "entityName": "wpwt_psmsc_email_notifications",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "cc_email": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
+    },
+    "name": "cc_email",
+    "alias": null,
+    "entityName": "wpwt_psmsc_email_notifications",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "bcc_email": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
+    },
+    "name": "bcc_email",
+    "alias": null,
+    "entityName": "wpwt_psmsc_email_notifications",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "attachments": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
+    },
+    "name": "attachments",
+    "alias": null,
+    "entityName": "wpwt_psmsc_email_notifications",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "attempt": {
+    "checks": {
+      "type": "int"
+    },
+    "resets": {},
+    "name": "attempt",
+    "alias": null,
+    "entityName": "wpwt_psmsc_email_notifications",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": false,
+    "defaultValue": "0"
+  },
+  "priority": {
+    "checks": {
+      "type": "int",
+      "required": true
+    },
+    "resets": {},
+    "name": "priority",
+    "alias": null,
+    "entityName": "wpwt_psmsc_email_notifications",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": true,
+    "defaultValue": "1"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "id": {
+    "checks": {
+      "type": "int",
+      "required": true
+    },
+    "resets": {},
+    "name": "id",
+    "alias": null,
+    "entityName": "wpwt_psmsc_email_otp",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "email": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "email",
+    "alias": null,
+    "entityName": "wpwt_psmsc_email_otp",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "otp": {
+    "checks": {
+      "type": "int",
+      "required": true
+    },
+    "resets": {},
+    "name": "otp",
+    "alias": null,
+    "entityName": "wpwt_psmsc_email_otp",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "date_expiry": {
+    "checks": {
+      "type": "DateTime",
+      "required": true
+    },
+    "resets": {},
+    "name": "date_expiry",
+    "alias": null,
+    "entityName": "wpwt_psmsc_email_otp",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "DateTime",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "data": {
+    "checks": {
+      "type": "longtext"
+    },
+    "resets": {},
+    "name": "data",
+    "alias": null,
+    "entityName": "wpwt_psmsc_email_otp",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "longtext",
+    "notNull": false,
+    "defaultValue": null
+  }
+}

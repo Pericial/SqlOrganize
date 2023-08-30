@@ -1,0 +1,340 @@
+{
+  "id": {
+    "checks": {
+      "type": "int",
+      "required": true
+    },
+    "resets": {},
+    "name": "id",
+    "alias": null,
+    "entityName": "wpwt_psmsc_custom_fields",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "name": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "name",
+    "alias": null,
+    "entityName": "wpwt_psmsc_custom_fields",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "extra_info": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "extra_info",
+    "alias": null,
+    "entityName": "wpwt_psmsc_custom_fields",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": "''"
+  },
+  "slug": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
+    },
+    "name": "slug",
+    "alias": null,
+    "entityName": "wpwt_psmsc_custom_fields",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "field": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
+    },
+    "name": "field",
+    "alias": null,
+    "entityName": "wpwt_psmsc_custom_fields",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "type": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
+    },
+    "name": "type",
+    "alias": null,
+    "entityName": "wpwt_psmsc_custom_fields",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "default_value": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
+    },
+    "name": "default_value",
+    "alias": null,
+    "entityName": "wpwt_psmsc_custom_fields",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "placeholder_text": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
+    },
+    "name": "placeholder_text",
+    "alias": null,
+    "entityName": "wpwt_psmsc_custom_fields",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "char_limit": {
+    "checks": {
+      "type": "int"
+    },
+    "resets": {},
+    "name": "char_limit",
+    "alias": null,
+    "entityName": "wpwt_psmsc_custom_fields",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "date_display_as": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
+    },
+    "name": "date_display_as",
+    "alias": null,
+    "entityName": "wpwt_psmsc_custom_fields",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "date_format": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
+    },
+    "name": "date_format",
+    "alias": null,
+    "entityName": "wpwt_psmsc_custom_fields",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "date_range": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
+    },
+    "name": "date_range",
+    "alias": null,
+    "entityName": "wpwt_psmsc_custom_fields",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "start_range": {
+    "checks": {
+      "type": "DateTime"
+    },
+    "resets": {},
+    "name": "start_range",
+    "alias": null,
+    "entityName": "wpwt_psmsc_custom_fields",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "DateTime",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "end_range": {
+    "checks": {
+      "type": "DateTime"
+    },
+    "resets": {},
+    "name": "end_range",
+    "alias": null,
+    "entityName": "wpwt_psmsc_custom_fields",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "DateTime",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "time_format": {
+    "checks": {
+      "type": "int"
+    },
+    "resets": {},
+    "name": "time_format",
+    "alias": null,
+    "entityName": "wpwt_psmsc_custom_fields",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "is_personal_info": {
+    "checks": {
+      "type": "int",
+      "required": true
+    },
+    "resets": {},
+    "name": "is_personal_info",
+    "alias": null,
+    "entityName": "wpwt_psmsc_custom_fields",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": true,
+    "defaultValue": "0"
+  },
+  "is_auto_fill": {
+    "checks": {
+      "type": "int"
+    },
+    "resets": {},
+    "name": "is_auto_fill",
+    "alias": null,
+    "entityName": "wpwt_psmsc_custom_fields",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "allow_ticket_form": {
+    "checks": {
+      "type": "int"
+    },
+    "resets": {},
+    "name": "allow_ticket_form",
+    "alias": null,
+    "entityName": "wpwt_psmsc_custom_fields",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": false,
+    "defaultValue": "1"
+  },
+  "allow_my_profile": {
+    "checks": {
+      "type": "int"
+    },
+    "resets": {},
+    "name": "allow_my_profile",
+    "alias": null,
+    "entityName": "wpwt_psmsc_custom_fields",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": false,
+    "defaultValue": "1"
+  },
+  "tl_width": {
+    "checks": {
+      "type": "int",
+      "required": true
+    },
+    "resets": {},
+    "name": "tl_width",
+    "alias": null,
+    "entityName": "wpwt_psmsc_custom_fields",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": true,
+    "defaultValue": "100"
+  },
+  "load_order": {
+    "checks": {
+      "type": "int",
+      "required": true
+    },
+    "resets": {},
+    "name": "load_order",
+    "alias": null,
+    "entityName": "wpwt_psmsc_custom_fields",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": true,
+    "defaultValue": "1"
+  }
+}

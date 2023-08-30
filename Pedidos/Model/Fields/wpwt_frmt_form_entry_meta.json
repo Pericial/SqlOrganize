@@ -1,0 +1,94 @@
+{
+  "meta_id": {
+    "checks": {
+      "type": "bigint",
+      "required": true
+    },
+    "resets": {},
+    "name": "meta_id",
+    "alias": null,
+    "entityName": "wpwt_frmt_form_entry_meta",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bigint",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "entry_id": {
+    "checks": {
+      "type": "bigint",
+      "required": true
+    },
+    "resets": {},
+    "name": "entry_id",
+    "alias": null,
+    "entityName": "wpwt_frmt_form_entry_meta",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bigint",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "meta_key": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
+    },
+    "name": "meta_key",
+    "alias": null,
+    "entityName": "wpwt_frmt_form_entry_meta",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "meta_value": {
+    "checks": {
+      "type": "longtext"
+    },
+    "resets": {},
+    "name": "meta_value",
+    "alias": null,
+    "entityName": "wpwt_frmt_form_entry_meta",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "longtext",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "date_created": {
+    "checks": {
+      "type": "DateTime",
+      "required": true
+    },
+    "resets": {},
+    "name": "date_created",
+    "alias": null,
+    "entityName": "wpwt_frmt_form_entry_meta",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "DateTime",
+    "notNull": true,
+    "defaultValue": "'0000-00-00 00:00:00'"
+  },
+  "date_updated": {
+    "checks": {
+      "type": "DateTime",
+      "required": true
+    },
+    "resets": {},
+    "name": "date_updated",
+    "alias": null,
+    "entityName": "wpwt_frmt_form_entry_meta",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "DateTime",
+    "notNull": true,
+    "defaultValue": "'0000-00-00 00:00:00'"
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": {
+    "checks": {
+      "type": "int",
+      "required": true
+    },
+    "resets": {},
+    "name": "id",
+    "alias": null,
+    "entityName": "wpwt_psmsc_options",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "name": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "name",
+    "alias": null,
+    "entityName": "wpwt_psmsc_options",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "custom_field": {
+    "checks": {
+      "type": "int",
+      "required": true
+    },
+    "resets": {},
+    "name": "custom_field",
+    "alias": null,
+    "entityName": "wpwt_psmsc_options",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": true,
+    "defaultValue": "0"
+  },
+  "date_created": {
+    "checks": {
+      "type": "DateTime",
+      "required": true
+    },
+    "resets": {},
+    "name": "date_created",
+    "alias": null,
+    "entityName": "wpwt_psmsc_options",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "DateTime",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "load_order": {
+    "checks": {
+      "type": "int",
+      "required": true
+    },
+    "resets": {},
+    "name": "load_order",
+    "alias": null,
+    "entityName": "wpwt_psmsc_options",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": true,
+    "defaultValue": "1"
+  }
+}

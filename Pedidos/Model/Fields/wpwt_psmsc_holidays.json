@@ -1,0 +1,62 @@
+{
+  "id": {
+    "checks": {
+      "type": "int",
+      "required": true
+    },
+    "resets": {},
+    "name": "id",
+    "alias": null,
+    "entityName": "wpwt_psmsc_holidays",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "agent": {
+    "checks": {
+      "type": "bigint",
+      "required": true
+    },
+    "resets": {},
+    "name": "agent",
+    "alias": null,
+    "entityName": "wpwt_psmsc_holidays",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bigint",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "holiday": {
+    "checks": {
+      "type": "DateTime",
+      "required": true
+    },
+    "resets": {},
+    "name": "holiday",
+    "alias": null,
+    "entityName": "wpwt_psmsc_holidays",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "DateTime",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "is_recurring": {
+    "checks": {
+      "type": "bool",
+      "required": true
+    },
+    "resets": {},
+    "name": "is_recurring",
+    "alias": null,
+    "entityName": "wpwt_psmsc_holidays",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bool",
+    "notNull": true,
+    "defaultValue": null
+  }
+}

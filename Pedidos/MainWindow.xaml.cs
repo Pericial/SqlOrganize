@@ -24,5 +24,11 @@ namespace Pedidos
         {
             InitializeComponent();
         }
+
+        private void MigrarAlumnosSemestre_Click(object sender, RoutedEventArgs e)
+        {
+            Windows.MigrarAlumnos.Window1 win = new();
+            win.Show();
+        }
     }
 }

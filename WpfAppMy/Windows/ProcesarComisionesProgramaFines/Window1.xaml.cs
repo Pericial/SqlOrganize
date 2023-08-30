@@ -70,7 +70,8 @@ namespace WpfAppMy.Windows.ProcesarComisionesProgramaFines
                             logs.Add("No existe docente " + cuil);
                             break;
                         }
-                        var p = ContainerApp.db.Persist("persona").UpdateValue("cuil", String.Join("",cuil_), id).Exec();
+                        List<object> ids = new List<object>() { id };
+                        var p = ContainerApp.db.Persist("persona").UpdateValue("cuil", String.Join("",cuil_), ids).Exec();
                         ContainerApp.dbCache.Remove(p.detail);
                         continue;
                     }
@@ -93,7 +94,8 @@ namespace WpfAppMy.Windows.ProcesarComisionesProgramaFines
                                 logs.Add("No existe curso " + dict["comision__pfid"].ToString() + " " + dict["asignatura__codigo"].ToString());
                                 break;
                             }
-                            var p = ContainerApp.db.Persist("curso").UpdateValue("descripcion_horario", dict["descripcion_horario"].ToString()!, dict["id"].ToString()!).Exec();
+                            List<object> ids = new List<object>() { dict["id"] };
+                            var p = ContainerApp.db.Persist("curso").UpdateValue("descripcion_horario", dict["descripcion_horario"].ToString()!, ids!).Exec();
                             ContainerApp.dbCache.Remove(p.detail);
                             procesar_docente = true;
                         }

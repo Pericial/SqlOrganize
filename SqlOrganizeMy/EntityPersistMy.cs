@@ -19,6 +19,7 @@ namespace SqlOrganizeMy
 UPDATE " + sna + @" SET
 ";
             List<string> fieldNames = db.FieldNamesAdmin(_entityName);
+            fieldNames.Remove(db.config.id);
             foreach (string fieldName in fieldNames)
                 if (row.ContainsKey(fieldName))
                 {

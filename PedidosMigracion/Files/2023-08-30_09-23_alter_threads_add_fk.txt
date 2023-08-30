@@ -1,0 +1,2 @@
+﻿ ALTER TABLE wpwt_psmsc_threads
+ ADD FOREIGN KEY (ticket) REFERENCES wpwt_psmsc_tickets (id);  

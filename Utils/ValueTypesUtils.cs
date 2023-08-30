@@ -9,6 +9,16 @@ namespace Utils
 {
     public static class ValueTypesUtils
     {
+
+        private static Random random = new Random();
+
+        public static string RandomString(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
         public static char GetNextChar(this char c)
         {
             // convert char to ascii
@@ -60,6 +70,34 @@ namespace Utils
         public static char ToChar(this string @this)
         {
             return @this.ToCharArray()[0];
+        }
+
+
+        /// <summary>
+        /// https://www.dotnetperls.com/between-before-after
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static string SubstringBetween(this string value, string a, string b)
+        {
+            int posA = value.IndexOf(a);
+            int posB = value.LastIndexOf(b);
+            if (posA == -1)
+            {
+                return "";
+            }
+            if (posB == -1)
+            {
+                return "";
+            }
+            int adjustedPosA = posA + a.Length;
+            if (adjustedPosA >= posB)
+            {
+                return "";
+            }
+            return value.Substring(adjustedPosA, posB - adjustedPosA);
         }
     }
 }

@@ -1,0 +1,83 @@
+{
+  "id": {
+    "checks": {
+      "type": "bigint",
+      "required": true
+    },
+    "resets": {},
+    "name": "id",
+    "alias": null,
+    "entityName": "wpwt_psmsc_customers",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bigint",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "user": {
+    "checks": {
+      "type": "bigint",
+      "required": true
+    },
+    "resets": {},
+    "name": "user",
+    "alias": null,
+    "entityName": "wpwt_psmsc_customers",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bigint",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "ticket_count": {
+    "checks": {
+      "type": "int",
+      "required": true
+    },
+    "resets": {},
+    "name": "ticket_count",
+    "alias": null,
+    "entityName": "wpwt_psmsc_customers",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": true,
+    "defaultValue": "0"
+  },
+  "name": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "name",
+    "alias": null,
+    "entityName": "wpwt_psmsc_customers",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "email": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "email",
+    "alias": null,
+    "entityName": "wpwt_psmsc_customers",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": null
+  }
+}

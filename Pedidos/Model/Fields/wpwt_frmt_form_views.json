@@ -1,0 +1,110 @@
+{
+  "view_id": {
+    "checks": {
+      "type": "bigint",
+      "required": true
+    },
+    "resets": {},
+    "name": "view_id",
+    "alias": null,
+    "entityName": "wpwt_frmt_form_views",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bigint",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "form_id": {
+    "checks": {
+      "type": "bigint",
+      "required": true
+    },
+    "resets": {},
+    "name": "form_id",
+    "alias": null,
+    "entityName": "wpwt_frmt_form_views",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bigint",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "page_id": {
+    "checks": {
+      "type": "bigint",
+      "required": true
+    },
+    "resets": {},
+    "name": "page_id",
+    "alias": null,
+    "entityName": "wpwt_frmt_form_views",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bigint",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "ip": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
+    },
+    "name": "ip",
+    "alias": null,
+    "entityName": "wpwt_frmt_form_views",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "count": {
+    "checks": {
+      "type": "mediumint",
+      "required": true
+    },
+    "resets": {},
+    "name": "count",
+    "alias": null,
+    "entityName": "wpwt_frmt_form_views",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "mediumint",
+    "notNull": true,
+    "defaultValue": "1"
+  },
+  "date_created": {
+    "checks": {
+      "type": "DateTime",
+      "required": true
+    },
+    "resets": {},
+    "name": "date_created",
+    "alias": null,
+    "entityName": "wpwt_frmt_form_views",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "DateTime",
+    "notNull": true,
+    "defaultValue": "'0000-00-00 00:00:00'"
+  },
+  "date_updated": {
+    "checks": {
+      "type": "DateTime",
+      "required": true
+    },
+    "resets": {},
+    "name": "date_updated",
+    "alias": null,
+    "entityName": "wpwt_frmt_form_views",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "DateTime",
+    "notNull": true,
+    "defaultValue": "'0000-00-00 00:00:00'"
+  }
+}

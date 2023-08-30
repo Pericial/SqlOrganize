@@ -20,7 +20,7 @@ namespace SqlOrganizeMy
 
             var j = parameters.Count;
             foreach(var (key, value) in parametersDict)
-                while (sql.Contains(@key))
+                while (sql.Contains("@"+key))
                 {
                     sql = sql.ReplaceFirst("@" + key, "@"+ j.ToString());
                     parameters.Add(value);

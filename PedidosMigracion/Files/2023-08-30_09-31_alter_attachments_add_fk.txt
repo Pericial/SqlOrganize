@@ -1,0 +1,2 @@
+﻿ ALTER TABLE wpwt_psmsc_attachments
+ ADD FOREIGN KEY (ticket_id) REFERENCES wpwt_psmsc_tickets (id);  

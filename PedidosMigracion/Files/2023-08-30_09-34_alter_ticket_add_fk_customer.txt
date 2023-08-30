@@ -1,0 +1,2 @@
+﻿ ALTER TABLE wpwt_psmsc_tickets
+ ADD FOREIGN KEY (customer) REFERENCES wpwt_psmsc_customers (id);  

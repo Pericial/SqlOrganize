@@ -1,0 +1,95 @@
+{
+  "term_taxonomy_id": {
+    "checks": {
+      "type": "bigint",
+      "required": true
+    },
+    "resets": {},
+    "name": "term_taxonomy_id",
+    "alias": null,
+    "entityName": "wpwt_term_taxonomy",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bigint",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "term_id": {
+    "checks": {
+      "type": "bigint",
+      "required": true
+    },
+    "resets": {},
+    "name": "term_id",
+    "alias": null,
+    "entityName": "wpwt_term_taxonomy",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bigint",
+    "notNull": true,
+    "defaultValue": "0"
+  },
+  "taxonomy": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "taxonomy",
+    "alias": null,
+    "entityName": "wpwt_term_taxonomy",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": "''"
+  },
+  "description": {
+    "checks": {
+      "type": "longtext",
+      "required": true
+    },
+    "resets": {},
+    "name": "description",
+    "alias": null,
+    "entityName": "wpwt_term_taxonomy",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "longtext",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "parent": {
+    "checks": {
+      "type": "bigint",
+      "required": true
+    },
+    "resets": {},
+    "name": "parent",
+    "alias": null,
+    "entityName": "wpwt_term_taxonomy",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bigint",
+    "notNull": true,
+    "defaultValue": "0"
+  },
+  "count": {
+    "checks": {
+      "type": "bigint",
+      "required": true
+    },
+    "resets": {},
+    "name": "count",
+    "alias": null,
+    "entityName": "wpwt_term_taxonomy",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bigint",
+    "notNull": true,
+    "defaultValue": "0"
+  }
+}

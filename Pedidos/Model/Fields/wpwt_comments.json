@@ -1,0 +1,248 @@
+{
+  "comment_ID": {
+    "checks": {
+      "type": "bigint",
+      "required": true
+    },
+    "resets": {},
+    "name": "comment_ID",
+    "alias": null,
+    "entityName": "wpwt_comments",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bigint",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "comment_post_ID": {
+    "checks": {
+      "type": "bigint",
+      "required": true
+    },
+    "resets": {},
+    "name": "comment_post_ID",
+    "alias": null,
+    "entityName": "wpwt_comments",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bigint",
+    "notNull": true,
+    "defaultValue": "0"
+  },
+  "comment_author": {
+    "checks": {
+      "type": "tinytext",
+      "required": true
+    },
+    "resets": {},
+    "name": "comment_author",
+    "alias": null,
+    "entityName": "wpwt_comments",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "tinytext",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "comment_author_email": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "comment_author_email",
+    "alias": null,
+    "entityName": "wpwt_comments",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": "''"
+  },
+  "comment_author_url": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "comment_author_url",
+    "alias": null,
+    "entityName": "wpwt_comments",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": "''"
+  },
+  "comment_author_IP": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "comment_author_IP",
+    "alias": null,
+    "entityName": "wpwt_comments",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": "''"
+  },
+  "comment_date": {
+    "checks": {
+      "type": "DateTime",
+      "required": true
+    },
+    "resets": {},
+    "name": "comment_date",
+    "alias": null,
+    "entityName": "wpwt_comments",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "DateTime",
+    "notNull": true,
+    "defaultValue": "'0000-00-00 00:00:00'"
+  },
+  "comment_date_gmt": {
+    "checks": {
+      "type": "DateTime",
+      "required": true
+    },
+    "resets": {},
+    "name": "comment_date_gmt",
+    "alias": null,
+    "entityName": "wpwt_comments",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "DateTime",
+    "notNull": true,
+    "defaultValue": "'0000-00-00 00:00:00'"
+  },
+  "comment_content": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "comment_content",
+    "alias": null,
+    "entityName": "wpwt_comments",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "comment_karma": {
+    "checks": {
+      "type": "int",
+      "required": true
+    },
+    "resets": {},
+    "name": "comment_karma",
+    "alias": null,
+    "entityName": "wpwt_comments",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": true,
+    "defaultValue": "0"
+  },
+  "comment_approved": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "comment_approved",
+    "alias": null,
+    "entityName": "wpwt_comments",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": "'1'"
+  },
+  "comment_agent": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "comment_agent",
+    "alias": null,
+    "entityName": "wpwt_comments",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": "''"
+  },
+  "comment_type": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "comment_type",
+    "alias": null,
+    "entityName": "wpwt_comments",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": "'comment'"
+  },
+  "comment_parent": {
+    "checks": {
+      "type": "bigint",
+      "required": true
+    },
+    "resets": {},
+    "name": "comment_parent",
+    "alias": null,
+    "entityName": "wpwt_comments",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bigint",
+    "notNull": true,
+    "defaultValue": "0"
+  },
+  "user_id": {
+    "checks": {
+      "type": "bigint",
+      "required": true
+    },
+    "resets": {},
+    "name": "user_id",
+    "alias": null,
+    "entityName": "wpwt_comments",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bigint",
+    "notNull": true,
+    "defaultValue": "0"
+  }
+}

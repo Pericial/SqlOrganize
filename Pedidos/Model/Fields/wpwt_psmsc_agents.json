@@ -1,0 +1,136 @@
+{
+  "id": {
+    "checks": {
+      "type": "bigint",
+      "required": true
+    },
+    "resets": {},
+    "name": "id",
+    "alias": null,
+    "entityName": "wpwt_psmsc_agents",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bigint",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "user": {
+    "checks": {
+      "type": "bigint"
+    },
+    "resets": {},
+    "name": "user",
+    "alias": null,
+    "entityName": "wpwt_psmsc_agents",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bigint",
+    "notNull": false,
+    "defaultValue": "0"
+  },
+  "customer": {
+    "checks": {
+      "type": "bigint"
+    },
+    "resets": {},
+    "name": "customer",
+    "alias": null,
+    "entityName": "wpwt_psmsc_agents",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bigint",
+    "notNull": false,
+    "defaultValue": "0"
+  },
+  "role": {
+    "checks": {
+      "type": "int",
+      "required": true
+    },
+    "resets": {},
+    "name": "role",
+    "alias": null,
+    "entityName": "wpwt_psmsc_agents",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": true,
+    "defaultValue": "0"
+  },
+  "name": {
+    "checks": {
+      "type": "string",
+      "required": true
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true
+    },
+    "name": "name",
+    "alias": null,
+    "entityName": "wpwt_psmsc_agents",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "workload": {
+    "checks": {
+      "type": "int"
+    },
+    "resets": {},
+    "name": "workload",
+    "alias": null,
+    "entityName": "wpwt_psmsc_agents",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "unresolved_count": {
+    "checks": {
+      "type": "int"
+    },
+    "resets": {},
+    "name": "unresolved_count",
+    "alias": null,
+    "entityName": "wpwt_psmsc_agents",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "is_agentgroup": {
+    "checks": {
+      "type": "int",
+      "required": true
+    },
+    "resets": {},
+    "name": "is_agentgroup",
+    "alias": null,
+    "entityName": "wpwt_psmsc_agents",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": true,
+    "defaultValue": "0"
+  },
+  "is_active": {
+    "checks": {
+      "type": "int",
+      "required": true
+    },
+    "resets": {},
+    "name": "is_active",
+    "alias": null,
+    "entityName": "wpwt_psmsc_agents",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": true,
+    "defaultValue": "0"
+  }
+}

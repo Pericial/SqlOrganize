@@ -53,6 +53,24 @@ WHERE " + id + " = @" + count + @";
             return this;
         }
 
+        public EntityPersist UpdateIds(Dictionary<string, object> row, List<object> ids, string? _entityName = null)
+        {
+            _entityName = _entityName ?? entityName;
+
+            _Update(row, _entityName);
+            string idMap = db.Mapping(_entityName!).Map(db.config.id);
+            sql += @"
+WHERE " + idMap + " IN (@" + count + @");
+";
+            count++;
+            parameters.Add(ids);
+            foreach(var id in ids)
+                detail.Add((_entityName!, (string)id));
+            return this;
+        }
+
+
+
 
         /// <summary>
         /// Actualizar un unico campo
@@ -62,14 +80,13 @@ WHERE " + id + " = @" + count + @";
         /// <param name="id">Identificacion de la fila a actualizar</param>
         /// <param name="_entityName">Nombre de la entidad, si no se especifica se toma el atributo</param>
         /// <returns>Mismo objeto</returns>
-        public EntityPersist UpdateValue(string key, object value, string id, string? _entityName = null)
+        public EntityPersist UpdateValue(string key, object value, List<object> ids, string? _entityName = null)
         {
             Dictionary<string, object> row = new Dictionary<string, object>()
             {
-                { db.config.id, id },
                 { key, value }
             };
-            return Update(row, _entityName);
+            return UpdateIds(row, ids, _entityName);
         }
 
         /// <summary>
@@ -93,8 +110,8 @@ WHERE " + id + " = @" + count + @";
                 key = key.Substring(indexSeparator + db.config.idAttrSeparatorString.Length); //se suma la cantidad de caracteres del separador
             }
 
-            string id = (string)source[idKey];
-            return UpdateValue(key, value, id, _entityName);
+            List<object> ids = new() { source[idKey] };
+            return UpdateValue(key, value, ids, _entityName);
         }
 
         public EntityPersist Insert(Dictionary<string, object> row, string? _entityName = null)

@@ -1,0 +1,187 @@
+{
+  "id": {
+    "checks": {
+      "type": "bigint",
+      "required": true
+    },
+    "resets": {},
+    "name": "id",
+    "alias": null,
+    "entityName": "wpwt_yoast_seo_links",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bigint",
+    "notNull": true,
+    "defaultValue": null
+  },
+  "url": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
+    },
+    "name": "url",
+    "alias": null,
+    "entityName": "wpwt_yoast_seo_links",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "post_id": {
+    "checks": {
+      "type": "bigint"
+    },
+    "resets": {},
+    "name": "post_id",
+    "alias": null,
+    "entityName": "wpwt_yoast_seo_links",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bigint",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "target_post_id": {
+    "checks": {
+      "type": "bigint"
+    },
+    "resets": {},
+    "name": "target_post_id",
+    "alias": null,
+    "entityName": "wpwt_yoast_seo_links",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bigint",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "type": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
+    },
+    "name": "type",
+    "alias": null,
+    "entityName": "wpwt_yoast_seo_links",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "indexable_id": {
+    "checks": {
+      "type": "int"
+    },
+    "resets": {},
+    "name": "indexable_id",
+    "alias": null,
+    "entityName": "wpwt_yoast_seo_links",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "target_indexable_id": {
+    "checks": {
+      "type": "int"
+    },
+    "resets": {},
+    "name": "target_indexable_id",
+    "alias": null,
+    "entityName": "wpwt_yoast_seo_links",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "height": {
+    "checks": {
+      "type": "int"
+    },
+    "resets": {},
+    "name": "height",
+    "alias": null,
+    "entityName": "wpwt_yoast_seo_links",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "width": {
+    "checks": {
+      "type": "int"
+    },
+    "resets": {},
+    "name": "width",
+    "alias": null,
+    "entityName": "wpwt_yoast_seo_links",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "size": {
+    "checks": {
+      "type": "int"
+    },
+    "resets": {},
+    "name": "size",
+    "alias": null,
+    "entityName": "wpwt_yoast_seo_links",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "int",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "language": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
+    },
+    "name": "language",
+    "alias": null,
+    "entityName": "wpwt_yoast_seo_links",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  },
+  "region": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
+    },
+    "name": "region",
+    "alias": null,
+    "entityName": "wpwt_yoast_seo_links",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null
+  }
+}

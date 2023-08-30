@@ -228,6 +228,13 @@ namespace SqlOrganize
                 case "string":
                     if (field.defaultValue.ToString().ToLower().Contains("guid"))
                         values[fieldName] = (Guid.NewGuid()).ToString();
+
+                    //generate random strings
+                    else if (field.defaultValue.ToString()!.ToLower().Contains("random"))
+                    {
+                        string param = field.defaultValue.ToString()!.SubstringBetween("(", ")");
+                        values[fieldName] = ValueTypesUtils.RandomString(Int32.Parse(param));
+                    }
                     else
                         values[fieldName] = field.defaultValue;
                     break;

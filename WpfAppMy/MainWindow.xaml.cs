@@ -116,8 +116,11 @@ namespace WpfAppMy
             win.Show();
         }
 
-        
-
+        private void ActualizarPlanAlumnos_Click(object sender, RoutedEventArgs e)
+        {
+            Windows.AlumnoComision.ActualizarPlanAlumnos.Window1 win = new();
+            win.Show();
+        }
 
     }
 }

@@ -6,7 +6,11 @@
         xmlns:local="clr-namespace:Pedidos"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+    <DockPanel >
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_Alumnos">
+                <MenuItem Header="MigrarAlumnosSemestre" Click="MigrarAlumnosSemestre_Click"/>
+            </MenuItem>
+        </Menu>
+    </DockPanel>
 </Window>
