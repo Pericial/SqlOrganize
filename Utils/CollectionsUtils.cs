@@ -9,7 +9,6 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml;
 
 namespace Utils
 {
@@ -291,10 +290,6 @@ namespace Utils
             var dictionary = JsonConvert.DeserializeObject<Dictionary<string, T>>(json);
             return dictionary;
         }
-
-
-        //Retorna las diferencias encontrads en dict2, en relacion con dict1
-        
 
     }
 
