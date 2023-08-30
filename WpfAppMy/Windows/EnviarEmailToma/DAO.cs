@@ -16,6 +16,8 @@ namespace WpfAppMy.Windows.EnviarEmailToma
                 .Where(@"
                     $calendario-anio = @0 
                     AND $calendario-semestre = @1 
+                    AND $confirmada = false
+                    AND $docente-email_abc IS NOT NULL
                 ")
                 .Order("$comision-pfid ASC")
                 .Parameters("2023", "2");

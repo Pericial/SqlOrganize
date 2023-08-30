@@ -49,14 +49,19 @@ namespace WpfAppMy.Windows.ProcesarDocentesProgramaFines
 
                 #region insertar o actualizar docente (se insertan o actualizan todos)
                 var d = docente.ConvertToDict();
-                EntityValues vPersona = ContainerApp.db.Values("persona").Set(d);
+                EntityValues vPersona = ContainerApp.db.Values("persona").Set(d).Reset();
                 var row = dao.RowByEntityUnique("persona", vPersona.values);
-                if (row != null) { 
-                    EntityValues vPersonaAux = ContainerApp.db.Values("persona").Set(row).SetNotNull(vPersona.values);
+                if (row != null) {
+                    EntityValues vPersonaAux = ContainerApp.db.Values("persona").Set(row);
+                    Dictionary<string, object> valuesToUpdate = vPersonaAux.Compare(vPersona.values);
+                    vPersonaAux.SetNotNull(valuesToUpdate);
                     vPersona = vPersonaAux;
                     vPersona.Reset();
-                    var p = ContainerApp.db.Persist("persona").Update(vPersona.values).Exec();
-                    ContainerApp.dbCache.Remove(p.detail);
+                    if (!valuesToUpdate.IsNullOrEmpty())
+                    {
+                        var p = ContainerApp.db.Persist("persona").Update(vPersona.values).Exec();
+                        ContainerApp.dbCache.Remove(p.detail);
+                    }
                 } else
                 {
                     vPersona.Default().Reset();

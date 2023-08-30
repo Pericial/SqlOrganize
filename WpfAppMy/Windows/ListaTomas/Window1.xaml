@@ -56,6 +56,7 @@
                 <DataGridTextColumn Header="Nombres" Binding="{Binding docente__nombres}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Apellidos" Binding="{Binding docente__apellidos}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Número Documento" Binding="{Binding docente__numero_documento}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Email ABC" Binding="{Binding docente__email_abc}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Comision" Binding="{Binding comision__pfid}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Asignatura" Binding="{Binding asignatura__nombre}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Codigo" Binding="{Binding asignatura__codigo}"></DataGridTextColumn>

@@ -255,6 +255,14 @@ namespace WpfAppMy.Windows.ListaTomas
             set { _docente__numero_documento = value; NotifyPropertyChanged(); }
         }
 
+        private string _docente__email_abc;
+
+        public string docente__email_abc
+        {
+            get { return _docente__email_abc; }
+            set { _docente__email_abc = value; NotifyPropertyChanged(); }
+        }
+
         private string _docente;
 
         public string docente

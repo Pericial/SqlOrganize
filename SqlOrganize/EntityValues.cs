@@ -119,7 +119,8 @@ namespace SqlOrganize
                 if (values.ContainsKey(fieldName))
                     Reset(fieldName);
 
-            Reset(db.config.id);
+            if (values.ContainsKey(db.config.id))
+                Reset(db.config.id);
 
             return this;
         }
@@ -318,5 +319,35 @@ namespace SqlOrganize
 
             return this;
         }
+
+        /// <summary>
+        /// Comparar valores con los indicados en parametro
+        /// </summary>
+        /// <param name="values"></param>
+        /// <param name="values"></param>
+        /// <returns>Valores del parametro que son diferentes o que no estan definidos localmente</returns>
+        /// <remarks>Solo compara fieldNames</remarks>
+        public Dictionary<string, object> Compare(Dictionary<string, object> values, List<string>? ignoreFields = null, bool ignoreNull = true)
+        {
+            Dictionary<string, object> dict1_ = new(this.values);
+            Dictionary<string, object> dict2_ = new(values);
+            Dictionary<string, object> response = new();
+
+
+            if (!ignoreFields.IsNullOrEmpty())
+                foreach (var key in ignoreFields)
+                {
+                    dict1_.Remove(key);
+                    dict2_.Remove(key);
+                }
+
+            foreach (var fieldName in db.FieldNames(entityName))
+                if (dict2_.ContainsKey(fieldName) && (ignoreNull && dict2_[fieldName] != null && !dict2_[fieldName].IsDbNull()))
+                    if (!dict1_.ContainsKey(fieldName) || !dict1_[fieldName].ToString().Equals(dict2_[fieldName].ToString()))
+                        response[fieldName] = dict2_[fieldName];
+
+            return response;
+        }
     }
+
 }
