@@ -291,6 +291,20 @@ namespace Utils
             return dictionary;
         }
 
+        /// <summary>
+        /// https://www.dotnetperls.com/sort-strings-length
+        /// </summary>
+        /// <param name="e"></param>
+        /// <returns></returns>
+        public static IEnumerable<string> SortByLength(this IEnumerable<string> e, string sort = "ASC")
+        {
+            // Use LINQ to sort the array received and return a copy.
+            var sorted = (sort == "DESC") ?
+                from s in e orderby s.Length ascending select s : from s in e orderby s.Length descending select s;
+
+            return sorted;
+        }
+
     }
 
 

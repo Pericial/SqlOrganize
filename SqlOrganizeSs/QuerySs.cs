@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using SqlOrganize;
+using System.Data.Common;
 using Utils;
 
 namespace SqlOrganizeSs
@@ -13,39 +14,9 @@ namespace SqlOrganizeSs
         {
         }
 
-        protected void SqlExecute(SqlConnection connection, SqlCommand command)
+        protected override void AddWithValue(DbCommand command, string columnName, object value)
         {
-            connection.Open();
-            command.Connection = connection;
-
-            var j = parameters.Count;
-            foreach(var (key, value) in parametersDict)
-                while (sql.Contains(@key))
-                {
-                    sql = sql.ReplaceFirst("@" + key, "@"+ j.ToString());
-                    parameters.Add(value);
-                    j++;
-                }
-
-            for (var i = 0; i < parameters.Count; i++)
-            {
-                if (parameters[i].IsList())
-                {
-                    //cuidado con el tipo de entrada, no se puede hacer cast de List<string> a List<object> por ejemplo
-                    var _parameters = (parameters[i] as List<object>).Select((x, j) => Tuple.Create($"@{i}_{j}", x));
-                    sql = sql.ReplaceFirst("@" + i.ToString(), string.Join(",", _parameters.Select(x => x.Item1)));
-                    foreach (var parameter in _parameters)
-                        command.Parameters.AddWithValue(parameter.Item1, parameter.Item2);
-                }
-                else
-                {
-                    var p = (parameters[i] == null) ? DBNull.Value : parameters[i];
-                    command.Parameters.AddWithValue(i.ToString(), p);
-                }
-            }
-
-            command.CommandText = sql;
-            command.ExecuteNonQuery();
+            (command as SqlCommand)!.Parameters.AddWithValue(columnName, value);
         }
 
         public override List<Dictionary<string, object>> ListDict()
