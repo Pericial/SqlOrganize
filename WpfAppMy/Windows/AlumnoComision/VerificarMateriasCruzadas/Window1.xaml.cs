@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,27 +24,45 @@ namespace WpfAppMy.Windows.AlumnoComision.VerificarMateriasCruzadas
         DAO dao = new();
         List<string> logs = new();
 
+
         public Window1()
         {
             InitializeComponent();
 
             var idsAlumnos = dao.IdsAlumnoDeComisionesAutorizadasPorCalendario("2023", "1");
-            var idsAlumnosMateriasCruzadas = dao.IdAlumnosConCalificacionesAprobadasCruzadas(idsAlumnos);
+            var idsAlumnosMateriasCruzadas = dao.IdsAlumnosConCalificacionesAprobadasCruzadas(idsAlumnos);
+            var calificaciones = dao.CalificacionesAprobadasDeAlumnos(idsAlumnosMateriasCruzadas);
 
+            calificacionesGrid.ItemsSource = calificaciones.ConvertToListOfObject<Calificacion>();
 
-            /*
-            var persist = ContainerApp.db.Persist("alumno");
-
-
-            foreach (var comision in comisiones)
-            {
-                var idAlumnos = dao.IdAlumnosConPlanDiferenteDeComision(comision["id"], comision["planificacion-plan"]);
-                if (idAlumnos.IsNullOrEmpty()) continue;
-                Dictionary<string, object> row = new() { { "plan", comision["planificacion-plan"] } };
-                persist.UpdateIds(row, idAlumnos);
-            }
-            persist.Transaction();
-            ContainerApp.dbCache.Remove(persist.detail);*/
         }
+    }
+
+    internal class Calificacion
+    {
+        public string id { get; set; }
+
+        public string persona__nombres { get; set; }
+        public string persona__apellidos { get; set; }
+        public string persona__numero_documento { get; set; }
+        public string plan_pla__id { get; set; }
+        public string plan_pla__orientacion { get; set; }
+
+        public string plan_pla__distribucion_horaria { get; set; }
+
+        public string planificacion_dis__anio { get; set; }
+        public string planificacion_dis__semestre { get; set; }
+
+        public string asignatura_dis__nombre { get; set; }
+
+
+
+
+
+
+
+
+
+
     }
 }

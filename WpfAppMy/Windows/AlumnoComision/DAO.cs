@@ -28,21 +28,36 @@ namespace WpfAppMy.Windows.AlumnoComision
             return ContainerApp.DbCache().Column<object>(q);
         }
 
-        public List<string> IdAlumnosConCalificacionesAprobadasCruzadas(List<object> ids)
+        public List<object> IdsAlumnosConCalificacionesAprobadasCruzadas(List<object> ids)
         {
             var q = ContainerApp.Db().Query("calificacion")
-                .Select("SUM(DISTINCT $plan_pla-id) as cantidad_planes")
+                .Select("COUNT(DISTINCT $plan_pla-id) as cantidad_planes")
                 .Group("$alumno")
                 .Size(0)
                 .Where(@"
-                    $id IN (@0)
+                    $alumno IN (@0)
                     AND ($nota_final >= 7
                     OR $crec >= 4)
                 ")
                 .Having("cantidad_planes > 1")
                 .Parameters(ids);
 
-            return ContainerApp.DbCache().Column<string>(q);
+            //var qq = q.Sql();
+            return ContainerApp.DbCache().Column<object>(q, "alumno");
+        }
+
+        public List<Dictionary<string,object>> CalificacionesAprobadasDeAlumnos(List<object> idsAlumnos)
+        {
+            var q = ContainerApp.Db().Query("calificacion")
+                .Size(0)
+                .Where(@"
+                    $alumno IN (@0)
+                ")
+                .Parameters(idsAlumnos)
+                .Order("$persona-apellidos ASC, $persona-nombres ASC");
+
+            //var qq = q.Sql();
+            return ContainerApp.DbCache().ListDict(q);
         }
 
         public List<Dictionary<string, object>> AlumnosComisionesPorComision(object comision)
