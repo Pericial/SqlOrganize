@@ -27,7 +27,7 @@ namespace SqlOrganize
         Si no encuentra valores en el Cache, realiza una consulta a la base de datos
         y lo almacena en Cache.
         */
-        public List<Dictionary<string, object>> ListDict(string entityName, params string[] ids)
+        public List<Dictionary<string, object>> ListDict(string entityName, params object[] ids)
         {
             ids = ids.Distinct().ToArray();
 

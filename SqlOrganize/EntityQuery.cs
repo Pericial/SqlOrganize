@@ -201,6 +201,12 @@ namespace SqlOrganize
             return this;
         }
 
+        public EntityQuery Fields(params string[] f)
+        {
+            fields += String.Join(", ", f);
+            return this;
+        }
+
         public EntityQuery Select(string f)
         {
             select += f;

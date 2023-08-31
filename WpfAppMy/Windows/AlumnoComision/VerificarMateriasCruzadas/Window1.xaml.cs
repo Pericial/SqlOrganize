@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Utils;
 
-namespace WpfAppMy.Windows.AlumnoComision.ActualizarPlanAlumnos
+namespace WpfAppMy.Windows.AlumnoComision.VerificarMateriasCruzadas
 {
     /// <summary>
     /// Lógica de interacción para Window1.xaml
@@ -22,13 +22,19 @@ namespace WpfAppMy.Windows.AlumnoComision.ActualizarPlanAlumnos
     {
         DAO dao = new();
         List<string> logs = new();
+
         public Window1()
         {
             InitializeComponent();
-        
-            var comisiones = dao.ComisionesAutorizadasPorCalendario("2023", "1");
 
+            var idsAlumnos = dao.IdsAlumnoDeComisionesAutorizadasPorCalendario("2023", "1");
+            var idsAlumnos_ = dao.IdsAlumnoDeComisionesAutorizadasPorCalendario("2023", "1");
+
+
+            /*
             var persist = ContainerApp.db.Persist("alumno");
+
+
             foreach (var comision in comisiones)
             {
                 var idAlumnos = dao.IdAlumnosConPlanDiferenteDeComision(comision["id"], comision["planificacion-plan"]);
@@ -37,7 +43,7 @@ namespace WpfAppMy.Windows.AlumnoComision.ActualizarPlanAlumnos
                 persist.UpdateIds(row, idAlumnos);
             }
             persist.Transaction();
-            ContainerApp.dbCache.Remove(persist.detail);
+            ContainerApp.dbCache.Remove(persist.detail);*/
         }
     }
 }

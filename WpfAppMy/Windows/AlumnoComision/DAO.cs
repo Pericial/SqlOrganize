@@ -13,7 +13,7 @@ namespace WpfAppMy.Windows.AlumnoComision
 {
     internal class DAO
     {
-        public List<string> IdsAlumnoPorCalendario(object anio, object semestre)
+        public List<string> IdsAlumnoDeComisionesAutorizadasPorCalendario(object anio, object semestre)
         {
             var q = ContainerApp.Db().Query("alumno_comision")
                 .Fields("alumno")
@@ -21,8 +21,25 @@ namespace WpfAppMy.Windows.AlumnoComision
                 .Where(@"
                     $calendario-anio = @0
                     AND $calendario-semestre = @1 
+                    AND $comision-autorizada = true
                 ")
                 .Parameters(anio, semestre);
+
+            return ContainerApp.DbCache().Column<string>(q);
+        }
+
+        public List<string> FiltrarAlumnosConCalificacionesAprobadasCruzadas(List<object> ids)
+        {
+            var q = ContainerApp.Db().Query("calificacion")
+                .Fields("$alumno")
+                .Select("SUM($plan-id) as suma_planes")
+                .Group("alumno")
+                .Size(0)
+                .Where(@"
+                    $ids IN (@0)
+                ")
+                .Having("suma_planes > 1")
+                .Parameters(ids);
 
             return ContainerApp.DbCache().Column<string>(q);
         }
@@ -39,6 +56,18 @@ namespace WpfAppMy.Windows.AlumnoComision
             return ContainerApp.DbCache().ListDict(q);
         }
 
+        public List<object> IdsAlumnosPorComisiones(List<object> comisiones)
+        {
+            var q = ContainerApp.Db().Query("alumno_comision")
+                .Fields("alumno")
+                .Size(0)
+                .Where(@"
+                    $comision IN (@0)
+                ");
+
+            return ContainerApp.DbCache().Column<object>(q);
+        }
+
         public List<Dictionary<string, object>> ComisionesConSiguientePorCalendario(object anio, object semestre)
         {
             var q = ContainerApp.Db().Query("comision")
@@ -53,13 +82,32 @@ namespace WpfAppMy.Windows.AlumnoComision
             return ContainerApp.DbCache().ListDict(q);
         }
 
-        public List<Dictionary<string, object>> ComisionesPorCalendario(object anio, object semestre)
+        public List<object> IdsComisionesAutorizadasPorCalendario(object anio, object semestre)
         {
+            var q = ContainerApp.Db().Query("comision")
+                .Fields(ContainerApp.db.config.id)
+                .Size(0)
+                .Where(@"
+                    $calendario-anio = @0
+                    AND $calendario-semestre = @1
+                    AND $autorizada = true
+                ")
+                .Parameters(anio, semestre);
+
+            return ContainerApp.DbCache().Column<object>(q);
+        }
+
+        public List<Dictionary<string, object>> ComisionesAutorizadasPorCalendario(object anio, object semestre)
+        {
+            List<object> ids = IdsComisionesAutorizadasPorCalendario(anio, semestre);
+            return ContainerApp.DbCache().ListDict("comision", ids);
+
             var q = ContainerApp.Db().Query("comision")
                 .Size(0)
                 .Where(@"
                     $calendario-anio = @0
-                    AND $calendario-semestre = @1 
+                    AND $calendario-semestre = @1
+                    AND $autorizada = true
                 ")
                 .Parameters(anio, semestre);
 
@@ -85,7 +133,7 @@ namespace WpfAppMy.Windows.AlumnoComision
 
         public List<Dictionary<string, object>> AlumnosPorCalendario(object anio, object semestre)
         {
-            List<string> ids = IdsAlumnoPorCalendario(anio, semestre);
+            List<string> ids = IdsAlumnoDeComisionesAutorizadasPorCalendario(anio, semestre);
             return ContainerApp.DbCache().ListDict("alumno", ids.ToArray());
         }
 
