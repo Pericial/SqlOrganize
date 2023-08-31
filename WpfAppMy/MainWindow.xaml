@@ -29,6 +29,7 @@
                 <MenuItem Header="Prueba PDF" Click="PruebaPdf_Click"/>
                 <MenuItem Header="Enviar emails TomaPDF" Click="EnviarEmailToma_Click"/>
                 <MenuItem Header="Actualizar plan de alumnos" Click="ActualizarPlanAlumnos_Click"/>
+                <MenuItem Header="Verificar materias cruzadas" Click="VerificarMateriasCruzadas_Click"/>
 
 
             </MenuItem>

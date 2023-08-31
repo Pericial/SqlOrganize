@@ -13,10 +13,10 @@ namespace WpfAppMy.Windows.AlumnoComision
 {
     internal class DAO
     {
-        public List<string> IdsAlumnoDeComisionesAutorizadasPorCalendario(object anio, object semestre)
+        public List<object> IdsAlumnoDeComisionesAutorizadasPorCalendario(object anio, object semestre)
         {
             var q = ContainerApp.Db().Query("alumno_comision")
-                .Fields("alumno")
+                .Fields("$alumno")
                 .Size(0)
                 .Where(@"
                     $calendario-anio = @0
@@ -25,20 +25,21 @@ namespace WpfAppMy.Windows.AlumnoComision
                 ")
                 .Parameters(anio, semestre);
 
-            return ContainerApp.DbCache().Column<string>(q);
+            return ContainerApp.DbCache().Column<object>(q);
         }
 
-        public List<string> FiltrarAlumnosConCalificacionesAprobadasCruzadas(List<object> ids)
+        public List<string> IdAlumnosConCalificacionesAprobadasCruzadas(List<object> ids)
         {
             var q = ContainerApp.Db().Query("calificacion")
-                .Fields("$alumno")
-                .Select("SUM($plan-id) as suma_planes")
-                .Group("alumno")
+                .Select("SUM(DISTINCT $plan_pla-id) as cantidad_planes")
+                .Group("$alumno")
                 .Size(0)
                 .Where(@"
-                    $ids IN (@0)
+                    $id IN (@0)
+                    AND ($nota_final >= 7
+                    OR $crec >= 4)
                 ")
-                .Having("suma_planes > 1")
+                .Having("cantidad_planes > 1")
                 .Parameters(ids);
 
             return ContainerApp.DbCache().Column<string>(q);
@@ -133,7 +134,7 @@ namespace WpfAppMy.Windows.AlumnoComision
 
         public List<Dictionary<string, object>> AlumnosPorCalendario(object anio, object semestre)
         {
-            List<string> ids = IdsAlumnoDeComisionesAutorizadasPorCalendario(anio, semestre);
+            List<object> ids = IdsAlumnoDeComisionesAutorizadasPorCalendario(anio, semestre);
             return ContainerApp.DbCache().ListDict("alumno", ids.ToArray());
         }
 
@@ -148,7 +149,7 @@ namespace WpfAppMy.Windows.AlumnoComision
             var idAlumnos = alumnoComision_.Column<object>("alumno").Distinct().ToList();
             var idPlan = alumnoComision_[0]["planificacion-plan"];
             var q = ContainerApp.Db().Query("calificacion")
-                .Select("$alumno, SUM($disposicion) AS cantidad")
+                .Select("$SUM($disposicion) AS cantidad")
                 .Group("$alumno")
                 .Size(0)
                 .Where(@"

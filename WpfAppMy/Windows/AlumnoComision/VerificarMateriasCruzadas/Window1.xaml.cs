@@ -28,7 +28,7 @@ namespace WpfAppMy.Windows.AlumnoComision.VerificarMateriasCruzadas
             InitializeComponent();
 
             var idsAlumnos = dao.IdsAlumnoDeComisionesAutorizadasPorCalendario("2023", "1");
-            var idsAlumnos_ = dao.IdsAlumnoDeComisionesAutorizadasPorCalendario("2023", "1");
+            var idsAlumnosMateriasCruzadas = dao.IdAlumnosConCalificacionesAprobadasCruzadas(idsAlumnos);
 
 
             /*

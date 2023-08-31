@@ -121,7 +121,11 @@ namespace WpfAppMy
             Windows.AlumnoComision.ActualizarPlanAlumnos.Window1 win = new();
             win.Show();
         }
-
+        private void VerificarMateriasCruzadas_Click(object sender, RoutedEventArgs e)
+        {
+            Windows.AlumnoComision.VerificarMateriasCruzadas.Window1 win = new();
+            win.Show();
+        }
     }
 }
 
