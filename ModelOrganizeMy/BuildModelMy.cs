@@ -26,7 +26,7 @@ namespace ModelOrganizeMy
             using MySqlCommand command = new MySqlCommand();
             command.CommandText = @"
  select 
-	col.TABLE_NAME, 
+	DISTINCT col.TABLE_NAME, 
 	col.COLUMN_NAME, 
 	col.COLUMN_DEFAULT, 
 	IF(col.IS_NULLABLE = 'YES', 1, 0) AS IS_NULLABLE, 
