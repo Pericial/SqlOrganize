@@ -697,7 +697,8 @@
       "division",
       "alumno",
       "disposicion",
-      "fecha"
+      "fecha",
+      "archivado"
     ],
     "fk": [
       "curso",
@@ -710,7 +711,8 @@
     "notNull": [
       "id",
       "alumno",
-      "disposicion"
+      "disposicion",
+      "archivado"
     ],
     "uniqueMultiple": [],
     "id": [

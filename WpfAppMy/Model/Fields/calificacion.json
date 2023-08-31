@@ -204,5 +204,20 @@
     "dataType": "DateTime",
     "notNull": false,
     "defaultValue": null
+  },
+  "archivado": {
+    "checks": {
+      "type": "bool",
+      "required": true
+    },
+    "resets": {},
+    "name": "archivado",
+    "alias": null,
+    "entityName": "calificacion",
+    "refEntityName": null,
+    "refFieldName": null,
+    "dataType": "bool",
+    "notNull": true,
+    "defaultValue": false
   }
 }
