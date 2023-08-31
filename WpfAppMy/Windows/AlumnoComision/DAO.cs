@@ -74,6 +74,7 @@ namespace WpfAppMy.Windows.AlumnoComision
                .Where(@"
                     $alumno-plan != @0
                     AND $comision = @1
+                    AND $activo = true
                 ")
                .Parameters(plan, comision);
 

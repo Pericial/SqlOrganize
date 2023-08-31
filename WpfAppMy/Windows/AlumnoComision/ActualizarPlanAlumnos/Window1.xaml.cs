@@ -30,8 +30,7 @@ namespace WpfAppMy.Windows.AlumnoComision.ActualizarPlanAlumnos
                 { "calendario-semestre", "1" },
             };
 
-            var comisiones = dao.ComisionAllByCalendario(search);
-
+            var comisiones = dao.ComisionesPorCalendario("2023", "1");
 
             var persist = ContainerApp.db.Persist("alumno");
             foreach (var comision in comisiones)
