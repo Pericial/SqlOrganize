@@ -126,6 +126,12 @@ namespace WpfAppMy
             Windows.AlumnoComision.VerificarMateriasCruzadas.Window1 win = new();
             win.Show();
         }
+
+        private void VerificarAlumnosDuplicados_Click(object sender, RoutedEventArgs e)
+        {
+            Windows.AlumnoComision.VerificarAlumnosDuplicados.Window1 win = new();
+            win.Show();
+        }
     }
 }
 

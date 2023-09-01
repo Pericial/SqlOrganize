@@ -69,7 +69,8 @@ namespace WpfAppMy.Windows.AlumnoComision
             var q = ContainerApp.Db().Query("alumno_comision")
                 .Size(0)
                 .Where(@"
-                    $comision = @0
+                    $comision = @0 AND $activo = true
+  
                 ")
                 .Parameters(comision);
 
@@ -149,8 +150,6 @@ namespace WpfAppMy.Windows.AlumnoComision
             return ContainerApp.DbCache().Column<object>(q);
         }
 
-
-
         public List<Dictionary<string, object>> AlumnosPorCalendario(object anio, object semestre)
         {
             List<object> ids = IdsAlumnoDeComisionesAutorizadasPorCalendario(anio, semestre);
@@ -179,9 +178,40 @@ namespace WpfAppMy.Windows.AlumnoComision
                 .Having("SUM($disposicion) > 3")
                 .Parameters(idAlumnos, idPlan);
 
-            return ContainerApp.DbCache().Column<object>(q); ;
+            return ContainerApp.DbCache().Column<object>(q);
 
         }
+
+        public List<object> IdsAlumnosActivosDuplicadosPorSemestre(object anio, object semestre)
+        {
+            var q = ContainerApp.Db().Query("alumno_comision")
+               .Select("COUNT($id) AS cantidad")
+               .Group("$alumno")
+               .Size(0)
+               .Where(@"
+                    $calendario-anio = @0
+                    AND $calendario-semestre = @1
+                    AND $estado = 'Activo'
+                ")
+               .Having("cantidad > 1")
+               .Parameters(anio, semestre);
+
+            return ContainerApp.DbCache().Column<object>(q, "alumno");
+        }
+
+
+        public List<Dictionary<string, object>> AlumnosPorIds(List<object> ids)
+        {
+            var q = ContainerApp.Db().Query("alumno")
+               .Size(0)
+               .Where(@"
+                    $id IN ( @0 )
+                ")
+               .Parameters(ids);
+
+            return ContainerApp.DbCache().ListDict(q);
+        }
+
 
     }
 }
