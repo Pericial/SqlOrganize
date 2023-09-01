@@ -28,7 +28,7 @@ namespace WpfAppMy.Windows.AlumnoComision
             return ContainerApp.DbCache().Column<object>(q);
         }
 
-        public List<object> IdsAlumnosConCalificacionesAprobadasCruzadas(List<object> ids)
+        public List<object> IdsAlumnosConCalificacionesAprobadasCruzadasNoArchivadas(List<object> ids)
         {
             var q = ContainerApp.Db().Query("calificacion")
                 .Select("COUNT(DISTINCT $plan_pla-id) as cantidad_planes")
@@ -38,6 +38,7 @@ namespace WpfAppMy.Windows.AlumnoComision
                     $alumno IN (@0)
                     AND ($nota_final >= 7
                     OR $crec >= 4)
+                    AND $archivado = false
                 ")
                 .Having("cantidad_planes > 1")
                 .Parameters(ids);
@@ -46,15 +47,18 @@ namespace WpfAppMy.Windows.AlumnoComision
             return ContainerApp.DbCache().Column<object>(q, "alumno");
         }
 
-        public List<Dictionary<string,object>> CalificacionesAprobadasDeAlumnos(List<object> idsAlumnos)
+        public List<Dictionary<string,object>> CalificacionesAprobadasDeAlumnosNoArchivadas(List<object> idsAlumnos)
         {
             var q = ContainerApp.Db().Query("calificacion")
                 .Size(0)
                 .Where(@"
                     $alumno IN (@0)
+                    AND ($nota_final >= 7
+                    OR $crec >= 4) 
+                    AND $archivado = false
                 ")
                 .Parameters(idsAlumnos)
-                .Order("$persona-apellidos ASC, $persona-nombres ASC");
+                .Order("$persona-apellidos ASC, $persona-nombres ASC, $planificacion_dis-anio ASC, $planificacion_dis-semestre ASC, $planificacion_dis-plan");
 
             //var qq = q.Sql();
             return ContainerApp.DbCache().ListDict(q);
@@ -169,7 +173,6 @@ namespace WpfAppMy.Windows.AlumnoComision
                 .Size(0)
                 .Where(@"
                     $alumno IN (@0)
-                    AND $plan-alu = @1
                     AND $plan-alu = @1
                     AND ($nota_final >= 7 OR $crec >= 4)  
                  ")

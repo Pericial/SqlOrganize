@@ -30,8 +30,8 @@ namespace WpfAppMy.Windows.AlumnoComision.VerificarMateriasCruzadas
             InitializeComponent();
 
             var idsAlumnos = dao.IdsAlumnoDeComisionesAutorizadasPorCalendario("2023", "1");
-            var idsAlumnosMateriasCruzadas = dao.IdsAlumnosConCalificacionesAprobadasCruzadas(idsAlumnos);
-            var calificaciones = dao.CalificacionesAprobadasDeAlumnos(idsAlumnosMateriasCruzadas);
+            var idsAlumnosMateriasCruzadas = dao.IdsAlumnosConCalificacionesAprobadasCruzadasNoArchivadas(idsAlumnos);
+            var calificaciones = dao.CalificacionesAprobadasDeAlumnosNoArchivadas(idsAlumnosMateriasCruzadas);
 
             calificacionesGrid.ItemsSource = calificaciones.ConvertToListOfObject<Calificacion>();
 
@@ -54,6 +54,9 @@ namespace WpfAppMy.Windows.AlumnoComision.VerificarMateriasCruzadas
         public string planificacion_dis__semestre { get; set; }
 
         public string asignatura_dis__nombre { get; set; }
+        public decimal nota_final { get; set; }
+
+        public decimal crec { get; set; }
 
 
 
