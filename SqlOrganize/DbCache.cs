@@ -22,11 +22,14 @@ namespace SqlOrganize
         }
 
 
-        /*
-        Obtener campos de una entidad (sin relaciones)
-        Si no encuentra valores en el Cache, realiza una consulta a la base de datos
-        y lo almacena en Cache.
-        */
+        /// <summary>
+        /// Obtener campos de una entidad (sin relaciones)<br/>
+        /// Si no encuentra valores en el Cache, realiza una consulta a la base de datos y lo almacena en Cache.
+        /// </summary>
+        /// <param name="entityName"></param>
+        /// <param name="ids"></param>
+        /// <remarks>IMPORTANTE! No devuelve relaciones!!!</remarks>
+        /// <returns></returns>
         public List<Dictionary<string, object>> ListDict(string entityName, params object[] ids)
         {
             ids = ids.Distinct().ToArray();
