@@ -27,7 +27,12 @@ namespace WpfAppMy.Windows.AlumnoComision.DesactivarAlumnosNoCalificados
         {
             InitializeComponent();
 
-            var idsAlumnos = dao.IdsAlumnoDeComisionesAutorizadasPorCalendario("2023", "1");
+            var alumnosComisiones = dao.AlumnosComisionesAutorizadasPorCalendario("2023", "1");
+
+            foreach( var alumnoComision in alumnosComisiones )
+            {
+                dao.CantidadCalificacionesAprobadasDeAlumnoPorAnioTramo(alumnoComision["alumno"]);
+            }
 
         }
     }

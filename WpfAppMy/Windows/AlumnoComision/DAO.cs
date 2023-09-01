@@ -212,6 +212,38 @@ namespace WpfAppMy.Windows.AlumnoComision
             return ContainerApp.DbCache().ListDict(q);
         }
 
+        public List<Dictionary<string, object>> AlumnosComisionesAutorizadasPorCalendario(object anio, object semestre)
+        {
+            var q = ContainerApp.Db().Query("alumno_comision")
+                .Size(0)
+                .Where("$calendario-anio = @0 AND $calendario-semestre = @1 AND $comision-autorizada = true AND $estado = 'Activo'")
+                .Parameters(anio, semestre);
+
+            return ContainerApp.DbCache().ListDict(q);
+        }
+
+        /// <summary>
+        /// Se devuelven las calificaciones por tramo, sin tener en cuenta el plan
+        /// </summary>
+        /// <param name="alumno"></param>
+        /// <param name="anio"></param>
+        /// <param name="semestre"></param>
+        /// <returns></returns>
+        public int CantidadCalificacionesAprobadasDeAlumnoPorTramo(object alumno, object anio, object semestre)
+        {
+            var q = ContainerApp.Db().Query("calificacion")
+                .Select("COUNT($id) as cantidad")
+                .Size(0)
+                .Where(@"
+                    $alumno = @0
+                    AND $planificacion_dis-anio = @1
+                    AND $planificacion_dis-semestre = @2
+                ")
+                .Parameters(alumno, anio, semestre);
+
+            //var qq = q.Sql();
+            return ContainerApp.DbCache().Value<int>(q);
+        }
 
     }
 }
