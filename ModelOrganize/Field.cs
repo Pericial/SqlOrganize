@@ -57,6 +57,13 @@ namespace ModelOrganize
         /* valor por defecto */
         public object? defaultValue { get; set; } = null;
 
+
+        /// <summary>
+        /// longitud maxima
+        /// </summary>
+        public ulong? maxLength { get; set; } = null;
+
+
         /// <summary>
         /// Lista de chequeos
         /// </summary>
@@ -82,5 +89,6 @@ namespace ModelOrganize
         /// ]
         /// </example>
         public Dictionary<string, object> resets = new();
+
     }
 }
