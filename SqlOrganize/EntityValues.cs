@@ -244,7 +244,17 @@ namespace SqlOrganize
                     else
                         values[fieldName] = field.defaultValue;
                     break;
+                
+                case "sbyte":
+                case "byte":
+                case "short":
+                case "ushort":
                 case "int":
+                case "uint":
+                case "long":
+                case "ulong":
+                case "nint":
+                case "nuint":
                     if (field.defaultValue.ToString().ToLower().Contains("max"))
                     {
                         int max = db.Query(entityName).Select("MAX($" + fieldName + ")").Value<int>();
