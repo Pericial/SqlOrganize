@@ -61,34 +61,7 @@ namespace ModelOrganize
                     if (col.IS_NULLABLE == 0)
                         table.NotNull.Add(col.COLUMN_NAME);
 
-                    switch (col.DATA_TYPE)
-                    {
-                        case "varchar":
-                        case "char":
-                        case "nchar":
-                        case "nvarchar":
-                        case "text":
-                            col.DataType = "string";
-                            break;
-                        case "real":
-                            col.DataType = "float";
-                            break;
-                        case "bit":
-                        case "tinyint":
-                            col.DataType = "bool";
-                            break;
-                        case "datetime":
-                        case "timestamp":
-                        case "date":
-                            col.DataType = "DateTime";
-                            break;
-                        case "smallint":
-                            col.DataType = "int";
-                            break;
-                        default:
-                            col.DataType = col.DATA_TYPE!;
-                            break;
-                    }
+                    
                 }
 
                 Tables.Add(table);
@@ -201,7 +174,63 @@ namespace ModelOrganize
                     f.entityName = t.Name!;
                     f.name = c.COLUMN_NAME;
                     f.alias = c.Alias;
-                    f.dataType = c.DataType;
+
+
+                    if (!c.CHARACTER_MAXIMUM_LENGTH.IsNullOrEmpty() && !c.CHARACTER_MAXIMUM_LENGTH.IsDbNull())
+                        f.maxLength = (ulong)c.CHARACTER_MAXIMUM_LENGTH!;
+                    else if (!c.MAX_LENGTH.IsNullOrEmpty() && !c.MAX_LENGTH.IsDbNull())
+                        f.maxLength = (ulong)c.MAX_LENGTH!;
+
+
+                    switch (c.DATA_TYPE)
+                    {
+                        case "varchar":
+                        case "char":
+                        case "nchar":
+                        case "nvarchar":
+                        case "text":
+                            f.dataType = "string";
+                            break;
+                        case "real":
+                            f.dataType = "float";
+                            break;
+                        case "bit":
+                            f.dataType = "bool";
+                            break;
+
+                        case "datetime":
+                        case "timestamp":
+                        case "date":
+                            f.dataType = "DateTime";
+                            break;
+
+                        case "smallint":
+                            f.dataType = (c.IS_UNSIGNED == 1) ? "ushort" : "short";
+                            break;
+
+                        case "int":
+                            f.dataType = (c.IS_UNSIGNED == 1) ? "uint" : "int";
+                            break;
+
+                        case "tinyint":
+                            if (f.maxLength == 1)
+                                f.dataType = "bool";
+                            else if (c.IS_UNSIGNED == 1)
+                                f.dataType = "ubyte";
+                            else
+                                f.dataType = "byte";
+                            break;
+
+                        case "bigint":
+                            f.dataType = (c.IS_UNSIGNED == 1) ? "ulong" : "long";
+                            break;
+
+                        default:
+                            f.dataType = c.DATA_TYPE!;
+                            break;
+                    }
+
+
                     if (!c.COLUMN_DEFAULT.IsNullOrEmpty() && !c.COLUMN_DEFAULT.IsDbNull() && (c.COLUMN_DEFAULT as string) != "NULL")
                         f.defaultValue = c.COLUMN_DEFAULT;
 
