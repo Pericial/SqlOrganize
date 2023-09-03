@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Org.BouncyCastle.Utilities;
+using SqlOrganize;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,8 @@ namespace Pedidos.Windows.MigrarAlumnos
     /// </summary>
     public partial class Window1 : Window
     {
-        DAO dao = new();
+        DAO.Pedidos.Tickets ticketsDao = new();
+        DAO.Fines.Alumno alumnoDao = new ();
         List<string> logs = new();
 
 
@@ -29,8 +31,14 @@ namespace Pedidos.Windows.MigrarAlumnos
         {
             InitializeComponent();
 
-            var alumnos = dao.AlumnosAll();
-            logs.Add("Cantidad de docentes a procesar" + alumnos.Count.ToString());
+            var dnis = ticketsDao.DnisAlumnosConTicketDeSeguimiento();
+            List<Dictionary<string, object>> alumnos = alumnoDao.AlumnosActivosDeComisionesAutorizadasPorCalendario2("2023","1",dnis);
+
+
+            foreach(var alumno in alumnos)
+            {
+                EntityValues v = ContainerApp.dbPedidos.Values("wpwt_psmsc_tickets").Default();
+            }
 
             info.Text += String.Join(@"
 ", logs);

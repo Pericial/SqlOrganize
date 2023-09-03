@@ -132,6 +132,12 @@ namespace WpfAppMy
             Windows.AlumnoComision.VerificarAlumnosDuplicados.Window1 win = new();
             win.Show();
         }
+
+        private void DesactivarAlumnosNoCalificados_Click(object sender, RoutedEventArgs e)
+        {
+            Windows.AlumnoComision.DesactivarAlumnosNoCalificados.Window1 win = new();
+            win.Show();
+        }
     }
 }
 

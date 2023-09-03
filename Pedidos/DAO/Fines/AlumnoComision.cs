@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pedidos.Windows.MigrarAlumnos
+namespace Pedidos.DAO.Fines
 {
-    internal class DAO
+    public class AlumnoComision
     {
-        public List<Dictionary<string, object>> AlumnosAll()
+
+        public List<object> IdsAlumnosActivosDeComisionesAutorizadasPorCalendario(object anio, object semestre)
         {
             var q = ContainerApp.dbFines.Query("alumno_comision")
                 .Fields("alumno")
@@ -18,11 +19,9 @@ namespace Pedidos.Windows.MigrarAlumnos
                     AND $calendario-semestre = @1 
                     AND $estado = 'Activo'
                 ")
-                .Parameters("2023", "1");
+                .Parameters(anio, semestre);
 
-            List<string> idAlumnos = ContainerApp.dbCacheFines.Column<string>(q);
-
-            return ContainerApp.dbCacheFines.ListDict("alumno", idAlumnos.ToArray());
+            return ContainerApp.dbCacheFines.Column<object>(q);
         }
     }
 }

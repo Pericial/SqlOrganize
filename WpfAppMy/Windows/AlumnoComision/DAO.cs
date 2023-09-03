@@ -229,7 +229,7 @@ namespace WpfAppMy.Windows.AlumnoComision
         /// <param name="anio"></param>
         /// <param name="semestre"></param>
         /// <returns></returns>
-        public int CantidadCalificacionesAprobadasDeAlumnoPorTramo(object alumno, object anio, object semestre)
+        public Int64 CantidadCalificacionesAprobadasDeAlumnoPorTramo(object alumno, object anio, object semestre)
         {
             var q = ContainerApp.Db().Query("calificacion")
                 .Select("COUNT($id) as cantidad")
@@ -242,7 +242,7 @@ namespace WpfAppMy.Windows.AlumnoComision
                 .Parameters(alumno, anio, semestre);
 
             //var qq = q.Sql();
-            return ContainerApp.DbCache().Value<int>(q);
+            return ContainerApp.DbCache().Value<Int64>(q);
         }
 
     }

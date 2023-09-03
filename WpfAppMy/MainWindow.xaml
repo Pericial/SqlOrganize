@@ -31,7 +31,7 @@
                 <MenuItem Header="Actualizar plan de alumnos" Click="ActualizarPlanAlumnos_Click"/>
                 <MenuItem Header="Verificar materias cruzadas" Click="VerificarMateriasCruzadas_Click"/>
                 <MenuItem Header="Verificar alumnos duplicados" Click="VerificarAlumnosDuplicados_Click"/>
-
+                <MenuItem Header="Desactivar alumnos no calificados" Click="DesactivarAlumnosNoCalificados_Click"/>
 
             </MenuItem>
         </Menu>
