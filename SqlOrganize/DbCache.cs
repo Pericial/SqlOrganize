@@ -207,7 +207,7 @@ namespace SqlOrganize
                     //Si las fk estan asociadas a una unica pk, debe indicarse para mayor eficiencia
                     if (Db.config.fkId)
                     {
-                        data = ListDict(refEntityName, ids.OfType<string>().ToArray());
+                        data = ListDict(refEntityName, ids.OfType<object>().ToArray());
                     } else
                     {
                         var q = Db.Query(refEntityName).Size(0).Where("$" + refFieldName + " IN (@0)").Parameters(ids);
