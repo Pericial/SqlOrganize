@@ -12,7 +12,8 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": "max",
+    "maxLength": 11
   },
   "from_name": {
     "checks": {
@@ -30,7 +31,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 200
   },
   "from_email": {
     "checks": {
@@ -48,7 +50,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 200
   },
   "reply_to": {
     "checks": {
@@ -66,7 +69,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 200
   },
   "subject": {
     "checks": {
@@ -84,7 +88,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 65535
   },
   "body": {
     "checks": {
@@ -98,7 +103,8 @@
     "refFieldName": null,
     "dataType": "longtext",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 4294967295
   },
   "to_email": {
     "checks": {
@@ -116,7 +122,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 65535
   },
   "cc_email": {
     "checks": {
@@ -134,7 +141,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 65535
   },
   "bcc_email": {
     "checks": {
@@ -152,7 +160,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 65535
   },
   "attachments": {
     "checks": {
@@ -170,7 +179,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 65535
   },
   "attempt": {
     "checks": {
@@ -184,7 +194,8 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": false,
-    "defaultValue": "0"
+    "defaultValue": "0",
+    "maxLength": 1
   },
   "priority": {
     "checks": {
@@ -199,6 +210,7 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": true,
-    "defaultValue": "1"
+    "defaultValue": "1",
+    "maxLength": 1
   }
 }

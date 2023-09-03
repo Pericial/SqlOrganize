@@ -12,7 +12,8 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": "max",
+    "maxLength": 11
   },
   "name": {
     "checks": {
@@ -30,7 +31,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 200
   },
   "custom_field": {
     "checks": {
@@ -45,7 +47,8 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": true,
-    "defaultValue": "0"
+    "defaultValue": "0",
+    "maxLength": 11
   },
   "date_created": {
     "checks": {
@@ -60,7 +63,8 @@
     "refFieldName": null,
     "dataType": "DateTime",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": null
   },
   "load_order": {
     "checks": {
@@ -75,6 +79,7 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": true,
-    "defaultValue": "1"
+    "defaultValue": "1",
+    "maxLength": 11
   }
 }

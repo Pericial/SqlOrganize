@@ -12,11 +12,12 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": "max",
+    "maxLength": 11
   },
   "agent": {
     "checks": {
-      "type": "bigint",
+      "type": "long",
       "required": true
     },
     "resets": {},
@@ -25,9 +26,10 @@
     "entityName": "wpwt_psmsc_wh_exceptions",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "bigint",
+    "dataType": "long",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 20
   },
   "title": {
     "checks": {
@@ -45,7 +47,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 200
   },
   "exception_date": {
     "checks": {
@@ -60,7 +63,8 @@
     "refFieldName": null,
     "dataType": "DateTime",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": null
   },
   "start_time": {
     "checks": {
@@ -78,7 +82,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 20
   },
   "end_time": {
     "checks": {
@@ -96,6 +101,7 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 20
   }
 }

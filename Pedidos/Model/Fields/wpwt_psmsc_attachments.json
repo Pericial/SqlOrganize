@@ -1,7 +1,7 @@
 {
   "id": {
     "checks": {
-      "type": "bigint",
+      "type": "long",
       "required": true
     },
     "resets": {},
@@ -10,9 +10,10 @@
     "entityName": "wpwt_psmsc_attachments",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "bigint",
+    "dataType": "long",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": "max",
+    "maxLength": 20
   },
   "name": {
     "checks": {
@@ -30,7 +31,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 200
   },
   "file_path": {
     "checks": {
@@ -48,7 +50,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 65535
   },
   "is_image": {
     "checks": {
@@ -63,7 +66,8 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": true,
-    "defaultValue": "0"
+    "defaultValue": "0",
+    "maxLength": 1
   },
   "is_active": {
     "checks": {
@@ -78,7 +82,8 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": true,
-    "defaultValue": "0"
+    "defaultValue": "0",
+    "maxLength": 1
   },
   "is_uploaded": {
     "checks": {
@@ -93,7 +98,8 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": true,
-    "defaultValue": "0"
+    "defaultValue": "0",
+    "maxLength": 1
   },
   "date_created": {
     "checks": {
@@ -108,7 +114,8 @@
     "refFieldName": null,
     "dataType": "DateTime",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": null
   },
   "source": {
     "checks": {
@@ -126,11 +133,12 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 200
   },
   "source_id": {
     "checks": {
-      "type": "bigint",
+      "type": "long",
       "required": true
     },
     "resets": {},
@@ -139,13 +147,14 @@
     "entityName": "wpwt_psmsc_attachments",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "bigint",
+    "dataType": "long",
     "notNull": true,
-    "defaultValue": "0"
+    "defaultValue": "0",
+    "maxLength": 20
   },
   "ticket_id": {
     "checks": {
-      "type": "bigint",
+      "type": "long",
       "required": true
     },
     "resets": {},
@@ -154,13 +163,14 @@
     "entityName": "wpwt_psmsc_attachments",
     "refEntityName": "wpwt_psmsc_tickets",
     "refFieldName": "id",
-    "dataType": "bigint",
+    "dataType": "long",
     "notNull": true,
-    "defaultValue": "0"
+    "defaultValue": "0",
+    "maxLength": 20
   },
   "customer_id": {
     "checks": {
-      "type": "bigint",
+      "type": "long",
       "required": true
     },
     "resets": {},
@@ -169,8 +179,9 @@
     "entityName": "wpwt_psmsc_attachments",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "bigint",
+    "dataType": "long",
     "notNull": true,
-    "defaultValue": "0"
+    "defaultValue": "0",
+    "maxLength": 20
   }
 }

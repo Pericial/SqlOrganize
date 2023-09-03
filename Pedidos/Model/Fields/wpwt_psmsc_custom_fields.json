@@ -12,7 +12,8 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": "max",
+    "maxLength": 11
   },
   "name": {
     "checks": {
@@ -30,7 +31,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 200
   },
   "extra_info": {
     "checks": {
@@ -48,7 +50,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": "''"
+    "defaultValue": "''",
+    "maxLength": 65535
   },
   "slug": {
     "checks": {
@@ -66,7 +69,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 200
   },
   "field": {
     "checks": {
@@ -84,7 +88,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 50
   },
   "type": {
     "checks": {
@@ -102,7 +107,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 100
   },
   "default_value": {
     "checks": {
@@ -120,7 +126,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 65535
   },
   "placeholder_text": {
     "checks": {
@@ -138,7 +145,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 65535
   },
   "char_limit": {
     "checks": {
@@ -152,7 +160,8 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 11
   },
   "date_display_as": {
     "checks": {
@@ -170,7 +179,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 50
   },
   "date_format": {
     "checks": {
@@ -188,7 +198,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 50
   },
   "date_range": {
     "checks": {
@@ -206,7 +217,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 50
   },
   "start_range": {
     "checks": {
@@ -220,7 +232,8 @@
     "refFieldName": null,
     "dataType": "DateTime",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": null
   },
   "end_range": {
     "checks": {
@@ -234,7 +247,8 @@
     "refFieldName": null,
     "dataType": "DateTime",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": null
   },
   "time_format": {
     "checks": {
@@ -248,7 +262,8 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 11
   },
   "is_personal_info": {
     "checks": {
@@ -263,7 +278,8 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": true,
-    "defaultValue": "0"
+    "defaultValue": "0",
+    "maxLength": 1
   },
   "is_auto_fill": {
     "checks": {
@@ -277,7 +293,8 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 1
   },
   "allow_ticket_form": {
     "checks": {
@@ -291,7 +308,8 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": false,
-    "defaultValue": "1"
+    "defaultValue": "1",
+    "maxLength": 1
   },
   "allow_my_profile": {
     "checks": {
@@ -305,7 +323,8 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": false,
-    "defaultValue": "1"
+    "defaultValue": "1",
+    "maxLength": 1
   },
   "tl_width": {
     "checks": {
@@ -320,7 +339,8 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": true,
-    "defaultValue": "100"
+    "defaultValue": "100",
+    "maxLength": 3
   },
   "load_order": {
     "checks": {
@@ -335,6 +355,7 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": true,
-    "defaultValue": "1"
+    "defaultValue": "1",
+    "maxLength": 11
   }
 }

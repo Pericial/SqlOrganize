@@ -1,7 +1,7 @@
 {
   "id": {
     "checks": {
-      "type": "bigint",
+      "type": "long",
       "required": true
     },
     "resets": {},
@@ -10,13 +10,14 @@
     "entityName": "wpwt_psmsc_agents",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "bigint",
+    "dataType": "long",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": "max",
+    "maxLength": 20
   },
   "user": {
     "checks": {
-      "type": "bigint"
+      "type": "long"
     },
     "resets": {},
     "name": "user",
@@ -24,13 +25,14 @@
     "entityName": "wpwt_psmsc_agents",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "bigint",
+    "dataType": "long",
     "notNull": false,
-    "defaultValue": "0"
+    "defaultValue": "0",
+    "maxLength": 20
   },
   "customer": {
     "checks": {
-      "type": "bigint"
+      "type": "long"
     },
     "resets": {},
     "name": "customer",
@@ -38,9 +40,10 @@
     "entityName": "wpwt_psmsc_agents",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "bigint",
+    "dataType": "long",
     "notNull": false,
-    "defaultValue": "0"
+    "defaultValue": "0",
+    "maxLength": 20
   },
   "role": {
     "checks": {
@@ -55,7 +58,8 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": true,
-    "defaultValue": "0"
+    "defaultValue": "0",
+    "maxLength": 11
   },
   "name": {
     "checks": {
@@ -73,7 +77,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 200
   },
   "workload": {
     "checks": {
@@ -87,7 +92,8 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 11
   },
   "unresolved_count": {
     "checks": {
@@ -101,7 +107,8 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 11
   },
   "is_agentgroup": {
     "checks": {
@@ -116,7 +123,8 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": true,
-    "defaultValue": "0"
+    "defaultValue": "0",
+    "maxLength": 1
   },
   "is_active": {
     "checks": {
@@ -131,6 +139,7 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": true,
-    "defaultValue": "0"
+    "defaultValue": "0",
+    "maxLength": 1
   }
 }

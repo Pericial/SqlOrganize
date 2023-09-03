@@ -1,7 +1,7 @@
 {
   "id": {
     "checks": {
-      "type": "bigint",
+      "type": "long",
       "required": true
     },
     "resets": {},
@@ -10,9 +10,10 @@
     "entityName": "wpwt_psmsc_statuses",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "bigint",
+    "dataType": "long",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": "max",
+    "maxLength": 20
   },
   "name": {
     "checks": {
@@ -30,7 +31,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 200
   },
   "color": {
     "checks": {
@@ -48,7 +50,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 50
   },
   "bg_color": {
     "checks": {
@@ -66,7 +69,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 50
   },
   "load_order": {
     "checks": {
@@ -81,6 +85,7 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": true,
-    "defaultValue": "1"
+    "defaultValue": "1",
+    "maxLength": 11
   }
 }

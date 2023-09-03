@@ -12,7 +12,8 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": "max",
+    "maxLength": 11
   },
   "class": {
     "checks": {
@@ -30,7 +31,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 200
   },
   "method": {
     "checks": {
@@ -48,7 +50,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 200
   },
   "args": {
     "checks": {
@@ -62,7 +65,8 @@
     "refFieldName": null,
     "dataType": "tinytext",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 255
   },
   "is_manual": {
     "checks": {
@@ -77,7 +81,8 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": true,
-    "defaultValue": "0"
+    "defaultValue": "0",
+    "maxLength": 1
   },
   "warning_text": {
     "checks": {
@@ -91,7 +96,8 @@
     "refFieldName": null,
     "dataType": "tinytext",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 255
   },
   "warning_link_text": {
     "checks": {
@@ -105,7 +111,8 @@
     "refFieldName": null,
     "dataType": "tinytext",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 255
   },
   "progressbar_text": {
     "checks": {
@@ -119,7 +126,8 @@
     "refFieldName": null,
     "dataType": "tinytext",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 255
   },
   "pages": {
     "checks": {
@@ -134,6 +142,7 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": true,
-    "defaultValue": "0"
+    "defaultValue": "0",
+    "maxLength": 11
   }
 }

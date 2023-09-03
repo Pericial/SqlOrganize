@@ -1,7 +1,7 @@
 {
   "id": {
     "checks": {
-      "type": "bigint",
+      "type": "long",
       "required": true
     },
     "resets": {},
@@ -10,13 +10,14 @@
     "entityName": "wpwt_psmsc_customers",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "bigint",
+    "dataType": "long",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": "max",
+    "maxLength": 20
   },
   "user": {
     "checks": {
-      "type": "bigint",
+      "type": "long",
       "required": true
     },
     "resets": {},
@@ -25,9 +26,10 @@
     "entityName": "wpwt_psmsc_customers",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "bigint",
+    "dataType": "long",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 20
   },
   "ticket_count": {
     "checks": {
@@ -42,7 +44,8 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": true,
-    "defaultValue": "0"
+    "defaultValue": "0",
+    "maxLength": 11
   },
   "name": {
     "checks": {
@@ -60,7 +63,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 200
   },
   "email": {
     "checks": {
@@ -78,6 +82,7 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 200
   }
 }

@@ -1,7 +1,7 @@
 {
   "id": {
     "checks": {
-      "type": "bigint",
+      "type": "long",
       "required": true
     },
     "resets": {},
@@ -10,9 +10,10 @@
     "entityName": "wpwt_psmsc_logs",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "bigint",
+    "dataType": "long",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": "max",
+    "maxLength": 20
   },
   "type": {
     "checks": {
@@ -30,11 +31,12 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 200
   },
   "ref_id": {
     "checks": {
-      "type": "bigint",
+      "type": "long",
       "required": true
     },
     "resets": {},
@@ -43,13 +45,14 @@
     "entityName": "wpwt_psmsc_logs",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "bigint",
+    "dataType": "long",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 20
   },
   "modified_by": {
     "checks": {
-      "type": "bigint",
+      "type": "long",
       "required": true
     },
     "resets": {},
@@ -58,9 +61,10 @@
     "entityName": "wpwt_psmsc_logs",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "bigint",
+    "dataType": "long",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 20
   },
   "body": {
     "checks": {
@@ -75,7 +79,8 @@
     "refFieldName": null,
     "dataType": "longtext",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 4294967295
   },
   "date_created": {
     "checks": {
@@ -90,6 +95,7 @@
     "refFieldName": null,
     "dataType": "DateTime",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": null
   }
 }

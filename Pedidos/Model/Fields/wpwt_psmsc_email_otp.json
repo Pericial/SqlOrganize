@@ -12,7 +12,8 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": "max",
+    "maxLength": 11
   },
   "email": {
     "checks": {
@@ -30,7 +31,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 200
   },
   "otp": {
     "checks": {
@@ -45,7 +47,8 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 11
   },
   "date_expiry": {
     "checks": {
@@ -60,7 +63,8 @@
     "refFieldName": null,
     "dataType": "DateTime",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": null
   },
   "data": {
     "checks": {
@@ -74,6 +78,7 @@
     "refFieldName": null,
     "dataType": "longtext",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 4294967295
   }
 }

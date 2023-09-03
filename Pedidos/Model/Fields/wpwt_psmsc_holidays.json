@@ -12,11 +12,12 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": "max",
+    "maxLength": 11
   },
   "agent": {
     "checks": {
-      "type": "bigint",
+      "type": "long",
       "required": true
     },
     "resets": {},
@@ -25,9 +26,10 @@
     "entityName": "wpwt_psmsc_holidays",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "bigint",
+    "dataType": "long",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 20
   },
   "holiday": {
     "checks": {
@@ -42,11 +44,12 @@
     "refFieldName": null,
     "dataType": "DateTime",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": null
   },
   "is_recurring": {
     "checks": {
-      "type": "bool",
+      "type": "byte",
       "required": true
     },
     "resets": {},
@@ -55,8 +58,9 @@
     "entityName": "wpwt_psmsc_holidays",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "bool",
+    "dataType": "byte",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 4
   }
 }
