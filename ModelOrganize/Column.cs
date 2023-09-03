@@ -18,6 +18,7 @@ namespace ModelOrganize
         public string? DATA_TYPE { get; set; }
         
         public object? CHARACTER_MAXIMUM_LENGTH { get; set; }
+        public object? MAX_LENGTH { get; set; }
         public object? NUMERIC_PRECISION { get; set; }
         public object? NUMERIC_SCALE { get; set; }
         public string? REFERENCED_TABLE_NAME { get; set; }
@@ -25,5 +26,9 @@ namespace ModelOrganize
         public int IS_PRIMARY_KEY { get; set; }
         public int IS_UNIQUE_KEY { get; set; }
         public int IS_FOREIGN_KEY { get; set; }
+        public int IS_UNSIGNED { get; set; } = 0;
+
+        public string COLUMN_TYPE { get; set; }
+
     }
 }
