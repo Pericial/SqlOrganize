@@ -22,8 +22,8 @@ namespace Pedidos
 
         public static Config configPedidos = new ()
         {
-            modelPath = ConfigurationManager.AppSettings.Get("modelPathPedidos"),
             fkId = true,
+            modelPath = ConfigurationManager.AppSettings.Get("modelPathPedidos"),
             connectionString = ConfigurationManager.AppSettings.Get("connectionStringPedidos"),
         };
 
