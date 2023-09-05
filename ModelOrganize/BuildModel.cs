@@ -48,10 +48,10 @@ namespace ModelOrganize
 
         protected void defineField(Column c, Field f)
         {
-            if (!c.CHARACTER_MAXIMUM_LENGTH.IsNullOrEmpty() && !c.CHARACTER_MAXIMUM_LENGTH!.IsDbNull())
-                f.maxLength = (ulong)c.CHARACTER_MAXIMUM_LENGTH!;
-            else if (!c.MAX_LENGTH.IsNullOrEmpty() && !c.MAX_LENGTH!.IsDbNull())
-                f.maxLength = (ulong)c.MAX_LENGTH!;
+            if (!c.CHARACTER_MAXIMUM_LENGTH.IsNullOrEmpty() && !c.CHARACTER_MAXIMUM_LENGTH.IsDbNull())
+                f.maxLength = Convert.ToUInt64(c.CHARACTER_MAXIMUM_LENGTH)!;
+            else if (!c.MAX_LENGTH.IsNullOrEmpty() && !c.MAX_LENGTH.IsDbNull())
+                f.maxLength = Convert.ToUInt64(c.MAX_LENGTH)!;
 
             switch (c.DATA_TYPE)
             {
