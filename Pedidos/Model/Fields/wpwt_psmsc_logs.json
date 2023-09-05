@@ -12,7 +12,7 @@
     "refFieldName": null,
     "dataType": "long",
     "notNull": true,
-    "defaultValue": "max",
+    "defaultValue": "next",
     "maxLength": 20
   },
   "type": {

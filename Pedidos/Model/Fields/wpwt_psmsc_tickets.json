@@ -12,13 +12,12 @@
     "refFieldName": null,
     "dataType": "long",
     "notNull": true,
-    "defaultValue": "max",
+    "defaultValue": "next",
     "maxLength": 20
   },
   "is_active": {
     "checks": {
-      "type": "int",
-      "required": true
+      "type": "bool"
     },
     "resets": {},
     "name": "is_active",
@@ -26,9 +25,9 @@
     "entityName": "wpwt_psmsc_tickets",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "int",
-    "notNull": true,
-    "defaultValue": "1",
+    "dataType": "bool",
+    "notNull": false,
+    "defaultValue": true,
     "maxLength": 1
   },
   "customer": {
@@ -44,7 +43,7 @@
     "refFieldName": "id",
     "dataType": "long",
     "notNull": true,
-    "defaultValue": null,
+    "defaultValue": "450",
     "maxLength": 20
   },
   "subject": {
@@ -325,7 +324,7 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": "'registered'",
+    "defaultValue": "registered",
     "maxLength": 100
   },
   "last_reply_on": {
@@ -356,7 +355,7 @@
     "refFieldName": null,
     "dataType": "long",
     "notNull": true,
-    "defaultValue": null,
+    "defaultValue": "450",
     "maxLength": 20
   },
   "auth_code": {
@@ -375,7 +374,7 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null,
+    "defaultValue": "random(8)",
     "maxLength": 50
   },
   "cust_24": {

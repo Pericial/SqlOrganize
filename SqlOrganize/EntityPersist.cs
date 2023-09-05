@@ -125,7 +125,7 @@ WHERE " + idMap + " IN (@" + count + @");
                     row_.Add(key, row[key]);
 
             string sn = db.Entity(_entityName!).schemaName;
-            sql = "INSERT INTO " + sn + @" (" + String.Join(", ", row_.Keys) + @") 
+            sql += "INSERT INTO " + sn + @" (" + String.Join(", ", row_.Keys) + @") 
 VALUES (";
 
 
@@ -143,7 +143,7 @@ VALUES (";
             if (!v.values.ContainsKey(db.config.id))
                 v.Set(db.config.id, null).Reset(db.config.id);
             row[db.config.id] = v.Get(db.config.id);
-            detail.Add((_entityName!, (string)row[db.config.id]));
+            detail.Add((_entityName!, row[db.config.id] as string));
 
             return this;
         }

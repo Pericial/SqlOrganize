@@ -12,7 +12,7 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": true,
-    "defaultValue": "max",
+    "defaultValue": "next",
     "maxLength": 11
   },
   "name": {
@@ -50,7 +50,7 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": "''",
+    "defaultValue": "",
     "maxLength": 65535
   },
   "slug": {

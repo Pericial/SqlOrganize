@@ -1,5 +1,8 @@
 {
   "auth_code": {
     "defaultValue": "random(8)"
+  },
+  "is_active": {
+    "dataType": "bool"
   }
 }

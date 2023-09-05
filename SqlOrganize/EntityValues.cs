@@ -1,4 +1,5 @@
 ﻿
+using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using Utils;
@@ -255,9 +256,20 @@ namespace SqlOrganize
                 case "ulong":
                 case "nint":
                 case "nuint":
-                    if (field.defaultValue.ToString().ToLower().Contains("max"))
+                    if (field.defaultValue.ToString().ToLower().Contains("next"))
                     {
-                        int max = db.Query(entityName).Select("MAX($" + fieldName + ")").Value<int>();
+                        var q = db.Query();
+                        q.sql = @"
+                            SELECT auto_increment 
+                            FROM INFORMATION_SCHEMA.TABLES 
+                            WHERE TABLE_NAME = @0";
+                        q.parameters.Add(entityName);
+                        ulong next = q.Value<ulong>();
+                        values[fieldName] = next;
+                    }
+                    else if (field.defaultValue.ToString().ToLower().Contains("max"))
+                    {
+                        long max = db.Query(entityName).Select("MAX($" + fieldName + ")").Value<long>();
                         values[fieldName] = max + 1;
                     }
                     else if (field.defaultValue.ToString().ToLower().Contains("next"))

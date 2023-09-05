@@ -18,7 +18,102 @@ namespace ModelOrganize
         public Dictionary<string, Dictionary<string, Field>> fields { get; set; } = new();
 
 
+        protected void resetField(Field f)
+        {
+            f.checks = new()
+                    {
+                        { "type", f.dataType },
+                    };
 
+            if (f.notNull)
+                f.checks["required"] = true;
+
+            if (f.dataType == "string")
+            {
+                f.resets = new()
+                        {
+                            { "trim", ' '},
+                            { "removeMultipleSpaces", true },
+                        };
+                if (!f.notNull)
+                    f.resets["nullIfEmpty"] = true;
+            }
+
+            if (f.dataType == "bool" && f.defaultValue is not null)
+                f.defaultValue = ((string)f.defaultValue).ToBool();
+
+            if (f.dataType == "string" && f.defaultValue is not null)
+                f.defaultValue = f.defaultValue.ToString()!.Trim('\'');
+        }
+
+        protected void defineField(Column c, Field f)
+        {
+            if (!c.CHARACTER_MAXIMUM_LENGTH.IsNullOrEmpty() && !c.CHARACTER_MAXIMUM_LENGTH!.IsDbNull())
+                f.maxLength = (ulong)c.CHARACTER_MAXIMUM_LENGTH!;
+            else if (!c.MAX_LENGTH.IsNullOrEmpty() && !c.MAX_LENGTH!.IsDbNull())
+                f.maxLength = (ulong)c.MAX_LENGTH!;
+
+            switch (c.DATA_TYPE)
+            {
+                case "varchar":
+                case "char":
+                case "nchar":
+                case "nvarchar":
+                case "text":
+                    f.dataType = "string";
+                    break;
+                case "real":
+                    f.dataType = "float";
+                    break;
+                case "bit":
+                    f.dataType = "bool";
+                    break;
+
+                case "datetime":
+                case "timestamp":
+                case "date":
+                    f.dataType = "DateTime";
+                    break;
+
+                case "smallint":
+                    f.dataType = (c.IS_UNSIGNED == 1) ? "ushort" : "short";
+                    break;
+
+                case "int":
+                    f.dataType = (c.IS_UNSIGNED == 1) ? "uint" : "int";
+                    break;
+
+                case "tinyint":
+                    if (f.maxLength == 1)
+                        f.dataType = "bool";
+                    else if (c.IS_UNSIGNED == 1)
+                        f.dataType = "ubyte";
+                    else
+                        f.dataType = "byte";
+                    break;
+
+                case "bigint":
+                    f.dataType = (c.IS_UNSIGNED == 1) ? "ulong" : "long";
+                    break;
+
+                default:
+                    f.dataType = c.DATA_TYPE!;
+                    break;
+            }
+
+            if (!c.COLUMN_DEFAULT.IsNullOrEmpty() && !c.COLUMN_DEFAULT.IsDbNull() && (c.COLUMN_DEFAULT as string) != "NULL")
+                f.defaultValue = c.COLUMN_DEFAULT;
+
+            if (!c.REFERENCED_TABLE_NAME.IsNullOrEmpty())
+                f.refEntityName = c.REFERENCED_TABLE_NAME;
+
+            if (!c.REFERENCED_COLUMN_NAME.IsNullOrEmpty()) //se compara por REFERENCED_TABLE_NAME para REFERENCED_COLUMN_NAME
+                f.refFieldName = c.REFERENCED_COLUMN_NAME;
+
+            f.notNull = (c.IS_NULLABLE == 1) ? false : true;
+
+
+        }
 
         /// <summary>
         /// Definir datos del esquema y arbol de relaciones
@@ -175,94 +270,8 @@ namespace ModelOrganize
                     f.name = c.COLUMN_NAME;
                     f.alias = c.Alias;
 
-
-                    if (!c.CHARACTER_MAXIMUM_LENGTH.IsNullOrEmpty() && !c.CHARACTER_MAXIMUM_LENGTH.IsDbNull())
-                        f.maxLength = (ulong)c.CHARACTER_MAXIMUM_LENGTH!;
-                    else if (!c.MAX_LENGTH.IsNullOrEmpty() && !c.MAX_LENGTH.IsDbNull())
-                        f.maxLength = (ulong)c.MAX_LENGTH!;
-
-
-                    switch (c.DATA_TYPE)
-                    {
-                        case "varchar":
-                        case "char":
-                        case "nchar":
-                        case "nvarchar":
-                        case "text":
-                            f.dataType = "string";
-                            break;
-                        case "real":
-                            f.dataType = "float";
-                            break;
-                        case "bit":
-                            f.dataType = "bool";
-                            break;
-
-                        case "datetime":
-                        case "timestamp":
-                        case "date":
-                            f.dataType = "DateTime";
-                            break;
-
-                        case "smallint":
-                            f.dataType = (c.IS_UNSIGNED == 1) ? "ushort" : "short";
-                            break;
-
-                        case "int":
-                            f.dataType = (c.IS_UNSIGNED == 1) ? "uint" : "int";
-                            break;
-
-                        case "tinyint":
-                            if (f.maxLength == 1)
-                                f.dataType = "bool";
-                            else if (c.IS_UNSIGNED == 1)
-                                f.dataType = "ubyte";
-                            else
-                                f.dataType = "byte";
-                            break;
-
-                        case "bigint":
-                            f.dataType = (c.IS_UNSIGNED == 1) ? "ulong" : "long";
-                            break;
-
-                        default:
-                            f.dataType = c.DATA_TYPE!;
-                            break;
-                    }
-
-
-                    if (!c.COLUMN_DEFAULT.IsNullOrEmpty() && !c.COLUMN_DEFAULT.IsDbNull() && (c.COLUMN_DEFAULT as string) != "NULL")
-                        f.defaultValue = c.COLUMN_DEFAULT;
-
-                    if (!c.REFERENCED_TABLE_NAME.IsNullOrEmpty())
-                        f.refEntityName = c.REFERENCED_TABLE_NAME;
-
-                    if (!c.REFERENCED_COLUMN_NAME.IsNullOrEmpty()) //se compara por REFERENCED_TABLE_NAME para REFERENCED_COLUMN_NAME
-                        f.refFieldName = c.REFERENCED_COLUMN_NAME;
-
-                    f.notNull = (c.IS_NULLABLE == 1) ? false : true;
-
-                    f.checks = new()
-                    {
-                        { "type", f.dataType },
-                    };
-
-                    if(f.notNull)
-                        f.checks["required"] = true;
-
-                    if (f.dataType == "string")
-                    {
-                        f.resets = new()
-                        {
-                            { "trim", ' '},
-                            { "removeMultipleSpaces", true },
-                        };
-                        if (!f.notNull)
-                            f.resets["nullIfEmpty"] = true;
-                    }
-
-                    if (f.dataType == "bool" && f.defaultValue is not null)
-                        f.defaultValue = ((string)f.defaultValue).ToBool();
+                    defineField(c, f);
+                    resetField(f);
 
                     if (!fields.ContainsKey(t.Name!))
                         fields[t.Name!] = new();
@@ -284,6 +293,8 @@ namespace ModelOrganize
                                 if (fields[entityName].ContainsKey(e.Key))
                                 {
                                     CollectionUtils.CopyValues(fields[entityName][e.Key], e.Value);
+
+                                    resetField(fields[entityName][e.Key]);
 
                                     Dictionary<string, object> f = fields[entityName][e.Key].checks;
                                     if (!e.Value.checks.IsNullOrEmpty())

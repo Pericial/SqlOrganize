@@ -10,4 +10,16 @@ MODIFY COLUMN date_updated datetime NOT NULL DEFAULT CURRENT_TIMESTAMP;
 ALTER TABLE wpwt_psmsc_tickets 
 MODIFY COLUMN user_type varchar(100) NULL DEFAULT 'registered';
 
+/*Corresponde a sistemas*/
+ALTER TABLE wpwt_psmsc_tickets ALTER COLUMN customer SET DEFAULT 450;
 
+ALTER TABLE wpwt_psmsc_threads ALTER COLUMN customer  SET DEFAULT 450;
+
+ALTER TABLE wpwt_psmsc_tickets ALTER COLUMN last_reply_by  SET DEFAULT 450;
+
+
+ALTER TABLE wpwt_psmsc_threads ALTER COLUMN type SET DEFAULT 'report';
+
+ALTER TABLE wpwt_psmsc_threads ALTER COLUMN date_created SET DEFAULT CURRENT_TIMESTAMP;
+		
+ALTER TABLE wpwt_psmsc_threads ALTER COLUMN date_updated SET DEFAULT CURRENT_TIMESTAMP;

@@ -46,7 +46,7 @@ foreach (var (key, field) in t.fields)
     foreach (var (k, f) in field)
     {
         if (f.name == "id")
-            f.defaultValue = "max";
+            f.defaultValue = "next";
     }
 
 }
