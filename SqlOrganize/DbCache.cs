@@ -3,12 +3,9 @@ using Utils;
 
 namespace SqlOrganize
 {
-
-   
-
-    /*
-    Uso de cache para resutado de consulta
-    */
+    /// <summary>
+    /// Uso de cache para resutado de consulta
+    /// </summary>
     public class DbCache
     {
         public Db Db { get; }
@@ -65,6 +62,10 @@ namespace SqlOrganize
             return response;
         }
 
+        /// <summary>
+        /// Ejecuta consulta de datos (con relaciones).<br/>
+        /// Verifica la cache para obtener el resultado de la consulta, si no existe en cache accede a la base de datos.
+        /// </summary>
         protected List<Dictionary<string, object>> _ListDict(EntityQuery query)
         {
             List<string> queries;
@@ -83,6 +84,10 @@ namespace SqlOrganize
             return result!;
         }
 
+        /// <summary>
+        /// Ejecuta consulta de datos (con relaciones).<br/>
+        /// Verifica la cache para obtener el resultado de la consulta, si no existe en cache accede a la base de datos.
+        /// </summary>
         protected Dictionary<string, object> _Dict(EntityQuery query)
         {
             List<string> queries;
@@ -95,21 +100,17 @@ namespace SqlOrganize
             {
                 result = query.Dict();
                 Cache.Set(queryKey, result);
+                queries!.Add(queryKey);
                 Cache.Set("queries", queries);
             }
             return result!;
         }
 
-
-
         /// <summary>
-        /// Efectua una consulta a la base de datos.
-        /// Verifica la existencia de la consulta en cache.
-        /// Almacena los resultados de la consulta en cache.
-        /// Si la consulta solo posee campos de configuracion, almacena los valores en cache
+        /// Efectua una consulta a la base de datos, la almacena en cache.<br/>
+        /// Dependiendo del tipo de consulta almacena cada fila de resultado en cache.
         /// </summary>
-        /// <param name="query"></param>
-        /// <returns></returns>
+        /// <param name="query">Consulta</param>
         public List<Dictionary<string, object>> ListDict(EntityQuery query)
         {
             if (!query.select.IsNullOrEmpty() || !query.group.IsNullOrEmpty()) 
@@ -135,11 +136,11 @@ namespace SqlOrganize
         }
 
         /// <summary>
-        /// Similiar a ListDict, pero para una sola fila
+        /// Efectua una consulta a la base de datos, la almacena en cache.<br/>
+        /// Dependiendo del tipo de consulta almacena la fila de resultado en cache.
         /// </summary>
-        /// <param name="query"></param>
+        /// <param name="query">Consulta</param>
         /// <remarks>Cuando se esta seguro de que se desea consultar una sola fila. Utilizar este metodo para evitar que se tenga que procesar un tamaño grande de resultado</remarks>
-        /// <returns></returns>
         public Dictionary<string, object>? Dict(EntityQuery query)
         {
             if (!query.select.IsNullOrEmpty() || !query.group.IsNullOrEmpty())
@@ -163,6 +164,9 @@ namespace SqlOrganize
             return response[0];
         }
 
+        /// <summary>
+        /// Organiza los elementos a consultar y efectua la consulta a la base de datos.
+        /// </summary>
         protected List<Dictionary<string, object>> PreListDictRecursive(string entityName, List<string> fields, params string[] ids)
         {
             FieldsOrganize fo = new(Db, entityName, fields);
@@ -183,6 +187,9 @@ namespace SqlOrganize
             return ListDictRecursive(fo, response, 0);
         }
 
+        /// <summary>
+        /// Analiza la respuesta de una consulta y re organiza los elementos para armar el resultado
+        /// </summary>
         public List<Dictionary<string, object>> ListDictRecursive(FieldsOrganize fo, List<Dictionary<string, object>> response, int index)
         {
             if (index >= fo.FieldsIdOrder.Count) return response;
@@ -194,7 +201,6 @@ namespace SqlOrganize
                 string? parentId = Db.Entity(fo.EntityName).relations[fieldId].parentId;
                 string fieldName = Db.Entity(fo.EntityName).relations[fieldId].fieldName;
                 string refFieldName = Db.Entity(fo.EntityName).relations[fieldId].refFieldName;
-
                 string fkName = (!parentId.IsNullOrEmpty()) ? parentId + Db.config.idNameSeparatorString + fieldName : fieldName;
 
                 List<object> ids = response.Column<object>(fkName).Distinct().ToList();
@@ -237,7 +243,12 @@ namespace SqlOrganize
             }
         }
 
-
+        /// <summary>
+        /// Analiza una fila de resultado y la almacena en cache.
+        /// </summary>
+        /// <param name="entityName">Nombre de la entidad principal de la fila</param>
+        /// <param name="row">Fila de datos (tupla)</param>
+        /// <returns>Resultado filtrado solo para la entidad principal</returns>
         protected Dictionary<string, object> EntityCache(string entityName, Dictionary<string, object> row)
         {
             if(!Db.Entity(entityName).relations.IsNullOrEmpty()) 
@@ -247,6 +258,11 @@ namespace SqlOrganize
             return row;
         }
 
+        /// <summary>
+        /// Analiza una fila de resultado y la almacena en cache considerando cada entidad de las relaciones. 
+        /// </summary>
+        /// <param name="relations">Relaciones de una entidad</param>
+        /// <param name="row">Fila de datos (tupla)</param>
         protected void EntityCacheRecursive(Dictionary<string, EntityRelation> relations, Dictionary<string, object> row)
         {
             foreach (var (fieldId, rel) in relations)
@@ -265,12 +281,8 @@ namespace SqlOrganize
                 }
                 if(rowAux.Count > 0)
                     Cache.Set(entityName + rowAux[Db.config.id].ToString(), rowAux);
-
             }
         }
-
-
-
 
         /// <summary>
         /// Efectua una consulta a la base de datos y la convierte en el objeto indicado
