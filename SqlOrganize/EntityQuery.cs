@@ -427,7 +427,7 @@ namespace SqlOrganize
 
         protected abstract string SqlOrder();
 
-        protected string SqlFields()
+        protected virtual string SqlFields()
         {
             if(this.fields.IsNullOrEmpty() && this.select.IsNullOrEmpty() && this.group.IsNullOrEmpty())
                 this.Fields();

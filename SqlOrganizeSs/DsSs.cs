@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
+using Newtonsoft.Json.Linq;
 using SqlOrganize;
 
 namespace SqlOrganizeSs
@@ -40,5 +41,11 @@ namespace SqlOrganizeSs
         {
             return new QuerySs(this);
         }
+
+        public EntityValues Values(string entityName, string? fieldId = null)
+        {
+            return new EntityValuesSs(this, entityName, fieldId);
+        }
+
     }
 }

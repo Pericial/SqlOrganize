@@ -239,7 +239,9 @@ namespace SqlOrganize
                         values[fieldName] = field.defaultValue;
                     break;
                 case "DateTime":
-                    if (field.defaultValue.ToString().ToLower().Contains("cur"))
+                    if (field.defaultValue.ToString().ToLower().Contains("cur") ||
+                        field.defaultValue.ToString().ToLower().Contains("getdate")
+                        )
                         values[fieldName] = DateTime.Now;
                     else
                         values[fieldName] = field.defaultValue;
@@ -257,13 +259,8 @@ namespace SqlOrganize
                 case "nuint":
                     if (field.defaultValue.ToString().ToLower().Contains("next"))
                     {
-                        var q = db.Query();
-                        q.sql = @"
-                            SELECT auto_increment 
-                            FROM INFORMATION_SCHEMA.TABLES 
-                            WHERE TABLE_NAME = @0";
-                        q.parameters.Add(entityName);
-                        ulong next = q.Value<ulong>();
+                        ulong next = GetNextValue(field);
+                      
                         values[fieldName] = next;
                     }
                     else if (field.defaultValue.ToString().ToLower().Contains("max"))
@@ -376,5 +373,26 @@ namespace SqlOrganize
 
             return response;
         }
+
+
+        /// <summary>
+        /// Obtener siguiente valor de la secuencia para mysql
+        /// </summary>
+        /// <remarks>Esta implementación funciona en mysql, llevar a subclase</br>
+        /// Siempre devuelve el siguiente valor de la secuencia sin incrementar, si se utiliza en multiples transacciones de inserción consultar una sola vez e incrementar valor</remarks>
+        /// <param name="field"></param>
+        /// <returns></returns>
+        public ulong GetNextValue(Field field)
+        {
+            var q = db.Query();
+            q.sql = @"
+                            SELECT auto_increment 
+                            FROM INFORMATION_SCHEMA.TABLES 
+                            WHERE TABLE_NAME = @0";
+            q.parameters.Add(field.entityName);
+            return q.Value<ulong>();
+        }
     }
+
+   
 }

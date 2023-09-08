@@ -32,6 +32,29 @@ FETCH FIRST " + size + " ROWS ONLY";
 ";
         }
 
+        protected override string SqlFields()
+        {
+            if (this.fields.IsNullOrEmpty() && this.select.IsNullOrEmpty() && this.group.IsNullOrEmpty())
+                this.Fields();
+
+            string f = TraduceFields(this.fields);
+
+            f += Concat(Traduce(this.select), @",
+", "", !f.IsNullOrEmpty());
+
+            f += Concat(Traduce(this.group, true), @",
+", "", !f.IsNullOrEmpty());
+
+
+            string o = order.Replace("ASC", "").Replace("asc", "").Replace("DESC", "").Replace("desc", "");
+            f += Concat(Traduce(o, true), @",
+", "", !f.IsNullOrEmpty());
+
+
+            return f + @"
+";
+        }
+
         public override EntityQuery Clone()
         {
             var eq = new EntityQuerySs(db, entityName);

@@ -202,7 +202,7 @@ namespace Utils
             return someObject;
         }
 
-        public static IDictionary<string, object> ConvertToDict(this object source, BindingFlags bindingAttr = BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance)
+        public static Dictionary<string, object?> ConvertToDict(this object source, BindingFlags bindingAttr = BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance)
         {
             return source.GetType().GetProperties(bindingAttr).ToDictionary
             (
@@ -211,6 +211,18 @@ namespace Utils
             );
 
         }
+
+        public static List<Dictionary<string, object?>> ConvertToListOfDict(this IList<object> source, BindingFlags bindingAttr = BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance)
+        {
+            List<Dictionary<string, object>> response = new();
+            foreach (var s in source)
+            {
+                response.Add(ConvertToDict(s, bindingAttr));
+            }
+            return response;
+        }
+
+
 
         public static Dictionary<object, Dictionary<string, object>> ListToDict(this List<Dictionary<string, object>> source , string key)
         {
