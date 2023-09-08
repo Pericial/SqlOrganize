@@ -15,7 +15,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": "guid"
+    "defaultValue": "guid",
+    "maxLength": 45
   },
   "hora_inicio": {
     "checks": {
@@ -30,7 +31,8 @@
     "refFieldName": null,
     "dataType": "time",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": null
   },
   "hora_fin": {
     "checks": {
@@ -45,7 +47,8 @@
     "refFieldName": null,
     "dataType": "time",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": null
   },
   "curso": {
     "checks": {
@@ -63,7 +66,8 @@
     "refFieldName": "id",
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "dia": {
     "checks": {
@@ -81,6 +85,7 @@
     "refFieldName": "id",
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   }
 }

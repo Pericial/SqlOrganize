@@ -15,7 +15,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": "guid"
+    "defaultValue": "guid",
+    "maxLength": 45
   },
   "fecha_toma": {
     "checks": {
@@ -29,7 +30,8 @@
     "refFieldName": null,
     "dataType": "DateTime",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": null
   },
   "estado": {
     "checks": {
@@ -47,7 +49,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "observaciones": {
     "checks": {
@@ -65,7 +68,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 65535
   },
   "comentario": {
     "checks": {
@@ -83,7 +87,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "tipo_movimiento": {
     "checks": {
@@ -101,7 +106,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "estado_contralor": {
     "checks": {
@@ -119,7 +125,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "alta": {
     "checks": {
@@ -134,7 +141,8 @@
     "refFieldName": null,
     "dataType": "DateTime",
     "notNull": true,
-    "defaultValue": "current_timestamp()"
+    "defaultValue": "current_timestamp()",
+    "maxLength": null
   },
   "curso": {
     "checks": {
@@ -152,7 +160,8 @@
     "refFieldName": "id",
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "docente": {
     "checks": {
@@ -170,7 +179,8 @@
     "refFieldName": "id",
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "reemplazo": {
     "checks": {
@@ -188,7 +198,8 @@
     "refFieldName": "id",
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "planilla_docente": {
     "checks": {
@@ -206,7 +217,8 @@
     "refFieldName": "id",
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "calificacion": {
     "checks": {
@@ -221,7 +233,8 @@
     "refFieldName": null,
     "dataType": "bool",
     "notNull": true,
-    "defaultValue": false
+    "defaultValue": false,
+    "maxLength": 1
   },
   "temas_tratados": {
     "checks": {
@@ -236,7 +249,8 @@
     "refFieldName": null,
     "dataType": "bool",
     "notNull": true,
-    "defaultValue": false
+    "defaultValue": false,
+    "maxLength": 1
   },
   "asistencia": {
     "checks": {
@@ -251,7 +265,8 @@
     "refFieldName": null,
     "dataType": "bool",
     "notNull": true,
-    "defaultValue": false
+    "defaultValue": false,
+    "maxLength": 1
   },
   "sin_planillas": {
     "checks": {
@@ -266,7 +281,8 @@
     "refFieldName": null,
     "dataType": "bool",
     "notNull": true,
-    "defaultValue": false
+    "defaultValue": false,
+    "maxLength": 1
   },
   "confirmada": {
     "checks": {
@@ -281,6 +297,7 @@
     "refFieldName": null,
     "dataType": "bool",
     "notNull": true,
-    "defaultValue": false
+    "defaultValue": false,
+    "maxLength": 1
   }
 }

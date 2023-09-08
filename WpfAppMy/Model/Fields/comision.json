@@ -15,7 +15,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": "guid"
+    "defaultValue": "guid",
+    "maxLength": 45
   },
   "turno": {
     "checks": {
@@ -33,7 +34,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "division": {
     "checks": {
@@ -51,7 +53,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "comentario": {
     "checks": {
@@ -69,7 +72,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 65535
   },
   "autorizada": {
     "checks": {
@@ -84,7 +88,8 @@
     "refFieldName": null,
     "dataType": "bool",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 1
   },
   "apertura": {
     "checks": {
@@ -99,7 +104,8 @@
     "refFieldName": null,
     "dataType": "bool",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 1
   },
   "publicada": {
     "checks": {
@@ -114,7 +120,8 @@
     "refFieldName": null,
     "dataType": "bool",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 1
   },
   "observaciones": {
     "checks": {
@@ -132,7 +139,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 65535
   },
   "alta": {
     "checks": {
@@ -147,7 +155,8 @@
     "refFieldName": null,
     "dataType": "DateTime",
     "notNull": true,
-    "defaultValue": "current_timestamp()"
+    "defaultValue": "current_timestamp()",
+    "maxLength": null
   },
   "sede": {
     "checks": {
@@ -165,7 +174,8 @@
     "refFieldName": "id",
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "modalidad": {
     "checks": {
@@ -183,7 +193,8 @@
     "refFieldName": "id",
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "planificacion": {
     "checks": {
@@ -201,7 +212,8 @@
     "refFieldName": "id",
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "comision_siguiente": {
     "checks": {
@@ -219,7 +231,8 @@
     "refFieldName": "id",
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "calendario": {
     "checks": {
@@ -237,7 +250,8 @@
     "refFieldName": "id",
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "identificacion": {
     "checks": {
@@ -255,7 +269,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "estado": {
     "checks": {
@@ -273,7 +288,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": "'Confirma'"
+    "defaultValue": "Confirma",
+    "maxLength": 45
   },
   "configuracion": {
     "checks": {
@@ -291,7 +307,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": "'Histórica'"
+    "defaultValue": "Histórica",
+    "maxLength": 45
   },
   "pfid": {
     "checks": {
@@ -309,6 +326,7 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   }
 }

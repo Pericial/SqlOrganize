@@ -15,7 +15,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": "guid"
+    "defaultValue": "guid",
+    "maxLength": 45
   },
   "descripcion": {
     "checks": {
@@ -33,7 +34,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 65535
   },
   "archivo": {
     "checks": {
@@ -51,7 +53,8 @@
     "refFieldName": "id",
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "creado": {
     "checks": {
@@ -66,7 +69,8 @@
     "refFieldName": null,
     "dataType": "DateTime",
     "notNull": true,
-    "defaultValue": "current_timestamp()"
+    "defaultValue": "current_timestamp()",
+    "maxLength": null
   },
   "persona": {
     "checks": {
@@ -84,7 +88,8 @@
     "refFieldName": "id",
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "fecha": {
     "checks": {
@@ -98,7 +103,8 @@
     "refFieldName": null,
     "dataType": "DateTime",
     "notNull": false,
-    "defaultValue": "curdate()"
+    "defaultValue": "curdate()",
+    "maxLength": null
   },
   "tipo": {
     "checks": {
@@ -116,7 +122,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 255
   },
   "asunto": {
     "checks": {
@@ -134,6 +141,7 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 255
   }
 }

@@ -15,7 +15,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": "guid"
+    "defaultValue": "guid",
+    "maxLength": 45
   },
   "creado": {
     "checks": {
@@ -30,7 +31,8 @@
     "refFieldName": null,
     "dataType": "DateTime",
     "notNull": true,
-    "defaultValue": "current_timestamp()"
+    "defaultValue": "current_timestamp()",
+    "maxLength": null
   },
   "activo": {
     "checks": {
@@ -44,7 +46,8 @@
     "refFieldName": null,
     "dataType": "bool",
     "notNull": false,
-    "defaultValue": false
+    "defaultValue": false,
+    "maxLength": 1
   },
   "observaciones": {
     "checks": {
@@ -62,7 +65,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 65535
   },
   "comision": {
     "checks": {
@@ -80,7 +84,8 @@
     "refFieldName": "id",
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "alumno": {
     "checks": {
@@ -98,7 +103,8 @@
     "refFieldName": "id",
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "estado": {
     "checks": {
@@ -116,6 +122,7 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": "'Activo'"
+    "defaultValue": "Activo",
+    "maxLength": 100
   }
 }

@@ -15,7 +15,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": "guid"
+    "defaultValue": "guid",
+    "maxLength": 45
   },
   "horas_catedra": {
     "checks": {
@@ -30,7 +31,8 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 11
   },
   "ige": {
     "checks": {
@@ -48,7 +50,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "comision": {
     "checks": {
@@ -66,7 +69,8 @@
     "refFieldName": "id",
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "asignatura": {
     "checks": {
@@ -84,7 +88,8 @@
     "refFieldName": "id",
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "alta": {
     "checks": {
@@ -99,7 +104,8 @@
     "refFieldName": null,
     "dataType": "DateTime",
     "notNull": true,
-    "defaultValue": "current_timestamp()"
+    "defaultValue": "current_timestamp()",
+    "maxLength": null
   },
   "descripcion_horario": {
     "checks": {
@@ -117,6 +123,7 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 255
   }
 }

@@ -15,7 +15,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": "guid"
+    "defaultValue": "guid",
+    "maxLength": 45
   },
   "nombres": {
     "checks": {
@@ -33,7 +34,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 255
   },
   "apellidos": {
     "checks": {
@@ -51,7 +53,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 255
   },
   "fecha_nacimiento": {
     "checks": {
@@ -65,7 +68,8 @@
     "refFieldName": null,
     "dataType": "DateTime",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": null
   },
   "numero_documento": {
     "checks": {
@@ -83,7 +87,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "cuil": {
     "checks": {
@@ -101,7 +106,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "genero": {
     "checks": {
@@ -119,7 +125,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "apodo": {
     "checks": {
@@ -137,7 +144,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 255
   },
   "telefono": {
     "checks": {
@@ -155,7 +163,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 255
   },
   "email": {
     "checks": {
@@ -173,7 +182,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 255
   },
   "email_abc": {
     "checks": {
@@ -191,7 +201,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 255
   },
   "alta": {
     "checks": {
@@ -206,7 +217,8 @@
     "refFieldName": null,
     "dataType": "DateTime",
     "notNull": true,
-    "defaultValue": "current_timestamp()"
+    "defaultValue": "current_timestamp()",
+    "maxLength": null
   },
   "domicilio": {
     "checks": {
@@ -224,7 +236,8 @@
     "refFieldName": "id",
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "lugar_nacimiento": {
     "checks": {
@@ -242,7 +255,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 255
   },
   "telefono_verificado": {
     "checks": {
@@ -257,7 +271,8 @@
     "refFieldName": null,
     "dataType": "bool",
     "notNull": true,
-    "defaultValue": false
+    "defaultValue": false,
+    "maxLength": 1
   },
   "email_verificado": {
     "checks": {
@@ -272,7 +287,8 @@
     "refFieldName": null,
     "dataType": "bool",
     "notNull": true,
-    "defaultValue": false
+    "defaultValue": false,
+    "maxLength": 1
   },
   "info_verificada": {
     "checks": {
@@ -287,7 +303,8 @@
     "refFieldName": null,
     "dataType": "bool",
     "notNull": true,
-    "defaultValue": false
+    "defaultValue": false,
+    "maxLength": 1
   },
   "descripcion_domicilio": {
     "checks": {
@@ -305,6 +322,7 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 255
   }
 }

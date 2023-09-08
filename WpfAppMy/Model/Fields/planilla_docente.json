@@ -15,7 +15,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": "guid"
+    "defaultValue": "guid",
+    "maxLength": 45
   },
   "numero": {
     "checks": {
@@ -33,7 +34,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 255
   },
   "insertado": {
     "checks": {
@@ -48,7 +50,8 @@
     "refFieldName": null,
     "dataType": "DateTime",
     "notNull": true,
-    "defaultValue": "current_timestamp()"
+    "defaultValue": "current_timestamp()",
+    "maxLength": null
   },
   "fecha_contralor": {
     "checks": {
@@ -62,7 +65,8 @@
     "refFieldName": null,
     "dataType": "DateTime",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": null
   },
   "fecha_consejo": {
     "checks": {
@@ -76,7 +80,8 @@
     "refFieldName": null,
     "dataType": "DateTime",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": null
   },
   "observaciones": {
     "checks": {
@@ -94,6 +99,7 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 65535
   }
 }

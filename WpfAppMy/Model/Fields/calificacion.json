@@ -15,7 +15,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": "guid"
+    "defaultValue": "guid",
+    "maxLength": 45
   },
   "nota1": {
     "checks": {
@@ -29,7 +30,8 @@
     "refFieldName": null,
     "dataType": "decimal",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 4
   },
   "nota2": {
     "checks": {
@@ -43,7 +45,8 @@
     "refFieldName": null,
     "dataType": "decimal",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 4
   },
   "nota3": {
     "checks": {
@@ -57,7 +60,8 @@
     "refFieldName": null,
     "dataType": "decimal",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 4
   },
   "nota_final": {
     "checks": {
@@ -71,7 +75,8 @@
     "refFieldName": null,
     "dataType": "decimal",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 4
   },
   "crec": {
     "checks": {
@@ -85,7 +90,8 @@
     "refFieldName": null,
     "dataType": "decimal",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 4
   },
   "curso": {
     "checks": {
@@ -103,7 +109,8 @@
     "refFieldName": "id",
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "porcentaje_asistencia": {
     "checks": {
@@ -117,7 +124,8 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 3
   },
   "observaciones": {
     "checks": {
@@ -135,7 +143,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 65535
   },
   "division": {
     "checks": {
@@ -153,7 +162,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 255
   },
   "alumno": {
     "checks": {
@@ -171,7 +181,8 @@
     "refFieldName": "id",
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "disposicion": {
     "checks": {
@@ -189,7 +200,8 @@
     "refFieldName": "id",
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "fecha": {
     "checks": {
@@ -203,7 +215,8 @@
     "refFieldName": null,
     "dataType": "DateTime",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": null
   },
   "archivado": {
     "checks": {
@@ -218,6 +231,7 @@
     "refFieldName": null,
     "dataType": "bool",
     "notNull": true,
-    "defaultValue": false
+    "defaultValue": false,
+    "maxLength": 1
   }
 }

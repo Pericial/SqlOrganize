@@ -15,7 +15,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": "guid"
+    "defaultValue": "guid",
+    "maxLength": 45
   },
   "asignatura": {
     "checks": {
@@ -33,7 +34,8 @@
     "refFieldName": "id",
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "planificacion": {
     "checks": {
@@ -51,7 +53,8 @@
     "refFieldName": "id",
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "orden_informe_coordinacion_distrital": {
     "checks": {
@@ -65,6 +68,7 @@
     "refFieldName": null,
     "dataType": "int",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 11
   }
 }

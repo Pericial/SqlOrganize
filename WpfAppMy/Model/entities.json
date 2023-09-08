@@ -143,7 +143,10 @@
       "creado",
       "alumno"
     ],
-    "uniqueMultiple": [],
+    "uniqueMultiple": [
+      "alumno",
+      "comision"
+    ],
     "id": [
       "id"
     ],

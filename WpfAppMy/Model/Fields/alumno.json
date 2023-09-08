@@ -15,7 +15,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": "guid"
+    "defaultValue": "guid",
+    "maxLength": 45
   },
   "anio_ingreso": {
     "checks": {
@@ -33,7 +34,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "observaciones": {
     "checks": {
@@ -51,7 +53,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 65535
   },
   "persona": {
     "checks": {
@@ -69,7 +72,8 @@
     "refFieldName": "id",
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "estado_inscripcion": {
     "checks": {
@@ -87,7 +91,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "fecha_titulacion": {
     "checks": {
@@ -101,7 +106,8 @@
     "refFieldName": null,
     "dataType": "DateTime",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": null
   },
   "plan": {
     "checks": {
@@ -119,7 +125,8 @@
     "refFieldName": "id",
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "resolucion_inscripcion": {
     "checks": {
@@ -137,11 +144,12 @@
     "refFieldName": "id",
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "anio_inscripcion": {
     "checks": {
-      "type": "int"
+      "type": "short"
     },
     "resets": {},
     "name": "anio_inscripcion",
@@ -149,13 +157,14 @@
     "entityName": "alumno",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "int",
+    "dataType": "short",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 1
   },
   "semestre_inscripcion": {
     "checks": {
-      "type": "int"
+      "type": "short"
     },
     "resets": {},
     "name": "semestre_inscripcion",
@@ -163,13 +172,14 @@
     "entityName": "alumno",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "int",
+    "dataType": "short",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 1
   },
   "semestre_ingreso": {
     "checks": {
-      "type": "int"
+      "type": "short"
     },
     "resets": {},
     "name": "semestre_ingreso",
@@ -177,9 +187,10 @@
     "entityName": "alumno",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "int",
+    "dataType": "short",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 1
   },
   "adeuda_legajo": {
     "checks": {
@@ -197,7 +208,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 255
   },
   "adeuda_deudores": {
     "checks": {
@@ -215,7 +227,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 255
   },
   "documentacion_inscripcion": {
     "checks": {
@@ -233,7 +246,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 255
   },
   "anio_inscripcion_completo": {
     "checks": {
@@ -247,7 +261,8 @@
     "refFieldName": null,
     "dataType": "bool",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 1
   },
   "establecimiento_inscripcion": {
     "checks": {
@@ -265,7 +280,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 255
   },
   "libro_folio": {
     "checks": {
@@ -283,7 +299,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 255
   },
   "libro": {
     "checks": {
@@ -301,7 +318,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "folio": {
     "checks": {
@@ -319,7 +337,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "comentarios": {
     "checks": {
@@ -337,7 +356,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 65535
   },
   "tiene_dni": {
     "checks": {
@@ -352,7 +372,8 @@
     "refFieldName": null,
     "dataType": "bool",
     "notNull": true,
-    "defaultValue": false
+    "defaultValue": false,
+    "maxLength": 1
   },
   "tiene_constancia": {
     "checks": {
@@ -367,7 +388,8 @@
     "refFieldName": null,
     "dataType": "bool",
     "notNull": true,
-    "defaultValue": false
+    "defaultValue": false,
+    "maxLength": 1
   },
   "tiene_certificado": {
     "checks": {
@@ -382,7 +404,8 @@
     "refFieldName": null,
     "dataType": "bool",
     "notNull": true,
-    "defaultValue": false
+    "defaultValue": false,
+    "maxLength": 1
   },
   "previas_completas": {
     "checks": {
@@ -397,7 +420,8 @@
     "refFieldName": null,
     "dataType": "bool",
     "notNull": true,
-    "defaultValue": false
+    "defaultValue": false,
+    "maxLength": 1
   },
   "tiene_partida": {
     "checks": {
@@ -412,7 +436,8 @@
     "refFieldName": null,
     "dataType": "bool",
     "notNull": true,
-    "defaultValue": false
+    "defaultValue": false,
+    "maxLength": 1
   },
   "creado": {
     "checks": {
@@ -427,7 +452,8 @@
     "refFieldName": null,
     "dataType": "DateTime",
     "notNull": true,
-    "defaultValue": "current_timestamp()"
+    "defaultValue": "current_timestamp()",
+    "maxLength": null
   },
   "confirmado_direccion": {
     "checks": {
@@ -442,6 +468,7 @@
     "refFieldName": null,
     "dataType": "bool",
     "notNull": true,
-    "defaultValue": false
+    "defaultValue": false,
+    "maxLength": 1
   }
 }

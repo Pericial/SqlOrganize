@@ -15,11 +15,12 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": "guid"
+    "defaultValue": "guid",
+    "maxLength": 45
   },
   "numero": {
     "checks": {
-      "type": "int",
+      "type": "short",
       "required": true
     },
     "resets": {},
@@ -28,9 +29,10 @@
     "entityName": "dia",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "int",
+    "dataType": "short",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 1
   },
   "dia": {
     "checks": {
@@ -48,6 +50,7 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 9
   }
 }

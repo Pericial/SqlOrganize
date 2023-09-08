@@ -15,7 +15,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": "guid"
+    "defaultValue": "guid",
+    "maxLength": 45
   },
   "planilla_docente": {
     "checks": {
@@ -33,7 +34,8 @@
     "refFieldName": "id",
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "toma": {
     "checks": {
@@ -51,7 +53,8 @@
     "refFieldName": "id",
     "dataType": "string",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 45
   },
   "insertado": {
     "checks": {
@@ -66,7 +69,8 @@
     "refFieldName": null,
     "dataType": "DateTime",
     "notNull": true,
-    "defaultValue": "current_timestamp()"
+    "defaultValue": "current_timestamp()",
+    "maxLength": null
   },
   "comentario": {
     "checks": {
@@ -84,7 +88,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 255
   },
   "reclamo": {
     "checks": {
@@ -99,6 +104,7 @@
     "refFieldName": null,
     "dataType": "bool",
     "notNull": true,
-    "defaultValue": false
+    "defaultValue": false,
+    "maxLength": 1
   }
 }

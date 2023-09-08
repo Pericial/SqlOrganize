@@ -15,7 +15,8 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": true,
-    "defaultValue": "guid"
+    "defaultValue": "guid",
+    "maxLength": 45
   },
   "inicio": {
     "checks": {
@@ -29,7 +30,8 @@
     "refFieldName": null,
     "dataType": "DateTime",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": null
   },
   "fin": {
     "checks": {
@@ -43,7 +45,8 @@
     "refFieldName": null,
     "dataType": "DateTime",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": null
   },
   "anio": {
     "checks": {
@@ -58,11 +61,12 @@
     "refFieldName": null,
     "dataType": "year",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 4
   },
   "semestre": {
     "checks": {
-      "type": "int",
+      "type": "short",
       "required": true
     },
     "resets": {},
@@ -71,9 +75,10 @@
     "entityName": "calendario",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "int",
+    "dataType": "short",
     "notNull": true,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 6
   },
   "insertado": {
     "checks": {
@@ -88,7 +93,8 @@
     "refFieldName": null,
     "dataType": "DateTime",
     "notNull": true,
-    "defaultValue": "current_timestamp()"
+    "defaultValue": "current_timestamp()",
+    "maxLength": null
   },
   "descripcion": {
     "checks": {
@@ -106,6 +112,7 @@
     "refFieldName": null,
     "dataType": "string",
     "notNull": false,
-    "defaultValue": null
+    "defaultValue": null,
+    "maxLength": 255
   }
 }
