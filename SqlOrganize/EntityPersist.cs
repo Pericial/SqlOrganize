@@ -59,8 +59,7 @@ WHERE " + id + " = @" + count + @";
 
             _Update(row, _entityName);
             string idMap = db.Mapping(_entityName!).Map(db.config.id);
-            sql += @"
-WHERE " + idMap + " IN (@" + count + @");
+            sql += @"WHERE " + idMap + " IN (@" + count + @");
 ";
             count++;
             parameters.Add(ids);
@@ -69,8 +68,19 @@ WHERE " + idMap + " IN (@" + count + @");
             return this;
         }
 
-
-
+        /// <summary>
+        /// Actualizar valores de todas las entradas de una tabla
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="_entityName"></param>
+        /// <remarks>USAR CON PRECAUCIÓN!!!</remarks>
+        /// <returns></returns>
+        public EntityPersist UpdateAll(Dictionary<string, object> row, string? _entityName = null)
+        {
+            _entityName = _entityName ?? entityName;
+            var ids = db.Query(_entityName).Fields(db.config.id).Size(0).Column<object>();
+            return UpdateIds(row, ids, _entityName);
+        }
 
         /// <summary>
         /// Actualizar un unico campo
@@ -88,6 +98,24 @@ WHERE " + idMap + " IN (@" + count + @");
             };
             return UpdateIds(row, ids, _entityName);
         }
+
+
+        /// <summary>
+        /// Actualizar un unico campo
+        /// </summary>
+        /// <param name="key">Nombre del campo a actualizar</param>
+        /// <param name="value">Valor del campo a actualizar</param>
+        /// <param name="id">Identificacion de la fila a actualizar</param>
+        /// <param name="_entityName">Nombre de la entidad, si no se especifica se toma el atributo</param>
+        /// <returns>Mismo objeto</returns>
+        public EntityPersist UpdateValueAll(string key, object value, string? _entityName = null)
+        {
+            Dictionary<string, object> row = new Dictionary<string, object>() { { key, value } };
+            return UpdateAll(row, _entityName);
+        }
+
+
+
 
         /// <summary>
         /// Actualiza valor local o de relacion
@@ -164,7 +192,7 @@ VALUES (";
         /// <exception cref="Exception">Si encuentra mas de un conjunto de valores a partir de los campos unicos</exception>
         /// <exception cref="Exception">Si encuentra errores de configuracion en los campos a actualizar</exception>
         /// <exception cref="Exception">Si encuentra errores de configuracion en los campos a insertar</exception>
-        public EntityPersist Persist(Dictionary<string, object> row, string? _entityName = null)
+        public EntityPersist Persist(IDictionary<string, object?> row, string? _entityName = null)
         {
             _entityName = _entityName ?? entityName;
 
