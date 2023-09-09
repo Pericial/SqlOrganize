@@ -138,6 +138,18 @@ namespace WpfAppMy
             Windows.AlumnoComision.DesactivarAlumnosNoCalificados.Window1 win = new();
             win.Show();
         }
+
+        private void ListaCursosSinTomasAprobadas_Click(object sender, RoutedEventArgs e)
+        {
+            Windows.Curso.ListaCursoSemestreSinTomasAprobadas.Window1 win = new();
+            win.Show();
+        }
+
+        private void TransferirAlumnosActivos_Click(object sender, RoutedEventArgs e)
+        {
+            Windows.AlumnoComision.TransferirAlumnosActivos.Window1 win = new();
+            win.Show();
+        }
     }
 }
 

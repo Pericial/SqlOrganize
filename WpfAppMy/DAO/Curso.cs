@@ -3,24 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utils;
 
-namespace WpfAppMy.Windows.ListaTomas
+namespace WpfAppMy.DAO
 {
-    internal class DAO : WpfAppMy.DAO2
+    internal class Curso
     {
-        public List<Dictionary<string, object>> TomaAll(Search search)
+        public List<Dictionary<string, object>> CursosAutorizadosSemestre(object calendarioAnio, object calendarioSemestre, object? sede = null, bool? autorizada = null)
         {
-            var q = ContainerApp.Db().Query("toma")
+            var q = ContainerApp.Db().Query("curso")
                 .Fields()
                 .Size(0)
                 .Where(@"
                     $calendario-anio = @0 
                     AND $calendario-semestre = @1 
+                    AND $comision-autorizada = true 
                 ")
-                .Parameters(search.calendario__anio, search.calendario__semestre);
+                .Parameters(calendarioAnio, calendarioSemestre);
 
             return ContainerApp.DbCache().ListDict(q);
         }
-
     }
 }

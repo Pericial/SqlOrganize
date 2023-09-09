@@ -197,7 +197,7 @@ namespace ModelOrganize
                         if (!entities.ContainsKey(e.Key))
                             continue;
 
-                        CollectionUtils.CopyValues(entities[e.Key], e.Value);
+                        entities[e.Key].CopyValues(e.Value);
 
                         var f = new List<string>();
                         f.AddRange(entities[e.Key].fields);
@@ -292,7 +292,7 @@ namespace ModelOrganize
                             {
                                 if (fields[entityName].ContainsKey(e.Key))
                                 {
-                                    CollectionUtils.CopyValues(fields[entityName][e.Key], e.Value);
+                                    fields[entityName][e.Key].CopyValues(e.Value);
 
                                     resetField(fields[entityName][e.Key]);
 

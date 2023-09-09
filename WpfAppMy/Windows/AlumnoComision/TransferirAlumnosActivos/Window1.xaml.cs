@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
+using SqlOrganize;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +14,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Utils;
+using WpfAppMy.Windows.Curso.ListaCursoSemestreSinTomasAprobadas;
 using WpfAppMy.Windows.ProcesarDocentesProgramaFines;
 
 namespace WpfAppMy.Windows.AlumnoComision.TransferirAlumnosActivos
@@ -21,26 +25,49 @@ namespace WpfAppMy.Windows.AlumnoComision.TransferirAlumnosActivos
     /// </summary>
     public partial class Window1 : Window
     {
-        DAO dao = new();
-        List<string> logs = new();
+        WpfAppMy.DAO.Comision comisionDAO = new();
+        WpfAppMy.DAO.AlumnoComision alumnoComisionDAO = new();
+        private ObservableCollection<Model> data = new();
+            
+
         public Window1()
         {
             InitializeComponent();
+            dataGrid.ItemsSource = data;
 
-            var alumnos = dao.AlumnosPorCalendario("2023", "1");
-            var comisiones = dao.ComisionesConSiguientePorCalendario("2023","1");
-
-
-            foreach (var comision in comisiones)
+            var idsComisiones = comisionDAO.IdsComisionesAutorizadasConSiguientePorSemestre("2023", "1");
+            var alumnosComisiones = alumnoComisionDAO.AsignacionesActivasPorIdsComisiones(idsComisiones);
+            var idsComisionesSiguientes = alumnosComisiones.Column<object>("comision-comision_siguiente");
+            var idsComisionesSiguientes_ = idsComisionesSiguientes.GroupBy(x => x.ToString()).Select(x => x.First()).ToList();
+            var comisionesSiguientesAgrupadasPorId = comisionDAO.ComisionesPorIds(idsComisionesSiguientes_).DictionaryByKey("id");
+            data.Clear();
+            
+            foreach (var ac in alumnosComisiones)
             {
+                var cs = comisionesSiguientesAgrupadasPorId[ac["comision-comision_siguiente"]];
+                ac["comision_siguiente-numero"] = cs["sede-numero"].ToString() + cs["division"].ToString() + cs["planificacion-anio"].ToString() + cs["planificacion-semestre"].ToString();
 
+                EntityValues v = ContainerApp.db.Values("alumno_comision");
+                v.Set("comision", ac["comision-comision_siguiente"]).
+                    Set("alumno", ac["alumno"]).
+                    Set("activo", true);
+                               
+                ContainerApp.db.Persist("alumno_comision").PersistValues(v).Exec();
 
-
-
-
+                data.Add(ac.ConvertToObject<Model>());
             }
 
 
         }
+
+        public class Model
+        {
+            public string id { get; set; }
+            public string comision_siguiente__numero { get; set; }
+            public string persona__nombres { get; set; }
+            public string persona__apellidos { get; set; }
+            public bool autorizado { get; set; }
+        }
+
     }
 }

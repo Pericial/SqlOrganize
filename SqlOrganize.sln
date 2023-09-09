@@ -19,10 +19,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModelOrganizeSs", "ModelOrg
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleBuildSchemaMy", "ConsoleBuildSchemaMy\ConsoleBuildSchemaMy.csproj", "{4496119D-FC51-4D28-A95B-BFFD316F067A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleBuildSchemaSs", "ConsoleBuildSchemaSs\ConsoleBuildSchemaSs.csproj", "{0AB2A807-6220-4617-9E9E-12D2ED082260}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleSqlOrganizeSs", "ConsoleSqlOrganizeSs\ConsoleSqlOrganizeSs.csproj", "{9ADA5A77-6E40-4317-9E0C-50D123CF3328}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsAppSs", "WinFormsAppSs\WinFormsAppSs.csproj", "{9E2C060A-D1BA-4DB6-80C1-FB6DF81532AE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleSqlOrganizeMy", "ConsoleSqlOrganizeMy\ConsoleSqlOrganizeMy.csproj", "{DC04B61A-B876-41BC-AD23-46FE671E2E91}"
@@ -33,11 +29,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfAppMy", "WpfAppMy\WpfApp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfUtils", "WpfUtils\WpfUtils.csproj", "{80CFB90F-6B5F-4681-8A76-139E2A33382B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PedidosModel", "PedidosModel\PedidosModel.csproj", "{FAF1F702-D1A7-4EEA-B12E-5140B9CCA933}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PedidosModel", "PedidosModel\PedidosModel.csproj", "{FAF1F702-D1A7-4EEA-B12E-5140B9CCA933}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pedidos", "Pedidos\Pedidos.csproj", "{85281012-D814-43AF-B5F1-845D510C5666}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pedidos", "Pedidos\Pedidos.csproj", "{85281012-D814-43AF-B5F1-845D510C5666}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PedidosMigracion", "PedidosMigracion\PedidosMigracion.csproj", "{8B0A6D9E-A46B-430C-9773-0F8FA717AC83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PedidosMigracion", "PedidosMigracion\PedidosMigracion.csproj", "{8B0A6D9E-A46B-430C-9773-0F8FA717AC83}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,14 +73,6 @@ Global
 		{4496119D-FC51-4D28-A95B-BFFD316F067A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4496119D-FC51-4D28-A95B-BFFD316F067A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4496119D-FC51-4D28-A95B-BFFD316F067A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0AB2A807-6220-4617-9E9E-12D2ED082260}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0AB2A807-6220-4617-9E9E-12D2ED082260}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0AB2A807-6220-4617-9E9E-12D2ED082260}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0AB2A807-6220-4617-9E9E-12D2ED082260}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9ADA5A77-6E40-4317-9E0C-50D123CF3328}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9ADA5A77-6E40-4317-9E0C-50D123CF3328}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9ADA5A77-6E40-4317-9E0C-50D123CF3328}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9ADA5A77-6E40-4317-9E0C-50D123CF3328}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9E2C060A-D1BA-4DB6-80C1-FB6DF81532AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9E2C060A-D1BA-4DB6-80C1-FB6DF81532AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E2C060A-D1BA-4DB6-80C1-FB6DF81532AE}.Release|Any CPU.ActiveCfg = Release|Any CPU

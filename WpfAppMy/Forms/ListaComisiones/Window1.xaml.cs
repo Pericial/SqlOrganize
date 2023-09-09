@@ -116,7 +116,7 @@ namespace WpfAppMy.Forms.ListaComisiones
 
     internal class Comision
     {
-        public string _Id { get; set; }
+        public string id { get; set; }
 
         public string numero { get; set; }
 

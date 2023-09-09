@@ -149,10 +149,10 @@ namespace WpfAppMy.Windows.ListaTomas
             var cell = (sender as DataGridCell);
             var column = cell.Column as DataGridBoundColumn;
             var value = (cell.Content as CheckBox).IsChecked;
-            if (column != null)
+            if (column != null && cell.DataContext is Toma)
             {
                 string key = ((Binding)column.Binding).Path.Path; //column's binding.
-                IDictionary<string, object> source = ((sender as DataGridCell).DataContext as Toma).ConvertToDict(); 
+                IDictionary<string, object> source = (cell.DataContext as Toma).ConvertToDict(); 
                 if((bool)source[key] != value)
                 {
                     string? fieldId = null;

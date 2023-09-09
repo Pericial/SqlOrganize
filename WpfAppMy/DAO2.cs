@@ -13,7 +13,7 @@ namespace WpfAppMy
     /// <summary>
     /// Data Access Object generica
     /// </summary>
-    public class DAO
+    public class DAO2
     {
         public Dictionary<string, object>? RowByEntityFieldValue(string entityName, string fieldName, object value)
         {
