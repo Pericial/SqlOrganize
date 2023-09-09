@@ -158,7 +158,7 @@ namespace Utils
         /// <param name="rows">Lista de diccionarios</param>
         /// <param name="key">Llave del diccionario</param>
         /// <returns>Lista de valores de una entrada del diccionario</returns>
-        public static List<T> Column<T>(this List<Dictionary<string, object>> rows, string key)
+        public static List<T> Column<T>(this IList<Dictionary<string, object>> rows, string key)
         {
             List<T> response = new();
             foreach (Dictionary<string, object> row in rows)
@@ -256,6 +256,15 @@ namespace Utils
                     response[key] = new();
                 response[key].Add(row);
             }
+            return response;
+        }
+
+        public static Dictionary<object, Dictionary<string, object>> DictionaryByKey(this IList<Dictionary<string, object>> source, string key)
+        {
+            Dictionary<object, Dictionary<string, object>> response = new();
+            foreach (Dictionary<string, object> row in source)
+                response[row[key]] = row;
+
             return response;
         }
 
