@@ -50,7 +50,7 @@ namespace WpfAppMy.Windows.AlumnoComision.TransferirAlumnosActivos
                 EntityValues v = ContainerApp.db.Values("alumno_comision");
                 v.Set("comision", ac["comision-comision_siguiente"]).
                     Set("alumno", ac["alumno"]).
-                    Set("activo", true);
+                    Set("estado", "Activo");
                                
                 ContainerApp.db.Persist("alumno_comision").PersistValues(v).Exec();
 
@@ -66,7 +66,7 @@ namespace WpfAppMy.Windows.AlumnoComision.TransferirAlumnosActivos
             public string comision_siguiente__numero { get; set; }
             public string persona__nombres { get; set; }
             public string persona__apellidos { get; set; }
-            public bool autorizado { get; set; }
+            public string estado { get; set; }
         }
 
     }
