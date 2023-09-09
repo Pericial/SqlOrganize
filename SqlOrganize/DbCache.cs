@@ -313,6 +313,11 @@ namespace SqlOrganize
             return (T)response[k];
         }
 
+        public List<object> Column(EntityQuery query, int columnNumber = 0)
+        {
+            return Column<object>(query, columnNumber);
+        }
+
         public List<T> Column<T>(EntityQuery query, int columnNumber = 0)
         {
             List<Dictionary<string, object>>? response = ListDict(query);
@@ -331,6 +336,11 @@ namespace SqlOrganize
                 return new();
 
             return (List<T>)response.Column<T>(columnName);
+        }
+
+        public List<object> Column(EntityQuery query, string columnName)
+        {
+            return Column<object>(query, columnName);
         }
 
         public void RemoveQueries()
