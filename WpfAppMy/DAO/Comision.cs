@@ -64,5 +64,51 @@ namespace WpfAppMy.DAO
             
             return ContainerApp.DbCache().ListDict(q);
         }
+
+        public List<Dictionary<string, object>> ComisionesConSiguientePorCalendario(object anio, object semestre)
+        {
+            var q = ContainerApp.Db().Query("comision")
+                .Size(0)
+                .Where(@"
+                    $calendario-anio = @0
+                    AND $calendario-semestre = @1 
+                    AND $comision_siguiente IS NOT NULL
+                ")
+                .Parameters(anio, semestre);
+
+            return ContainerApp.DbCache().ListDict(q);
+        }
+
+        public List<object> IdsComisionesAutorizadasPorCalendario(object anio, object semestre)
+        {
+            var q = ContainerApp.Db().Query("comision")
+                .Fields(ContainerApp.db.config.id)
+                .Size(0)
+                .Where(@"
+                    $calendario-anio = @0
+                    AND $calendario-semestre = @1
+                    AND $autorizada = true
+                ")
+                .Parameters(anio, semestre);
+
+            return ContainerApp.DbCache().Column<object>(q);
+        }
+
+        public List<Dictionary<string, object>> ComisionesAutorizadasPorSemestre(object anio, object semestre)
+        {
+            List<object> ids = IdsComisionesAutorizadasPorCalendario(anio, semestre);
+            return ContainerApp.DbCache().ListDict("comision", ids);
+
+            var q = ContainerApp.Db().Query("comision")
+                .Size(0)
+                .Where(@"
+                    $calendario-anio = @0
+                    AND $calendario-semestre = @1
+                    AND $autorizada = true
+                ")
+                .Parameters(anio, semestre);
+
+            return ContainerApp.DbCache().ListDict(q);
+        }
     }
 }

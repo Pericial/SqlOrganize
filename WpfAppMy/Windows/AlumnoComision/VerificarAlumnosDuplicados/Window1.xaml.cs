@@ -22,14 +22,15 @@ namespace WpfAppMy.Windows.AlumnoComision.VerificarAlumnosDuplicados
 
     public partial class Window1 : Window
     {
-        DAO dao = new();
+        WpfAppMy.DAO.AlumnoComision asignacionDAO = new();
+        WpfAppMy.DAO.Alumno alumnoDAO = new();
         List<string> logs = new();
 
         public Window1()
         {
             InitializeComponent();
-            var idsAlumnos = dao.IdsAlumnosActivosDuplicadosPorSemestre("2023", "1");
-            var alumnos = dao.AlumnosPorIds(idsAlumnos);
+            var idsAlumnos = asignacionDAO.IdsAlumnosActivosDuplicadosPorSemestre("2023", "1");
+            var alumnos = alumnoDAO.AlumnosPorIds(idsAlumnos);
 
             alumnosGrid.ItemsSource = alumnos.ConvertToListOfObject<Alumno>();
         }

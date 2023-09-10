@@ -18,25 +18,25 @@ using Utils;
 using WpfAppMy.Windows.Curso.ListaCursoSemestreSinTomasAprobadas;
 using WpfAppMy.Windows.ProcesarDocentesProgramaFines;
 
-namespace WpfAppMy.Windows.AlumnoComision.TransferirAlumnosActivos
+namespace WpfAppMy.Windows.AlumnoComision
 {
     /// <summary>
     /// Lógica de interacción para Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class TransferirAlumnosActivos : Window
     {
         WpfAppMy.DAO.Comision comisionDAO = new();
         WpfAppMy.DAO.AlumnoComision alumnoComisionDAO = new();
         private ObservableCollection<Model> data = new();
             
 
-        public Window1()
+        public TransferirAlumnosActivos()
         {
             InitializeComponent();
             dataGrid.ItemsSource = data;
 
             var idsComisiones = comisionDAO.IdsComisionesAutorizadasConSiguientePorSemestre("2023", "1");
-            var alumnosComisiones = alumnoComisionDAO.AsignacionesActivasPorIdsComisiones(idsComisiones);
+            var alumnosComisiones = alumnoComisionDAO.AsignacionesActivasPorComisiones(idsComisiones);
             var idsComisionesSiguientes = alumnosComisiones.Column<object>("comision-comision_siguiente");
             var idsComisionesSiguientes_ = idsComisionesSiguientes.GroupBy(x => x.ToString()).Select(x => x.First()).ToList();
             var comisionesSiguientesAgrupadasPorId = comisionDAO.ComisionesPorIds(idsComisionesSiguientes_).DictionaryByKey("id");

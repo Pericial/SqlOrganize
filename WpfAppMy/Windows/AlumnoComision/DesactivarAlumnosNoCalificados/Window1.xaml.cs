@@ -23,18 +23,20 @@ namespace WpfAppMy.Windows.AlumnoComision.DesactivarAlumnosNoCalificados
     public partial class Window1 : Window
     {
 
-        DAO dao = new();
+        WpfAppMy.DAO.AlumnoComision asignacionDAO = new();
+        WpfAppMy.DAO.Calificacion calificacionDAO = new();
+
 
         public Window1()
         {
             InitializeComponent();
 
-            var alumnosComisiones = dao.AlumnosComisionesAutorizadasPorCalendario("2023", "1");
+            var alumnosComisiones = asignacionDAO.AsignacionesDeComisionesAutorizadasPorSemestre("2023", "1");
             List<AlumnoComision> data = new();
             List<object> ids = new();
             foreach (var alumnoComision in alumnosComisiones)
             {
-                var q = dao.CantidadCalificacionesAprobadasDeAlumnoPorTramo(alumnoComision["alumno"], alumnoComision["planificacion-anio"], alumnoComision["planificacion-semestre"]);
+                var q = calificacionDAO.CantidadCalificacionesAprobadasDeAlumnoPorTramo(alumnoComision["alumno"], alumnoComision["planificacion-anio"], alumnoComision["planificacion-semestre"]);
                 if (q < 3)
                 {
                     ids.Add(alumnoComision["id"]);

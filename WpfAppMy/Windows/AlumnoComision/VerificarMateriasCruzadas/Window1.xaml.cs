@@ -21,7 +21,9 @@ namespace WpfAppMy.Windows.AlumnoComision.VerificarMateriasCruzadas
     /// </summary>
     public partial class Window1 : Window
     {
-        DAO dao = new();
+        DAO.AlumnoComision asignacionDAO = new();
+        DAO.Calificacion calificacionDAO = new();
+
         List<string> logs = new();
 
 
@@ -29,9 +31,9 @@ namespace WpfAppMy.Windows.AlumnoComision.VerificarMateriasCruzadas
         {
             InitializeComponent();
 
-            var idsAlumnos = dao.IdsAlumnoDeComisionesAutorizadasPorCalendario("2023", "1");
-            var idsAlumnosMateriasCruzadas = dao.IdsAlumnosConCalificacionesAprobadasCruzadasNoArchivadas(idsAlumnos);
-            var calificaciones = dao.CalificacionesAprobadasDeAlumnosNoArchivadas(idsAlumnosMateriasCruzadas);
+            var idsAlumnos = asignacionDAO.IdsAlumnosDeComisionesAutorizadasPorSemestre("2023", "1");
+            var idsAlumnosMateriasCruzadas = calificacionDAO.IdsAlumnosConCalificacionesAprobadasCruzadasNoArchivadas(idsAlumnos);
+            var calificaciones = calificacionDAO.CalificacionesAprobadasDeAlumnosNoArchivadas(idsAlumnosMateriasCruzadas);
 
             calificacionesGrid.ItemsSource = calificaciones.ConvertToListOfObject<Calificacion>();
 

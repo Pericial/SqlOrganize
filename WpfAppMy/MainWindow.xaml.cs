@@ -147,7 +147,7 @@ namespace WpfAppMy
 
         private void TransferirAlumnosActivos_Click(object sender, RoutedEventArgs e)
         {
-            Windows.AlumnoComision.TransferirAlumnosActivos.Window1 win = new();
+            Windows.AlumnoComision.TransferirAlumnosActivos win = new();
             win.Show();
         }
     }
