@@ -43,29 +43,18 @@ namespace Utils
 
         }
 
-        public static void Merge(this IDictionary<string, object> dictionary1, IDictionary<string, object> dictionary2)
-        {
-            dictionary2.ToList().ForEach(pair => dictionary1[pair.Key] = pair.Value);
-        }
-
-        public static void MergeWithPrefix(this IDictionary<string, object> dictionary1, IDictionary<string, object> dictionary2, string prefix = "")
+        public static void Merge(this IDictionary<string, object> dictionary1, IDictionary<string, object> dictionary2, string prefix = "")
         {
             dictionary2.ToList().ForEach(pair => dictionary1[prefix + pair.Key] = pair.Value);
         }
 
-        public static void MergeNotNull(this IDictionary<string, object> dictionary1, IDictionary<string, object> dictionary2)
+        public static void MergeNotNull(this IDictionary<string, object> dictionary1, IDictionary<string, object> dictionary2, string prefix = "")
         {
             dictionary2.ToList().ForEach(pair => {
-                if (pair.Value.IsNullOrEmpty()) { dictionary1[pair.Key] = pair.Value; } 
+                if (pair.Value.IsNullOrEmpty()) { dictionary1[prefix + pair.Key] = pair.Value; } 
             } );
         }
 
-        public static void MergeNotNullWithPrefix(this IDictionary<string, object> dictionary1, IDictionary<string, object> dictionary2, string prefix = "")
-        {
-            dictionary2.ToList().ForEach(pair => {
-                if (pair.Value.IsNullOrEmpty()) { dictionary1[prefix + pair.Key] = pair.Value; }
-            });
-        }
 
         public static bool IsNullOrEmpty(this IList List)
         {
