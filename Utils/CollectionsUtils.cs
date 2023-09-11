@@ -55,8 +55,7 @@ namespace Utils
             } );
         }
 
-
-        public static bool IsNullOrEmpty(this IList List)
+        public static bool IsNullOrEmpty(this IList? List)
         {
             return List == null || List.Count < 1;
         }
@@ -115,29 +114,6 @@ namespace Utils
         }
 
 
-        public static List<object> AddPrefixMultiList(List<object> list, string prefix = "")
-        {
-            List<object> clonedList = new List<object>(list);
-
-            if (!clonedList.IsNullOrEmpty())
-            {
-                if (clonedList.ElementAt(0).IsList())
-                {
-                    for (var i = 0; i < clonedList.Count; i++)
-                    {
-                        var a = AddPrefixMultiList(clonedList[i] as List<object>, prefix);
-                        clonedList[i] = a;
-                    }
-                }
-                else
-                {
-                    clonedList[0] = prefix + (clonedList[0] as string);
-                }
-            }
-
-            return clonedList;
-        }
-
         /// <summary>
         /// Lista de valores de una entrada del diccionario
         /// </summary>
@@ -145,7 +121,7 @@ namespace Utils
         /// <param name="rows">Lista de diccionarios</param>
         /// <param name="key">Llave del diccionario</param>
         /// <returns>Lista de valores de una entrada del diccionario</returns>
-        public static List<T> Column<T>(this IEnumerable<Dictionary<string, object>> rows, string key)
+        public static IEnumerable<T> Column<T>(this IEnumerable<Dictionary<string, object>> rows, string key)
         {
             List<T> response = new();
             foreach (Dictionary<string, object> row in rows)
@@ -156,7 +132,7 @@ namespace Utils
             return response;
         }
 
-        public static List<T> ConvertToListOfObject<T>(this IEnumerable<Dictionary<string, object>> rows) where T : class, new()
+        public static IEnumerable<T> ConvertToListOfObject<T>(this IEnumerable<Dictionary<string, object>> rows) where T : class, new()
         {
             var results = new List<T>();
 
@@ -189,7 +165,7 @@ namespace Utils
             return someObject;
         }
 
-        public static Dictionary<string, object?> ConvertToDict(this object source, BindingFlags bindingAttr = BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance)
+        public static IDictionary<string, object?> ConvertToDict(this object source, BindingFlags bindingAttr = BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance)
         {
             return source.GetType().GetProperties(bindingAttr).ToDictionary
             (
@@ -199,17 +175,17 @@ namespace Utils
 
         }
 
-        public static List<Dictionary<string, object?>> ConvertToListOfDict(this IEnumerable<object> source, BindingFlags bindingAttr = BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance)
+        public static IEnumerable<Dictionary<string, object?>> ConvertToListOfDict(this IEnumerable<object> source, BindingFlags bindingAttr = BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance)
         {
             List<Dictionary<string, object>> response = new();
             foreach (var s in source)
             {
-                response.Add(ConvertToDict(s, bindingAttr)!);
+                response.Add((Dictionary<string, object>)ConvertToDict(s, bindingAttr)!);
             }
             return response;
         }
 
-        public static Dictionary<object, Dictionary<string, object>> ConvertToDictOfDict(this IEnumerable<Dictionary<string, object>> source , string key)
+        public static IDictionary<object, Dictionary<string, object>> ConvertToDictOfDict(this IEnumerable<Dictionary<string, object>> source , string key)
         {
             var response = new Dictionary<object, Dictionary<string, object>>();
             foreach(Dictionary<string, object> i in source)
@@ -247,7 +223,7 @@ namespace Utils
             }
         }
 
-        public static Dictionary<string, List<Dictionary<string, object>>> GroupByKey(this IEnumerable<Dictionary<string, object>> source, string key)
+        public static IDictionary<string, List<Dictionary<string, object>>> GroupByKey(this IEnumerable<Dictionary<string, object>> source, string key)
         {
             Dictionary<string, List<Dictionary<string, object>>> response = new();
             foreach(Dictionary<string, object> row in source)
@@ -259,7 +235,7 @@ namespace Utils
             return response;
         }
 
-        public static Dictionary<object, Dictionary<string, object>> DictionaryByKey(this IEnumerable<Dictionary<string, object>> source, string key)
+        public static IDictionary<object, Dictionary<string, object>> DictionaryByKey(this IEnumerable<Dictionary<string, object>> source, string key)
         {
             Dictionary<object, Dictionary<string, object>> response = new();
             foreach (Dictionary<string, object> row in source)
@@ -268,7 +244,7 @@ namespace Utils
             return response;
         }
 
-        public static Dictionary<string, object> AddPrefix(this IDictionary<string, object> source, string prefix)
+        public static IDictionary<string, object> AddPrefixToKeyOfDict(this IDictionary<string, object> source, string prefix)
         {
             Dictionary<string, object> response = new();
             foreach(var (key, obj) in source)
@@ -277,11 +253,11 @@ namespace Utils
             return response;
         }
 
-        public static List<Dictionary<string, object>> AddPrefix(this IEnumerable<Dictionary<string, object>> source, string prefix)
+        public static List<Dictionary<string, object>> AddPrefixToKeyOfDictOfEnum(this IEnumerable<Dictionary<string, object>> source, string prefix)
         {
             List<Dictionary<string, object>> response = new();
             foreach(Dictionary<string, object> row in source)
-                response.Add(row.AddPrefix(prefix));
+                response.Add((Dictionary<string, object>)row.AddPrefixToKeyOfDict(prefix));
             return response;
         }
 
@@ -291,7 +267,7 @@ namespace Utils
         /// <param name="source"></param>
         /// <param name="prefix"></param>
         /// <returns></returns>
-        public static List<string> AddPrefix(this IEnumerable<string> source, string prefix)
+        public static IEnumerable<string> AddPrefixToEnum(this IEnumerable<string> source, string prefix)
         {
             List<string> response = new();
             foreach (string e in source)
@@ -305,7 +281,7 @@ namespace Utils
                 oc.Add(item);
         }
 
-        public static Dictionary<string, T> ToDictionary<T>(this object obj)
+        public static IDictionary<string, T> ToDictionary<T>(this object obj)
         {
             var json = JsonConvert.SerializeObject(obj);
             var dictionary = JsonConvert.DeserializeObject<Dictionary<string, T>>(json);

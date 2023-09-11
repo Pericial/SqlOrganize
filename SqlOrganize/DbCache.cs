@@ -293,7 +293,7 @@ namespace SqlOrganize
         public List<T> ListObj<T>(EntityQuery query) where T : class, new()
         {
             List<Dictionary<string, object>> response = ListDict(query);
-            return response.ConvertToListOfObject<T>();
+            return (List<T>)response.ConvertToListOfObject<T>();
         }
 
         /// <summary>

@@ -248,7 +248,7 @@ namespace SqlOrganize
                         fid = ff[0] + db.config.idNameSeparatorString;
                     }
 
-                    List<string> fns = db.FieldNames(en).AddPrefix(fid);
+                    List<string> fns = (List<string>)db.FieldNames(en).AddPrefixToEnum(fid);
                     fields.AddRange(fns);
                 }
             }

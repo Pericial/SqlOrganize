@@ -18,7 +18,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Utils;
 using System.Diagnostics;
-using WpfUtils;
 
 namespace WpfAppMy.Windows.ListaTomas
 {
