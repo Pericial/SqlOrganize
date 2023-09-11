@@ -22,7 +22,7 @@ namespace SqlOrganize
 
         public string sql { get; set; } = "";
 
-        public List<(string entityName, string id)> detail = new();
+        public List<(string entityName, object id)> detail = new();
 
         public EntityPersist(Db _db, string? _entityName = null)
         {

@@ -2,6 +2,7 @@
 using Utils;
 using Microsoft.Data.SqlClient;
 using System.Data.Common;
+using System.Collections.Generic;
 
 namespace SqlOrganizeSs
 {
@@ -32,6 +33,11 @@ FETCH FIRST " + size + " ROWS ONLY";
 ";
         }
 
+        /// <summary>
+        /// Definir campos a consultar
+        /// </summary>
+        /// <remarks>En SQL SERVER a diferencia de otros motores, los campos de ordenamiento deben incluirse en los campos a consultar</remarks>
+        /// <returns></returns>
         protected override string SqlFields()
         {
             if (this.fields.IsNullOrEmpty() && this.select.IsNullOrEmpty() && this.group.IsNullOrEmpty())
@@ -46,12 +52,24 @@ FETCH FIRST " + size + " ROWS ONLY";
 ", "", !f.IsNullOrEmpty());
 
 
-            string o = order.Replace("ASC", "").Replace("asc", "").Replace("DESC", "").Replace("desc", "");
+            string o = order.Replace("ASC", "").Replace("asc", "").Replace("DESC", "").Replace("desc", "").Trim();
             f += Concat(Traduce(o, true), @",
 ", "", !f.IsNullOrEmpty());
+            var f_aux = f.Split(',').ToList();
+
+            var f_aux_duplicates = f_aux.GroupBy(x => x.Trim().Replace("\n",""))
+                        .Where(group => group.Count() > 1)
+                        .Select(group => group.Key);
 
 
-            return f + @"
+            foreach (var fad in f_aux_duplicates)
+                for (var i = 0; i < f_aux.Count; i++)
+                    if (fad.Trim().Replace("\n", "").Equals(f_aux[i].Trim().Replace("\n", "")))
+                    {
+                        f_aux.RemoveAt(i);
+                        break;
+                    }
+            return String.Join(',', f_aux) + @"
 ";
         }
 

@@ -66,7 +66,7 @@ namespace SqlOrganize
         /// Ejecuta consulta de datos (con relaciones).<br/>
         /// Verifica la cache para obtener el resultado de la consulta, si no existe en cache accede a la base de datos.
         /// </summary>
-        protected List<Dictionary<string, object>> _ListDict(EntityQuery query)
+        public List<Dictionary<string, object>> _ListDict(EntityQuery query)
         {
             List<string> queries;
             if (!Cache.TryGetValue("queries", out queries))
@@ -361,7 +361,7 @@ namespace SqlOrganize
         /// Remover de la cache todas las consultas y las entidades indicadas en el parametro
         /// </summary>
         /// <param name="detail">Detalle de entidades a remover, la llave estara formada por la concatenacion de los valores de cada tupla</param>
-        public void Remove(List<(string entityName, string id)> detail)
+        public void Remove(List<(string entityName, object id)> detail)
         {
             RemoveQueries();
             foreach (var d in detail)

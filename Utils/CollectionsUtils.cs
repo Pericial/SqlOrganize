@@ -132,6 +132,20 @@ namespace Utils
             return response;
         }
 
+        public static IEnumerable<T?> Column<T, V>(this IEnumerable<V> source, string key)
+        {
+            Type t = typeof(V);
+
+            var p = t.GetProperty(key);
+
+            List<T?> response = new();
+
+            foreach (var item in source)
+                response.Add((T?)p.GetValue(item));
+
+            return response;
+        }
+
         public static IEnumerable<T> ConvertToListOfObject<T>(this IEnumerable<Dictionary<string, object>> rows) where T : class, new()
         {
             var results = new List<T>();
