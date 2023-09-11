@@ -218,7 +218,7 @@ namespace Utils
             return response;
         }
 
-        public static void Merge(this IEnumerable<Dictionary<string, object>> source, IEnumerable<Dictionary<string, object>> source2, string key1, string? key2 = null, string prefix = "")
+        public static void MergeByKeys(this IEnumerable<Dictionary<string, object>> source, IEnumerable<Dictionary<string, object>> source2, string key1, string? key2 = null, string prefix = "")
         {
             key2 = key2 ?? key1;
 
@@ -227,11 +227,11 @@ namespace Utils
             foreach (var item in source)
             {
                 if (s.ContainsKey(item[key1]))
-                    item.MergeWithPrefix(s[item[key1]], prefix);
+                    item.Merge(s[item[key1]], prefix);
             }
         }
 
-        public static void MergeFirst(this IEnumerable<Dictionary<string, object>> source, IEnumerable<Dictionary<string, object>> source2, string key1, string? key2 = null)
+        public static void MergeByKeysFirst(this IEnumerable<Dictionary<string, object>> source, IEnumerable<Dictionary<string, object>> source2, string key1, string? key2 = null)
         {
             key2 = key2 ?? key1;
 
