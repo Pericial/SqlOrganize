@@ -151,12 +151,12 @@ namespace Utils
             var results = new List<T>();
 
             foreach(var row in rows)
-                results.Add(row.ToObject<T>());
+                results.Add(row.ToObj<T>());
 
             return results;
         }
 
-        public static T ToObject<T>(this IDictionary<string, object> source) where T : class, new()
+        public static T ToObj<T>(this IDictionary<string, object> source) where T : class, new()
         {
             var someObject = new T();
             var someObjectType = someObject.GetType();
@@ -198,6 +198,7 @@ namespace Utils
             }
             return response;
         }
+
 
         public static void MergeByKeys(this IEnumerable<Dictionary<string, object>> source, IEnumerable<Dictionary<string, object>> source2, string key1, string? key2 = null, string prefix = "")
         {
@@ -242,9 +243,9 @@ namespace Utils
 
         public static IDictionary<object, Dictionary<string, object>> ToDictOfDictByKey(this IEnumerable<Dictionary<string, object>> source, string key)
         {
-            var response = new Dictionary<object, Dictionary<string, object>>();
-            foreach (Dictionary<string, object> i in source)
-                response[i[key]] = i;
+            Dictionary<object, Dictionary<string, object>> response = new();
+            foreach (Dictionary<string, object> row in source)
+                response[row[key]] = row;
 
             return response;
         }
