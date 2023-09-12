@@ -37,7 +37,7 @@ namespace WpfAppMy.Forms.ListaComisiones
         private void ComisionSearch()
         {
             List<Dictionary<string, object>> list = comisionDAO.Search(comisionSearch);
-            comisionGrid.ItemsSource = list.ConvertToListOfObject<Comision>();
+            comisionGrid.ItemsSource = list.ToListOfObj<Comision>();
         }
 
 
@@ -68,7 +68,7 @@ namespace WpfAppMy.Forms.ListaComisiones
             this.sedeList.Visibility = Visibility.Visible;
 
             List<Dictionary<string, object>> list = sedeDAO.Search(this.sedeText.Text);
-            this.sedeList.ItemsSource = list.ConvertToListOfObject<SedeItem>();
+            this.sedeList.ItemsSource = list.ToListOfObj<SedeItem>();
         }
 
         private void SedeList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -91,7 +91,7 @@ namespace WpfAppMy.Forms.ListaComisiones
                 if (column != null)
                 {
                     string key = ((Binding)column.Binding).Path.Path; //column's binding
-                    Dictionary<string, object> source = (Dictionary<string, object>)((Comision)e.Row.DataContext).ConvertToDict();
+                    Dictionary<string, object> source = (Dictionary<string, object>)((Comision)e.Row.DataContext).ToDict();
                     string value = (e.EditingElement as TextBox)!.Text;
                     comisionDAO.UpdateValueRel(key, value, source);
                 }

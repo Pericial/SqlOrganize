@@ -132,7 +132,7 @@ namespace Utils
             return response;
         }
 
-        public static IEnumerable<T?> Column<T, V>(this IEnumerable<V> source, string key)
+        public static IEnumerable<T?> Property<T, V>(this IEnumerable<V> source, string key)
         {
             Type t = typeof(V);
 
@@ -146,17 +146,17 @@ namespace Utils
             return response;
         }
 
-        public static IEnumerable<T> ConvertToListOfObject<T>(this IEnumerable<Dictionary<string, object>> rows) where T : class, new()
+        public static IEnumerable<T> ToListOfObj<T>(this IEnumerable<Dictionary<string, object>> rows) where T : class, new()
         {
             var results = new List<T>();
 
             foreach(var row in rows)
-                results.Add(row.ConvertToObject<T>());
+                results.Add(row.ToObject<T>());
 
             return results;
         }
 
-        public static T ConvertToObject<T>(this IDictionary<string, object> source) where T : class, new()
+        public static T ToObject<T>(this IDictionary<string, object> source) where T : class, new()
         {
             var someObject = new T();
             var someObjectType = someObject.GetType();
@@ -179,7 +179,7 @@ namespace Utils
             return someObject;
         }
 
-        public static IDictionary<string, object?> ConvertToDict(this object source, BindingFlags bindingAttr = BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance)
+        public static IDictionary<string, object?> ToDict(this object source, BindingFlags bindingAttr = BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance)
         {
             return source.GetType().GetProperties(bindingAttr).ToDictionary
             (
@@ -189,22 +189,13 @@ namespace Utils
 
         }
 
-        public static IEnumerable<Dictionary<string, object?>> ConvertToListOfDict(this IEnumerable<object> source, BindingFlags bindingAttr = BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance)
+        public static IEnumerable<Dictionary<string, object?>> ToListOfDict(this IEnumerable<object> source, BindingFlags bindingAttr = BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance)
         {
             List<Dictionary<string, object>> response = new();
             foreach (var s in source)
             {
-                response.Add((Dictionary<string, object>)ConvertToDict(s, bindingAttr)!);
+                response.Add((Dictionary<string, object>)ToDict(s, bindingAttr)!);
             }
-            return response;
-        }
-
-        public static IDictionary<object, Dictionary<string, object>> ConvertToDictOfDict(this IEnumerable<Dictionary<string, object>> source , string key)
-        {
-            var response = new Dictionary<object, Dictionary<string, object>>();
-            foreach(Dictionary<string, object> i in source)
-                response[i[key]] = i;
-
             return response;
         }
 
@@ -212,7 +203,7 @@ namespace Utils
         {
             key2 = key2 ?? key1;
 
-            var s = source2.ConvertToDictOfDict(key2);
+            var s = source2.ToDictOfDictByKey(key2);
 
             foreach (var item in source)
             {
@@ -225,7 +216,7 @@ namespace Utils
         {
             key2 = key2 ?? key1;
 
-            var s = source2.ConvertToDictOfDict(key2);
+            var s = source2.ToDictOfDictByKey(key2);
 
             foreach (var item in source)
             {
@@ -237,7 +228,7 @@ namespace Utils
             }
         }
 
-        public static IDictionary<string, List<Dictionary<string, object>>> GroupByKey(this IEnumerable<Dictionary<string, object>> source, string key)
+        public static IDictionary<string, List<Dictionary<string, object>>> ToDictOfListByKey(this IEnumerable<Dictionary<string, object>> source, string key)
         {
             Dictionary<string, List<Dictionary<string, object>>> response = new();
             foreach(Dictionary<string, object> row in source)
@@ -249,16 +240,23 @@ namespace Utils
             return response;
         }
 
-        public static IDictionary<object, Dictionary<string, object>> DictionaryByKey(this IEnumerable<Dictionary<string, object>> source, string key)
+        public static IDictionary<object, Dictionary<string, object>> ToDictOfDictByKey(this IEnumerable<Dictionary<string, object>> source, string key)
         {
-            Dictionary<object, Dictionary<string, object>> response = new();
-            foreach (Dictionary<string, object> row in source)
-                response[row[key]] = row;
+            var response = new Dictionary<object, Dictionary<string, object>>();
+            foreach (Dictionary<string, object> i in source)
+                response[i[key]] = i;
 
             return response;
         }
 
-        public static IDictionary<string, object> AddPrefixToKeyOfDict(this IDictionary<string, object> source, string prefix)
+        public static IDictionary<string, T> ToDict<T>(this object obj)
+        {
+            var json = JsonConvert.SerializeObject(obj);
+            var dictionary = JsonConvert.DeserializeObject<Dictionary<string, T>>(json);
+            return dictionary;
+        }
+
+        public static IDictionary<string, object> AddPrefixToKeysOfDict(this IDictionary<string, object> source, string prefix)
         {
             Dictionary<string, object> response = new();
             foreach(var (key, obj) in source)
@@ -267,11 +265,11 @@ namespace Utils
             return response;
         }
 
-        public static List<Dictionary<string, object>> AddPrefixToKeyOfDictOfEnum(this IEnumerable<Dictionary<string, object>> source, string prefix)
+        public static List<Dictionary<string, object>> AddPrefixToKeysOfDicts(this IEnumerable<Dictionary<string, object>> source, string prefix)
         {
             List<Dictionary<string, object>> response = new();
             foreach(Dictionary<string, object> row in source)
-                response.Add((Dictionary<string, object>)row.AddPrefixToKeyOfDict(prefix));
+                response.Add((Dictionary<string, object>)row.AddPrefixToKeysOfDict(prefix));
             return response;
         }
 
@@ -293,13 +291,6 @@ namespace Utils
         {
             foreach (var item in items)
                 oc.Add(item);
-        }
-
-        public static IDictionary<string, T> ToDictionary<T>(this object obj)
-        {
-            var json = JsonConvert.SerializeObject(obj);
-            var dictionary = JsonConvert.DeserializeObject<Dictionary<string, T>>(json);
-            return dictionary;
         }
 
         /// <summary>

@@ -19,7 +19,7 @@ namespace WpfAppMy.Forms.ListaPlanificacion
             InitializeComponent();
             planificacionGrid.CellEditEnding += PlanificacionGrid_CellEditEnding;
             List<Dictionary<string, object>> list = planificacionDAO.All();
-            planificacionGrid.ItemsSource = list.ConvertToListOfObject<Planificacion>();
+            planificacionGrid.ItemsSource = list.ToListOfObj<Planificacion>();
         }
 
 
@@ -31,7 +31,7 @@ namespace WpfAppMy.Forms.ListaPlanificacion
                 if (column != null)
                 {
                     string key = ((Binding)column.Binding).Path.Path; //column's binding
-                    Dictionary<string, object> source = (Dictionary<string, object>)((Planificacion)e.Row.DataContext).ConvertToDict();
+                    Dictionary<string, object> source = (Dictionary<string, object>)((Planificacion)e.Row.DataContext).ToDict();
                     string value = (e.EditingElement as TextBox)!.Text;
                     planificacionDAO.UpdateValueRel(key, value, source);
                 }

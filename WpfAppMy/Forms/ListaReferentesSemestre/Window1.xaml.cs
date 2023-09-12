@@ -44,7 +44,7 @@ namespace WpfAppMy.Forms.ListaReferentesSemestre
         private void Search()
         {
             List<Dictionary<string, object>> list = designacionDAO.referentesSemestre(search);
-            referenteGrid.ItemsSource = list.ConvertToListOfObject<Designacion>();
+            referenteGrid.ItemsSource = list.ToListOfObj<Designacion>();
         }
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
@@ -60,7 +60,7 @@ namespace WpfAppMy.Forms.ListaReferentesSemestre
                 if (column != null)
                 {
                     string key = ((Binding)column.Binding).Path.Path; //column's binding
-                    Dictionary<string, object> source = (Dictionary<string, object>)((Designacion)e.Row.DataContext).ConvertToDict();
+                    Dictionary<string, object> source = (Dictionary<string, object>)((Designacion)e.Row.DataContext).ToDict();
                     string value = (e.EditingElement as TextBox)!.Text;
                     designacionDAO.UpdateValueRel(key, value, source);
                 }

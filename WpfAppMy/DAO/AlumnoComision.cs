@@ -139,11 +139,21 @@ namespace WpfAppMy.DAO
             return ContainerApp.DbCache().Column<object>(q, "alumno");
         }
 
-        public List<Dictionary<string, object>> AsignacionesDeComisionesAutorizadasPorSemestre(object anio, object semestre)
+        public List<Dictionary<string, object>> AsignacionesActivasDeComisionesAutorizadasPorSemestre(object anio, object semestre)
         {
             var q = ContainerApp.Db().Query("alumno_comision")
                 .Size(0)
                 .Where("$calendario-anio = @0 AND $calendario-semestre = @1 AND $comision-autorizada = true AND $estado = 'Activo'")
+                .Parameters(anio, semestre);
+
+            return ContainerApp.DbCache().ListDict(q);
+        }
+
+        public List<Dictionary<string, object>> AsignacionesDeComisionesAutorizadasPorSemestre(object anio, object semestre)
+        {
+            var q = ContainerApp.Db().Query("alumno_comision")
+                .Size(0)
+                .Where("$calendario-anio = @0 AND $calendario-semestre = @1 AND $comision-autorizada = true")
                 .Parameters(anio, semestre);
 
             return ContainerApp.DbCache().ListDict(q);

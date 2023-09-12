@@ -39,7 +39,7 @@ namespace WpfAppMy.Windows.AlumnoComision
             var alumnosComisiones = alumnoComisionDAO.AsignacionesActivasPorComisiones(idsComisiones);
             var idsComisionesSiguientes = alumnosComisiones.Column<object>("comision-comision_siguiente");
             var idsComisionesSiguientes_ = idsComisionesSiguientes.GroupBy(x => x.ToString()).Select(x => x.First()).ToList();
-            var comisionesSiguientesAgrupadasPorId = comisionDAO.ComisionesPorIds(idsComisionesSiguientes_).DictionaryByKey("id");
+            var comisionesSiguientesAgrupadasPorId = comisionDAO.ComisionesPorIds(idsComisionesSiguientes_).ToDictOfDictByKey("id");
             data.Clear();
             
             foreach (var ac in alumnosComisiones)
@@ -54,7 +54,7 @@ namespace WpfAppMy.Windows.AlumnoComision
                                
                 ContainerApp.db.Persist("alumno_comision").PersistValues(v).Exec();
 
-                data.Add(ac.ConvertToObject<Model>());
+                data.Add(ac.ToObject<Model>());
             }
 
 

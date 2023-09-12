@@ -46,7 +46,7 @@ namespace WpfAppMy.Forms.ListaSedesSemestre
         private void ComisionSearch()
         {
             List<Dictionary<string, object>> list = comisionDAO.Search(comisionSearch);
-            sedeGrid.ItemsSource = list.ConvertToListOfObject<Sede>();
+            sedeGrid.ItemsSource = list.ToListOfObj<Sede>();
         }
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
@@ -62,7 +62,7 @@ namespace WpfAppMy.Forms.ListaSedesSemestre
                 if (column != null)
                 {
                     string key = ((Binding)column.Binding).Path.Path; //column's binding
-                    Dictionary<string, object> source = (Dictionary<string, object>)((Sede)e.Row.DataContext).ConvertToDict();
+                    Dictionary<string, object> source = (Dictionary<string, object>)((Sede)e.Row.DataContext).ToDict();
                     string value = (e.EditingElement as TextBox)!.Text;
                     comisionDAO.UpdateValueRel(key, value, source);
                 }

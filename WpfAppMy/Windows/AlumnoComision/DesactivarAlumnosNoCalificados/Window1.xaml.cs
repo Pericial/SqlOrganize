@@ -31,7 +31,7 @@ namespace WpfAppMy.Windows.AlumnoComision.DesactivarAlumnosNoCalificados
         {
             InitializeComponent();
 
-            var alumnosComisiones = asignacionDAO.AsignacionesDeComisionesAutorizadasPorSemestre("2023", "1");
+            var alumnosComisiones = asignacionDAO.AsignacionesActivasDeComisionesAutorizadasPorSemestre("2023", "1");
             List<AlumnoComision> data = new();
             List<object> ids = new();
             foreach (var alumnoComision in alumnosComisiones)
@@ -40,7 +40,7 @@ namespace WpfAppMy.Windows.AlumnoComision.DesactivarAlumnosNoCalificados
                 if (q < 3)
                 {
                     ids.Add(alumnoComision["id"]);
-                    var a = alumnoComision.ConvertToObject<AlumnoComision>();
+                    var a = alumnoComision.ToObject<AlumnoComision>();
                     data.Add(a);
                 }
             }

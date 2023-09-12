@@ -19,7 +19,7 @@ namespace WpfAppMy.Windows.EnviarEmailToma
             foreach (Dictionary<string, object> item in list)
             {
                 List<string> comisiones = new() { "10086" };
-                Toma toma = item.ConvertToObject<Toma>();
+                Toma toma = item.ToObject<Toma>();
                 if (comisiones.Contains(toma.comision__pfid) && toma.docente__numero_documento.Equals("24869647")) {
                     if (toma.docente__email_abc.IsNullOrEmpty())
                     {

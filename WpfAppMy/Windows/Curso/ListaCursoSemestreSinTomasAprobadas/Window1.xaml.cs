@@ -55,7 +55,7 @@ namespace WpfAppMy.Windows.Curso.ListaCursoSemestreSinTomasAprobadas
             }
 
             cursoData.Clear();
-            cursoData.AddRange(cursosSinTomasAprobadasSemestre.ConvertToListOfObject<Model>());
+            cursoData.AddRange(cursosSinTomasAprobadasSemestre.ToListOfObj<Model>());
         }
     }
 

@@ -46,7 +46,7 @@ namespace WpfAppMy.Forms.ListaModalidad
         {
             List<Dictionary<string, object>> list = dao.AllModalidad();
             modalidadData.Clear();
-            modalidadData.AddRange(list.ConvertToListOfObject<Modalidad>());
+            modalidadData.AddRange(list.ToListOfObj<Modalidad>());
         }
         private void ModalidadGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
@@ -57,7 +57,7 @@ namespace WpfAppMy.Forms.ListaModalidad
                 {
                     string key = ((Binding)column.Binding).Path.Path; //column's binding
                     string value = (e.EditingElement as TextBox)!.Text;
-                    Dictionary<string, object> source = (Dictionary<string, object>)((Modalidad)e.Row.DataContext).ConvertToDict();
+                    Dictionary<string, object> source = (Dictionary<string, object>)((Modalidad)e.Row.DataContext).ToDict();
                     string? fieldId = null;
                     string entityName = "modalidad";
                     string fieldName = key;
@@ -116,7 +116,7 @@ namespace WpfAppMy.Forms.ListaModalidad
                             fieldId = null;
                         }
 
-                        (e.Row.Item as Modalidad).CopyNotNullValues(v.Get().ConvertToObject<Modalidad>());
+                        (e.Row.Item as Modalidad).CopyNotNullValues(v.Get().ToObject<Modalidad>());
                     }
                     while ((fieldId != null) && (parentId != null));
                 }

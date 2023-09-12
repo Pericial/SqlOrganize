@@ -47,7 +47,7 @@ namespace WpfAppMy.Windows.ListaCursos
         {
             List<Dictionary<string, object>> list = dao.CursoAll(search);
             cursoData.Clear();
-            cursoData.AddRange(list.ConvertToListOfObject<Curso>());
+            cursoData.AddRange(list.ToListOfObj<Curso>());
         }
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
@@ -64,7 +64,7 @@ namespace WpfAppMy.Windows.ListaCursos
 
                     string key = ((Binding)column.Binding).Path.Path; //column's binding
                     object value = (e.EditingElement as TextBox)!.Text;
-                    Dictionary<string, object> source = (Dictionary<string, object>)((Curso)e.Row.DataContext).ConvertToDict();
+                    Dictionary<string, object> source = (Dictionary<string, object>)((Curso)e.Row.DataContext).ToDict();
                     string? fieldId = null;
                     string mainEntityName = "curso";
                     string entityName = "curso";
@@ -109,7 +109,7 @@ namespace WpfAppMy.Windows.ListaCursos
                         {
                             if (!v.Check())
                             {
-                                (e.Row.Item as Curso).CopyNotNullValues(v.Get().ConvertToObject<Curso>());
+                                (e.Row.Item as Curso).CopyNotNullValues(v.Get().ToObject<Curso>());
                                 break;
                             }
 
@@ -127,7 +127,7 @@ namespace WpfAppMy.Windows.ListaCursos
                             }
                         }
 
-                        (e.Row.Item as Curso).CopyNotNullValues(v.Get().ConvertToObject<Curso>());
+                        (e.Row.Item as Curso).CopyNotNullValues(v.Get().ToObject<Curso>());
 
                         if (fieldId != null)
                         {
