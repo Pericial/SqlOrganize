@@ -7,7 +7,7 @@
         /*
         Path to model
         */
-        public string modelPath { get; set; } = "./model/";
+        public string modelPath { get; set; } = "./Model/";
         /*
         Alias reservados
         Habitualmente se definen las palabras reservadas del motor de base de datos
@@ -20,7 +20,12 @@
         /// <remarks>Las entidades indicadas en la lista no se incluiran en el modelo</remarks>
         public List<string> reservedEntities { get; set; } = new List<string>();
 
-        public string configPath { get; set; } = "./model";
+        public string configPath { get; set; } = "./Model";
+
+        public string dataPath { get; set; } = "./Model/Data";
+        public string dataNamespace { get; set; } = "Model.Data";
+
+
 
         /// <summary>
         /// Referencia para definir los alias e identificadores de fields 

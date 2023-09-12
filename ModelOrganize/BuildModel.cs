@@ -96,6 +96,10 @@ namespace ModelOrganize
                     f.dataType = (c.IS_UNSIGNED == 1) ? "ulong" : "long";
                     break;
 
+                case "uniqueidentifier":
+                    f.dataType = "Guid";
+                    break;
+
                 default:
                     f.dataType = c.DATA_TYPE!;
                     break;
@@ -423,6 +427,29 @@ namespace ModelOrganize
                 File.WriteAllText(Config.modelPath + "Fields/" + entityName + ".json", file);
             }
 
+        }
+
+        public void CreateFileData()
+        {
+            if (!Directory.Exists(Config.dataPath))
+                Directory.CreateDirectory(Config.dataPath);
+
+            foreach(var (entityName, entity) in entities)
+            {
+                using StreamWriter sw = File.CreateText(Config.dataPath + entityName + ".cs");
+                sw.WriteLine("using System;");
+                sw.WriteLine("");
+                sw.WriteLine("namespace " + Config.dataNamespace);
+                sw.WriteLine("{");
+                sw.WriteLine("    public class Model_"+ entityName);
+                sw.WriteLine("    {");
+
+                foreach (var (fieldName, field) in fields[entityName])
+                    sw.WriteLine("        public " + field.dataType + " " + fieldName + " { get; set; }");
+
+                sw.WriteLine("    }");
+                sw.WriteLine("}");
+            }
         }
 
 
