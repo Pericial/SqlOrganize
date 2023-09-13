@@ -67,6 +67,40 @@ namespace SqlOrganize
             return response;
         }
 
+        /// <summary>
+        /// Retornar formato SQL
+        /// </summary>
+        /// <param name="fieldName">n</param>
+        /// <returns>Formato SQL para el fieldName</returns>
+        /// <remarks>La conversion de formato es realizada directamente por la libreria SQL, pero para ciertos casos puede ser necesario <br/></remarks>
+        public object Sql(string fieldName)
+        {
+            if (!values.ContainsKey(fieldName))
+                throw new Exception("Se esta intentando obtener valor de un campo no definido");
+
+            var value = values[fieldName];
+
+            if (value == null)
+                return "null";
+            
+            Field field = db.Field(entityName, fieldName);
+
+            switch (field.dataType) //solo funciona para tipos especificos, para mapear correctamente deberia almacenarse en field, el tipo original sql.
+            {
+                case "string":
+                    return "'" + (string)value + "'";
+
+                case "DateTime": //puede que no funcione correctamente, es necesario almacenar el tipo original sql
+                    return "'" + ((DateTime)value).ToString("u");
+
+                default:
+                    return value;
+
+            }
+
+        }
+
+
 
         public EntityValues Sset(string fieldName, object value)
         {

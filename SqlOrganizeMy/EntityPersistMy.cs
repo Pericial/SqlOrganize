@@ -7,7 +7,7 @@ namespace SqlOrganizeMy
     public class EntityPersistMy : EntityPersist
     {
 
-        public EntityPersistMy(Db db, string entityName) : base(db, entityName)
+        public EntityPersistMy(Db db, string? entityName) : base(db, entityName)
         {
         }
 
@@ -19,7 +19,7 @@ namespace SqlOrganizeMy
 UPDATE " + sna + @" SET
 ";
             List<string> fieldNames = db.FieldNamesAdmin(_entityName);
-            fieldNames.Remove(db.config.id);
+
             foreach (string fieldName in fieldNames)
                 if (row.ContainsKey(fieldName))
                 {

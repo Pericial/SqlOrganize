@@ -8,7 +8,7 @@ namespace SqlOrganizeSs
     public class EntityPersistSs : EntityPersist
     {
 
-        public EntityPersistSs(Db db, string entity_name) : base(db, entity_name)
+        public EntityPersistSs(Db db, string? entityName) : base(db, entityName)
         {
         }
 
@@ -20,6 +20,7 @@ namespace SqlOrganizeSs
 UPDATE " + e.alias + @" SET
 ";
             List<string> fieldNames = db.FieldNamesAdmin(_entityName);
+
             foreach (string fieldName in fieldNames)
                 if (row.ContainsKey(fieldName))
                 {

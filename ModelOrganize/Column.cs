@@ -25,6 +25,7 @@ namespace ModelOrganize
         public string? REFERENCED_COLUMN_NAME { get; set; }
         public int IS_PRIMARY_KEY { get; set; }
         public int IS_UNIQUE_KEY { get; set; }
+        public int CONSTRAINT_NAME { get; set; }
         public int IS_FOREIGN_KEY { get; set; }
         public int IS_UNSIGNED { get; set; } = 0;
 

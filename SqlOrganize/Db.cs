@@ -118,7 +118,7 @@ namespace SqlOrganize
 
         public abstract EntityQuery Query(string entity_name);
 
-        public abstract EntityPersist Persist(string entityName);
+        public abstract EntityPersist Persist(string? entityName = null);
 
         public EntityMapping Mapping(string entityName, string? fieldId = null)
         {

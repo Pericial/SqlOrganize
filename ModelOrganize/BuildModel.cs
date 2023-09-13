@@ -433,11 +433,6 @@ namespace ModelOrganize
 
         }
 
-        private string _sede__nombre;
-
-
-
-        
         public void CreateFileData()
         {
             if (!Directory.Exists(Config.dataPath))
@@ -462,6 +457,20 @@ namespace ModelOrganize
                     sw.WriteLine("            get { return _" + fieldName + "; }");
                     sw.WriteLine("            set { _" + fieldName + " = value; NotifyPropertyChanged(); }");
                     sw.WriteLine("        }");
+                }
+
+                foreach (var (fieldId, relation) in entities[entityName].relations)
+                {
+                    foreach (var (fieldName, field) in fields[relation.refEntityName])
+                    {
+                        sw.WriteLine("        private " + field.dataType + " _" + fieldId + "__" + fieldName + ";");
+                        sw.WriteLine("        public " + field.dataType + " " + fieldId + "__" + fieldName);
+                        sw.WriteLine("        {");
+                        sw.WriteLine("            get { return _" + fieldId + "__" + fieldName + "; }");
+                        sw.WriteLine("            set { _" + fieldId + "__" + fieldName + " = value; NotifyPropertyChanged(); }");
+                        sw.WriteLine("        }");
+                    }
+
                 }
 
                 sw.WriteLine("        public event PropertyChangedEventHandler? PropertyChanged;");

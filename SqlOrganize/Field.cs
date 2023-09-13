@@ -40,7 +40,7 @@ namespace SqlOrganize
             timestamp
             date               
          */
-        public string dataType { get; set; }
+        public string dataType { get; set; } = "string";
 
         /* 
         string con el tipo de field

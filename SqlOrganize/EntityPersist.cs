@@ -58,13 +58,34 @@ WHERE " + id + " = @" + count + @";
             _entityName = _entityName ?? entityName;
 
             _Update(row, _entityName);
+
             string idMap = db.Mapping(_entityName!).Map(db.config.id);
-            sql += @"WHERE " + idMap + " IN (@" + count + @");
+
+            if ((ids.Count + count) > 2100) //SQL Server no admite mas de 2100 parametros, se define consulta alternativa para estos casos
+            {
+                List<object> ids_ = new();
+                var v = db.Values(_entityName!);
+                foreach (var id in ids)
+                {
+                    v.Set(db.config.id, id);
+                    var id_ = v.Sql(db.config.id);
+                    ids_.Add(id_);
+                    detail.Add((_entityName!, id));
+
+                }
+                sql += @"WHERE " + idMap + " IN (" + String.Join(",", ids_) + @");
 ";
-            count++;
-            parameters.Add(ids);
-            foreach(var id in ids)
-                detail.Add((_entityName!, (string)id));
+            } else
+            {
+                sql += @"WHERE " + idMap + " IN (@" + count + @");
+";
+                count++;
+                parameters.Add(ids);
+
+                foreach (var id in ids)
+                    detail.Add((_entityName!, id));
+            }
+            
             return this;
         }
 
@@ -79,7 +100,7 @@ WHERE " + id + " = @" + count + @";
         {
             _entityName = _entityName ?? entityName;
             var ids = db.Query(_entityName).Fields(db.config.id).Size(0).Column<object>();
-            return UpdateIds(row, ids, _entityName);
+            return (ids.Count > 0) ? UpdateIds(row, ids, _entityName) : this;
         }
 
         /// <summary>

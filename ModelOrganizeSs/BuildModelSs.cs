@@ -35,7 +35,7 @@ namespace ModelOrganizeSs
             connection.Open();
             using SqlCommand command = new SqlCommand();
             command.CommandText = @"
-    select 
+    select DISTINCT
 	col.TABLE_NAME, 
 	col.COLUMN_NAME, 
 	col.COLUMN_DEFAULT, 
@@ -91,7 +91,7 @@ LEFT JOIN (
 ) AS INFO_PK ON (INFO_PK.TABLE_NAME = Col.TABLE_NAME AND Col.COLUMN_NAME = INFO_PK.COLUMN_NAME)
 
 LEFT JOIN (
-	SELECT  DISTINCT CU.TABLE_NAME, CU.COLUMN_NAME        
+	SELECT  DISTINCT CU.TABLE_NAME, CU.COLUMN_NAME, CU.CONSTRAINT_NAME       
 	FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS  AS TU
 	INNER JOIN INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE AS CU
 	ON (
