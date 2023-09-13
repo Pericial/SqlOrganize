@@ -50,7 +50,7 @@
   },
   "anio": {
     "checks": {
-      "type": "year",
+      "type": "DateTime",
       "required": true
     },
     "resets": {},
@@ -59,7 +59,7 @@
     "entityName": "calendario",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "year",
+    "dataType": "DateTime",
     "notNull": true,
     "defaultValue": null,
     "maxLength": 4

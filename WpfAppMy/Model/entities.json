@@ -125,7 +125,6 @@
     "fields": [
       "id",
       "creado",
-      "activo",
       "observaciones",
       "comision",
       "alumno",

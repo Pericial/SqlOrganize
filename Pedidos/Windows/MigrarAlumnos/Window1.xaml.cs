@@ -41,7 +41,7 @@ namespace Pedidos.Windows.MigrarAlumnos
 
             foreach (var alumno in alumnos)
             {
-                Alumno a = alumno.ToObject<Alumno>();
+                Alumno a = alumno.ToObj<Alumno>();
                 EntityValues ticketsValues = ContainerApp.dbPedidos.Values("wpwt_psmsc_tickets").Default().
                     Set("subject", "Seguimiento alumno " + a.persona__nombres + " " + a.persona__apellidos).
                     Set("status", 10).

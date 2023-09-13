@@ -101,14 +101,14 @@ namespace WpfAppMy.Windows.ListaTomas
                         {
                             if (!v.Check())
                             {
-                                (e.Row.Item as Toma).CopyNotNullValues(v.Get().ToObject<Toma>());
+                                (e.Row.Item as Toma).CopyNotNullValues(v.Get().ToObj<Toma>());
                                 break;
                             }
 
                             dao.Persist(v);
                         }
 
-                        (e.Row.Item as Toma).CopyNotNullValues(v.Get().ToObject<Toma>());
+                        (e.Row.Item as Toma).CopyNotNullValues(v.Get().ToObj<Toma>());
 
                         if (fieldId != null)
                         {
@@ -166,7 +166,7 @@ namespace WpfAppMy.Windows.ListaTomas
                         dao.Persist(v);
 
                     DataGridRow row = DataGridRow.GetRowContainingElement(cell);
-                    (row.Item as Toma).CopyNotNullValues(v.Get().ToObject<Toma>());
+                    (row.Item as Toma).CopyNotNullValues(v.Get().ToObj<Toma>());
 
                     if(!fieldId.IsNullOrEmpty())
                         LoadData(); //debe recargarse para visualizar los cambios realizados en otras iteraciones

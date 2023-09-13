@@ -29,7 +29,7 @@ namespace SqlOrganizeMy
             using MySqlCommand command = new();
             SqlExecute(connection, command);
             using MySqlDataReader reader = command.ExecuteReader();
-            return reader.ConvertToListOfObject<T>();
+            return reader.ToListOfObj<T>();
         }
 
         public override Dictionary<string, object> Dict()
@@ -47,7 +47,7 @@ namespace SqlOrganizeMy
             using MySqlCommand command = new();
             SqlExecute(connection, command);
             using MySqlDataReader reader = command.ExecuteReader(System.Data.CommandBehavior.SingleResult);
-            return reader.ConvertToObject<T>();
+            return reader.ToObj<T>();
         }
 
         public override List<T> Column<T>(string columnName)

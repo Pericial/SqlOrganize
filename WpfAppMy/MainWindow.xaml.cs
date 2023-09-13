@@ -150,6 +150,12 @@ namespace WpfAppMy
             Windows.AlumnoComision.TransferirAlumnosActivos win = new();
             win.Show();
         }
+
+        private void listaAsignacionesSemestre_Click(object sender, RoutedEventArgs e)
+        {
+            Windows.AlumnoComision.ListaAsignacionesSemestre win = new();
+            win.Show();
+        }
     }
 }
 

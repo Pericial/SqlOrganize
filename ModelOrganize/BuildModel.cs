@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -72,6 +74,8 @@ namespace ModelOrganize
                 case "datetime":
                 case "timestamp":
                 case "date":
+                case "year":
+                case "time":
                     f.dataType = "DateTime";
                     break;
 
@@ -429,6 +433,11 @@ namespace ModelOrganize
 
         }
 
+        private string _sede__nombre;
+
+
+
+        
         public void CreateFileData()
         {
             if (!Directory.Exists(Config.dataPath))
@@ -438,15 +447,28 @@ namespace ModelOrganize
             {
                 using StreamWriter sw = File.CreateText(Config.dataPath + entityName + ".cs");
                 sw.WriteLine("using System;");
+                sw.WriteLine("using System.ComponentModel;");
                 sw.WriteLine("");
                 sw.WriteLine("namespace " + Config.dataNamespace);
                 sw.WriteLine("{");
-                sw.WriteLine("    public class Model_"+ entityName);
+                sw.WriteLine("    public class Model_"+ entityName + " : INotifyPropertyChanged");
                 sw.WriteLine("    {");
 
                 foreach (var (fieldName, field) in fields[entityName])
-                    sw.WriteLine("        public " + field.dataType + " " + fieldName + " { get; set; }");
+                {
+                    sw.WriteLine("        private " + field.dataType + " _" + fieldName + ";");
+                    sw.WriteLine("        public " + field.dataType + " " + fieldName);
+                    sw.WriteLine("        {");
+                    sw.WriteLine("            get { return _" + fieldName + "; }");
+                    sw.WriteLine("            set { _" + fieldName + " = value; NotifyPropertyChanged(); }");
+                    sw.WriteLine("        }");
+                }
 
+                sw.WriteLine("        public event PropertyChangedEventHandler? PropertyChanged;");
+                sw.WriteLine("        protected void NotifyPropertyChanged([System.Runtime.CompilerServices.CallerMemberName] String propertyName = \"\")");
+                sw.WriteLine("        {");
+                sw.WriteLine("            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));");
+                sw.WriteLine("        }");
                 sw.WriteLine("    }");
                 sw.WriteLine("}");
             }

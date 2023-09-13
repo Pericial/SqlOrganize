@@ -24,7 +24,6 @@ namespace WpfAppMy.Windows.AlumnoComision
 
         private DAO.AlumnoComision dataDAO = new();
         private ObservableCollection<Model> data = new();
-
         public ListaAsignacionesSemestre()
         {
             InitializeComponent();
@@ -41,17 +40,61 @@ namespace WpfAppMy.Windows.AlumnoComision
         {
             List<Dictionary<string, object>> list = dataDAO.AsignacionesDeComisionesAutorizadasPorSemestre("2023", "2");
             data.Clear();
-            data.AddRange(list.ToListOfObj<Model>());
-
+            foreach(var item in list)
+            {
+                var o = item.ToObj<Model>();
+                o.comision__label = item["sede-numero"].ToString() + " " + item["comision-division"].ToString() + "/" + item["planificacion-anio"] + " " + item["planificacion-semestre"];
+                data.Add(o);
+            }
         }
     }
 
 
-    public class Model
+    internal class Model : WpfAppMy.Model.Data.Model_alumno_comision
     {
-        public string id { get; set; }
-        public string descripcion { get; set; }
-        public DateTime creado { get; set; }
-        public bool autorizado { get; set; }
+        private string _persona__apellidos;
+        public string persona__apellidos
+        {
+            get { return _persona__apellidos; }
+            set { _persona__apellidos = value; NotifyPropertyChanged(); }
+        }
+
+        private string _persona__nombres;
+        public string persona__nombres
+        {
+            get { return _persona__nombres; }
+            set { _persona__nombres = value; NotifyPropertyChanged(); }
+        }
+
+        private string _persona__numero_documento;
+        public string persona__numero_documento
+        {
+            get { return _persona__numero_documento; }
+            set { _persona__numero_documento = value; NotifyPropertyChanged(); }
+        }
+
+        private DateTime _persona__fecha_nacimiento;
+        public DateTime persona__fecha_nacimiento
+        {
+            get { return _persona__fecha_nacimiento; }
+            set { _persona__fecha_nacimiento = value; NotifyPropertyChanged(); }
+        }
+
+
+        private string _persona__telefono;
+        public string persona__telefono
+        {
+            get { return _persona__telefono; }
+            set { _persona__telefono = value; NotifyPropertyChanged(); }
+        }
+
+        private string _persona__email;
+        public string persona__email
+        {
+            get { return _persona__email; }
+            set { _persona__email = value; NotifyPropertyChanged(); }
+        }
+
+        public string comision__label { get; set; }
     }
 }

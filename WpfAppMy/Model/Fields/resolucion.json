@@ -39,7 +39,7 @@
   },
   "anio": {
     "checks": {
-      "type": "year"
+      "type": "DateTime"
     },
     "resets": {},
     "name": "anio",
@@ -47,7 +47,7 @@
     "entityName": "resolucion",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "year",
+    "dataType": "DateTime",
     "notNull": false,
     "defaultValue": null,
     "maxLength": 4

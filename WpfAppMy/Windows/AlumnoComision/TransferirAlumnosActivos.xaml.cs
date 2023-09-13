@@ -54,7 +54,7 @@ namespace WpfAppMy.Windows.AlumnoComision
                                
                 ContainerApp.db.Persist("alumno_comision").PersistValues(v).Exec();
 
-                data.Add(ac.ToObject<Model>());
+                data.Add(ac.ToObj<Model>());
             }
 
 

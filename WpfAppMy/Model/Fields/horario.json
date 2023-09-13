@@ -20,7 +20,7 @@
   },
   "hora_inicio": {
     "checks": {
-      "type": "time",
+      "type": "DateTime",
       "required": true
     },
     "resets": {},
@@ -29,14 +29,14 @@
     "entityName": "horario",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "time",
+    "dataType": "DateTime",
     "notNull": true,
     "defaultValue": null,
     "maxLength": null
   },
   "hora_fin": {
     "checks": {
-      "type": "time",
+      "type": "DateTime",
       "required": true
     },
     "resets": {},
@@ -45,7 +45,7 @@
     "entityName": "horario",
     "refEntityName": null,
     "refFieldName": null,
-    "dataType": "time",
+    "dataType": "DateTime",
     "notNull": true,
     "defaultValue": null,
     "maxLength": null
