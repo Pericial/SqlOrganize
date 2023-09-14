@@ -74,12 +74,12 @@ namespace ModelOrganize
                 case "datetime":
                 case "timestamp":
                 case "date":
-                case "year":
                 case "time":
                     f.dataType = "DateTime";
                     break;
 
                 case "smallint":
+                case "year":
                     f.dataType = (c.IS_UNSIGNED == 1) ? "ushort" : "short";
                     break;
 

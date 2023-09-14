@@ -467,8 +467,8 @@ namespace WpfAppMy.Model.Data
             get { return _calendario__fin; }
             set { _calendario__fin = value; NotifyPropertyChanged(); }
         }
-        private DateTime _calendario__anio;
-        public DateTime calendario__anio
+        private short _calendario__anio;
+        public short calendario__anio
         {
             get { return _calendario__anio; }
             set { _calendario__anio = value; NotifyPropertyChanged(); }

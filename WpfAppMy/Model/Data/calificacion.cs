@@ -551,8 +551,8 @@ namespace WpfAppMy.Model.Data
             get { return _calendario__fin; }
             set { _calendario__fin = value; NotifyPropertyChanged(); }
         }
-        private DateTime _calendario__anio;
-        public DateTime calendario__anio
+        private short _calendario__anio;
+        public short calendario__anio
         {
             get { return _calendario__anio; }
             set { _calendario__anio = value; NotifyPropertyChanged(); }
@@ -971,8 +971,8 @@ namespace WpfAppMy.Model.Data
             get { return _resolucion_inscripcion__numero; }
             set { _resolucion_inscripcion__numero = value; NotifyPropertyChanged(); }
         }
-        private DateTime _resolucion_inscripcion__anio;
-        public DateTime resolucion_inscripcion__anio
+        private short _resolucion_inscripcion__anio;
+        public short resolucion_inscripcion__anio
         {
             get { return _resolucion_inscripcion__anio; }
             set { _resolucion_inscripcion__anio = value; NotifyPropertyChanged(); }

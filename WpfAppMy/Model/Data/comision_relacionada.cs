@@ -443,8 +443,8 @@ namespace WpfAppMy.Model.Data
             get { return _calendario__fin; }
             set { _calendario__fin = value; NotifyPropertyChanged(); }
         }
-        private DateTime _calendario__anio;
-        public DateTime calendario__anio
+        private short _calendario__anio;
+        public short calendario__anio
         {
             get { return _calendario__anio; }
             set { _calendario__anio = value; NotifyPropertyChanged(); }
@@ -887,8 +887,8 @@ namespace WpfAppMy.Model.Data
             get { return _calendario_rel__fin; }
             set { _calendario_rel__fin = value; NotifyPropertyChanged(); }
         }
-        private DateTime _calendario_rel__anio;
-        public DateTime calendario_rel__anio
+        private short _calendario_rel__anio;
+        public short calendario_rel__anio
         {
             get { return _calendario_rel__anio; }
             set { _calendario_rel__anio = value; NotifyPropertyChanged(); }

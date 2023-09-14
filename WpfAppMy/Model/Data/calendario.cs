@@ -23,8 +23,8 @@ namespace WpfAppMy.Model.Data
             get { return _fin; }
             set { _fin = value; NotifyPropertyChanged(); }
         }
-        private DateTime _anio;
-        public DateTime anio
+        private short _anio;
+        public short anio
         {
             get { return _anio; }
             set { _anio = value; NotifyPropertyChanged(); }
