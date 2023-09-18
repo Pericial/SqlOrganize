@@ -120,12 +120,12 @@ namespace SqlOrganize
 
         public abstract EntityPersist Persist(string? entityName = null);
 
-        public EntityMapping Mapping(string entityName, string? fieldId = null)
+        public virtual EntityMapping Mapping(string entityName, string? fieldId = null)
         {
             return new(this, entityName, fieldId);
         }
 
-        public EntityValues Values(string entityName, string? fieldId = null)
+        public virtual EntityValues Values(string entityName, string? fieldId = null)
         {
             return new(this, entityName, fieldId);
         }
