@@ -435,18 +435,26 @@ namespace ModelOrganize
 
         public void CreateFileData()
         {
+            _CreateFileData(false);
+            _CreateFileData(true);
+        }
+
+        public void _CreateFileData(bool rel)
+        {
+            string suffix = (rel) ? "_rel" : "";
+
             if (!Directory.Exists(Config.dataPath))
                 Directory.CreateDirectory(Config.dataPath);
 
             foreach(var (entityName, entity) in entities)
             {
-                using StreamWriter sw = File.CreateText(Config.dataPath + entityName + ".cs");
+                using StreamWriter sw = File.CreateText(Config.dataPath + entityName + suffix + ".cs");
                 sw.WriteLine("using System;");
                 sw.WriteLine("using System.ComponentModel;");
                 sw.WriteLine("");
                 sw.WriteLine("namespace " + Config.dataNamespace);
                 sw.WriteLine("{");
-                sw.WriteLine("    public class Model_"+ entityName + " : INotifyPropertyChanged");
+                sw.WriteLine("    public class Data_"+ entityName + suffix + " : INotifyPropertyChanged");
                 sw.WriteLine("    {");
 
                 foreach (var (fieldName, field) in fields[entityName])
@@ -459,19 +467,18 @@ namespace ModelOrganize
                     sw.WriteLine("        }");
                 }
 
-                foreach (var (fieldId, relation) in entities[entityName].relations)
-                {
-                    foreach (var (fieldName, field) in fields[relation.refEntityName])
-                    {
-                        sw.WriteLine("        private " + field.dataType + " _" + fieldId + "__" + fieldName + ";");
-                        sw.WriteLine("        public " + field.dataType + " " + fieldId + "__" + fieldName);
-                        sw.WriteLine("        {");
-                        sw.WriteLine("            get { return _" + fieldId + "__" + fieldName + "; }");
-                        sw.WriteLine("            set { _" + fieldId + "__" + fieldName + " = value; NotifyPropertyChanged(); }");
-                        sw.WriteLine("        }");
-                    }
+                if(rel)
+                    foreach (var (fieldId, relation) in entities[entityName].relations)
+                        foreach (var (fieldName, field) in fields[relation.refEntityName])
+                        {
+                            sw.WriteLine("        private " + field.dataType + " _" + fieldId + "__" + fieldName + ";");
+                            sw.WriteLine("        public " + field.dataType + " " + fieldId + "__" + fieldName);
+                            sw.WriteLine("        {");
+                            sw.WriteLine("            get { return _" + fieldId + "__" + fieldName + "; }");
+                            sw.WriteLine("            set { _" + fieldId + "__" + fieldName + " = value; NotifyPropertyChanged(); }");
+                            sw.WriteLine("        }");
+                        }
 
-                }
 
                 sw.WriteLine("        public event PropertyChangedEventHandler? PropertyChanged;");
                 sw.WriteLine("        protected void NotifyPropertyChanged([System.Runtime.CompilerServices.CallerMemberName] String propertyName = \"\")");
