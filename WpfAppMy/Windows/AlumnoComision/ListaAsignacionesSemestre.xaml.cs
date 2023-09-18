@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SqlOrganize;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Utils;
+using WpfAppMy.Values;
 
 namespace WpfAppMy.Windows.AlumnoComision
 {
@@ -23,7 +25,7 @@ namespace WpfAppMy.Windows.AlumnoComision
     {
 
         private DAO.AlumnoComision dataDAO = new();
-        private ObservableCollection<Model> data = new();
+        private ObservableCollection<ViewModel.Asignacion> data = new();
         public ListaAsignacionesSemestre()
         {
             InitializeComponent();
@@ -42,16 +44,16 @@ namespace WpfAppMy.Windows.AlumnoComision
             data.Clear();
             foreach(var item in list)
             {
-                var o = item.ToObj<Model>();
-                o.comision__label = item["sede-numero"].ToString() + " " + item["comision-division"].ToString() + "/" + item["planificacion-anio"] + " " + item["planificacion-semestre"];
+                Domicilio d = (ContainerApp.db.Values("domicilio", "domicilio") as Domicilio);
+                   d.Set(item);
+                var o = item.ToObj<ViewModel.Asignacion>();
+                o.comision__numero = item["sede-numero"].ToString() + item["comision-division"].ToString() + "/" + item["planificacion-anio"] + item["planificacion-semestre"];
+                o.domicilio__label = d.Label();
+
                 data.Add(o);
             }
         }
     }
 
 
-    internal class Model : WpfAppMy.Model.Data.Model_alumno_comision
-    {
-        public string comision__label { get; set; }
-    }
 }

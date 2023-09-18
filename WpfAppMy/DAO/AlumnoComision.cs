@@ -56,6 +56,39 @@ namespace WpfAppMy.DAO
 
             return ContainerApp.DbCache().Column<object>(q);
         }
+        public List<object> IdsAlumnosActivosDeComisionesAutorizadasPorSemestre(object anio, object semestre)
+        {
+            var q = ContainerApp.Db().Query("alumno_comision")
+                .Fields("$alumno")
+                .Size(0)
+                .Where(@"
+                    $calendario-anio = @0
+                    AND $calendario-semestre = @1 
+                    AND $comision-autorizada = true
+                    AND $estado = 'Activo'
+                ")
+                .Parameters(anio, semestre);
+
+            return ContainerApp.DbCache().Column<object>(q);
+        }
+
+        public List<object> IdsAlumnosActivosDeComisionesAutorizadasPorSemestreSinGenero(object anio, object semestre)
+        {
+            var q = ContainerApp.Db().Query("alumno_comision")
+                .Fields("$alumno")
+                .Size(0)
+                .Where(@"
+                    $calendario-anio = @0
+                    AND $calendario-semestre = @1 
+                    AND $comision-autorizada = true
+                    AND $estado = 'Activo'
+                    AND $persona-genero IS NULL
+                ")
+                .Parameters(anio, semestre);
+
+            return ContainerApp.DbCache().Column<object>(q);
+        }
+
 
         public List<Dictionary<string, object>> AsignacionesPorComisiones(List<object> idsComisiones)
         {
@@ -163,6 +196,20 @@ namespace WpfAppMy.DAO
         {
             List<object> ids = IdsAlumnosDeComisionesAutorizadasPorSemestre(anio, semestre);
             return ContainerApp.DbCache().ListDict("alumno", ids.ToArray());
+        }
+
+        public List<Dictionary<string, object>> AlumnosActivosDeComisionesAutorizadasPorSemestre(object anio, object semestre)
+        {
+            var alumnoDao = new DAO.Alumno();
+            List<object> ids = IdsAlumnosActivosDeComisionesAutorizadasPorSemestre(anio, semestre);
+            return alumnoDao.AlumnosPorIds(ids);
+        }
+
+        public List<Dictionary<string, object>> AlumnosActivosDeComisionesAutorizadasPorSemestreSinGenero(object anio, object semestre)
+        {
+            var alumnoDao = new DAO.Alumno();
+            List<object> ids = IdsAlumnosActivosDeComisionesAutorizadasPorSemestreSinGenero(anio, semestre);
+            return alumnoDao.AlumnosPorIds(ids);
         }
     }
 }

@@ -11,6 +11,9 @@
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_Alumnos">
                 <MenuItem Header="Lista de Asignaciones del Semestre" Click="listaAsignacionesSemestre_Click"/>
+                <MenuItem Header="Lista de Asignaciones para programafines" Click="listaAsignacionesProgramaFines_Click"/>
+                <MenuItem Header="Lista de Alumnos semestre sin genero" Click="ListaAlumnosSinGenero_Click"/>
+
             </MenuItem>
             
             <MenuItem Header="_Comisiones">

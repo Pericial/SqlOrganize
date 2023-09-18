@@ -156,6 +156,18 @@ namespace WpfAppMy
             Windows.AlumnoComision.ListaAsignacionesSemestre win = new();
             win.Show();
         }
+
+        private void listaAsignacionesProgramaFines_Click(object sender, RoutedEventArgs e)
+        {
+            PageManipulator.FormEstudiantes win = new();
+            win.Show();
+        }
+
+        private void ListaAlumnosSinGenero_Click(object sender, RoutedEventArgs e)
+        {
+            Windows.AlumnoComision.AlumnosSemestreSinGenero win = new();
+            win.Show();
+        }
     }
 }
 

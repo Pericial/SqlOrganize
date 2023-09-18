@@ -7,6 +7,14 @@
         mc:Ignorable="d"
         Title="ListaAsignacionesSemestre" Height="450" Width="800">
     <Grid>
-        <DataGrid Name="dataGrid" />
+        <DataGrid Name="dataGrid" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Número" Binding="{Binding comision__numero}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Sede" Binding="{Binding sede__nombre}"></DataGridTextColumn>
+                <DataGridCheckBoxColumn Header="Apertura" Binding="{Binding comision__apertura}"></DataGridCheckBoxColumn>
+                <DataGridTextColumn Header="Contact Last Name" Binding="{Binding comision__identificacion}"></DataGridTextColumn>
+            </DataGrid.Columns>
+
+        </DataGrid>
     </Grid>
 </Window>
