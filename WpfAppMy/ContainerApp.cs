@@ -26,7 +26,7 @@ namespace WpfAppMy
             emailDocenteBcc = ConfigurationManager.AppSettings.Get("emailDocenteBcc"),
         };
 
-        public static Db db = new DbMy(config);
+        public static Db db = new DbApp(config);
 
         public static MemoryCache cache = new MemoryCache(new MemoryCacheOptions());
 

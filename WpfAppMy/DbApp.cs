@@ -15,12 +15,15 @@ namespace WpfAppMy
         {
         }
 
-        public EntityValues Values(string entityName, string? fieldId = null)
+        public override EntityValues Values(string entityName, string? fieldId = null)
         {
             switch (entityName)
             {
                 case "alumno_comision":
                     return new AlumnoComision(this, entityName, fieldId);
+
+                case "domicilio":
+                    return new Domicilio(this, entityName, fieldId);
             }
 
             return new EntityValues(this, entityName, fieldId);
