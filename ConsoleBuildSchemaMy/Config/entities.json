@@ -1,7 +1,13 @@
 {
   "alumno_comision": {
     "uniqueMultiple": [ "alumno", "comision" ],
-    "fieldsSub": ["activo"]
+    "fieldsSub": [ "activo" ]
+  },
+  "comision": {
+    "fieldsSub": [ "estado", "configuracion" ]
+  },
+  "sede": {
+    "fieldsSub": [ "tipo_sede" ]
   }
 }
  
