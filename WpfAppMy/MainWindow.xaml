@@ -13,6 +13,7 @@
                 <MenuItem Header="Lista de Asignaciones del Semestre" Click="listaAsignacionesSemestre_Click"/>
                 <MenuItem Header="Lista de Asignaciones para programafines" Click="listaAsignacionesProgramaFines_Click"/>
                 <MenuItem Header="Lista de Alumnos semestre sin genero" Click="ListaAlumnosSinGenero_Click"/>
+                <MenuItem Header="Cargar nuevos alumnos en una comisión" Click="CargarNuevosAlumnos_Click"/>
 
             </MenuItem>
             

@@ -1,27 +1,5 @@
-﻿using QRCoder;
-using QuestPDF.Fluent;
-using QuestPDF.Infrastructure;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using QuestPDF.Infrastructure;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Utils;
-using WpfAppMy.Forms;
-using WpfAppMy.Windows.TomaPosesionPdf;
 
 namespace WpfAppMy
 {
@@ -166,6 +144,12 @@ namespace WpfAppMy
         private void ListaAlumnosSinGenero_Click(object sender, RoutedEventArgs e)
         {
             Windows.AlumnoComision.AlumnosSemestreSinGenero win = new();
+            win.Show();
+        }
+
+        private void CargarNuevosAlumnos_Click(object sender, RoutedEventArgs e)
+        {
+            Windows.AlumnoComision.CargarNuevosAlumnos win = new();
             win.Show();
         }
     }
