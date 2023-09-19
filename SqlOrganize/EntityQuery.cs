@@ -64,7 +64,27 @@ namespace SqlOrganize
             where += w;
             return this;
         }
-        
+
+        public EntityQuery Search<T>(T param) where T : class
+        {
+            var d = param.ToDict();
+            return this;
+        }
+
+        public EntityQuery Search(IDictionary<string, object> param)
+        {
+            var count = parameters.Count;
+            foreach(var (key, value) in param)
+            {
+                if(value.IsNullOrEmpty())
+                {
+                    Where("$"+key+" = @" + count.ToString());
+                    Parameters(value);
+                }
+            }
+            return this;
+        }
+
         public EntityQuery Unique(Dictionary<string, object> row)
         {
             whereUnique.Merge(row);
