@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SqlOrganize;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,8 +8,19 @@ using Utils;
 
 namespace WpfAppMy.DAO
 {
-    public class Comision
+    public class Comision : Base
     {
+
+        public IEnumerable<Dictionary<string, object>> Comisiones<T>(T param) where T : class
+        {
+            return Buscar("comision", param);
+        }
+
+        public void UpdateValueRel(string key, object value, Dictionary<string, object> source)
+        {
+            EntityPersist p = ContainerApp.Db().Persist("comision").UpdateValueRel(key, value, source).Exec();
+            ContainerApp.DbCache().Remove(p.detail);
+        }
 
         public List<Dictionary<string, object>> ComisionesSemestre(object calendarioAnio, object calendarioSemestre, object? sede = null, bool? autorizada = null)
         {

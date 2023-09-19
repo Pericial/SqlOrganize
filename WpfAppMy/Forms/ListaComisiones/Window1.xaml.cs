@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using Utils;
+using WpfAppMy.Forms.ListaSedesSemestre;
 
 namespace WpfAppMy.Forms.ListaComisiones
 {
@@ -12,10 +13,10 @@ namespace WpfAppMy.Forms.ListaComisiones
     /// </summary>
     public partial class Window1 : Window
     {
-        ComisionSearch comisionSearch = new ();
+        Windows.ViewModel.ComisionSearch comisionSearch = new ();
 
         private DAO.Sede sedeDAO = new ();
-        private DAO.Comision comisionDAO = new();
+        private WpfAppMy.DAO.Comision comisionDAO = new();
 
         public Window1()
         {
@@ -36,7 +37,7 @@ namespace WpfAppMy.Forms.ListaComisiones
 
         private void ComisionSearch()
         {
-            List<Dictionary<string, object>> list = comisionDAO.Search(comisionSearch);
+            IEnumerable<Dictionary<string, object>> list = comisionDAO.Comisiones<Windows.ViewModel.ComisionSearch>(comisionSearch);
             comisionGrid.ItemsSource = list.ToListOfObj<Comision>();
         }
 
@@ -99,13 +100,7 @@ namespace WpfAppMy.Forms.ListaComisiones
         }
     }
 
-    internal class ComisionSearch
-    {
-        public string calendario__anio { get; set; } = DateTime.Now.Year.ToString();
-        public int calendario__semestre { get; set; } = DateTime.Now.ToSemester();
-        public bool? autorizada { get; set; } = true;
-        public string? sede { get; set; }
-    }
+    
 
     internal class SedeItem
     {
