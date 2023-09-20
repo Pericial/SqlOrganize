@@ -394,6 +394,8 @@ namespace ModelOrganize
 
         protected abstract List<Column> GetColumns(string tableName);
 
+        protected abstract Dictionary<string, List<string>> GetInfoUnique(string tableName);
+
 
         protected void RelationsRecursive(Dictionary<string, EntityRelation> rel, Dictionary<string, EntityTree> tree, string? parentId = null)
         {

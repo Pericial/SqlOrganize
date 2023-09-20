@@ -69,9 +69,9 @@ namespace SqlOrganize
 
         /*
         Valores unicos multiples
-        Solo puede especificarse un juego de campos unique_multiple
+        Cada juego de valores unicos multiples se define como una Lista
         */
-        public List<string> uniqueMultiple { get; set; } = new();
+        public List<List<string>> uniqueMultiple { get; set; } = new();
 
         public Dictionary<string, EntityTree> tree { get; set; } = new();
 
