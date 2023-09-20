@@ -46,7 +46,6 @@ namespace ModelOrganizeSs
 	col.NUMERIC_SCALE,
 	INFO_FK.REFERENCED_TABLE_NAME, INFO_FK.REFERENCED_COLUMN_NAME, 
 	IIF(INFO_PK.COLUMN_NAME IS NOT NULL, 1, 0) AS IS_PRIMARY_KEY, 
-	IIF(INFO_U.COLUMN_NAME IS NOT NULL, 1, 0) AS IS_UNIQUE_KEY,
 	IIF(INFO_FK2.COLUMN_NAME IS NOT NULL, 1, 0) AS IS_FOREIGN_KEY
 FROM information_schema.tables tbl
 
@@ -91,16 +90,6 @@ LEFT JOIN (
 ) AS INFO_PK ON (INFO_PK.TABLE_NAME = Col.TABLE_NAME AND Col.COLUMN_NAME = INFO_PK.COLUMN_NAME)
 
 LEFT JOIN (
-	SELECT  DISTINCT CU.TABLE_NAME, CU.COLUMN_NAME, CU.CONSTRAINT_NAME       
-	FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS  AS TU
-	INNER JOIN INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE AS CU
-	ON (
-		CU.CONSTRAINT_NAME = TU.CONSTRAINT_NAME
-	)
-	WHERE CONSTRAINT_TYPE = 'UNIQUE'
-) AS INFO_U ON (INFO_U.TABLE_NAME = Col.TABLE_NAME AND Col.COLUMN_NAME = INFO_U.COLUMN_NAME)
-
-LEFT JOIN (
 	SELECT DISTINCT CF.TABLE_NAME, CF.COLUMN_NAME        
 	FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS  AS TF
 	INNER JOIN INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE AS CF
@@ -122,5 +111,50 @@ ORDER BY col.TABLE_NAME ASC, col.COLUMN_NAME ASC;
 
         }
 
+        protected override Dictionary<string, List<string>> GetInfoUnique(string tableName)
+        {
+            using SqlConnection connection = new SqlConnection(Config.connectionString);
+            connection.Open();
+            using SqlCommand command = new SqlCommand();
+            command.CommandText = @"
+SELECT DISTINCT col.COLUMN_NAME, INFO_U.CONSTRAINT_NAME
+FROM information_schema.tables tbl
+INNER JOIN information_schema.columns col ON col.table_name = tbl.table_name AND col.table_schema = tbl.table_schema
+LEFT JOIN (
+	SELECT  DISTINCT CU.TABLE_NAME, CU.COLUMN_NAME, CU.CONSTRAINT_NAME       
+	FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS  AS TU
+	INNER JOIN INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE AS CU
+	ON (
+		CU.CONSTRAINT_NAME = TU.CONSTRAINT_NAME
+	)
+	WHERE CONSTRAINT_TYPE = 'UNIQUE'
+) AS INFO_U ON (INFO_U.TABLE_NAME = Col.TABLE_NAME AND Col.COLUMN_NAME = INFO_U.COLUMN_NAME)
+WHERE 
+	tbl.table_type = 'base table' 
+	AND tbl.TABLE_CATALOG = @dbName 
+	AND tbl.TABLE_NAME = @table_name
+	AND INFO_U.CONSTRAINT_NAME IS NOT NULL;
+";
+            command.Connection = connection;
+            command.Parameters.AddWithValue("dbName", Config.dbName);
+            command.Parameters.AddWithValue("table_name", tableName);
+
+            command.ExecuteNonQuery();
+            using SqlDataReader reader = command.ExecuteReader();
+            var list = reader.Serialize();
+			var response = new Dictionary<string, List<string>>();
+
+			if(!list.IsNullOrEmpty())
+				foreach( var item in list)
+				{
+					if (!response.ContainsKey(item["CONSTRAINT_NAME"].ToString()!))
+						response[item["CONSTRAINT_NAME"].ToString()!] = new();
+
+                    response[item["CONSTRAINT_NAME"].ToString()!].Add(item["COLUMN_NAME"].ToString()!);
+                }
+					
+
+			return response;
+        }
     }
 }

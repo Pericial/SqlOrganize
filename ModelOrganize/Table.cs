@@ -12,6 +12,7 @@ namespace ModelOrganize
         public List<string> ColumnNames { get; set; } = new();
         public List<string> Fk { get; set; } = new();
         public List<string> Unique { get; set; } = new();
+        public List<List<string>> UniqueMultiple { get; set; } = new();
         public List<string> NotNull { get; set; } = new();
 
         public List<Column> ColumnsFkNotReferenced(List<string> referencedTableNames)

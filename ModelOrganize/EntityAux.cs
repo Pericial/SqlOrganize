@@ -21,7 +21,5 @@ namespace ModelOrganize
         public List<string> uniqueSub { get; set; }
         public List<string> notNullAdd { get; set; }
         public List<string> notNullSub { get; set; }
-        public List<string> uniqueMultipleAdd { get; set; }
-        public List<string> uniqueMultipleSub { get; set; }
     }
 }
