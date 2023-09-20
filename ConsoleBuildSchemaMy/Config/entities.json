@@ -1,6 +1,5 @@
 {
   "alumno_comision": {
-    "uniqueMultiple": [ "alumno", "comision" ],
     "fieldsSub": [ "activo" ]
   },
   "comision": {

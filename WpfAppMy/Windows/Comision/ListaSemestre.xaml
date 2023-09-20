@@ -99,7 +99,6 @@
                 <DataGridTextColumn Header="Numero" Binding="{Binding numero}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Sede" Binding="{Binding sede__nombre}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Domicilio" Binding="{Binding domicilio__label}"></DataGridTextColumn>
-
             </DataGrid.Columns>
         </DataGrid>
 

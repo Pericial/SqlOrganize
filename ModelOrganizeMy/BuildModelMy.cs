@@ -25,7 +25,7 @@ namespace ModelOrganizeMy
             connection.Open();
             using MySqlCommand command = new MySqlCommand();
             command.CommandText = @"
- select 
+select 
 	DISTINCT col.TABLE_NAME, 
 	col.COLUMN_NAME, 
 	col.COLUMN_DEFAULT, 
@@ -42,7 +42,6 @@ namespace ModelOrganizeMy
     ) AS MAX_LENGTH,
 	IF(INFO_FK.TABLE_NAME is not NULL, 1, 0) AS IS_FOREIGN_KEY,
 	IF(INFO_PK.TABLE_NAME is not NULL, 1, 0) AS IS_PRIMARY_KEY,
-	IF(INFO_U.TABLE_NAME is not NULL, 1, 0) AS IS_UNIQUE_KEY,
     IF(col.COLUMN_TYPE LIKE '%unsigned', 1, 0) as IS_UNSIGNED 
 
 FROM information_schema.tables as tbl
@@ -65,12 +64,6 @@ left join (
 	from INFORMATION_SCHEMA.columns
 	where COLUMN_KEY = 'PRI'
 ) as INFO_PK on (INFO_PK.TABLE_NAME = COL.TABLE_NAME and INFO_PK.COLUMN_NAME = COL.COLUMN_NAME)
-
-left join (
-	select 	TABLE_NAME, COLUMN_NAME
-	from INFORMATION_SCHEMA.columns
-	where COLUMN_KEY = 'UNI'
-) as INFO_U on (INFO_U.TABLE_NAME = COL.TABLE_NAME and INFO_U.COLUMN_NAME = COL.COLUMN_NAME)
 
 WHERE (COL.TABLE_SCHEMA = @dbName) AND (COL.TABLE_NAME = @table_name)
 order by COL.TABLE_NAME, COL.ORDINAL_POSITION;
