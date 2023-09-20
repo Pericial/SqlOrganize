@@ -19,7 +19,7 @@ namespace WpfAppMy
 
         private void listaComisiones_Click(object sender, RoutedEventArgs e)
         {
-            Forms.ListaComisiones.Window1 win = new();
+            Windows.Comision.ListaSemestre win = new();
             win.Show();
         }
 

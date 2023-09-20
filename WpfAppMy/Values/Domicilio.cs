@@ -15,19 +15,20 @@ namespace WpfAppMy.Values
         {
         }
 
-        public string LabelShort()
+        public Domicilio Default_label_short()
         {
-            return values["calle"] + " e/ " + values["entre"] + " N° " + values["numero"];
+            values["label_short"] =  values["calle"] + " e/ " + values["entre"] + " N° " + values["numero"];
+            return this;
         }
 
-        public string Label()
+        public Domicilio Default_label()
         {
             string r = values["calle"] + " e/ " + values["entre"] + " N° " + values["numero"];
             if (!values["barrio"].IsNullOrEmpty())
                 r += " " + values["barrio"];
 
-            r += " " + values["localidad"];
-            return r;
+            values["label"] = r + " " + values["localidad"];
+            return this;
         }
     }
 }

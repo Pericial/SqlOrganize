@@ -17,7 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Utils;
-using WpfAppMy.Forms.ListaComisiones;
+using WpfAppMy.Windows.Comision;
 using WpfAppMy.Windows.ListaCursos;
 
 namespace WpfAppMy.Windows.ProcesarComisionesProgramaFines

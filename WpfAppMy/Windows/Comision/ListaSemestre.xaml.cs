@@ -1,28 +1,32 @@
-﻿using System;
+﻿using SqlOrganize;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using Utils;
-using WpfAppMy.Forms.ListaSedesSemestre;
+using WpfAppMy.Data;
+using WpfAppMy.Values;
+using WpfAppMy.Windows.ViewModel;
 
-namespace WpfAppMy.Forms.ListaComisiones
+namespace WpfAppMy.Windows.Comision
 {
     /// <summary>
     /// Lógica de interacción para Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class ListaSemestre : Window
     {
-        Windows.ViewModel.ComisionSearch comisionSearch = new ();
-
+        private ViewModel.ComisionSearch comisionSearch = new ();
         private DAO.Sede sedeDAO = new ();
-        private WpfAppMy.DAO.Comision comisionDAO = new();
+        private ObservableCollection<ComisionRel> comisionData = new();
 
-        public Window1()
+        public ListaSemestre()
         {
             InitializeComponent();
             this.sedeList.Visibility = Visibility.Collapsed; //al iniciar que no se vea la lista de opciones (estara vacia)
             comisionGrid.CellEditEnding += ComisionGrid_CellEditEnding!;
+            comisionGrid.ItemsSource = comisionData;
 
             DataContext = comisionSearch;
 
@@ -31,26 +35,39 @@ namespace WpfAppMy.Forms.ListaComisiones
             this.autorizadaCombo.Items.Add(new KeyValuePair<bool?, string>(null, "(Todos)"));
             this.autorizadaCombo.Items.Add(new KeyValuePair<bool, string>(true, "Sí"));
             this.autorizadaCombo.Items.Add(new KeyValuePair<bool, string>(false, "No"));
-            
-            ComisionSearch();
+
+            Loaded += MainWindow_Loaded;
         }
 
-        private void ComisionSearch()
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            IEnumerable<Dictionary<string, object>> list = comisionDAO.Comisiones<Windows.ViewModel.ComisionSearch>(comisionSearch);
-            comisionGrid.ItemsSource = list.ToListOfObj<Comision>();
+            LoadData();
+        }
+
+        private void LoadData()
+        {
+            IEnumerable<Dictionary<string, object>> list = ContainerApp.dao.Search("comision",comisionSearch);
+            comisionData.Clear();
+            foreach (Dictionary<string, object> item in list)
+            {
+                //Values.Comision v = (Values.Comision)ContainerApp.db.Values("comision").Set(item);
+                item["domicilio-label"] = ContainerApp.db.Values("domicilio", "domicilio").Set(item).Default("label").Get("label");
+                item["numero"] = ContainerApp.db.Values("comision").Values(item).Default("numero").Get("numero");
+                var o = item.ToObj<ComisionRel>();
+                comisionData.Add(o);
+            }
         }
 
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-            ComisionSearch();
+            LoadData();
         }
 
         private void SedeText_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (this.sedeList.SelectedIndex > -1)
-                if (this.sedeText.Text.Equals(((SedeItem)this.sedeList.SelectedItem).nombre))
+                if (this.sedeText.Text.Equals(((Data_sede)this.sedeList.SelectedItem).nombre))
                     return;
                 else
                 {
@@ -68,8 +85,8 @@ namespace WpfAppMy.Forms.ListaComisiones
 
             this.sedeList.Visibility = Visibility.Visible;
 
-            List<Dictionary<string, object>> list = sedeDAO.Search(this.sedeText.Text);
-            this.sedeList.ItemsSource = list.ToListOfObj<SedeItem>();
+            List<Dictionary<string, object>> list = sedeDAO.BusquedaAproximada(this.sedeText.Text);
+            this.sedeList.ItemsSource = list.ToListOfObj<Data_sede>();
         }
 
         private void SedeList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -78,8 +95,8 @@ namespace WpfAppMy.Forms.ListaComisiones
 
             if (this.sedeList.SelectedIndex > -1)
             {
-                this.sedeText.Text = ((SedeItem)this.sedeList.SelectedItem).nombre;
-                this.comisionSearch.sede = ((SedeItem)this.sedeList.SelectedItem).id;
+                this.sedeText.Text = ((Data_sede)this.sedeList.SelectedItem).nombre;
+                this.comisionSearch.sede = ((Data_sede)this.sedeList.SelectedItem).id;
             }
         }
 
@@ -92,9 +109,9 @@ namespace WpfAppMy.Forms.ListaComisiones
                 if (column != null)
                 {
                     string key = ((Binding)column.Binding).Path.Path; //column's binding
-                    Dictionary<string, object> source = (Dictionary<string, object>)((Comision)e.Row.DataContext).ToDict();
+                    Dictionary<string, object> source = (Dictionary<string, object>)((Data_comision_rel)e.Row.DataContext).ToDict();
                     string value = (e.EditingElement as TextBox)!.Text;
-                    comisionDAO.UpdateValueRel(key, value, source);
+                    ContainerApp.dao.UpdateValueRel("comision", key, value, source);
                 }
             }
         }
@@ -102,39 +119,6 @@ namespace WpfAppMy.Forms.ListaComisiones
 
     
 
-    internal class SedeItem
-    {
-        public string id { get; set; }
-        public string numero { get; set; }
-        public string nombre { get; set; }
-    }
+   
 
-    internal class Comision
-    {
-        public string id { get; set; }
-
-        public string numero { get; set; }
-
-        public string sede__nombre { get; set; }
-
-        public string sede__pfid { get; set; }
-
-        public string identificacion { get; set; }
-
-        public string pfid { get; set; }
-
-        public string planificacion__anio { get; set; }
-        public string planificacion__semestre { get; set; }
-        public string planificacion__orientacion { get; set; }
-        public string planificacion__pfid { get; set; }
-
-        public string domicilio__calle { get; set; }
-        public string domicilio__numero { get; set; }
-        public string domicilio__entre { get; set; }
-        public string domicilio__barrio { get; set; }
-        public string domicilio__localidad { get; set; }
-
-
-
-    }
 }

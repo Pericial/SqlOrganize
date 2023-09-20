@@ -44,11 +44,10 @@ namespace WpfAppMy.Windows.AlumnoComision
             data.Clear();
             foreach(var item in list)
             {
-                Domicilio d = (ContainerApp.db.Values("domicilio", "domicilio") as Domicilio);
-                   d.Set(item);
+                var vd = ContainerApp.db.Values("domicilio", "domicilio").Set(item).Default("label");
                 var o = item.ToObj<ViewModel.Asignacion>();
                 o.comision__numero = item["sede-numero"].ToString() + item["comision-division"].ToString() + "/" + item["planificacion-anio"] + item["planificacion-semestre"];
-                o.domicilio__label = d.Label();
+                o.domicilio__label = vd.Get("label")?.ToString();
 
                 data.Add(o);
             }

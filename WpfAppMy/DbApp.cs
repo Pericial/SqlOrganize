@@ -24,6 +24,9 @@ namespace WpfAppMy
 
                 case "domicilio":
                     return new Domicilio(this, entityName, fieldId);
+
+                case "comision":
+                    return new Comision(this, entityName, fieldId);
             }
 
             return new EntityValues(this, entityName, fieldId);

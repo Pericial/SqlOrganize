@@ -8,13 +8,8 @@ using Utils;
 
 namespace WpfAppMy.DAO
 {
-    public class Comision : Base
+    public class Comision
     {
-
-        public IEnumerable<Dictionary<string, object>> Comisiones<T>(T param) where T : class
-        {
-            return Buscar("comision", param);
-        }
 
         public void UpdateValueRel(string key, object value, Dictionary<string, object> source)
         {

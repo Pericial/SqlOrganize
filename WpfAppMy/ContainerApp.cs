@@ -32,6 +32,8 @@ namespace WpfAppMy
 
         public static DbCache dbCache = new DbCache(db, cache);
 
+        public static SqlOrganize.DAO dao = new (db, dbCache);
+
         public static Config Config()
         {
             return config;

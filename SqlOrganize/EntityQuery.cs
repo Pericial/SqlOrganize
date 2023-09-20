@@ -68,7 +68,7 @@ namespace SqlOrganize
         public EntityQuery Search<T>(T param) where T : class
         {
             var d = param.ToDict();
-            return this;
+            return Search(d);
         }
 
         public EntityQuery Search(IDictionary<string, object> param)
@@ -76,10 +76,13 @@ namespace SqlOrganize
             var count = parameters.Count;
             foreach(var (key, value) in param)
             {
-                if(value.IsNullOrEmpty())
+                if(!value.IsNullOrEmpty())
                 {
+                    if (!where.IsNullOrEmpty())
+                        Where(" AND ");
                     Where("$"+key+" = @" + count.ToString());
                     Parameters(value);
+                    count++;
                 }
             }
             return this;

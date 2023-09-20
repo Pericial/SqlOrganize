@@ -1,4 +1,5 @@
 ﻿
+using Newtonsoft.Json.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using Utils;
@@ -26,6 +27,12 @@ namespace SqlOrganize
 
         public EntityValues(Db _db, string _entityName, string? _fieldId = null) : base(_db, _entityName, _fieldId)
         {
+        }
+
+        public EntityValues Values(Dictionary<string, object> row)
+        {
+            values = row;
+            return this;
         }
 
         public EntityValues Set(IDictionary<string, object> row)
@@ -159,14 +166,22 @@ namespace SqlOrganize
             return this;
         }
 
+        /// <summary>
+        /// Reasigna fieldName
+        /// </summary>
+        /// <param name="fieldName"></param>
+        /// <remarks>fieldName debe estar definido obligatoriamente</remarks>
+        /// <returns></returns>
         public EntityValues Reset(string fieldName)
         {
             var method = "Reset_" + fieldName;
             Type thisType = this.GetType();
             MethodInfo m = thisType.GetMethod(method);
             if (!m.IsNullOrEmpty())
+            {
                 m!.Invoke(this, new object[] { });
-
+                return this;
+            }
             Field field = db.Field(entityName, fieldName);
 
             foreach (var (resetKey, resetValue) in field.resets)
@@ -202,6 +217,18 @@ namespace SqlOrganize
                     Default(fieldName);
 
             return this;
+        }
+
+        /// <summary>
+        /// Fuerza la asignacion de valor por defecto
+        /// </summary>
+        /// <param name="fieldName"></param>
+        /// <returns></returns>
+        public EntityValues SetDefault(string fieldName)
+        {
+            if (values.ContainsKey(fieldName))
+                Remove(fieldName);
+            return Default(fieldName);
         }
 
         /// <summary>
@@ -246,8 +273,10 @@ namespace SqlOrganize
             var method = "Default_" + fieldName;
             Type thisType = this.GetType();
             MethodInfo m = thisType.GetMethod(method);
-            if (!m.IsNullOrEmpty())
+            if (!m.IsNullOrEmpty()) {
                 m!.Invoke(this, new object[] { });
+                return this;
+            }
 
             Field field = db.Field(entityName, fieldName);
 

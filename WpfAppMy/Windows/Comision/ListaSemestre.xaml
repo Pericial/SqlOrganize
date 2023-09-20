@@ -1,11 +1,11 @@
-﻿<Window x:Class="WpfAppMy.Windows.Comision.ListaSemestre.Window1"
+﻿<Window x:Class="WpfAppMy.Windows.Comision.ListaSemestre"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfAppMy.Windows.Comision.ListaSemestre"
+        xmlns:local="clr-namespace:WpfAppMy.Windows.Comision"
         mc:Ignorable="d"
-        Title="Window1" Height="450" Width="800">
+        Title="Lista de Comisiones del Semestre" Height="450" Width="800">
     <DockPanel>
         <Grid DockPanel.Dock="Top">
 
@@ -78,7 +78,7 @@
                     Name="sedeList"    
                     Margin="2"
                     SelectionChanged="SedeList_SelectionChanged">
-
+                    
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel>
@@ -88,13 +88,22 @@
                     </ListBox.ItemTemplate>
                 </ListBox>
             </WrapPanel>
-
+            
             <StackPanel Grid.Row = "4" Grid.ColumnSpan = "2">
                 <Button Content = "_Buscar..." Click="BuscarButton_Click" />
             </StackPanel>
         </Grid>
 
-        <DataGrid Name="comisionGrid" />
+        <DataGrid Name="comisionGrid"  IsReadOnly="True" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Numero" Binding="{Binding numero}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Sede" Binding="{Binding sede__nombre}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Domicilio" Binding="{Binding domicilio__label}"></DataGridTextColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+
 
     </DockPanel>
 </Window>
