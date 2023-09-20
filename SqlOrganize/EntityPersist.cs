@@ -53,7 +53,7 @@ WHERE " + id + " = @" + count + @";
             return this;
         }
 
-        public EntityPersist UpdateIds(Dictionary<string, object> row, List<object> ids, string? _entityName = null)
+        public EntityPersist UpdateIds(Dictionary<string, object> row, IEnumerable<object> ids, string? _entityName = null)
         {
             _entityName = _entityName ?? entityName;
 
@@ -61,7 +61,7 @@ WHERE " + id + " = @" + count + @";
 
             string idMap = db.Mapping(_entityName!).Map(db.config.id);
 
-            if ((ids.Count + count) > 2100) //SQL Server no admite mas de 2100 parametros, se define consulta alternativa para estos casos
+            if ((ids.Count() + count) > 2100) //SQL Server no admite mas de 2100 parametros, se define consulta alternativa para estos casos
             {
                 List<object> ids_ = new();
                 var v = db.Values(_entityName!);
@@ -111,7 +111,7 @@ WHERE " + id + " = @" + count + @";
         /// <param name="id">Identificacion de la fila a actualizar</param>
         /// <param name="_entityName">Nombre de la entidad, si no se especifica se toma el atributo</param>
         /// <returns>Mismo objeto</returns>
-        public EntityPersist UpdateValue(string key, object value, List<object> ids, string? _entityName = null)
+        public EntityPersist UpdateValue(string key, object value, IEnumerable<object> ids, string? _entityName = null)
         {
             Dictionary<string, object> row = new Dictionary<string, object>()
             {
@@ -217,7 +217,7 @@ VALUES (";
         {
             _entityName = _entityName ?? entityName;
 
-            EntityValues v = db.Values(_entityName!).Set(row);
+            EntityValues v = db.Values(_entityName!).Set(row).Reset();
             return PersistValues(v);
         }
     
@@ -230,7 +230,8 @@ VALUES (";
         /// <exception cref="Exception"></exception>
         public EntityPersist PersistValues(EntityValues v)
         {
-            var rows = db.Query(v.entityName!).Unique(v.values).ListDict();
+            var q = db.Query(v.entityName!).Unique(v.values);
+            var rows = q.ListDict();
 
             if (rows.Count > 1)
                 throw new Exception("La consulta por campos unicos retorno mas de un resultado");
