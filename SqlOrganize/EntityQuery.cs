@@ -118,14 +118,20 @@ namespace SqlOrganize
             if (whereUniqueList.Count > 0)
                 w = "(" + String.Join(") OR (", whereUniqueList) + ")";
 
-            string ww = UniqueMultiple(db.Entity(entityName).uniqueMultiple);
-            if (!ww.IsNullOrEmpty()) 
-                w += (w.IsNullOrEmpty()) ? ww : " OR " + ww;
+            string ww = "";
+            foreach(var um in db.Entity(entityName).uniqueMultiple)
+            {
+                ww = UniqueMultiple(um);
+                if (!ww.IsNullOrEmpty())
+                    w += (w.IsNullOrEmpty()) ? ww : " OR " + ww;
+            }
 
             ww = UniqueMultiple(db.Entity(entityName).pk);
             if (!ww.IsNullOrEmpty())
                 w += (w.IsNullOrEmpty()) ? ww : " OR " + ww;
 
+            if (w.IsNullOrEmpty())
+                throw new Exception("Se intento definir una condicion unica sin resultado");
             return w;
         }
 
@@ -140,14 +146,16 @@ namespace SqlOrganize
 
             foreach (string fieldName in db.Entity(entityName).unique)
                 foreach (var (key, value) in whereUnique)
-                    if (key == fieldName)              
+                    if (key == fieldName)
                         return true;
                    
-                
             
-            bool e = IsUniqueMultiple(db.Entity(entityName).uniqueMultiple);
-            if (e) 
-                return true;
+            foreach(var um in db.Entity(entityName).uniqueMultiple) {
+                bool e = IsUniqueMultiple(um);
+                if (e)
+                    return true;
+
+            }
 
             return IsUniqueMultiple(db.Entity(entityName).pk);
         }
