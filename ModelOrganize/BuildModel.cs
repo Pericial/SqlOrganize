@@ -131,7 +131,7 @@ namespace ModelOrganize
         {
             Config = config;
 
-            #region Definicion de tables y columns
+            #region Definicion inicial de tables y columns
             List<string> tableAlias = new List<string>(Config.reservedAlias);
 
             foreach (string tableName in GetTableNames())
@@ -159,8 +159,6 @@ namespace ModelOrganize
                         table.Fk.Add(col.COLUMN_NAME);
                     if (col.IS_PRIMARY_KEY == 1)
                         table.Pk.Add(col.COLUMN_NAME);
-                    if (col.IS_UNIQUE_KEY == 1)
-                        table.Unique.Add(col.COLUMN_NAME);
                     if (col.IS_NULLABLE == 0)
                         table.NotNull.Add(col.COLUMN_NAME);
 
@@ -169,6 +167,26 @@ namespace ModelOrganize
 
                 Tables.Add(table);
             }
+            #endregion
+
+            #region Definicion de campos unicos de tables
+            foreach (var table in Tables)
+            {
+                var infoUnique = GetInfoUnique(table.Name!);
+
+                foreach(var (constraintName, columnNames) in infoUnique!)
+                {
+                    if (columnNames.Count > 1) {
+                        table.UniqueMultiple.Add(columnNames);
+                    }
+                    else
+                    {
+                        table.Unique.Add(columnNames[0]);
+                    }
+                }
+
+            }
+
             #endregion
 
             #region Definicion de entities
@@ -184,6 +202,7 @@ namespace ModelOrganize
                 e.pk = t.Pk;
                 e.fk = t.Fk;
                 e.unique = t.Unique;
+                e.uniqueMultiple = t.UniqueMultiple;
                 e.notNull = t.NotNull;
                 entities[e.name!] = e;
             }
@@ -218,7 +237,6 @@ namespace ModelOrganize
                         entities[e.Key].fk = entities[e.Key].fk.Intersect(f).ToList();
                         entities[e.Key].unique = entities[e.Key].unique.Intersect(f).ToList();
                         entities[e.Key].notNull = entities[e.Key].notNull.Intersect(f).ToList();
-                        entities[e.Key].uniqueMultiple = entities[e.Key].uniqueMultiple.Intersect(f).ToList();
 
                         f = new List<string>();
                         f.AddRange(entities[e.Key].fk);
@@ -246,17 +264,6 @@ namespace ModelOrganize
                             f = f.Except(e.Value.notNullSub).ToList();
 
                         entities[e.Key].notNull = f;
-
-                        f = new List<string>();
-                        f.AddRange(entities[e.Key].uniqueMultiple);
-
-                        if (!e.Value.uniqueMultipleAdd.IsNullOrEmpty())
-                            f.AddRange(e.Value.uniqueMultipleAdd);
-
-                        if (!e.Value.uniqueMultipleSub.IsNullOrEmpty())
-                            f = f.Except(e.Value.uniqueMultipleSub).ToList();
-
-                        entities[e.Key].uniqueMultiple = f;
                     }
                 }
             }
@@ -501,23 +508,19 @@ namespace ModelOrganize
                     return new List<string> { f };
 
 
-            if (entity.uniqueMultiple.Count > 1)
-            {
-                bool uniqueMultipleFlag = true;
-                foreach (string f in entity.uniqueMultiple)
-                {
 
-                    if (!entity.uniqueMultiple.Contains(f))
+            bool uniqueMultipleFlag = true;
+            foreach (List<string> um in entity.uniqueMultiple) { 
+                foreach (string f in um)
+                    if (!entity.notNull.Contains(f))
                     {
                         uniqueMultipleFlag = false;
                         break;
                     }
-                }
-
                 if (uniqueMultipleFlag)
-                {
-                    return entity.uniqueMultiple;
-                }
+                    return um;
+
+                uniqueMultipleFlag = true;
             }
 
             if (entity.notNull.Count > 1)
