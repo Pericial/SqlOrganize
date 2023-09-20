@@ -36,7 +36,7 @@ namespace ModelOrganizeMy
 	col.NUMERIC_SCALE,
 	INFO_FK.REFERENCED_TABLE_NAME,
 	INFO_FK.REFERENCED_COLUMN_NAME,
-    IF(POSITION(""("" IN col.COLUMN_TYPE), 
+    IF(POSITION('(' IN col.COLUMN_TYPE), 
         CAST(SUBSTRING_INDEX(SUBSTRING_INDEX(col.COLUMN_TYPE, '(', -1), ')', 1) AS UNSIGNED),
         NULL
     ) AS MAX_LENGTH,
@@ -85,8 +85,49 @@ order by COL.TABLE_NAME, COL.ORDINAL_POSITION;
 
         }
 
+        protected override Dictionary<string, List<string>> GetInfoUnique(string tableName)
+        {
+            using MySqlConnection connection = new MySqlConnection(Config.connectionString);
+            connection.Open();
+            using MySqlCommand command = new MySqlCommand();
+            command.CommandText = @"
+SELECT DISTINCT col.COLUMN_NAME, INFO_U.CONSTRAINT_NAME
+FROM information_schema.tables tbl
+INNER JOIN information_schema.columns col ON col.table_name = tbl.table_name AND col.table_schema = tbl.table_schema
+LEFT JOIN (
+	select 	TABLE_NAME, COLUMN_NAME
+	from INFORMATION_SCHEMA.columns
+	where COLUMN_KEY = 'UNI'
+) AS INFO_U ON (INFO_U.TABLE_NAME = Col.TABLE_NAME AND Col.COLUMN_NAME = INFO_U.COLUMN_NAME)
+WHERE 
+	tbl.table_type = 'base table' 
+	AND tbl.TABLE_CATALOG = @dbName 
+	AND tbl.TABLE_NAME = @table_name
+	AND INFO_U.CONSTRAINT_NAME IS NOT NULL;
+";
+            command.Connection = connection;
+            command.Parameters.AddWithValue("dbName", Config.dbName);
+            command.Parameters.AddWithValue("table_name", tableName);
 
-        protected override List<String> GetTableNames()
+            command.ExecuteNonQuery();
+            using MySqlDataReader reader = command.ExecuteReader();
+            var list = reader.Serialize();
+            var response = new Dictionary<string, List<string>>();
+
+            if (!list.IsNullOrEmpty())
+                foreach (var item in list)
+                {
+                    if (!response.ContainsKey(item["CONSTRAINT_NAME"].ToString()!))
+                        response[item["CONSTRAINT_NAME"].ToString()!] = new();
+
+                    response[item["CONSTRAINT_NAME"].ToString()!].Add(item["COLUMN_NAME"].ToString()!);
+                }
+
+
+            return response;
+        }
+
+        protected override List<string> GetTableNames()
         {
             using MySqlConnection connection = new MySqlConnection(Config.connectionString);
             connection.Open();
