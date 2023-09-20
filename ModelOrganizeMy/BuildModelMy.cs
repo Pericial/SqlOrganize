@@ -91,22 +91,20 @@ order by COL.TABLE_NAME, COL.ORDINAL_POSITION;
             connection.Open();
             using MySqlCommand command = new MySqlCommand();
             command.CommandText = @"
-SELECT DISTINCT col.COLUMN_NAME, INFO_U.CONSTRAINT_NAME
-FROM information_schema.tables tbl
-INNER JOIN information_schema.columns col ON col.table_name = tbl.table_name AND col.table_schema = tbl.table_schema
-LEFT JOIN (
-	select 	TABLE_NAME, COLUMN_NAME
-	from INFORMATION_SCHEMA.columns
-	where COLUMN_KEY = 'UNI'
-) AS INFO_U ON (INFO_U.TABLE_NAME = Col.TABLE_NAME AND Col.COLUMN_NAME = INFO_U.COLUMN_NAME)
+SELECT DISTINCT col.COLUMN_NAME, con.CONSTRAINT_NAME
+FROM information_schema.columns as col 
+INNER JOIN information_schema.key_column_usage kcu ON (kcu.TABLE_NAME = col.TABLE_NAME AND col.COLUMN_NAME = kcu.COLUMN_NAME) 
+INNER JOIN INFORMATION_SCHEMA.TABLE_CONSTRAINTS con ON (con.TABLE_NAME = col.TABLE_NAME AND kcu.CONSTRAINT_NAME = con.constraint_name)
 WHERE 
-	tbl.table_type = 'base table' 
-	AND tbl.TABLE_CATALOG = @dbName 
-	AND tbl.TABLE_NAME = @table_name
-	AND INFO_U.CONSTRAINT_NAME IS NOT NULL;
+(COL.TABLE_SCHEMA = @dbName) 
+AND (COL.TABLE_NAME =  @table_name) 
+AND (con.CONSTRAINT_TYPE = 'UNIQUE')
+order by con.CONSTRAINT_NAME, COL.COLUMN_NAME;
 ";
             command.Connection = connection;
-            command.Parameters.AddWithValue("dbName", Config.dbName);
+            command.Parameters.AddWithValue(
+
+"dbName", Config.dbName);
             command.Parameters.AddWithValue("table_name", tableName);
 
             command.ExecuteNonQuery();
