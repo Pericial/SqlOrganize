@@ -32,13 +32,7 @@ namespace SqlOrganize
             Cache.Remove(p.detail);
         }
 
-        public IEnumerable<Dictionary<string, object>> SearchObject<T>(string entityName, T param) where T : class
-        {
-            var q = Db.Query(entityName).Search<T>(param).Size(0);
-            return Cache.ColOfDict(q);
-        }
-
-        public IDictionary<string, object> Get<T>(string entityName, object id) where T : class
+        public IDictionary<string, object> Get(string entityName, object id)
         {
             var q = Db.Query(entityName).Where("$"+Db.config.id+" = @0").Parameters(id);
             return Cache.Dict(q);

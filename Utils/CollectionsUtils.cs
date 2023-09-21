@@ -294,6 +294,14 @@ namespace Utils
                 oc.Add(item);
         }
 
+        public static void AddRange<T>(this ObservableCollection<T> oc, IEnumerable<Dictionary<string, object>> items) where T : class, new()
+        {
+            foreach (var item in items) { 
+                T o = item.Obj<T>();
+                oc.Add(o);
+            }
+        }
+
         /// <summary>
         /// https://www.dotnetperls.com/sort-strings-length
         /// </summary>

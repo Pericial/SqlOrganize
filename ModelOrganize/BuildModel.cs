@@ -492,12 +492,12 @@ namespace ModelOrganize
 
             foreach (var (entityName, entity) in entities)
             {
-                using StreamWriter sw = File.CreateText(Config.dataPath + entityName + "_rel.cs");
+                using StreamWriter sw = File.CreateText(Config.dataPath + entityName + "_r.cs");
                 sw.WriteLine("using System;");
                 sw.WriteLine("");
                 sw.WriteLine("namespace " + Config.dataNamespace);
                 sw.WriteLine("{");
-                sw.WriteLine("    public class Data_" + entityName + "_rel" + " : Data_" + entityName);
+                sw.WriteLine("    public class Data_" + entityName + "_r" + " : Data_" + entityName);
                 sw.WriteLine("    {");
 
                 foreach (var (fieldId, relation) in entities[entityName].relations)

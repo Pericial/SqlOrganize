@@ -55,7 +55,7 @@ namespace SqlOrganizeSs
             return reader.Obj<T>();
         }
 
-        public override List<T> Column<T>(string columnName)
+        public override IEnumerable<T> Column<T>(string columnName)
         {
             using SqlConnection connection = new(db.config.connectionString);
             using SqlCommand command = new();
@@ -64,7 +64,7 @@ namespace SqlOrganizeSs
             return reader.ColumnValues<T>(columnName);
         }
 
-        public override List<T> Column<T>(int columnNumber = 0)
+        public override IEnumerable<T> Column<T>(int columnNumber = 0)
         {
             using SqlConnection connection = new(db.config.connectionString);
             using SqlCommand command = new();
