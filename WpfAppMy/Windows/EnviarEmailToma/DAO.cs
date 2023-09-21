@@ -22,7 +22,7 @@ namespace WpfAppMy.Windows.EnviarEmailToma
                 .Order("$comision-pfid ASC")
                 .Parameters("2023", "2");
 
-            return ContainerApp.DbCache().ListDict(q);
+            return ContainerApp.DbCache().ColOfDict(q);
         }
     }
 }

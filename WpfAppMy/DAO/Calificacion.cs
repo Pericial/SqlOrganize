@@ -41,7 +41,7 @@ namespace WpfAppMy.DAO
                 .Order("$persona-apellidos ASC, $persona-nombres ASC, $planificacion_dis-anio ASC, $planificacion_dis-semestre ASC, $planificacion_dis-plan");
 
             //var qq = q.Sql();
-            return ContainerApp.DbCache().ListDict(q);
+            return ContainerApp.DbCache().ColOfDict(q);
         }
 
 

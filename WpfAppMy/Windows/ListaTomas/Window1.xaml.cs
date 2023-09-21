@@ -49,7 +49,7 @@ namespace WpfAppMy.Windows.ListaTomas
         {
             IEnumerable<Dictionary<string, object>> list = dao.TomaAll(search);
             tomaData.Clear();
-            tomaData.AddRange(list.ToListOfObj<Toma>());
+            tomaData.AddRange(list.ToColOfObj<Toma>());
         }
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {

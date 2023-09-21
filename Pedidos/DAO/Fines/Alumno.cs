@@ -17,7 +17,7 @@ namespace Pedidos.DAO.Fines
             var q = ContainerApp.dbFines.Query("alumno")
                 .Size(0).Where(@"$id IN ( @0 )").Parameters(idAlumnos);
             
-            return ContainerApp.dbCacheFines.ListDict(q);
+            return ContainerApp.dbCacheFines.ColOfDict(q);
         }
 
         public List<Dictionary<string, object>> AlumnosActivosDeComisionesAutorizadasPorCalendario2(object anio, object semestre, List<object> dnisAQuitar)
@@ -29,7 +29,7 @@ namespace Pedidos.DAO.Fines
                 .Where(@"$id IN ( @0 ) AND $persona-numero_documento NOT IN ( @1 )")
                 .Parameters(idAlumnos, dnisAQuitar);
 
-            return ContainerApp.dbCacheFines.ListDict(q);
+            return ContainerApp.dbCacheFines.ColOfDict(q);
         }
     }
 }

@@ -27,7 +27,7 @@ namespace SqlOrganize
         /// <param name="ids"></param>
         /// <remarks>IMPORTANTE! No devuelve relaciones!!!</remarks>
         /// <returns></returns>
-        public List<Dictionary<string, object>> ListDict(string entityName, params object[] ids)
+        public List<Dictionary<string, object>> ColOfDict(string entityName, params object[] ids)
         {
             ids = ids.Distinct().ToArray();
 
@@ -51,7 +51,7 @@ namespace SqlOrganize
             if (searchIds.Count == 0)
                 return response;
 
-            List<Dictionary<string, object>> rows = Db.Query(entityName).Size(0).Where("$"+Db.config.id+" IN (@0)").Parameters(searchIds).ListDict();
+            IEnumerable<Dictionary<string, object>> rows = Db.Query(entityName).Size(0).Where("$"+Db.config.id+" IN (@0)").Parameters(searchIds).ColOfDict();
 
             foreach (Dictionary<string, object> row in rows)
             {
@@ -66,17 +66,17 @@ namespace SqlOrganize
         /// Ejecuta consulta de datos (con relaciones).<br/>
         /// Verifica la cache para obtener el resultado de la consulta, si no existe en cache accede a la base de datos.
         /// </summary>
-        public List<Dictionary<string, object>> _ListDict(EntityQuery query)
+        public IEnumerable<Dictionary<string, object>> _ColOfDict(EntityQuery query)
         {
             List<string> queries;
             if (!Cache.TryGetValue("queries", out queries))
                 queries = new();
 
-            List<Dictionary<string, object>> result;
+            IEnumerable<Dictionary<string, object>> result;
             string queryKey = query!.ToString();
             if (!Cache.TryGetValue(queryKey, out result))
             {
-                result = query.ListDict();
+                result = query.ColOfDict();
                 Cache.Set(queryKey, result);
                 queries!.Add(queryKey);
                 Cache.Set("queries", queries);
@@ -88,13 +88,13 @@ namespace SqlOrganize
         /// Ejecuta consulta de datos (con relaciones).<br/>
         /// Verifica la cache para obtener el resultado de la consulta, si no existe en cache accede a la base de datos.
         /// </summary>
-        protected Dictionary<string, object> _Dict(EntityQuery query)
+        protected IDictionary<string, object> _Dict(EntityQuery query)
         {
             List<string> queries;
             if (!Cache.TryGetValue("queries", out queries))
                 queries = new();
 
-            Dictionary<string, object> result;
+            IDictionary<string, object> result;
             string queryKey = query!.ToString();
             if (!Cache.TryGetValue(queryKey, out result))
             {
@@ -111,10 +111,10 @@ namespace SqlOrganize
         /// Dependiendo del tipo de consulta almacena cada fila de resultado en cache.
         /// </summary>
         /// <param name="query">Consulta</param>
-        public IEnumerable<Dictionary<string, object>> ListDict(EntityQuery query)
+        public IEnumerable<Dictionary<string, object>> ColOfDict(EntityQuery query)
         {
             if (!query.select.IsNullOrEmpty() || !query.group.IsNullOrEmpty()) 
-                return _ListDict(query);
+                return _ColOfDict(query);
 
             if (query.fields.IsNullOrEmpty())
                 query.Fields();
@@ -124,15 +124,15 @@ namespace SqlOrganize
             //si no se encuentra el Db.config.id, no se realiza cache.
             //Si por ejemplo se consultan solo campos de relacoines, no se aplicaria correctamente el distinct
             if (!fields.Contains(Db.config.id))
-                return _ListDict(query);
+                return _ColOfDict(query);
 
             EntityQuery queryAux = query.Clone();
             queryAux.fields = Db.config.id;
 
-            List<string> ids = queryAux.Column<string>();
+            IEnumerable<string> ids = queryAux.Column<string>();
 
 
-            return PreListDictRecursive(query.entityName, fields, ids.ToArray());
+            return PreColOfDictRecursive(query.entityName, fields, ids.ToArray());
         }
 
         /// <summary>
@@ -159,7 +159,7 @@ namespace SqlOrganize
 
             List<string> fields = query.fields!.Replace("$", "").Split(',').ToList().Select(s => s.Trim()).ToList();
 
-            IEnumerable<Dictionary<string, object>> response = PreListDictRecursive(query.entityName, fields, id);
+            IEnumerable<Dictionary<string, object>> response = PreColOfDictRecursive(query.entityName, fields, id);
 
             return response.ElementAt(0);
         }
@@ -167,11 +167,11 @@ namespace SqlOrganize
         /// <summary>
         /// Organiza los elementos a consultar y efectua la consulta a la base de datos.
         /// </summary>
-        protected IEnumerable<Dictionary<string, object>> PreListDictRecursive(string entityName, List<string> fields, params string[] ids)
+        protected IEnumerable<Dictionary<string, object>> PreColOfDictRecursive(string entityName, List<string> fields, params string[] ids)
         {
             FieldsOrganize fo = new(Db, entityName, fields);
 
-            List<Dictionary<string, object>> data = ListDict(entityName, ids);
+            List<Dictionary<string, object>> data = ColOfDict(entityName, ids);
 
             List<Dictionary<string, object>> response = new();
 
@@ -184,13 +184,13 @@ namespace SqlOrganize
                     response[i][fo.FieldsMain[j]] = data[i][fo.FieldsMain[j]];
             }
 
-            return ListDictRecursive(fo, response, 0);
+            return ColOfDictRecursive(fo, response, 0);
         }
 
         /// <summary>
         /// Analiza la respuesta de una consulta y re organiza los elementos para armar el resultado
         /// </summary>
-        public IEnumerable<Dictionary<string, object>> ListDictRecursive(FieldsOrganize fo, List<Dictionary<string, object>> response, int index)
+        public IEnumerable<Dictionary<string, object>> ColOfDictRecursive(FieldsOrganize fo, List<Dictionary<string, object>> response, int index)
         {
             if (index >= fo.FieldsIdOrder.Count) return response;
             {
@@ -203,7 +203,7 @@ namespace SqlOrganize
                 string refFieldName = Db.Entity(fo.EntityName).relations[fieldId].refFieldName;
                 string fkName = (!parentId.IsNullOrEmpty()) ? parentId + Db.config.idNameSeparatorString + fieldName : fieldName;
 
-                List<object> ids = response.Column<object>(fkName).Distinct().ToList();
+                List<object> ids = response.ColOfVal<object>(fkName).Distinct().ToList();
                 ids.RemoveAll(item => item == null || item == System.DBNull.Value);
                 IEnumerable<Dictionary<string, object>> data;
                 if (ids.Count() == 1 && ids.ElementAt(0) == System.DBNull.Value)
@@ -213,12 +213,12 @@ namespace SqlOrganize
                     //Si las fk estan asociadas a una unica pk, debe indicarse para mayor eficiencia
                     if (Db.config.fkId)
                     {
-                        data = ListDict(refEntityName, ids.OfType<object>().ToArray());
+                        data = ColOfDict(refEntityName, ids.OfType<object>().ToArray());
                     }
                     else
                     {
                         var q = Db.Query(refEntityName).Size(0).Where("$" + refFieldName + " IN (@0)").Parameters(ids);
-                        data = ListDict(q);
+                        data = ColOfDict(q);
                     }
                 }
 
@@ -240,7 +240,7 @@ namespace SqlOrganize
                     }
                 }
 
-                return (++index < fo.FieldsIdOrder.Count) ? ListDictRecursive(fo, response, index) : response;
+                return (++index < fo.FieldsIdOrder.Count) ? ColOfDictRecursive(fo, response, index) : response;
             }
         }
 
@@ -291,10 +291,10 @@ namespace SqlOrganize
         /// <typeparam name="T"></typeparam>
         /// <param name="query"></param>
         /// <returns></returns>
-        public IEnumerable<T> ListObj<T>(EntityQuery query) where T : class, new()
+        public IEnumerable<T> ColOfObj<T>(EntityQuery query) where T : class, new()
         {
-            IEnumerable<Dictionary<string, object>> response = ListDict(query);
-            return response.ToListOfObj<T>();
+            IEnumerable<Dictionary<string, object>> response = ColOfDict(query);
+            return response.ToColOfObj<T>();
         }
 
         /// <summary>
@@ -321,23 +321,23 @@ namespace SqlOrganize
 
         public IEnumerable<T> Column<T>(EntityQuery query, int columnNumber = 0)
         {
-            IEnumerable<Dictionary<string, object>>? response = ListDict(query);
+            IEnumerable<Dictionary<string, object>>? response = ColOfDict(query);
             if (response.IsNullOrEmpty())
                 return Enumerable.Empty<T>();
 
 
             string k = response.ElementAt(0).Keys.ElementAt(columnNumber).ToString();
 
-            return (List<T>)response.Column<T>(k);
+            return (List<T>)response.ColOfVal<T>(k);
         }
 
         public IEnumerable<T> Column<T>(EntityQuery query, string columnName)
         {
-            IEnumerable<Dictionary<string, object>>? response = ListDict(query);
+            IEnumerable<Dictionary<string, object>>? response = ColOfDict(query);
             if (response.IsNullOrEmpty())
                 return Enumerable.Empty<T>();
 
-            return response.Column<T>(columnName);
+            return response.ColOfVal<T>(columnName);
         }
 
         public IEnumerable<object> Column(EntityQuery query, string columnName)

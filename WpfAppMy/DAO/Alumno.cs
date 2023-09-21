@@ -19,7 +19,7 @@ namespace WpfAppMy.DAO
                 ")
                .Parameters(ids);
 
-            return ContainerApp.DbCache().ListDict(q);
+            return ContainerApp.DbCache().ColOfDict(q);
         }
     }
 }

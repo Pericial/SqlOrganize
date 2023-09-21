@@ -46,7 +46,7 @@ namespace WpfAppMy.Forms.ListaSedesSemestre
         private void ComisionSearch()
         {
             IEnumerable<Dictionary<string, object>> list = comisionDAO.Search(comisionSearch);
-            sedeGrid.ItemsSource = list.ToListOfObj<Sede>();
+            sedeGrid.ItemsSource = list.ToColOfObj<Sede>();
         }
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)

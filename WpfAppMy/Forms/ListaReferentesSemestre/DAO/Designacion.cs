@@ -17,7 +17,7 @@ namespace WpfAppMy.Forms.ListaReferentesSemestre.DAO
             EntityQuery q = ContainerApp.Db().Query("designacion").
                 Where("$sede-_Id IN (@0) AND $cargo = '1'").
                 Parameters(idSedes);
-            return ContainerApp.DbCache().ListDict(q);
+            return ContainerApp.DbCache().ColOfDict(q);
         }
 
         public void UpdateValueRel(string key, object value, Dictionary<string, object> source)

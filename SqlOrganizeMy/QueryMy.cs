@@ -14,7 +14,7 @@ namespace SqlOrganizeMy
         {
         }
 
-        public override List<Dictionary<string, object>> ListDict()
+        public override List<Dictionary<string, object>> ColOfDict()
         {
             using MySqlConnection connection = new(db.config.connectionString);
             using MySqlCommand command = new();
@@ -23,13 +23,13 @@ namespace SqlOrganizeMy
             return reader.Serialize();
         }
 
-        public override List<T> ListObj<T>()
+        public override List<T> ColOfObj<T>()
         {
             using MySqlConnection connection = new(db.config.connectionString);
             using MySqlCommand command = new();
             SqlExecute(connection, command);
             using MySqlDataReader reader = command.ExecuteReader();
-            return reader.ToListOfObj<T>();
+            return reader.ToColOfObj<T>();
         }
 
         public override Dictionary<string, object> Dict()

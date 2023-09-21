@@ -507,25 +507,25 @@ namespace SqlOrganize
         /// </summary>
         /// <remarks>Convert the result to json with "JsonConvert.SerializeObject(data, Formatting.Indented)</remarks>
         /// <returns></returns>
-        public List<Dictionary<string, object>> ListDict()
+        public IEnumerable<Dictionary<string, object>> ColOfDict()
         {
             var q = db.Query();
             q.sql = Sql();
             q.parameters.AddRange(parameters);
             q.parametersDict.Merge(parametersDict);
-            return q.ListDict();
+            return q.ColOfDict();
         }
 
-        public List<T> ListObj<T>() where T : class, new()
+        public IEnumerable<T> ColOfObj<T>() where T : class, new()
         {
             var q = db.Query();
             q.sql = Sql();
             q.parameters.AddRange(parameters);
             q.parametersDict.Merge(parametersDict);
-            return q.ListObj<T>();
+            return q.ColOfObj<T>();
         }
 
-        public Dictionary<string, object> Dict()
+        public IDictionary<string, object> Dict()
         {
             var q = db.Query();
             q.sql = Sql();
@@ -544,7 +544,7 @@ namespace SqlOrganize
 
         }
 
-        public List<T> Column<T>(string columnName)
+        public IEnumerable<T> Column<T>(string columnName)
         {
             var q = db.Query();
             q.sql = Sql();
@@ -553,7 +553,7 @@ namespace SqlOrganize
             return q.Column<T>(columnName);
         }
 
-        public List<T> Column<T>(int columnValue = 0)
+        public IEnumerable<T> Column<T>(int columnValue = 0)
         {
             var q = db.Query();
             q.sql = Sql();

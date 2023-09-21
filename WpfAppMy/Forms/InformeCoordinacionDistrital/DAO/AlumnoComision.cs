@@ -9,7 +9,7 @@ namespace WpfAppMy.Forms.InformeCoordinacionDistrital.DAO
 {
     class AlumnoComision
     {
-        protected List<Dictionary<string, object>> FiltroInformeCoordinacionDistrital(string modalidad, string anioCalendario, int semestreCalendario, bool? comisionSiguienteNull = null)
+        protected IEnumerable<Dictionary<string, object>> FiltroInformeCoordinacionDistrital(string modalidad, string anioCalendario, int semestreCalendario, bool? comisionSiguienteNull = null)
         {
             var q = ContainerApp.db.Query("alumno_comision").
                 Fields("estado, sede-nombre, comision-identificacion, alumno-id, plan_alu-id, persona-apellidos, persona-nombres, persona-numero_documento, persona-genero, persona-fecha_nacimiento, persona-telefono, persona-email, alumno-tiene_dni, alumno-tiene_partida, alumno-tiene_certificado, alumno-creado, alumno-estado_inscripcion, planificacion-plan").
@@ -27,10 +27,10 @@ namespace WpfAppMy.Forms.InformeCoordinacionDistrital.DAO
             else if (!comisionSiguienteNull.IsNullOrEmpty() && !comisionSiguienteNull == false)
                 q.Where("AND $comision-comision_siguiente IS NOT NULL");
 
-            return q.ListDict();
+            return q.ColOfDict();
         }
 
-        public List<Dictionary<string, object>> InformeCoordinacionDistrital(string modalidad, string anioCalendario, int semestreCalendario, bool? comisionSiguienteNull = null)
+        public IEnumerable<Dictionary<string, object>> InformeCoordinacionDistrital(string modalidad, string anioCalendario, int semestreCalendario, bool? comisionSiguienteNull = null)
         {
             var calificacionDAO = new Calificacion();
             var alumno_comision_ = FiltroInformeCoordinacionDistrital(modalidad, anioCalendario, semestreCalendario, comisionSiguienteNull);

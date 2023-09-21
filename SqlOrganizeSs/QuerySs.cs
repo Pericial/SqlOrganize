@@ -19,7 +19,7 @@ namespace SqlOrganizeSs
             (command as SqlCommand)!.Parameters.AddWithValue(columnName, value);
         }
 
-        public override List<Dictionary<string, object>> ListDict()
+        public override List<Dictionary<string, object>> ColOfDict()
         {
             using SqlConnection connection = new(db.config.connectionString);
             using SqlCommand command = new();
@@ -28,13 +28,13 @@ namespace SqlOrganizeSs
             return reader.Serialize();
         }
 
-        public override List<T> ListObj<T>()
+        public override List<T> ColOfObj<T>()
         {
             using SqlConnection connection = new(db.config.connectionString);
             using SqlCommand command = new();
             SqlExecute(connection, command);
             using SqlDataReader reader = command.ExecuteReader();
-            return reader.ToListOfObj<T>();
+            return reader.ToColOfObj<T>();
         }
 
         public override Dictionary<string, object> Dict()

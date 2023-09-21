@@ -19,7 +19,7 @@ namespace WpfAppMy.Windows.TomaPosesionPdf
                 ")
                 .Parameters(search.calendario__anio, search.calendario__semestre);
 
-            return ContainerApp.DbCache().ListDict(q);
+            return ContainerApp.DbCache().ColOfDict(q);
         }
     }
 }

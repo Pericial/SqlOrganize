@@ -28,8 +28,8 @@ namespace WpfAppMy.Forms.InformeCoordinacionDistrital
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             var alumnoComisionData = new DAO.AlumnoComision();
-            List<Dictionary<string, object>> data = alumnoComisionData.InformeCoordinacionDistrital("1", "2023", 1);
-            InformeCoordinacionDistritalDataGrid.ItemsSource = data.ToListOfObj<InformeCoordinacionDistrital>();
+            IEnumerable<Dictionary<string, object>> data = alumnoComisionData.InformeCoordinacionDistrital("1", "2023", 1);
+            InformeCoordinacionDistritalDataGrid.ItemsSource = data.ToColOfObj<InformeCoordinacionDistrital>();
         }
 
     }

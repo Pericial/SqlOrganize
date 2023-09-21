@@ -41,7 +41,7 @@ namespace WpfAppMy.DAO
                 q.Parameters(sede!);
             }
 
-            return ContainerApp.DbCache().ListDict(q);
+            return ContainerApp.DbCache().ColOfDict(q);
         }
 
         public IEnumerable<object> IdsComisionesAutorizadasConSiguientePorSemestre(object calendarioAnio, object calendarioSemestre)
@@ -69,7 +69,7 @@ namespace WpfAppMy.DAO
                 ")
                 .Parameters(ids);
             
-            return ContainerApp.DbCache().ListDict(q);
+            return ContainerApp.DbCache().ColOfDict(q);
         }
 
         public IEnumerable<Dictionary<string, object>> ComisionesConSiguientePorCalendario(object anio, object semestre)
@@ -83,7 +83,7 @@ namespace WpfAppMy.DAO
                 ")
                 .Parameters(anio, semestre);
 
-            return ContainerApp.DbCache().ListDict(q);
+            return ContainerApp.DbCache().ColOfDict(q);
         }
 
         public IEnumerable<object> IdsComisionesAutorizadasPorCalendario(object anio, object semestre)
@@ -104,7 +104,7 @@ namespace WpfAppMy.DAO
         public IEnumerable<Dictionary<string, object>> ComisionesAutorizadasPorSemestre(object anio, object semestre)
         {
             IEnumerable<object> ids = IdsComisionesAutorizadasPorCalendario(anio, semestre);
-            return ContainerApp.DbCache().ListDict("comision", ids);
+            return ContainerApp.DbCache().ColOfDict("comision", ids);
 
             var q = ContainerApp.Db().Query("comision")
                 .Size(0)
@@ -115,7 +115,7 @@ namespace WpfAppMy.DAO
                 ")
                 .Parameters(anio, semestre);
 
-            return ContainerApp.DbCache().ListDict(q);
+            return ContainerApp.DbCache().ColOfDict(q);
         }
     }
 }

@@ -20,7 +20,7 @@ namespace WpfAppMy.DAO
                 .Parameters("%" + search + "%", "%" + search + "%")
                 .Order("$nombre ASC");
 
-            return ContainerApp.DbCache().ListDict(q);
+            return ContainerApp.DbCache().ColOfDict(q);
         }
 
     }

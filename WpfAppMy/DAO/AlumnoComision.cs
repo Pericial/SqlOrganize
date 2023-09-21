@@ -22,7 +22,7 @@ namespace WpfAppMy.DAO
         public IEnumerable<object> IdAlumnosParaTransferirDeComision(string comision, object anio, object semestre)
         {
             var alumnoComision_ = AsignacionesActivasPorComision(comision);
-            var idAlumnos = alumnoComision_.Column<object>("alumno").Distinct().ToList();
+            var idAlumnos = alumnoComision_.ColOfVal<object>("alumno").Distinct().ToList();
             var idPlan = alumnoComision_.ElementAt(0)["planificacion-plan"];
             var q = ContainerApp.Db().Query("calificacion")
                 .Select("$SUM($disposicion) AS cantidad")
@@ -99,7 +99,7 @@ namespace WpfAppMy.DAO
                     $comision IN (@0) 
                 ")
                 .Parameters(idsComisiones);
-            return ContainerApp.DbCache().ListDict(q);
+            return ContainerApp.DbCache().ColOfDict(q);
         }
 
         public IEnumerable<Dictionary<string, object>> AsignacionesActivasPorComisiones(IEnumerable<object> idsComisiones)
@@ -111,7 +111,7 @@ namespace WpfAppMy.DAO
                     $comision IN (@0) AND $estado = 'Activo'
                 ")
                 .Parameters(idsComisiones);
-            return ContainerApp.DbCache().ListDict(q);
+            return ContainerApp.DbCache().ColOfDict(q);
         }
 
         public IEnumerable<Dictionary<string, object>> AsignacionesActivasPorComision(object comision)
@@ -124,7 +124,7 @@ namespace WpfAppMy.DAO
                 ")
                 .Parameters(comision);
 
-            return ContainerApp.DbCache().ListDict(q);
+            return ContainerApp.DbCache().ColOfDict(q);
         }
 
         public IEnumerable<object> IdsAlumnosPorComisiones(List<object> comisiones)
@@ -179,7 +179,7 @@ namespace WpfAppMy.DAO
                 .Where("$calendario-anio = @0 AND $calendario-semestre = @1 AND $comision-autorizada = true AND $estado = 'Activo'")
                 .Parameters(anio, semestre);
 
-            return ContainerApp.DbCache().ListDict(q);
+            return ContainerApp.DbCache().ColOfDict(q);
         }
 
         public IEnumerable<Dictionary<string, object>> AsignacionesDeComisionesAutorizadasPorSemestre(object anio, object semestre)
@@ -189,13 +189,13 @@ namespace WpfAppMy.DAO
                 .Where("$calendario-anio = @0 AND $calendario-semestre = @1 AND $comision-autorizada = true")
                 .Parameters(anio, semestre);
 
-            return ContainerApp.DbCache().ListDict(q);
+            return ContainerApp.DbCache().ColOfDict(q);
         }
 
         public IEnumerable<Dictionary<string, object>> AlumnosDeComisionesAutorizadasPorSemestre(object anio, object semestre)
         {
             IEnumerable<object> ids = IdsAlumnosDeComisionesAutorizadasPorSemestre(anio, semestre);
-            return ContainerApp.DbCache().ListDict("alumno", ids.ToArray());
+            return ContainerApp.DbCache().ColOfDict("alumno", ids.ToArray());
         }
 
         public IEnumerable<Dictionary<string, object>> AlumnosActivosDeComisionesAutorizadasPorSemestre(object anio, object semestre)

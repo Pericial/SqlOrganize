@@ -14,7 +14,7 @@ namespace WpfAppMy.Forms.ListaModalidad
         public IEnumerable<Dictionary<string, object>> AllModalidad()
         {
             var q = ContainerApp.Db().Query("modalidad");
-            return ContainerApp.DbCache().ListDict(q);
+            return ContainerApp.DbCache().ColOfDict(q);
         }
 
         public IDictionary<string, object>? RowByEntityFieldValue(string entityName, string fieldName, object value)

@@ -46,7 +46,7 @@ namespace WpfAppMy.Forms.ListaModalidad
         {
             IEnumerable<Dictionary<string, object>> list = dao.AllModalidad();
             modalidadData.Clear();
-            modalidadData.AddRange(list.ToListOfObj<Modalidad>());
+            modalidadData.AddRange(list.ToColOfObj<Modalidad>());
         }
         private void ModalidadGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {

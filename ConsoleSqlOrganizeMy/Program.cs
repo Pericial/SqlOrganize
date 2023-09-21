@@ -23,6 +23,6 @@ var data = db.Query("persona")
 string sql = data.Sql();
 Console.WriteLine(sql);
 
-Console.WriteLine(data.ListDict());
+Console.WriteLine(data.ColOfDict());
 
 

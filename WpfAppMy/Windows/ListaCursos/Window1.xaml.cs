@@ -47,7 +47,7 @@ namespace WpfAppMy.Windows.ListaCursos
         {
             IEnumerable<Dictionary<string, object>> list = dao.CursoAll(search);
             cursoData.Clear();
-            cursoData.AddRange(list.ToListOfObj<Curso>());
+            cursoData.AddRange(list.ToColOfObj<Curso>());
         }
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {

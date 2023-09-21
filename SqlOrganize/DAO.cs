@@ -23,7 +23,7 @@ namespace SqlOrganize
         public IEnumerable<Dictionary<string, object>> Search<T>(string entityName, T param) where T : class
         {
             var q = Db.Query(entityName).Search(param).Size(0);
-            return Cache.ListDict(q);
+            return Cache.ColOfDict(q);
         }
 
         public void UpdateValueRel(string entityName, string key, object value, Dictionary<string, object> source)
@@ -35,7 +35,7 @@ namespace SqlOrganize
         public IEnumerable<Dictionary<string, object>> SearchObject<T>(string entityName, T param) where T : class
         {
             var q = Db.Query(entityName).Search<T>(param).Size(0);
-            return Cache.ListDict(q);
+            return Cache.ColOfDict(q);
         }
 
         public IDictionary<string, object> Get<T>(string entityName, object id) where T : class

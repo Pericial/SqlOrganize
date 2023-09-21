@@ -74,7 +74,7 @@ order by COL.TABLE_NAME, COL.ORDINAL_POSITION;
 
             command.ExecuteNonQuery();
             using MySqlDataReader reader = command.ExecuteReader();
-            return reader.ToListOfObj<Column>();
+            return reader.ToColOfObj<Column>();
 
         }
 

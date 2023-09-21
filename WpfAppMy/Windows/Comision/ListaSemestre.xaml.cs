@@ -87,7 +87,7 @@ namespace WpfAppMy.Windows.Comision
             this.sedeList.Visibility = Visibility.Visible;
 
             IEnumerable<Dictionary<string, object>> list = sedeDAO.BusquedaAproximada(this.sedeText.Text);
-            this.sedeList.ItemsSource = list.ToListOfObj<Data_sede>();
+            this.sedeList.ItemsSource = list.ToColOfObj<Data_sede>();
         }
 
         private void SedeList_SelectionChanged(object sender, SelectionChangedEventArgs e)

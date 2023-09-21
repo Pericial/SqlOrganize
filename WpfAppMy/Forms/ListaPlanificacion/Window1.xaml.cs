@@ -19,7 +19,7 @@ namespace WpfAppMy.Forms.ListaPlanificacion
             InitializeComponent();
             planificacionGrid.CellEditEnding += PlanificacionGrid_CellEditEnding;
             IEnumerable<Dictionary<string, object>> list = planificacionDAO.All();
-            planificacionGrid.ItemsSource = list.ToListOfObj<Planificacion>();
+            planificacionGrid.ItemsSource = list.ToColOfObj<Planificacion>();
         }
 
 

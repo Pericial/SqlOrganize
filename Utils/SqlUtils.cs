@@ -32,7 +32,7 @@ namespace Utils
             return t;
         }
 
-        public static List<T> ToListOfObj<T>(this DbDataReader rd) where T : class, new()
+        public static List<T> ToColOfObj<T>(this DbDataReader rd) where T : class, new()
         {
             var results = new List<T>();
 

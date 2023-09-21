@@ -37,7 +37,7 @@ namespace WpfAppMy.Windows.AlumnoComision
 
             var idsComisiones = comisionDAO.IdsComisionesAutorizadasConSiguientePorSemestre("2023", "1");
             var alumnosComisiones = alumnoComisionDAO.AsignacionesActivasPorComisiones(idsComisiones);
-            var idsComisionesSiguientes = alumnosComisiones.Column<object>("comision-comision_siguiente");
+            var idsComisionesSiguientes = alumnosComisiones.ColOfVal<object>("comision-comision_siguiente");
             var idsComisionesSiguientes_ = idsComisionesSiguientes.GroupBy(x => x.ToString()).Select(x => x.First()).ToList();
             var comisionesSiguientesAgrupadasPorId = comisionDAO.ComisionesPorIds(idsComisionesSiguientes_).ToDictOfDictByKey("id");
             data.Clear();

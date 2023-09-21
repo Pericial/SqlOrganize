@@ -21,7 +21,7 @@ namespace WpfAppMy.DAO
                 ")
                 .Parameters(calendarioAnio, calendarioSemestre);
 
-            return ContainerApp.DbCache().ListDict(q);
+            return ContainerApp.DbCache().ColOfDict(q);
         }
     }
 }

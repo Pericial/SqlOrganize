@@ -32,7 +32,7 @@ namespace WpfAppMy.Forms.ListaSedesSemestre.DAO
             }
     
 
-            return ContainerApp.DbCache().ListDict(q);
+            return ContainerApp.DbCache().ColOfDict(q);
         }
 
         public void UpdateValueRel(string key, object value, Dictionary<string, object> source)

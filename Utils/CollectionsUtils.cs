@@ -121,7 +121,7 @@ namespace Utils
         /// <param name="rows">Lista de diccionarios</param>
         /// <param name="key">Llave del diccionario</param>
         /// <returns>Lista de valores de una entrada del diccionario</returns>
-        public static IEnumerable<T> Column<T>(this IEnumerable<Dictionary<string, object>> rows, string key)
+        public static IEnumerable<T> ColOfVal<T>(this IEnumerable<Dictionary<string, object>> rows, string key)
         {
             List<T> response = new();
             foreach (Dictionary<string, object> row in rows)
@@ -132,7 +132,7 @@ namespace Utils
             return response;
         }
 
-        public static IEnumerable<T?> Property<T, V>(this IEnumerable<V> source, string key)
+        public static IEnumerable<T?> ColOfProp<T, V>(this IEnumerable<V> source, string key)
         {
             Type t = typeof(V);
 
@@ -146,7 +146,7 @@ namespace Utils
             return response;
         }
 
-        public static IEnumerable<T> ToListOfObj<T>(this IEnumerable<Dictionary<string, object>> rows) where T : class, new()
+        public static IEnumerable<T> ToColOfObj<T>(this IEnumerable<Dictionary<string, object>> rows) where T : class, new()
         {
             var results = new List<T>();
 
@@ -189,7 +189,7 @@ namespace Utils
 
         }
 
-        public static IEnumerable<Dictionary<string, object?>> ToListOfDict(this IEnumerable<object> source, BindingFlags bindingAttr = BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance)
+        public static IEnumerable<Dictionary<string, object?>> ToColOfDict(this IEnumerable<object> source, BindingFlags bindingAttr = BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance)
         {
             List<Dictionary<string, object>> response = new();
             foreach (var s in source)

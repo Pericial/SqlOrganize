@@ -14,7 +14,7 @@ namespace Pedidos.DAO.Pedidos
                 Where("$id = @0").
                 Parameters(id);
 
-            return ContainerApp.dbCachePedidos.ListDict(query);
+            return ContainerApp.dbCachePedidos.ColOfDict(query);
         }
 
         public List<object> DnisAlumnosConTicketDeSeguimiento()

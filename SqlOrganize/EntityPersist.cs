@@ -100,7 +100,7 @@ WHERE " + id + " = @" + count + @";
         {
             _entityName = _entityName ?? entityName;
             var ids = db.Query(_entityName).Fields(db.config.id).Size(0).Column<object>();
-            return (ids.Count > 0) ? UpdateIds(row, ids, _entityName) : this;
+            return (ids.Count() > 0) ? UpdateIds(row, ids, _entityName) : this;
         }
 
         /// <summary>
@@ -231,17 +231,17 @@ VALUES (";
         public EntityPersist PersistValues(EntityValues v)
         {
             var q = db.Query(v.entityName!).Unique(v.values);
-            var rows = q.ListDict();
+            var rows = q.ColOfDict();
 
-            if (rows.Count > 1)
+            if (rows.Count() > 1)
                 throw new Exception("La consulta por campos unicos retorno mas de un resultado");
 
-            if (rows.Count == 1)
+            if (rows.Count() == 1)
             {
-                if(v.values.ContainsKey(db.config.id) && v.Get(db.config.id) != rows[0][db.config.id])
+                if(v.values.ContainsKey(db.config.id) && v.Get(db.config.id) != rows.ElementAt(0)[db.config.id])
                     throw new Exception("Los id son diferentes");
 
-                v.Set(db.config.id, rows[0][db.config.id]).Reset().Check();
+                v.Set(db.config.id, rows.ElementAt(0)[db.config.id]).Reset().Check();
                 if (v.logging.HasErrors())
                     throw new Exception("Los campos a actualizar poseen errores: " + v.logging.ToString());
 

@@ -21,7 +21,7 @@ namespace WpfAppMy.Windows.ListaCursos
                 ")
                 .Parameters(search.calendario__anio, search.calendario__semestre);
 
-            return ContainerApp.DbCache().ListDict(q);
+            return ContainerApp.DbCache().ColOfDict(q);
         }
 
     }

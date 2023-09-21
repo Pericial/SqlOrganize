@@ -16,7 +16,7 @@ namespace WpfAppMy.Forms.ListaPlanificacion.DAO
         public IEnumerable<Dictionary<string, object>> All()
         {
             var q = ContainerApp.Db().Query("planificacion");
-            return ContainerApp.DbCache().ListDict(q);
+            return ContainerApp.DbCache().ColOfDict(q);
         }
 
         public void UpdateValueRel(string key, object value, Dictionary<string, object> source)
