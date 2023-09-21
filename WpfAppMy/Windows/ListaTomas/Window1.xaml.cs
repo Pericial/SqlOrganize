@@ -49,7 +49,7 @@ namespace WpfAppMy.Windows.ListaTomas
         {
             IEnumerable<Dictionary<string, object>> list = dao.TomaAll(search);
             tomaData.Clear();
-            tomaData.AddRange(list.ToColOfObj<Toma>());
+            tomaData.AddRange(list.ColOfObj<Toma>());
         }
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
@@ -67,7 +67,7 @@ namespace WpfAppMy.Windows.ListaTomas
                     string key = ((Binding)column.Binding).Path.Path; //column's binding
                     if (ignore.Contains(key)) return;
                     object value = (e.EditingElement as TextBox)!.Text;
-                    Dictionary<string, object> source = (Dictionary<string, object>)((Toma)e.Row.DataContext).ToDict();
+                    Dictionary<string, object> source = (Dictionary<string, object>)((Toma)e.Row.DataContext).Dict();
                     string? fieldId = null;
                     string mainEntityName = "toma", entityName = "toma", fieldName = key;
 
@@ -101,14 +101,14 @@ namespace WpfAppMy.Windows.ListaTomas
                         {
                             if (!v.Check())
                             {
-                                (e.Row.Item as Toma).CopyNotNullValues(v.Get().ToObj<Toma>());
+                                (e.Row.Item as Toma).CopyNotNullValues(v.Get().Obj<Toma>());
                                 break;
                             }
 
                             dao.Persist(v);
                         }
 
-                        (e.Row.Item as Toma).CopyNotNullValues(v.Get().ToObj<Toma>());
+                        (e.Row.Item as Toma).CopyNotNullValues(v.Get().Obj<Toma>());
 
                         if (fieldId != null)
                         {
@@ -151,7 +151,7 @@ namespace WpfAppMy.Windows.ListaTomas
             if (column != null && cell.DataContext is Toma)
             {
                 string key = ((Binding)column.Binding).Path.Path; //column's binding.
-                IDictionary<string, object> source = (cell.DataContext as Toma).ToDict(); 
+                IDictionary<string, object> source = (cell.DataContext as Toma).Dict(); 
                 if((bool)source[key] != value)
                 {
                     string? fieldId = null;
@@ -166,7 +166,7 @@ namespace WpfAppMy.Windows.ListaTomas
                         dao.Persist(v);
 
                     DataGridRow row = DataGridRow.GetRowContainingElement(cell);
-                    (row.Item as Toma).CopyNotNullValues(v.Get().ToObj<Toma>());
+                    (row.Item as Toma).CopyNotNullValues(v.Get().Obj<Toma>());
 
                     if(!fieldId.IsNullOrEmpty())
                         LoadData(); //debe recargarse para visualizar los cambios realizados en otras iteraciones

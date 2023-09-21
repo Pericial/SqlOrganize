@@ -294,7 +294,7 @@ namespace SqlOrganize
         public IEnumerable<T> ColOfObj<T>(EntityQuery query) where T : class, new()
         {
             IEnumerable<Dictionary<string, object>> response = ColOfDict(query);
-            return response.ToColOfObj<T>();
+            return response.ColOfObj<T>();
         }
 
         /// <summary>

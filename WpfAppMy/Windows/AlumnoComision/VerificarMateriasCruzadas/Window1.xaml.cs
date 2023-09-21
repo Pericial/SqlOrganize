@@ -35,7 +35,7 @@ namespace WpfAppMy.Windows.AlumnoComision.VerificarMateriasCruzadas
             var idsAlumnosMateriasCruzadas = calificacionDAO.IdsAlumnosConCalificacionesAprobadasCruzadasNoArchivadas(idsAlumnos);
             var calificaciones = calificacionDAO.CalificacionesAprobadasDeAlumnosNoArchivadas(idsAlumnosMateriasCruzadas);
 
-            calificacionesGrid.ItemsSource = calificaciones.ToColOfObj<Calificacion>();
+            calificacionesGrid.ItemsSource = calificaciones.ColOfObj<Calificacion>();
 
         }
     }

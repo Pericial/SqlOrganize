@@ -36,7 +36,7 @@ namespace WpfAppMy.Windows.ProcesarDocentesProgramaFines
             {
 
                 #region insertar o actualizar docente (se insertan o actualizan todos)
-                var d = docente.ToDict();
+                var d = docente.Dict();
                 EntityValues vPersona = ContainerApp.db.Values("persona").Set(d).Reset();
                 var row = dao.RowByEntityUnique("persona", vPersona.values);
                 if (row != null) {

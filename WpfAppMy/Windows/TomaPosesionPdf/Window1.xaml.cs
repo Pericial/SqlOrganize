@@ -37,7 +37,7 @@ namespace WpfAppMy.Windows.TomaPosesionPdf
             IEnumerable<Dictionary<string, object>> list = dao.TomaAll(search);
             foreach(Dictionary<string, object> item in list)
             {
-                Toma toma = item.ToObj<Toma>();
+                Toma toma = item.Obj<Toma>();
                 if (!toma.comision__pfid.Equals("10078") && !toma.comision__pfid.Equals("10089")) continue;
                 QRCodeData qrCodeData = qrGenerator.CreateQrCode("https://planfines2.com.ar/validar-toma/" + toma.id, QRCodeGenerator.ECCLevel.Q);
                 QRCode qrCode = new QRCode(qrCodeData);

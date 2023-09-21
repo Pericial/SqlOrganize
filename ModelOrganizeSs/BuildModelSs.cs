@@ -107,7 +107,7 @@ ORDER BY col.TABLE_NAME ASC, col.COLUMN_NAME ASC;
 
             command.ExecuteNonQuery();
             using SqlDataReader reader = command.ExecuteReader();
-            return reader.ToColOfObj<Column>();
+            return reader.ColOfObj<Column>();
 
         }
 

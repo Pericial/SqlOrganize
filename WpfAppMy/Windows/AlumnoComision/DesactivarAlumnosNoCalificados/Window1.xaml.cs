@@ -40,7 +40,7 @@ namespace WpfAppMy.Windows.AlumnoComision.DesactivarAlumnosNoCalificados
                 if (q < 3)
                 {
                     ids.Add(alumnoComision["id"]);
-                    var a = alumnoComision.ToObj<AlumnoComision>();
+                    var a = alumnoComision.Obj<AlumnoComision>();
                     data.Add(a);
                 }
             }

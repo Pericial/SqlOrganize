@@ -42,7 +42,7 @@ namespace WpfAppMy.Windows.AlumnoComision
 
             foreach (var alumno in alumnos)
             {
-                var a = alumno.ToObj<Data_alumno_rel>();
+                var a = alumno.Obj<Data_alumno_rel>();
                 var nombres = a.persona__nombres.Split(" ");
                 string? genero = null;
 
@@ -71,7 +71,7 @@ namespace WpfAppMy.Windows.AlumnoComision
 
                 alumnosSinGenero.Clear();
                 alumnos = dataDAO.AlumnosActivosDeComisionesAutorizadasPorSemestreSinGenero("2023", "2");
-                alumnosSinGenero.AddRange(alumnos.ToColOfObj<Data_alumno_rel>());
+                alumnosSinGenero.AddRange(alumnos.ColOfObj<Data_alumno_rel>());
             }
 
 

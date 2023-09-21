@@ -34,7 +34,7 @@ namespace SqlOrganizeSs
             using SqlCommand command = new();
             SqlExecute(connection, command);
             using SqlDataReader reader = command.ExecuteReader();
-            return reader.ToColOfObj<T>();
+            return reader.ColOfObj<T>();
         }
 
         public override Dictionary<string, object> Dict()
@@ -52,7 +52,7 @@ namespace SqlOrganizeSs
             using SqlCommand command = new();
             SqlExecute(connection, command);
             using SqlDataReader reader = command.ExecuteReader(System.Data.CommandBehavior.SingleResult);
-            return reader.ToObj<T>();
+            return reader.Obj<T>();
         }
 
         public override List<T> Column<T>(string columnName)

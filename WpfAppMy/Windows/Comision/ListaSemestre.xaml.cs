@@ -54,7 +54,7 @@ namespace WpfAppMy.Windows.Comision
                 //Values.Comision v = (Values.Comision)ContainerApp.db.Values("comision").Set(item);
                 item["domicilio-label"] = ContainerApp.db.Values("domicilio", "domicilio").Set(item).Default("label").Get("label");
                 item["numero"] = ContainerApp.db.Values("comision").Values(item).Default("numero").Get("numero");
-                var o = item.ToObj<ComisionRel>();
+                var o = item.Obj<ComisionRel>();
                 comisionData.Add(o);
             }
         }
@@ -87,7 +87,7 @@ namespace WpfAppMy.Windows.Comision
             this.sedeList.Visibility = Visibility.Visible;
 
             IEnumerable<Dictionary<string, object>> list = sedeDAO.BusquedaAproximada(this.sedeText.Text);
-            this.sedeList.ItemsSource = list.ToColOfObj<Data_sede>();
+            this.sedeList.ItemsSource = list.ColOfObj<Data_sede>();
         }
 
         private void SedeList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -110,7 +110,7 @@ namespace WpfAppMy.Windows.Comision
                 if (column != null)
                 {
                     string key = ((Binding)column.Binding).Path.Path; //column's binding
-                    Dictionary<string, object> source = (Dictionary<string, object>)((Data_comision_rel)e.Row.DataContext).ToDict();
+                    Dictionary<string, object> source = (Dictionary<string, object>)((Data_comision_rel)e.Row.DataContext).Dict();
                     string value = (e.EditingElement as TextBox)!.Text;
                     ContainerApp.dao.UpdateValueRel("comision", key, value, source);
                 }

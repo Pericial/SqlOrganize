@@ -32,7 +32,7 @@ namespace WpfAppMy.Windows.AlumnoComision.VerificarAlumnosDuplicados
             var idsAlumnos = asignacionDAO.IdsAlumnosActivosDuplicadosPorSemestre("2023", "1");
             var alumnos = alumnoDAO.AlumnosPorIds(idsAlumnos);
 
-            alumnosGrid.ItemsSource = alumnos.ToColOfObj<Alumno>();
+            alumnosGrid.ItemsSource = alumnos.ColOfObj<Alumno>();
         }
 
         internal class Alumno

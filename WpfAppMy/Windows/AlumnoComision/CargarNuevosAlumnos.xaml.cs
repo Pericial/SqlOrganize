@@ -26,7 +26,7 @@ namespace WpfAppMy.Windows.AlumnoComision
         private void LoadData()
         {
             //Dictionary<string, object> data_ = ContainerApp.dao.Get(idComision);
-            //DataContext = data.ToObj<Model>();
+            //DataContext = data.Obj<Model>();
         }
 
 

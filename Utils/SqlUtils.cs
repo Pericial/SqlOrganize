@@ -11,7 +11,7 @@ namespace Utils
         Los caracteres especiales de fieldName son reemplazados por "__"
             Ej. persona-nombres > persona__nombres         
         */
-        public static T ToObj<T>(this DbDataReader rd) where T : class, new()
+        public static T Obj<T>(this DbDataReader rd) where T : class, new()
         {
             Type type = typeof(T);
             var accessor = TypeAccessor.Create(type);
@@ -32,12 +32,12 @@ namespace Utils
             return t;
         }
 
-        public static List<T> ToColOfObj<T>(this DbDataReader rd) where T : class, new()
+        public static List<T> ColOfObj<T>(this DbDataReader rd) where T : class, new()
         {
             var results = new List<T>();
 
             while (rd.Read())
-                results.Add(rd.ToObj<T>());
+                results.Add(rd.Obj<T>());
 
             return results;
         }

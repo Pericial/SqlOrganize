@@ -45,7 +45,7 @@ namespace WpfAppMy.Windows.AlumnoComision
             foreach(var item in list)
             {
                 var vd = ContainerApp.db.Values("domicilio", "domicilio").Set(item).Default("label");
-                var o = item.ToObj<ViewModel.Asignacion>();
+                var o = item.Obj<ViewModel.Asignacion>();
                 o.comision__numero = item["sede-numero"].ToString() + item["comision-division"].ToString() + "/" + item["planificacion-anio"] + item["planificacion-semestre"];
                 o.domicilio__label = vd.Get("label")?.ToString();
 

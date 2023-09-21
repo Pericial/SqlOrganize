@@ -146,17 +146,17 @@ namespace Utils
             return response;
         }
 
-        public static IEnumerable<T> ToColOfObj<T>(this IEnumerable<Dictionary<string, object>> rows) where T : class, new()
+        public static IEnumerable<T> ColOfObj<T>(this IEnumerable<Dictionary<string, object>> rows) where T : class, new()
         {
             var results = new List<T>();
 
             foreach(var row in rows)
-                results.Add(row.ToObj<T>());
+                results.Add(row.Obj<T>());
 
             return results;
         }
 
-        public static T ToObj<T>(this IDictionary<string, object> source) where T : class, new()
+        public static T Obj<T>(this IDictionary<string, object> source) where T : class, new()
         {
             var someObject = new T();
             var someObjectType = someObject.GetType();
@@ -179,7 +179,7 @@ namespace Utils
             return someObject;
         }
 
-        public static IDictionary<string, object?> ToDict(this object source, BindingFlags bindingAttr = BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance)
+        public static IDictionary<string, object?> Dict(this object source, BindingFlags bindingAttr = BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance)
         {
             return source.GetType().GetProperties(bindingAttr).ToDictionary
             (
@@ -189,12 +189,12 @@ namespace Utils
 
         }
 
-        public static IEnumerable<Dictionary<string, object?>> ToColOfDict(this IEnumerable<object> source, BindingFlags bindingAttr = BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance)
+        public static IEnumerable<Dictionary<string, object?>> ColOfDict(this IEnumerable<object> source, BindingFlags bindingAttr = BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance)
         {
             List<Dictionary<string, object>> response = new();
             foreach (var s in source)
             {
-                response.Add((Dictionary<string, object>)ToDict(s, bindingAttr)!);
+                response.Add((Dictionary<string, object>)Dict(s, bindingAttr)!);
             }
             return response;
         }
@@ -204,7 +204,7 @@ namespace Utils
         {
             key2 = key2 ?? key1;
 
-            var s = source2.ToDictOfDictByKey(key2);
+            var s = source2.DictOfDictByKey(key2);
 
             foreach (var item in source)
             {
@@ -217,7 +217,7 @@ namespace Utils
         {
             key2 = key2 ?? key1;
 
-            var s = source2.ToDictOfDictByKey(key2);
+            var s = source2.DictOfDictByKey(key2);
 
             foreach (var item in source)
             {
@@ -229,7 +229,7 @@ namespace Utils
             }
         }
 
-        public static IDictionary<string, List<Dictionary<string, object>>> ToDictOfListByKey(this IEnumerable<Dictionary<string, object>> source, string key)
+        public static IDictionary<string, List<Dictionary<string, object>>> DictOfListByKey(this IEnumerable<Dictionary<string, object>> source, string key)
         {
             Dictionary<string, List<Dictionary<string, object>>> response = new();
             foreach(Dictionary<string, object> row in source)
@@ -241,7 +241,7 @@ namespace Utils
             return response;
         }
 
-        public static IDictionary<object, Dictionary<string, object>> ToDictOfDictByKey(this IEnumerable<Dictionary<string, object>> source, string key)
+        public static IDictionary<object, Dictionary<string, object>> DictOfDictByKey(this IEnumerable<Dictionary<string, object>> source, string key)
         {
             Dictionary<object, Dictionary<string, object>> response = new();
             foreach (Dictionary<string, object> row in source)
@@ -250,7 +250,7 @@ namespace Utils
             return response;
         }
 
-        public static IDictionary<string, T> ToDict<T>(this object obj)
+        public static IDictionary<string, T> Dict<T>(this object obj)
         {
             var json = JsonConvert.SerializeObject(obj);
             var dictionary = JsonConvert.DeserializeObject<Dictionary<string, T>>(json);
