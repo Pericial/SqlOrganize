@@ -13,7 +13,7 @@ namespace WpfAppMy.Forms.ListaReferentesSemestre.DAO
     class Comision
     {
 
-        public List<object> IdSedesSemestre(Search search)
+        public IEnumerable<object> IdSedesSemestre(Search search)
         {
             var q = ContainerApp.Db().Query("comision")
                 .Fields("sede-_Id")

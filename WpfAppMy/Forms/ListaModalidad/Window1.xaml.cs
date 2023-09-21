@@ -44,7 +44,7 @@ namespace WpfAppMy.Forms.ListaModalidad
 
         private void ModalidadGridData()
         {
-            List<Dictionary<string, object>> list = dao.AllModalidad();
+            IEnumerable<Dictionary<string, object>> list = dao.AllModalidad();
             modalidadData.Clear();
             modalidadData.AddRange(list.ToListOfObj<Modalidad>());
         }
@@ -74,7 +74,7 @@ namespace WpfAppMy.Forms.ListaModalidad
                     do
                     {
                         EntityValues v = ContainerApp.db.Values(entityName, fieldId).Set(source).Set(fieldName, value);
-                        Dictionary<string, object>? row = new();
+                        IDictionary<string, object>? row;
 
                         //en caso de que el campo editado sea unico, se consultan sus valores
                         if (ContainerApp.db.Field(entityName, fieldName).IsUnique())

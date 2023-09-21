@@ -8,7 +8,7 @@ namespace WpfAppMy.Windows.ProcesarComisionesProgramaFines
 {
     internal class DAO
     {
-        public List<string> PfidComisiones()
+        public IEnumerable<string> PfidComisiones()
         {
             var q = ContainerApp.Db().Query("comision")
                 .Fields("pfid")

@@ -8,7 +8,7 @@ namespace WpfAppMy.Forms.InformeCoordinacionDistrital.DAO
 {
     class Calificacion
     {
-        public List<Dictionary<string, object>> AprobadasPorAlumnoPlan(string idAlumno, string idPlan)
+        public IEnumerable<Dictionary<string, object>> AprobadasPorAlumnoPlan(string idAlumno, string idPlan)
         {
             var q = ContainerApp.Db().Query("calificacion")
                     .Size(0)

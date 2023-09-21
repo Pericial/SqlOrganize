@@ -5,98 +5,98 @@ namespace WpfAppMy.Data
 {
     public class Data_comision : INotifyPropertyChanged
     {
-        private string _id;
-        public string id
+        private string? _id;
+        public string? id
         {
             get { return _id; }
             set { _id = value; NotifyPropertyChanged(); }
         }
-        private string _turno;
-        public string turno
+        private string? _turno;
+        public string? turno
         {
             get { return _turno; }
             set { _turno = value; NotifyPropertyChanged(); }
         }
-        private string _division;
-        public string division
+        private string? _division;
+        public string? division
         {
             get { return _division; }
             set { _division = value; NotifyPropertyChanged(); }
         }
-        private string _comentario;
-        public string comentario
+        private string? _comentario;
+        public string? comentario
         {
             get { return _comentario; }
             set { _comentario = value; NotifyPropertyChanged(); }
         }
-        private bool _autorizada;
-        public bool autorizada
+        private bool? _autorizada;
+        public bool? autorizada
         {
             get { return _autorizada; }
             set { _autorizada = value; NotifyPropertyChanged(); }
         }
-        private bool _apertura;
-        public bool apertura
+        private bool? _apertura;
+        public bool? apertura
         {
             get { return _apertura; }
             set { _apertura = value; NotifyPropertyChanged(); }
         }
-        private bool _publicada;
-        public bool publicada
+        private bool? _publicada;
+        public bool? publicada
         {
             get { return _publicada; }
             set { _publicada = value; NotifyPropertyChanged(); }
         }
-        private string _observaciones;
-        public string observaciones
+        private string? _observaciones;
+        public string? observaciones
         {
             get { return _observaciones; }
             set { _observaciones = value; NotifyPropertyChanged(); }
         }
-        private DateTime _alta;
-        public DateTime alta
+        private DateTime? _alta;
+        public DateTime? alta
         {
             get { return _alta; }
             set { _alta = value; NotifyPropertyChanged(); }
         }
-        private string _sede;
-        public string sede
+        private string? _sede;
+        public string? sede
         {
             get { return _sede; }
             set { _sede = value; NotifyPropertyChanged(); }
         }
-        private string _modalidad;
-        public string modalidad
+        private string? _modalidad;
+        public string? modalidad
         {
             get { return _modalidad; }
             set { _modalidad = value; NotifyPropertyChanged(); }
         }
-        private string _planificacion;
-        public string planificacion
+        private string? _planificacion;
+        public string? planificacion
         {
             get { return _planificacion; }
             set { _planificacion = value; NotifyPropertyChanged(); }
         }
-        private string _comision_siguiente;
-        public string comision_siguiente
+        private string? _comision_siguiente;
+        public string? comision_siguiente
         {
             get { return _comision_siguiente; }
             set { _comision_siguiente = value; NotifyPropertyChanged(); }
         }
-        private string _calendario;
-        public string calendario
+        private string? _calendario;
+        public string? calendario
         {
             get { return _calendario; }
             set { _calendario = value; NotifyPropertyChanged(); }
         }
-        private string _identificacion;
-        public string identificacion
+        private string? _identificacion;
+        public string? identificacion
         {
             get { return _identificacion; }
             set { _identificacion = value; NotifyPropertyChanged(); }
         }
-        private string _pfid;
-        public string pfid
+        private string? _pfid;
+        public string? pfid
         {
             get { return _pfid; }
             set { _pfid = value; NotifyPropertyChanged(); }

@@ -8,7 +8,7 @@ namespace WpfAppMy.Windows.TomaPosesionPdf
 {
     internal class DAO
     {
-        public List<Dictionary<string, object>> TomaAll(Search search)
+        public IEnumerable<Dictionary<string, object>> TomaAll(Search search)
         {
             var q = ContainerApp.Db().Query("toma")
                 .Fields()

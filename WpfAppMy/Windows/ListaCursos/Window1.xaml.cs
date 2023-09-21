@@ -45,7 +45,7 @@ namespace WpfAppMy.Windows.ListaCursos
 
         private void LoadData()
         {
-            List<Dictionary<string, object>> list = dao.CursoAll(search);
+            IEnumerable<Dictionary<string, object>> list = dao.CursoAll(search);
             cursoData.Clear();
             cursoData.AddRange(list.ToListOfObj<Curso>());
         }
@@ -92,7 +92,7 @@ namespace WpfAppMy.Windows.ListaCursos
                         }
 
                         v.Sset(fieldName, value);
-                        Dictionary<string, object>? row = new();
+                        IDictionary<string, object> ? row;
 
                         //en caso de que el campo editado sea unico, se consultan sus valores
                         if (ContainerApp.db.Field(entityName, fieldName).IsUnique())

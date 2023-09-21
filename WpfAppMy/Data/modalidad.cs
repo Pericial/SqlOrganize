@@ -5,20 +5,20 @@ namespace WpfAppMy.Data
 {
     public class Data_modalidad : INotifyPropertyChanged
     {
-        private string _id;
-        public string id
+        private string? _id;
+        public string? id
         {
             get { return _id; }
             set { _id = value; NotifyPropertyChanged(); }
         }
-        private string _nombre;
-        public string nombre
+        private string? _nombre;
+        public string? nombre
         {
             get { return _nombre; }
             set { _nombre = value; NotifyPropertyChanged(); }
         }
-        private string _pfid;
-        public string pfid
+        private string? _pfid;
+        public string? pfid
         {
             get { return _pfid; }
             set { _pfid = value; NotifyPropertyChanged(); }

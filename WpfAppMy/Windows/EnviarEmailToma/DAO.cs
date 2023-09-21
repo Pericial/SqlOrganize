@@ -8,7 +8,7 @@ namespace WpfAppMy.Windows.EnviarEmailToma
 {
     internal class DAO
     {
-        public List<Dictionary<string, object>> TomaAll()
+        public IEnumerable<Dictionary<string, object>> TomaAll()
         {
             var q = ContainerApp.Db().Query("toma")
                 .Fields()

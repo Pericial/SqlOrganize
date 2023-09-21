@@ -9,7 +9,7 @@ namespace WpfAppMy.Windows.ListaCursos
 {
     internal class DAO : WpfAppMy.DAO2
     {
-        public List<Dictionary<string, object>> CursoAll(Search search)
+        public IEnumerable<Dictionary<string, object>> CursoAll(Search search)
         {
             var q = ContainerApp.Db().Query("curso")
                 .Fields()

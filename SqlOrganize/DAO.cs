@@ -32,10 +32,16 @@ namespace SqlOrganize
             Cache.Remove(p.detail);
         }
 
-        public IEnumerable<Dictionary<string, object>> All<T>(string entityName, T param) where T : class
+        public IEnumerable<Dictionary<string, object>> SearchObject<T>(string entityName, T param) where T : class
         {
             var q = Db.Query(entityName).Search<T>(param).Size(0);
             return Cache.ListDict(q);
+        }
+
+        public IDictionary<string, object> Get<T>(string entityName, object id) where T : class
+        {
+            var q = Db.Query(entityName).Where("$"+Db.config.id+" = @0").Parameters(id);
+            return Cache.Dict(q);
         }
 
     }

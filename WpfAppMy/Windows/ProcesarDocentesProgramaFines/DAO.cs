@@ -9,7 +9,7 @@ namespace WpfAppMy.Windows.ProcesarDocentesProgramaFines
 {
     internal class DAO
     {
-        public List<string> PfidComisiones()
+        public IEnumerable<string> PfidComisiones()
         {
             var q = ContainerApp.Db().Query("comision")
                 .Fields("pfid")
@@ -40,7 +40,7 @@ namespace WpfAppMy.Windows.ProcesarDocentesProgramaFines
             return ContainerApp.DbCache().Value<string>(q);
         }
 
-        public Dictionary<string, object> TomaActiva(string idCurso)
+        public IDictionary<string, object> TomaActiva(string idCurso)
         {
             var q = ContainerApp.Db().Query("toma")
                 .Size(0)
@@ -55,13 +55,13 @@ namespace WpfAppMy.Windows.ProcesarDocentesProgramaFines
         }
 
 
-        public Dictionary<string, object>? RowByEntityFieldValue(string entityName, string fieldName, object value)
+        public IDictionary<string, object>? RowByEntityFieldValue(string entityName, string fieldName, object value)
         {
             var q = ContainerApp.db.Query(entityName).Where("$" + fieldName + " = @0").Parameters(value);
             return ContainerApp.dbCache.Dict(q);
         }
 
-        public Dictionary<string, object>? RowByEntityUnique(string entityName, Dictionary<string, object> source)
+        public IDictionary<string, object>? RowByEntityUnique(string entityName, Dictionary<string, object> source)
         {
             var q = ContainerApp.db.Query(entityName).Unique(source);
 

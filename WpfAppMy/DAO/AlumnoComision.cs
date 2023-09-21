@@ -19,11 +19,11 @@ namespace WpfAppMy.DAO
         /// </summary>
         /// <param name="comision"></param>
         /// <returns></returns>
-        public List<object> IdAlumnosParaTransferirDeComision(string comision, object anio, object semestre)
+        public IEnumerable<object> IdAlumnosParaTransferirDeComision(string comision, object anio, object semestre)
         {
             var alumnoComision_ = AsignacionesActivasPorComision(comision);
             var idAlumnos = alumnoComision_.Column<object>("alumno").Distinct().ToList();
-            var idPlan = alumnoComision_[0]["planificacion-plan"];
+            var idPlan = alumnoComision_.ElementAt(0)["planificacion-plan"];
             var q = ContainerApp.Db().Query("calificacion")
                 .Select("$SUM($disposicion) AS cantidad")
                 .Group("$alumno")
@@ -42,7 +42,7 @@ namespace WpfAppMy.DAO
         }
 
 
-        public List<object> IdsAlumnosDeComisionesAutorizadasPorSemestre(object anio, object semestre)
+        public IEnumerable<object> IdsAlumnosDeComisionesAutorizadasPorSemestre(object anio, object semestre)
         {
             var q = ContainerApp.Db().Query("alumno_comision")
                 .Fields("$alumno")
@@ -56,7 +56,7 @@ namespace WpfAppMy.DAO
 
             return ContainerApp.DbCache().Column<object>(q);
         }
-        public List<object> IdsAlumnosActivosDeComisionesAutorizadasPorSemestre(object anio, object semestre)
+        public IEnumerable<object> IdsAlumnosActivosDeComisionesAutorizadasPorSemestre(object anio, object semestre)
         {
             var q = ContainerApp.Db().Query("alumno_comision")
                 .Fields("$alumno")
@@ -72,7 +72,7 @@ namespace WpfAppMy.DAO
             return ContainerApp.DbCache().Column<object>(q);
         }
 
-        public List<object> IdsAlumnosActivosDeComisionesAutorizadasPorSemestreSinGenero(object anio, object semestre)
+        public IEnumerable<object> IdsAlumnosActivosDeComisionesAutorizadasPorSemestreSinGenero(object anio, object semestre)
         {
             var q = ContainerApp.Db().Query("alumno_comision")
                 .Fields("$alumno")
@@ -90,7 +90,7 @@ namespace WpfAppMy.DAO
         }
 
 
-        public List<Dictionary<string, object>> AsignacionesPorComisiones(List<object> idsComisiones)
+        public IEnumerable<Dictionary<string, object>> AsignacionesPorComisiones(List<object> idsComisiones)
         {
             var q = ContainerApp.Db().Query("alumno_comision")
                 .Fields()
@@ -102,7 +102,7 @@ namespace WpfAppMy.DAO
             return ContainerApp.DbCache().ListDict(q);
         }
 
-        public List<Dictionary<string, object>> AsignacionesActivasPorComisiones(List<object> idsComisiones)
+        public IEnumerable<Dictionary<string, object>> AsignacionesActivasPorComisiones(IEnumerable<object> idsComisiones)
         {
             var q = ContainerApp.Db().Query("alumno_comision")
                 .Fields()
@@ -114,7 +114,7 @@ namespace WpfAppMy.DAO
             return ContainerApp.DbCache().ListDict(q);
         }
 
-        public List<Dictionary<string, object>> AsignacionesActivasPorComision(object comision)
+        public IEnumerable<Dictionary<string, object>> AsignacionesActivasPorComision(object comision)
         {
             var q = ContainerApp.Db().Query("alumno_comision")
                 .Size(0)
@@ -127,7 +127,7 @@ namespace WpfAppMy.DAO
             return ContainerApp.DbCache().ListDict(q);
         }
 
-        public List<object> IdsAlumnosPorComisiones(List<object> comisiones)
+        public IEnumerable<object> IdsAlumnosPorComisiones(List<object> comisiones)
         {
             var q = ContainerApp.Db().Query("alumno_comision")
                 .Fields("alumno")
@@ -139,7 +139,7 @@ namespace WpfAppMy.DAO
             return ContainerApp.DbCache().Column<object>(q);
         }
 
-        public List<object> IdAlumnosConPlanDiferenteDeComision(object comision, object plan)
+        public IEnumerable<object> IdAlumnosConPlanDiferenteDeComision(object comision, object plan)
         {
             var q = ContainerApp.Db().Query("alumno_comision")
                .Fields("alumno")
@@ -155,7 +155,7 @@ namespace WpfAppMy.DAO
         }
 
 
-        public List<object> IdsAlumnosActivosDuplicadosPorSemestre(object anio, object semestre)
+        public IEnumerable<object> IdsAlumnosActivosDuplicadosPorSemestre(object anio, object semestre)
         {
             var q = ContainerApp.Db().Query("alumno_comision")
                .Select("COUNT($id) AS cantidad")
@@ -172,7 +172,7 @@ namespace WpfAppMy.DAO
             return ContainerApp.DbCache().Column<object>(q, "alumno");
         }
 
-        public List<Dictionary<string, object>> AsignacionesActivasDeComisionesAutorizadasPorSemestre(object anio, object semestre)
+        public IEnumerable<Dictionary<string, object>> AsignacionesActivasDeComisionesAutorizadasPorSemestre(object anio, object semestre)
         {
             var q = ContainerApp.Db().Query("alumno_comision")
                 .Size(0)
@@ -182,7 +182,7 @@ namespace WpfAppMy.DAO
             return ContainerApp.DbCache().ListDict(q);
         }
 
-        public List<Dictionary<string, object>> AsignacionesDeComisionesAutorizadasPorSemestre(object anio, object semestre)
+        public IEnumerable<Dictionary<string, object>> AsignacionesDeComisionesAutorizadasPorSemestre(object anio, object semestre)
         {
             var q = ContainerApp.Db().Query("alumno_comision")
                 .Size(0)
@@ -192,23 +192,23 @@ namespace WpfAppMy.DAO
             return ContainerApp.DbCache().ListDict(q);
         }
 
-        public List<Dictionary<string, object>> AlumnosDeComisionesAutorizadasPorSemestre(object anio, object semestre)
+        public IEnumerable<Dictionary<string, object>> AlumnosDeComisionesAutorizadasPorSemestre(object anio, object semestre)
         {
-            List<object> ids = IdsAlumnosDeComisionesAutorizadasPorSemestre(anio, semestre);
+            IEnumerable<object> ids = IdsAlumnosDeComisionesAutorizadasPorSemestre(anio, semestre);
             return ContainerApp.DbCache().ListDict("alumno", ids.ToArray());
         }
 
-        public List<Dictionary<string, object>> AlumnosActivosDeComisionesAutorizadasPorSemestre(object anio, object semestre)
+        public IEnumerable<Dictionary<string, object>> AlumnosActivosDeComisionesAutorizadasPorSemestre(object anio, object semestre)
         {
             var alumnoDao = new DAO.Alumno();
-            List<object> ids = IdsAlumnosActivosDeComisionesAutorizadasPorSemestre(anio, semestre);
+            IEnumerable<object> ids = IdsAlumnosActivosDeComisionesAutorizadasPorSemestre(anio, semestre);
             return alumnoDao.AlumnosPorIds(ids);
         }
 
-        public List<Dictionary<string, object>> AlumnosActivosDeComisionesAutorizadasPorSemestreSinGenero(object anio, object semestre)
+        public IEnumerable<Dictionary<string, object>> AlumnosActivosDeComisionesAutorizadasPorSemestreSinGenero(object anio, object semestre)
         {
             var alumnoDao = new DAO.Alumno();
-            List<object> ids = IdsAlumnosActivosDeComisionesAutorizadasPorSemestreSinGenero(anio, semestre);
+            IEnumerable<object> ids = IdsAlumnosActivosDeComisionesAutorizadasPorSemestreSinGenero(anio, semestre);
             return alumnoDao.AlumnosPorIds(ids);
         }
     }

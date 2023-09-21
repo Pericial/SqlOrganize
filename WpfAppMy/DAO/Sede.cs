@@ -8,7 +8,7 @@ namespace WpfAppMy.DAO
 {
     public class Sede
     {
-        public List<Dictionary<string, object>> BusquedaAproximada(string search)
+        public IEnumerable<Dictionary<string, object>> BusquedaAproximada(string search)
         {
             var q = ContainerApp.Db().Query("sede").
                 Fields("id, nombre").

@@ -13,7 +13,7 @@ namespace WpfAppMy.Forms.ListaPlanificacion.DAO
     internal class Planificacion
     {
 
-        public List<Dictionary<string, object>> All()
+        public IEnumerable<Dictionary<string, object>> All()
         {
             var q = ContainerApp.Db().Query("planificacion");
             return ContainerApp.DbCache().ListDict(q);

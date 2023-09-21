@@ -15,13 +15,13 @@ namespace WpfAppMy
     /// </summary>
     public class DAO2
     {
-        public Dictionary<string, object>? RowByEntityFieldValue(string entityName, string fieldName, object value)
+        public IDictionary<string, object>? RowByEntityFieldValue(string entityName, string fieldName, object value)
         {
             var q = ContainerApp.db.Query(entityName).Where("$" + fieldName + " = @0").Parameters(value);
             return ContainerApp.dbCache.Dict(q);
         }
 
-        public Dictionary<string, object>? RowByEntityUnique(string entityName, Dictionary<string, object> source)
+        public IDictionary<string, object>? RowByEntityUnique(string entityName, Dictionary<string, object> source)
         {
             var q = ContainerApp.db.Query(entityName).Unique(source);
 
@@ -50,7 +50,7 @@ namespace WpfAppMy
         }
 
 
-        public Dictionary<string, object>? RowByUniqueFieldOrUniqueValues(string fieldName, EntityValues values)
+        public IDictionary<string, object>? RowByUniqueFieldOrUniqueValues(string fieldName, EntityValues values)
         {
             if (ContainerApp.db.Field(values.entityName, fieldName).IsUnique())
                 return RowByEntityFieldValue(values.entityName, fieldName, values.Get(fieldName));

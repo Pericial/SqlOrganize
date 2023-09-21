@@ -5,20 +5,20 @@ namespace WpfAppMy.Data
 {
     public class Data_comision_relacionada : INotifyPropertyChanged
     {
-        private string _id;
-        public string id
+        private string? _id;
+        public string? id
         {
             get { return _id; }
             set { _id = value; NotifyPropertyChanged(); }
         }
-        private string _comision;
-        public string comision
+        private string? _comision;
+        public string? comision
         {
             get { return _comision; }
             set { _comision = value; NotifyPropertyChanged(); }
         }
-        private string _relacion;
-        public string relacion
+        private string? _relacion;
+        public string? relacion
         {
             get { return _relacion; }
             set { _relacion = value; NotifyPropertyChanged(); }

@@ -111,7 +111,7 @@ namespace SqlOrganize
         /// Dependiendo del tipo de consulta almacena cada fila de resultado en cache.
         /// </summary>
         /// <param name="query">Consulta</param>
-        public List<Dictionary<string, object>> ListDict(EntityQuery query)
+        public IEnumerable<Dictionary<string, object>> ListDict(EntityQuery query)
         {
             if (!query.select.IsNullOrEmpty() || !query.group.IsNullOrEmpty()) 
                 return _ListDict(query);
@@ -141,7 +141,7 @@ namespace SqlOrganize
         /// </summary>
         /// <param name="query">Consulta</param>
         /// <remarks>Cuando se esta seguro de que se desea consultar una sola fila. Utilizar este metodo para evitar que se tenga que procesar un tamaño grande de resultado</remarks>
-        public Dictionary<string, object>? Dict(EntityQuery query)
+        public IDictionary<string, object>? Dict(EntityQuery query)
         {
             if (!query.select.IsNullOrEmpty() || !query.group.IsNullOrEmpty())
                 return _Dict(query);
@@ -159,15 +159,15 @@ namespace SqlOrganize
 
             List<string> fields = query.fields!.Replace("$", "").Split(',').ToList().Select(s => s.Trim()).ToList();
 
-            List<Dictionary<string, object>> response = PreListDictRecursive(query.entityName, fields, id);
+            IEnumerable<Dictionary<string, object>> response = PreListDictRecursive(query.entityName, fields, id);
 
-            return response[0];
+            return response.ElementAt(0);
         }
 
         /// <summary>
         /// Organiza los elementos a consultar y efectua la consulta a la base de datos.
         /// </summary>
-        protected List<Dictionary<string, object>> PreListDictRecursive(string entityName, List<string> fields, params string[] ids)
+        protected IEnumerable<Dictionary<string, object>> PreListDictRecursive(string entityName, List<string> fields, params string[] ids)
         {
             FieldsOrganize fo = new(Db, entityName, fields);
 
@@ -190,7 +190,7 @@ namespace SqlOrganize
         /// <summary>
         /// Analiza la respuesta de una consulta y re organiza los elementos para armar el resultado
         /// </summary>
-        public List<Dictionary<string, object>> ListDictRecursive(FieldsOrganize fo, List<Dictionary<string, object>> response, int index)
+        public IEnumerable<Dictionary<string, object>> ListDictRecursive(FieldsOrganize fo, List<Dictionary<string, object>> response, int index)
         {
             if (index >= fo.FieldsIdOrder.Count) return response;
             {
@@ -205,19 +205,20 @@ namespace SqlOrganize
 
                 List<object> ids = response.Column<object>(fkName).Distinct().ToList();
                 ids.RemoveAll(item => item == null || item == System.DBNull.Value);
-                List<Dictionary<string, object>> data;
-                if (ids.Count == 1 && ids[0] == System.DBNull.Value)
-                    data = new();
+                IEnumerable<Dictionary<string, object>> data;
+                if (ids.Count() == 1 && ids.ElementAt(0) == System.DBNull.Value)
+                    return Enumerable.Empty <Dictionary<string, object> > ();
                 else
                 {
                     //Si las fk estan asociadas a una unica pk, debe indicarse para mayor eficiencia
                     if (Db.config.fkId)
                     {
                         data = ListDict(refEntityName, ids.OfType<object>().ToArray());
-                    } else
+                    }
+                    else
                     {
                         var q = Db.Query(refEntityName).Size(0).Where("$" + refFieldName + " IN (@0)").Parameters(ids);
-                        data = ListDict(q); 
+                        data = ListDict(q);
                     }
                 }
 
@@ -226,14 +227,14 @@ namespace SqlOrganize
                     if (response[i][fkName].IsNullOrEmpty())
                         continue;
 
-                    for (var j = 0; j < data.Count; j++)
+                    for (var j = 0; j < data.Count(); j++)
                     {
-                        if (response[i][fkName].Equals(data[j][refFieldName]))
+                        if (response[i][fkName].Equals(data.ElementAt(j)[refFieldName]))
                         {
                             for (var k = 0; k < fo.FieldsRel[fieldId].Count; k++)
                             {
                                 var n = fo.FieldsRel[fieldId][k];
-                                response[i][fieldId + Db.config.idNameSeparatorString + n] = data[j][n];
+                                response[i][fieldId + Db.config.idNameSeparatorString + n] = data.ElementAt(j)[n];
                             }
                         }
                     }
@@ -290,10 +291,10 @@ namespace SqlOrganize
         /// <typeparam name="T"></typeparam>
         /// <param name="query"></param>
         /// <returns></returns>
-        public List<T> ListObj<T>(EntityQuery query) where T : class, new()
+        public IEnumerable<T> ListObj<T>(EntityQuery query) where T : class, new()
         {
-            List<Dictionary<string, object>> response = ListDict(query);
-            return (List<T>)response.ToListOfObj<T>();
+            IEnumerable<Dictionary<string, object>> response = ListDict(query);
+            return response.ToListOfObj<T>();
         }
 
         /// <summary>
@@ -304,7 +305,7 @@ namespace SqlOrganize
         /// <returns></returns>
         public T? Value<T>(EntityQuery query, int columnNumber = 0)
         {
-            Dictionary<string, object>? response = Dict(query);
+            IDictionary<string, object>? response = Dict(query);
             if (response.IsNullOrEmpty())
                 return default(T);
 
@@ -313,32 +314,33 @@ namespace SqlOrganize
             return (T)response[k];
         }
 
-        public List<object> Column(EntityQuery query, int columnNumber = 0)
+        public IEnumerable<object> Column(EntityQuery query, int columnNumber = 0)
         {
             return Column<object>(query, columnNumber);
         }
 
-        public List<T> Column<T>(EntityQuery query, int columnNumber = 0)
+        public IEnumerable<T> Column<T>(EntityQuery query, int columnNumber = 0)
         {
-            List<Dictionary<string, object>>? response = ListDict(query);
+            IEnumerable<Dictionary<string, object>>? response = ListDict(query);
             if (response.IsNullOrEmpty())
-                return new();
+                return Enumerable.Empty<T>();
 
-            string k = response[0].Keys.ElementAt(columnNumber).ToString();
+
+            string k = response.ElementAt(0).Keys.ElementAt(columnNumber).ToString();
 
             return (List<T>)response.Column<T>(k);
         }
 
-        public List<T> Column<T>(EntityQuery query, string columnName)
+        public IEnumerable<T> Column<T>(EntityQuery query, string columnName)
         {
-            List<Dictionary<string, object>>? response = ListDict(query);
+            IEnumerable<Dictionary<string, object>>? response = ListDict(query);
             if (response.IsNullOrEmpty())
-                return new();
+                return Enumerable.Empty<T>();
 
-            return (List<T>)response.Column<T>(columnName);
+            return response.Column<T>(columnName);
         }
 
-        public List<object> Column(EntityQuery query, string columnName)
+        public IEnumerable<object> Column(EntityQuery query, string columnName)
         {
             return Column<object>(query, columnName);
         }

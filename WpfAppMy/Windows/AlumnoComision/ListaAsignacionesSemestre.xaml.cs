@@ -40,7 +40,7 @@ namespace WpfAppMy.Windows.AlumnoComision
 
         private void LoadData()
         {
-            List<Dictionary<string, object>> list = dataDAO.AsignacionesDeComisionesAutorizadasPorSemestre("2023", "2");
+            IEnumerable<Dictionary<string, object>> list = dataDAO.AsignacionesDeComisionesAutorizadasPorSemestre("2023", "2");
             data.Clear();
             foreach(var item in list)
             {

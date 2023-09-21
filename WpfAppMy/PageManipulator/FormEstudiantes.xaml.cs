@@ -36,9 +36,9 @@ namespace WpfAppMy.PageManipulator
             {
                 var a = asignacion.ToObj<Data_alumno_comision_rel>();
                 var sexo = (a.persona__genero.ToLower().Contains("f")) ? "2" : "1";
-                var dia_nacimiento = (a.persona__fecha_nacimiento.IsNullOrEmpty()) ? "1" : a.persona__fecha_nacimiento.ToString("d");
-                var mes_nacimiento = (a.persona__fecha_nacimiento.IsNullOrEmpty()) ? "1" : a.persona__fecha_nacimiento.ToString("M");
-                var anio_nacimiento = (a.persona__fecha_nacimiento.IsNullOrEmpty()) ? "2000" : a.persona__fecha_nacimiento.ToString("yyyy");
+                var dia_nacimiento = (a.persona__fecha_nacimiento.IsNullOrEmpty()) ? "1" : a.persona__fecha_nacimiento?.ToString("d");
+                var mes_nacimiento = (a.persona__fecha_nacimiento.IsNullOrEmpty()) ? "1" : a.persona__fecha_nacimiento?.ToString("M");
+                var anio_nacimiento = (a.persona__fecha_nacimiento.IsNullOrEmpty()) ? "2000" : a.persona__fecha_nacimiento?.ToString("yyyy");
 
                 asignacionesTextBox.Text += @"	{
 		""apellido"": """ + a.persona__apellidos + @""",

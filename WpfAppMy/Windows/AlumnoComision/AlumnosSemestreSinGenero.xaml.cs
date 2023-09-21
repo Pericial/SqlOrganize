@@ -38,7 +38,7 @@ namespace WpfAppMy.Windows.AlumnoComision
 
         private void LoadData()
         {
-            List<Dictionary<string, object>> alumnos = dataDAO.AlumnosActivosDeComisionesAutorizadasPorSemestreSinGenero("2023", "2");
+            IEnumerable<Dictionary<string, object>> alumnos = dataDAO.AlumnosActivosDeComisionesAutorizadasPorSemestreSinGenero("2023", "2");
 
             foreach (var alumno in alumnos)
             {

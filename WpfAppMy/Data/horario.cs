@@ -5,32 +5,32 @@ namespace WpfAppMy.Data
 {
     public class Data_horario : INotifyPropertyChanged
     {
-        private string _id;
-        public string id
+        private string? _id;
+        public string? id
         {
             get { return _id; }
             set { _id = value; NotifyPropertyChanged(); }
         }
-        private DateTime _hora_inicio;
-        public DateTime hora_inicio
+        private DateTime? _hora_inicio;
+        public DateTime? hora_inicio
         {
             get { return _hora_inicio; }
             set { _hora_inicio = value; NotifyPropertyChanged(); }
         }
-        private DateTime _hora_fin;
-        public DateTime hora_fin
+        private DateTime? _hora_fin;
+        public DateTime? hora_fin
         {
             get { return _hora_fin; }
             set { _hora_fin = value; NotifyPropertyChanged(); }
         }
-        private string _curso;
-        public string curso
+        private string? _curso;
+        public string? curso
         {
             get { return _curso; }
             set { _curso = value; NotifyPropertyChanged(); }
         }
-        private string _dia;
-        public string dia
+        private string? _dia;
+        public string? dia
         {
             get { return _dia; }
             set { _dia = value; NotifyPropertyChanged(); }

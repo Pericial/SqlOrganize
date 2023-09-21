@@ -8,7 +8,7 @@ namespace WpfAppMy.Windows.ListaTomas
 {
     internal class DAO : WpfAppMy.DAO2
     {
-        public List<Dictionary<string, object>> TomaAll(Search search)
+        public IEnumerable<Dictionary<string, object>> TomaAll(Search search)
         {
             var q = ContainerApp.Db().Query("toma")
                 .Fields()

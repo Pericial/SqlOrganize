@@ -8,6 +8,7 @@ using System.Windows.Data;
 using Utils;
 using WpfAppMy.Data;
 using WpfAppMy.Values;
+using WpfAppMy.Windows.AlumnoComision;
 using WpfAppMy.Windows.ViewModel;
 
 namespace WpfAppMy.Windows.Comision
@@ -85,7 +86,7 @@ namespace WpfAppMy.Windows.Comision
 
             this.sedeList.Visibility = Visibility.Visible;
 
-            List<Dictionary<string, object>> list = sedeDAO.BusquedaAproximada(this.sedeText.Text);
+            IEnumerable<Dictionary<string, object>> list = sedeDAO.BusquedaAproximada(this.sedeText.Text);
             this.sedeList.ItemsSource = list.ToListOfObj<Data_sede>();
         }
 
@@ -114,6 +115,14 @@ namespace WpfAppMy.Windows.Comision
                     ContainerApp.dao.UpdateValueRel("comision", key, value, source);
                 }
             }
+        }
+
+        private void CargarAlumnos_Click(object sender, RoutedEventArgs e)
+        {
+            var button = (e.OriginalSource as Button);
+            var comision = (Data_comision)button.DataContext;
+            CargarNuevosAlumnos win = new(comision.id);
+            win.Show();
         }
     }
 

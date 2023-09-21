@@ -5,38 +5,38 @@ namespace WpfAppMy.Data
 {
     public class Data_alumno_comision : INotifyPropertyChanged
     {
-        private string _id;
-        public string id
+        private string? _id;
+        public string? id
         {
             get { return _id; }
             set { _id = value; NotifyPropertyChanged(); }
         }
-        private DateTime _creado;
-        public DateTime creado
+        private DateTime? _creado;
+        public DateTime? creado
         {
             get { return _creado; }
             set { _creado = value; NotifyPropertyChanged(); }
         }
-        private string _observaciones;
-        public string observaciones
+        private string? _observaciones;
+        public string? observaciones
         {
             get { return _observaciones; }
             set { _observaciones = value; NotifyPropertyChanged(); }
         }
-        private string _comision;
-        public string comision
+        private string? _comision;
+        public string? comision
         {
             get { return _comision; }
             set { _comision = value; NotifyPropertyChanged(); }
         }
-        private string _alumno;
-        public string alumno
+        private string? _alumno;
+        public string? alumno
         {
             get { return _alumno; }
             set { _alumno = value; NotifyPropertyChanged(); }
         }
-        private string _estado;
-        public string estado
+        private string? _estado;
+        public string? estado
         {
             get { return _estado; }
             set { _estado = value; NotifyPropertyChanged(); }

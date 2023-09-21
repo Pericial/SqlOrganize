@@ -11,9 +11,9 @@ namespace WpfAppMy.Forms.ListaReferentesSemestre.DAO
     {
         DAO.Comision comisionDAO = new ();
 
-        public List<Dictionary<string, object>> referentesSemestre(Search search)
+        public IEnumerable<Dictionary<string, object>> referentesSemestre(Search search)
         {
-            List<object> idSedes = comisionDAO.IdSedesSemestre(search);
+            IEnumerable<object> idSedes = comisionDAO.IdSedesSemestre(search);
             EntityQuery q = ContainerApp.Db().Query("designacion").
                 Where("$sede-_Id IN (@0) AND $cargo = '1'").
                 Parameters(idSedes);

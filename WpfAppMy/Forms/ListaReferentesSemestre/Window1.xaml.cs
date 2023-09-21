@@ -43,7 +43,7 @@ namespace WpfAppMy.Forms.ListaReferentesSemestre
 
         private void Search()
         {
-            List<Dictionary<string, object>> list = designacionDAO.referentesSemestre(search);
+            IEnumerable<Dictionary<string, object>> list = designacionDAO.referentesSemestre(search);
             referenteGrid.ItemsSource = list.ToListOfObj<Designacion>();
         }
 

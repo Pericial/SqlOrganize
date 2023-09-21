@@ -8,7 +8,7 @@ namespace WpfAppMy.DAO
 {
     public class Toma
     {
-        public List<object> IdCursosConTomasAprobadasSemestre(object calendarioAnio, object calendarioSemestre)
+        public IEnumerable<object> IdCursosConTomasAprobadasSemestre(object calendarioAnio, object calendarioSemestre)
         {
             var q = ContainerApp.Db().Query("toma").
                 Fields("curso").

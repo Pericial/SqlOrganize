@@ -34,7 +34,7 @@ namespace WpfAppMy.Windows.TomaPosesionPdf
         public Window1()
         {
             InitializeComponent();
-            List<Dictionary<string, object>> list = dao.TomaAll(search);
+            IEnumerable<Dictionary<string, object>> list = dao.TomaAll(search);
             foreach(Dictionary<string, object> item in list)
             {
                 Toma toma = item.ToObj<Toma>();

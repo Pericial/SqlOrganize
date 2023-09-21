@@ -17,7 +17,7 @@ namespace WpfAppMy.DAO
             ContainerApp.DbCache().Remove(p.detail);
         }
 
-        public List<Dictionary<string, object>> ComisionesSemestre(object calendarioAnio, object calendarioSemestre, object? sede = null, bool? autorizada = null)
+        public IEnumerable<Dictionary<string, object>> ComisionesSemestre(object calendarioAnio, object calendarioSemestre, object? sede = null, bool? autorizada = null)
         {
             var q = ContainerApp.Db().Query("comision")
                 .Fields()
@@ -44,7 +44,7 @@ namespace WpfAppMy.DAO
             return ContainerApp.DbCache().ListDict(q);
         }
 
-        public List<object> IdsComisionesAutorizadasConSiguientePorSemestre(object calendarioAnio, object calendarioSemestre)
+        public IEnumerable<object> IdsComisionesAutorizadasConSiguientePorSemestre(object calendarioAnio, object calendarioSemestre)
         {
             var q = ContainerApp.Db().Query("comision")
                 .Fields("id")
@@ -59,7 +59,7 @@ namespace WpfAppMy.DAO
             return ContainerApp.DbCache().Column<object>(q);
         }
 
-        public List<Dictionary<string, object>> ComisionesPorIds(List<object> ids)
+        public IEnumerable<Dictionary<string, object>> ComisionesPorIds(List<object> ids)
         {
             var q = ContainerApp.Db().Query("comision")
                 .Fields()
@@ -72,7 +72,7 @@ namespace WpfAppMy.DAO
             return ContainerApp.DbCache().ListDict(q);
         }
 
-        public List<Dictionary<string, object>> ComisionesConSiguientePorCalendario(object anio, object semestre)
+        public IEnumerable<Dictionary<string, object>> ComisionesConSiguientePorCalendario(object anio, object semestre)
         {
             var q = ContainerApp.Db().Query("comision")
                 .Size(0)
@@ -86,7 +86,7 @@ namespace WpfAppMy.DAO
             return ContainerApp.DbCache().ListDict(q);
         }
 
-        public List<object> IdsComisionesAutorizadasPorCalendario(object anio, object semestre)
+        public IEnumerable<object> IdsComisionesAutorizadasPorCalendario(object anio, object semestre)
         {
             var q = ContainerApp.Db().Query("comision")
                 .Fields(ContainerApp.db.config.id)
@@ -101,9 +101,9 @@ namespace WpfAppMy.DAO
             return ContainerApp.DbCache().Column<object>(q);
         }
 
-        public List<Dictionary<string, object>> ComisionesAutorizadasPorSemestre(object anio, object semestre)
+        public IEnumerable<Dictionary<string, object>> ComisionesAutorizadasPorSemestre(object anio, object semestre)
         {
-            List<object> ids = IdsComisionesAutorizadasPorCalendario(anio, semestre);
+            IEnumerable<object> ids = IdsComisionesAutorizadasPorCalendario(anio, semestre);
             return ContainerApp.DbCache().ListDict("comision", ids);
 
             var q = ContainerApp.Db().Query("comision")

@@ -9,9 +9,9 @@ namespace WpfAppMy.DAO
     public class Alumno
     {
 
-        public List<Dictionary<string, object>> AlumnosPorIds(List<object> ids)
+        public IEnumerable<Dictionary<string, object>> AlumnosPorIds(IEnumerable<object> ids)
         {
-            if (ids.Count == 0) return new();
+            if (ids.Count() == 0) return Enumerable.Empty<Dictionary<string, object>>();
             var q = ContainerApp.Db().Query("alumno")
                .Size(0)
                .Where(@"

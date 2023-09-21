@@ -2,6 +2,7 @@
 using SqlOrganize;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using Utils;
 
@@ -60,7 +61,7 @@ namespace WpfAppMy.Windows.ProcesarDocentesProgramaFines
                 #region insertar o actualizar cargo
                 foreach (var cargo in docente.cargos)
                 {
-                    if (pfidComisiones.Contains(cargo["comision"]))
+                    if (pfidComisiones.ToList().Contains(cargo["comision"]))
                     {
                         string idCurso = dao.IdCurso(cargo["comision"], cargo["codigo"]);
                         if (idCurso.IsNullOrEmpty())
@@ -70,7 +71,7 @@ namespace WpfAppMy.Windows.ProcesarDocentesProgramaFines
 
                         }
 
-                        Dictionary<string, object> rowTomaActiva = dao.TomaActiva(idCurso);
+                        IDictionary<string, object> rowTomaActiva = dao.TomaActiva(idCurso);
                         if(rowTomaActiva != null)
                         {
                             if (!rowTomaActiva["docente"].Equals(vPersona.Get("id")))

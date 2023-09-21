@@ -9,7 +9,7 @@ namespace WpfAppMy.DAO
 {
     internal class Curso
     {
-        public List<Dictionary<string, object>> CursosAutorizadosSemestre(object calendarioAnio, object calendarioSemestre, object? sede = null, bool? autorizada = null)
+        public IEnumerable<Dictionary<string, object>> CursosAutorizadosSemestre(object calendarioAnio, object calendarioSemestre, object? sede = null, bool? autorizada = null)
         {
             var q = ContainerApp.Db().Query("curso")
                 .Fields()

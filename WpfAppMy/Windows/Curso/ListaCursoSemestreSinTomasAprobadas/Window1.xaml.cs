@@ -43,9 +43,9 @@ namespace WpfAppMy.Windows.Curso.ListaCursoSemestreSinTomasAprobadas
 
         private void LoadData()
         {
-            List<object> idCursosConTomasAprobadas = tomaDAO.IdCursosConTomasAprobadasSemestre("2023", "2");
+            IEnumerable<object> idCursosConTomasAprobadas = tomaDAO.IdCursosConTomasAprobadasSemestre("2023", "2");
 
-            List<Dictionary<string, object>> cursosAutorizadosSemestre = cursoDAO.CursosAutorizadosSemestre("2023", "2");
+            IEnumerable<Dictionary<string, object>> cursosAutorizadosSemestre = cursoDAO.CursosAutorizadosSemestre("2023", "2");
 
             List<Dictionary<string, object>> cursosSinTomasAprobadasSemestre = new();
             foreach (var curso in cursosAutorizadosSemestre)

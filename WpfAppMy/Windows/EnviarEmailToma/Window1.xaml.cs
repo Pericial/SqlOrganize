@@ -15,7 +15,7 @@ namespace WpfAppMy.Windows.EnviarEmailToma
         public Window1()
         {
             InitializeComponent();
-            List<Dictionary<string, object>> list = dao.TomaAll();
+            IEnumerable<Dictionary<string, object>> list = dao.TomaAll();
             foreach (Dictionary<string, object> item in list)
             {
                 List<string> comisiones = new() { "10086" };

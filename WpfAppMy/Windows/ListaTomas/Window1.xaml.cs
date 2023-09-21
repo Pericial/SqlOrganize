@@ -47,7 +47,7 @@ namespace WpfAppMy.Windows.ListaTomas
 
         private void LoadData()
         {
-            List<Dictionary<string, object>> list = dao.TomaAll(search);
+            IEnumerable<Dictionary<string, object>> list = dao.TomaAll(search);
             tomaData.Clear();
             tomaData.AddRange(list.ToListOfObj<Toma>());
         }
@@ -88,7 +88,7 @@ namespace WpfAppMy.Windows.ListaTomas
                         }
 
                         v.Sset(fieldName, value);
-                        Dictionary<string, object>? row;
+                        IDictionary<string, object>? row;
 
                         row = dao.RowByUniqueFieldOrUniqueValues(fieldName, v);
 

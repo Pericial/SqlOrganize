@@ -5,20 +5,20 @@ namespace WpfAppMy.Data
 {
     public class Data_dia : INotifyPropertyChanged
     {
-        private string _id;
-        public string id
+        private string? _id;
+        public string? id
         {
             get { return _id; }
             set { _id = value; NotifyPropertyChanged(); }
         }
-        private short _numero;
-        public short numero
+        private short? _numero;
+        public short? numero
         {
             get { return _numero; }
             set { _numero = value; NotifyPropertyChanged(); }
         }
-        private string _dia;
-        public string dia
+        private string? _dia;
+        public string? dia
         {
             get { return _dia; }
             set { _dia = value; NotifyPropertyChanged(); }

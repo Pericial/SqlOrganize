@@ -8,7 +8,7 @@ namespace WpfAppMy.DAO
 {
     public class Calificacion
     {
-        public List<object> IdsAlumnosConCalificacionesAprobadasCruzadasNoArchivadas(List<object> ids)
+        public IEnumerable<object> IdsAlumnosConCalificacionesAprobadasCruzadasNoArchivadas(IEnumerable<object> ids)
         {
             var q = ContainerApp.Db().Query("calificacion")
                 .Select("COUNT(DISTINCT $plan_pla-id) as cantidad_planes")
@@ -27,7 +27,7 @@ namespace WpfAppMy.DAO
             return ContainerApp.DbCache().Column<object>(q, "alumno");
         }
 
-        public List<Dictionary<string, object>> CalificacionesAprobadasDeAlumnosNoArchivadas(List<object> idsAlumnos)
+        public IEnumerable<Dictionary<string, object>> CalificacionesAprobadasDeAlumnosNoArchivadas(IEnumerable<object> idsAlumnos)
         {
             var q = ContainerApp.Db().Query("calificacion")
                 .Size(0)
