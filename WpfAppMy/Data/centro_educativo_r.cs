@@ -1,6 +1,6 @@
 using System;
 
-namespace 
+namespace WpfAppMy.Data
 {
     public class Data_centro_educativo_r : Data_centro_educativo
     {

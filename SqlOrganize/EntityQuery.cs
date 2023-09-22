@@ -88,7 +88,7 @@ namespace SqlOrganize
             return this;
         }
 
-        public EntityQuery Unique(Dictionary<string, object> row)
+        public EntityQuery Unique(IDictionary<string, object> row)
         {
             whereUnique.Merge(row);
             return this;

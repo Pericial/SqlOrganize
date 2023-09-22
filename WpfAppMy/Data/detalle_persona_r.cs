@@ -1,6 +1,6 @@
 using System;
 
-namespace 
+namespace WpfAppMy.Data
 {
     public class Data_detalle_persona_r : Data_detalle_persona
     {

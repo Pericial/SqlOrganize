@@ -1,6 +1,6 @@
 using System;
 
-namespace 
+namespace WpfAppMy.Data
 {
     public class Data_designacion_r : Data_designacion
     {

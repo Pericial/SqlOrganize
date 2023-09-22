@@ -34,7 +34,7 @@ namespace WpfAppMy.PageManipulator
 ";
             foreach (var asignacion in asignaciones)
             {
-                var a = asignacion.Obj<Data_alumno_comision_rel>();
+                var a = asignacion.Obj<Data_alumno_comision_r>();
                 var sexo = (a.persona__genero.ToLower().Contains("f")) ? "2" : "1";
                 var dia_nacimiento = (a.persona__fecha_nacimiento.IsNullOrEmpty()) ? "1" : a.persona__fecha_nacimiento?.ToString("d");
                 var mes_nacimiento = (a.persona__fecha_nacimiento.IsNullOrEmpty()) ? "1" : a.persona__fecha_nacimiento?.ToString("M");

@@ -8,7 +8,7 @@ namespace Pedidos.DAO.Pedidos
 {
     public class Tickets
     {
-        public List<Dictionary<string, object>> TicketPorId(int id)
+        public IEnumerable<Dictionary<string, object>> TicketPorId(int id)
         {
             var query = ContainerApp.dbPedidos.Query("wpwt_psmsc_tickets").
                 Where("$id = @0").
@@ -17,7 +17,7 @@ namespace Pedidos.DAO.Pedidos
             return ContainerApp.dbCachePedidos.ColOfDict(query);
         }
 
-        public List<object> DnisAlumnosConTicketDeSeguimiento()
+        public IEnumerable<object> DnisAlumnosConTicketDeSeguimiento()
         {
             var query = ContainerApp.dbPedidos.Query("wpwt_psmsc_tickets").
                 Fields("cust_24").

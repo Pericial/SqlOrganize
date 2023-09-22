@@ -19,9 +19,9 @@ namespace WpfAppMy.Values
         /// </summary>
         /// <remarks>Solo funciona con relaciones</remarks>
         /// <returns></returns>
-        public Comision Default_numero()
+        public Comision Default_numero_r()
         {
-            values["numero"] = values["sede-numero"].ToString() + values["division"].ToString() + "/"+ values["planificacion-anio"].ToString() + values["planificacion-semestre"].ToString() ;
+            values["numero_r"] = values["sede-numero"].ToString() + values["division"].ToString() + "/"+ values["planificacion-anio"].ToString() + values["planificacion-semestre"].ToString() ;
             return this;
         }
 
@@ -30,10 +30,17 @@ namespace WpfAppMy.Values
         /// </summary>
         /// <remarks>Solo funciona con relaciones</remarks>
         /// <returns></returns>
-        public Comision Default_label()
+        public Comision Default_label_r()
         {
-            Default("numero");
-            values["label"] = values["numero"] + " " + values["calendario-anio"] + "-" + values["calendario-semestre"];
+            Default("numero_r");
+            values["label_r"] = values["numero_r"] + " " + values["calendario-anio"] + "-" + values["calendario-semestre"];
+            return this;
+        }
+
+        public Comision Default_label_sede_r()
+        {
+            Default("label_r");
+            values["label_sede_r"] = values["label_r"] + " " + values["sede-nombre"];
             return this;
         }
 
@@ -42,9 +49,9 @@ namespace WpfAppMy.Values
         /// </summary>
         /// <remarks>Solo funciona con relaciones</remarks>
         /// <returns></returns>
-        public Comision Default_calendario_label()
+        public Comision Default_calendario__label()
         {
-            values["calendario_label"] = values["calendario-anio"] + "-" + values["calendario-semestre"];
+            values["calendario-label"] = values["calendario-anio"] + "-" + values["calendario-semestre"];
             return this;
         }
 

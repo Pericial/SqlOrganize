@@ -21,15 +21,11 @@
             </Grid.ColumnDefinitions>
 
             <Label 
-                Name = "comisionLabel"
                 Margin = "2">Identificacion de comisión</Label>
 
             <TextBox
-                Name="comisionTextBox" 
+                Text="{Binding label_sede_r}"
                 Grid.Column="1"
-                AcceptsReturn="True"
-                ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                ScrollViewer.VerticalScrollBarVisibility="Auto"
             />
 
             <Label 

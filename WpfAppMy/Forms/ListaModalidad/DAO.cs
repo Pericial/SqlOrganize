@@ -23,7 +23,7 @@ namespace WpfAppMy.Forms.ListaModalidad
             return ContainerApp.DbCache().Dict(q);
         }
 
-        public IDictionary<string, object>? RowByEntityUnique(string entityName, Dictionary<string, object> source)
+        public IDictionary<string, object>? RowByEntityUnique(string entityName, IDictionary<string, object> source)
         {
             var q = ContainerApp.db.Query(entityName).Unique(source);
             if (!q.IsUnique())

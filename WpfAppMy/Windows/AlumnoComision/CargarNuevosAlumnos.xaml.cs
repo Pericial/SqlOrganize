@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using Utils;
+using WpfAppMy.ViewModels;
 
 namespace WpfAppMy.Windows.AlumnoComision
 {
@@ -16,22 +17,16 @@ namespace WpfAppMy.Windows.AlumnoComision
 
             InitializeComponent();
             this.IdComision = idComision;
-            this.comisionTextBox.Text = idComision;
             Loaded += CargarNuevosAlumnos_Loaded;
         }
 
         private void CargarNuevosAlumnos_Loaded(object sender, RoutedEventArgs e)
         {
             var data = ContainerApp.dao.Get("comision", IdComision);
-            DataContext = data.Obj<Comision>
+            var obj = data.Obj<ComisionRel>();
+            obj.label_sede_r = (string)ContainerApp.db.Values("comision").Values(data).Default("label_sede_r").Get("label_sede_r");
+            DataContext = obj;
         }
-
-        private void LoadData()
-        {
-            //Dictionary<string, object> data_ = ContainerApp.dao.Get(idComision);
-            //DataContext = data.Obj<Model>();
-        }
-
 
 
         private void ProcesarButton_Click(object sender, RoutedEventArgs e)

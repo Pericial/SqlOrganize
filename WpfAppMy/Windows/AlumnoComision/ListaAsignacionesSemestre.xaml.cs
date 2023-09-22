@@ -26,7 +26,7 @@ namespace WpfAppMy.Windows.AlumnoComision
     {
 
         private DAO.AlumnoComision dataDAO = new();
-        private ObservableCollection<Asignacion> data = new();
+        private ObservableCollection<AsignacionRel> data = new();
         public ListaAsignacionesSemestre()
         {
             InitializeComponent();
@@ -46,7 +46,7 @@ namespace WpfAppMy.Windows.AlumnoComision
             foreach(var item in list)
             {
                 var vd = ContainerApp.db.Values("domicilio", "domicilio").Set(item).Default("label");
-                var o = item.Obj<Asignacion>();
+                var o = item.Obj<AsignacionRel>();
                 o.comision__numero = item["sede-numero"].ToString() + item["comision-division"].ToString() + "/" + item["planificacion-anio"] + item["planificacion-semestre"];
                 o.domicilio__label = vd.Get("label")?.ToString();
 

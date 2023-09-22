@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-using Org.BouncyCastle.Utilities;
-using SqlOrganize;
+﻿using SqlOrganize;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,24 +14,24 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Utils;
 
-namespace Pedidos.Windows.MigrarAlumnos
+namespace Pedidos.Windows
 {
     /// <summary>
-    /// Lógica de interacción para Window1.xaml
+    /// Lógica de interacción para MigrarAlumnos.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class MigrarAlumnos : Window
     {
         DAO.Pedidos.Tickets ticketsDao = new();
         DAO.Fines.Alumno alumnoDao = new();
         List<string> logs = new();
 
 
-        public Window1()
+        public MigrarAlumnos()
         {
             InitializeComponent();
 
             var dnis = ticketsDao.DnisAlumnosConTicketDeSeguimiento();
-            List<Dictionary<string, object>> alumnos = alumnoDao.AlumnosActivosDeComisionesAutorizadasPorCalendario2("2023", "1", dnis);
+            IEnumerable<Dictionary<string, object>> alumnos = alumnoDao.AlumnosActivosDeComisionesAutorizadasPorCalendario2("2023", "1", dnis);
 
 
 
@@ -68,8 +66,8 @@ namespace Pedidos.Windows.MigrarAlumnos
 
             }
 
-            info.Text += String.Join(@"
-", logs);
+            //info.Text += String.Join(@"
+            //", logs);
         }
     }
 
@@ -98,3 +96,4 @@ namespace Pedidos.Windows.MigrarAlumnos
 
     }
 }
+

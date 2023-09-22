@@ -1,6 +1,6 @@
 using System;
 
-namespace 
+namespace WpfAppMy.Data
 {
     public class Data_asignacion_planilla_docente_r : Data_asignacion_planilla_docente
     {

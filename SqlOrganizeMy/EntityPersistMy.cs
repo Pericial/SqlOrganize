@@ -11,7 +11,7 @@ namespace SqlOrganizeMy
         {
         }
 
-        protected override EntityPersist _Update(Dictionary<string, object> row, string? _entityName = null)
+        protected override EntityPersist _Update(IDictionary<string, object> row, string? _entityName = null)
         {
             _entityName = _entityName ?? entityName;
             string sna = db.Entity(_entityName).schemaNameAlias;

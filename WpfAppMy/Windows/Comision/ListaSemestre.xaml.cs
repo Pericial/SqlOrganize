@@ -110,7 +110,7 @@ namespace WpfAppMy.Windows.Comision
                 if (column != null)
                 {
                     string key = ((Binding)column.Binding).Path.Path; //column's binding
-                    Dictionary<string, object> source = (Dictionary<string, object>)((Data_comision_rel)e.Row.DataContext).Dict();
+                    Dictionary<string, object> source = (Dictionary<string, object>)((Data_comision_r)e.Row.DataContext).Dict();
                     string value = (e.EditingElement as TextBox)!.Text;
                     ContainerApp.dao.UpdateValueRel("comision", key, value, source);
                 }

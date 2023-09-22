@@ -23,7 +23,7 @@ namespace WpfAppMy.Windows.AlumnoComision
     public partial class AlumnosSemestreSinGenero : Window
     {
         private DAO.AlumnoComision dataDAO = new();
-        private ObservableCollection<Data_alumno_rel> alumnosSinGenero = new();
+        private ObservableCollection<Data_alumno_r> alumnosSinGenero = new();
         public AlumnosSemestreSinGenero()
         {
             InitializeComponent();
@@ -42,7 +42,7 @@ namespace WpfAppMy.Windows.AlumnoComision
 
             foreach (var alumno in alumnos)
             {
-                var a = alumno.Obj<Data_alumno_rel>();
+                var a = alumno.Obj<Data_alumno_r>();
                 var nombres = a.persona__nombres.Split(" ");
                 string? genero = null;
 
@@ -71,7 +71,7 @@ namespace WpfAppMy.Windows.AlumnoComision
 
                 alumnosSinGenero.Clear();
                 alumnos = dataDAO.AlumnosActivosDeComisionesAutorizadasPorSemestreSinGenero("2023", "2");
-                alumnosSinGenero.AddRange(alumnos.ColOfObj<Data_alumno_rel>());
+                alumnosSinGenero.AddRange(alumnos.ColOfObj<Data_alumno_r>());
             }
 
 

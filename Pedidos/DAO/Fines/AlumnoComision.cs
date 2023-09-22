@@ -9,7 +9,7 @@ namespace Pedidos.DAO.Fines
     public class AlumnoComision
     {
 
-        public List<object> IdsAlumnosActivosDeComisionesAutorizadasPorCalendario(object anio, object semestre)
+        public IEnumerable<object> IdsAlumnosActivosDeComisionesAutorizadasPorCalendario(object anio, object semestre)
         {
             var q = ContainerApp.dbFines.Query("alumno_comision")
                 .Fields("alumno")

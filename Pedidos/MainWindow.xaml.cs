@@ -27,7 +27,7 @@ namespace Pedidos
 
         private void MigrarAlumnosSemestre_Click(object sender, RoutedEventArgs e)
         {
-            Windows.MigrarAlumnos.Window1 win = new();
+            Windows.MigrarAlumnos win = new();
             win.Show();
         }
     }

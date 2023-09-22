@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel;
 
-namespace 
+namespace WpfAppMy.Data
 {
     public class Data_asignacion_planilla_docente : INotifyPropertyChanged
     {

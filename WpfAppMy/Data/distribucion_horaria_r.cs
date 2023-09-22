@@ -1,6 +1,6 @@
 using System;
 
-namespace 
+namespace WpfAppMy.Data
 {
     public class Data_distribucion_horaria_r : Data_distribucion_horaria
     {

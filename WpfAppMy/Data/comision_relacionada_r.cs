@@ -1,6 +1,6 @@
 using System;
 
-namespace 
+namespace WpfAppMy.Data
 {
     public class Data_comision_relacionada_r : Data_comision_relacionada
     {

@@ -22,13 +22,13 @@ namespace SqlOrganize
     {
         public Logging logging { get; set; } = new Logging();
 
-        public Dictionary<string, object> values = new Dictionary<string, object>();
+        public IDictionary<string, object> values = new Dictionary<string, object>();
 
         public EntityValues(Db _db, string _entityName, string? _fieldId = null) : base(_db, _entityName, _fieldId)
         {
         }
 
-        public EntityValues Values(Dictionary<string, object> row)
+        public EntityValues Values(IDictionary<string, object> row)
         {
             values = row;
             return this;
@@ -414,7 +414,7 @@ namespace SqlOrganize
         /// <param name="values"></param>
         /// <returns>Valores del parametro que son diferentes o que no estan definidos localmente</returns>
         /// <remarks>Solo compara fieldNames</remarks>
-        public Dictionary<string, object> Compare(Dictionary<string, object> values, List<string>? ignoreFields = null, bool ignoreNull = true)
+        public Dictionary<string, object> Compare(IDictionary<string, object> values, IEnumerable<string>? ignoreFields = null, bool ignoreNull = true)
         {
             Dictionary<string, object> dict1_ = new(this.values);
             Dictionary<string, object> dict2_ = new(values);

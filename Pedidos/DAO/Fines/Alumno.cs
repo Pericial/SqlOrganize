@@ -10,7 +10,7 @@ namespace Pedidos.DAO.Fines
     {
 
 
-        public List<Dictionary<string, object>> AlumnosActivosDeComisionesAutorizadasPorCalendario(object anio, object semestre)
+        public IEnumerable<Dictionary<string, object>> AlumnosActivosDeComisionesAutorizadasPorCalendario(object anio, object semestre)
         {
             var ac = new AlumnoComision();
             var idAlumnos = ac.IdsAlumnosActivosDeComisionesAutorizadasPorCalendario(anio, semestre);
@@ -20,7 +20,7 @@ namespace Pedidos.DAO.Fines
             return ContainerApp.dbCacheFines.ColOfDict(q);
         }
 
-        public List<Dictionary<string, object>> AlumnosActivosDeComisionesAutorizadasPorCalendario2(object anio, object semestre, List<object> dnisAQuitar)
+        public IEnumerable<Dictionary<string, object>> AlumnosActivosDeComisionesAutorizadasPorCalendario2(object anio, object semestre, IEnumerable<object> dnisAQuitar)
         {
             var ac = new AlumnoComision();
             var idAlumnos = ac.IdsAlumnosActivosDeComisionesAutorizadasPorCalendario(anio, semestre);

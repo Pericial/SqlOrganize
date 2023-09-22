@@ -36,9 +36,9 @@ namespace SqlOrganize
             return this;
         }
 
-        abstract protected EntityPersist _Update(Dictionary<string, object> row, string? _entityName = null);
+        abstract protected EntityPersist _Update(IDictionary<string, object> row, string? _entityName = null);
 
-        public EntityPersist Update(Dictionary<string, object> row, string? _entityName = null)
+        public EntityPersist Update(IDictionary<string, object> row, string? _entityName = null)
         {
             _entityName = _entityName ?? entityName;
 
@@ -163,7 +163,7 @@ WHERE " + id + " = @" + count + @";
             return UpdateValue(key, value, ids, _entityName);
         }
 
-        public EntityPersist Insert(Dictionary<string, object> row, string? _entityName = null)
+        public EntityPersist Insert(IDictionary<string, object> row, string? _entityName = null)
         {
             _entityName = _entityName ?? entityName;
 
