@@ -125,6 +125,25 @@
     "defaultValue": null,
     "maxLength": 45
   },
+  "tipo_sede": {
+    "checks": {
+      "type": "string"
+    },
+    "resets": {
+      "trim": " ",
+      "removeMultipleSpaces": true,
+      "nullIfEmpty": true
+    },
+    "name": "tipo_sede",
+    "alias": "tip",
+    "entityName": "sede",
+    "refEntityName": "tipo_sede",
+    "refFieldName": "id",
+    "dataType": "string",
+    "notNull": false,
+    "defaultValue": null,
+    "maxLength": 45
+  },
   "centro_educativo": {
     "checks": {
       "type": "string"

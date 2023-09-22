@@ -125,6 +125,7 @@
     "fields": [
       "id",
       "creado",
+      "activo",
       "observaciones",
       "comision",
       "alumno",
@@ -160,6 +161,12 @@
               "domicilio": {
                 "fieldName": "domicilio",
                 "refEntityName": "domicilio",
+                "refFieldName": "id",
+                "children": {}
+              },
+              "tipo_sede": {
+                "fieldName": "tipo_sede",
+                "refEntityName": "tipo_sede",
                 "refFieldName": "id",
                 "children": {}
               },
@@ -254,6 +261,12 @@
       "domicilio": {
         "fieldName": "domicilio",
         "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
+      "tipo_sede": {
+        "fieldName": "tipo_sede",
+        "refEntityName": "tipo_sede",
         "refFieldName": "id",
         "parentId": "sede"
       },
@@ -391,6 +404,12 @@
                         "refFieldName": "id",
                         "children": {}
                       },
+                      "tipo_sede": {
+                        "fieldName": "tipo_sede",
+                        "refEntityName": "tipo_sede",
+                        "refFieldName": "id",
+                        "children": {}
+                      },
                       "centro_educativo": {
                         "fieldName": "centro_educativo",
                         "refEntityName": "centro_educativo",
@@ -510,6 +529,12 @@
       "domicilio": {
         "fieldName": "domicilio",
         "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
+      "tipo_sede": {
+        "fieldName": "tipo_sede",
+        "refEntityName": "tipo_sede",
         "refFieldName": "id",
         "parentId": "sede"
       },
@@ -715,6 +740,12 @@
                     "refFieldName": "id",
                     "children": {}
                   },
+                  "tipo_sede": {
+                    "fieldName": "tipo_sede",
+                    "refEntityName": "tipo_sede",
+                    "refFieldName": "id",
+                    "children": {}
+                  },
                   "centro_educativo": {
                     "fieldName": "centro_educativo",
                     "refEntityName": "centro_educativo",
@@ -846,6 +877,12 @@
       "domicilio": {
         "fieldName": "domicilio",
         "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
+      "tipo_sede": {
+        "fieldName": "tipo_sede",
+        "refEntityName": "tipo_sede",
         "refFieldName": "id",
         "parentId": "sede"
       },
@@ -1045,6 +1082,8 @@
       "comision_siguiente",
       "calendario",
       "identificacion",
+      "estado",
+      "configuracion",
       "pfid"
     ],
     "fk": [
@@ -1068,7 +1107,13 @@
       "modalidad",
       "calendario"
     ],
-    "uniqueMultiple": [],
+    "uniqueMultiple": [
+      [
+        "division",
+        "planificacion",
+        "sede"
+      ]
+    ],
     "id": [
       "id"
     ],
@@ -1081,6 +1126,12 @@
           "domicilio": {
             "fieldName": "domicilio",
             "refEntityName": "domicilio",
+            "refFieldName": "id",
+            "children": {}
+          },
+          "tipo_sede": {
+            "fieldName": "tipo_sede",
+            "refEntityName": "tipo_sede",
             "refFieldName": "id",
             "children": {}
           },
@@ -1135,6 +1186,12 @@
       "domicilio": {
         "fieldName": "domicilio",
         "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
+      "tipo_sede": {
+        "fieldName": "tipo_sede",
+        "refEntityName": "tipo_sede",
         "refFieldName": "id",
         "parentId": "sede"
       },
@@ -1221,6 +1278,12 @@
                 "refFieldName": "id",
                 "children": {}
               },
+              "tipo_sede": {
+                "fieldName": "tipo_sede",
+                "refEntityName": "tipo_sede",
+                "refFieldName": "id",
+                "children": {}
+              },
               "centro_educativo": {
                 "fieldName": "centro_educativo",
                 "refEntityName": "centro_educativo",
@@ -1276,6 +1339,12 @@
               "domicilio_sed": {
                 "fieldName": "domicilio",
                 "refEntityName": "domicilio",
+                "refFieldName": "id",
+                "children": {}
+              },
+              "tipo_sede_sed": {
+                "fieldName": "tipo_sede",
+                "refEntityName": "tipo_sede",
                 "refFieldName": "id",
                 "children": {}
               },
@@ -1341,6 +1410,12 @@
         "refFieldName": "id",
         "parentId": "sede"
       },
+      "tipo_sede": {
+        "fieldName": "tipo_sede",
+        "refEntityName": "tipo_sede",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
       "centro_educativo": {
         "fieldName": "centro_educativo",
         "refEntityName": "centro_educativo",
@@ -1392,6 +1467,12 @@
       "domicilio_sed": {
         "fieldName": "domicilio",
         "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "sede_rel"
+      },
+      "tipo_sede_sed": {
+        "fieldName": "tipo_sede",
+        "refEntityName": "tipo_sede",
         "refFieldName": "id",
         "parentId": "sede_rel"
       },
@@ -1530,6 +1611,12 @@
                 "refFieldName": "id",
                 "children": {}
               },
+              "tipo_sede": {
+                "fieldName": "tipo_sede",
+                "refEntityName": "tipo_sede",
+                "refFieldName": "id",
+                "children": {}
+              },
               "centro_educativo": {
                 "fieldName": "centro_educativo",
                 "refEntityName": "centro_educativo",
@@ -1595,6 +1682,12 @@
       "domicilio": {
         "fieldName": "domicilio",
         "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
+      "tipo_sede": {
+        "fieldName": "tipo_sede",
+        "refEntityName": "tipo_sede",
         "refFieldName": "id",
         "parentId": "sede"
       },
@@ -1696,6 +1789,12 @@
             "refFieldName": "id",
             "children": {}
           },
+          "tipo_sede": {
+            "fieldName": "tipo_sede",
+            "refEntityName": "tipo_sede",
+            "refFieldName": "id",
+            "children": {}
+          },
           "centro_educativo": {
             "fieldName": "centro_educativo",
             "refEntityName": "centro_educativo",
@@ -1741,6 +1840,12 @@
       "domicilio": {
         "fieldName": "domicilio",
         "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
+      "tipo_sede": {
+        "fieldName": "tipo_sede",
+        "refEntityName": "tipo_sede",
         "refFieldName": "id",
         "parentId": "sede"
       },
@@ -2361,6 +2466,12 @@
                     "refFieldName": "id",
                     "children": {}
                   },
+                  "tipo_sede": {
+                    "fieldName": "tipo_sede",
+                    "refEntityName": "tipo_sede",
+                    "refFieldName": "id",
+                    "children": {}
+                  },
                   "centro_educativo": {
                     "fieldName": "centro_educativo",
                     "refEntityName": "centro_educativo",
@@ -2440,6 +2551,12 @@
       "domicilio": {
         "fieldName": "domicilio",
         "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
+      "tipo_sede": {
+        "fieldName": "tipo_sede",
+        "refEntityName": "tipo_sede",
         "refFieldName": "id",
         "parentId": "sede"
       },
@@ -2739,6 +2856,7 @@
       "alta",
       "baja",
       "domicilio",
+      "tipo_sede",
       "centro_educativo",
       "fecha_traspaso",
       "organizacion",
@@ -2747,6 +2865,7 @@
     ],
     "fk": [
       "domicilio",
+      "tipo_sede",
       "centro_educativo",
       "organizacion"
     ],
@@ -2770,6 +2889,12 @@
         "refFieldName": "id",
         "children": {}
       },
+      "tipo_sede": {
+        "fieldName": "tipo_sede",
+        "refEntityName": "tipo_sede",
+        "refFieldName": "id",
+        "children": {}
+      },
       "centro_educativo": {
         "fieldName": "centro_educativo",
         "refEntityName": "centro_educativo",
@@ -2788,6 +2913,12 @@
       "domicilio": {
         "fieldName": "domicilio",
         "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": null
+      },
+      "tipo_sede": {
+        "fieldName": "tipo_sede",
+        "refEntityName": "tipo_sede",
         "refFieldName": "id",
         "parentId": null
       },
@@ -2967,6 +3098,12 @@
                     "refFieldName": "id",
                     "children": {}
                   },
+                  "tipo_sede": {
+                    "fieldName": "tipo_sede",
+                    "refEntityName": "tipo_sede",
+                    "refFieldName": "id",
+                    "children": {}
+                  },
                   "centro_educativo": {
                     "fieldName": "centro_educativo",
                     "refEntityName": "centro_educativo",
@@ -3072,6 +3209,12 @@
       "domicilio": {
         "fieldName": "domicilio",
         "refEntityName": "domicilio",
+        "refFieldName": "id",
+        "parentId": "sede"
+      },
+      "tipo_sede": {
+        "fieldName": "tipo_sede",
+        "refEntityName": "tipo_sede",
         "refFieldName": "id",
         "parentId": "sede"
       },

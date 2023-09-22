@@ -8,8 +8,8 @@ using System.Windows.Data;
 using Utils;
 using WpfAppMy.Data;
 using WpfAppMy.Values;
+using WpfAppMy.ViewModels;
 using WpfAppMy.Windows.AlumnoComision;
-using WpfAppMy.Windows.ViewModel;
 
 namespace WpfAppMy.Windows.Comision
 {
@@ -18,7 +18,7 @@ namespace WpfAppMy.Windows.Comision
     /// </summary>
     public partial class ListaSemestre : Window
     {
-        private ViewModel.ComisionSearch comisionSearch = new ();
+        private ComisionSearch comisionSearch = new ();
         private DAO.Sede sedeDAO = new ();
         private ObservableCollection<ComisionRel> comisionData = new();
 

@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel;
 
-namespace WpfAppMy.Data
+namespace 
 {
     public class Data_modalidad : INotifyPropertyChanged
     {

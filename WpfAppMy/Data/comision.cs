@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel;
 
-namespace WpfAppMy.Data
+namespace 
 {
     public class Data_comision : INotifyPropertyChanged
     {
@@ -94,6 +94,18 @@ namespace WpfAppMy.Data
         {
             get { return _identificacion; }
             set { _identificacion = value; NotifyPropertyChanged(); }
+        }
+        private string? _estado;
+        public string? estado
+        {
+            get { return _estado; }
+            set { _estado = value; NotifyPropertyChanged(); }
+        }
+        private string? _configuracion;
+        public string? configuracion
+        {
+            get { return _configuracion; }
+            set { _configuracion = value; NotifyPropertyChanged(); }
         }
         private string? _pfid;
         public string? pfid

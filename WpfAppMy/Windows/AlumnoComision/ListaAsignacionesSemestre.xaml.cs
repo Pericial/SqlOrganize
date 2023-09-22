@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Utils;
 using WpfAppMy.Values;
+using WpfAppMy.ViewModels;
 
 namespace WpfAppMy.Windows.AlumnoComision
 {
@@ -25,7 +26,7 @@ namespace WpfAppMy.Windows.AlumnoComision
     {
 
         private DAO.AlumnoComision dataDAO = new();
-        private ObservableCollection<ViewModel.Asignacion> data = new();
+        private ObservableCollection<Asignacion> data = new();
         public ListaAsignacionesSemestre()
         {
             InitializeComponent();
@@ -45,7 +46,7 @@ namespace WpfAppMy.Windows.AlumnoComision
             foreach(var item in list)
             {
                 var vd = ContainerApp.db.Values("domicilio", "domicilio").Set(item).Default("label");
-                var o = item.Obj<ViewModel.Asignacion>();
+                var o = item.Obj<Asignacion>();
                 o.comision__numero = item["sede-numero"].ToString() + item["comision-division"].ToString() + "/" + item["planificacion-anio"] + item["planificacion-semestre"];
                 o.domicilio__label = vd.Get("label")?.ToString();
 

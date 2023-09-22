@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
+using Utils;
 
 namespace WpfAppMy.Windows.AlumnoComision
 {
@@ -8,19 +9,21 @@ namespace WpfAppMy.Windows.AlumnoComision
     /// </summary>
     public partial class CargarNuevosAlumnos : Window
     {
-        private string? idComision;
+        private string? IdComision;
+
         public CargarNuevosAlumnos(string? idComision = null)
         {
 
             InitializeComponent();
-            this.idComision = idComision;
+            this.IdComision = idComision;
             this.comisionTextBox.Text = idComision;
             Loaded += CargarNuevosAlumnos_Loaded;
         }
 
         private void CargarNuevosAlumnos_Loaded(object sender, RoutedEventArgs e)
         {
-            LoadData();
+            var data = ContainerApp.dao.Get("comision", IdComision);
+            DataContext = data.Obj<Comision>
         }
 
         private void LoadData()

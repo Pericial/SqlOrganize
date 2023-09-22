@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel;
 
-namespace WpfAppMy.Data
+namespace 
 {
     public class Data_sede : INotifyPropertyChanged
     {
@@ -46,6 +46,12 @@ namespace WpfAppMy.Data
         {
             get { return _domicilio; }
             set { _domicilio = value; NotifyPropertyChanged(); }
+        }
+        private string? _tipo_sede;
+        public string? tipo_sede
+        {
+            get { return _tipo_sede; }
+            set { _tipo_sede = value; NotifyPropertyChanged(); }
         }
         private string? _centro_educativo;
         public string? centro_educativo
