@@ -101,7 +101,7 @@ namespace WpfAppMy.Forms.ListaModalidad
                             }
                         }
 
-                        Dictionary<string, object> r = v.Get();
+                        IDictionary<string, object> r = v.Get();
 
                         if (fieldId != null) { 
                             parentId = ContainerApp.db.Entity(entityName).relations[fieldId].parentId;
@@ -148,7 +148,7 @@ namespace WpfAppMy.Forms.ListaModalidad
             set { _pfid = value; NotifyPropertyChanged(); }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
         private void NotifyPropertyChanged([System.Runtime.CompilerServices.CallerMemberName] String propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

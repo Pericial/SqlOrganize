@@ -13,6 +13,7 @@
                 <RowDefinition Height = "Auto" />
                 <RowDefinition Height = "Auto" />
                 <RowDefinition Height = "Auto" />
+                <RowDefinition Height = "Auto" />
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -24,27 +25,38 @@
                 Margin = "2">Identificacion de comisión</Label>
 
             <TextBox
+                Name="labelSedeRTextBox"
                 Text="{Binding label_sede_r}"
                 Grid.Column="1"
             />
 
             <Label 
-                Name = "comisionesDataLabel"
                 Grid.Row="1"
+                Margin = "2">Encabezados</Label>
+
+            <TextBox
+                Name="headers"
+                Grid.Row="1"
+                Grid.Column="1"
+            />
+            
+            <Label 
+                Grid.Row="2"
                 Margin = "2">Comisiones data</Label>
 
             <TextBox
-                Name="data" 
-                Grid.Row="1"
+                Name="data"
+                Grid.Row="2"
                 Grid.Column="1"
                 AcceptsReturn="True"
+                AcceptsTab="True"
                 Height="250"
                 ScrollViewer.HorizontalScrollBarVisibility="Auto"
                 ScrollViewer.VerticalScrollBarVisibility="Auto"
             />
 
 
-            <StackPanel Grid.Row = "2" Grid.ColumnSpan = "2">
+            <StackPanel Grid.Row = "3" Grid.ColumnSpan = "2">
                 <Button Content = "_Procesar..." Click="ProcesarButton_Click" />
             </StackPanel>
         </Grid>

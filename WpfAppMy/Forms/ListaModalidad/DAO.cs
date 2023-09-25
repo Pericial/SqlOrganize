@@ -26,8 +26,6 @@ namespace WpfAppMy.Forms.ListaModalidad
         public IDictionary<string, object>? RowByEntityUnique(string entityName, IDictionary<string, object> source)
         {
             var q = ContainerApp.db.Query(entityName).Unique(source);
-            if (!q.IsUnique())
-                return null;
             return ContainerApp.DbCache().Dict(q);
         }
 
