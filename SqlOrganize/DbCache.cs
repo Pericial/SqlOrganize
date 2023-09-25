@@ -370,6 +370,18 @@ namespace SqlOrganize
                 Cache.Remove(d.entityName + d.id);
         }
 
+        public void Remove(string entityName, object id)
+        {
+            RemoveQueries();
+            Cache.Remove(entityName + id);
+        }
+
+        public void Remove(EntityValues values)
+        {
+            RemoveQueries();
+            Cache.Remove(values.entityName + values.Get(Db.config.id));
+        }
+
     }
 
     /*
