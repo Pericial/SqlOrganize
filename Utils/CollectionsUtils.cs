@@ -316,7 +316,18 @@ namespace Utils
             return sorted;
         }
 
+        public static string ToStringDict(this IDictionary<string, object?> param)
+        {
+            string dictionaryString = "{";
+            foreach (KeyValuePair<string, object?> keyValues in param)
+            {
+                dictionaryString += keyValues.Key + " : " + keyValues.Value?.ToString() + ", ";
+            }
+            return dictionaryString.TrimEnd(',', ' ') + "}";
+        }
     }
+
+    
 
 
 }
