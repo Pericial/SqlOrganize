@@ -1,10 +1,5 @@
 ﻿using SqlOrganize;
 using SqlOrganizeMy;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WpfAppMy.Values;
 
 namespace WpfAppMy
@@ -27,6 +22,9 @@ namespace WpfAppMy
 
                 case "comision":
                     return new Comision(this, entityName, fieldId);
+
+                case "persona":
+                    return new Persona(this, entityName, fieldId);
             }
 
             return new EntityValues(this, entityName, fieldId);
