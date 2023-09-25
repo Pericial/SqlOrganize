@@ -94,18 +94,6 @@ namespace WpfAppMy.Data
             get { return _comision__identificacion; }
             set { _comision__identificacion = value; NotifyPropertyChanged(); }
         }
-        private string? _comision__estado;
-        public string? comision__estado
-        {
-            get { return _comision__estado; }
-            set { _comision__estado = value; NotifyPropertyChanged(); }
-        }
-        private string? _comision__configuracion;
-        public string? comision__configuracion
-        {
-            get { return _comision__configuracion; }
-            set { _comision__configuracion = value; NotifyPropertyChanged(); }
-        }
         private string? _comision__pfid;
         public string? comision__pfid
         {
@@ -153,12 +141,6 @@ namespace WpfAppMy.Data
         {
             get { return _sede__domicilio; }
             set { _sede__domicilio = value; NotifyPropertyChanged(); }
-        }
-        private string? _sede__tipo_sede;
-        public string? sede__tipo_sede
-        {
-            get { return _sede__tipo_sede; }
-            set { _sede__tipo_sede = value; NotifyPropertyChanged(); }
         }
         private string? _sede__centro_educativo;
         public string? sede__centro_educativo
@@ -237,18 +219,6 @@ namespace WpfAppMy.Data
         {
             get { return _domicilio__localidad; }
             set { _domicilio__localidad = value; NotifyPropertyChanged(); }
-        }
-        private string? _tipo_sede__id;
-        public string? tipo_sede__id
-        {
-            get { return _tipo_sede__id; }
-            set { _tipo_sede__id = value; NotifyPropertyChanged(); }
-        }
-        private string? _tipo_sede__descripcion;
-        public string? tipo_sede__descripcion
-        {
-            get { return _tipo_sede__descripcion; }
-            set { _tipo_sede__descripcion = value; NotifyPropertyChanged(); }
         }
         private string? _centro_educativo__id;
         public string? centro_educativo__id

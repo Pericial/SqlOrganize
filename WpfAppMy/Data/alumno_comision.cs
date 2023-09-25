@@ -17,12 +17,6 @@ namespace WpfAppMy.Data
             get { return _creado; }
             set { _creado = value; NotifyPropertyChanged(); }
         }
-        private bool? _activo;
-        public bool? activo
-        {
-            get { return _activo; }
-            set { _activo = value; NotifyPropertyChanged(); }
-        }
         private string? _observaciones;
         public string? observaciones
         {

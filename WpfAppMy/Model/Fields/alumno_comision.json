@@ -34,21 +34,6 @@
     "defaultValue": "current_timestamp()",
     "maxLength": null
   },
-  "activo": {
-    "checks": {
-      "type": "bool"
-    },
-    "resets": {},
-    "name": "activo",
-    "alias": null,
-    "entityName": "alumno_comision",
-    "refEntityName": null,
-    "refFieldName": null,
-    "dataType": "bool",
-    "notNull": false,
-    "defaultValue": false,
-    "maxLength": 1
-  },
   "observaciones": {
     "checks": {
       "type": "string"

@@ -272,44 +272,6 @@
     "defaultValue": null,
     "maxLength": 45
   },
-  "estado": {
-    "checks": {
-      "type": "string"
-    },
-    "resets": {
-      "trim": " ",
-      "removeMultipleSpaces": true,
-      "nullIfEmpty": true
-    },
-    "name": "estado",
-    "alias": null,
-    "entityName": "comision",
-    "refEntityName": null,
-    "refFieldName": null,
-    "dataType": "string",
-    "notNull": false,
-    "defaultValue": "Confirma",
-    "maxLength": 45
-  },
-  "configuracion": {
-    "checks": {
-      "type": "string"
-    },
-    "resets": {
-      "trim": " ",
-      "removeMultipleSpaces": true,
-      "nullIfEmpty": true
-    },
-    "name": "configuracion",
-    "alias": null,
-    "entityName": "comision",
-    "refEntityName": null,
-    "refFieldName": null,
-    "dataType": "string",
-    "notNull": false,
-    "defaultValue": "Histórica",
-    "maxLength": 45
-  },
   "pfid": {
     "checks": {
       "type": "string"

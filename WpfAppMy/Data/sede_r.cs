@@ -52,18 +52,6 @@ namespace WpfAppMy.Data
             get { return _domicilio__localidad; }
             set { _domicilio__localidad = value; NotifyPropertyChanged(); }
         }
-        private string? _tipo_sede__id;
-        public string? tipo_sede__id
-        {
-            get { return _tipo_sede__id; }
-            set { _tipo_sede__id = value; NotifyPropertyChanged(); }
-        }
-        private string? _tipo_sede__descripcion;
-        public string? tipo_sede__descripcion
-        {
-            get { return _tipo_sede__descripcion; }
-            set { _tipo_sede__descripcion = value; NotifyPropertyChanged(); }
-        }
         private string? _centro_educativo__id;
         public string? centro_educativo__id
         {

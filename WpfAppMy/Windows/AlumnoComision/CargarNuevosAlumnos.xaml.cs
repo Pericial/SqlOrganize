@@ -129,7 +129,7 @@ namespace WpfAppMy.Windows.AlumnoComision
                     Set("persona", persona.Get("id")).
                     Set("alumno", alumno.Get("id"));
                 query = ContainerApp.db.Query("alumno_comisoin").Unique(asignacion);
-                var alumnoExistenteData = ContainerApp.dbCache.Dict(query);
+                //var alumnoExistenteData = ContainerApp.dbCache.Dict(query);
 
                 #endregion
 
