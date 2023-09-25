@@ -9,12 +9,12 @@ namespace WpfAppMy
 {
     public class Config : SqlOrganize.Config
     {
-        public string emailDocentePassword { get; set; }
-        public string emailDocenteHost { get; set; }
-        public string emailDocenteFromAddress { get; set; }
-        public string emailDocenteFromName { get; set; }
-        public string emailDocenteBcc { get; set; }
-        public string emailDocenteUser { get; set; }
+        public string? emailDocentePassword { get; set; }
+        public string? emailDocenteHost { get; set; }
+        public string? emailDocenteFromAddress { get; set; }
+        public string? emailDocenteFromName { get; set; }
+        public string? emailDocenteBcc { get; set; }
+        public string? emailDocenteUser { get; set; }
 
     }
 }
