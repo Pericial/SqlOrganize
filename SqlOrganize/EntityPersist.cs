@@ -22,6 +22,12 @@ namespace SqlOrganize
 
         public string sql { get; set; } = "";
 
+        /// <summary>
+        /// Sintesis de elementos persistidos
+        /// </summary>
+        /// <remarks>
+        /// Para poder identificar rapidamente todas las entidades que se modificaron de la base de datos
+        /// </remarks>
         public List<(string entityName, object id)> detail = new();
 
         public EntityPersist(Db _db, string? _entityName = null)
@@ -37,6 +43,11 @@ namespace SqlOrganize
         }
 
         abstract protected EntityPersist _Update(IDictionary<string, object> row, string? _entityName = null);
+
+        public EntityPersist Update(EntityValues values)
+        {
+            return Update(values.values, values.entityName);
+        }
 
         public EntityPersist Update(IDictionary<string, object> row, string? _entityName = null)
         {
@@ -161,6 +172,11 @@ WHERE " + id + " = @" + count + @";
 
             List<object> ids = new() { source[idKey] };
             return UpdateValue(key, value, ids, _entityName);
+        }
+
+        public EntityPersist Insert(EntityValues values)
+        {
+            return Insert(values.values, values.entityName);
         }
 
         public EntityPersist Insert(IDictionary<string, object> row, string? _entityName = null)
