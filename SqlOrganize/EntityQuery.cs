@@ -47,12 +47,6 @@ namespace SqlOrganize
 
         public Dictionary<string, object> parametersDict = new ();
 
-
-        /// <summary>
-        /// Diccionario utilizado para definir la busquedaa traves de campos unicos
-        /// </summary>
-        protected Dictionary<string, object> whereUnique { get; set; } = new();
-
         public EntityQuery(Db _db, string _entityName)
         {
             db = _db;
@@ -88,21 +82,21 @@ namespace SqlOrganize
             return this;
         }
 
-        public EntityQuery Unique(IDictionary<string, object> row)
+
+        public EntityQuery Unique(EntityValues values)
         {
-            whereUnique.Merge(row);
-            return this;
+            return Unique(values.values);
         }
 
-        protected string SqlWhereUnique()
+        public EntityQuery Unique(IDictionary<string, object> row)
         {
-            if (whereUnique.IsNullOrEmpty())
-                return "";
+            if (row.IsNullOrEmpty())
+                throw new Exception("El parametro de condicion unica esta vacio");
 
             List<string> whereUniqueList = new();
             foreach (string fieldName in db.Entity(entityName).unique)
             {
-                foreach (var (key, value) in whereUnique)
+                foreach (var (key, value) in row)
                 {
                     if (key == fieldName)
                     {
@@ -118,78 +112,29 @@ namespace SqlOrganize
             if (whereUniqueList.Count > 0)
                 w = "(" + String.Join(") OR (", whereUniqueList) + ")";
 
-            string ww = "";
+            string ww;
             foreach(var um in db.Entity(entityName).uniqueMultiple)
             {
-                ww = UniqueMultiple(um);
+                ww = UniqueMultiple(um, row);
                 if (!ww.IsNullOrEmpty())
                     w += (w.IsNullOrEmpty()) ? ww : " OR " + ww;
             }
 
-            ww = UniqueMultiple(db.Entity(entityName).pk);
+            ww = UniqueMultiple(db.Entity(entityName).pk, row);
             if (!ww.IsNullOrEmpty())
                 w += (w.IsNullOrEmpty()) ? ww : " OR " + ww;
 
             if (w.IsNullOrEmpty())
-                throw new Exception("Se intento definir una condicion unica sin resultado");
-            return w;
+                throw new Exception("No se pudo definir condicion de campo unico con el parametro indicado");
+
+            where += (where.IsNullOrEmpty()) ? w : " AND (" + w + ")";
+
+            return this;
         }
 
-        /// <summary>
-        /// Verificar si se encuentra correctamente definida condicion de campo unico
-        /// </summary>
-        /// <returns>true si existe condicion de campo unico</returns>
-        public bool IsUnique()
-        {
-            if (whereUnique.IsNullOrEmpty())
-                return false;
+       
 
-            foreach (string fieldName in db.Entity(entityName).unique)
-                foreach (var (key, value) in whereUnique)
-                    if (key == fieldName)
-                        return true;
-                   
-            
-            foreach(var um in db.Entity(entityName).uniqueMultiple) {
-                bool e = IsUniqueMultiple(um);
-                if (e)
-                    return true;
-
-            }
-
-            return IsUniqueMultiple(db.Entity(entityName).pk);
-        }
-
-        protected bool IsUniqueMultiple(List<string> fields)
-        {
-            if (fields.IsNullOrEmpty())
-                return false;
-
-            bool existsUniqueMultiple = true;
-            List<string> whereMultipleList = new();
-            foreach (string field in fields)
-            {
-                if (!existsUniqueMultiple)
-                    break;
-
-                existsUniqueMultiple = false;
-
-                foreach (var (key, value) in whereUnique)
-                    if (key == field)
-                    {
-                        whereMultipleList.Add(key);
-                        existsUniqueMultiple = true;
-                        break;
-                    }
-                
-            }
-            if (existsUniqueMultiple && whereMultipleList.Count > 0)
-                return true;
-
-            return false;
-        }
-
-        protected string UniqueMultiple(List<string> fields)
+        protected string UniqueMultiple(List<string> fields, IDictionary<string, object> param)
         {
             if (fields.IsNullOrEmpty())
                 return "";
@@ -203,7 +148,7 @@ namespace SqlOrganize
 
                 existsUniqueMultiple = false;
 
-                foreach(var (key, value) in whereUnique)
+                foreach(var (key, value) in param)
                     if (key == field)
                     {
                         var v = (value == null) ? DBNull.Value : value;
@@ -437,9 +382,6 @@ namespace SqlOrganize
 
         protected string SqlWhere()
         {
-            string whereUnique = SqlWhereUnique();
-            if(!whereUnique.IsNullOrEmpty())
-                where += (where.IsNullOrEmpty()) ? whereUnique : " AND (" + whereUnique + ")";
             return (where.IsNullOrEmpty()) ? "" : "WHERE " + Traduce(where!) + @"
 ";
         }
@@ -525,6 +467,8 @@ namespace SqlOrganize
             return q.ColOfObj<T>();
         }
 
+  
+
         public IDictionary<string, object> Dict()
         {
             var q = db.Query();
@@ -594,7 +538,6 @@ namespace SqlOrganize
             eq.fields = fields;
             eq.select = select;
             eq.order = order;
-            eq.whereUnique = whereUnique;
             return eq;
         }
     }
