@@ -67,8 +67,6 @@ namespace WpfAppMy.Windows.ProcesarDocentesProgramaFines
 
             if (source.ContainsKey(ContainerApp.config.id) && !source[ContainerApp.config.id].IsNullOrEmpty())
                 q.Where("($" + ContainerApp.config.id + " != @0)").Parameters(source[ContainerApp.config.id]);
-            if (!q.IsUnique())
-                return null;
 
             return ContainerApp.dbCache.Dict(q);
         }

@@ -41,7 +41,7 @@ namespace WpfAppMy.Windows.ProcesarDocentesProgramaFines
                 var row = dao.RowByEntityUnique("persona", vPersona.values);
                 if (row != null) {
                     EntityValues vPersonaAux = ContainerApp.db.Values("persona").Set(row);
-                    Dictionary<string, object> valuesToUpdate = vPersonaAux.Compare(vPersona.values);
+                    IDictionary<string, object> valuesToUpdate = vPersonaAux.Compare(vPersona.values);
                     vPersonaAux.SetNotNull(valuesToUpdate);
                     vPersona = vPersonaAux;
                     vPersona.Reset();
