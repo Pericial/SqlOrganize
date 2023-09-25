@@ -34,12 +34,11 @@ namespace SqlOrganize
             return this;
         }
 
-        public EntityValues Set(IDictionary<string, object> row, string? fieldId = null)
+        public EntityValues Set(IDictionary<string, object> row)
         {
-            fieldId = fieldId.IsNullOrEmpty() ? Pf() : fieldId + "-";
             foreach (var fieldName in db.FieldNames(entityName))
-                if (row.ContainsKey(fieldId + fieldName))
-                    Set(fieldName, row[fieldId + fieldName]);
+                if (row.ContainsKey(Pf() + fieldName))
+                    Set(fieldName, row[Pf() + fieldName]);
 
             return this;
         }
