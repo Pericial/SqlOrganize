@@ -46,8 +46,7 @@ namespace WpfAppMy.Windows.AlumnoComision.DesactivarAlumnosNoCalificados
             }
             if(ids.Count > 0) { 
                 alumnoComisionGrid.ItemsSource = data;
-                var p = ContainerApp.db.Persist("alumno_comision").UpdateValue("estado", "No activo", ids).Exec();
-                ContainerApp.dbCache.Remove(p.detail);
+                ContainerApp.db.Persist("alumno_comision").UpdateValue("estado", "No activo", ids).Exec().RemoveCache();
             }
 
 

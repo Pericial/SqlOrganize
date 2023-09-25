@@ -26,13 +26,13 @@ namespace WpfAppMy
             emailDocenteBcc = ConfigurationManager.AppSettings.Get("emailDocenteBcc"),
         };
 
-        public static Db db = new DbApp(config);
-
         public static MemoryCache cache = new MemoryCache(new MemoryCacheOptions());
 
-        public static DbCache dbCache = new DbCache(db, cache);
+        public static Db db = new DbApp(config, cache);
 
-        public static SqlOrganize.DAO dao = new (db, dbCache);
+
+
+        public static SqlOrganize.DAO dao = new (db);
 
         public static Config Config()
         {
@@ -43,9 +43,5 @@ namespace WpfAppMy
             return db;
         }
 
-        public static DbCache DbCache()
-        {
-            return dbCache;
-        }
     }
 }

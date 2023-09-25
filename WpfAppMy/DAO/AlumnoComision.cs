@@ -24,7 +24,7 @@ namespace WpfAppMy.DAO
             var alumnoComision_ = AsignacionesActivasPorComision(comision);
             var idAlumnos = alumnoComision_.ColOfVal<object>("alumno").Distinct().ToList();
             var idPlan = alumnoComision_.ElementAt(0)["planificacion-plan"];
-            var q = ContainerApp.Db().Query("calificacion")
+            return ContainerApp.Db().Query("calificacion")
                 .Select("$SUM($disposicion) AS cantidad")
                 .Group("$alumno")
                 .Size(0)
@@ -34,9 +34,8 @@ namespace WpfAppMy.DAO
                     AND ($nota_final >= 7 OR $crec >= 4)  
                  ")
                 .Having("SUM($disposicion) > 3")
-                .Parameters(idAlumnos, idPlan);
+                .Parameters(idAlumnos, idPlan).ColumnCache() ;
 
-            return ContainerApp.DbCache().Column<object>(q);
 
 
         }
@@ -44,7 +43,7 @@ namespace WpfAppMy.DAO
 
         public IEnumerable<object> IdsAlumnosDeComisionesAutorizadasPorSemestre(object anio, object semestre)
         {
-            var q = ContainerApp.Db().Query("alumno_comision")
+            return ContainerApp.Db().Query("alumno_comision")
                 .Fields("$alumno")
                 .Size(0)
                 .Where(@"
@@ -52,13 +51,12 @@ namespace WpfAppMy.DAO
                     AND $calendario-semestre = @1 
                     AND $comision-autorizada = true
                 ")
-                .Parameters(anio, semestre);
+                .Parameters(anio, semestre).ColumnCache() ;
 
-            return ContainerApp.DbCache().Column<object>(q);
         }
         public IEnumerable<object> IdsAlumnosActivosDeComisionesAutorizadasPorSemestre(object anio, object semestre)
         {
-            var q = ContainerApp.Db().Query("alumno_comision")
+            return ContainerApp.Db().Query("alumno_comision")
                 .Fields("$alumno")
                 .Size(0)
                 .Where(@"
@@ -67,14 +65,13 @@ namespace WpfAppMy.DAO
                     AND $comision-autorizada = true
                     AND $estado = 'Activo'
                 ")
-                .Parameters(anio, semestre);
+                .Parameters(anio, semestre).ColumnCache();
 
-            return ContainerApp.DbCache().Column<object>(q);
         }
 
         public IEnumerable<object> IdsAlumnosActivosDeComisionesAutorizadasPorSemestreSinGenero(object anio, object semestre)
         {
-            var q = ContainerApp.Db().Query("alumno_comision")
+            return ContainerApp.Db().Query("alumno_comision")
                 .Fields("$alumno")
                 .Size(0)
                 .Where(@"
@@ -84,64 +81,56 @@ namespace WpfAppMy.DAO
                     AND $estado = 'Activo'
                     AND $persona-genero IS NULL
                 ")
-                .Parameters(anio, semestre);
-
-            return ContainerApp.DbCache().Column<object>(q);
+                .Parameters(anio, semestre).ColumnCache() ;
         }
 
 
         public IEnumerable<Dictionary<string, object>> AsignacionesPorComisiones(List<object> idsComisiones)
         {
-            var q = ContainerApp.Db().Query("alumno_comision")
+            return ContainerApp.Db().Query("alumno_comision")
                 .Fields()
                 .Size(0)
                 .Where(@"
                     $comision IN (@0) 
                 ")
-                .Parameters(idsComisiones);
-            return ContainerApp.DbCache().ColOfDict(q);
+                .Parameters(idsComisiones).ColOfDictCache();
         }
 
         public IEnumerable<Dictionary<string, object>> AsignacionesActivasPorComisiones(IEnumerable<object> idsComisiones)
         {
-            var q = ContainerApp.Db().Query("alumno_comision")
+            return ContainerApp.Db().Query("alumno_comision")
                 .Fields()
                 .Size(0)
                 .Where(@"
                     $comision IN (@0) AND $estado = 'Activo'
                 ")
-                .Parameters(idsComisiones);
-            return ContainerApp.DbCache().ColOfDict(q);
+                .Parameters(idsComisiones).ColOfDictCache();
         }
 
         public IEnumerable<Dictionary<string, object>> AsignacionesActivasPorComision(object comision)
         {
-            var q = ContainerApp.Db().Query("alumno_comision")
+            return ContainerApp.Db().Query("alumno_comision")
                 .Size(0)
                 .Where(@"
                     $comision = @0 AND $activo = true
   
                 ")
-                .Parameters(comision);
-
-            return ContainerApp.DbCache().ColOfDict(q);
+                .Parameters(comision).ColOfDictCache();
         }
 
         public IEnumerable<object> IdsAlumnosPorComisiones(List<object> comisiones)
         {
-            var q = ContainerApp.Db().Query("alumno_comision")
+            return ContainerApp.Db().Query("alumno_comision")
                 .Fields("alumno")
                 .Size(0)
                 .Where(@"
                     $comision IN (@0)
-                ");
-
-            return ContainerApp.DbCache().Column<object>(q);
+                ").ColumnCache();
         }
 
         public IEnumerable<object> IdAlumnosConPlanDiferenteDeComision(object comision, object plan)
         {
-            var q = ContainerApp.Db().Query("alumno_comision")
+            return ContainerApp.Db().Query("alumno_comision")
                .Fields("alumno")
                .Size(0)
                .Where(@"
@@ -149,15 +138,14 @@ namespace WpfAppMy.DAO
                     AND $comision = @1
                     AND $activo = true
                 ")
-               .Parameters(plan, comision);
+               .Parameters(plan, comision).ColumnCache();
 
-            return ContainerApp.DbCache().Column<object>(q);
         }
 
 
         public IEnumerable<object> IdsAlumnosActivosDuplicadosPorSemestre(object anio, object semestre)
         {
-            var q = ContainerApp.Db().Query("alumno_comision")
+            return ContainerApp.Db().Query("alumno_comision")
                .Select("COUNT($id) AS cantidad")
                .Group("$alumno")
                .Size(0)
@@ -167,35 +155,31 @@ namespace WpfAppMy.DAO
                     AND $estado = 'Activo'
                 ")
                .Having("cantidad > 1")
-               .Parameters(anio, semestre);
-
-            return ContainerApp.DbCache().Column<object>(q, "alumno");
+               .Parameters(anio, semestre).ColumnCache();
         }
 
         public IEnumerable<Dictionary<string, object>> AsignacionesActivasDeComisionesAutorizadasPorSemestre(object anio, object semestre)
         {
-            var q = ContainerApp.Db().Query("alumno_comision")
+            return ContainerApp.Db().Query("alumno_comision")
                 .Size(0)
                 .Where("$calendario-anio = @0 AND $calendario-semestre = @1 AND $comision-autorizada = true AND $estado = 'Activo'")
-                .Parameters(anio, semestre);
+                .Parameters(anio, semestre).ColOfDictCache();
 
-            return ContainerApp.DbCache().ColOfDict(q);
         }
 
         public IEnumerable<Dictionary<string, object>> AsignacionesDeComisionesAutorizadasPorSemestre(object anio, object semestre)
         {
-            var q = ContainerApp.Db().Query("alumno_comision")
+            return ContainerApp.Db().Query("alumno_comision")
                 .Size(0)
                 .Where("$calendario-anio = @0 AND $calendario-semestre = @1 AND $comision-autorizada = true")
-                .Parameters(anio, semestre);
+                .Parameters(anio, semestre).ColOfDictCache();
 
-            return ContainerApp.DbCache().ColOfDict(q);
         }
 
         public IEnumerable<Dictionary<string, object>> AlumnosDeComisionesAutorizadasPorSemestre(object anio, object semestre)
         {
             IEnumerable<object> ids = IdsAlumnosDeComisionesAutorizadasPorSemestre(anio, semestre);
-            return ContainerApp.DbCache().ColOfDict("alumno", ids.ToArray());
+            return ContainerApp.db.Query("alumno").ColOfDictCacheByIds(ids.ToArray());
         }
 
         public IEnumerable<Dictionary<string, object>> AlumnosActivosDeComisionesAutorizadasPorSemestre(object anio, object semestre)

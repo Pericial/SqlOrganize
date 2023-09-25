@@ -30,9 +30,10 @@ namespace WpfAppMy.Forms.ListaReferentesSemestre.DAO
                 q.Parameters(search.autorizada!);
                 count++;
             }
+
+            return q.ColumnCache();
     
 
-            return ContainerApp.DbCache().Column<object>(q);
         }
 
         

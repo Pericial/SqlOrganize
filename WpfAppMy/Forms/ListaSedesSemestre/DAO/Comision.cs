@@ -32,13 +32,12 @@ namespace WpfAppMy.Forms.ListaSedesSemestre.DAO
             }
     
 
-            return ContainerApp.DbCache().ColOfDict(q);
+            return q.ColOfDictCache();
         }
 
         public void UpdateValueRel(string key, object value, Dictionary<string, object> source)
         {
-            EntityPersist p = ContainerApp.Db().Persist("comision").UpdateValueRel(key, value, source).Exec();
-            ContainerApp.DbCache().Remove(p.detail);
+            EntityPersist p = ContainerApp.Db().Persist("comision").UpdateValueRel(key, value, source).Exec().RemoveCache();
         }
 
     }

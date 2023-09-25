@@ -38,8 +38,7 @@ namespace WpfAppMy.Windows.AlumnoComision.ActualizarPlanAlumnos
                 Dictionary<string, object> row = new() { { "plan", comision["planificacion-plan"] } };
                 persist.UpdateIds(row, idAlumnos);
             }
-            persist.Transaction();
-            ContainerApp.dbCache.Remove(persist.detail);
+            persist.Transaction().RemoveCache();
         }
     }
 }

@@ -62,8 +62,7 @@ namespace WpfAppMy.Windows.AlumnoComision
 
                     if (!genero.IsNullOrEmpty())
                     {
-                        p.UpdateValue("genero", genero, new List<object>() { a.persona__id }).Exec();
-                        ContainerApp.dbCache.Remove(p.detail);
+                        p.UpdateValue("genero", genero, new List<object>() { a.persona__id }).Exec().RemoveCache();
                         genero = null;
                         break;
                     }

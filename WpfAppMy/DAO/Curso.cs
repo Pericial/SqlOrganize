@@ -11,7 +11,7 @@ namespace WpfAppMy.DAO
     {
         public IEnumerable<Dictionary<string, object>> CursosAutorizadosSemestre(object calendarioAnio, object calendarioSemestre, object? sede = null, bool? autorizada = null)
         {
-            var q = ContainerApp.Db().Query("curso")
+            return ContainerApp.Db().Query("curso")
                 .Fields()
                 .Size(0)
                 .Where(@"
@@ -19,9 +19,8 @@ namespace WpfAppMy.DAO
                     AND $calendario-semestre = @1 
                     AND $comision-autorizada = true 
                 ")
-                .Parameters(calendarioAnio, calendarioSemestre);
+                .Parameters(calendarioAnio, calendarioSemestre).ColOfDictCache();
 
-            return ContainerApp.DbCache().ColOfDict(q);
         }
     }
 }

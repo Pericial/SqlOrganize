@@ -13,27 +13,23 @@ namespace WpfAppMy.Forms.ListaModalidad
 
         public IEnumerable<Dictionary<string, object>> AllModalidad()
         {
-            var q = ContainerApp.Db().Query("modalidad");
-            return ContainerApp.DbCache().ColOfDict(q);
+            return ContainerApp.Db().Query("modalidad").ColOfDictCache();
         }
 
         public IDictionary<string, object>? RowByEntityFieldValue(string entityName, string fieldName, object value)
         {
-            var q =  ContainerApp.db.Query(entityName).Where("$"+fieldName+" = @0").Parameters(value);
-            return ContainerApp.DbCache().Dict(q);
+            return ContainerApp.db.Query(entityName).Where("$"+fieldName+" = @0").Parameters(value).DictCache();
         }
 
         public IDictionary<string, object>? RowByEntityUnique(string entityName, IDictionary<string, object> source)
         {
-            var q = ContainerApp.db.Query(entityName).Unique(source);
-            return ContainerApp.DbCache().Dict(q);
+            return ContainerApp.db.Query(entityName).Unique(source).DictCache();
         }
 
 
         public void UpdateValueRelModalidad(string key, object value, Dictionary<string, object> source)
         {
-            EntityPersist p = ContainerApp.Db().Persist("modalidad").UpdateValueRel(key, value, source).Exec();
-            ContainerApp.DbCache().Remove(p.detail);
+            EntityPersist p = ContainerApp.Db().Persist("modalidad").UpdateValueRel(key, value, source).Exec().RemoveCache();
         }
 
 

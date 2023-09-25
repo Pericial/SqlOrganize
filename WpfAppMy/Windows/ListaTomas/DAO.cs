@@ -10,16 +10,15 @@ namespace WpfAppMy.Windows.ListaTomas
     {
         public IEnumerable<Dictionary<string, object>> TomaAll(Search search)
         {
-            var q = ContainerApp.Db().Query("toma")
+            return ContainerApp.Db().Query("toma")
                 .Fields()
                 .Size(0)
                 .Where(@"
                     $calendario-anio = @0 
                     AND $calendario-semestre = @1 
                 ")
-                .Parameters(search.calendario__anio, search.calendario__semestre);
+                .Parameters(search.calendario__anio, search.calendario__semestre).ColOfDictCache();
 
-            return ContainerApp.DbCache().ColOfDict(q);
         }
 
     }

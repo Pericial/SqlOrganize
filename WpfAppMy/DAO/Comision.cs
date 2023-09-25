@@ -13,8 +13,7 @@ namespace WpfAppMy.DAO
 
         public void UpdateValueRel(string key, object value, Dictionary<string, object> source)
         {
-            EntityPersist p = ContainerApp.Db().Persist("comision").UpdateValueRel(key, value, source).Exec();
-            ContainerApp.DbCache().Remove(p.detail);
+            EntityPersist p = ContainerApp.Db().Persist("comision").UpdateValueRel(key, value, source).Exec().RemoveCache();
         }
 
         public IEnumerable<Dictionary<string, object>> ComisionesSemestre(object calendarioAnio, object calendarioSemestre, object? sede = null, bool? autorizada = null)
@@ -41,12 +40,12 @@ namespace WpfAppMy.DAO
                 q.Parameters(sede!);
             }
 
-            return ContainerApp.DbCache().ColOfDict(q);
+            return q.ColOfDictCache();
         }
 
         public IEnumerable<object> IdsComisionesAutorizadasConSiguientePorSemestre(object calendarioAnio, object calendarioSemestre)
         {
-            var q = ContainerApp.Db().Query("comision")
+            return ContainerApp.Db().Query("comision")
                 .Fields("id")
                 .Size(0)
                 .Where(@"
@@ -55,40 +54,37 @@ namespace WpfAppMy.DAO
                     AND $autorizada = true
                     AND $comision_siguiente IS NOT NULL
                 ")
-                .Parameters(calendarioAnio, calendarioSemestre);
-            return ContainerApp.DbCache().Column<object>(q);
+                .Parameters(calendarioAnio, calendarioSemestre).ColumnCache();
         }
 
         public IEnumerable<Dictionary<string, object>> ComisionesPorIds(List<object> ids)
         {
-            var q = ContainerApp.Db().Query("comision")
+            return ContainerApp.Db().Query("comision")
                 .Fields()
                 .Size(0)
                 .Where(@"
                     $id IN ( @0 ) 
                 ")
-                .Parameters(ids);
+                .Parameters(ids).ColOfDictCache();
             
-            return ContainerApp.DbCache().ColOfDict(q);
         }
 
         public IEnumerable<Dictionary<string, object>> ComisionesConSiguientePorCalendario(object anio, object semestre)
         {
-            var q = ContainerApp.Db().Query("comision")
+            return ContainerApp.Db().Query("comision")
                 .Size(0)
                 .Where(@"
                     $calendario-anio = @0
                     AND $calendario-semestre = @1 
                     AND $comision_siguiente IS NOT NULL
                 ")
-                .Parameters(anio, semestre);
+                .Parameters(anio, semestre).ColOfDictCache();
 
-            return ContainerApp.DbCache().ColOfDict(q);
         }
 
         public IEnumerable<object> IdsComisionesAutorizadasPorCalendario(object anio, object semestre)
         {
-            var q = ContainerApp.Db().Query("comision")
+            return ContainerApp.Db().Query("comision")
                 .Fields(ContainerApp.db.config.id)
                 .Size(0)
                 .Where(@"
@@ -96,26 +92,14 @@ namespace WpfAppMy.DAO
                     AND $calendario-semestre = @1
                     AND $autorizada = true
                 ")
-                .Parameters(anio, semestre);
+                .Parameters(anio, semestre).ColumnCache();
 
-            return ContainerApp.DbCache().Column<object>(q);
         }
 
         public IEnumerable<Dictionary<string, object>> ComisionesAutorizadasPorSemestre(object anio, object semestre)
         {
             IEnumerable<object> ids = IdsComisionesAutorizadasPorCalendario(anio, semestre);
-            return ContainerApp.DbCache().ColOfDict("comision", ids);
-
-            var q = ContainerApp.Db().Query("comision")
-                .Size(0)
-                .Where(@"
-                    $calendario-anio = @0
-                    AND $calendario-semestre = @1
-                    AND $autorizada = true
-                ")
-                .Parameters(anio, semestre);
-
-            return ContainerApp.DbCache().ColOfDict(q);
+            return ContainerApp.db.Query("comision").ColOfDictCacheByIds(ids);
         }
     }
 }

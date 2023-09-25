@@ -17,8 +17,7 @@ namespace WpfAppMy
     {
         public IDictionary<string, object>? RowByEntityFieldValue(string entityName, string fieldName, object value)
         {
-            var q = ContainerApp.db.Query(entityName).Where("$" + fieldName + " = @0").Parameters(value);
-            return ContainerApp.dbCache.Dict(q);
+            return ContainerApp.db.Query(entityName).Where("$" + fieldName + " = @0").Parameters(value).DictCache();
         }
 
         public IDictionary<string, object>? RowByEntityUnique(string entityName, IDictionary<string, object> source)
@@ -28,7 +27,7 @@ namespace WpfAppMy
             if (!source[ContainerApp.config.id].IsNullOrEmpty())
                 q.Where("($" + ContainerApp.config.id + " != @0)").Parameters(source[ContainerApp.config.id]);
 
-            return ContainerApp.dbCache.Dict(q);
+            return q.DictCache();
         }
 
         public void Persist(EntityValues v)
@@ -36,14 +35,12 @@ namespace WpfAppMy
             if (v.Get(ContainerApp.config.id).IsNullOrEmpty())
             {
                 v.Default().Reset();
-                var p = ContainerApp.db.Persist(v.entityName).Insert(v.values).Exec();
-                ContainerApp.dbCache.Remove(p.detail);
+                var p = ContainerApp.db.Persist(v.entityName).Insert(v.values).Exec().RemoveCache();
             }
             else
             {
                 v.Reset();
-                var p = ContainerApp.db.Persist(v.entityName).Update(v.values).Exec();
-                ContainerApp.dbCache.Remove(p.detail);
+                var p = ContainerApp.db.Persist(v.entityName).Update(v.values).Exec().RemoveCache();
             }
         }
 

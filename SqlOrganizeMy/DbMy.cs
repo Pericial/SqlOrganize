@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.Extensions.Caching.Memory;
 using MySql.Data.MySqlClient;
 using SqlOrganize;
 
@@ -19,8 +20,8 @@ namespace SqlOrganizeMy
         /// <example>
         ///   connectionString = "server=127.0.0.1;uid=root;pwd=12345;database=test"
         /// </example>
-        public DbMy(Config config): base(config)
-        {            
+        public DbMy(Config config, MemoryCache? cache = null) : base(config, cache)
+        {
             /*
             prueba de conexion
             Las conexiones se realizan directamente cuando se requiere la eje-

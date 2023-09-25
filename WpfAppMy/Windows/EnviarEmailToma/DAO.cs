@@ -10,7 +10,7 @@ namespace WpfAppMy.Windows.EnviarEmailToma
     {
         public IEnumerable<Dictionary<string, object>> TomaAll()
         {
-            var q = ContainerApp.Db().Query("toma")
+            return ContainerApp.Db().Query("toma")
                 .Fields()
                 .Size(0)
                 .Where(@"
@@ -20,9 +20,8 @@ namespace WpfAppMy.Windows.EnviarEmailToma
                     AND $docente-email_abc IS NOT NULL
                 ")
                 .Order("$comision-pfid ASC")
-                .Parameters("2023", "2");
+                .Parameters("2023", "2").ColOfDictCache();
 
-            return ContainerApp.DbCache().ColOfDict(q);
         }
     }
 }

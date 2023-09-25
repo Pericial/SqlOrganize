@@ -10,7 +10,7 @@ namespace WpfAppMy.DAO
     {
         public IEnumerable<object> IdCursosConTomasAprobadasSemestre(object calendarioAnio, object calendarioSemestre)
         {
-            var q = ContainerApp.Db().Query("toma").
+            return ContainerApp.Db().Query("toma").
                 Fields("curso").
                 Size(0).
                 Where(@"
@@ -18,9 +18,8 @@ namespace WpfAppMy.DAO
                     AND $calendario-semestre = @1
                     AND $estado = 'Aprobada'
                 ")
-                .Parameters(calendarioAnio, calendarioSemestre);
+                .Parameters(calendarioAnio, calendarioSemestre).ColumnCache();
 
-            return ContainerApp.DbCache().Column<object>(q);
         }
 
     }

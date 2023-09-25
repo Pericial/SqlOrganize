@@ -47,14 +47,12 @@ namespace WpfAppMy.Windows.ProcesarDocentesProgramaFines
                     vPersona.Reset();
                     if (!valuesToUpdate.IsNullOrEmpty())
                     {
-                        var p = ContainerApp.db.Persist("persona").Update(vPersona.values).Exec();
-                        ContainerApp.dbCache.Remove(p.detail);
+                        var p = ContainerApp.db.Persist("persona").Update(vPersona.values).Exec().RemoveCache();
                     }
                 } else
                 {
                     vPersona.Default().Reset();
-                    var p = ContainerApp.db.Persist("persona").Insert(vPersona.values).Exec();
-                    ContainerApp.dbCache.Remove(p.detail);
+                    var p = ContainerApp.db.Persist("persona").Insert(vPersona.values).Exec().RemoveCache();
                 }
                 #endregion
 
@@ -89,8 +87,7 @@ namespace WpfAppMy.Windows.ProcesarDocentesProgramaFines
                                 Set("tipo_movimiento", "AI").
                                 Set("fecha_toma",new DateTime(2023,08,07));
                             vToma.Default().Reset();
-                            var p = ContainerApp.db.Persist("toma").Insert(vToma.values).Exec();
-                            ContainerApp.dbCache.Remove(p.detail);
+                            var p = ContainerApp.db.Persist("toma").Insert(vToma.values).Exec().RemoveCache();
                         }
 
                     }

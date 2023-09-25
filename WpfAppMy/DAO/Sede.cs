@@ -10,7 +10,7 @@ namespace WpfAppMy.DAO
     {
         public IEnumerable<Dictionary<string, object>> BusquedaAproximada(string search)
         {
-            var q = ContainerApp.Db().Query("sede").
+            return ContainerApp.Db().Query("sede").
                 Fields("id, nombre").
                 Size(10).
                 Where(@"
@@ -18,9 +18,7 @@ namespace WpfAppMy.DAO
                     OR $numero LIKE @1
                 ")
                 .Parameters("%" + search + "%", "%" + search + "%")
-                .Order("$nombre ASC");
-
-            return ContainerApp.DbCache().ColOfDict(q);
+                .Order("$nombre ASC").ColOfDictCache();
         }
 
     }

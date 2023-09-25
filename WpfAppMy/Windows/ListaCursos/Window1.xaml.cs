@@ -116,14 +116,12 @@ namespace WpfAppMy.Windows.ListaCursos
                             if (v.Get(ContainerApp.config.id).IsNullOrEmpty())
                             {
                                 v.Default().Reset();
-                                var p = ContainerApp.db.Persist(entityName).Insert(v.values).Exec();
-                                ContainerApp.dbCache.Remove(p.detail);
+                                var p = ContainerApp.db.Persist(entityName).Insert(v.values).Exec().RemoveCache();
                             }
                             else
                             {
                                 v.Reset();
-                                var p = ContainerApp.db.Persist(entityName).Update(v.values).Exec();
-                                ContainerApp.dbCache.Remove(p.detail);
+                                var p = ContainerApp.db.Persist(entityName).Update(v.values).Exec().RemoveCache();
                             }
                         }
 

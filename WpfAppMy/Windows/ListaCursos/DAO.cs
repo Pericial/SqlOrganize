@@ -11,7 +11,7 @@ namespace WpfAppMy.Windows.ListaCursos
     {
         public IEnumerable<Dictionary<string, object>> CursoAll(Search search)
         {
-            var q = ContainerApp.Db().Query("curso")
+            return ContainerApp.Db().Query("curso")
                 .Fields()
                 .Select("CONCAT($sede-numero, $comision-division, '/', $planificacion-anio, $planificacion-semestre) AS numero")
                 .Size(0)
@@ -19,9 +19,7 @@ namespace WpfAppMy.Windows.ListaCursos
                     $calendario-anio = @0 
                     AND $calendario-semestre = @1 
                 ")
-                .Parameters(search.calendario__anio, search.calendario__semestre);
-
-            return ContainerApp.DbCache().ColOfDict(q);
+                .Parameters(search.calendario__anio, search.calendario__semestre).ColOfDictCache();
         }
 
     }

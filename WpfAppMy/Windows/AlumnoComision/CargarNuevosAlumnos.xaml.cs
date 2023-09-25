@@ -59,8 +59,7 @@ namespace WpfAppMy.Windows.AlumnoComision
 
                 #region Procesar persona
                 var persona = (Persona)ContainerApp.db.Values("persona", "persona").Set(personaData).Default("label").Reset();
-                var query = ContainerApp.db.Query("persona").Unique(persona);
-                var personaExistenteData = ContainerApp.dbCache.Dict(query);
+                var personaExistenteData = ContainerApp.db.Query("persona").Unique(persona).DictCache();
                 if (!personaExistenteData.IsNullOrEmpty()) //existen datos de persona en la base
                 {
                     var personaExistente = ContainerApp.db.Values("persona").Set(personaExistenteData!).Reset();
@@ -96,8 +95,7 @@ namespace WpfAppMy.Windows.AlumnoComision
 
                 #region Procesar alumno
                 var alumno = ContainerApp.db.Values("alumno").Set("persona",persona.Get("id")).Reset();
-                query = ContainerApp.db.Query("alumno").Unique(alumno);
-                var alumnoExistenteData = ContainerApp.dbCache.Dict(query);
+                var alumnoExistenteData = ContainerApp.db.Query("alumno").Unique(alumno).DictCache();
                 if (!alumnoExistenteData.IsNullOrEmpty()) //existen datos de alumno en la base
                 {
                     var alumnoExistente = alumnoExistenteData!.Obj<Data_alumno_r>();
@@ -131,8 +129,7 @@ namespace WpfAppMy.Windows.AlumnoComision
                 var asignacion = ContainerApp.db.Values("alumno_comision").
                     Set("comision", comision.id!).
                     Set("alumno", alumno.Get("id"));
-                query = ContainerApp.db.Query("alumno_comision").Unique(asignacion);
-                var asignacionExistenteData = ContainerApp.dbCache.Dict(query);
+                var asignacionExistenteData = ContainerApp.db.Query("alumno_comision").Unique(asignacion).DictCache();
                 if (!asignacionExistenteData.IsNullOrEmpty()) //existen datos de alumno en la base
                 {
                     asignacion.Set("id", asignacionExistenteData["id"]!);

@@ -1,4 +1,5 @@
-﻿using SqlOrganize;
+﻿using Microsoft.Extensions.Caching.Memory;
+using SqlOrganize;
 using SqlOrganizeMy;
 using WpfAppMy.Values;
 
@@ -6,7 +7,7 @@ namespace WpfAppMy
 {
     internal class DbApp : DbMy
     {
-        public DbApp(Config config) : base(config)
+        public DbApp(Config config, MemoryCache cache) : base(config, cache)
         {
         }
 

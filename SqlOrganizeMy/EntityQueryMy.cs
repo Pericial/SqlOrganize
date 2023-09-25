@@ -25,7 +25,7 @@ namespace SqlOrganizeMy
         {
             if (order.IsNullOrEmpty())
             {
-                var o = db.Entity(entityName).orderDefault;
+                var o = Db.Entity(entityName).orderDefault;
                 order = o.IsNullOrEmpty() ? "" : string.Join(", ", o.Select(x => "$" + x));
             }
 
@@ -36,7 +36,7 @@ namespace SqlOrganizeMy
 
         public override EntityQuery Clone()
         {
-            var eq = new EntityQueryMy(db, entityName);
+            var eq = new EntityQueryMy(Db, entityName);
             return _Clone(eq);
         }
     }
