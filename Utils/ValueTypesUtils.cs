@@ -72,6 +72,10 @@ namespace Utils
             return @this.ToCharArray()[0];
         }
 
+        public static string RemoveMultipleSpaces(this string @this)
+        {
+            return Regex.Replace(@this, @"\s+", " ");
+        }
 
         /// <summary>
         /// https://www.dotnetperls.com/between-before-after
