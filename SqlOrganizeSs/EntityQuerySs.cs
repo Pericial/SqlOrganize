@@ -25,7 +25,7 @@ FETCH FIRST " + size + " ROWS ONLY";
         {
             if (order.IsNullOrEmpty())
             {
-                var o = db.Entity(entityName).orderDefault;
+                var o = Db.Entity(entityName).orderDefault;
                 order = o.IsNullOrEmpty() ? "" : string.Join(", ", o.Select(x => "$" + x));
             }
 
@@ -75,7 +75,7 @@ FETCH FIRST " + size + " ROWS ONLY";
 
         public override EntityQuery Clone()
         {
-            var eq = new EntityQuerySs(db, entityName);
+            var eq = new EntityQuerySs(Db, entityName);
             return _Clone(eq);
         }
     }

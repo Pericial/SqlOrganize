@@ -12,7 +12,7 @@ namespace SqlOrganize
 {
     public abstract class EntityPersist
     {
-        public Db db { get; }
+        public Db Db { get; }
 
         public string? entityName { get; }
 
@@ -30,9 +30,9 @@ namespace SqlOrganize
         /// </remarks>
         public List<(string entityName, object id)> detail = new();
 
-        public EntityPersist(Db _db, string? _entityName = null)
+        public EntityPersist(Db db, string? _entityName = null)
         {
-            db = _db;
+            Db = db;
             entityName = _entityName;
         }
 
@@ -54,13 +54,13 @@ namespace SqlOrganize
             _entityName = _entityName ?? entityName;
 
             _Update(row, _entityName);
-            string id = db.Mapping(_entityName!).Map(db.config.id);
+            string id = Db.Mapping(_entityName!).Map(Db.config.id);
             sql += @"
 WHERE " + id + " = @" + count + @";
 ";
             count++;
-            parameters.Add(row[db.config.id]);
-            detail.Add((_entityName!, (string)row[db.config.id]));
+            parameters.Add(row[Db.config.id]);
+            detail.Add((_entityName!, (string)row[Db.config.id]));
             return this;
         }
 
@@ -70,16 +70,16 @@ WHERE " + id + " = @" + count + @";
 
             _Update(row, _entityName);
 
-            string idMap = db.Mapping(_entityName!).Map(db.config.id);
+            string idMap = Db.Mapping(_entityName!).Map(Db.config.id);
 
             if ((ids.Count() + count) > 2100) //SQL Server no admite mas de 2100 parametros, se define consulta alternativa para estos casos
             {
                 List<object> ids_ = new();
-                var v = db.Values(_entityName!);
+                var v = Db.Values(_entityName!);
                 foreach (var id in ids)
                 {
-                    v.Set(db.config.id, id);
-                    var id_ = v.Sql(db.config.id);
+                    v.Set(Db.config.id, id);
+                    var id_ = v.Sql(Db.config.id);
                     ids_.Add(id_);
                     detail.Add((_entityName!, id));
 
@@ -110,7 +110,7 @@ WHERE " + id + " = @" + count + @";
         public EntityPersist UpdateAll(Dictionary<string, object> row, string? _entityName = null)
         {
             _entityName = _entityName ?? entityName;
-            var ids = db.Query(_entityName).Fields(db.config.id).Size(0).Column<object>();
+            var ids = Db.Query(_entityName).Fields(Db.config.id).Size(0).Column<object>();
             return (ids.Count() > 0) ? UpdateIds(row, ids, _entityName) : this;
         }
 
@@ -160,14 +160,14 @@ WHERE " + id + " = @" + count + @";
         public EntityPersist UpdateValueRel(string key, object value, Dictionary<string, object> source, string? _entityName = null)
         {
             _entityName = _entityName ?? entityName;
-            string idKey = db.config.id;
-            if (key.Contains(db.config.idAttrSeparatorString))
+            string idKey = Db.config.id;
+            if (key.Contains(Db.config.idAttrSeparatorString))
             {
-                int indexSeparator = key.IndexOf(db.config.idAttrSeparatorString);
+                int indexSeparator = key.IndexOf(Db.config.idAttrSeparatorString);
                 string fieldId = key.Substring(0, indexSeparator);
-                _entityName = db.Entity(_entityName!).relations[fieldId].refEntityName;
-                idKey = fieldId + db.config.idAttrSeparatorString + db.config.id;
-                key = key.Substring(indexSeparator + db.config.idAttrSeparatorString.Length); //se suma la cantidad de caracteres del separador
+                _entityName = Db.Entity(_entityName!).relations[fieldId].refEntityName;
+                idKey = fieldId + Db.config.idAttrSeparatorString + Db.config.id;
+                key = key.Substring(indexSeparator + Db.config.idAttrSeparatorString.Length); //se suma la cantidad de caracteres del separador
             }
 
             List<object> ids = new() { source[idKey] };
@@ -183,13 +183,13 @@ WHERE " + id + " = @" + count + @";
         {
             _entityName = _entityName ?? entityName;
 
-            List<string> fieldNames = db.FieldNamesAdmin(_entityName!);
+            List<string> fieldNames = Db.FieldNamesAdmin(_entityName!);
             Dictionary<string, object> row_ = new();
             foreach (string key in row.Keys)
                 if (fieldNames.Contains(key))
                     row_.Add(key, row[key]);
 
-            string sn = db.Entity(_entityName!).schemaName;
+            string sn = Db.Entity(_entityName!).schemaName;
             sql += "INSERT INTO " + sn + @" (" + String.Join(", ", row_.Keys) + @") 
 VALUES (";
 
@@ -204,11 +204,11 @@ VALUES (";
             sql = sql.RemoveLastChar(',');
             sql += @");
 ";
-            EntityValues v = db.Values(_entityName).Set(row_);
-            if (!v.values.ContainsKey(db.config.id))
-                v.Set(db.config.id, null).Reset(db.config.id);
-            row[db.config.id] = v.Get(db.config.id);
-            detail.Add((_entityName!, row[db.config.id] as string));
+            EntityValues v = Db.Values(_entityName).Set(row_);
+            if (!v.values.ContainsKey(Db.config.id))
+                v.Set(Db.config.id, null).Reset(Db.config.id);
+            row[Db.config.id] = v.Get(Db.config.id);
+            detail.Add((_entityName!, row[Db.config.id] as string));
 
             return this;
         }
@@ -233,7 +233,7 @@ VALUES (";
         {
             _entityName = _entityName ?? entityName;
 
-            EntityValues v = db.Values(_entityName!).Set(row).Reset();
+            EntityValues v = Db.Values(_entityName!).Set(row).Reset();
             return PersistValues(v);
         }
     
@@ -246,7 +246,7 @@ VALUES (";
         /// <exception cref="Exception"></exception>
         public EntityPersist PersistValues(EntityValues v)
         {
-            var q = db.Query(v.entityName!).Unique(v.values);
+            var q = Db.Query(v.entityName!).Unique(v.values);
             var rows = q.ColOfDict();
 
             if (rows.Count() > 1)
@@ -254,10 +254,10 @@ VALUES (";
 
             if (rows.Count() == 1)
             {
-                if(v.values.ContainsKey(db.config.id) && v.Get(db.config.id) != rows.ElementAt(0)[db.config.id])
+                if(v.values.ContainsKey(Db.config.id) && v.Get(Db.config.id) != rows.ElementAt(0)[Db.config.id])
                     throw new Exception("Los id son diferentes");
 
-                v.Set(db.config.id, rows.ElementAt(0)[db.config.id]).Reset().Check();
+                v.Set(Db.config.id, rows.ElementAt(0)[Db.config.id]).Reset().Check();
                 if (v.logging.HasErrors())
                     throw new Exception("Los campos a actualizar poseen errores: " + v.logging.ToString());
 
@@ -274,7 +274,7 @@ VALUES (";
 
         public EntityPersist Exec()
         {
-            var q = db.Query();
+            var q = Db.Query();
             q.sql = sql;
             q.parameters = parameters;
             q.Exec();
@@ -283,10 +283,50 @@ VALUES (";
 
         public EntityPersist Transaction()
         {
-            var q = db.Query();
+            var q = Db.Query();
             q.sql = sql;
             q.parameters = parameters;
             q.Transaction();
+            return this;
+        }
+
+        public EntityPersist RemoveCacheQueries()
+        {
+            object queries;
+
+            if (Db.Cache.TryGetValue("queries", out queries))
+            {
+                foreach (string q in (queries as List<string>)!)
+                    Db.Cache.Remove(q);
+
+                Db.Cache.Remove("queries");
+            }
+            return this;
+
+        }
+
+        /// <summary>
+        /// Remover de la cache todas las consultas y las entidades indicadas en el parametro
+        /// </summary>
+        public EntityPersist RemoveCache()
+        {
+            RemoveCacheQueries();
+            foreach (var d in detail)
+                Db.Cache.Remove(d.entityName + d.id);
+            return this;
+        }
+
+        public EntityPersist RemoveCache(string entityName, object id)
+        {
+            RemoveCacheQueries();
+            Db.Cache.Remove(entityName + id);
+            return this;
+        }
+
+        public EntityPersist RemoveCache(EntityValues values)
+        {
+            RemoveCacheQueries();
+            Db.Cache.Remove(values.entityName + values.Get(Db.config.id));
             return this;
         }
     }

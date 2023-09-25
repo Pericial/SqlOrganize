@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Caching.Memory;
 using Newtonsoft.Json.Linq;
 using SqlOrganize;
 
@@ -23,9 +24,10 @@ namespace SqlOrganizeSs
         /// <example>
         ///   connectionString = "server=127.0.0.1;uid=root;pwd=12345;database=test"
         /// </example>
-        public DbSs(Config config) : base(config)
+        public DbSs(Config config, MemoryCache? cache = null) : base(config, cache)
         {
         }
+
 
         public override EntityPersist Persist(string entityName)
         {

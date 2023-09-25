@@ -13,29 +13,24 @@ namespace SqlOrganize
     public class DAO
     {
         protected Db Db;
-        protected DbCache Cache;
 
-        public DAO(Db db, DbCache Cache) {
-            this.Cache = Cache;
+        public DAO(Db db) {
             this.Db = db;
         }
 
         public IEnumerable<Dictionary<string, object>> Search<T>(string entityName, T param) where T : class
         {
-            var q = Db.Query(entityName).Search(param).Size(0);
-            return Cache.ColOfDict(q);
+            return Db.Query(entityName).Search(param).Size(0).ColOfDictCache();
         }
 
-        public void UpdateValueRel(string entityName, string key, object value, Dictionary<string, object> source)
+        public EntityPersist UpdateValueRel(string entityName, string key, object value, Dictionary<string, object> source)
         {
-            EntityPersist p = Db.Persist(entityName).UpdateValueRel(key, value, source).Exec();
-            Cache.Remove(p.detail);
+            return Db.Persist(entityName).UpdateValueRel(key, value, source).Exec().RemoveCache();
         }
 
         public IDictionary<string, object> Get(string entityName, object id)
         {
-            var q = Db.Query(entityName).Where("$"+Db.config.id+" = @0").Parameters(id);
-            return Cache.Dict(q);
+            return Db.Query(entityName).ColOfDictCacheByIds(id).ElementAt(0);
         }
 
     }

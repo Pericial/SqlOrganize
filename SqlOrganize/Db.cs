@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Extensions.Caching.Memory;
+using Newtonsoft.Json;
 using System.Text;
 using Utils;
 
@@ -30,19 +31,29 @@ namespace SqlOrganize
 
         public Dictionary<string, Dictionary<string, Field>> fields { get; set; }
 
-        public Db(Config _config)
+        public MemoryCache? Cache { get; set; } = null;
+
+        public Db(Config _config, MemoryCache? Cache = null)
         {
             config = _config;
+            this.Cache = Cache;
+
+            Init();
+
+        }
+
+        public void Init()
+        {
             fields = new Dictionary<string, Dictionary<string, Field>>();
 
             using (StreamReader r = new StreamReader(config.modelPath + "entities.json"))
             {
                 entities = JsonConvert.DeserializeObject<Dictionary<string, Entity>>(r.ReadToEnd())!;
-                foreach (KeyValuePair<string, Entity> e in entities) { 
+                foreach (KeyValuePair<string, Entity> e in entities)
+                {
                     e.Value.db = this;
                 }
             }
-
         }
 
         public Dictionary<string, Field> FieldsEntity(string entityName)
