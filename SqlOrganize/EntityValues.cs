@@ -22,7 +22,7 @@ namespace SqlOrganize
     {
         public Logging logging { get; set; } = new Logging();
 
-        public IDictionary<string, object?> values = new Dictionary<string, object>();
+        public IDictionary<string, object?> values = new Dictionary<string, object?>();
 
         public EntityValues(Db _db, string _entityName, string? _fieldId = null) : base(_db, _entityName, _fieldId)
         {
@@ -34,11 +34,12 @@ namespace SqlOrganize
             return this;
         }
 
-        public EntityValues Set(IDictionary<string, object> row)
+        public EntityValues Set(IDictionary<string, object> row, string? fieldId = null)
         {
+            fieldId = fieldId.IsNullOrEmpty() ? Pf() : fieldId + "-";
             foreach (var fieldName in db.FieldNames(entityName))
-                if (row.ContainsKey(Pf() + fieldName))
-                    Set(fieldName, row[Pf() + fieldName]);
+                if (row.ContainsKey(fieldId + fieldName))
+                    Set(fieldName, row[fieldId + fieldName]);
 
             return this;
         }
@@ -407,6 +408,12 @@ namespace SqlOrganize
             return this;
         }
 
+        public IDictionary<string, object> Compare(EntityValues val, IEnumerable<string>? ignoreFields = null, bool ignoreNull = true, bool ignoreNonExistent = true)
+        {
+            return Compare(val.values!, ignoreFields, ignoreNull, ignoreNonExistent);
+        }
+
+
         /// <summary>
         /// Comparar valores con los indicados en parametro
         /// </summary>
@@ -466,9 +473,21 @@ namespace SqlOrganize
             return this;
         }
 
+        public EntityValues Update(EntityPersist persist)
+        {
+            persist.Update(this);
+            return this;
+        }
+
         public EntityValues Insert()
         {
             db.Persist(entityName).Insert(values!).Exec();
+            return this;
+        }
+
+        public EntityValues Insert(EntityPersist persist)
+        {
+            persist.Insert(this);
             return this;
         }
 

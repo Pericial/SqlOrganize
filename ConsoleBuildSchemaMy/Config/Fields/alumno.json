@@ -1,0 +1,8 @@
+{
+  "anio_ingreso": {
+    "defaultValue": "1"
+  },
+  "semestre_ingreso": {
+    "defaultValue": 1
+  }
+}

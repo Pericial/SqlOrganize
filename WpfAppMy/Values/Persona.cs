@@ -14,9 +14,18 @@ namespace WpfAppMy.Values
         {
         }
 
-        //maximiliano andres
-        //ferrero roche
+        public Persona default_label()
+        {
+            string s = "";
+            s += values.ContainsKey("nombres") && !values["nombres"].IsNullOrEmpty() ? values["nombres"]!.ToString() + " " : "";
+            s += values.ContainsKey("apellidos") && !values["apellidos"].IsNullOrEmpty() ? values["apellidos"]!.ToString() + " " : "";
+            s += values.ContainsKey("numero_documento") && !values["numero_documento"].IsNullOrEmpty() ? values["numero_documento"]!.ToString() : "";
+            values["label"] = s.Trim();
+            return this;
 
+        }
+
+        
         public override IDictionary<string, object> Compare(IDictionary<string, object> val, IEnumerable<string>? ignoreFields = null, bool ignoreNull = true, bool ignoreNonExistent = true)
         {
             var response = base.Compare(val, ignoreFields, ignoreNull, ignoreNonExistent);

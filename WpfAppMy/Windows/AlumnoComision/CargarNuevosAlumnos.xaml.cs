@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using Utils;
+using WpfAppMy.Data;
 using WpfAppMy.Values;
 using WpfAppMy.ViewModels;
 
@@ -56,21 +57,23 @@ namespace WpfAppMy.Windows.AlumnoComision
                     personaData.Add(_headers.ElementAt(i), values.ElementAt(i));
                 }
 
-                #region Procesar datos de persona
-                var persona = (Persona)ContainerApp.db.Values("persona", "persona").Set(personaData).Reset();
+                #region Procesar persona
+                var persona = (Persona)ContainerApp.db.Values("persona", "persona").Set(personaData).Default("label").Reset();
                 var query = ContainerApp.db.Query("persona").Unique(persona);
                 var personaExistenteData = ContainerApp.dbCache.Dict(query);
                 if (!personaExistenteData.IsNullOrEmpty()) //existen datos de persona en la base
                 {
-                    var dataDifferent = persona.Compare(personaExistenteData!,ignoreNull:true);
+                    var personaExistente = ContainerApp.db.Values("persona").Set(personaExistenteData!).Reset();
+                    var dataDifferent = persona.Compare(personaExistente, ignoreNull:true);
                     if (!dataDifferent.IsNullOrEmpty())
                     {
+                        personaExistente.Default("label");
                         var s = new CargarNuevosAlumnosViewModel()
                         {
                             row = j,
                             status = "error",
                             detail = "Los valores de persona existente son diferentes.",
-                            data = "Nuevo: " + persona.values.ToStringDict() + ". Existente: " + personaExistenteData.ToStringDict()
+                            data = "Nuevo: " + persona.Get("label").ToString() + ". Existente: " + personaExistente.Get("label").ToString()
                         };
                         statusData.Add(s);
                     }
@@ -83,42 +86,42 @@ namespace WpfAppMy.Windows.AlumnoComision
                     var s = new CargarNuevosAlumnosViewModel()
                     {
                         row = j,
-                        status = "success",
-                        detail = "Valor de persona insertado correctamente",
-                        data = persona.values.ToStringDict()
+                        status = "insert",
+                        detail = "Persona agregada.",
+                        data = persona.Get("label").ToString()!
                     };
                     statusData.Add(s);
                 }
                 #endregion
 
-                #region Procesar datos de alumno
+                #region Procesar alumno
                 var alumno = ContainerApp.db.Values("alumno").Set("persona",persona.Get("id")).Reset();
                 query = ContainerApp.db.Query("alumno").Unique(alumno);
                 var alumnoExistenteData = ContainerApp.dbCache.Dict(query);
                 if (!alumnoExistenteData.IsNullOrEmpty()) //existen datos de alumno en la base
                 {
+                    var alumnoExistente = alumnoExistenteData!.Obj<Data_alumno_r>();
                     alumno.Set("id", alumnoExistenteData!["id"]);
                     if (alumnoExistenteData["plan"].ToString() != comision.planificacion__plan)
                     {
-                        statusData.Add(new ()
+                        statusData.Add(new()
                         {
                             row = j,
                             status = "warning",
                             detail = "El plan del alumno es diferente del plan de la comision.",
-                            data = "Nuevo: " + persona.values.ToStringDict() + ". Existente: " + personaExistenteData.ToStringDict()
+                            data = "Nuevo: " + comision.plan__orientacion + " " + comision.plan__resolucion + ". Existente: " + alumnoExistente.plan__orientacion + " " + alumnoExistente.plan__resolucion
                         });
                     }
                 }
-                else //no existen datos de persona en la base
+                else //no existen datos del alumno en la base
                 {
-                    alumno.Default().Set("plan", comision.planificacion__plan!).Reset();
-                    persist.Insert(persona);
+                    alumno.Default().Set("plan", comision.planificacion__plan!).Reset().Insert(persist);
                     var s = new CargarNuevosAlumnosViewModel()
                     {
                         row = j,
-                        status = "success",
-                        detail = "Valor de alumno insertado correctamente",
-                        data = alumno.values.ToStringDict()
+                        status = "insert",
+                        detail = "Alumno agregado.",
+                        data = persona.Get("label").ToString()!
                     };
                     statusData.Add(s);
                 }
@@ -126,11 +129,36 @@ namespace WpfAppMy.Windows.AlumnoComision
 
                 #region procesar asignacion
                 var asignacion = ContainerApp.db.Values("alumno_comision").
-                    Set("persona", persona.Get("id")).
+                    Set("comision", comision.id!).
                     Set("alumno", alumno.Get("id"));
-                query = ContainerApp.db.Query("alumno_comisoin").Unique(asignacion);
-                //var alumnoExistenteData = ContainerApp.dbCache.Dict(query);
-
+                query = ContainerApp.db.Query("alumno_comision").Unique(asignacion);
+                var asignacionExistenteData = ContainerApp.dbCache.Dict(query);
+                if (!asignacionExistenteData.IsNullOrEmpty()) //existen datos de alumno en la base
+                {
+                    asignacion.Set("id", asignacionExistenteData["id"]!);
+                    if (asignacionExistenteData["estado"].ToString() != "Activo")
+                    {
+                        statusData.Add(new()
+                        {
+                            row = j,
+                            status = "warning",
+                            detail = "Existe asignacion no No Activa.",
+                            data = persona.Get("label").ToString()
+                        });
+                    }
+                }
+                else //no existen datos de asignacion
+                {
+                    asignacion.Default().Reset().Insert(persist);
+                    var s = new CargarNuevosAlumnosViewModel()
+                    {
+                        row = j,
+                        status = "insert",
+                        detail = "Asignacion agregada.",
+                        data = persona.Get("label").ToString()!
+                    };
+                    statusData.Add(s);
+                }
                 #endregion
 
                 //persist.Transaction();
