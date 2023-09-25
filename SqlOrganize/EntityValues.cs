@@ -22,7 +22,7 @@ namespace SqlOrganize
     {
         public Logging logging { get; set; } = new Logging();
 
-        public IDictionary<string, object> values = new Dictionary<string, object>();
+        public IDictionary<string, object?> values = new Dictionary<string, object>();
 
         public EntityValues(Db _db, string _entityName, string? _fieldId = null) : base(_db, _entityName, _fieldId)
         {
@@ -63,7 +63,7 @@ namespace SqlOrganize
             return values[fieldName];
         }
 
-        public Dictionary<string, object> Get()
+        public IDictionary<string, object> Get()
         {
             Dictionary<string, object> response = new();
             foreach (var fieldName in db.FieldNames(entityName))
@@ -410,14 +410,13 @@ namespace SqlOrganize
         /// <summary>
         /// Comparar valores con los indicados en parametro
         /// </summary>
-        /// <param name="values"></param>
-        /// <param name="values"></param>
+        /// <param name="values">Valores externos a persistir<</param>
         /// <returns>Valores del parametro que son diferentes o que no estan definidos localmente</returns>
         /// <remarks>Solo compara fieldNames</remarks>
-        public Dictionary<string, object> Compare(IDictionary<string, object> values, IEnumerable<string>? ignoreFields = null, bool ignoreNull = true)
+        public virtual IDictionary<string, object> Compare(IDictionary<string, object> val, IEnumerable<string>? ignoreFields = null, bool ignoreNull = true, bool ignoreNonExistent = true)
         {
             Dictionary<string, object> dict1_ = new(this.values);
-            Dictionary<string, object> dict2_ = new(values);
+            Dictionary<string, object> dict2_ = new(val);
             Dictionary<string, object> response = new();
 
 
@@ -428,11 +427,17 @@ namespace SqlOrganize
                     dict2_.Remove(key);
                 }
 
-            foreach (var fieldName in db.FieldNames(entityName))
-                if (dict2_.ContainsKey(fieldName) && (ignoreNull && dict2_[fieldName] != null && !dict2_[fieldName].IsDbNull()))
-                    if (!dict1_.ContainsKey(fieldName) || !dict1_[fieldName].ToString().Equals(dict2_[fieldName].ToString()))
-                        response[fieldName] = dict2_[fieldName];
+            foreach (var fieldName in db.FieldNames(entityName)) { 
+                if (ignoreNonExistent && !dict1_.ContainsKey(fieldName))
+                    continue;
 
+                if (dict2_.ContainsKey(fieldName) && (ignoreNull && dict2_[fieldName] != null && !dict2_[fieldName].IsDbNull()))
+                    if (
+                        !dict1_.ContainsKey(fieldName) 
+                        || !dict1_[fieldName].ToString().Equals(dict2_[fieldName].ToString())
+                    )
+                        response[fieldName] = dict2_[fieldName];
+            }
             return response;
         }
 
@@ -453,6 +458,23 @@ namespace SqlOrganize
                             WHERE TABLE_NAME = @0";
             q.parameters.Add(field.entityName);
             return q.Value<ulong>();
+        }
+
+        public EntityValues Update()
+        {
+            db.Persist(entityName).Update(values!).Exec();
+            return this;
+        }
+
+        public EntityValues Insert()
+        {
+            db.Persist(entityName).Insert(values!).Exec();
+            return this;
+        }
+
+        public string ToString()
+        {
+            return values.ToString();
         }
     }
 
