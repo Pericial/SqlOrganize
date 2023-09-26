@@ -718,6 +718,15 @@ namespace SqlOrganize
             return response.ElementAt(0);
         }
 
+        public EntityValues? ValuesCache()
+        {
+            var data = DictCache();
+            if (data.IsNullOrEmpty())
+                return null;
+
+            return Db.Values(entityName).Values(data!);
+        }
+
         /// <summary>
         /// Organiza los elementos a consultar y efectua la consulta a la base de datos.
         /// </summary>
