@@ -34,7 +34,7 @@ namespace WpfAppMy.DAO
                     AND ($nota_final >= 7 OR $crec >= 4)  
                  ")
                 .Having("SUM($disposicion) > 3")
-                .Parameters(idAlumnos, idPlan).ColumnCache() ;
+                .Parameters(idAlumnos, idPlan).ColumnCache();
 
 
 
@@ -51,7 +51,7 @@ namespace WpfAppMy.DAO
                     AND $calendario-semestre = @1 
                     AND $comision-autorizada = true
                 ")
-                .Parameters(anio, semestre).ColumnCache() ;
+                .Parameters(anio, semestre).ColumnCache();
 
         }
         public IEnumerable<object> IdsAlumnosActivosDeComisionesAutorizadasPorSemestre(object anio, object semestre)
@@ -81,7 +81,7 @@ namespace WpfAppMy.DAO
                     AND $estado = 'Activo'
                     AND $persona-genero IS NULL
                 ")
-                .Parameters(anio, semestre).ColumnCache() ;
+                .Parameters(anio, semestre).ColumnCache();
         }
 
 
@@ -179,7 +179,7 @@ namespace WpfAppMy.DAO
         public IEnumerable<Dictionary<string, object>> AlumnosDeComisionesAutorizadasPorSemestre(object anio, object semestre)
         {
             IEnumerable<object> ids = IdsAlumnosDeComisionesAutorizadasPorSemestre(anio, semestre);
-            return ContainerApp.db.Query("alumno").ColOfDictCacheByIds(ids.ToArray());
+            return ContainerApp.db.Query("alumno").CacheByIds(ids.ToArray());
         }
 
         public IEnumerable<Dictionary<string, object>> AlumnosActivosDeComisionesAutorizadasPorSemestre(object anio, object semestre)
@@ -187,13 +187,58 @@ namespace WpfAppMy.DAO
             var alumnoDao = new DAO.Alumno();
             IEnumerable<object> ids = IdsAlumnosActivosDeComisionesAutorizadasPorSemestre(anio, semestre);
             return alumnoDao.AlumnosPorIds(ids);
-        }
+        } 
+
 
         public IEnumerable<Dictionary<string, object>> AlumnosActivosDeComisionesAutorizadasPorSemestreSinGenero(object anio, object semestre)
         {
             var alumnoDao = new DAO.Alumno();
             IEnumerable<object> ids = IdsAlumnosActivosDeComisionesAutorizadasPorSemestreSinGenero(anio, semestre);
             return alumnoDao.AlumnosPorIds(ids);
+        }
+
+        /// <summary>
+        /// Consulta para verificar si el alumno pertenece a otras comisiones autorizadas en un mismo semestre
+        /// </summary>
+        /// <param name="anio">año del semestre</param>
+        /// <param name="semestre">numero del semestre</param>
+        /// <param name="idComision">numero de comision a la que actualmente pertenece el alumno</param>
+        /// <param name="idAlumno">numero de alumno</param>
+        /// <returns></returns>
+        public IEnumerable<Dictionary<string, object>> AsignacionesDelAlumnoEnOtrasComisionesAutorizadasDelSemestre(object anio, object semestre, object idComision, object idAlumno)
+        {
+            return ContainerApp.Db().Query("alumno_comision")
+                .Size(0)
+                .Where(@"
+                    $calendario-anio = @0
+                    AND $calendario-semestre = @1 
+                    AND $comision-id != @2
+                    AND $alumno = @3
+                    AND $comision-autorizada = true
+                ")
+                .Parameters(anio, semestre, idComision, idAlumno).ColOfDict();
+        }
+
+        /// <summary>
+        /// Consulta para verificar si el alumno pertenece a otras comisiones autorizadas en un mismo semestre
+        /// </summary>
+        /// <param name="anio">año del semestre</param>
+        /// <param name="semestre">numero del semestre</param>
+        /// <param name="idComision">numero de comision a la que actualmente pertenece el alumno</param>
+        /// <param name="idAlumno">numero de alumno</param>
+        /// <returns></returns>
+        public IEnumerable<Dictionary<string, object>> AsignacionesActivasDelAlumnoEnOtrasComisionesAutorizadas(object idComision, object idAlumno)
+        {
+            return ContainerApp.Db().Query("alumno_comision")
+                .Size(0)
+                .Where(@"
+                    $comision-id != @0
+                    AND $alumno = @1
+                    AND $comision-autorizada = true
+                    AND $estado = 'Activo'
+                ")
+                .Parameters(idComision, idAlumno).ColOfDict();
+
         }
     }
 }

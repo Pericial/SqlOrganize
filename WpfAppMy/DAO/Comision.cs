@@ -99,7 +99,7 @@ namespace WpfAppMy.DAO
         public IEnumerable<Dictionary<string, object>> ComisionesAutorizadasPorSemestre(object anio, object semestre)
         {
             IEnumerable<object> ids = IdsComisionesAutorizadasPorCalendario(anio, semestre);
-            return ContainerApp.db.Query("comision").ColOfDictCacheByIds(ids);
+            return ContainerApp.db.Query("comision").CacheByIds(ids);
         }
     }
 }

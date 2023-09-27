@@ -30,7 +30,7 @@ namespace SqlOrganize
 
         public IDictionary<string, object> Get(string entityName, object id)
         {
-            return Db.Query(entityName).ColOfDictCacheByIds(id).ElementAt(0);
+            return Db.Query(entityName).CacheByIds(id).ElementAt(0);
         }
 
     }

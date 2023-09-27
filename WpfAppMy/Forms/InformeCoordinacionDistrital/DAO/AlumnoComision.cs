@@ -44,7 +44,7 @@ namespace WpfAppMy.Forms.InformeCoordinacionDistrital.DAO
                 alu_com["tiene_certificado"] = (bool)alu_com["alumno-tiene_certificado"] ? "SÍ" : "NO";
                 DateTime creado = (DateTime)alu_com["alumno-creado"];
                 string estado = (alu_com["estado"].IsDbNull()) ? "Activo" : (string)alu_com["estado"];
-                alu_com["cuatrimestre_ingreso"] = Values.Alumno.cuatrimestre_ingreso(creado);
+                alu_com["cuatrimestre_ingreso"] = null;
                 alu_com["estado_ingreso"] = Values.AlumnoComision.estado_ingreso(estado, creado);
                 alu_com["asignatura111"] = null;
                 alu_com["asignatura112"] = null;

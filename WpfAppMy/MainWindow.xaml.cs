@@ -147,11 +147,7 @@ namespace WpfAppMy
             win.Show();
         }
 
-        private void CargarNuevosAlumnos_Click(object sender, RoutedEventArgs e)
-        {
-            Windows.AlumnoComision.CargarNuevosAlumnos win = new();
-            win.Show();
-        }
+      
     }
 }
 

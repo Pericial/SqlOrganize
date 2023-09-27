@@ -13,47 +13,41 @@ namespace WpfAppMy.Values
         public Comision(Db _db, string _entity_name, string? _field_id) : base(_db, _entity_name, _field_id)
         {
         }
-   
-        /// <summary>
-        /// Valor por defecto al campo derivado numero
-        /// </summary>
-        /// <remarks>Solo funciona con relaciones</remarks>
-        /// <returns></returns>
-        public Comision Default_numero_r()
+        public string Numero()
         {
-            values["numero_r"] = values["sede-numero"].ToString() + values["division"].ToString() + "/"+ values["planificacion-anio"].ToString() + values["planificacion-semestre"].ToString() ;
-            return this;
+            var s = "";
+            s += values.ContainsKey("sede-numero") && !values["sede-numero"].IsNullOrEmptyOrDbNull() ? values["sede-numero"].ToString() : "";
+            s += values.ContainsKey("division") && !values["division"].IsNullOrEmptyOrDbNull() ? values["division"].ToString() : "";
+            s += "/";
+            s += values.ContainsKey("planificacion-anio") && !values["planificacion-anio"].IsNullOrEmptyOrDbNull() ? values["planificacion-anio"].ToString() : "";
+            s += values.ContainsKey("planificacion-semestre") && !values["planificacion-semestre"].IsNullOrEmptyOrDbNull() ? values["planificacion-semestre"].ToString() : "";
+            return s.Trim();
         }
 
-        /// <summary>
-        /// Valor por defecto al campo derivado label
-        /// </summary>
-        /// <remarks>Solo funciona con relaciones</remarks>
-        /// <returns></returns>
-        public Comision Default_label_r()
+        public string Label()
         {
-            Default("numero_r");
-            values["label_r"] = values["numero_r"] + " " + values["calendario-anio"] + "-" + values["calendario-semestre"];
-            return this;
+            var s = Numero();
+            s += " ";
+            s += CalendarioLabel();
+            return s.Trim();
         }
 
-        public Comision Default_label_sede_r()
+        public string LabelWithSede()
         {
-            Default("label_r");
-            values["label_sede_r"] = values["label_r"] + " " + values["sede-nombre"];
-            return this;
+            var s =  Label();
+            s += " ";
+            s += values.ContainsKey("sede-nombre") && !values["sede-nombre"].IsNullOrEmptyOrDbNull() ? values["sede-nombre"].ToString() : "";
+            return s.Trim();
         }
 
-        /// <summary>
-        /// Valor por defecto al campo derivado calendario_label
-        /// </summary>
-        /// <remarks>Solo funciona con relaciones</remarks>
-        /// <returns></returns>
-        public Comision Default_calendario__label()
+        public string CalendarioLabel()
         {
-            values["calendario-label"] = values["calendario-anio"] + "-" + values["calendario-semestre"];
-            return this;
+            string s = values.ContainsKey("calendario-anio") && !values["calendario-anio"].IsNullOrEmptyOrDbNull() ? values["calendario-anio"].ToString() : "";
+            s += "-";
+            s += values.ContainsKey("calendario-semestre") && !values["calendario-semestre"].IsNullOrEmptyOrDbNull() ? values["calendario-semestre"].ToString() : "";
+            return s.Trim();
         }
+
 
     }
 }

@@ -562,7 +562,7 @@ namespace SqlOrganize
         /// <remarks>Solo analiza el atributo fields (devuelve relaciones)</remarks>
         /// <param name="ids"></param>
         /// <returns></returns>
-        public IEnumerable<Dictionary<string, object>> ColOfDictCacheByIds(params object[] ids)
+        public IEnumerable<Dictionary<string, object>> CacheByIds(params object[] ids)
         {
             if (this.fields.IsNullOrEmpty())
                 this.Fields();
@@ -570,6 +570,21 @@ namespace SqlOrganize
             List<string> _fields = fields!.Replace("$", "").Split(',').ToList().Select(s => s.Trim()).ToList();
 
             return PreColOfDictCacheRecursive(_fields, ids);
+        }
+
+        /// <summary>
+        /// Metodo de busqueda rapida en cache
+        /// </summary>
+        /// <remarks>Solo analiza el atributo fields (devuelve relaciones)</remarks>
+        /// <param name="ids"></param>
+        /// <returns></returns>
+        public IDictionary<string, object>? CacheById(object id)
+        {
+            var list = CacheByIds(id);
+            if (list.IsNullOrEmpty())
+                return null;
+
+            return list.ElementAt(0);
         }
 
 
@@ -581,7 +596,7 @@ namespace SqlOrganize
         /// <param name="ids"></param>
         /// <remarks>IMPORTANTE! No devuelve relaciones!!!</remarks>
         /// <returns></returns>
-        protected List<Dictionary<string, object>> _ColOfDictCacheByIds(params object[] ids)
+        protected List<Dictionary<string, object>> _CacheByIds(params object[] ids)
         {
             ids = ids.Distinct().ToArray();
 
@@ -734,7 +749,7 @@ namespace SqlOrganize
         {
             FieldsOrganize fo = new(Db, entityName, fields);
 
-            List<Dictionary<string, object>> data = _ColOfDictCacheByIds(ids);
+            List<Dictionary<string, object>> data = _CacheByIds(ids);
 
             List<Dictionary<string, object>> response = new();
 
@@ -776,12 +791,12 @@ namespace SqlOrganize
                     //Si las fk estan asociadas a una unica pk, debe indicarse para mayor eficiencia
                     if (Db.config.fkId)
                     {
-                        data = Db.Query(refEntityName)._ColOfDictCacheByIds(ids.ToArray());
+                        data = Db.Query(refEntityName)._CacheByIds(ids.ToArray());
                     }
                     else
                     {
                         //data = Db.Query(refEntityName).Where("$"+Db.config.id+" IN (@0)").Parameters(ids).ColOfDictCacheQuery();
-                        data = Db.Query(refEntityName).ColOfDictCacheByIds(ids.ToArray());
+                        data = Db.Query(refEntityName).CacheByIds(ids.ToArray());
                     }
                 }
 

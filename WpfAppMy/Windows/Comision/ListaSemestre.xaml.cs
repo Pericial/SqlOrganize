@@ -121,7 +121,7 @@ namespace WpfAppMy.Windows.Comision
         {
             var button = (e.OriginalSource as Button);
             var comision = (Data_comision)button.DataContext;
-            CargarNuevosAlumnos win = new(comision.id);
+            AlumnoComision.CargarNuevosAlumnos.Window1 win = new(comision.id);
             win.Show();
         }
     }

@@ -11,21 +11,18 @@ namespace WpfAppMy.Values
 {
     class Alumno : EntityValues
     {
-        public Alumno(Db _db, string _entityName, string? _fieldId = null) : base(_db, _entityName, _fieldId)
+        public Alumno(Db db, string entityName, string? fieldId = null) : base(db, entityName, fieldId)
         {
         }
 
         public string PlanLabel()
         {
-            string s = (string)values["plan-orientacion"] ?? "" + " ";
-            s += (string)values["plan-resolucion"] ?? "" + " ";
-            return s;
+            string s = "";
+            //s += values.ContainsKey("nombres") && !values["nombres"].IsNullOrEmpty() ? values["nombres"]!.ToString() + " " : "";
+            //s += values.ContainsKey("apellidos") && !values["apellidos"].IsNullOrEmpty() ? values["apellidos"]!.ToString() + " " : "";
+            //s += values.ContainsKey("numero_documento") && !values["numero_documento"].IsNullOrEmpty() ? values["numero_documento"]!.ToString() : "";
+            return s.Trim();
 
-        }
-
-        public static string cuatrimestre_ingreso(DateTime alta)
-        {
-            return alta.ToSemester().ToString() + "ºC " + alta.Year;
         }
     }
 }

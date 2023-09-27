@@ -21,7 +21,7 @@ namespace WpfAppMy.Values
             s += values.ContainsKey("nombres") && !values["nombres"].IsNullOrEmpty() ? values["nombres"]!.ToString() + " " : "";
             s += values.ContainsKey("apellidos") && !values["apellidos"].IsNullOrEmpty() ? values["apellidos"]!.ToString() + " " : "";
             s += values.ContainsKey("numero_documento") && !values["numero_documento"].IsNullOrEmpty() ? values["numero_documento"]!.ToString() : "";
-            return = s.Trim();
+            return s.Trim();
 
         }
 
