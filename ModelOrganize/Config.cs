@@ -23,7 +23,10 @@
         public string configPath { get; set; } = "./Model";
 
         public string dataPath { get; set; } = "./Model/Data";
-        public string dataNamespace { get; set; } = "Model.Data";
+        public string dataNamespace { get; set; } = "MyApp.Data";
+
+        public string modelNamespace { get; set; } = "MyApp.Model";
+
 
 
 

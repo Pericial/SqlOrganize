@@ -1,0 +1,115 @@
+﻿<Window x:Class="WpfAppMy.Windows.Comision.ListaComisionesSemestre.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppMy.Windows.Comision.ListaComisionesSemestre"
+        mc:Ignorable="d"
+        Title="Window1" Height="450" Width="800">
+    <DockPanel>
+        <Grid DockPanel.Dock="Top">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height = "Auto" />
+                <RowDefinition Height = "Auto" />
+                <RowDefinition Height = "Auto" />
+                <RowDefinition Height = "Auto" />
+                <RowDefinition Height = "Auto" />
+                <RowDefinition Height = "Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width = "Auto" />
+                <ColumnDefinition Width = "200" />
+            </Grid.ColumnDefinitions>
+
+            <Label 
+                Name = "calendarioAnioLabel"
+                Margin = "2">_Año:</Label>
+
+            <TextBox 
+                Name = "calendarioAnioText" 
+                Text="{Binding calendario__anio}"
+                Grid.Column = "1" 
+                Margin = "2" />
+
+            <Label 
+                Name = "calendarioSemestreLabel" 
+                Margin = "2" 
+                Grid.Row = "1">_Semestre:</Label>
+
+            <TextBox 
+                Name = "calendarioSemestreText" 
+                Text="{Binding calendario__semestre}"
+                Grid.Column = "1" 
+                Grid.Row = "1" 
+                Margin = "2" />
+
+            <Label 
+                Name = "autorizadaLabel"
+                Margin = "2" 
+                Grid.Row = "2">_Autorizada:</Label>
+
+            <ComboBox 
+                Name = "autorizadaCombo" 
+                SelectedValue="{Binding autorizada}"
+                Grid.Column="1"  
+                Grid.Row="2" 
+                Margin = "2" />
+
+            <Label 
+                Name = "sedeLabel" 
+                Margin = "2" 
+                Grid.Row = "3">_Sede:</Label>
+
+            <TextBox 
+                Name="sedeText"
+                TextChanged="SedeText_TextChanged"
+                Margin="2"
+                Grid.Row = "3"
+                Grid.Column="2" />
+
+            <WrapPanel
+                Panel.ZIndex="2" 
+                Grid.Row = "4"
+                Grid.Column="2">
+
+                <ListBox 
+                    Name="sedeList"    
+                    Margin="2"
+                    SelectionChanged="SedeList_SelectionChanged">
+
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding nombre}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </WrapPanel>
+
+            <StackPanel Grid.Row = "4" Grid.ColumnSpan = "2">
+                <Button Content = "_Buscar..." Click="BuscarButton_Click" />
+            </StackPanel>
+        </Grid>
+
+        <DataGrid Name="comisionGrid"  IsReadOnly="True" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Numero" Binding="{Binding numero}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Sede" Binding="{Binding sede__nombre}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Domicilio" Binding="{Binding domicilio__label}"></DataGridTextColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="CargarAlumnos_Click">Carga de alumnos</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+
+    </DockPanel>
+</Window>

@@ -426,6 +426,38 @@ namespace ModelOrganize
             File.WriteAllText(Config.modelPath + "entities.json", file);
         }
 
+        public void CreateStaticClassEntitites()
+        {
+            if (!Directory.Exists(Config.modelPath))
+                Directory.CreateDirectory(Config.modelPath);
+
+            if (File.Exists(Config.modelPath + "entities.cs"))
+                File.Delete(Config.modelPath + "entities.cs");
+
+            using StreamWriter sw = File.CreateText(Config.modelPath + "Entities.cs");
+            sw.WriteLine("using System;");
+            sw.WriteLine("");
+            sw.WriteLine("namespace " + Config.modelNamespace);
+            sw.WriteLine("{");
+            sw.WriteLine("    public class Entities");
+            sw.WriteLine("    {");
+            sw.WriteLine("        private static readonly List<Entity> Entities = new ();");
+            sw.WriteLine("");
+            sw.WriteLine("        static Entities()");
+            sw.WriteLine("        {");
+
+            foreach (var (entityName, entity) in entities)
+            {
+                sw.WriteLine("            Entities.Add(new () {");
+                sw.WriteLine("                name = " + entity.pk.ToString());
+                sw.WriteLine("                alias");
+                sw.WriteLine("                schema");
+                sw.WriteLine("                pk");
+
+                sw.WriteLine("            }");
+            }
+        }
+
         public void CreateFileFields()
         {
             if (!Directory.Exists(Config.modelPath + "Fields/"))
