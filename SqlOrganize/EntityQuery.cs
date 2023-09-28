@@ -699,7 +699,7 @@ namespace SqlOrganize
             EntityQuery queryAux = this.Clone();
             queryAux.fields = Db.config.id;
 
-            IEnumerable<object> ids = queryAux.Column<object>();
+            IEnumerable<object> ids = queryAux.ColOfDictCacheQuery().ColOfVal<object>(Db.config.id);
 
             return PreColOfDictCacheRecursive(_fields, ids.ToArray());
         }

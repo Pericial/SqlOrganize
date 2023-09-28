@@ -5,11 +5,7 @@ using Utils;
 
 namespace SqlOrganize
 {
-    /*
-    Restricciones de la base de datos:
-
-    - La fk solo puede referenciar a una y solo una tabla
-    */
+    
     /// <summary>
     /// Contenedor principal de SqlOrganize
     /// </summary>
@@ -33,40 +29,23 @@ namespace SqlOrganize
 
         public MemoryCache? Cache { get; set; } = null;
 
-        public Db(Config _config, MemoryCache? Cache = null)
+        public Db(Config _config, Model model, MemoryCache? Cache = null)
         {
             config = _config;
             this.Cache = Cache;
+            entities = model.Entities();
+            foreach (Entity e in entities.Values)
+                e.db = this;
 
-            Init();
-
+            fields = model.Fields();
+            foreach (Dictionary<string, Field> df in fields.Values)
+                foreach (Field f in df.Values)
+                    f.db = this;
         }
 
-        public void Init()
-        {
-            fields = new Dictionary<string, Dictionary<string, Field>>();
-
-            using (StreamReader r = new StreamReader(config.modelPath + "entities.json"))
-            {
-                entities = JsonConvert.DeserializeObject<Dictionary<string, Entity>>(r.ReadToEnd())!;
-                foreach (KeyValuePair<string, Entity> e in entities)
-                {
-                    e.Value.db = this;
-                }
-            }
-        }
 
         public Dictionary<string, Field> FieldsEntity(string entityName)
         {
-            if (!fields.ContainsKey(entityName))
-                using (StreamReader r = new StreamReader(config.modelPath + "fields/"+ entityName + ".json"))
-                {
-                    fields[entityName] = JsonConvert.DeserializeObject<Dictionary<string, Field>>(r.ReadToEnd())!;
-
-                    foreach (KeyValuePair<string, Field> e in fields[entityName])
-                        e.Value.db = this;
-                }
-
             return fields[entityName];
         }
 

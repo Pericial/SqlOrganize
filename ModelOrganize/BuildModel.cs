@@ -426,36 +426,39 @@ namespace ModelOrganize
             File.WriteAllText(Config.modelPath + "entities.json", file);
         }
 
-        public void CreateStaticClassEntitites()
+        public void CreateClassModel()
         {
-            if (!Directory.Exists(Config.modelPath))
-                Directory.CreateDirectory(Config.modelPath);
+            if (!Directory.Exists(Config.modelClassPath))
+                Directory.CreateDirectory(Config.modelClassPath);
 
-            if (File.Exists(Config.modelPath + "entities.cs"))
-                File.Delete(Config.modelPath + "entities.cs");
+            using StreamWriter sw = File.CreateText(Config.modelClassPath + "Model.cs");
 
-            using StreamWriter sw = File.CreateText(Config.modelPath + "Entities.cs");
+            var file = JsonConvert.SerializeObject(entities, Newtonsoft.Json.Formatting.Indented);
             sw.WriteLine("using System;");
+            sw.WriteLine("using System.Collections.Generic;");
             sw.WriteLine("");
-            sw.WriteLine("namespace " + Config.modelNamespace);
+            sw.WriteLine("namespace " + Config.modelClassNamespace);
             sw.WriteLine("{");
-            sw.WriteLine("    public class Entities");
+            sw.WriteLine("    public class Model : SqlOrganize.Model");
             sw.WriteLine("    {");
-            sw.WriteLine("        private static readonly List<Entity> Entities = new ();");
+            sw.WriteLine("        private string _entities = " + JsonConvert.ToString(file) + ";");
             sw.WriteLine("");
-            sw.WriteLine("        static Entities()");
-            sw.WriteLine("        {");
+            sw.WriteLine("        private Dictionary<string, string> _fields = new() {");
 
             foreach (var (entityName, entity) in entities)
             {
-                sw.WriteLine("            Entities.Add(new () {");
-                sw.WriteLine("                name = " + entity.pk.ToString());
-                sw.WriteLine("                alias");
-                sw.WriteLine("                schema");
-                sw.WriteLine("                pk");
-
-                sw.WriteLine("            }");
+                    file = JsonConvert.SerializeObject(fields[entityName], Newtonsoft.Json.Formatting.Indented);
+                    sw.WriteLine("            { \"" + entityName + "\", " + JsonConvert.ToString(file) + " },");
             }
+
+            sw.WriteLine("        };");
+            sw.WriteLine("");
+            sw.WriteLine("        protected override string entities => _entities;");
+            sw.WriteLine("");
+            sw.WriteLine("        protected override Dictionary<string, string> fields => _fields;");
+            sw.WriteLine("");
+            sw.WriteLine("    }");
+            sw.WriteLine("}");
         }
 
         public void CreateFileFields()
@@ -482,16 +485,16 @@ namespace ModelOrganize
 
         public void _CreateFileData()
         {
-            if (!Directory.Exists(Config.dataPath))
-                Directory.CreateDirectory(Config.dataPath);
+            if (!Directory.Exists(Config.dataClassesPath))
+                Directory.CreateDirectory(Config.dataClassesPath);
 
             foreach(var (entityName, entity) in entities)
             {
-                using StreamWriter sw = File.CreateText(Config.dataPath + entityName + ".cs");
+                using StreamWriter sw = File.CreateText(Config.dataClassesPath + entityName + ".cs");
                 sw.WriteLine("using System;");
                 sw.WriteLine("using System.ComponentModel;");
                 sw.WriteLine("");
-                sw.WriteLine("namespace " + Config.dataNamespace);
+                sw.WriteLine("namespace " + Config.dataClassesNamespace);
                 sw.WriteLine("{");
                 sw.WriteLine("    public class Data_"+ entityName + " : INotifyPropertyChanged");
                 sw.WriteLine("    {");
@@ -519,15 +522,15 @@ namespace ModelOrganize
         public void _CreateFileDataRel()
         {
 
-            if (!Directory.Exists(Config.dataPath))
-                Directory.CreateDirectory(Config.dataPath);
+            if (!Directory.Exists(Config.dataClassesPath))
+                Directory.CreateDirectory(Config.dataClassesPath);
 
             foreach (var (entityName, entity) in entities)
             {
-                using StreamWriter sw = File.CreateText(Config.dataPath + entityName + "_r.cs");
+                using StreamWriter sw = File.CreateText(Config.dataClassesPath + entityName + "_r.cs");
                 sw.WriteLine("using System;");
                 sw.WriteLine("");
-                sw.WriteLine("namespace " + Config.dataNamespace);
+                sw.WriteLine("namespace " + Config.dataClassesNamespace);
                 sw.WriteLine("{");
                 sw.WriteLine("    public class Data_" + entityName + "_r" + " : Data_" + entityName);
                 sw.WriteLine("    {");
