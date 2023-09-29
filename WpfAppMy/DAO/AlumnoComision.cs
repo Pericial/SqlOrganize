@@ -34,7 +34,7 @@ namespace WpfAppMy.DAO
                     AND ($nota_final >= 7 OR $crec >= 4)  
                  ")
                 .Having("SUM($disposicion) > 3")
-                .Parameters(idAlumnos, idPlan).ColumnCache();
+                .Parameters(idAlumnos, idPlan).ColOfDictCache().ColOfVal<object>("id");
 
 
 
@@ -51,7 +51,7 @@ namespace WpfAppMy.DAO
                     AND $calendario-semestre = @1 
                     AND $comision-autorizada = true
                 ")
-                .Parameters(anio, semestre).ColumnCache();
+                .Parameters(anio, semestre).ColOfDictCache().ColOfVal<object>("alumno");
 
         }
         public IEnumerable<object> IdsAlumnosActivosDeComisionesAutorizadasPorSemestre(object anio, object semestre)
@@ -65,7 +65,7 @@ namespace WpfAppMy.DAO
                     AND $comision-autorizada = true
                     AND $estado = 'Activo'
                 ")
-                .Parameters(anio, semestre).ColumnCache();
+                .Parameters(anio, semestre).ColOfDictCache().ColOfVal<object>("alumno");
 
         }
 
@@ -81,7 +81,7 @@ namespace WpfAppMy.DAO
                     AND $estado = 'Activo'
                     AND $persona-genero IS NULL
                 ")
-                .Parameters(anio, semestre).ColumnCache();
+                .Parameters(anio, semestre).ColOfDictCache().ColOfVal<object>("alumno");
         }
 
 
@@ -125,7 +125,7 @@ namespace WpfAppMy.DAO
                 .Size(0)
                 .Where(@"
                     $comision IN (@0)
-                ").ColumnCache();
+                ").ColOfDictCache().ColOfVal<object>("alumno");
         }
 
         public IEnumerable<object> IdAlumnosConPlanDiferenteDeComision(object comision, object plan)
@@ -138,7 +138,7 @@ namespace WpfAppMy.DAO
                     AND $comision = @1
                     AND $activo = true
                 ")
-               .Parameters(plan, comision).ColumnCache();
+               .Parameters(plan, comision).ColOfDictCache().ColOfVal<object>("alumno");
 
         }
 
@@ -155,7 +155,7 @@ namespace WpfAppMy.DAO
                     AND $estado = 'Activo'
                 ")
                .Having("cantidad > 1")
-               .Parameters(anio, semestre).ColumnCache();
+               .Parameters(anio, semestre).ColOfDictCache().ColOfVal<object>("cantidad");
         }
 
         public IEnumerable<Dictionary<string, object>> AsignacionesActivasDeComisionesAutorizadasPorSemestre(object anio, object semestre)

@@ -733,14 +733,6 @@ namespace SqlOrganize
             return response.ElementAt(0);
         }
 
-        public EntityValues? ValuesCache()
-        {
-            var data = DictCache();
-            if (data.IsNullOrEmpty())
-                return null;
-
-            return Db.Values(entityName).Values(data!);
-        }
 
         /// <summary>
         /// Organiza los elementos a consultar y efectua la consulta a la base de datos.
@@ -862,56 +854,9 @@ namespace SqlOrganize
                     Db.Cache.Set(entityName + rowAux[Db.config.id].ToString(), rowAux);
             }
         }
-
-
-        /// <summary>
-        /// Efectua una consulta a la base de datos y la convierte en el objeto indicado
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="query"></param>
-        /// <returns></returns>
-        public T? ValueCache<T>(int columnNumber = 0)
-        {
-            IDictionary<string, object>? response = DictCache();
-            if (response.IsNullOrEmpty())
-                return default(T);
-
-            string k = response!.Keys.ElementAt(columnNumber).ToString();
-
-            return (T)response[k];
-        }
-
-        public IEnumerable<object> ColumnCache(int columnNumber = 0)
-        {
-            return ColumnCache<object>(columnNumber);
-        }
-
-        public IEnumerable<T> ColumnCache<T>(int columnNumber = 0)
-        {
-            IEnumerable<Dictionary<string, object>>? response = ColOfDictCache();
-            if (response.IsNullOrEmpty())
-                return Enumerable.Empty<T>();
-
-
-            string k = response.ElementAt(0).Keys.ElementAt(columnNumber).ToString();
-
-            return response.ColOfVal<T>(k);
-        }
-
-        public IEnumerable<T> ColumnCache<T>(string columnName)
-        {
-            IEnumerable<Dictionary<string, object>>? response = ColOfDictCache();
-            if (response.IsNullOrEmpty())
-                return Enumerable.Empty<T>();
-
-            return response.ColOfVal<T>(columnName);
-        }
-
-        public IEnumerable<object> ColumnCache(string columnName)
-        {
-            return ColumnCache<object>(columnName);
-        }
         #endregion
+
+
 
     }
 

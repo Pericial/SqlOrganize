@@ -75,10 +75,12 @@ namespace WpfAppMy.Windows.AlumnoComision.CargarNuevosAlumnos
 
                 #region Procesar persona
                 var persona = (Values.Persona)ContainerApp.db.Values("persona", "persona").Set(personaData).Reset();
-                var personaExistente = ContainerApp.db.Query("persona").Unique(persona).ValuesCache();
+                var personaExistenteData = ContainerApp.db.Query("persona").Unique(persona).DictCache();
 
-                if (!personaExistente.IsNullOrEmpty()) //existen datos de persona en la base
+                if (!personaExistenteData.IsNullOrEmpty()) //existen datos de persona en la base
                 {
+                    var personaExistente = ContainerApp.db.Values("persona").Values(personaExistenteData);
+
                     var dataDifferent = persona.Compare(personaExistente!, ignoreNull: true);
                     if (!dataDifferent.IsNullOrEmpty())
                     {
@@ -108,9 +110,12 @@ namespace WpfAppMy.Windows.AlumnoComision.CargarNuevosAlumnos
 
                 #region Procesar alumno
                 var alumno = ContainerApp.db.Values("alumno").Set("persona", persona.Get("id"));
-                var alumnoExistente = ContainerApp.db.Query("alumno").Unique(alumno).ValuesCache();
-                if (!alumnoExistente.IsNullOrEmpty()) //existen datos de alumno en la base
+                var alumnoExistenteData = ContainerApp.db.Query("alumno").Unique(alumno).DictCache();
+
+                if (!alumnoExistenteData.IsNullOrEmpty()) //existen datos de alumno en la base
                 {
+                    var alumnoExistente = ContainerApp.db.Values("alumno").Values(alumnoExistenteData);
+
                     statusData.Add(new()
                     {
                         row = j,
