@@ -15,12 +15,12 @@ namespace WpfAppMy.Forms.ListaPlanificacion.DAO
 
         public IEnumerable<Dictionary<string, object>> All()
         {
-            return ContainerApp.Db().Query("planificacion").ColOfDictCache();
+            return ContainerApp.db.Query("planificacion").ColOfDictCache();
         }
 
         public void UpdateValueRel(string key, object value, Dictionary<string, object> source)
         {
-            EntityPersist p = ContainerApp.Db().Persist("planificacion").UpdateValueRel(key, value, source).Exec().RemoveCache();
+            EntityPersist p = ContainerApp.db.Persist("planificacion").UpdateValueRel(key, value, source).Exec().RemoveCache();
         }
 
 

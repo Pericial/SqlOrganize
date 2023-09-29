@@ -29,6 +29,7 @@ namespace WpfAppMy.Windows.AlumnoComision.CargarNuevosAlumnos
         private ObservableCollection<ViewModel> statusData = new();
         private DAO.AlumnoComision alumnoComisionDAO = new();
         private EntityPersist persist = ContainerApp.db.Persist();
+        private SqlOrganize.DAO dao = new(ContainerApp.db);
 
 
         public Window1(string? idComision = null)
@@ -44,7 +45,7 @@ namespace WpfAppMy.Windows.AlumnoComision.CargarNuevosAlumnos
 
         private void CargarNuevosAlumnos_Loaded(object sender, RoutedEventArgs e)
         {
-            var data = ContainerApp.dao.Get("comision", IdComision);
+            var data = dao.Get("comision", IdComision);
             comision = data.Obj<Comision>();
             comision.label = ((Values.Comision)ContainerApp.db.Values("comision").Values(data)).LabelWithSede();
             DataContext = comision;
@@ -163,7 +164,7 @@ namespace WpfAppMy.Windows.AlumnoComision.CargarNuevosAlumnos
                     {
                         row = j,
                         status = "warning",
-                        detail = "Existe asignacion de alumno con estado " + asignacionExistenteData["estado"].ToString(),
+                        detail = "Ya existe asignacion en la comisión actual con estado " + asignacionExistenteData["estado"].ToString(),
                         data = persona.Label()
                     });
                 }
@@ -199,7 +200,7 @@ namespace WpfAppMy.Windows.AlumnoComision.CargarNuevosAlumnos
                 #endregion
 
                 #region informar otras asignaciones activas del alumno
-                var otrasAsignaciones = alumnoComisionDAO.AsignacionesActivasDelAlumnoEnOtrasComisionesAutorizadas(comision.id!, alumno.Get("id"));
+                var otrasAsignaciones = alumnoComisionDAO.AsignacionesDelAlumnoEnOtrasComisionesAutorizadas(comision.id!, alumno.Get("id"));
                 foreach (var a in otrasAsignaciones)
                 {
                     var comD = ContainerApp.db.Query("comision").CacheById(a["comision-id"]);
@@ -209,8 +210,8 @@ namespace WpfAppMy.Windows.AlumnoComision.CargarNuevosAlumnos
                     {
                         row = j,
                         status = "info",
-                        detail = "Otra comision activa del alumno",
-                        data = persona.Label() + " en " + comV.LabelWithSede()
+                        detail = "Asignacion en otra comisión",
+                        data = persona.Label() + " en " + comV.LabelWithSede() + " con estado " + a["estado"]
                     });
                 }
                 #endregion

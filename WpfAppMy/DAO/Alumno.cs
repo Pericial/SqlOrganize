@@ -12,7 +12,7 @@ namespace WpfAppMy.DAO
         public IEnumerable<Dictionary<string, object>> AlumnosPorIds(IEnumerable<object> ids)
         {
             if (ids.Count() == 0) return Enumerable.Empty<Dictionary<string, object>>();
-            return ContainerApp.Db().Query("alumno").CacheByIds(ids);
+            return ContainerApp.db.Query("alumno").CacheByIds(ids);
         }
     }
 }

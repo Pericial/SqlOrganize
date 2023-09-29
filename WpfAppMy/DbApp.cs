@@ -7,7 +7,7 @@ namespace WpfAppMy
 {
     internal class DbApp : DbMy
     {
-        public DbApp(Config config, MemoryCache cache) : base(config, cache)
+        public DbApp(Config config, Model model, MemoryCache cache) : base(config, model, cache)
         {
         }
 

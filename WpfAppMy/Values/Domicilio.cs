@@ -30,5 +30,26 @@ namespace WpfAppMy.Values
             values["label"] = r + " " + values["localidad"];
             return this;
         }
+
+        public string Label()
+        {
+            string r = "";
+            r += (values.ContainsKey("calle") && !values["calle"].IsNullOrEmptyOrDbNull() ) ? 
+                values["calle"] : "";
+
+            r += (values.ContainsKey("entre") && !values["entre"].IsNullOrEmptyOrDbNull()) ?
+              " e/ " + values["entre"] : "";
+
+            r += (values.ContainsKey("numero") && !values["numero"].IsNullOrEmptyOrDbNull()) ?
+              " N° " + values["numero"] : "";
+
+            r += (values.ContainsKey("barrio") && !values["barrio"].IsNullOrEmptyOrDbNull()) ?
+              " " + values["barrio"] : "";
+
+            r += (values.ContainsKey("localidad") && !values["localidad"].IsNullOrEmptyOrDbNull()) ?
+              " " + values["localidad"] : "";
+
+            return r.Trim().RemoveMultipleSpaces();
+        }
     }
 }

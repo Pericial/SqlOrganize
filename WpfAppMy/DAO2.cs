@@ -24,15 +24,15 @@ namespace WpfAppMy
         {
             var q = ContainerApp.db.Query(entityName).Unique(source);
 
-            if (!source[ContainerApp.config.id].IsNullOrEmpty())
-                q.Where("($" + ContainerApp.config.id + " != @0)").Parameters(source[ContainerApp.config.id]);
+            if (!source[ContainerApp.db.config.id].IsNullOrEmpty())
+                q.Where("($" + ContainerApp.db.config.id + " != @0)").Parameters(source[ContainerApp.db.config.id]);
 
             return q.DictCache();
         }
 
         public void Persist(EntityValues v)
         {
-            if (v.Get(ContainerApp.config.id).IsNullOrEmpty())
+            if (v.Get(ContainerApp.db.config.id).IsNullOrEmpty())
             {
                 v.Default().Reset();
                 var p = ContainerApp.db.Persist(v.entityName).Insert(v.values).Exec().RemoveCache();

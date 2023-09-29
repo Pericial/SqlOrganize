@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Caching.Memory;
+﻿using HarfBuzzSharp;
+using Microsoft.Extensions.Caching.Memory;
 using SqlOrganize;
 using SqlOrganizeMy;
 using System;
@@ -7,12 +8,15 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utils;
 
 namespace WpfAppMy
 {
-    class ContainerApp
+    static class ContainerApp
     {
-        public static WpfAppMy.Config config = new Config
+        public static Db db;
+
+        public static Config config = new Config
         {
             id = "id",
             fkId = true,
@@ -26,21 +30,27 @@ namespace WpfAppMy
             emailDocenteBcc = ConfigurationManager.AppSettings.Get("emailDocenteBcc"),
         };
 
-        public static MemoryCache cache = new MemoryCache(new MemoryCacheOptions());
 
-        public static Db db = new DbApp(config, cache);
-
-
-
-        public static SqlOrganize.DAO dao = new (db);
-
-        public static Config Config()
+        static ContainerApp()
         {
-            return config;
+
+            MemoryCache cache = new MemoryCache(new MemoryCacheOptions());
+
+            Model model = new Model();
+            db = new DbApp(config, model, cache);
+
         }
-        public static Db Db()
+
+        public static EntityValues? Values(this IDictionary<string, object>? data, string entityName)
         {
-            return db;
+            if (data.IsNullOrEmptyOrDbNull()) return null;
+            return db.Values(entityName).Values(data);
+        }
+
+        public static EntityValues? ValuesSet(this IDictionary<string, object>? data, string entityName, string? fieldId = null)
+        {
+            if (data.IsNullOrEmptyOrDbNull()) return null;
+            return db.Values(entityName, fieldId).Set(data);
         }
 
     }

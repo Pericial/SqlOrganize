@@ -10,7 +10,7 @@ namespace WpfAppMy.DAO
     {
         public IEnumerable<object> IdsAlumnosConCalificacionesAprobadasCruzadasNoArchivadas(IEnumerable<object> ids)
         {
-            return ContainerApp.Db().Query("calificacion")
+            return ContainerApp.db.Query("calificacion")
                 .Select("COUNT(DISTINCT $plan_pla-id) as cantidad_planes")
                 .Group("$alumno")
                 .Size(0)
@@ -27,7 +27,7 @@ namespace WpfAppMy.DAO
 
         public IEnumerable<Dictionary<string, object>> CalificacionesAprobadasDeAlumnosNoArchivadas(IEnumerable<object> idsAlumnos)
         {
-            return ContainerApp.Db().Query("calificacion")
+            return ContainerApp.db.Query("calificacion")
                 .Size(0)
                 .Where(@"
                     $alumno IN (@0)
@@ -51,7 +51,7 @@ namespace WpfAppMy.DAO
         /// <returns></returns>
         public Int64 CantidadCalificacionesAprobadasDeAlumnoPorTramo(object alumno, object anio, object semestre)
         {
-            return ContainerApp.Db().Query("calificacion")
+            return ContainerApp.db.Query("calificacion")
                 .Select("COUNT($id) as cantidad")
                 .Size(0)
                 .Where(@"

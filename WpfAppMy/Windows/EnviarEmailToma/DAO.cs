@@ -10,7 +10,7 @@ namespace WpfAppMy.Windows.EnviarEmailToma
     {
         public IEnumerable<Dictionary<string, object>> TomaAll()
         {
-            return ContainerApp.Db().Query("toma")
+            return ContainerApp.db.Query("toma")
                 .Fields()
                 .Size(0)
                 .Where(@"

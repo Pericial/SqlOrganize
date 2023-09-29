@@ -13,12 +13,12 @@ namespace WpfAppMy.DAO
 
         public void UpdateValueRel(string key, object value, Dictionary<string, object> source)
         {
-            EntityPersist p = ContainerApp.Db().Persist("comision").UpdateValueRel(key, value, source).Exec().RemoveCache();
+            EntityPersist p = ContainerApp.db.Persist("comision").UpdateValueRel(key, value, source).Exec().RemoveCache();
         }
 
         public IEnumerable<Dictionary<string, object>> ComisionesSemestre(object calendarioAnio, object calendarioSemestre, object? sede = null, bool? autorizada = null)
         {
-            var q = ContainerApp.Db().Query("comision")
+            var q = ContainerApp.db.Query("comision")
                 .Fields()
                 .Select("CONCAT($sede-numero, $division, '/', $planificacion-anio, $planificacion-semestre) AS numero")
                 .Size(0)
@@ -45,7 +45,7 @@ namespace WpfAppMy.DAO
 
         public IEnumerable<object> IdsComisionesAutorizadasConSiguientePorSemestre(object calendarioAnio, object calendarioSemestre)
         {
-            return ContainerApp.Db().Query("comision")
+            return ContainerApp.db.Query("comision")
                 .Fields("id")
                 .Size(0)
                 .Where(@"
@@ -59,7 +59,7 @@ namespace WpfAppMy.DAO
 
         public IEnumerable<Dictionary<string, object>> ComisionesPorIds(List<object> ids)
         {
-            return ContainerApp.Db().Query("comision")
+            return ContainerApp.db.Query("comision")
                 .Fields()
                 .Size(0)
                 .Where(@"
@@ -71,7 +71,7 @@ namespace WpfAppMy.DAO
 
         public IEnumerable<Dictionary<string, object>> ComisionesConSiguientePorCalendario(object anio, object semestre)
         {
-            return ContainerApp.Db().Query("comision")
+            return ContainerApp.db.Query("comision")
                 .Size(0)
                 .Where(@"
                     $calendario-anio = @0
@@ -84,7 +84,7 @@ namespace WpfAppMy.DAO
 
         public IEnumerable<object> IdsComisionesAutorizadasPorCalendario(object anio, object semestre)
         {
-            return ContainerApp.Db().Query("comision")
+            return ContainerApp.db.Query("comision")
                 .Fields(ContainerApp.db.config.id)
                 .Size(0)
                 .Where(@"

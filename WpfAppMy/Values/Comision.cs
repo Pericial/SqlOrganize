@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using Utils;
@@ -34,7 +35,7 @@ namespace WpfAppMy.Values
 
         public string LabelWithSede()
         {
-            var s =  Label();
+            var s = Label();
             s += " ";
             s += values.ContainsKey("sede-nombre") && !values["sede-nombre"].IsNullOrEmptyOrDbNull() ? values["sede-nombre"].ToString() : "";
             return s.Trim();
@@ -46,6 +47,23 @@ namespace WpfAppMy.Values
             s += "-";
             s += values.ContainsKey("calendario-semestre") && !values["calendario-semestre"].IsNullOrEmptyOrDbNull() ? values["calendario-semestre"].ToString() : "";
             return s.Trim();
+        }
+
+        public string Label(string fieldId)
+        {
+            switch(fieldId)
+            {
+                case "domicilio":
+                    var id = values["sede-domicilio"] ?? null;
+                    if(id != null)
+                    {
+                        var data = db.Query("domicilio").CacheById(id);
+                        return (db.Values("domicilio").Set(data) as Domicilio).Label();
+                    }
+                    break;
+            }
+
+            return "";
         }
 
 

@@ -10,7 +10,7 @@ namespace WpfAppMy.Windows.ProcesarComisionesProgramaFines
     {
         public IEnumerable<string> PfidComisiones()
         {
-            return ContainerApp.Db().Query("comision")
+            return ContainerApp.db.Query("comision")
                 .Fields("pfid")
                 .Size(0)
                 .Where(@"
@@ -24,7 +24,7 @@ namespace WpfAppMy.Windows.ProcesarComisionesProgramaFines
 
         public string? IdCurso(string pfidComision, string asignaturaCodigo)
         {
-            return ContainerApp.Db().Query("curso")
+            return ContainerApp.db.Query("curso")
                 .Fields("id")
                 .Size(0)
                 .Where(@"
@@ -39,7 +39,7 @@ namespace WpfAppMy.Windows.ProcesarComisionesProgramaFines
 
         public string? IdPersona(string dni)
         {
-            return ContainerApp.Db().Query("persona")
+            return ContainerApp.db.Query("persona")
                 .Fields("id")
                 .Size(0)
                 .Where(@"

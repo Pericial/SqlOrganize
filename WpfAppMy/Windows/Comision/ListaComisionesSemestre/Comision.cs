@@ -9,5 +9,8 @@ namespace WpfAppMy.Windows.Comision.ListaComisionesSemestre
 {
     internal class Comision : Data_comision_r
     {
+        public string label { get; set; }
+        public string domicilio__label { get; set; }
+
     }
 }

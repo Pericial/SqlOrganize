@@ -17,7 +17,7 @@
             </MenuItem>
             
             <MenuItem Header="_Comisiones">
-                <MenuItem Header="Lista de Comisiones" Click="listaComisiones_Click"/>
+                <MenuItem Header="Lista de Comisiones del semestre" Click="listaComisiones_Click"/>
                 <MenuItem Header="Lista de Sedes del Semestre" Click="listaSedesSemestre_Click"/>
                 <MenuItem Header="Lista de Planificaciones" Click="listaPlanificaciones_Click"/>
                 <MenuItem Header="Lista de Modalidades" Click="listaModalidades_Click"/>

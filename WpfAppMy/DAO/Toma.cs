@@ -10,7 +10,7 @@ namespace WpfAppMy.DAO
     {
         public IEnumerable<object> IdCursosConTomasAprobadasSemestre(object calendarioAnio, object calendarioSemestre)
         {
-            return ContainerApp.Db().Query("toma").
+            return ContainerApp.db.Query("toma").
                 Fields("curso").
                 Size(0).
                 Where(@"

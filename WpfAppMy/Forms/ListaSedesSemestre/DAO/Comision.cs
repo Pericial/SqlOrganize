@@ -15,7 +15,7 @@ namespace WpfAppMy.Forms.ListaSedesSemestre.DAO
 
         public IEnumerable<Dictionary<string, object>> Search(ComisionSearch search)
         {
-            var q = ContainerApp.Db().Query("comision")
+            var q = ContainerApp.db.Query("comision")
                 .Fields("sede-*, domicilio-*")
                 .Size(0)
                 .Where(@"
@@ -37,7 +37,7 @@ namespace WpfAppMy.Forms.ListaSedesSemestre.DAO
 
         public void UpdateValueRel(string key, object value, Dictionary<string, object> source)
         {
-            EntityPersist p = ContainerApp.Db().Persist("comision").UpdateValueRel(key, value, source).Exec().RemoveCache();
+            EntityPersist p = ContainerApp.db.Persist("comision").UpdateValueRel(key, value, source).Exec().RemoveCache();
         }
 
     }

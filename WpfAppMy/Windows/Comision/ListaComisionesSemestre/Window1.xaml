@@ -96,7 +96,8 @@
 
         <DataGrid Name="comisionGrid"  IsReadOnly="True" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Numero" Binding="{Binding numero}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Numero" Binding="{Binding label}"></DataGridTextColumn>
+
                 <DataGridTextColumn Header="Sede" Binding="{Binding sede__nombre}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Domicilio" Binding="{Binding domicilio__label}"></DataGridTextColumn>
                 <DataGridTemplateColumn>

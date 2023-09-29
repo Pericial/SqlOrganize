@@ -14,14 +14,14 @@ namespace WpfAppMy.Forms.ListaReferentesSemestre.DAO
         public IEnumerable<Dictionary<string, object>> referentesSemestre(Search search)
         {
             IEnumerable<object> idSedes = comisionDAO.IdSedesSemestre(search);
-            return ContainerApp.Db().Query("designacion").
+            return ContainerApp.db.Query("designacion").
                 Where("$sede-_Id IN (@0) AND $cargo = '1'").
                 Parameters(idSedes).ColOfDictCache();
         }
 
         public void UpdateValueRel(string key, object value, Dictionary<string, object> source)
         {
-            EntityPersist p = ContainerApp.Db().Persist("designacion").UpdateValueRel(key, value, source).Exec().RemoveCache();
+            EntityPersist p = ContainerApp.db.Persist("designacion").UpdateValueRel(key, value, source).Exec().RemoveCache();
         }
     }
 }

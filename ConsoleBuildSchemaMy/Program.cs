@@ -9,8 +9,10 @@ var c = new ConfigMy()
     modelPath = ConfigurationManager.AppSettings.Get("modelPath"),
     configPath = ConfigurationManager.AppSettings.Get("configPath"),
     dbName = ConfigurationManager.AppSettings.Get("dbName"),
-    dataPath = ConfigurationManager.AppSettings.Get("dataPath"),
-    dataNamespace = ConfigurationManager.AppSettings.Get("dataNamespace"),
+    dataClassesPath = ConfigurationManager.AppSettings.Get("dataClassesPath"),
+    dataClassesNamespace = ConfigurationManager.AppSettings.Get("dataClassesNamespace"),
+    modelClassPath = ConfigurationManager.AppSettings.Get("modelClassPath"),
+    modelClassNamespace = ConfigurationManager.AppSettings.Get("modelClassNamespace"),
     idSource = "field_name",
 };
 
@@ -32,3 +34,5 @@ t.CreateFileEntitites();
 t.CreateFileFields();
 
 t.CreateFileData();
+
+t.CreateClassModel(); 

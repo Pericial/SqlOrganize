@@ -10,7 +10,7 @@ namespace WpfAppMy.DAO
     {
         public IEnumerable<Dictionary<string, object>> BusquedaAproximada(string search)
         {
-            return ContainerApp.Db().Query("sede").
+            return ContainerApp.db.Query("sede").
                 Fields("id, nombre").
                 Size(10).
                 Where(@"

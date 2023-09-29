@@ -11,7 +11,7 @@ namespace WpfAppMy.Windows.ProcesarDocentesProgramaFines
     {
         public IEnumerable<string> PfidComisiones()
         {
-           return ContainerApp.Db().Query("comision")
+           return ContainerApp.db.Query("comision")
                 .Fields("pfid")
                 .Size(0)
                 .Where(@"
@@ -25,7 +25,7 @@ namespace WpfAppMy.Windows.ProcesarDocentesProgramaFines
 
         public string? IdCurso(string pfidComision, string asignaturaCodigo)
         {
-            return ContainerApp.Db().Query("curso")
+            return ContainerApp.db.Query("curso")
                 .Fields("id")
                 .Size(0)
                 .Where(@"
@@ -40,7 +40,7 @@ namespace WpfAppMy.Windows.ProcesarDocentesProgramaFines
 
         public IDictionary<string, object>? TomaActiva(string idCurso)
         {
-            return ContainerApp.Db().Query("toma")
+            return ContainerApp.db.Query("toma")
                 .Size(0)
                 .Where(@"
                     $curso = @0 

@@ -21,7 +21,7 @@ namespace WpfAppMy.Windows.Comision
         private ComisionSearch comisionSearch = new ();
         private DAO.Sede sedeDAO = new ();
         private ObservableCollection<ComisionRel> comisionData = new();
-
+        private SqlOrganize.DAO dao = new SqlOrganize.DAO(ContainerApp.db);
         public ListaSemestre()
         {
             InitializeComponent();
@@ -47,7 +47,7 @@ namespace WpfAppMy.Windows.Comision
 
         private void LoadData()
         {
-            IEnumerable<Dictionary<string, object>> list = ContainerApp.dao.Search("comision",comisionSearch);
+            IEnumerable<Dictionary<string, object>> list = dao.Search("comision",comisionSearch);
             comisionData.Clear();
             foreach (Dictionary<string, object> item in list)
             {
@@ -112,7 +112,7 @@ namespace WpfAppMy.Windows.Comision
                     string key = ((Binding)column.Binding).Path.Path; //column's binding
                     Dictionary<string, object> source = (Dictionary<string, object>)((Data_comision_r)e.Row.DataContext).Dict();
                     string value = (e.EditingElement as TextBox)!.Text;
-                    ContainerApp.dao.UpdateValueRel("comision", key, value, source);
+                    dao.UpdateValueRel("comision", key, value, source);
                 }
             }
         }

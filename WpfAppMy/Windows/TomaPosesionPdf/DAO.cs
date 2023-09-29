@@ -10,7 +10,7 @@ namespace WpfAppMy.Windows.TomaPosesionPdf
     {
         public IEnumerable<Dictionary<string, object>> TomaAll(Search search)
         {
-            return ContainerApp.Db().Query("toma")
+            return ContainerApp.db.Query("toma")
                 .Fields()
                 .Size(0)
                 .Where(@"

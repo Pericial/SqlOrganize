@@ -13,7 +13,7 @@ namespace WpfAppMy.Forms.ListaModalidad
 
         public IEnumerable<Dictionary<string, object>> AllModalidad()
         {
-            return ContainerApp.Db().Query("modalidad").ColOfDictCache();
+            return ContainerApp.db.Query("modalidad").ColOfDictCache();
         }
 
         public IDictionary<string, object>? RowByEntityFieldValue(string entityName, string fieldName, object value)
@@ -29,7 +29,7 @@ namespace WpfAppMy.Forms.ListaModalidad
 
         public void UpdateValueRelModalidad(string key, object value, Dictionary<string, object> source)
         {
-            EntityPersist p = ContainerApp.Db().Persist("modalidad").UpdateValueRel(key, value, source).Exec().RemoveCache();
+            EntityPersist p = ContainerApp.db.Persist("modalidad").UpdateValueRel(key, value, source).Exec().RemoveCache();
         }
 
 
