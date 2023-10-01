@@ -17,53 +17,52 @@ namespace WpfAppMy.Values
         public string Numero()
         {
             var s = "";
-            s += values.ContainsKey("sede-numero") && !values["sede-numero"].IsNullOrEmptyOrDbNull() ? values["sede-numero"].ToString() : "";
-            s += values.ContainsKey("division") && !values["division"].IsNullOrEmptyOrDbNull() ? values["division"].ToString() : "";
+
+            EntityValues? v = ValuesTree("sede");
+            s += (!v.IsNullOrEmpty()) ? v.GetOrNull("numero")?.ToString() : "?";
+            s += GetOrNull("division")?.ToString() ?? "?";
             s += "/";
-            s += values.ContainsKey("planificacion-anio") && !values["planificacion-anio"].IsNullOrEmptyOrDbNull() ? values["planificacion-anio"].ToString() : "";
-            s += values.ContainsKey("planificacion-semestre") && !values["planificacion-semestre"].IsNullOrEmptyOrDbNull() ? values["planificacion-semestre"].ToString() : "";
+            v = ValuesTree("planificacion");
+            if (!v.IsNullOrEmpty())
+            {
+                s += v.GetOrNull("anio")?.ToString() ?? "?"; ;
+                s += v.GetOrNull("semestre")?.ToString() ?? "?"; ;
+            } else
+            {
+                s += "?";
+            }
             return s.Trim();
         }
 
-        public string Label()
+    
+        public string ToStringNombreSede()
+        {
+            var s = ToString();
+            s += " ";
+            s += ValuesTree("sede")?.GetOrNull("nombre")?.ToString() ?? "?";
+            return s;
+        }
+
+        public string CalendarioAnioSemestre()
+        {
+            string s = "";
+            var v = ValuesTree("calendario");
+            if (v.IsNullOrEmpty())
+            {
+                s += v.GetOrNull("anio")?.ToString() ?? "?";
+                s += "-";
+                s += v.GetOrNull("semestre")?.ToString() ?? "?";
+            }
+            return s;
+        }
+
+        public override string ToString()
         {
             var s = Numero();
             s += " ";
-            s += CalendarioLabel();
-            return s.Trim();
-        }
+            s += CalendarioAnioSemestre();
+            return s;
 
-        public string LabelWithSede()
-        {
-            var s = Label();
-            s += " ";
-            s += values.ContainsKey("sede-nombre") && !values["sede-nombre"].IsNullOrEmptyOrDbNull() ? values["sede-nombre"].ToString() : "";
-            return s.Trim();
-        }
-
-        public string CalendarioLabel()
-        {
-            string s = values.ContainsKey("calendario-anio") && !values["calendario-anio"].IsNullOrEmptyOrDbNull() ? values["calendario-anio"].ToString() : "";
-            s += "-";
-            s += values.ContainsKey("calendario-semestre") && !values["calendario-semestre"].IsNullOrEmptyOrDbNull() ? values["calendario-semestre"].ToString() : "";
-            return s.Trim();
-        }
-
-        public string Label(string fieldId)
-        {
-            switch(fieldId)
-            {
-                case "domicilio":
-                    var id = values["sede-domicilio"] ?? null;
-                    if(id != null)
-                    {
-                        var data = db.Query("domicilio").CacheById(id);
-                        return (db.Values("domicilio").Set(data) as Domicilio).Label();
-                    }
-                    break;
-            }
-
-            return "";
         }
 
 

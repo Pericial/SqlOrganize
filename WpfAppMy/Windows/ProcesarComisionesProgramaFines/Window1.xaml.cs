@@ -64,7 +64,7 @@ namespace WpfAppMy.Windows.ProcesarComisionesProgramaFines
                         procesar_docente = false;
                         string cuil = line.Substring(line.IndexOf("-") - 2, 13);
                         string[] cuil_ = cuil.Split("-");
-                        string id = dao.IdPersona(cuil_[1]);
+                        object? id = dao.IdPersona(cuil_[1]);
                         if (id.IsNullOrEmpty() || id.IsDbNull())
                         {
                             logs.Add("No existe docente " + cuil);

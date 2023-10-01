@@ -587,6 +587,15 @@ namespace SqlOrganize
             return list.ElementAt(0);
         }
 
+        public IDictionary<string, object>? _CacheById(object id)
+        {
+            var list = _CacheByIds(id);
+            if (list.IsNullOrEmpty())
+                return null;
+
+            return list.ElementAt(0);
+        }
+
 
         /// <summary>
         /// Obtener campos de una entidad (sin relaciones)<br/>
@@ -596,7 +605,7 @@ namespace SqlOrganize
         /// <param name="ids"></param>
         /// <remarks>IMPORTANTE! No devuelve relaciones!!!</remarks>
         /// <returns></returns>
-        protected List<Dictionary<string, object>> _CacheByIds(params object[] ids)
+        public List<Dictionary<string, object>> _CacheByIds(params object[] ids)
         {
             ids = ids.Distinct().ToArray();
 

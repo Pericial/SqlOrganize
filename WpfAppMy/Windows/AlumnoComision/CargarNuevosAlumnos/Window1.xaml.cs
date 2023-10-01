@@ -47,7 +47,7 @@ namespace WpfAppMy.Windows.AlumnoComision.CargarNuevosAlumnos
         {
             var data = dao.Get("comision", IdComision);
             comision = data.Obj<Comision>();
-            comision.label = ((Values.Comision)ContainerApp.db.Values("comision").Values(data)).LabelWithSede();
+            comision.label = ((Values.Comision)ContainerApp.db.Values("comision").Values(data)).ToStringNombreSede();
             DataContext = comision;
         }
 
@@ -89,7 +89,7 @@ namespace WpfAppMy.Windows.AlumnoComision.CargarNuevosAlumnos
                             row = j,
                             status = "error",
                             detail = "Los valores de persona existente son diferentes no se realizara ningún registro",
-                            data = "Nuevo: " + persona.Label() + ". Existente: " + (personaExistente as Values.Persona)!.Label()
+                            data = "Nuevo: " + persona.ToString() + ". Existente: " + (personaExistente as Values.Persona)!.ToString()
                         });
                         continue;
                     }
@@ -103,7 +103,7 @@ namespace WpfAppMy.Windows.AlumnoComision.CargarNuevosAlumnos
                         row = j,
                         status = "insert",
                         detail = "Persona agregada.",
-                        data = persona.Label()
+                        data = persona.ToString()
                     });
                 }
                 #endregion
@@ -121,7 +121,7 @@ namespace WpfAppMy.Windows.AlumnoComision.CargarNuevosAlumnos
                         row = j,
                         status = "info",
                         detail = "El alumno ya existe.",
-                        data = persona.Label()
+                        data = persona.ToString()
                     });
                     alumno.Set("id", alumnoExistente!.Get("id"));
                     if (alumnoExistente!.Get("plan").IsNullOrEmptyOrDbNull())
@@ -131,17 +131,18 @@ namespace WpfAppMy.Windows.AlumnoComision.CargarNuevosAlumnos
                             row = j,
                             status = "update",
                             detail = "Se actualizo el plan del alumno que estaba vacio.",
-                            data = persona.Label()
+                            data = persona.ToString()
                         });
                     }
                     else if (alumnoExistente!.Get("plan")!.ToString() != comision.planificacion__plan)
                     {
+
                         statusData.Add(new()
                         {
                             row = j,
                             status = "warning",
                             detail = "El plan del alumno es diferente del plan de la comision.",
-                            data = "Nuevo: " + comision.plan__orientacion + " " + comision.plan__resolucion + ". Existente: " + (alumnoExistente as Values.Alumno)!.PlanLabel()
+                            data = "Nuevo: " + comision.plan__orientacion + " " + comision.plan__resolucion + ". Existente: " + alumnoExistente.ValuesTree("plan")?.ToString()
                         });
                     }
                 }
@@ -153,7 +154,7 @@ namespace WpfAppMy.Windows.AlumnoComision.CargarNuevosAlumnos
                         row = j,
                         status = "insert",
                         detail = "Alumno agregado.",
-                        data = persona.Label()
+                        data = persona.ToString()
                     });
                 }
                 #endregion
@@ -170,7 +171,7 @@ namespace WpfAppMy.Windows.AlumnoComision.CargarNuevosAlumnos
                         row = j,
                         status = "warning",
                         detail = "Ya existe asignacion en la comisión actual con estado " + asignacionExistenteData["estado"].ToString(),
-                        data = persona.Label()
+                        data = persona.ToString()
                     });
                 }
                 else //no existen datos de asignacion
@@ -182,7 +183,7 @@ namespace WpfAppMy.Windows.AlumnoComision.CargarNuevosAlumnos
                         row = j,
                         status = "insert",
                         detail = "Asignacion agregada.",
-                        data = persona.Label()!
+                        data = persona.ToString()!
                     });
                 }
                 #endregion
@@ -199,7 +200,7 @@ namespace WpfAppMy.Windows.AlumnoComision.CargarNuevosAlumnos
                         row = j,
                         status = "warning",
                         detail = "Se encuentra en otra comision del mismo semestre",
-                        data = persona.Label() + " en " + comV.LabelWithSede() + " con estado " + a["estado"].ToString()
+                        data = persona.ToString() + " en " + comV.ToStringNombreSede() + " con estado " + a["estado"].ToString()
                     });
                 }
                 #endregion
@@ -216,7 +217,7 @@ namespace WpfAppMy.Windows.AlumnoComision.CargarNuevosAlumnos
                         row = j,
                         status = "info",
                         detail = "Asignacion en otra comisión",
-                        data = persona.Label() + " en " + comV.LabelWithSede() + " con estado " + a["estado"]
+                        data = persona.ToString() + " en " + comV.ToStringNombreSede() + " con estado " + a["estado"]
                     });
                 }
                 #endregion

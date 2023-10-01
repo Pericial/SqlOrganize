@@ -61,7 +61,7 @@ namespace WpfAppMy.Windows.ProcesarDocentesProgramaFines
                 {
                     if (pfidComisiones.ToList().Contains(cargo["comision"]))
                     {
-                        string idCurso = dao.IdCurso(cargo["comision"], cargo["codigo"]);
+                        object idCurso = dao.IdCurso(cargo["comision"], cargo["codigo"]);
                         if (idCurso.IsNullOrEmpty())
                         {
                             logs.Add("No existe curso " + cargo["comision"] + " " + cargo["codigo"]);

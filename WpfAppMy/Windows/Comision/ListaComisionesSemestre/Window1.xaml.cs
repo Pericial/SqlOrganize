@@ -59,8 +59,8 @@ namespace WpfAppMy.Windows.Comision.ListaComisionesSemestre
             {
                 var comision = (Values.Comision)ContainerApp.db.Values("comision").Values(item);
                 var o = item.Obj<Comision>();
-                o.label = comision.Label();
-                o.domicilio__label = comision.Label("domicilio");
+                o.label = comision.ToString();
+                o.domicilio__label = comision.ValuesTree("domicilio")?.ToString() ?? "";
                 comisionData.Add(o);
             }
         }

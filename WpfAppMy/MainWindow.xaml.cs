@@ -131,7 +131,7 @@ namespace WpfAppMy
 
         private void listaAsignacionesSemestre_Click(object sender, RoutedEventArgs e)
         {
-            Windows.AlumnoComision.ListaAsignacionesSemestre win = new();
+            Windows.AlumnoComision.ListaAlumnosSemestre.Window1 win = new();
             win.Show();
         }
 

@@ -5,6 +5,8 @@ namespace WpfAppMy.Data
 {
     public class Data_sede : INotifyPropertyChanged
     {
+
+        public string? label { get; set; }
         private string? _id;
         public string? id
         {

@@ -498,6 +498,8 @@ namespace ModelOrganize
                 sw.WriteLine("{");
                 sw.WriteLine("    public class Data_"+ entityName + " : INotifyPropertyChanged");
                 sw.WriteLine("    {");
+                sw.WriteLine("");
+                sw.WriteLine("        public string? label { get; set; }");
 
                 foreach (var (fieldName, field) in fields[entityName])
                 {

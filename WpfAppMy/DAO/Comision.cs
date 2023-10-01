@@ -54,7 +54,7 @@ namespace WpfAppMy.DAO
                     AND $autorizada = true
                     AND $comision_siguiente IS NOT NULL
                 ")
-                .Parameters(calendarioAnio, calendarioSemestre).ColumnCache();
+                .Parameters(calendarioAnio, calendarioSemestre).ColOfDictCache().ColOfVal<object>("id");
         }
 
         public IEnumerable<Dictionary<string, object>> ComisionesPorIds(List<object> ids)
@@ -92,7 +92,7 @@ namespace WpfAppMy.DAO
                     AND $calendario-semestre = @1
                     AND $autorizada = true
                 ")
-                .Parameters(anio, semestre).ColumnCache();
+                .Parameters(anio, semestre).ColOfDictCache().ColOfVal<object>(ContainerApp.db.config.id);
 
         }
 

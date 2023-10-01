@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utils;
 
 namespace WpfAppMy.DAO
 {
@@ -21,7 +22,7 @@ namespace WpfAppMy.DAO
                     AND $archivado = false
                 ")
                 .Having("cantidad_planes > 1")
-                .Parameters(ids).ColumnCache();
+                .Parameters(ids).ColOfDictCache().ColOfVal<object>("cantidad_planes");
 
         }
 
@@ -51,7 +52,7 @@ namespace WpfAppMy.DAO
         /// <returns></returns>
         public Int64 CantidadCalificacionesAprobadasDeAlumnoPorTramo(object alumno, object anio, object semestre)
         {
-            return ContainerApp.db.Query("calificacion")
+            var d = ContainerApp.db.Query("calificacion")
                 .Select("COUNT($id) as cantidad")
                 .Size(0)
                 .Where(@"
@@ -59,8 +60,10 @@ namespace WpfAppMy.DAO
                     AND $planificacion_dis-anio = @1
                     AND $planificacion_dis-semestre = @2
                 ")
-                .Parameters(alumno, anio, semestre).ValueCache<Int64>();
+                .Parameters(alumno, anio, semestre).DictCache();
 
+            if (d.IsNullOrEmpty()) { return 0; }
+            return (Int64)d["cantidad"];
         }
 
     }

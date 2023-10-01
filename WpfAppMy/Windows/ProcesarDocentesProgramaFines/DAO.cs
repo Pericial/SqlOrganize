@@ -19,13 +19,13 @@ namespace WpfAppMy.Windows.ProcesarDocentesProgramaFines
                     AND $calendario-semestre = @1 
                     AND $pfid IS NOT NULL
                 ")
-                .Parameters("2023", "2").ColumnCache<string>();
+                .Parameters("2023", "2").ColOfDictCache().ColOfVal<string>("pfid");
 
         }
 
-        public string? IdCurso(string pfidComision, string asignaturaCodigo)
+        public object? IdCurso(object pfidComision, object asignaturaCodigo)
         {
-            return ContainerApp.db.Query("curso")
+            var d = ContainerApp.db.Query("curso")
                 .Fields("id")
                 .Size(0)
                 .Where(@"
@@ -34,11 +34,14 @@ namespace WpfAppMy.Windows.ProcesarDocentesProgramaFines
                     AND $calendario-anio = @2
                     AND $calendario-semestre = @3
                 ")
-                .Parameters(pfidComision, asignaturaCodigo, "2023", "2").ValueCache<string>();
+                .Parameters(pfidComision, asignaturaCodigo, "2023", "2").DictCache();
 
+
+            if (d.IsNullOrEmptyOrDbNull()) return null;
+            return d["id"];
         }
 
-        public IDictionary<string, object>? TomaActiva(string idCurso)
+        public IDictionary<string, object>? TomaActiva(object idCurso)
         {
             return ContainerApp.db.Query("toma")
                 .Size(0)

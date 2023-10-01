@@ -31,8 +31,8 @@ namespace WpfAppMy.Forms.ListaReferentesSemestre.DAO
                 count++;
             }
 
-            return q.ColumnCache();
-    
+            return q.ColOfDictCache().ColOfVal<object>("sede-_Id");
+
 
         }
 

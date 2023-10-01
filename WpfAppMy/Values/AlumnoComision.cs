@@ -14,13 +14,16 @@ namespace WpfAppMy.Values
         {
         }
 
-        public static string estado_ingreso(string estado, DateTime alta)
+        public string EstadoIngreso()
         {
-            if (estado.ToLower() == "no activo")
+            string estado = GetOrNull("estado")?.ToString().ToLower() ?? "?";
+            DateTime? alta = (DateTime?)GetOrNull("alta");
+
+            if (estado == "no activo")
                 return "TRAYECTORIA INTERRUMPIDA";
-            if (estado.ToLower() == "activo" && alta.ToYearSemester() == DateTime.Now.ToYearSemester())
+            if (estado == "activo" && alta?.ToYearSemester() == DateTime.Now.ToYearSemester())
                 return "INGRESANTE";
-            if (estado.ToLower() == "activo" && alta.ToYearSemester() != DateTime.Now.ToYearSemester())
+            if (estado.ToLower() == "activo" && alta?.ToYearSemester() != DateTime.Now.ToYearSemester())
                 return "CONTINÚA TRAYECTORIA";
             return estado;
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utils;
 
 namespace WpfAppMy.DAO
 {
@@ -18,7 +19,7 @@ namespace WpfAppMy.DAO
                     AND $calendario-semestre = @1
                     AND $estado = 'Aprobada'
                 ")
-                .Parameters(calendarioAnio, calendarioSemestre).ColumnCache();
+                .Parameters(calendarioAnio, calendarioSemestre).ColOfDictCache().ColOfVal<object>("curso");
 
         }
 

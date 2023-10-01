@@ -37,6 +37,7 @@ namespace WpfAppMy.Forms.InformeCoordinacionDistrital.DAO
 
             foreach (Dictionary<string, object> alu_com in alumno_comision_)
             {
+                var v = (Values.AlumnoComision)ContainerApp.db.Values("alumno_comision").Set(alu_com);
                 alu_com["persona-genero"] = alu_com["persona-genero"].ToString().ToUpper();
                 alu_com["tiene_dni"] = (bool)alu_com["alumno-tiene_dni"] ? "SÍ" : "NO";
                 alu_com["tiene_cuil"] = (bool)alu_com["alumno-tiene_dni"] ? "SÍ" : "NO";
@@ -45,7 +46,7 @@ namespace WpfAppMy.Forms.InformeCoordinacionDistrital.DAO
                 DateTime creado = (DateTime)alu_com["alumno-creado"];
                 string estado = (alu_com["estado"].IsDbNull()) ? "Activo" : (string)alu_com["estado"];
                 alu_com["cuatrimestre_ingreso"] = null;
-                alu_com["estado_ingreso"] = Values.AlumnoComision.estado_ingreso(estado, creado);
+                alu_com["estado_ingreso"] = v.EstadoIngreso();
                 alu_com["asignatura111"] = null;
                 alu_com["asignatura112"] = null;
                 alu_com["asignatura113"] = null;

@@ -15,9 +15,6 @@ namespace WpfAppMy
         {
             switch (entityName)
             {
-                case "alumno":
-                    return new Alumno(this, entityName, fieldId);
-
                 case "alumno_comision":
                     return new AlumnoComision(this, entityName, fieldId);
 

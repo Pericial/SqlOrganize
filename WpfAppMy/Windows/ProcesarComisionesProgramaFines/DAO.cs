@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utils;
 
 namespace WpfAppMy.Windows.ProcesarComisionesProgramaFines
 {
@@ -18,13 +19,13 @@ namespace WpfAppMy.Windows.ProcesarComisionesProgramaFines
                     AND $calendario-semestre = @1 
                     AND $pfid IS NOT NULL
                 ")
-                .Parameters("2023", "2").ColumnCache<string>() ;
+                .Parameters("2023", "2").ColOfDictCache().ColOfVal<string>("pfid");
 
         }
 
-        public string? IdCurso(string pfidComision, string asignaturaCodigo)
+        public object? IdCurso(string pfidComision, string asignaturaCodigo)
         {
-            return ContainerApp.db.Query("curso")
+            var d = ContainerApp.db.Query("curso")
                 .Fields("id")
                 .Size(0)
                 .Where(@"
@@ -33,19 +34,26 @@ namespace WpfAppMy.Windows.ProcesarComisionesProgramaFines
                     AND $calendario-anio = @2
                     AND $calendario-semestre = @3
                 ")
-                .Parameters(pfidComision, asignaturaCodigo, "2023", "2").ValueCache<string>();
+                .Parameters(pfidComision, asignaturaCodigo, "2023", "2").DictCache();
+
+            if (d.IsNullOrEmptyOrDbNull()) return null;
+            return d["id"];
 
         }
 
-        public string? IdPersona(string dni)
+        public object? IdPersona(string dni)
         {
-            return ContainerApp.db.Query("persona")
+            var d = ContainerApp.db.Query("persona")
                 .Fields("id")
                 .Size(0)
                 .Where(@"
                     $numero_documento = @0 
                 ")
-                .Parameters(dni).ValueCache<string>();
+                .Parameters(dni).DictCache();
+
+            if (d.IsNullOrEmptyOrDbNull()) return null;
+            return d["id"];
+
         }
     }
 }

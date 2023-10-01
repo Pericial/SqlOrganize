@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
 using Newtonsoft.Json;
+using System.Globalization;
 using System.Text;
 using Utils;
 
@@ -119,6 +120,8 @@ namespace SqlOrganize
         {
             return new(this, entityName, fieldId);
         }
+
+        
 
         /// <summary>
         /// Extrae los elementos de una key

@@ -63,6 +63,15 @@ namespace SqlOrganize
             return values[fieldName];
         }
 
+        public object? GetOrNull(string fieldName)
+        {
+            return (values.ContainsKey(fieldName) && !values[fieldName].IsNullOrEmptyOrDbNull()) ?
+                 values[fieldName] : null;
+
+        }
+
+
+
         public IDictionary<string, object> Get()
         {
             Dictionary<string, object> response = new();
@@ -490,10 +499,66 @@ namespace SqlOrganize
             return this;
         }
 
-        public string ToString()
+    
+        public EntityValues? ValuesTree(string fieldId)
         {
-            return values.ToString();
+            Entity entity = db.Entity(entityName);
+            EntityTree tree = entity.tree[fieldId];
+            object? val = GetOrNull(tree.fieldName);
+            if (!val.IsNullOrEmpty())
+            {
+                var data = db.Query(tree.refEntityName)._CacheById(val);
+                return db.Values(tree.refEntityName).Set(data);
+            }
+            return null;
         }
+
+        public override string ToString()
+        {
+            List<string> fieldNames = ToStringFields();
+
+            var label = "";
+            foreach(string fieldName in fieldNames)
+                label += GetOrNull(fieldName)?.ToString() ?? " ";
+
+            return label.RemoveMultipleSpaces().Trim();
+        }
+
+        protected List<string> ToStringFields()
+        {
+            var entity = db.Entity(entityName);
+            List<string> fields = new();
+            foreach (string f in entity.unique)
+                if (entity.notNull.Contains(f))
+                    fields.Add(f);
+
+            bool uniqueMultipleFlag = true;
+            foreach (List<string> um in entity.uniqueMultiple)
+            {
+                foreach (string f in um)
+                    if (!entity.notNull.Contains(f))
+                    {
+                        uniqueMultipleFlag = false;
+                        break;
+                    }
+
+                if (uniqueMultipleFlag)
+                    foreach (var f in um)
+                        fields.Add(f);
+
+                uniqueMultipleFlag = true;
+            }
+
+            if (fields.IsNullOrEmpty())
+                fields = entity.notNull;
+
+            if (fields.IsNullOrEmpty())
+                fields = entity.fields;
+
+            return fields;
+        }
+
+
     }
 
    
