@@ -500,6 +500,7 @@ namespace ModelOrganize
                 sw.WriteLine("    {");
                 sw.WriteLine("");
                 sw.WriteLine("        public string? label { get; set; }");
+                sw.WriteLine("");
 
                 foreach (var (fieldName, field) in fields[entityName])
                 {

@@ -686,8 +686,7 @@ namespace SqlOrganize
         }
 
         /// <summary>
-        /// Efectua una consulta a la base de datos, la almacena en cache.<br/>
-        /// Dependiendo del tipo de consulta almacena cada fila de resultado en cache.
+        /// Consulta de datos (uso de cache para consulta y resultados)<br/>
         /// </summary>
         /// <param name="query">Consulta</param>
         public IEnumerable<Dictionary<string, object>> ColOfDictCache()
