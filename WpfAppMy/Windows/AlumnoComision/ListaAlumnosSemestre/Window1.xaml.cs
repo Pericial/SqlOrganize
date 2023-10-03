@@ -46,8 +46,8 @@ namespace WpfAppMy.Windows.AlumnoComision.ListaAlumnosSemestre
                 var v = (Values.AlumnoComision)ContainerApp.db.Values("alumno_comision").Values(d);
                 var o = d.Obj<Asignacion>();
                 o.comision__label = v.ValuesTree("comision")?.ToString() ?? "";
+                asignacionData.Add(o);
             }
-            asignacionData.AddRange(data);
         }
 
         private void Window1_Loaded(object sender, RoutedEventArgs e)

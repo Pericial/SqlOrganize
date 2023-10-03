@@ -62,12 +62,15 @@
                 <DataGridTextColumn Header="DNI" Binding="{Binding persona__numero_documento}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Teléfono" Binding="{Binding persona__telefono}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Email" Binding="{Binding persona__email}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Estado" Binding="{Binding comision__label}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Comision" Binding="{Binding comision__label}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Sede" Binding="{Binding sede__nombre}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Estado" Binding="{Binding estado}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Inscripción" Binding="{Binding estado}"></DataGridTextColumn>
-
+                <DataGridTextColumn Header="Inscripción" Binding="{Binding alumno__estado_inscripcion}"></DataGridTextColumn>
+                <DataGridCheckBoxColumn Header="cons" Binding="{Binding alumno__tiene_constancia}"></DataGridCheckBoxColumn>
+                <DataGridCheckBoxColumn Header="cert" Binding="{Binding alumno__tiene_certificado}"></DataGridCheckBoxColumn>
+                <DataGridCheckBoxColumn Header="DNI" Binding="{Binding alumno__tiene_dni}"></DataGridCheckBoxColumn>
+                <DataGridCheckBoxColumn Header="part" Binding="{Binding alumno__tiene_partida}"></DataGridCheckBoxColumn>
             </DataGrid.Columns>
-
         </DataGrid>
 
 
