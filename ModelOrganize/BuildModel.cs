@@ -62,6 +62,7 @@ namespace ModelOrganize
                 case "nchar":
                 case "nvarchar":
                 case "text":
+                case "mediumtext":
                     f.dataType = "string";
                     break;
                 case "real":

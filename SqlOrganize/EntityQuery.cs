@@ -70,11 +70,19 @@ namespace SqlOrganize
             return Search(d);
         }
 
+        /// <summary>
+        /// Crear condicion de busqueda del diccionario
+        /// </summary>
+        /// <param name="param">Diccionario fieldName : Valor</param>
+        /// <returns>this</returns>
+        /// <remarks>Filtra los campos que pertenecen a la entidad</remarks>
         public EntityQuery Search(IDictionary<string, object> param)
         {
             var count = parameters.Count;
             foreach(var (key, value) in param)
             {
+                if (!Db.FieldNamesRel(entityName).Contains(key))
+                    continue;
                 if(!value.IsNullOrEmpty())
                 {
                     if (!where.IsNullOrEmpty())

@@ -77,6 +77,12 @@ namespace SqlOrganize
             return l;
         }
 
+
+        /// <summary>
+        /// Lista de campos de la entidad y sus relaciones
+        /// </summary>
+        /// <param name="entityName">Nombre de la entidad de la cual se retornaran el campo principal y sus relaciones</param>
+        /// <returns></returns>
         public List<string> FieldNamesRel(string entityName)
         {
             List<string> fieldNamesR = new();
