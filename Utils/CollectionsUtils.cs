@@ -14,7 +14,14 @@ namespace Utils
 {
     public static class CollectionUtils
     {
-        public static void CopyValues<T>(this T target, T source)
+        /// <summary>
+        /// Copiar valores de objectos
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="target"></param>
+        /// <param name="source"></param>
+        /// <remarks>https://stackoverflow.com/questions/8702603/merging-two-objects-in-c-sharp</remarks>
+        public static void CopyValues<T>(this T target, T source, bool targetNotNull = true, bool sourceNotNull = false)
         {
             Type t = typeof(T);
 
@@ -22,25 +29,51 @@ namespace Utils
 
             foreach (var prop in properties)
             {
+                if (sourceNotNull && !prop.GetValue(source, null).IsNullOrEmpty())
+                    continue;
+
                 var value = prop.GetValue(source, null);
-                if (!value.IsNullOrEmpty())
+
+                if (targetNotNull && !value.IsNullOrEmpty())
                     prop.SetValue(target, value, null);
             }
         }
 
-        public static void CopyNotNullValues<T>(this T target, T source)
+        /// <summary>
+        /// Copiar valores de tipos diferentes
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="W"></typeparam>
+        /// <param name="target"></param>
+        /// <param name="source"></param>
+        public static void CopyValues<T, W>(this T target, W source, bool targetNotNull = true, bool sourceNotNull = false, bool compareNotNull = false)
         {
-            Type t = typeof(T);
+            Type t = typeof(W);
 
             var properties = t.GetProperties().Where(prop => prop.CanRead && prop.CanWrite);
 
             foreach (var prop in properties)
             {
-                var value = prop.GetValue(source, null);
-                if (!value.IsNullOrEmpty())
-                    prop.SetValue(target, value, null);
-            }
+                var propT = target.GetType().GetProperty(prop.Name);
+                if (
+                    propT.IsNullOrEmpty() || (
+                        targetNotNull
+                        && !propT.GetValue(target, null).IsNullOrEmpty()
+                    )
+                )
+                    continue;
 
+                if (compareNotNull && !prop.GetValue(source, null).IsNullOrEmpty() && !propT.GetValue(target, null).IsNullOrEmpty())
+                    if (!prop.GetValue(source, null).ToString().Equals(propT.GetValue(target, null).ToString()))
+                        throw new Exception("Valores diferentes");
+
+                var value = prop.GetValue(source, null);
+
+                if (sourceNotNull && value.IsNullOrEmpty())
+                    continue;
+
+                propT.SetValue(target, value, null);
+            }
         }
 
         public static void Merge(this IDictionary<string, object> dictionary1, IDictionary<string, object> dictionary2, string prefix = "")
